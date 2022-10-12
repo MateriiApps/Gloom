@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("com.apollographql.apollo3") version "3.6.2"
+    kotlin("plugin.serialization") version "1.7.10"
 }
 
 android {
@@ -15,6 +17,9 @@ android {
         versionName = "1.00"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "CLIENT_ID", "\"Iv1.6a7241cd0f135ebd\"")
+        buildConfigField("String", "CLIENT_SECRET", "\"8fddbb224bcca1eab335363beee09246e4624f54\"")
     }
 
     buildTypes {
@@ -43,6 +48,10 @@ android {
         compose = true
     }
 
+    apollo {
+        packageName.set("com.materiapps.gloom")
+    }
+
 }
 
 dependencies {
@@ -50,8 +59,9 @@ dependencies {
     val composeVersion = "1.0.0-rc01"
 
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("androidx.activity:activity-compose:1.6.0")
+    implementation("androidx.browser:browser:1.4.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("androidx.compose.material3:material3:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
@@ -65,6 +75,23 @@ dependencies {
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation("io.insert-koin:koin-android:$koinVersion")
     implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
+
+    val ktorVersion = "2.0.3"
+
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-cio:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+    implementation("io.ktor:ktor-client-logging:$ktorVersion")
+
+    val coilVersion = "2.2.1"
+
+    implementation("io.coil-kt:coil:$coilVersion")
+    implementation("io.coil-kt:coil-compose:$coilVersion")
+
+    val apolloVersion = "3.6.2"
+
+    implementation("com.apollographql.apollo3:apollo-runtime:$apolloVersion")
 
     val accompanistVersion = "0.26.3-beta"
 

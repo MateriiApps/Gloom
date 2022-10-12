@@ -1,44 +1,31 @@
 package com.materiapps.gloom.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.SideEffect
-import cafe.adriel.voyager.navigator.Navigator
-import cafe.adriel.voyager.transitions.SlideTransition
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.materiapps.gloom.ui.screens.root.RootScreen
-import com.materiapps.gloom.ui.theme.GloomTheme
+import com.materiapps.gloom.domain.manager.AuthManager
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
 
-    @OptIn(ExperimentalAnimationApi::class)
+    val authManager: AuthManager by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            GloomTheme {
-                val systemUiController = rememberSystemUiController()
-                val surface = MaterialTheme.colorScheme.surface
 
-                SideEffect {
-                    systemUiController.apply {
-                        setSystemBarsColor(
-                            color = surface,
-                            darkIcons = false,
-                        )
-                        isNavigationBarContrastEnforced = true
-                    }
-                }
 
-                Navigator(
-                    screen = RootScreen()
-                ) {
-                    SlideTransition(it)
-                }
+
+        if (authManager.isSignedIn) {
+            Intent(this@MainActivity, GloomActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(this)
+            }
+        } else {
+            Intent(this@MainActivity, LoginActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(this)
             }
         }
-    }
 
+    }
 }

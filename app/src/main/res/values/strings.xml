@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Gloom</string>
+    <string name="sign_in">Sign in with GitHub</string>
 </resources>

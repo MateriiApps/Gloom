@@ -1,0 +1,32 @@
+query Profile {
+  viewer {
+    anyPinnableItems(type: REPOSITORY)
+    avatarUrl(size: 256)
+    bio
+    name
+    login
+    status {
+      emoji
+      message
+    }
+    websiteUrl
+    url
+    twitterUsername
+    repositories {
+      totalCount
+    }
+    organizations {
+      totalCount
+    }
+    starredRepositories {
+      totalCount
+    }
+    company
+    followers {
+      totalCount
+    }
+    following {
+      totalCount
+    }
+  }
+}
