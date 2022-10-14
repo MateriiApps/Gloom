@@ -35,8 +35,6 @@ class GloomActivity : ComponentActivity() {
                     }
                 }
 
-                println(auth.isSignedIn)
-
                 Navigator(
                     screen = RootScreen()
                 ) {

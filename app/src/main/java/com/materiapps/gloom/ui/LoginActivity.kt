@@ -54,6 +54,7 @@ class LoginActivity : ComponentActivity(), KoinComponent {
                     lifecycleScope.launch(Dispatchers.IO) {
                         val token = authRepo.getAccessToken(it)
                         auth.authToken = token.accessToken!!
+                        auth.refreshToken = token.refreshToken!!
                         Intent(this@LoginActivity, GloomActivity::class.java).apply {
                             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             startActivity(this)

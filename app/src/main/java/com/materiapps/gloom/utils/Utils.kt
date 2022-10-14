@@ -7,6 +7,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import cafe.adriel.voyager.core.model.ScreenModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 fun Context.openUrl(url: String) {
     val intent = CustomTabsIntent.Builder().build()
@@ -19,3 +20,7 @@ fun Context.openUrl(url: String) {
 
 val ScreenModel.scope: CoroutineScope
     get() = CoroutineScope(Dispatchers.IO)
+
+fun coroutine(block: suspend CoroutineScope.() -> Unit) {
+    CoroutineScope(Dispatchers.IO).launch(block = block)
+}

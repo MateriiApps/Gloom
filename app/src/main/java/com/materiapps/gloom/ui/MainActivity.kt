@@ -13,9 +13,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         if (authManager.isSignedIn) {
+            authManager.refreshAccessToken()
             Intent(this@MainActivity, GloomActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(this)

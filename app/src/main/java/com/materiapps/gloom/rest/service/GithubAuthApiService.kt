@@ -21,4 +21,14 @@ class GithubAuthApiService(
         }.body()
     }
 
+    suspend fun refreshAccessToken(refreshToken: String): AccessTokenResponse =
+        withContext(Dispatchers.IO) {
+            client.post(URLs.AUTH.ACCESS_TOKEN) {
+                parameter("client_id", BuildConfig.CLIENT_ID)
+                parameter("client_secret", BuildConfig.CLIENT_SECRET)
+                parameter("refresh_token", refreshToken)
+                parameter("grant_type", "refresh_token")
+            }.body()
+        }
+
 }
