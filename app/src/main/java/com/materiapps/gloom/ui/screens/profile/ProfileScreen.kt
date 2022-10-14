@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -148,17 +149,17 @@ class ProfileScreen(
                 FlowRow {
                     if (user.company != null) ProfileDetail(
                         text = user.company,
-                        Icons.Outlined.Business
+                        icon = { Icon(Icons.Outlined.Business, contentDescription = null) }
                     )
                     if (user.websiteUrl != null) ProfileDetail(
                         text = user.websiteUrl.toString(),
-                        Icons.Outlined.Link
+                        icon = { Icon(Icons.Outlined.Link, contentDescription = null) }
                     ) {
                         it.openUri("http://${user.websiteUrl}")
                     }
                     if (user.twitterUsername != null) ProfileDetail(
                         text = "@${user.twitterUsername}",
-                        Icons.Outlined.Chat
+                        icon = { Icon(painterResource(R.drawable.ic_twitter_24), contentDescription = null) }
                     ) {
                         it.openUri("https://twitter.com/${user.twitterUsername}")
                     }
@@ -179,15 +180,13 @@ class ProfileScreen(
     @Composable
     private fun ProfileDetail(
         text: String,
-        icon: ImageVector? = null,
+        icon: @Composable (() -> Unit)? = null,
         onClick: (UriHandler) -> Unit = {}
     ) {
         val uriHandler = LocalUriHandler.current
 
         TextButton(onClick = { onClick(uriHandler) }) {
-            if (icon != null) {
-                Icon(icon, null)
-            }
+            icon?.invoke()
             Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
             Text(text)
         }
@@ -241,10 +240,10 @@ class ProfileScreen(
         ) {
             Icon(
                 icon, null,
-                tint = Color.White,
+                tint = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier
                     .clip(RoundedCornerShape(4.dp))
-                    .background(Color.DarkGray)
+                    .background(MaterialTheme.colorScheme.surfaceColorAtElevation(15.dp))
                     .size(32.dp)
                     .padding(6.dp)
             )

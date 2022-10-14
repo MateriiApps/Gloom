@@ -134,9 +134,9 @@ class RepositoryListScreen(
                     ) {
                         Icon(
                             Icons.Outlined.Star,
-                            contentDescription = "Forked Repository",
+                            contentDescription = null,
                             modifier = Modifier.size(18.dp),
-                            tint = Color.Yellow
+                            tint = Color(0xFFF1E05A)
                         )
                         Text(text = repo.stargazerCount.toString())
                     }
