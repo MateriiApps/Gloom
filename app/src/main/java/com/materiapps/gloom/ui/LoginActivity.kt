@@ -59,6 +59,7 @@ class LoginActivity : ComponentActivity(), KoinComponent {
                             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             startActivity(this)
                         }
+                        finish()
                     }
                 }
             }
