@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Gloom</string>
     <string name="sign_in">Sign in with GitHub</string>
+    <string name="welcome">Welcome!</string>
     <string name="repos">Repositories</string>
     <string name="forked_from">Forked from %s</string>
 </resources>
