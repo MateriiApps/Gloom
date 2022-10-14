@@ -1,6 +1,7 @@
 package com.materiapps.gloom.ui.screens.profile
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,19 +18,26 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import coil.compose.AsyncImage
 import com.google.accompanist.flowlayout.FlowRow
 import com.materiapps.gloom.ProfileQuery
+import com.materiapps.gloom.R
+import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
+import com.materiapps.gloom.utils.navigate
 
-class ProfileScreen : Tab {
+class ProfileScreen(
+    val user: String = ""
+) : Tab {
     override val options: TabOptions
         @Composable get() {
             val navigator = LocalTabNavigator.current
@@ -63,7 +71,8 @@ class ProfileScreen : Tab {
                     StatCard(
                         repoCount = viewModel.user!!.repositories.totalCount,
                         orgCount = viewModel.user!!.organizations.totalCount,
-                        starCount = viewModel.user!!.starredRepositories.totalCount
+                        starCount = viewModel.user!!.starredRepositories.totalCount,
+                        username = viewModel.user!!.login
                     )
                 } else {
                     Box(
@@ -94,7 +103,7 @@ class ProfileScreen : Tab {
         user: ProfileQuery.Viewer
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(5.dp),
+//            verticalArrangement = Arrangement.spacedBy(5.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -186,17 +195,22 @@ class ProfileScreen : Tab {
 
     @Composable
     private fun StatCard(
+        username: String?,
         repoCount: Int,
         orgCount: Int,
         starCount: Int
     ) {
+        val nav = LocalNavigator.current
+
         ElevatedCard {
             Column {
                 StatItem(
-                    label = "Repositories",
+                    label = stringResource(R.string.repos),
                     count = repoCount,
                     icon = Icons.Outlined.Book
-                )
+                ) {
+                    username?.let { RepositoryListScreen(it) }?.let { nav?.navigate(it) }
+                }
                 StatItem(
                     label = "Organizations",
                     count = orgCount,
@@ -215,12 +229,15 @@ class ProfileScreen : Tab {
     private fun StatItem(
         label: String,
         count: Int,
-        icon: ImageVector
+        icon: ImageVector,
+        onClick: (() -> Unit)? = null
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(14.dp)
+            modifier = Modifier
+                .clickable { onClick?.invoke() }
+                .padding(14.dp)
         ) {
             Icon(
                 icon, null,

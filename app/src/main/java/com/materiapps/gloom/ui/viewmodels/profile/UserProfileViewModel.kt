@@ -5,24 +5,26 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import com.apollographql.apollo3.ApolloClient
-import com.materiapps.gloom.ProfileQuery
+import com.materiapps.gloom.UserProfileQuery
 import com.materiapps.gloom.utils.scope
 import kotlinx.coroutines.launch
 
-class ProfileViewModel(
-    client: ApolloClient
+class UserProfileViewModel(
+    client: ApolloClient,
+    username: String
 ) : ScreenModel {
 
     var isLoading by mutableStateOf(true)
-    var user: ProfileQuery.Viewer? by mutableStateOf(null)
+    var user: UserProfileQuery.User? by mutableStateOf(null)
     var hasErrors by mutableStateOf(false)
 
     init {
         scope.launch {
-            client.query(ProfileQuery()).execute().also {
-                isLoading = false
-                user = it.data?.viewer
-                hasErrors = it.hasErrors()
+            if (username.isNotEmpty()) {
+                client.query(UserProfileQuery(username)).execute().also {
+                    user = it.data?.user
+                    hasErrors = it.hasErrors()
+                }
             }
         }
     }

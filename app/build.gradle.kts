@@ -56,12 +56,14 @@ android {
 
 dependencies {
 
+
     val composeVersion = "1.0.0-rc01"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.activity:activity-compose:1.6.0")
     implementation("androidx.browser:browser:1.4.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha16")
     implementation("androidx.compose.material3:material3:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
