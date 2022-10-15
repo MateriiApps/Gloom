@@ -11,4 +11,10 @@ object URLs {
         const val LOGIN = "https://github.com/login/oauth/authorize"
     }
 
+    object REPOS {
+
+        fun README(owner: String, repo: String) = "$BASE_URL/repos/$owner/$repo/readme"
+
+    }
+
 }

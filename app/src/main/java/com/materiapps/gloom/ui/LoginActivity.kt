@@ -11,6 +11,7 @@ import cafe.adriel.voyager.navigator.Navigator
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.materiapps.gloom.domain.manager.AuthManager
 import com.materiapps.gloom.domain.repository.GithubAuthRepository
+import com.materiapps.gloom.rest.utils.ifSuccessful
 import com.materiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiapps.gloom.ui.theme.GloomTheme
 import kotlinx.coroutines.Dispatchers
@@ -52,14 +53,16 @@ class LoginActivity : ComponentActivity(), KoinComponent {
                 println(it.data.toString())
                 it.data!!.getQueryParameter("code")?.let {
                     lifecycleScope.launch(Dispatchers.IO) {
-                        val token = authRepo.getAccessToken(it)
-                        auth.authToken = token.accessToken!!
-                        auth.refreshToken = token.refreshToken!!
-                        Intent(this@LoginActivity, GloomActivity::class.java).apply {
-                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                            startActivity(this)
+                        val res = authRepo.getAccessToken(it)
+                        res.ifSuccessful { token ->
+                            auth.authToken = token.accessToken
+                            auth.refreshToken = token.refreshToken
+                            Intent(this@LoginActivity, GloomActivity::class.java).apply {
+                                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                startActivity(this)
+                            }
+                            finish()
                         }
-                        finish()
                     }
                 }
             }

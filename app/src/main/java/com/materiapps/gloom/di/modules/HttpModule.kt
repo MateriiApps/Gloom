@@ -1,6 +1,7 @@
 package com.materiapps.gloom.di.modules
 
 import com.materiapps.gloom.BuildConfig
+import com.materiapps.gloom.domain.manager.AuthManager
 import com.materiapps.gloom.utils.Logger
 import com.materiapps.gloom.utils.installLogging
 import io.ktor.client.*
@@ -46,6 +47,38 @@ fun httpModule() = module {
         }
     }
 
+    fun provideRestClient(
+        json: Json,
+        logger: Logger,
+        authManager: AuthManager
+    ): HttpClient {
+        return HttpClient(CIO) {
+            defaultRequest {
+                header(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+                header(HttpHeaders.UserAgent, UserAgent)
+                header(HttpHeaders.AcceptLanguage, "en-US")
+                header(HttpHeaders.Authorization, "Bearer ${authManager.authToken}")
+            }
+            install(HttpRequestRetry) {
+                maxRetries = 5
+                retryIf { _, httpResponse ->
+                    !httpResponse.status.isSuccess()
+                }
+                retryOnExceptionIf { _, error ->
+                    error is HttpRequestTimeoutException
+                }
+                delayMillis { retry ->
+                    retry * 1000L
+                }
+            }
+            install(ContentNegotiation) {
+                json(json)
+            }
+            if (BuildConfig.DEBUG)
+                installLogging(logger)
+        }
+    }
+
     single {
         Json {
             ignoreUnknownKeys = true
@@ -54,6 +87,10 @@ fun httpModule() = module {
 
     single(named("Auth")) {
         provideAuthClient(get(), get())
+    }
+
+    single(named("Rest")) {
+        provideRestClient(get(), get(), get())
     }
 
 }
