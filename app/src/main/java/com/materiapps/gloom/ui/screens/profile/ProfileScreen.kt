@@ -1,21 +1,27 @@
 package com.materiapps.gloom.ui.screens.profile
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.painterResource
@@ -34,6 +40,7 @@ import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
+import com.materiapps.gloom.ui.widgets.ReadMeCard
 import com.materiapps.gloom.utils.navigate
 
 class ProfileScreen(
@@ -58,23 +65,34 @@ class ProfileScreen(
     private fun Screen(
         viewModel: ProfileViewModel = getScreenModel()
     ) {
+        val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+
         Scaffold(
-            topBar = { TopBar(viewModel) }
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            topBar = { TopBar(viewModel, scrollBehavior) }
         ) {
             Column(
                 Modifier
                     .padding(it)
-                    .padding(16.dp),
+                    .padding(horizontal = 16.dp)
+                    .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 if (viewModel.user != null) {
                     Header(user = viewModel.user!!)
+
+                    if (viewModel.readMe.isNotEmpty())
+                        ReadMeCard(viewModel.readMe)
+
                     StatCard(
                         repoCount = viewModel.user!!.repositories.totalCount,
                         orgCount = viewModel.user!!.organizations.totalCount,
                         starCount = viewModel.user!!.starredRepositories.totalCount,
                         username = viewModel.user!!.login
                     )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
                 } else {
                     Box(
                         Modifier.fillMaxWidth(),
@@ -90,12 +108,24 @@ class ProfileScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     private fun TopBar(
-        viewModel: ProfileViewModel
+        viewModel: ProfileViewModel,
+        scrollBehavior: TopAppBarScrollBehavior
     ) {
         TopAppBar(
             title = {
-
-            }
+                val opacity = scrollBehavior.state.overlappedFraction
+                val textColor by animateColorAsState(
+                    targetValue = MaterialTheme.colorScheme.onSurface.copy(
+                        alpha = opacity
+                    ),
+                    animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
+                )
+                Text(
+                    text = viewModel.user?.login ?: "",
+                    color = textColor
+                )
+            },
+            scrollBehavior = scrollBehavior
         )
     }
 

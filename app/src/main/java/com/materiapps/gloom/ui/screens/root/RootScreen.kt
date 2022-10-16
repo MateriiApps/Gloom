@@ -1,7 +1,10 @@
 package com.materiapps.gloom.ui.screens.root
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.TabNavigator
@@ -20,7 +23,9 @@ class RootScreen : Screen {
             Scaffold(
                 bottomBar = { TabBar() }
             ) {
-                nav.current.Content()
+                Box(Modifier.padding(it)) {
+                    nav.current.Content()
+                }
             }
         }
     }

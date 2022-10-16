@@ -100,6 +100,7 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
+    implementation("com.google.accompanist:accompanist-webview:$accompanistVersion")
 
     val voyagerVersion = "1.0.0-rc02"
 
@@ -109,6 +110,7 @@ dependencies {
     implementation("cafe.adriel.voyager:voyager-koin:$voyagerVersion")
 
     implementation("com.holix.android:bottomsheetdialog-compose:1.0.1")
+    implementation("com.github.jeziellago:compose-markdown:0.3.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

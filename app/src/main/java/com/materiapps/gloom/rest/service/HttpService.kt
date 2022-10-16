@@ -24,7 +24,10 @@ class HttpService(
             if (response.status.isSuccess()) {
                 body = response.bodyAsText()
 
-                ApiResponse.Success(json.decodeFromString<T>(body))
+                if (T::class.java.isAssignableFrom("".javaClass))
+                    ApiResponse.Success(body as T)
+                else
+                    ApiResponse.Success(json.decodeFromString<T>(body))
             } else {
                 body = try {
                     response.bodyAsText()
