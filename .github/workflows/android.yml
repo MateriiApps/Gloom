@@ -30,10 +30,10 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: Build Discord variant
-        run: ./gradlew assembleDebug
+      - name: Build APK
+        run: chmod +x ./gradlew && ./gradlew assembleDebug
 
-      - name: Upload Discord APK
+      - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           path: app/build/outputs/apk/debug/app-debug.apk
