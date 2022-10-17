@@ -74,4 +74,6 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
+# explode wing
 *.graphqlconfig
+.idea/
