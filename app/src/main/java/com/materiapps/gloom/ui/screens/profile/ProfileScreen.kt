@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +36,9 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import coil.compose.AsyncImage
+import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
+import com.google.accompanist.flowlayout.SizeMode
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
@@ -134,40 +137,44 @@ class ProfileScreen(
         user: ProfileQuery.Viewer
     ) {
         Column(
-//            verticalArrangement = Arrangement.spacedBy(5.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(5.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(20.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                AsyncImage(
-                    model = user.avatarUrl,
-                    contentDescription = "${user.name}'s avatar",
-                    modifier = Modifier
-                        .size(90.dp)
-                        .clip(CircleShape)
-                )
-            }
+            AsyncImage(
+                model = user.avatarUrl,
+                contentDescription = "${user.name}'s avatar",
+                modifier = Modifier
+                    .size(90.dp)
+                    .clip(CircleShape)
+            )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                if (user.name != null) Text(
-                    text = user.name,
-                    style = MaterialTheme.typography.headlineLarge,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = user.login,
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontStyle = FontStyle.Italic,
-                        color = MaterialTheme.colorScheme.onSurface.copy(0.5f)
+                Spacer(modifier = Modifier.height(5.dp))
+                if (user.name != null) {
+                    Text(
+                        text = user.name,
+                        style = MaterialTheme.typography.headlineLarge,
+                        fontWeight = FontWeight.Bold
                     )
-                )
+                    Text(
+                        text = user.login,
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontStyle = FontStyle.Italic,
+                            color = MaterialTheme.colorScheme.onSurface.copy(0.5f)
+                        )
+                    )
+                } else {
+                    Text(
+                        text = user.login,
+                        style = MaterialTheme.typography.headlineLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             }
-//            Text(text = "${user.status?.emoji ?: ""} ${user.status?.message ?: ""}")
-            Spacer(modifier = Modifier.height(5.dp))
+
+
             Text(
                 text = user.bio ?: ""
             )
@@ -176,7 +183,10 @@ class ProfileScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                FlowRow {
+                FlowRow(
+                    mainAxisAlignment = FlowMainAxisAlignment.Center,
+                    mainAxisSpacing = 5.dp
+                ) {
                     if (user.company != null) ProfileDetail(
                         text = user.company,
                         icon = { Icon(Icons.Outlined.Business, contentDescription = null) }
@@ -214,11 +224,30 @@ class ProfileScreen(
         onClick: (UriHandler) -> Unit = {}
     ) {
         val uriHandler = LocalUriHandler.current
+        val contentColor = MaterialTheme.colorScheme.primary
 
-        TextButton(onClick = { onClick(uriHandler) }) {
-            icon?.invoke()
-            Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-            Text(text)
+        Surface(
+            contentColor = contentColor,
+            modifier = Modifier
+                .clip(CircleShape)
+                .clickable {
+                    onClick(uriHandler)
+                }
+        ) {
+            CompositionLocalProvider(LocalContentColor provides contentColor) {
+                ProvideTextStyle(value = MaterialTheme.typography.labelLarge) {
+                    Row(
+                        Modifier
+                            .padding(vertical = 5.dp, horizontal = 8.dp),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        icon?.invoke()
+                        Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+                        Text(text)
+                    }
+                }
+            }
         }
     }
 
