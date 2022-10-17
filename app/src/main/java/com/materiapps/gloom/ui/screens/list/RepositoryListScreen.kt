@@ -3,6 +3,9 @@ package com.materiapps.gloom.ui.screens.list
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.outlined.Star
@@ -46,20 +49,35 @@ class RepositoryListScreen(
         Scaffold(
             topBar = { TopBar(scrollBehavior) }
         ) { pv ->
-            LazyColumn(
-                modifier = Modifier
-                    .padding(pv)
-                    .nestedScroll(scrollBehavior.nestedScrollConnection)
-            ) {
-                items(repos) {
-                    if (it != null) RepoItem(repo = it)
-                }
-                if (isLoading) item {
+            BoxWithConstraints {
+                if (isLoading) {
                     Box(
                         Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator()
+                    }
+                }
+                if (maxWidth > 400.dp) {
+                    LazyVerticalGrid(
+                        columns = GridCells.Adaptive(256.dp),
+                        contentPadding = pv,
+                        modifier = Modifier
+                            .nestedScroll(scrollBehavior.nestedScrollConnection)
+                    ) {
+                        items(repos.itemCount) {
+                            if (repos[it] != null) RepoItem(repo = repos[it]!!)
+                        }
+                    }
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .padding(pv)
+                            .nestedScroll(scrollBehavior.nestedScrollConnection)
+                    ) {
+                        items(repos) {
+                            if (it != null) RepoItem(repo = it)
+                        }
                     }
                 }
             }
