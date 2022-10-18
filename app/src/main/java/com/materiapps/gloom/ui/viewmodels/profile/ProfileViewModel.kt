@@ -3,20 +3,20 @@ package com.materiapps.gloom.ui.viewmodels.profile
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import cafe.adriel.voyager.core.model.ScreenModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.apollographql.apollo3.ApolloClient
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.domain.repository.GithubRepository
 import com.materiapps.gloom.rest.utils.fold
 import com.materiapps.gloom.rest.utils.ifSuccessful
 import com.materiapps.gloom.rest.utils.response
-import com.materiapps.gloom.utils.scope
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
     client: ApolloClient,
     repo: GithubRepository
-) : ScreenModel {
+) : ViewModel() {
 
     var user: ProfileQuery.Viewer? by mutableStateOf(null)
     var readMe: String by mutableStateOf("")
@@ -25,7 +25,7 @@ class ProfileViewModel(
     var hasErrors by mutableStateOf(false)
 
     init {
-        scope.launch {
+        viewModelScope.launch {
             client.query(ProfileQuery()).response().fold(
                 success = {
                     user = it.viewer

@@ -5,15 +5,43 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.outlined.*
-import androidx.compose.material3.*
+import androidx.compose.material.icons.outlined.Book
+import androidx.compose.material.icons.outlined.Business
+import androidx.compose.material.icons.outlined.Link
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ProvideTextStyle
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -30,7 +58,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
@@ -38,13 +65,13 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import coil.compose.AsyncImage
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
-import com.google.accompanist.flowlayout.SizeMode
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
 import com.materiapps.gloom.utils.navigate
+import org.koin.androidx.compose.getViewModel
 
 class ProfileScreen(
     val user: String = ""
@@ -66,7 +93,7 @@ class ProfileScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
-        viewModel: ProfileViewModel = getScreenModel()
+        viewModel: ProfileViewModel = getViewModel()
     ) {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
