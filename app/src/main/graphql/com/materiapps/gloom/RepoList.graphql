@@ -4,6 +4,7 @@ query RepoList($username: String!, $total: Int = 100, $cursor: String) {
       first: $total
       after: $cursor
       orderBy: {field: PUSHED_AT, direction: DESC}
+      affiliations: OWNER
     ) {
       pageInfo {
         endCursor

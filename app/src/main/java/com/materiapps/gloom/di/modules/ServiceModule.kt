@@ -6,14 +6,12 @@ import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.interceptor.ApolloInterceptor
 import com.apollographql.apollo3.interceptor.ApolloInterceptorChain
-import com.materiapps.gloom.domain.manager.AuthManager
 import com.materiapps.gloom.rest.service.GithubApiService
 import com.materiapps.gloom.rest.service.GithubAuthApiService
 import com.materiapps.gloom.rest.service.HttpService
 import com.materiapps.gloom.utils.Logger
 import com.materiapps.gloom.utils.URLs
 import kotlinx.coroutines.flow.Flow
-import kotlinx.serialization.json.Json
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -24,7 +22,7 @@ fun serviceModule() = module {
     }
 
     single(named("Rest")) {
-        HttpService(get(), get(named("Rest")))
+        HttpService(get(), get(named("Rest")), get())
     }
 
     single {
@@ -36,12 +34,10 @@ fun serviceModule() = module {
     }
 
     single {
-        val auth: AuthManager = get()
         val logger: Logger = get()
-        val json: Json = get()
+
         ApolloClient.Builder()
             .serverUrl(URLs.GRAPHQL)
-            .addHttpHeader("authorization", "Bearer ${auth.authToken}")
             .addInterceptor(object : ApolloInterceptor {
                 override fun <D : Operation.Data> intercept(
                     request: ApolloRequest<D>,

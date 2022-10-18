@@ -8,9 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.apollographql.apollo3.ApolloClient
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.domain.repository.GithubRepository
+import com.materiapps.gloom.rest.utils.GraphQLUtils.response
 import com.materiapps.gloom.rest.utils.fold
 import com.materiapps.gloom.rest.utils.ifSuccessful
-import com.materiapps.gloom.rest.utils.response
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(

@@ -1,6 +1,6 @@
 package com.materiapps.gloom.rest.utils
 
-import io.ktor.http.*
+import io.ktor.http.HttpStatusCode
 
 sealed interface ApiResponse<out T> {
     data class Success<T>(val data: T) : ApiResponse<T>
@@ -38,4 +38,11 @@ inline fun <T> ApiResponse<T>.fold(
 
 inline fun <T> ApiResponse<T>.ifSuccessful(crossinline block: (T) -> Unit) {
     if (this is ApiResponse.Success) block(data)
+}
+
+inline fun <T> ApiResponse<T>.getOrNull() = when (this) {
+    is ApiResponse.Success -> data
+    is ApiResponse.Error,
+    is ApiResponse.Failure,
+    is ApiResponse.GQLError -> null
 }

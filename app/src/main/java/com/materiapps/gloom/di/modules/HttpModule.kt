@@ -1,16 +1,20 @@
 package com.materiapps.gloom.di.modules
 
 import com.materiapps.gloom.BuildConfig
-import com.materiapps.gloom.domain.manager.AuthManager
 import com.materiapps.gloom.utils.Logger
 import com.materiapps.gloom.utils.installLogging
-import io.ktor.client.*
-import io.ktor.client.engine.cio.*
-import io.ktor.client.plugins.*
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.client.request.*
-import io.ktor.http.*
-import io.ktor.serialization.kotlinx.json.*
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.HttpRequestRetry
+import io.ktor.client.plugins.HttpRequestTimeoutException
+import io.ktor.client.plugins.UserAgent
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.request.header
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
+import io.ktor.http.isSuccess
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -49,15 +53,13 @@ fun httpModule() = module {
 
     fun provideRestClient(
         json: Json,
-        logger: Logger,
-        authManager: AuthManager
+        logger: Logger
     ): HttpClient {
         return HttpClient(CIO) {
             defaultRequest {
                 header(HttpHeaders.ContentType, ContentType.Application.Json.toString())
                 header(HttpHeaders.UserAgent, UserAgent)
                 header(HttpHeaders.AcceptLanguage, "en-US")
-                header(HttpHeaders.Authorization, "Bearer ${authManager.authToken}")
             }
             install(HttpRequestRetry) {
                 maxRetries = 5
@@ -90,7 +92,7 @@ fun httpModule() = module {
     }
 
     single(named("Rest")) {
-        provideRestClient(get(), get(), get())
+        provideRestClient(get(), get())
     }
 
 }

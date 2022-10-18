@@ -10,9 +10,13 @@ import androidx.paging.cachedIn
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Optional
 import com.materiapps.gloom.RepoListQuery
+import com.materiapps.gloom.domain.manager.AuthManager
+import com.materiapps.gloom.rest.utils.GraphQLUtils.response
+import com.materiapps.gloom.rest.utils.getOrNull
 
 class RepositoryListViewModel(
     client: ApolloClient,
+    authManager: AuthManager,
     private val username: String
 ) : ViewModel() {
 
@@ -22,12 +26,13 @@ class RepositoryListViewModel(
                 val page = params.key
 
                 val response =
-                    client.query(RepoListQuery(username, cursor = Optional.present(page))).execute()
+                    client.query(RepoListQuery(username, cursor = Optional.present(page)))
+                        .response().getOrNull()
 
-                val nextKey = response.data?.user?.repositories?.pageInfo?.endCursor
+                val nextKey = response?.user?.repositories?.pageInfo?.endCursor
 
                 val nodes = mutableListOf<RepoListQuery.Node>()
-                response.data?.user?.repositories?.nodes?.forEach {
+                response?.user?.repositories?.nodes?.forEach {
                     if (it != null) nodes.add(it)
                 }
 
