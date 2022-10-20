@@ -18,6 +18,8 @@ import com.materiapps.gloom.rest.utils.ifSuccessful
 import com.materiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiapps.gloom.ui.screens.root.RootScreen
 import com.materiapps.gloom.ui.theme.GloomTheme
+import com.materiapps.gloom.utils.deeplinks.DeepLinkWrapper
+import com.materiapps.gloom.utils.deeplinks.addAllRoutes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -54,11 +56,14 @@ class GloomActivity : ComponentActivity() {
                     }
                 }
 
-                Navigator(
-                    screen = defaultScreen
-                ) {
-                    navigator = it
-                    SlideTransition(it)
+                DeepLinkWrapper { handler ->
+                    Navigator(
+                        screen = defaultScreen
+                    ) {
+                        navigator = it
+                        SlideTransition(it)
+                        handler.addAllRoutes(it)
+                    }
                 }
             }
         }

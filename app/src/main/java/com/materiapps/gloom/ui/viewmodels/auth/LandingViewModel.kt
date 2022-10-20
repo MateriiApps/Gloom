@@ -10,10 +10,10 @@ import io.ktor.http.URLBuilder
 
 @SuppressLint("StaticFieldLeak")
 class LandingViewModel(
-    private val context: Context
+//    private val context: Context
 ) : ViewModel() {
 
-    fun signIn() {
+    fun signIn(context: Context) {
         val url = URLBuilder(URLs.AUTH.LOGIN).also {
             it.parameters.apply {
                 append("client_id", BuildConfig.CLIENT_ID)
