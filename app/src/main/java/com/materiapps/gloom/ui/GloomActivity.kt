@@ -62,7 +62,7 @@ class GloomActivity : ComponentActivity() {
                     ) {
                         navigator = it
                         SlideTransition(it)
-                        handler.addAllRoutes(it)
+                        handler.addAllRoutes(it, auth)
                     }
                 }
             }

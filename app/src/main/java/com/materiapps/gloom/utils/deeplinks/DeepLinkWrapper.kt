@@ -11,12 +11,13 @@ fun ComponentActivity.DeepLinkWrapper(
     content: DeepLinkContent
 ) {
     val handler = DeepLinkHandler()
-    handler.handle(intent)
-    addOnNewIntentListener {
-        handler.handle(it)
-    }
 
     CompositionLocalProvider(LocalDeepLinkHandler provides handler) {
-        content(handler)
+        content(handler).also {
+            handler.handle(intent)
+            addOnNewIntentListener {
+                handler.handle(it)
+            }
+        }
     }
 }

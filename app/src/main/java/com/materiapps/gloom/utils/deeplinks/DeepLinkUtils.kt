@@ -1,8 +1,9 @@
 package com.materiapps.gloom.utils.deeplinks
 
 import cafe.adriel.voyager.navigator.Navigator
+import com.materiapps.gloom.domain.manager.AuthManager
 
-fun DeepLinkHandler.addAllRoutes(navigator: Navigator) {
+fun DeepLinkHandler.addAllRoutes(navigator: Navigator, auth: AuthManager) {
     addOnLinkVisitedListener("/{username}") { params, query ->
         val username = params["username"]!!
         when (query["tab"]) {
