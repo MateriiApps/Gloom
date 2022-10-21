@@ -1,7 +1,10 @@
 package com.materiapps.gloom.ui.screens.root
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,11 +22,13 @@ class RootScreen : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
     ) {
+        val systemNavBarHeight = WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()
+
         TabNavigator(tab = RootTab.HOME.tab) { nav ->
             Scaffold(
                 bottomBar = { TabBar() }
             ) {
-                Box(Modifier.padding(it)) {
+                Box(Modifier.padding(bottom = it.calculateBottomPadding() - systemNavBarHeight)) {
                     nav.current.Content()
                 }
             }

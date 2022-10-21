@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
@@ -35,10 +37,12 @@ class GloomActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContent {
             GloomTheme {
                 val systemUiController = rememberSystemUiController()
-                val surface = MaterialTheme.colorScheme.surface
+                val isDark = isSystemInDarkTheme()
                 auth.refreshAccessToken()
 
                 val defaultScreen = if (auth.isSignedIn)
@@ -49,8 +53,8 @@ class GloomActivity : ComponentActivity() {
                 SideEffect {
                     systemUiController.apply {
                         setSystemBarsColor(
-                            color = surface,
-                            darkIcons = false,
+                            color = Color.Transparent,
+                            darkIcons = !isDark,
                         )
                         isNavigationBarContrastEnforced = true
                     }
