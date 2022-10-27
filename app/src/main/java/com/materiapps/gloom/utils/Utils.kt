@@ -1,21 +1,21 @@
 package com.materiapps.gloom.utils
 
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PackageInfoFlags
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import cafe.adriel.voyager.core.model.ScreenModel
+import com.materiapps.gloom.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Locale
-
-fun Context.openUrl(url: String) = CustomTabsIntent.Builder().build().run {
-    intent.setPackage("com.android.chrome")
-    launchUrl(this@openUrl, Uri.parse(url))
-}
 
 val ScreenModel.scope: CoroutineScope
     get() = CoroutineScope(Dispatchers.IO)
