@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.getScreenModel
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.viewmodels.auth.LandingViewModel
 import org.koin.androidx.compose.getViewModel
@@ -34,7 +35,7 @@ class LandingScreen : Screen {
 
     @Composable
     private fun Screen(
-        viewModel: LandingViewModel = getViewModel()
+        viewModel: LandingViewModel = getScreenModel()
     ) {
         val ctx = LocalContext.current
         Surface {

@@ -3,33 +3,59 @@ package com.materiapps.gloom.ui.viewmodels.profile
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.coroutineScope
 import com.apollographql.apollo3.ApolloClient
 import com.materiapps.gloom.ProfileQuery
+import com.materiapps.gloom.UserProfileQuery
+import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.repository.GithubRepository
 import com.materiapps.gloom.rest.utils.GraphQLUtils.response
 import com.materiapps.gloom.rest.utils.fold
 import com.materiapps.gloom.rest.utils.ifSuccessful
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
-    client: ApolloClient,
-    repo: GithubRepository
-) : ViewModel() {
+    private val client: ApolloClient,
+    private val repo: GithubRepository,
+    private val username: String
+) : ScreenModel {
 
-    var user: ProfileQuery.Viewer? by mutableStateOf(null)
+    var user: ModelUser? by mutableStateOf(null)
     var readMe: String by mutableStateOf("")
-
-    var isLoading by mutableStateOf(true)
     var hasErrors by mutableStateOf(false)
 
     init {
-        viewModelScope.launch {
+        if(username.isNotEmpty())
+            getUser()
+        else
+            getCurrentUser()
+    }
+
+    private fun getCurrentUser() {
+        coroutineScope.launch(Dispatchers.IO) {
             client.query(ProfileQuery()).response().fold(
                 success = {
-                    user = it.viewer
+                    user = ModelUser.fromProfileQuery(it)
                     repo.getRepoReadMe(it.viewer.login, it.viewer.login).ifSuccessful { res ->
+                        readMe = res
+                    }
+                },
+                fail = {
+                    hasErrors = true
+                }
+            )
+        }
+    }
+
+    private fun getUser() {
+        coroutineScope.launch(Dispatchers.IO) {
+            client.query(UserProfileQuery(username)).response().fold(
+                success = {
+                    if(it.user == null) return@launch
+                    user = ModelUser.fromUserProfileQuery(it)
+                    repo.getRepoReadMe(it.user.login, it.user.login).ifSuccessful { res ->
                         readMe = res
                     }
                 },

@@ -7,12 +7,13 @@ import com.materiapps.gloom.ui.screens.explore.ExploreScreen
 import com.materiapps.gloom.ui.screens.home.HomeScreen
 import com.materiapps.gloom.ui.screens.notifications.NotificationsScreen
 import com.materiapps.gloom.ui.screens.profile.ProfileScreen
+import com.materiapps.gloom.ui.screens.profile.ProfileTab
 
 enum class RootTab(val tab: Tab) {
     HOME(HomeScreen()),
     EXPLORE(ExploreScreen()),
     NOTIFICATIONS(NotificationsScreen()),
-    PROFILE(ProfileScreen())
+    PROFILE(ProfileTab())
 }
 
 tailrec fun Navigator.navigate(screen: Screen) {
