@@ -6,6 +6,8 @@ import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.interceptor.ApolloInterceptor
 import com.apollographql.apollo3.interceptor.ApolloInterceptorChain
+import com.apollographql.apollo3.network.http.LoggingInterceptor
+import com.materiapps.gloom.BuildConfig
 import com.materiapps.gloom.rest.service.GithubApiService
 import com.materiapps.gloom.rest.service.GithubAuthApiService
 import com.materiapps.gloom.rest.service.HttpService
@@ -38,19 +40,8 @@ fun serviceModule() = module {
 
         ApolloClient.Builder()
             .serverUrl(URLs.GRAPHQL)
-            .addInterceptor(object : ApolloInterceptor {
-                override fun <D : Operation.Data> intercept(
-                    request: ApolloRequest<D>,
-                    chain: ApolloInterceptorChain
-                ): Flow<ApolloResponse<D>> {
-                    val method =
-                        if (request.operation.document().startsWith("query")) "GET" else "POST"
-                    logger.debug(
-                        "GraphQL",
-                        "--> $method ${URLs.GRAPHQL}\n${request.operation.document()}"
-                    )
-                    return chain.proceed(request)
-                }
+            .addHttpInterceptor(LoggingInterceptor(LoggingInterceptor.Level.BODY) {
+                if(BuildConfig.DEBUG) logger.debug("GraphQL", it)
             })
             .build()
     }
