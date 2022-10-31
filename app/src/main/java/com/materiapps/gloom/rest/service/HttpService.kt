@@ -18,18 +18,11 @@ import kotlinx.serialization.json.Json
 class HttpService(
     val json: Json,
     val http: HttpClient,
-    val authManager: AuthManager? = null
 ) {
 
     suspend inline fun <reified T> request(builder: HttpRequestBuilder.() -> Unit = {}): ApiResponse<T> {
         var body: String? = null
-
         val response = try {
-            if (authManager != null) http.config {
-                defaultRequest {
-                    header(HttpHeaders.Authorization, "Bearer ${authManager.authToken}")
-                }
-            }
             val response = http.request(builder)
 
             if (response.status.isSuccess()) {

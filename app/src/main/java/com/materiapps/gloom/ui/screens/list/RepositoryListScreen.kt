@@ -34,6 +34,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.getScreenModel
 import com.materiapps.gloom.R
 import com.materiapps.gloom.RepoListQuery
 import com.materiapps.gloom.ui.components.LargeToolbar
@@ -51,7 +52,7 @@ class RepositoryListScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
-        viewModel: RepositoryListViewModel = getViewModel { parametersOf(username) }
+        viewModel: RepositoryListViewModel = getScreenModel { parametersOf(username) }
     ) {
         val repos = viewModel.repos.collectAsLazyPagingItems()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()

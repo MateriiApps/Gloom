@@ -7,6 +7,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import androidx.paging.cachedIn
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.coroutineScope
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Optional
 import com.materiapps.gloom.RepoListQuery
@@ -18,7 +20,7 @@ class RepositoryListViewModel(
     client: ApolloClient,
     authManager: AuthManager,
     private val username: String
-) : ViewModel() {
+) : ScreenModel {
 
     val repos = Pager(PagingConfig(pageSize = 30)) {
         object : PagingSource<String, RepoListQuery.Node>() {
@@ -48,6 +50,6 @@ class RepositoryListViewModel(
                     state.closestPageToPosition(it)?.prevKey
                 }
         }
-    }.flow.cachedIn(viewModelScope)
+    }.flow.cachedIn(coroutineScope)
 
 }

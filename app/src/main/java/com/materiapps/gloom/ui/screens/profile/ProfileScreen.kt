@@ -58,6 +58,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.core.screen.ScreenKey
+import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
@@ -65,27 +68,21 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import coil.compose.AsyncImage
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
-import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.R
+import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
 import com.materiapps.gloom.utils.navigate
 import org.koin.androidx.compose.getViewModel
+import org.koin.core.parameter.parametersOf
 
-class ProfileScreen(
+open class ProfileScreen(
     val user: String = ""
-) : Tab {
-    override val options: TabOptions
-        @Composable get() {
-            val navigator = LocalTabNavigator.current
-            val selected = navigator.current == this
-            return TabOptions(
-                0u,
-                "Profile",
-                rememberVectorPainter(if (selected) Icons.Filled.Person else Icons.Outlined.Person)
-            )
-        }
+) : Screen {
+
+    override val key: ScreenKey
+        get() = "${javaClass.name}($user)"
 
     @Composable
     override fun Content() = Screen()
@@ -93,7 +90,7 @@ class ProfileScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
-        viewModel: ProfileViewModel = getViewModel()
+        viewModel: ProfileViewModel = getScreenModel { parametersOf(user) }
     ) {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
@@ -115,10 +112,10 @@ class ProfileScreen(
                         ReadMeCard(viewModel.readMe)
 
                     StatCard(
-                        repoCount = viewModel.user!!.repositories.totalCount,
-                        orgCount = viewModel.user!!.organizations.totalCount,
-                        starCount = viewModel.user!!.starredRepositories.totalCount,
-                        username = viewModel.user!!.login
+                        repoCount = viewModel.user!!.repos ?: 0L,
+                        orgCount = viewModel.user!!.orgs ?: 0L,
+                        starCount = viewModel.user!!.starred ?: 0L,
+                        username = viewModel.user!!.username
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -151,7 +148,7 @@ class ProfileScreen(
                     animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
                 )
                 Text(
-                    text = viewModel.user?.login ?: "",
+                    text = viewModel.user?.username ?: "",
                     color = textColor
                 )
             },
@@ -161,7 +158,7 @@ class ProfileScreen(
 
     @Composable
     private fun Header(
-        user: ProfileQuery.Viewer
+        user: ModelUser
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -169,8 +166,8 @@ class ProfileScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             AsyncImage(
-                model = user.avatarUrl,
-                contentDescription = "${user.name}'s avatar",
+                model = user.avatar,
+                contentDescription = "${user.displayName}'s avatar",
                 modifier = Modifier
                     .size(90.dp)
                     .clip(CircleShape)
@@ -179,14 +176,14 @@ class ProfileScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(5.dp))
-                if (user.name != null) {
+                if (user.displayName != null) {
                     Text(
-                        text = user.name,
+                        text = user.displayName,
                         style = MaterialTheme.typography.headlineLarge,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = user.login,
+                        text = user.username ?: "ghost",
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontStyle = FontStyle.Italic,
                             color = MaterialTheme.colorScheme.onSurface.copy(0.5f)
@@ -194,7 +191,7 @@ class ProfileScreen(
                     )
                 } else {
                     Text(
-                        text = user.login,
+                        text = user.username ?: "ghost",
                         style = MaterialTheme.typography.headlineLarge,
                         fontWeight = FontWeight.Bold
                     )
@@ -218,11 +215,11 @@ class ProfileScreen(
                         text = user.company,
                         icon = { Icon(Icons.Outlined.Business, contentDescription = null) }
                     )
-                    if (user.websiteUrl != null) ProfileDetail(
-                        text = user.websiteUrl.toString(),
+                    if (user.website != null && user.website != "null") ProfileDetail(
+                        text = user.website,
                         icon = { Icon(Icons.Outlined.Link, contentDescription = null) }
                     ) {
-                        it.openUri("http://${user.websiteUrl}")
+                        it.openUri("http://${user.website}")
                     }
                     if (user.twitterUsername != null) ProfileDetail(
                         text = "@${user.twitterUsername}",
@@ -234,10 +231,10 @@ class ProfileScreen(
 
                 Row {
                     TextButton(onClick = { /*TODO*/ }) {
-                        Text(text = "${user.followers.totalCount} Followers")
+                        Text(text = "${user.followers} Followers")
                     }
                     TextButton(onClick = { /*TODO*/ }) {
-                        Text(text = "${user.following.totalCount} Following")
+                        Text(text = "${user.following} Following")
                     }
                 }
             }
@@ -281,9 +278,9 @@ class ProfileScreen(
     @Composable
     private fun StatCard(
         username: String?,
-        repoCount: Int,
-        orgCount: Int,
-        starCount: Int
+        repoCount: Long,
+        orgCount: Long,
+        starCount: Long
     ) {
         val nav = LocalNavigator.current
 
@@ -313,7 +310,7 @@ class ProfileScreen(
     @Composable
     private fun StatItem(
         label: String,
-        count: Int,
+        count: Long,
         icon: ImageVector,
         onClick: (() -> Unit)? = null
     ) {

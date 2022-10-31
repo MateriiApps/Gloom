@@ -22,7 +22,7 @@ fun serviceModule() = module {
     }
 
     single(named("Rest")) {
-        HttpService(get(), get(named("Rest")), get())
+        HttpService(get(), get(named("Rest")))
     }
 
     single {
@@ -30,7 +30,7 @@ fun serviceModule() = module {
     }
 
     single {
-        GithubApiService(get(named("Rest")))
+        GithubApiService(get(named("Rest")), get())
     }
 
     single {
