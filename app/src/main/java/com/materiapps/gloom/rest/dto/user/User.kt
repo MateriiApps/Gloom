@@ -1,5 +1,6 @@
 package com.materiapps.gloom.rest.dto.user
 
+import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -55,10 +56,10 @@ data class User(
     val following: Long,
 
     @SerialName("created_at")
-    val joined: String,
+    val joined: LocalDateTime,
 
     @SerialName("updated_at")
-    val updated: String
+    val updated: LocalDateTime
 ) {
 
     @Serializable

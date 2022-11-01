@@ -3,6 +3,7 @@ package com.materiapps.gloom.domain.models
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.UserProfileQuery
 import com.materiapps.gloom.rest.dto.user.User
+import kotlinx.datetime.LocalDateTime
 
 data class ModelUser(
     val username: String? = null,
@@ -24,8 +25,8 @@ data class ModelUser(
     val gists: Long? = null,
     val followers: Long? = null,
     val following: Long? = null,
-    val joined: String? = null,
-    val updated: String? = null,
+    val joined: LocalDateTime? = null,
+    val updated: LocalDateTime? = null,
     val status: ModelStatus? = null,
     val starred: Long? = null,
     val orgs: Long? = null
