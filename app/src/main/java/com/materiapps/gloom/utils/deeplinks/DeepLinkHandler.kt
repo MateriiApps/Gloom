@@ -71,11 +71,10 @@ class DeepLinkHandler {
 
             uri = intent.data
 
-
             return
         }
 
-        routes.first { route ->
+        routes.firstOrNull { route ->
             var matched = false
 
             path.forEachIndexed { index, pSeg ->
@@ -85,7 +84,7 @@ class DeepLinkHandler {
             }
 
             matched
-        }.let { segment ->
+        }?.let { segment ->
             linkVisitedListeners[segment]?.invoke(
                 urlParams = extractParams(segment.joinToString("/"), path),
                 queryParams = getQueryParams(intent.dataString!!)

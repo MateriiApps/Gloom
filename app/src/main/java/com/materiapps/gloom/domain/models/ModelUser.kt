@@ -36,27 +36,27 @@ data class ModelUser(
 
         fun fromApi(apiUser: User) = with(apiUser) {
             ModelUser(
-                username,
-                displayName,
-                bio,
-                id,
-                nodeId,
-                avatar,
-                gravatarId,
-                type,
-                admin,
-                company,
-                website,
-                location,
-                email,
-                hireable,
-                twitterUsername,
-                repos,
-                gists,
-                followers,
-                following,
-                joined,
-                updated
+                username = username,
+                displayName = displayName,
+                bio = bio,
+                id = id,
+                nodeId = nodeId,
+                avatar = avatar,
+                gravatarId = gravatarId,
+                type = type,
+                admin = admin,
+                company = company,
+                website = website,
+                location = location,
+                email = email,
+                hireable = hireable,
+                twitterUsername = twitterUsername,
+                repos = repos,
+                gists = gists,
+                followers = followers,
+                following = following,
+                joined = joined,
+                updated = updated
             )
         }
 

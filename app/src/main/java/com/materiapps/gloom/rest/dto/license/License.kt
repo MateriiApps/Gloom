@@ -7,5 +7,6 @@ import kotlinx.serialization.Serializable
 data class License(
     val key: String,
     val name: String,
-    @SerialName("spdx_id") val spdxId: String,
+    @SerialName("spdx_id")
+    val spdxId: String,
 )
