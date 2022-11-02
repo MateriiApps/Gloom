@@ -6,6 +6,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 
 typealias DeepLinkContent = @Composable (DeepLinkHandler) -> Unit
 
+private var isMounted = false
+
 @Composable
 fun ComponentActivity.DeepLinkWrapper(
     content: DeepLinkContent
@@ -14,10 +16,13 @@ fun ComponentActivity.DeepLinkWrapper(
 
     CompositionLocalProvider(LocalDeepLinkHandler provides handler) {
         content(handler).also {
-            handler.handle(intent)
-            addOnNewIntentListener {
-                handler.handle(it)
+            if(!isMounted) {
+                handler.handle(intent)
+                addOnNewIntentListener {
+                    handler.handle(it)
+                }
             }
+            isMounted = true
         }
     }
 }

@@ -34,11 +34,11 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.getScreenModel
 import com.materiapps.gloom.R
-import com.materiapps.gloom.RepoListQuery
+import com.materiapps.gloom.domain.models.ModelRepo
 import com.materiapps.gloom.ui.components.LargeToolbar
 import com.materiapps.gloom.ui.viewmodels.list.RepositoryListViewModel
-import org.koin.androidx.compose.getViewModel
 import org.koin.core.parameter.parametersOf
 
 class RepositoryListScreen(
@@ -51,7 +51,7 @@ class RepositoryListScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
-        viewModel: RepositoryListViewModel = getViewModel { parametersOf(username) }
+        viewModel: RepositoryListViewModel = getScreenModel { parametersOf(username) }
     ) {
         val repos = viewModel.repos.collectAsLazyPagingItems()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
@@ -93,7 +93,7 @@ class RepositoryListScreen(
     }
 
     @Composable
-    private fun RepoItem(repo: RepoListQuery.Node) {
+    private fun RepoItem(repo: ModelRepo) {
         Column(
             Modifier
                 .clickable { }
@@ -102,7 +102,7 @@ class RepositoryListScreen(
             verticalArrangement = Arrangement.spacedBy(5.dp)
         ) {
             Text(
-                text = repo.name,
+                text = repo.name ?: "Empty Repository",
                 style = MaterialTheme.typography.labelLarge.copy(
                     fontSize = 16.sp
                 )
@@ -115,7 +115,7 @@ class RepositoryListScreen(
                     )
                 )
             }
-            if (repo.isFork) {
+            if (repo.fork == true) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -128,7 +128,7 @@ class RepositoryListScreen(
                         tint = MaterialTheme.colorScheme.onSurface.copy(0.6f)
                     )
                     Text(
-                        text = stringResource(R.string.forked_from, repo.parent!!.nameWithOwner),
+                        text = stringResource(R.string.forked_from, repo.parent!!.fullName!!),
                         style = MaterialTheme.typography.labelLarge.copy(
                             color = MaterialTheme.colorScheme.onSurface.copy(0.6f)
                         )
@@ -152,23 +152,23 @@ class RepositoryListScreen(
                             modifier = Modifier.size(18.dp),
                             tint = Color(0xFFF1E05A)
                         )
-                        Text(text = repo.stargazerCount.toString())
+                        Text(text = repo.stars.toString())
                     }
 
 
-                    if (repo.languages?.nodes?.isNotEmpty() == true) {
-                        val lang = repo.languages.nodes[0]
+                    if (repo.language != null) {
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(6.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(
                                 Icons.Filled.Circle,
-                                contentDescription = "Forked Repository",
+                                contentDescription = repo.language.name,
                                 modifier = Modifier.size(15.dp),
-                                tint = Color(android.graphics.Color.parseColor(lang?.color))
+                                tint = repo.language.color
+                                    ?: MaterialTheme.colorScheme.surfaceVariant
                             )
-                            Text(text = lang?.name ?: "")
+                            Text(text = repo.language.name)
                         }
                     }
                 }

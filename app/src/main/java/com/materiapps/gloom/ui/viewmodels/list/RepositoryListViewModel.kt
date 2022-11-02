@@ -1,16 +1,17 @@
 package com.materiapps.gloom.ui.viewmodels.list
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import androidx.paging.cachedIn
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.coroutineScope
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Optional
 import com.materiapps.gloom.RepoListQuery
 import com.materiapps.gloom.domain.manager.AuthManager
+import com.materiapps.gloom.domain.models.ModelRepo
 import com.materiapps.gloom.rest.utils.GraphQLUtils.response
 import com.materiapps.gloom.rest.utils.getOrNull
 
@@ -18,11 +19,11 @@ class RepositoryListViewModel(
     client: ApolloClient,
     authManager: AuthManager,
     private val username: String
-) : ViewModel() {
+) : ScreenModel {
 
     val repos = Pager(PagingConfig(pageSize = 30)) {
-        object : PagingSource<String, RepoListQuery.Node>() {
-            override suspend fun load(params: LoadParams<String>): LoadResult<String, RepoListQuery.Node> {
+        object : PagingSource<String, ModelRepo>() {
+            override suspend fun load(params: LoadParams<String>): LoadResult<String, ModelRepo> {
                 val page = params.key
 
                 val response =
@@ -31,9 +32,9 @@ class RepositoryListViewModel(
 
                 val nextKey = response?.user?.repositories?.pageInfo?.endCursor
 
-                val nodes = mutableListOf<RepoListQuery.Node>()
+                val nodes = mutableListOf<ModelRepo>()
                 response?.user?.repositories?.nodes?.forEach {
-                    if (it != null) nodes.add(it)
+                    if (it != null) nodes.add(ModelRepo.fromRepoListQuery(it))
                 }
 
                 return LoadResult.Page(
@@ -43,11 +44,11 @@ class RepositoryListViewModel(
                 )
             }
 
-            override fun getRefreshKey(state: PagingState<String, RepoListQuery.Node>): String? =
+            override fun getRefreshKey(state: PagingState<String, ModelRepo>): String? =
                 state.anchorPosition?.let {
                     state.closestPageToPosition(it)?.prevKey
                 }
         }
-    }.flow.cachedIn(viewModelScope)
+    }.flow.cachedIn(coroutineScope)
 
 }

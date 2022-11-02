@@ -12,6 +12,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
 import cafe.adriel.voyager.transitions.SlideTransition
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.materiapps.gloom.domain.manager.AuthManager
@@ -62,7 +63,8 @@ class GloomActivity : ComponentActivity() {
 
                 DeepLinkWrapper { handler ->
                     Navigator(
-                        screen = defaultScreen
+                        screen = defaultScreen,
+                        disposeBehavior = NavigatorDisposeBehavior(false, true)
                     ) {
                         navigator = it
                         SlideTransition(it)

@@ -87,6 +87,8 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
     implementation("io.ktor:ktor-client-logging:$ktorVersion")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
+
     val coilVersion = "2.2.1"
 
     implementation("io.coil-kt:coil:$coilVersion")

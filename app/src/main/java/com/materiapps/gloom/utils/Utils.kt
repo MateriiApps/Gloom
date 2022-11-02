@@ -1,24 +1,26 @@
 package com.materiapps.gloom.utils
 
-import android.content.ComponentName
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.pm.PackageManager.PackageInfoFlags
-import android.net.Uri
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import cafe.adriel.voyager.core.model.ScreenModel
-import com.materiapps.gloom.BuildConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import java.util.Locale
 
-val ScreenModel.scope: CoroutineScope
-    get() = CoroutineScope(Dispatchers.IO)
+object Utils: KoinComponent {
+    private val json: Json by inject()
+    private val logger: Logger by inject()
+
+    fun @Serializable Any?.log() {
+        logger.debug("Model", json.encodeToString(this))
+    }
+}
 
 fun coroutine(block: suspend CoroutineScope.() -> Unit) {
     CoroutineScope(Dispatchers.IO).launch(block = block)
@@ -32,6 +34,8 @@ val Color.hexCode: String
         val b: Int = (blue * 255).toInt()
         return java.lang.String.format(Locale.getDefault(), "%02X%02X%02X%02X", r, g, b, a)
     }
+
+
 
 @Composable
 fun generateMdHtml(
