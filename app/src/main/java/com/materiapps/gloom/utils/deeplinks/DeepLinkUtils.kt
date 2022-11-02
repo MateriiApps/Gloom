@@ -10,7 +10,6 @@ fun DeepLinkHandler.addAllRoutes(navigator: Navigator, auth: AuthManager) {
     addOnLinkVisitedListener("/{username}") { params, query ->
         if(!auth.isSignedIn) return@addOnLinkVisitedListener
         val username = params["username"]!!
-        println(username)
         when (query["tab"]) {
             "repositories" -> println("$username's repos")
             "projects" -> println("$username's projects")
