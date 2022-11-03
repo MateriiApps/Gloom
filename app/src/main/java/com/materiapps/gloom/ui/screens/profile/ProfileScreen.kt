@@ -23,8 +23,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Business
+import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Link
+import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Pin
+import androidx.compose.material.icons.outlined.PinDrop
+import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -57,6 +62,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.core.screen.ScreenKey
@@ -198,10 +204,12 @@ open class ProfileScreen(
                 }
             }
 
-
-            Text(
-                text = user.bio ?: ""
-            )
+            user.bio?.let {
+                Text(
+                    text = it,
+                    textAlign = TextAlign.Center
+                )
+            }
 
             Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -211,21 +219,47 @@ open class ProfileScreen(
                     mainAxisAlignment = FlowMainAxisAlignment.Center,
                     mainAxisSpacing = 5.dp
                 ) {
-                    if (user.company != null) ProfileDetail(
-                        text = user.company,
-                        icon = { Icon(Icons.Outlined.Business, contentDescription = null) }
-                    )
-                    if (user.website != null && user.website != "null") ProfileDetail(
-                        text = user.website,
-                        icon = { Icon(Icons.Outlined.Link, contentDescription = null) }
-                    ) {
-                        it.openUri("http://${user.website}")
+                    user.company?.let {
+                        ProfileDetail(
+                            text = it,
+                            icon = { Icon(Icons.Outlined.Business, contentDescription = null) }
+                        )
                     }
-                    if (user.twitterUsername != null) ProfileDetail(
-                        text = "@${user.twitterUsername}",
-                        icon = { Icon(painterResource(R.drawable.ic_twitter_24), contentDescription = null) }
-                    ) {
-                        it.openUri("https://twitter.com/${user.twitterUsername}")
+
+                    user.location?.let {
+                        ProfileDetail(
+                            text = it,
+                            icon = { Icon(Icons.Outlined.Place, contentDescription = null) }
+                        )
+                    }
+
+                    user.website?.let { site ->
+                        if(site == "null") return@let
+                        ProfileDetail(
+                            text = site,
+                            icon = { Icon(Icons.Outlined.Link, contentDescription = null) }
+                        ) {
+                            it.openUri("http://$site")
+                        }
+                    }
+
+                    user.twitterUsername?.let { handle ->
+                        ProfileDetail(
+                            text = "@${handle}",
+                            icon = { Icon(painterResource(R.drawable.ic_twitter_24), contentDescription = null) }
+                        ) {
+                            it.openUri("https://twitter.com/$handle")
+                        }
+                    }
+
+                    user.email?.let { email ->
+                        if(email.isBlank()) return@let
+                        ProfileDetail(
+                            text = email,
+                            icon = { Icon(Icons.Outlined.Email, contentDescription = null) }
+                        ) {
+                            it.openUri("mailto:$email")
+                        }
                     }
                 }
 

@@ -75,7 +75,9 @@ data class ModelUser(
                 starred = starredRepositories.totalCount.toLong(),
                 followers = followers.totalCount.toLong(),
                 following = following.totalCount.toLong(),
-                status = ModelStatus.fromProfileQuery(pq)
+                status = ModelStatus.fromProfileQuery(pq),
+                email = email,
+                location = location
             )
         }
 
@@ -97,7 +99,9 @@ data class ModelUser(
                     starred = starredRepositories.totalCount.toLong(),
                     followers = followers.totalCount.toLong(),
                     following = following.totalCount.toLong(),
-                    status = ModelStatus.fromUserProfileQuery(upq)
+                    status = ModelStatus.fromUserProfileQuery(upq),
+                    email = email,
+                    location = location
                 )
         }
 

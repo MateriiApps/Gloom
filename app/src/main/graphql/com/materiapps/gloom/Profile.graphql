@@ -5,6 +5,8 @@ query Profile {
     bio
     name
     login
+    email
+    location
     status {
       emoji
       message
@@ -38,6 +40,8 @@ query UserProfile($username: String!) {
      bio
      name
      login
+     email
+     location
      status {
        emoji
        message
