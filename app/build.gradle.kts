@@ -57,13 +57,13 @@ android {
 dependencies {
 
 
-    val composeVersion = "1.0.0-rc01"
+    val composeVersion = "1.1.0-alpha01"
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.activity:activity-compose:1.6.0")
+    implementation("androidx.activity:activity-compose:1.6.1")
     implementation("androidx.browser:browser:1.4.0")
-    implementation("androidx.paging:paging-compose:1.0.0-alpha16")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha17")
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("androidx.compose.material3:material3:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
@@ -71,7 +71,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:$composeVersion")
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.activity:activity-compose:1.6.0")
+    implementation("androidx.activity:activity-compose:1.6.1")
 
     val koinVersion = "3.2.0"
 
@@ -79,7 +79,7 @@ dependencies {
     implementation("io.insert-koin:koin-android:$koinVersion")
     implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
 
-    val ktorVersion = "2.0.3"
+    val ktorVersion = "2.1.1"
 
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
@@ -89,7 +89,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
 
-    val coilVersion = "2.2.1"
+    val coilVersion = "2.2.2"
 
     implementation("io.coil-kt:coil:$coilVersion")
     implementation("io.coil-kt:coil-compose:$coilVersion")
