@@ -5,19 +5,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
-import com.apollographql.apollo3.ApolloClient
-import com.materiapps.gloom.ProfileQuery
-import com.materiapps.gloom.UserProfileQuery
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.repository.GithubRepository
-import com.materiapps.gloom.rest.utils.GraphQLUtils.response
+import com.materiapps.gloom.domain.repository.GraphQLRepository
 import com.materiapps.gloom.rest.utils.fold
 import com.materiapps.gloom.rest.utils.ifSuccessful
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(
-    private val client: ApolloClient,
+    private val gqlRepo: GraphQLRepository,
     private val repo: GithubRepository,
     private val username: String
 ) : ScreenModel {
@@ -35,14 +32,15 @@ class ProfileViewModel(
 
     private fun getCurrentUser() {
         coroutineScope.launch(Dispatchers.IO) {
-            client.query(ProfileQuery()).response().fold(
-                success = {
-                    user = ModelUser.fromProfileQuery(it)
-                    repo.getRepoReadMe(it.viewer.login, it.viewer.login).ifSuccessful { res ->
+            gqlRepo.getCurrentProfile().fold(
+                onSuccess = {
+                    if(it.username == null) return@fold
+                    user = it
+                    repo.getRepoReadMe(it.username, it.username).ifSuccessful { res ->
                         readMe = res
                     }
                 },
-                fail = {
+                onError = {
                     hasErrors = true
                 }
             )
@@ -51,15 +49,15 @@ class ProfileViewModel(
 
     private fun getUser() {
         coroutineScope.launch(Dispatchers.IO) {
-            client.query(UserProfileQuery(username)).response().fold(
-                success = {
-                    if(it.user == null) return@launch
-                    user = ModelUser.fromUserProfileQuery(it)
-                    repo.getRepoReadMe(it.user.login, it.user.login).ifSuccessful { res ->
+            gqlRepo.getProfile(username).fold(
+                onSuccess = {
+                    if(it.username == null) return@fold
+                    user = it
+                    repo.getRepoReadMe(it.username, it.username).ifSuccessful { res ->
                         readMe = res
                     }
                 },
-                fail = {
+                onError = {
                     hasErrors = true
                 }
             )

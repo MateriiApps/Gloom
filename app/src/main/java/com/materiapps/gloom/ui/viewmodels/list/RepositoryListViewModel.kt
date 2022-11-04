@@ -7,17 +7,12 @@ import androidx.paging.PagingState
 import androidx.paging.cachedIn
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.api.Optional
-import com.materiapps.gloom.RepoListQuery
-import com.materiapps.gloom.domain.manager.AuthManager
 import com.materiapps.gloom.domain.models.ModelRepo
-import com.materiapps.gloom.rest.utils.GraphQLUtils.response
+import com.materiapps.gloom.domain.repository.GraphQLRepository
 import com.materiapps.gloom.rest.utils.getOrNull
 
 class RepositoryListViewModel(
-    client: ApolloClient,
-    authManager: AuthManager,
+    repo: GraphQLRepository,
     private val username: String
 ) : ScreenModel {
 
@@ -26,9 +21,7 @@ class RepositoryListViewModel(
             override suspend fun load(params: LoadParams<String>): LoadResult<String, ModelRepo> {
                 val page = params.key
 
-                val response =
-                    client.query(RepoListQuery(username, cursor = Optional.present(page)))
-                        .response().getOrNull()
+                val response = repo.getRepositoriesForUser(username, page).getOrNull()
 
                 val nextKey = response?.user?.repositories?.pageInfo?.endCursor
 

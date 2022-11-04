@@ -2,27 +2,19 @@ package com.materiapps.gloom.rest.utils
 
 import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.api.Operation
-import com.materiapps.gloom.domain.manager.AuthManager
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-object GraphQLUtils : KoinComponent {
+suspend fun <D : Operation.Data> ApolloCall<D>.response(): GraphQLResponse<D> {
+    return try {
+        val response = execute()
 
-    val auth: AuthManager by inject()
+        if (!response.hasErrors())
+            GraphQLResponse.Success(response.dataAssertNoErrors, emptyList())
+        else if(response.hasErrors() && response.data != null)
+            GraphQLResponse.Success(response.data!!, response.errors ?: emptyList())
+        else
+            GraphQLResponse.Error(response.errors ?: emptyList())
 
-    suspend fun <D : Operation.Data> ApolloCall<D>.response(): ApiResponse<D> {
-        return try {
-            addHttpHeader("authorization", "Bearer ${auth.authToken}")
-            val response = execute()
-
-            println(response.errors)
-
-            if (!response.hasErrors())
-                ApiResponse.Success(response.dataAssertNoErrors)
-            else
-                ApiResponse.GQLError(response.errors ?: emptyList())
-        } catch (e: Throwable) {
-            ApiResponse.Failure(ApiFailure(e, null))
-        }
+    } catch (e: Throwable) {
+        GraphQLResponse.Failure(ApiFailure(e, null))
     }
 }
