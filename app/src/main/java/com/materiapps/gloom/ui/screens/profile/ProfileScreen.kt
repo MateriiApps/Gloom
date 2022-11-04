@@ -115,7 +115,7 @@ open class ProfileScreen(
                     Header(user = viewModel.user!!)
 
                     if (viewModel.readMe.isNotEmpty())
-                        ReadMeCard(viewModel.readMe)
+                        ReadMeCard(viewModel.readMe, viewModel.user!!.username ?: "ghost")
 
                     StatCard(
                         repoCount = viewModel.user!!.repos ?: 0L,

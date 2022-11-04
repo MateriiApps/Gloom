@@ -2,7 +2,6 @@ package com.materiapps.gloom.utils
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
 
@@ -24,7 +23,7 @@ private val Context.defaultBrowserPackage: String?
         } else mDefaultBrowserPackage
     }
 
-fun Context.openUrl(url: String) = CustomTabsIntent.Builder().build().run {
-    intent.setPackage(defaultBrowserPackage)
-    launchUrl(this@openUrl, Uri.parse("" + url))
+fun Context.openCustomTab(url: String, force: Boolean) = CustomTabsIntent.Builder().build().run {
+    if(force) intent.setPackage(defaultBrowserPackage)
+    launchUrl(this@openCustomTab, Uri.parse(url))
 }

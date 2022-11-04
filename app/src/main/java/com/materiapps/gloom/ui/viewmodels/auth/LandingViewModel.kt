@@ -4,7 +4,7 @@ import android.content.Context
 import cafe.adriel.voyager.core.model.ScreenModel
 import com.materiapps.gloom.BuildConfig
 import com.materiapps.gloom.utils.URLs
-import com.materiapps.gloom.utils.openUrl
+import com.materiapps.gloom.utils.openCustomTab
 import io.ktor.http.URLBuilder
 
 class LandingViewModel : ScreenModel {
@@ -17,7 +17,7 @@ class LandingViewModel : ScreenModel {
             }
         }.buildString()
 
-        context.openUrl(url)
+        context.openCustomTab(url, force = true)
     }
 
 }

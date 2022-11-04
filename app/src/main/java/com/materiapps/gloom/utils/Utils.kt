@@ -1,5 +1,8 @@
 package com.materiapps.gloom.utils
 
+import android.content.Context
+import android.net.Uri
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -35,6 +38,10 @@ val Color.hexCode: String
         return java.lang.String.format(Locale.getDefault(), "%02X%02X%02X%02X", r, g, b, a)
     }
 
+fun Context.openLink(url: Uri) {
+    // TODO: Setting to disable custom tabs
+    openCustomTab(url.toString(), force = false)
+}
 
 
 @Composable
@@ -52,6 +59,9 @@ fun generateMdHtml(
                         <style>
                             body {
                                 color: #${textColor.hexCode};
+                            }
+                            themed-picture,img {
+                                max-width: 100%;
                             }
                             a {
                                 color: #${linkColor.hexCode}!important;
