@@ -5,7 +5,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import cafe.adriel.voyager.navigator.LocalNavigator
+import com.materiapps.gloom.R
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -21,7 +23,10 @@ fun LargeToolbar(
         title = { Text(text = title) },
         navigationIcon = {
             if (showBackButton) IconButton(onClick = { navigator?.pop() }) {
-                Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go back")
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = stringResource(R.string.action_back)
+                )
             }
         },
         actions = actions,

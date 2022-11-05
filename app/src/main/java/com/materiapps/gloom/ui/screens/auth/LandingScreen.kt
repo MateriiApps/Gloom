@@ -26,7 +26,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.viewmodels.auth.LandingViewModel
-import org.koin.androidx.compose.getViewModel
 
 class LandingScreen : Screen {
 
@@ -47,12 +46,12 @@ class LandingScreen : Screen {
                 Spacer(Modifier.weight(0.20f))
                 Image(
                     painter = painterResource(R.drawable.ic_gloom),
-                    contentDescription = "Gloom Icon",
+                    contentDescription = null,
                     modifier = Modifier.size(300.dp)
                 )
                 Spacer(modifier = Modifier.weight(0.10f))
                 Text(
-                    text = stringResource(R.string.welcome),
+                    text = stringResource(R.string.login_welcome),
                     style = MaterialTheme.typography.headlineLarge.copy(
                         fontWeight = FontWeight.Thin
                     ),
@@ -65,9 +64,9 @@ class LandingScreen : Screen {
                     ) {
                         Icon(
                             painterResource(R.drawable.ic_github_24),
-                            contentDescription = "GitHub Logo"
+                            contentDescription = null
                         )
-                        Text(stringResource(R.string.sign_in))
+                        Text(stringResource(R.string.login_sign_in_github))
                     }
                 }
                 Spacer(Modifier.weight(0.20f))

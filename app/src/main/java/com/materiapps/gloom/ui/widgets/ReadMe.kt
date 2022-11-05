@@ -110,7 +110,7 @@ fun ReadMeCard(
                             null,
                             modifier = Modifier.size(17.dp)
                         )
-                        Text(stringResource(R.string.read_more))
+                        Text(stringResource(R.string.action_read_more))
                     }
                 }
             }

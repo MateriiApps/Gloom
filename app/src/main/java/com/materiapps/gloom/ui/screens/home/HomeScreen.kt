@@ -9,9 +9,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.stringResource
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import com.materiapps.gloom.R
 
 class HomeScreen : Tab {
     override val options: TabOptions
@@ -20,7 +22,7 @@ class HomeScreen : Tab {
             val selected = navigator.current == this
             return TabOptions(
                 0u,
-                "Home",
+                stringResource(R.string.navigation_home),
                 rememberVectorPainter(if (selected) Icons.Filled.Home else Icons.Outlined.Home)
             )
         }

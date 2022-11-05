@@ -86,7 +86,7 @@ class RepositoryListScreen(
         scrollBehavior: TopAppBarScrollBehavior
     ) {
         LargeToolbar(
-            title = stringResource(R.string.repos),
+            title = stringResource(R.string.noun_repos),
             showBackButton = true,
             scrollBehavior = scrollBehavior
         )
@@ -102,7 +102,7 @@ class RepositoryListScreen(
             verticalArrangement = Arrangement.spacedBy(5.dp)
         ) {
             Text(
-                text = repo.name ?: "Empty Repository",
+                text = repo.name ?: stringResource(R.string.noun_empty_repo),
                 style = MaterialTheme.typography.labelLarge.copy(
                     fontSize = 16.sp
                 )
@@ -123,7 +123,7 @@ class RepositoryListScreen(
                 ) {
                     Icon(
                         painterResource(R.drawable.ic_fork_24),
-                        contentDescription = "Forked Repository",
+                        contentDescription = stringResource(R.string.noun_forked_repo),
                         modifier = Modifier.size(15.dp),
                         tint = MaterialTheme.colorScheme.onSurface.copy(0.6f)
                     )
