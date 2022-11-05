@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigation_explore">Explore</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_notifications">Notifications</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="login_welcome">Welcome!</string>
+    <string name="login_sign_in_github">Sign in with GitHub</string>
+    <string name="action_back">Back</string>
+    <string name="action_read_more">Read More</string>
+    <string name="noun_starred">Starred</string>
+    <string name="noun_orgs">Organizations</string>
+    <string name="noun_repos">Repositories</string>
+    <string name="noun_forked_repo">Forked Repository</string>
+    <string name="noun_empty_repo">Empty Repository</string>
+    <string name="noun_users_avatar">%s\'s avatar</string>
+    <string name="noun_follower_count">%o Followers</string>
+    <string name="noun_following_count">%o Following</string>
+    <string name="forked_from">Forked from %s</string>
+</resources>
