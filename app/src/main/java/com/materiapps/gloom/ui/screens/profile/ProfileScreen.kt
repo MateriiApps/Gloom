@@ -20,15 +20,10 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Business
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Link
-import androidx.compose.material.icons.outlined.LocationOn
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.Pin
-import androidx.compose.material.icons.outlined.PinDrop
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ButtonDefaults
@@ -54,7 +49,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
@@ -68,9 +62,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
-import cafe.adriel.voyager.navigator.tab.Tab
-import cafe.adriel.voyager.navigator.tab.TabOptions
 import coil.compose.AsyncImage
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
@@ -80,7 +71,6 @@ import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
 import com.materiapps.gloom.utils.navigate
-import org.koin.androidx.compose.getViewModel
 import org.koin.core.parameter.parametersOf
 
 open class ProfileScreen(
@@ -173,7 +163,7 @@ open class ProfileScreen(
         ) {
             AsyncImage(
                 model = user.avatar,
-                contentDescription = "${user.displayName}'s avatar",
+                contentDescription = stringResource(R.string.noun_users_avatar, user.displayName ?: "ghost"),
                 modifier = Modifier
                     .size(90.dp)
                     .clip(CircleShape)
@@ -265,10 +255,10 @@ open class ProfileScreen(
 
                 Row {
                     TextButton(onClick = { /*TODO*/ }) {
-                        Text(text = "${user.followers} Followers")
+                        Text(stringResource(R.string.noun_follower_count, user.followers ?: 0))
                     }
                     TextButton(onClick = { /*TODO*/ }) {
-                        Text(text = "${user.following} Following")
+                        Text(stringResource(R.string.noun_following_count, user.following ?: 0))
                     }
                 }
             }
@@ -321,19 +311,19 @@ open class ProfileScreen(
         ElevatedCard {
             Column {
                 StatItem(
-                    label = stringResource(R.string.repos),
+                    label = stringResource(R.string.noun_repos),
                     count = repoCount,
                     icon = Icons.Outlined.Book
                 ) {
                     username?.let { RepositoryListScreen(it) }?.let { nav?.navigate(it) }
                 }
                 StatItem(
-                    label = "Organizations",
+                    label = stringResource(R.string.noun_orgs),
                     count = orgCount,
                     icon = Icons.Outlined.Business
                 )
                 StatItem(
-                    label = "Starred",
+                    label = stringResource(R.string.noun_starred),
                     count = starCount,
                     icon = Icons.Outlined.Star
                 )
