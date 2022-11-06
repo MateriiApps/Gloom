@@ -5,6 +5,7 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import com.materiapps.gloom.BuildConfig
 import com.materiapps.gloom.utils.URLs
 import com.materiapps.gloom.utils.openCustomTab
+import io.ktor.client.request.parameter
 import io.ktor.http.URLBuilder
 
 class LandingViewModel : ScreenModel {
@@ -14,6 +15,31 @@ class LandingViewModel : ScreenModel {
             it.parameters.apply {
                 append("client_id", BuildConfig.CLIENT_ID)
                 append("redirect_uri", "gloom://oauth")
+                listOf(
+                    "repo",
+                    "repo:status",
+                    "repo_deployment",
+                    "public_repo",
+                    "repo:invite",
+                    "security_events",
+                    "admin:repo_hook",
+                    "admin:org",
+                    "admin:public_key",
+                    "admin:org_hook",
+                    "gist",
+                    "notifications",
+                    "user",
+                    "project",
+                    "delete_repo",
+                    "write:discussion",
+                    "write:packages",
+                    "read:packages",
+                    "delete:packages",
+                    "admin:gpg_key",
+                    "workflow"
+                ).joinToString(" ").let { scopes ->
+                    append("scope", scopes)
+                }
             }
         }.buildString()
 

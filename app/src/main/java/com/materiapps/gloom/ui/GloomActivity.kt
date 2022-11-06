@@ -44,7 +44,6 @@ class GloomActivity : ComponentActivity() {
             GloomTheme {
                 val systemUiController = rememberSystemUiController()
                 val isDark = isSystemInDarkTheme()
-                auth.refreshAccessToken()
 
                 val defaultScreen = if (auth.isSignedIn)
                     RootScreen()
@@ -85,7 +84,6 @@ class GloomActivity : ComponentActivity() {
                         val res = authRepo.getAccessToken(it)
                         res.ifSuccessful { token ->
                             auth.authToken = token.accessToken
-                            auth.refreshToken = token.refreshToken
                             navigator.replace(RootScreen())
                         }
                     }

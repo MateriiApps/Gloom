@@ -15,23 +15,7 @@ class AuthManager(context: Context, private val authRepo: GithubAuthRepository) 
         set(value) = sharedPrefs.edit {
             putString("authToken", value)
         }
-    var refreshToken: String
-        get() = sharedPrefs.getString("refreshToken", "")!!
-        set(value) = sharedPrefs.edit {
-            putString("refreshToken", value)
-        }
 
     val isSignedIn get() = authToken.isNotEmpty()
-
-    fun refreshAccessToken() {
-        coroutine {
-            if (refreshToken.isNotEmpty()) authRepo.refreshAccessToken(refreshToken).also {
-                it.ifSuccessful { token ->
-                    authToken = token.accessToken
-                    refreshToken = token.refreshToken
-                }
-            }
-        }
-    }
 
 }
