@@ -3,6 +3,7 @@ package com.materiapps.gloom.utils.deeplinks
 import cafe.adriel.voyager.navigator.Navigator
 import com.materiapps.gloom.domain.manager.AuthManager
 import com.materiapps.gloom.ui.screens.home.HomeScreen
+import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiapps.gloom.utils.navigate
 
@@ -11,7 +12,7 @@ fun DeepLinkHandler.addAllRoutes(navigator: Navigator, auth: AuthManager) {
         if(!auth.isSignedIn) return@addOnLinkVisitedListener
         val username = params["username"]!!
         when (query["tab"]) {
-            "repositories" -> println("$username's repos")
+            "repositories" -> navigator push listOf(ProfileScreen(username), RepositoryListScreen(username))
             "projects" -> println("$username's projects")
             "packages" -> println("$username's packages")
             "stars" -> println("$username's starred repos")
