@@ -4,6 +4,7 @@ import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.api.Optional
+import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.RepoListQuery
 import com.materiapps.gloom.StarredReposQuery
@@ -57,6 +58,22 @@ class GraphQLService(
     ) = withContext(Dispatchers.IO) {
         client.query(
             StarredReposQuery(
+                username = username,
+                cursor = if (after != null) Optional.present(after) else Optional.absent(),
+                total = if (count != null) Optional.present(count) else Optional.absent()
+            )
+        )
+            .addToken()
+            .response()
+    }
+
+    suspend fun getJoinedOrgs(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(
+            JoinedOrgsQuery(
                 username = username,
                 cursor = if (after != null) Optional.present(after) else Optional.absent(),
                 total = if (count != null) Optional.present(count) else Optional.absent()

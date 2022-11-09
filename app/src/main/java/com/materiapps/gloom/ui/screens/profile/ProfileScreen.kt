@@ -68,6 +68,7 @@ import com.google.accompanist.flowlayout.FlowRow
 import com.materiapps.gloom.R
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.rest.dto.user.User
+import com.materiapps.gloom.ui.screens.list.OrgsListScreen
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
@@ -170,7 +171,7 @@ open class ProfileScreen(
                 contentDescription = stringResource(R.string.noun_users_avatar, user.displayName ?: "ghost"),
                 modifier = Modifier
                     .size(90.dp)
-                    .clip(if(user.type == User.Type.USER) CircleShape else RoundedCornerShape(28.dp))
+                    .clip(if (user.type == User.Type.USER) CircleShape else RoundedCornerShape(28.dp))
             )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -327,7 +328,9 @@ open class ProfileScreen(
                         label = stringResource(R.string.noun_orgs),
                         count = orgCount,
                         icon = Icons.Outlined.Business
-                    )
+                    ) {
+                        username?.let { OrgsListScreen(it) }?.let { nav?.navigate(it) }
+                    }
                     StatItem(
                         label = stringResource(R.string.noun_starred),
                         count = starCount,

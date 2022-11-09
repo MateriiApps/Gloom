@@ -1,5 +1,6 @@
 package com.materiapps.gloom.domain.models
 
+import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.UserProfileQuery
 import com.materiapps.gloom.rest.dto.user.User
@@ -131,6 +132,16 @@ data class ModelUser(
                 ModelUser(type = User.Type.USER)
             }
 
+        }
+
+        fun fromJoinedOrgsQuery(joq: JoinedOrgsQuery.Node) = with(joq) {
+            ModelUser(
+                username = login,
+                displayName = name,
+                bio = description,
+                avatar = avatarUrl.toString(),
+                type = User.Type.ORG
+            )
         }
 
     }

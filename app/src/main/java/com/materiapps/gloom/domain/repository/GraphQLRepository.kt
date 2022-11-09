@@ -26,4 +26,10 @@ class GraphQLRepository(
         count: Int? = null
     ) = service.getStarredRepositories(username, after, count)
 
+    suspend fun getJoinedOrgs(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = service.getJoinedOrgs(username, after, count)
+
 }
