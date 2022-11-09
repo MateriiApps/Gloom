@@ -4,6 +4,7 @@ import cafe.adriel.voyager.navigator.Navigator
 import com.materiapps.gloom.domain.manager.AuthManager
 import com.materiapps.gloom.ui.screens.home.HomeScreen
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
+import com.materiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiapps.gloom.utils.navigate
 
@@ -15,7 +16,7 @@ fun DeepLinkHandler.addAllRoutes(navigator: Navigator, auth: AuthManager) {
             "repositories" -> navigator push listOf(ProfileScreen(username), RepositoryListScreen(username))
             "projects" -> println("$username's projects")
             "packages" -> println("$username's packages")
-            "stars" -> println("$username's starred repos")
+            "stars" -> navigator push listOf(ProfileScreen(username), StarredReposListScreen(username))
             else -> navigator push ProfileScreen(username)
         }
     }

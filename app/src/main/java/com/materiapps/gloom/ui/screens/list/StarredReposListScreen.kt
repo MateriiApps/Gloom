@@ -22,10 +22,11 @@ import cafe.adriel.voyager.koin.getScreenModel
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.components.LargeToolbar
 import com.materiapps.gloom.ui.viewmodels.list.RepositoryListViewModel
+import com.materiapps.gloom.ui.viewmodels.list.StarredReposListViewModel
 import com.materiapps.gloom.ui.widgets.repo.RepoCard
 import org.koin.core.parameter.parametersOf
 
-class RepositoryListScreen(
+class StarredReposListScreen(
     private val username: String
 ) : Screen {
 
@@ -35,7 +36,7 @@ class RepositoryListScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
-        viewModel: RepositoryListViewModel = getScreenModel { parametersOf(username) }
+        viewModel: StarredReposListViewModel = getScreenModel { parametersOf(username) }
     ) {
         val repos = viewModel.repos.collectAsLazyPagingItems()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
@@ -70,7 +71,7 @@ class RepositoryListScreen(
         scrollBehavior: TopAppBarScrollBehavior
     ) {
         LargeToolbar(
-            title = stringResource(R.string.noun_repos),
+            title = stringResource(R.string.noun_starred),
             showBackButton = true,
             scrollBehavior = scrollBehavior
         )

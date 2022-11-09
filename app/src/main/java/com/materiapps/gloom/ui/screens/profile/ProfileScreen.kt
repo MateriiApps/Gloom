@@ -69,6 +69,7 @@ import com.materiapps.gloom.R
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.rest.dto.user.User
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
+import com.materiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
 import com.materiapps.gloom.utils.navigate
@@ -331,7 +332,9 @@ open class ProfileScreen(
                         label = stringResource(R.string.noun_starred),
                         count = starCount,
                         icon = Icons.Outlined.Star
-                    )
+                    ) {
+                        username?.let { StarredReposListScreen(it) }?.let { nav?.navigate(it) }
+                    }
                 }
             }
         }

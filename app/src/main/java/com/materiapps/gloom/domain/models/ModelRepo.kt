@@ -2,6 +2,7 @@ package com.materiapps.gloom.domain.models
 
 import androidx.compose.ui.graphics.Color
 import com.materiapps.gloom.RepoListQuery
+import com.materiapps.gloom.StarredReposQuery
 import com.materiapps.gloom.rest.dto.license.License
 import com.materiapps.gloom.rest.dto.repo.Repository
 import com.materiapps.gloom.rest.dto.user.User
@@ -84,6 +85,23 @@ data class ModelRepo(
         }
 
         fun fromRepoListQuery(rlq: RepoListQuery.Node) = with(rlq) {
+            val lang = languages?.nodes?.firstOrNull()
+            val modelLang = if (lang != null)
+                ModelLanguage(lang.name, Color(android.graphics.Color.parseColor(lang.color)))
+            else
+                null
+
+            ModelRepo(
+                name = name,
+                description = description,
+                fork = isFork,
+                parent = if (parent != null) ModelRepo(fullName = parent.nameWithOwner) else null,
+                language = modelLang,
+                stars = stargazerCount
+            )
+        }
+
+        fun fromStarredReposQuery(srq: StarredReposQuery.Node) = with(srq) {
             val lang = languages?.nodes?.firstOrNull()
             val modelLang = if (lang != null)
                 ModelLanguage(lang.name, Color(android.graphics.Color.parseColor(lang.color)))

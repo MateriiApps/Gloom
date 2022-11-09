@@ -20,4 +20,10 @@ class GraphQLRepository(
         count: Int? = null
     ) = service.getRepositoriesForUser(username, after, count)
 
+    suspend fun getStarredRepositories(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = service.getStarredRepositories(username, after, count)
+
 }
