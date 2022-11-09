@@ -77,7 +77,7 @@ class GloomActivity : ComponentActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         intent?.let {
-            if (it.data.toString().startsWith("gloom://oauth")) {
+            if (it.data.toString().startsWith("github://com.github.android/oauth")) {
                 println(it.data.toString())
                 it.data!!.getQueryParameter("code")?.let {
                     lifecycleScope.launch(Dispatchers.IO) {

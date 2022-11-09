@@ -6,6 +6,4 @@ class GithubRepository(
     private val service: GithubApiService
 ) {
 
-    suspend fun getRepoReadMe(owner: String, repo: String) = service.getRepoReadMe(owner, repo)
-
 }

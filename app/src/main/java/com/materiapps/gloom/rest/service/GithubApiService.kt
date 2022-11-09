@@ -13,13 +13,4 @@ class GithubApiService(
     private val authManager: AuthManager
 ) {
 
-    suspend fun getRepoReadMe(owner: String, repo: String): ApiResponse<String> =
-        withContext(Dispatchers.IO) {
-            client.request {
-                accept(ContentType("text", "vnd.github.VERSION.html"))
-                header(HttpHeaders.Authorization, "Bearer ${authManager.authToken}")
-                url(URLs.REPOS.README(owner, repo))
-            }
-        }
-
 }

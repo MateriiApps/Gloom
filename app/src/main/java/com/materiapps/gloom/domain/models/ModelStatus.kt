@@ -17,7 +17,7 @@ data class ModelStatus(
                 ModelStatus(emoji, message)
         }
 
-        fun fromUserProfileQuery(upq: UserProfileQuery.Data) = with(upq.user?.status) {
+        fun fromUserProfileQuery(upq: UserProfileQuery.Data) = with(upq.repositoryOwner?.onUser?.status) {
             if(this == null)
                 ModelStatus(null, null)
             else

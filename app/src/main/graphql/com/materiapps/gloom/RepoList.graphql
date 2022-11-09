@@ -1,11 +1,10 @@
 query RepoList($username: String!, $total: Int = 100, $cursor: String) {
-  user(login: $username) {
+  repositoryOwner(login: $username) {
     repositories(
       first: $total
       after: $cursor
       orderBy: {field: PUSHED_AT, direction: DESC}
       ownerAffiliations: OWNER
-      privacy: PUBLIC
     ) {
       pageInfo {
         endCursor

@@ -3,6 +3,7 @@ package com.materiapps.gloom.ui.viewmodels.auth
 import android.content.Context
 import cafe.adriel.voyager.core.model.ScreenModel
 import com.materiapps.gloom.BuildConfig
+import com.materiapps.gloom.utils.Credentials
 import com.materiapps.gloom.utils.URLs
 import com.materiapps.gloom.utils.openCustomTab
 import io.ktor.client.request.parameter
@@ -13,8 +14,8 @@ class LandingViewModel : ScreenModel {
     fun signIn(context: Context) {
         val url = URLBuilder(URLs.AUTH.LOGIN).also {
             it.parameters.apply {
-                append("client_id", BuildConfig.CLIENT_ID)
-                append("redirect_uri", "gloom://oauth")
+                append("client_id", Credentials.CLIENT_ID)
+                append("redirect_uri", "github://com.github.android/oauth")
                 listOf(
                     "repo",
                     "repo:status",
@@ -29,6 +30,7 @@ class LandingViewModel : ScreenModel {
                     "gist",
                     "notifications",
                     "user",
+                    "user:assets",
                     "project",
                     "delete_repo",
                     "write:discussion",

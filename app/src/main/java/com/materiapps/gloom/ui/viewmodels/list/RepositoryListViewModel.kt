@@ -23,10 +23,10 @@ class RepositoryListViewModel(
 
                 val response = repo.getRepositoriesForUser(username, page).getOrNull()
 
-                val nextKey = response?.user?.repositories?.pageInfo?.endCursor
+                val nextKey = response?.repositoryOwner?.repositories?.pageInfo?.endCursor
 
                 val nodes = mutableListOf<ModelRepo>()
-                response?.user?.repositories?.nodes?.forEach {
+                response?.repositoryOwner?.repositories?.nodes?.forEach {
                     if (it != null) nodes.add(ModelRepo.fromRepoListQuery(it))
                 }
 

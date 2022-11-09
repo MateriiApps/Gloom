@@ -18,8 +18,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "CLIENT_ID", "\"d620cd8cbfe9344a0180\"")
-        buildConfigField("String", "CLIENT_SECRET", "\"4f62c5cc7dff2787b91096fb1747af0a1f8a266a\"")
+        buildConfigField("String", "CLIENT_ID", "\"M2Y4Yjg4MzRhOTFmMGNhYWQzOTI=\"")
+        buildConfigField("String", "CLIENT_SECRET", "\"MDBlNzZmYzgzNTg4OTlkNzc5NWE0NmNkMDRhY2U4NjVmY2RjMDE2NQ==\"")
     }
 
     buildTypes {

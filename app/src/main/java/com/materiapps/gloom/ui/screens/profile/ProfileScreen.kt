@@ -67,6 +67,7 @@ import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.materiapps.gloom.R
 import com.materiapps.gloom.domain.models.ModelUser
+import com.materiapps.gloom.rest.dto.user.User
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
@@ -104,10 +105,12 @@ open class ProfileScreen(
                 if (viewModel.user != null) {
                     Header(user = viewModel.user!!)
 
-                    if (viewModel.readMe.isNotEmpty())
-                        ReadMeCard(viewModel.readMe, viewModel.user!!.username ?: "ghost")
+                    viewModel.user!!.readme?.let { readme ->
+                        ReadMeCard(readme, viewModel.user!!.username ?: "ghost")
+                    }
 
                     StatCard(
+                        isOrg = viewModel.user!!.type == User.Type.ORG,
                         repoCount = viewModel.user!!.repos ?: 0L,
                         orgCount = viewModel.user!!.orgs ?: 0L,
                         starCount = viewModel.user!!.starred ?: 0L,
@@ -166,7 +169,7 @@ open class ProfileScreen(
                 contentDescription = stringResource(R.string.noun_users_avatar, user.displayName ?: "ghost"),
                 modifier = Modifier
                     .size(90.dp)
-                    .clip(CircleShape)
+                    .clip(if(user.type == User.Type.USER) CircleShape else RoundedCornerShape(28.dp))
             )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -253,7 +256,7 @@ open class ProfileScreen(
                     }
                 }
 
-                Row {
+                if(user.type == User.Type.USER) Row {
                     TextButton(onClick = { /*TODO*/ }) {
                         Text(stringResource(R.string.noun_follower_count, user.followers ?: 0))
                     }
@@ -302,6 +305,7 @@ open class ProfileScreen(
     @Composable
     private fun StatCard(
         username: String?,
+        isOrg: Boolean,
         repoCount: Long,
         orgCount: Long,
         starCount: Long
@@ -317,16 +321,18 @@ open class ProfileScreen(
                 ) {
                     username?.let { RepositoryListScreen(it) }?.let { nav?.navigate(it) }
                 }
-                StatItem(
-                    label = stringResource(R.string.noun_orgs),
-                    count = orgCount,
-                    icon = Icons.Outlined.Business
-                )
-                StatItem(
-                    label = stringResource(R.string.noun_starred),
-                    count = starCount,
-                    icon = Icons.Outlined.Star
-                )
+                if(!isOrg) {
+                    StatItem(
+                        label = stringResource(R.string.noun_orgs),
+                        count = orgCount,
+                        icon = Icons.Outlined.Business
+                    )
+                    StatItem(
+                        label = stringResource(R.string.noun_starred),
+                        count = starCount,
+                        icon = Icons.Outlined.Star
+                    )
+                }
             }
         }
     }

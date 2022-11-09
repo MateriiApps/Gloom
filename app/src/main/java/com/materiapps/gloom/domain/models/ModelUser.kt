@@ -13,6 +13,7 @@ data class ModelUser(
     val nodeId: String? = null,
     val avatar: String? = null,
     val gravatarId: String? = null,
+    val readme: String? = null,
     val type: User.Type,
     val admin: Boolean? = null,
     val company: String? = null,
@@ -29,7 +30,8 @@ data class ModelUser(
     val updated: LocalDateTime? = null,
     val status: ModelStatus? = null,
     val starred: Long? = null,
-    val orgs: Long? = null
+    val orgs: Long? = null,
+    val isMember: Boolean? = null
 ) {
 
     companion object {
@@ -66,6 +68,7 @@ data class ModelUser(
                 displayName = name,
                 bio = bio,
                 avatar = avatarUrl.toString(),
+                readme = profileReadme?.contentHTML?.toString(),
                 type = User.Type.USER,
                 company = company,
                 website = websiteUrl.toString(),
@@ -81,28 +84,53 @@ data class ModelUser(
             )
         }
 
-        fun fromUserProfileQuery(upq: UserProfileQuery.Data) = with(upq.user) {
-            if(this == null)
+        fun fromUserProfileQuery(upq: UserProfileQuery.Data) = with(upq) {
+            val isUser = upq.repositoryOwner?.onUser != null
+            val isOrg = upq.repositoryOwner?.onOrganization != null && !isUser
+
+            if(isUser) {
+                with(upq.repositoryOwner!!.onUser!!) {
+                    ModelUser(
+                        username = login,
+                        displayName = name,
+                        bio = bio,
+                        avatar = avatarUrl.toString(),
+                        readme = profileReadme?.contentHTML?.toString(),
+                        type = User.Type.USER,
+                        company = company,
+                        website = websiteUrl.toString(),
+                        twitterUsername = twitterUsername,
+                        repos = repositories.totalCount.toLong(),
+                        orgs = organizations.totalCount.toLong(),
+                        starred = starredRepositories.totalCount.toLong(),
+                        followers = followers.totalCount.toLong(),
+                        following = following.totalCount.toLong(),
+                        status = ModelStatus.fromUserProfileQuery(upq),
+                        email = publicEmail,
+                        location = location
+                    )
+                }
+            } else if (isOrg) {
+                with(upq.repositoryOwner!!.onOrganization!!) {
+                    ModelUser(
+                        username = login,
+                        displayName = name,
+                        bio = bio,
+                        avatar = avatarUrl.toString(),
+                        readme = readme?.contentHTML?.toString(),
+                        type = User.Type.ORG,
+                        website = websiteUrl.toString(),
+                        twitterUsername = twitterUsername,
+                        email = email,
+                        location = location,
+                        repos = repositories.totalCount.toLong(),
+                        isMember = viewerIsAMember
+                    )
+                }
+            } else {
                 ModelUser(type = User.Type.USER)
-            else
-                ModelUser(
-                    username = login,
-                    displayName = name,
-                    bio = bio,
-                    avatar = avatarUrl.toString(),
-                    type = User.Type.USER,
-                    company = company,
-                    website = websiteUrl.toString(),
-                    twitterUsername = twitterUsername,
-                    repos = repositories.totalCount.toLong(),
-                    orgs = organizations.totalCount.toLong(),
-                    starred = starredRepositories.totalCount.toLong(),
-                    followers = followers.totalCount.toLong(),
-                    following = following.totalCount.toLong(),
-                    status = ModelStatus.fromUserProfileQuery(upq),
-                    email = email,
-                    location = location
-                )
+            }
+
         }
 
     }

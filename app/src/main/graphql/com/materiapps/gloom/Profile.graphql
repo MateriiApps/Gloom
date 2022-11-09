@@ -5,6 +5,9 @@ query Profile {
     bio
     name
     login
+    profileReadme {
+      contentHTML
+    }
     email
     location
     status {
@@ -33,37 +36,86 @@ query Profile {
   }
 }
 
-query UserProfile($username: String!) {
-  user(login: $username) {
-     anyPinnableItems(type: REPOSITORY)
-     avatarUrl(size: 256)
-     bio
-     name
-     login
-     email
-     location
-     status {
-       emoji
-       message
-     }
-     websiteUrl
-     url
-     twitterUsername
-     repositories {
-       totalCount
-     }
-     organizations {
-       totalCount
-     }
-     starredRepositories {
-       totalCount
-     }
-     company
-     followers {
-       totalCount
-     }
-     following {
-       totalCount
-     }
+query UserProfileQuery($username: String!) {
+  repositoryOwner(login: $username) {
+    ... on Organization {
+      anyPinnableItems(type: REPOSITORY)
+      avatarUrl(size: 256)
+      bio: description
+      name
+      login
+      readme {
+        contentHTML
+      }
+      email
+      location
+      websiteUrl
+      url
+      twitterUsername
+      viewerIsAMember
+      repositories {
+        totalCount
+      }
+      sponsoring {
+        totalCount
+      }
+      pinnedItems(first: 6) {
+        edges {
+          node {
+            ... on Repository {
+              id
+              nameWithOwner
+            }
+          }
+        }
+      }
+    }
+    ... on User {
+      avatarUrl(size: 256)
+      bio
+      name
+      login
+      profileReadme {
+        contentHTML
+      }
+      publicEmail: email
+      location
+      status {
+        emoji
+        message
+      }
+      websiteUrl
+      url
+      twitterUsername
+      repositories {
+        totalCount
+      }
+      organizations {
+        totalCount
+      }
+      starredRepositories {
+        totalCount
+      }
+      company
+      followers {
+        totalCount
+      }
+      following {
+        totalCount
+      }
+      pinnedItems(first: 6) {
+        edges {
+          node {
+            ... on Repository {
+              id
+              nameWithOwner
+            }
+          }
+        }
+      }
+      sponsoring {
+        totalCount
+      }
+    }
   }
 }

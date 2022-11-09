@@ -8,6 +8,7 @@ import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.repository.GithubRepository
 import com.materiapps.gloom.domain.repository.GraphQLRepository
+import com.materiapps.gloom.rest.dto.user.User
 import com.materiapps.gloom.rest.utils.fold
 import com.materiapps.gloom.rest.utils.ifSuccessful
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,6 @@ class ProfileViewModel(
 ) : ScreenModel {
 
     var user: ModelUser? by mutableStateOf(null)
-    var readMe: String by mutableStateOf("")
     var hasErrors by mutableStateOf(false)
 
     init {
@@ -36,9 +36,6 @@ class ProfileViewModel(
                 onSuccess = {
                     if(it.username == null) return@fold
                     user = it
-                    repo.getRepoReadMe(it.username, it.username).ifSuccessful { res ->
-                        readMe = res
-                    }
                 },
                 onError = {
                     hasErrors = true
@@ -53,9 +50,6 @@ class ProfileViewModel(
                 onSuccess = {
                     if(it.username == null) return@fold
                     user = it
-                    repo.getRepoReadMe(it.username, it.username).ifSuccessful { res ->
-                        readMe = res
-                    }
                 },
                 onError = {
                     hasErrors = true
