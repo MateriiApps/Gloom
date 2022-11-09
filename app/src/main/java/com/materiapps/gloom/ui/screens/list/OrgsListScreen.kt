@@ -58,7 +58,6 @@ class OrgsListScreen(
                         Divider(
                             color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
                             thickness = 0.5.dp,
-//                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                         )
                     }
                 }

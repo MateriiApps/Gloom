@@ -26,7 +26,7 @@ import com.materiapps.gloom.R
 import com.materiapps.gloom.domain.models.ModelRepo
 
 @Composable
-fun RepoCard(repo: ModelRepo) {
+fun RepoItem(repo: ModelRepo) {
     Column(
         Modifier
             .clickable { }
