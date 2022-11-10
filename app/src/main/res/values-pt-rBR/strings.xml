@@ -16,5 +16,7 @@
     <string name="noun_users_avatar">%s\'s avatar</string>
     <string name="noun_follower_count">%d Seguidores</string>
     <string name="noun_following_count">%d Seguindo</string>
+    <string name="noun_followers">Followers</string>
+    <string name="noun_following">Following</string>
     <string name="forked_from">Fork de %s</string>
 </resources>
