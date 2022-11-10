@@ -21,6 +21,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.components.LargeToolbar
@@ -31,6 +32,9 @@ import org.koin.core.parameter.parametersOf
 class StarredReposListScreen(
     private val username: String
 ) : Screen {
+
+    override val key: ScreenKey
+        get() = "${javaClass.name}($username)"
 
     @Composable
     override fun Content() = Screen()

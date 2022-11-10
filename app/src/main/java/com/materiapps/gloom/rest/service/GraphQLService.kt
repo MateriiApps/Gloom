@@ -4,6 +4,8 @@ import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.api.Optional
+import com.materiapps.gloom.FollowersQuery
+import com.materiapps.gloom.FollowingQuery
 import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.RepoListQuery
@@ -74,6 +76,38 @@ class GraphQLService(
     ) = withContext(Dispatchers.IO) {
         client.query(
             JoinedOrgsQuery(
+                username = username,
+                cursor = if (after != null) Optional.present(after) else Optional.absent(),
+                total = if (count != null) Optional.present(count) else Optional.absent()
+            )
+        )
+            .addToken()
+            .response()
+    }
+
+    suspend fun getFollowers(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(
+            FollowersQuery(
+                username = username,
+                cursor = if (after != null) Optional.present(after) else Optional.absent(),
+                total = if (count != null) Optional.present(count) else Optional.absent()
+            )
+        )
+            .addToken()
+            .response()
+    }
+
+    suspend fun getFollowing(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(
+            FollowingQuery(
                 username = username,
                 cursor = if (after != null) Optional.present(after) else Optional.absent(),
                 total = if (count != null) Optional.present(count) else Optional.absent()

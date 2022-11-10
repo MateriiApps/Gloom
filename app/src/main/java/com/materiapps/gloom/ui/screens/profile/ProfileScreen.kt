@@ -161,6 +161,8 @@ open class ProfileScreen(
     private fun Header(
         user: ModelUser
     ) {
+        val nav = LocalNavigator.current
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(5.dp),
@@ -168,7 +170,10 @@ open class ProfileScreen(
         ) {
             AsyncImage(
                 model = user.avatar,
-                contentDescription = stringResource(R.string.noun_users_avatar, user.displayName ?: "ghost"),
+                contentDescription = stringResource(
+                    R.string.noun_users_avatar,
+                    user.displayName ?: "ghost"
+                ),
                 modifier = Modifier
                     .size(90.dp)
                     .clip(if (user.type == User.Type.USER) CircleShape else RoundedCornerShape(28.dp))
@@ -259,10 +264,14 @@ open class ProfileScreen(
                 }
 
                 if(user.type == User.Type.USER) Row {
-                    TextButton(onClick = { /*TODO*/ }) {
+                    TextButton(onClick = {
+                        if (user.username?.isNotBlank() == true) nav?.navigate(FollowersScreen(user.username))
+                    }) {
                         Text(stringResource(R.string.noun_follower_count, user.followers ?: 0))
                     }
-                    TextButton(onClick = { /*TODO*/ }) {
+                    TextButton(onClick = {
+                        if (user.username?.isNotBlank() == true) nav?.navigate(FollowingScreen(user.username))
+                    }) {
                         Text(stringResource(R.string.noun_following_count, user.following ?: 0))
                     }
                 }

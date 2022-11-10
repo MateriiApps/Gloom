@@ -86,10 +86,16 @@ data class ModelRepo(
 
         fun fromRepoListQuery(rlq: RepoListQuery.Node) = with(rlq) {
             val lang = languages?.nodes?.firstOrNull()
-            val modelLang = if (lang != null)
-                ModelLanguage(lang.name, Color(android.graphics.Color.parseColor(lang.color)))
-            else
-                null
+            val modelLang = if (lang != null) {
+                val color = try {
+                    val langColor =
+                        if (lang.color?.length == 4) lang.color + lang.color.substring(1..3) else lang.color
+                    Color(android.graphics.Color.parseColor(langColor))
+                } catch (e: Throwable) {
+                    Color.Black
+                }
+                ModelLanguage(lang.name, color)
+            } else null
 
             ModelRepo(
                 name = name,

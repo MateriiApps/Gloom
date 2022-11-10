@@ -32,4 +32,16 @@ class GraphQLRepository(
         count: Int? = null
     ) = service.getJoinedOrgs(username, after, count)
 
+    suspend fun getFollowers(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = service.getFollowers(username, after, count)
+
+    suspend fun getFollowing(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = service.getFollowing(username, after, count)
+
 }

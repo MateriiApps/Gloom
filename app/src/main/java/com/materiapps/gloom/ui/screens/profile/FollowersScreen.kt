@@ -1,4 +1,4 @@
-package com.materiapps.gloom.ui.screens.list
+package com.materiapps.gloom.ui.screens.profile
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,11 +25,11 @@ import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.components.LargeToolbar
-import com.materiapps.gloom.ui.viewmodels.list.RepositoryListViewModel
-import com.materiapps.gloom.ui.widgets.repo.RepoItem
+import com.materiapps.gloom.ui.viewmodels.profile.FollowersViewModel
+import com.materiapps.gloom.ui.widgets.user.UserItem
 import org.koin.core.parameter.parametersOf
 
-class RepositoryListScreen(
+class FollowersScreen(
     private val username: String
 ) : Screen {
 
@@ -42,11 +42,11 @@ class RepositoryListScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
-        viewModel: RepositoryListViewModel = getScreenModel { parametersOf(username) }
+        viewModel: FollowersViewModel = getScreenModel { parametersOf(username) }
     ) {
-        val repos = viewModel.repos.collectAsLazyPagingItems()
+        val users = viewModel.users.collectAsLazyPagingItems()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
-        val isLoading = repos.loadState.refresh == LoadState.Loading
+        val isLoading = users.loadState.refresh == LoadState.Loading
 
         Scaffold(
             topBar = { TopBar(scrollBehavior) }
@@ -56,9 +56,9 @@ class RepositoryListScreen(
                     .padding(pv)
                     .nestedScroll(scrollBehavior.nestedScrollConnection)
             ) {
-                items(repos) {
+                items(users) {
                     if (it != null) {
-                        RepoItem(repo = it)
+                        UserItem(user = it)
                         Divider(
                             color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
                             thickness = 0.5.dp,
@@ -83,7 +83,7 @@ class RepositoryListScreen(
         scrollBehavior: TopAppBarScrollBehavior
     ) {
         LargeToolbar(
-            title = stringResource(R.string.noun_repos),
+            title = stringResource(R.string.noun_followers),
             showBackButton = true,
             scrollBehavior = scrollBehavior
         )

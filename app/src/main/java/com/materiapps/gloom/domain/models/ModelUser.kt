@@ -1,5 +1,7 @@
 package com.materiapps.gloom.domain.models
 
+import com.materiapps.gloom.FollowersQuery
+import com.materiapps.gloom.FollowingQuery
 import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.UserProfileQuery
@@ -141,6 +143,26 @@ data class ModelUser(
                 bio = description,
                 avatar = avatarUrl.toString(),
                 type = User.Type.ORG
+            )
+        }
+
+        fun fromFollowersQuery(followersQuery: FollowersQuery.Node) = with(followersQuery) {
+            ModelUser(
+                username = login,
+                displayName = name,
+                bio = bio,
+                avatar = avatarUrl.toString(),
+                type = User.Type.USER
+            )
+        }
+
+        fun fromFollowingQuery(followingQuery: FollowingQuery.Node) = with(followingQuery) {
+            ModelUser(
+                username = login,
+                displayName = name,
+                bio = bio,
+                avatar = avatarUrl.toString(),
+                type = User.Type.USER
             )
         }
 

@@ -6,7 +6,6 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import com.materiapps.gloom.ui.screens.explore.ExploreScreen
 import com.materiapps.gloom.ui.screens.home.HomeScreen
 import com.materiapps.gloom.ui.screens.notifications.NotificationsScreen
-import com.materiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiapps.gloom.ui.screens.profile.ProfileTab
 
 enum class RootTab(val tab: Tab) {
@@ -17,6 +16,9 @@ enum class RootTab(val tab: Tab) {
 }
 
 tailrec fun Navigator.navigate(screen: Screen) {
-    if (parent == null && !items.contains(screen)) return push(screen)
-    return parent!!.navigate(screen)
+    return if (parent == null && items.firstOrNull { it.key == screen.key } == null) try {
+        push(screen)
+    } catch (_: Throwable) {
+    }
+    else parent!!.navigate(screen)
 }
