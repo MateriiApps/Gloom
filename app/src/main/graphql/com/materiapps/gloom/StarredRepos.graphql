@@ -16,6 +16,11 @@ query StarredRepos($username: String!, $total: Int = 100, $cursor: String) {
         name
         description
         isFork
+        owner {
+          __typename
+          login
+          avatarUrl
+        }
         parent {
           nameWithOwner
         }

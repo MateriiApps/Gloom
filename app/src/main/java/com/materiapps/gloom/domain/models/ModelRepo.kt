@@ -13,7 +13,7 @@ data class ModelRepo(
     val name: String? = null,
     val fullName: String? = null,
     val private: Boolean? = null,
-    val owner: User? = null,
+    val owner: ModelUser? = null,
     val description: String? = null,
     val fork: Boolean? = null,
     val parent: ModelRepo? = null,
@@ -52,7 +52,7 @@ data class ModelRepo(
                 name = name,
                 fullName = fullName,
                 private = private,
-                owner = owner,
+                owner = ModelUser.fromApi(owner),
                 description = description,
                 fork = fork,
                 parent = if (parent != null) fromApi(parent) else null,
@@ -114,7 +114,12 @@ data class ModelRepo(
                 fork = isFork,
                 parent = if (parent != null) ModelRepo(fullName = parent.nameWithOwner) else null,
                 language = modelLang,
-                stars = stargazerCount
+                stars = stargazerCount,
+                owner = ModelUser(
+                    username = owner.login,
+                    avatar = owner.avatarUrl.toString(),
+                    type = if(owner.__typename == "User") User.Type.USER else User.Type.ORG
+                )
             )
         }
 
