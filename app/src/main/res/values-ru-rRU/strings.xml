@@ -11,6 +11,7 @@
     <string name="noun_starred">Звёздные</string>
     <string name="noun_orgs">Организации</string>
     <string name="noun_repos">Репозитории</string>
+    <string name="noun_sponsoring">Sponsoring</string>
     <string name="noun_forked_repo">Forked Repository</string>
     <string name="noun_empty_repo">Пустой Репозиторий</string>
     <string name="noun_users_avatar">Аватар %s</string>

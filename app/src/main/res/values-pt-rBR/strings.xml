@@ -11,6 +11,7 @@
     <string name="noun_starred">Com estrela</string>
     <string name="noun_orgs">Organizações</string>
     <string name="noun_repos">Repositórios</string>
+    <string name="noun_sponsoring">Sponsoring</string>
     <string name="noun_forked_repo">Repositórios Forks</string>
     <string name="noun_empty_repo">Repositório vazio</string>
     <string name="noun_users_avatar">%s\'s avatar</string>
