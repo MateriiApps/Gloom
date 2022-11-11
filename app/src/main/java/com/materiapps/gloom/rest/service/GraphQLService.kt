@@ -9,6 +9,7 @@ import com.materiapps.gloom.FollowingQuery
 import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.RepoListQuery
+import com.materiapps.gloom.SponsoringQuery
 import com.materiapps.gloom.StarredReposQuery
 import com.materiapps.gloom.UserProfileQuery
 import com.materiapps.gloom.domain.manager.AuthManager
@@ -108,6 +109,22 @@ class GraphQLService(
     ) = withContext(Dispatchers.IO) {
         client.query(
             FollowingQuery(
+                username = username,
+                cursor = if (after != null) Optional.present(after) else Optional.absent(),
+                total = if (count != null) Optional.present(count) else Optional.absent()
+            )
+        )
+            .addToken()
+            .response()
+    }
+
+    suspend fun getSponsoring(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(
+            SponsoringQuery(
                 username = username,
                 cursor = if (after != null) Optional.present(after) else Optional.absent(),
                 total = if (count != null) Optional.present(count) else Optional.absent()

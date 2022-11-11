@@ -3,6 +3,7 @@ package com.materiapps.gloom.di.modules
 import com.materiapps.gloom.ui.viewmodels.auth.LandingViewModel
 import com.materiapps.gloom.ui.viewmodels.list.OrgListViewModel
 import com.materiapps.gloom.ui.viewmodels.list.RepositoryListViewModel
+import com.materiapps.gloom.ui.viewmodels.list.SponsoringViewModel
 import com.materiapps.gloom.ui.viewmodels.list.StarredReposListViewModel
 import com.materiapps.gloom.ui.viewmodels.profile.FollowersViewModel
 import com.materiapps.gloom.ui.viewmodels.profile.FollowingViewModel
@@ -19,5 +20,6 @@ fun viewModelModule() = module {
     factoryOf(::OrgListViewModel)
     factoryOf(::FollowersViewModel)
     factoryOf(::FollowingViewModel)
+    factoryOf(::SponsoringViewModel)
 
 }

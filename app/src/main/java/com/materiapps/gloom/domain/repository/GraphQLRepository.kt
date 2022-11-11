@@ -44,4 +44,10 @@ class GraphQLRepository(
         count: Int? = null
     ) = service.getFollowing(username, after, count)
 
+    suspend fun getSponsoring(
+        username: String,
+        after: String? = null,
+        count: Int? = null
+    ) = service.getSponsoring(username, after, count)
+
 }

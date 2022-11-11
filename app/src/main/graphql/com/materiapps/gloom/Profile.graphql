@@ -27,6 +27,9 @@ query Profile {
       totalCount
     }
     company
+    sponsoring {
+      totalCount
+    }
     followers {
       totalCount
     }

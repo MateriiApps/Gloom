@@ -4,6 +4,7 @@ import com.materiapps.gloom.FollowersQuery
 import com.materiapps.gloom.FollowingQuery
 import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.ProfileQuery
+import com.materiapps.gloom.SponsoringQuery
 import com.materiapps.gloom.UserProfileQuery
 import com.materiapps.gloom.rest.dto.user.User
 import kotlinx.datetime.LocalDateTime
@@ -29,6 +30,7 @@ data class ModelUser(
     val gists: Long? = null,
     val followers: Long? = null,
     val following: Long? = null,
+    val sponsoring: Long? = null,
     val joined: LocalDateTime? = null,
     val updated: LocalDateTime? = null,
     val status: ModelStatus? = null,
@@ -79,6 +81,7 @@ data class ModelUser(
                 repos = repositories.totalCount.toLong(),
                 orgs = organizations.totalCount.toLong(),
                 starred = starredRepositories.totalCount.toLong(),
+                sponsoring = sponsoring.totalCount.toLong(),
                 followers = followers.totalCount.toLong(),
                 following = following.totalCount.toLong(),
                 status = ModelStatus.fromProfileQuery(pq),
@@ -106,6 +109,7 @@ data class ModelUser(
                         repos = repositories.totalCount.toLong(),
                         orgs = organizations.totalCount.toLong(),
                         starred = starredRepositories.totalCount.toLong(),
+                        sponsoring = sponsoring.totalCount.toLong(),
                         followers = followers.totalCount.toLong(),
                         following = following.totalCount.toLong(),
                         status = ModelStatus.fromUserProfileQuery(upq),
@@ -127,6 +131,7 @@ data class ModelUser(
                         email = email,
                         location = location,
                         repos = repositories.totalCount.toLong(),
+                        sponsoring = sponsoring.totalCount.toLong(),
                         isMember = viewerIsAMember
                     )
                 }
@@ -164,6 +169,64 @@ data class ModelUser(
                 avatar = avatarUrl.toString(),
                 type = User.Type.USER
             )
+        }
+
+        fun fromSponsoringQuery(sponsoringQuery: SponsoringQuery.Node1) = with(sponsoringQuery) {
+            val isUser = sponsoringQuery.onUser != null
+            val isOrg = sponsoringQuery.onOrganization != null && !isUser
+
+            if (isUser) {
+                with(sponsoringQuery.onUser!!) {
+                    ModelUser(
+                        username = login,
+                        displayName = name,
+                        bio = bio,
+                        avatar = avatarUrl.toString(),
+                        type = User.Type.USER
+                    )
+                }
+            } else if (isOrg) {
+                with(sponsoringQuery.onOrganization!!) {
+                    ModelUser(
+                        username = login,
+                        displayName = name,
+                        bio = description,
+                        avatar = avatarUrl.toString(),
+                        type = User.Type.USER
+                    )
+                }
+            } else {
+                ModelUser(type = User.Type.USER)
+            }
+        }
+
+        fun fromSponsoringQuery(sponsoringQuery: SponsoringQuery.Node) = with(sponsoringQuery) {
+            val isUser = sponsoringQuery.onUser != null
+            val isOrg = sponsoringQuery.onOrganization != null && !isUser
+
+            if (isUser) {
+                with(sponsoringQuery.onUser!!) {
+                    ModelUser(
+                        username = login,
+                        displayName = name,
+                        bio = bio,
+                        avatar = avatarUrl.toString(),
+                        type = User.Type.USER
+                    )
+                }
+            } else if (isOrg) {
+                with(sponsoringQuery.onOrganization!!) {
+                    ModelUser(
+                        username = login,
+                        displayName = name,
+                        bio = description,
+                        avatar = avatarUrl.toString(),
+                        type = User.Type.USER
+                    )
+                }
+            } else {
+                ModelUser(type = User.Type.USER)
+            }
         }
 
     }

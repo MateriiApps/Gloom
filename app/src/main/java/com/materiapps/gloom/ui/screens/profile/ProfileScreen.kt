@@ -23,6 +23,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Business
 import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Star
@@ -70,6 +71,7 @@ import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.rest.dto.user.User
 import com.materiapps.gloom.ui.screens.list.OrgsListScreen
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
+import com.materiapps.gloom.ui.screens.list.SponsoringScreen
 import com.materiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
@@ -116,6 +118,7 @@ open class ProfileScreen(
                         repoCount = viewModel.user!!.repos ?: 0L,
                         orgCount = viewModel.user!!.orgs ?: 0L,
                         starCount = viewModel.user!!.starred ?: 0L,
+                        sponsoringCount = viewModel.user!!.sponsoring ?: 0L,
                         username = viewModel.user!!.username
                     )
 
@@ -319,7 +322,8 @@ open class ProfileScreen(
         isOrg: Boolean,
         repoCount: Long,
         orgCount: Long,
-        starCount: Long
+        starCount: Long,
+        sponsoringCount: Long
     ) {
         val nav = LocalNavigator.current
 
@@ -346,6 +350,15 @@ open class ProfileScreen(
                         icon = Icons.Outlined.Star
                     ) {
                         username?.let { StarredReposListScreen(it) }?.let { nav?.navigate(it) }
+                    }
+                }
+                if (sponsoringCount > 0) {
+                    StatItem(
+                        label = stringResource(R.string.noun_sponsoring),
+                        count = sponsoringCount,
+                        icon = Icons.Outlined.FavoriteBorder
+                    ) {
+                        username?.let { SponsoringScreen(it) }?.let { nav?.navigate(it) }
                     }
                 }
             }
