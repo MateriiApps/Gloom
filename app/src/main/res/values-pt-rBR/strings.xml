@@ -11,13 +11,13 @@
     <string name="noun_starred">Com estrela</string>
     <string name="noun_orgs">Organizações</string>
     <string name="noun_repos">Repositórios</string>
-    <string name="noun_sponsoring">Sponsoring</string>
+    <string name="noun_sponsoring">Patrocínio</string>
     <string name="noun_forked_repo">Repositórios Forks</string>
     <string name="noun_empty_repo">Repositório vazio</string>
     <string name="noun_users_avatar">%s\'s avatar</string>
     <string name="noun_follower_count">%d Seguidores</string>
     <string name="noun_following_count">%d Seguindo</string>
-    <string name="noun_followers">Followers</string>
-    <string name="noun_following">Following</string>
+    <string name="noun_followers">Seguidores</string>
+    <string name="noun_following">Seguindo</string>
     <string name="forked_from">Fork de %s</string>
 </resources>
