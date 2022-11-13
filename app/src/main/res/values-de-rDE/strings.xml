@@ -8,6 +8,7 @@
     <string name="login_sign_in_github">Mit GitHub anmelden</string>
     <string name="action_back">Zurück</string>
     <string name="action_read_more">Mehr lesen</string>
+    <string name="title_pinned">Pinned</string>
     <string name="noun_starred">Starred</string>
     <string name="noun_orgs">Organisationen</string>
     <string name="noun_repos">Repositories</string>

@@ -8,6 +8,7 @@
     <string name="login_sign_in_github">Авторизоваться c помощью GitHub</string>
     <string name="action_back">Назад</string>
     <string name="action_read_more">Читать дальше</string>
+    <string name="title_pinned">Pinned</string>
     <string name="noun_starred">Звёздные</string>
     <string name="noun_orgs">Организации</string>
     <string name="noun_repos">Репозитории</string>
