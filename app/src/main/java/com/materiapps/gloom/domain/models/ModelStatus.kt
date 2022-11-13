@@ -10,19 +10,20 @@ data class ModelStatus(
 
     companion object {
 
-        fun fromProfileQuery(pq: ProfileQuery.Data) = with(pq.viewer.status) {
-            if(this == null)
+        fun fromProfileQuery(pq: ProfileQuery.Data) = with(pq.viewer.userProfile.status) {
+            if (this == null)
                 ModelStatus(null, null)
             else
                 ModelStatus(emoji, message)
         }
 
-        fun fromUserProfileQuery(upq: UserProfileQuery.Data) = with(upq.repositoryOwner?.onUser?.status) {
-            if(this == null)
-                ModelStatus(null, null)
-            else
-                ModelStatus(emoji, message)
-        }
+        fun fromUserProfileQuery(upq: UserProfileQuery.Data) =
+            with(upq.repositoryOwner?.userProfile?.status) {
+                if (this == null)
+                    ModelStatus(null, null)
+                else
+                    ModelStatus(emoji, message)
+            }
 
     }
 

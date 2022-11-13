@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -26,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -41,12 +43,18 @@ fun RepoItem(
     Column(
         Modifier
             .run {
-                if (card) clip(RoundedCornerShape(16.dp)) else this
+                if (card) {
+                    clip(RoundedCornerShape(16.dp))
+                } else this
             }
             .background(if (card) MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp) else Color.Transparent)
             .clickable { }
             .padding(16.dp)
-            .fillMaxWidth(),
+            .run {
+                if (card) {
+                    width(260.dp)
+                } else fillMaxWidth()
+            },
         verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         if(repo.owner != null) Row(
@@ -81,7 +89,9 @@ fun RepoItem(
                 text = it,
                 style = MaterialTheme.typography.labelLarge.copy(
                     color = MaterialTheme.colorScheme.onSurface.copy(0.8f),
-                )
+                ),
+                maxLines = if (card) 1 else 5,
+                overflow = TextOverflow.Ellipsis
             )
         }
         if (repo.fork == true) {

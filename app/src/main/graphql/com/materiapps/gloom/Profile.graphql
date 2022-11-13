@@ -1,5 +1,17 @@
 query Profile {
   viewer {
+    ...UserProfile
+  }
+}
+
+query UserProfileQuery($username: String!) {
+  repositoryOwner(login: $username) {
+    ...OrgProfile
+    ...UserProfile
+  }
+}
+
+fragment UserProfile on User {
     anyPinnableItems(type: REPOSITORY)
     avatarUrl(size: 256)
     bio
@@ -17,7 +29,12 @@ query Profile {
     websiteUrl
     url
     twitterUsername
-    repositories(affiliations: OWNER) {
+    pinnedItems(first: 6) {
+      nodes {
+        ...PinnedRepo
+      }
+    }
+    repositories(ownerAffiliations: [OWNER]) {
       totalCount
     }
     organizations {
@@ -37,11 +54,8 @@ query Profile {
       totalCount
     }
   }
-}
 
-query UserProfileQuery($username: String!) {
-  repositoryOwner(login: $username) {
-    ... on Organization {
+fragment OrgProfile on Organization {
       anyPinnableItems(type: REPOSITORY)
       avatarUrl(size: 256)
       bio: description
@@ -50,7 +64,7 @@ query UserProfileQuery($username: String!) {
       readme {
         contentHTML
       }
-      email
+      publicEmail: email
       location
       websiteUrl
       url
@@ -63,62 +77,35 @@ query UserProfileQuery($username: String!) {
         totalCount
       }
       pinnedItems(first: 6) {
-        edges {
-          node {
-            ... on Repository {
-              id
-              nameWithOwner
-            }
-          }
+        nodes {
+          ...PinnedRepo
         }
       }
     }
-    ... on User {
-      avatarUrl(size: 256)
-      bio
-      name
-      login
-      profileReadme {
-        contentHTML
-      }
-      publicEmail: email
-      location
-      status {
-        emoji
-        message
-      }
-      websiteUrl
-      url
-      twitterUsername
-      repositories {
-        totalCount
-      }
-      organizations {
-        totalCount
-      }
-      starredRepositories {
-        totalCount
-      }
-      company
-      followers {
-        totalCount
-      }
-      following {
-        totalCount
-      }
-      pinnedItems(first: 6) {
-        edges {
-          node {
-            ... on Repository {
-              id
-              nameWithOwner
-            }
-          }
-        }
-      }
-      sponsoring {
-        totalCount
-      }
-    }
+
+fragment PinnedRepo on Repository {
+  name
+  description
+  isFork
+  owner {
+    __typename
+    login
+    avatarUrl
   }
+  parent {
+    nameWithOwner
+  }
+  primaryLanguage {
+    name
+    color
+  }
+  stargazerCount
 }
+
+# fragment PinnedGist on Gist {
+#   files(limit: 1) {
+#     name
+#     text
+#   }
+#   description
+# }

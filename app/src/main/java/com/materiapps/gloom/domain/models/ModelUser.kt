@@ -36,7 +36,8 @@ data class ModelUser(
     val status: ModelStatus? = null,
     val starred: Long? = null,
     val orgs: Long? = null,
-    val isMember: Boolean? = null
+    val isMember: Boolean? = null,
+    val pinnedItems: List<Pinnable?> = emptyList()
 ) {
 
     companion object {
@@ -67,7 +68,7 @@ data class ModelUser(
             )
         }
 
-        fun fromProfileQuery(pq: ProfileQuery.Data) = with(pq.viewer) {
+        fun fromProfileQuery(pq: ProfileQuery.Data) = with(pq.viewer.userProfile) {
             ModelUser(
                 username = login,
                 displayName = name,
@@ -86,16 +87,18 @@ data class ModelUser(
                 following = following.totalCount.toLong(),
                 status = ModelStatus.fromProfileQuery(pq),
                 email = email,
-                location = location
+                location = location,
+                pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
+                    ?: emptyList()
             )
         }
 
         fun fromUserProfileQuery(upq: UserProfileQuery.Data) = with(upq) {
-            val isUser = upq.repositoryOwner?.onUser != null
-            val isOrg = upq.repositoryOwner?.onOrganization != null && !isUser
+            val isUser = upq.repositoryOwner?.userProfile != null
+            val isOrg = upq.repositoryOwner?.orgProfile != null && !isUser
 
-            if(isUser) {
-                with(upq.repositoryOwner!!.onUser!!) {
+            if (isUser) {
+                with(upq.repositoryOwner!!.userProfile!!) {
                     ModelUser(
                         username = login,
                         displayName = name,
@@ -113,12 +116,14 @@ data class ModelUser(
                         followers = followers.totalCount.toLong(),
                         following = following.totalCount.toLong(),
                         status = ModelStatus.fromUserProfileQuery(upq),
-                        email = publicEmail,
-                        location = location
+                        email = email,
+                        location = location,
+                        pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
+                            ?: emptyList()
                     )
                 }
             } else if (isOrg) {
-                with(upq.repositoryOwner!!.onOrganization!!) {
+                with(upq.repositoryOwner!!.orgProfile!!) {
                     ModelUser(
                         username = login,
                         displayName = name,
@@ -128,11 +133,13 @@ data class ModelUser(
                         type = User.Type.ORG,
                         website = websiteUrl.toString(),
                         twitterUsername = twitterUsername,
-                        email = email,
+                        email = publicEmail,
                         location = location,
                         repos = repositories.totalCount.toLong(),
                         sponsoring = sponsoring.totalCount.toLong(),
-                        isMember = viewerIsAMember
+                        isMember = viewerIsAMember,
+                        pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
+                            ?: emptyList()
                     )
                 }
             } else {

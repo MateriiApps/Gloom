@@ -12,6 +12,8 @@
     <string name="action_back">Back</string>
     <string name="action_read_more">Read More</string>
 
+    <string name="title_pinned">Pinned</string>
+
     <string name="noun_starred">Starred</string>
     <string name="noun_orgs">Organizations</string>
     <string name="noun_repos">Repositories</string>

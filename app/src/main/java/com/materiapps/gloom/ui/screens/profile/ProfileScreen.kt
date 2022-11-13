@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -59,6 +61,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.getScreenModel
@@ -67,7 +70,9 @@ import coil.compose.AsyncImage
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.materiapps.gloom.R
+import com.materiapps.gloom.domain.models.ModelRepo
 import com.materiapps.gloom.domain.models.ModelUser
+import com.materiapps.gloom.domain.models.Pinnable
 import com.materiapps.gloom.rest.dto.user.User
 import com.materiapps.gloom.ui.screens.list.OrgsListScreen
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
@@ -75,6 +80,7 @@ import com.materiapps.gloom.ui.screens.list.SponsoringScreen
 import com.materiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
+import com.materiapps.gloom.ui.widgets.repo.RepoItem
 import com.materiapps.gloom.utils.navigate
 import org.koin.core.parameter.parametersOf
 
@@ -102,7 +108,6 @@ open class ProfileScreen(
             Column(
                 Modifier
                     .padding(it)
-                    .padding(horizontal = 16.dp)
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
@@ -110,8 +115,12 @@ open class ProfileScreen(
                     Header(user = viewModel.user!!)
 
                     viewModel.user!!.readme?.let { readme ->
-                        ReadMeCard(readme, viewModel.user!!.username ?: "ghost")
+                        Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+                            ReadMeCard(readme, viewModel.user!!.username ?: "ghost")
+                        }
                     }
+
+                    if (viewModel.user!!.pinnedItems.isNotEmpty()) PinnedItems(pinned = viewModel.user!!.pinnedItems)
 
                     StatCard(
                         isOrg = viewModel.user!!.type == User.Type.ORG,
@@ -169,7 +178,9 @@ open class ProfileScreen(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(5.dp),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
         ) {
             AsyncImage(
                 model = user.avatar,
@@ -326,39 +337,40 @@ open class ProfileScreen(
         sponsoringCount: Long
     ) {
         val nav = LocalNavigator.current
-
-        ElevatedCard {
-            Column {
-                StatItem(
-                    label = stringResource(R.string.noun_repos),
-                    count = repoCount,
-                    icon = Icons.Outlined.Book
-                ) {
-                    username?.let { RepositoryListScreen(it) }?.let { nav?.navigate(it) }
-                }
-                if(!isOrg) {
+        Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+            ElevatedCard {
+                Column {
                     StatItem(
-                        label = stringResource(R.string.noun_orgs),
-                        count = orgCount,
-                        icon = Icons.Outlined.Business
+                        label = stringResource(R.string.noun_repos),
+                        count = repoCount,
+                        icon = Icons.Outlined.Book
                     ) {
-                        username?.let { OrgsListScreen(it) }?.let { nav?.navigate(it) }
+                        username?.let { RepositoryListScreen(it) }?.let { nav?.navigate(it) }
                     }
-                    StatItem(
-                        label = stringResource(R.string.noun_starred),
-                        count = starCount,
-                        icon = Icons.Outlined.Star
-                    ) {
-                        username?.let { StarredReposListScreen(it) }?.let { nav?.navigate(it) }
+                    if (!isOrg) {
+                        StatItem(
+                            label = stringResource(R.string.noun_orgs),
+                            count = orgCount,
+                            icon = Icons.Outlined.Business
+                        ) {
+                            username?.let { OrgsListScreen(it) }?.let { nav?.navigate(it) }
+                        }
+                        StatItem(
+                            label = stringResource(R.string.noun_starred),
+                            count = starCount,
+                            icon = Icons.Outlined.Star
+                        ) {
+                            username?.let { StarredReposListScreen(it) }?.let { nav?.navigate(it) }
+                        }
                     }
-                }
-                if (sponsoringCount > 0) {
-                    StatItem(
-                        label = stringResource(R.string.noun_sponsoring),
-                        count = sponsoringCount,
-                        icon = Icons.Outlined.FavoriteBorder
-                    ) {
-                        username?.let { SponsoringScreen(it) }?.let { nav?.navigate(it) }
+                    if (sponsoringCount > 0) {
+                        StatItem(
+                            label = stringResource(R.string.noun_sponsoring),
+                            count = sponsoringCount,
+                            icon = Icons.Outlined.FavoriteBorder
+                        ) {
+                            username?.let { SponsoringScreen(it) }?.let { nav?.navigate(it) }
+                        }
                     }
                 }
             }
@@ -394,6 +406,38 @@ open class ProfileScreen(
                 text = count.toString(),
                 color = MaterialTheme.colorScheme.onSurface.copy(0.5f)
             )
+        }
+    }
+
+    @Composable
+    private fun PinnedItems(
+        pinned: List<Pinnable?>
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            modifier = Modifier.padding(vertical = 8.dp)
+        ) {
+            Text(
+                stringResource(R.string.title_pinned),
+                style = MaterialTheme.typography.labelLarge,
+                fontSize = 15.sp,
+                modifier = Modifier.padding(horizontal = 18.dp)
+            )
+
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                item {
+                    Spacer(Modifier)
+                }
+                items(pinned) {
+                    when (it) {
+                        is ModelRepo -> {
+                            RepoItem(it, card = true)
+                        }
+                    }
+                }
+            }
         }
     }
 
