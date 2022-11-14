@@ -8,9 +8,7 @@ import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.repository.GithubRepository
 import com.materiapps.gloom.domain.repository.GraphQLRepository
-import com.materiapps.gloom.rest.dto.user.User
 import com.materiapps.gloom.rest.utils.fold
-import com.materiapps.gloom.rest.utils.ifSuccessful
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,7 +22,11 @@ class ProfileViewModel(
     var hasErrors by mutableStateOf(false)
 
     init {
-        if(username.isNotEmpty())
+        loadData()
+    }
+
+    fun loadData() {
+        if (username.isNotEmpty())
             getUser()
         else
             getCurrentUser()

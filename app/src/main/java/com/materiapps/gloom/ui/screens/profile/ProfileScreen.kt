@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,7 +31,6 @@ import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -69,11 +69,14 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import coil.compose.AsyncImage
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.materiapps.gloom.R
 import com.materiapps.gloom.domain.models.ModelRepo
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.models.Pinnable
 import com.materiapps.gloom.rest.dto.user.User
+import com.materiapps.gloom.ui.components.RefreshIndicator
 import com.materiapps.gloom.ui.screens.list.OrgsListScreen
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.screens.list.SponsoringScreen
@@ -100,45 +103,57 @@ open class ProfileScreen(
         viewModel: ProfileViewModel = getScreenModel { parametersOf(user) }
     ) {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+        val refreshState =
+            rememberSwipeRefreshState(isRefreshing = viewModel.user == null && !viewModel.hasErrors)
 
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = { TopBar(viewModel, scrollBehavior) }
         ) {
-            Column(
-                Modifier
+            SwipeRefresh(
+                state = refreshState,
+                onRefresh = { viewModel.loadData() },
+                indicator = { state, t -> RefreshIndicator(state, t) },
+                modifier = Modifier
+                    .fillMaxSize()
                     .padding(it)
-                    .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                if (viewModel.user != null) {
-                    Header(user = viewModel.user!!)
+                Column(
+                    Modifier
+                        .verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    if (viewModel.user != null) {
+                        Header(user = viewModel.user!!)
 
-                    viewModel.user!!.readme?.let { readme ->
-                        Box(modifier = Modifier.padding(horizontal = 16.dp)) {
-                            ReadMeCard(readme, viewModel.user!!.username ?: "ghost")
+                        viewModel.user!!.readme?.let { readme ->
+                            Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+                                ReadMeCard(readme, viewModel.user!!.username ?: "ghost")
+                            }
                         }
-                    }
 
-                    if (viewModel.user!!.pinnedItems.isNotEmpty()) PinnedItems(pinned = viewModel.user!!.pinnedItems)
+                        if (viewModel.user!!.pinnedItems.isNotEmpty()) PinnedItems(pinned = viewModel.user!!.pinnedItems)
 
-                    StatCard(
-                        isOrg = viewModel.user!!.type == User.Type.ORG,
-                        repoCount = viewModel.user!!.repos ?: 0L,
-                        orgCount = viewModel.user!!.orgs ?: 0L,
-                        starCount = viewModel.user!!.starred ?: 0L,
-                        sponsoringCount = viewModel.user!!.sponsoring ?: 0L,
-                        username = viewModel.user!!.username
-                    )
+                        StatCard(
+                            isOrg = viewModel.user!!.type == User.Type.ORG,
+                            repoCount = viewModel.user!!.repos ?: 0L,
+                            orgCount = viewModel.user!!.orgs ?: 0L,
+                            starCount = viewModel.user!!.starred ?: 0L,
+                            sponsoringCount = viewModel.user!!.sponsoring ?: 0L,
+                            username = viewModel.user!!.username
+                        )
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
 
-                } else {
-                    Box(
-                        Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator()
+                    } else {
+                        Box(
+                            Modifier.fillMaxWidth(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            if (viewModel.hasErrors) {
+                                //TODO: Show error indicator
+                            }
+                        }
                     }
                 }
             }

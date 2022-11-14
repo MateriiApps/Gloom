@@ -1,47 +1,26 @@
 package com.materiapps.gloom.ui.viewmodels.profile
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
-import androidx.paging.cachedIn
-import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import com.materiapps.gloom.FollowingQuery
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.repository.GraphQLRepository
 import com.materiapps.gloom.rest.utils.getOrNull
+import com.materiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
 
 class FollowingViewModel(
-    repo: GraphQLRepository,
-    username: String
-) : ScreenModel {
+    private val repo: GraphQLRepository,
+    private val username: String
+) : BaseListViewModel<ModelUser, FollowingQuery.Data?>() {
 
-    val users = Pager(PagingConfig(pageSize = 30)) {
-        object : PagingSource<String, ModelUser>() {
-            override suspend fun load(params: LoadParams<String>): LoadResult<String, ModelUser> {
-                val page = params.key
+    override suspend fun loadPage(cursor: String?) = repo.getFollowing(username, cursor).getOrNull()
 
-                val response = repo.getFollowing(username, page).getOrNull()
+    override fun getCursor(data: FollowingQuery.Data?) = data?.user?.following?.pageInfo?.endCursor
 
-                val nextKey = response?.user?.following?.pageInfo?.endCursor
-
-                val nodes = mutableListOf<ModelUser>()
-                response?.user?.following?.nodes?.forEach {
-                    if (it != null) nodes.add(ModelUser.fromFollowingQuery(it))
-                }
-
-                return LoadResult.Page(
-                    data = nodes,
-                    nextKey = nextKey,
-                    prevKey = null
-                )
-            }
-
-            override fun getRefreshKey(state: PagingState<String, ModelUser>): String? =
-                state.anchorPosition?.let {
-                    state.closestPageToPosition(it)?.prevKey
-                }
+    override fun createItems(data: FollowingQuery.Data?): List<ModelUser> {
+        val nodes = mutableListOf<ModelUser>()
+        data?.user?.following?.nodes?.forEach {
+            if (it != null) nodes.add(ModelUser.fromFollowingQuery(it))
         }
-    }.flow.cachedIn(coroutineScope)
+        return nodes
+    }
 
 }

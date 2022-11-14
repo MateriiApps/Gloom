@@ -1,47 +1,28 @@
 package com.materiapps.gloom.ui.viewmodels.list
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
-import androidx.paging.cachedIn
-import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import com.materiapps.gloom.StarredReposQuery
 import com.materiapps.gloom.domain.models.ModelRepo
 import com.materiapps.gloom.domain.repository.GraphQLRepository
 import com.materiapps.gloom.rest.utils.getOrNull
+import com.materiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
 
 class StarredReposListViewModel(
-    repo: GraphQLRepository,
+    private val repo: GraphQLRepository,
     private val username: String
-) : ScreenModel {
+) : BaseListViewModel<ModelRepo, StarredReposQuery.Data?>() {
 
-    val repos = Pager(PagingConfig(pageSize = 30)) {
-        object : PagingSource<String, ModelRepo>() {
-            override suspend fun load(params: LoadParams<String>): LoadResult<String, ModelRepo> {
-                val page = params.key
+    override suspend fun loadPage(cursor: String?) =
+        repo.getStarredRepositories(username, cursor).getOrNull()
 
-                val response = repo.getStarredRepositories(username, page).getOrNull()
+    override fun getCursor(data: StarredReposQuery.Data?) =
+        data?.user?.starredRepositories?.pageInfo?.endCursor
 
-                val nextKey = response?.user?.starredRepositories?.pageInfo?.endCursor
-
-                val nodes = mutableListOf<ModelRepo>()
-                response?.user?.starredRepositories?.nodes?.forEach {
-                    if (it != null) nodes.add(ModelRepo.fromStarredReposQuery(it))
-                }
-
-                return LoadResult.Page(
-                    data = nodes,
-                    nextKey = nextKey,
-                    prevKey = null
-                )
-            }
-
-            override fun getRefreshKey(state: PagingState<String, ModelRepo>): String? =
-                state.anchorPosition?.let {
-                    state.closestPageToPosition(it)?.prevKey
-                }
+    override fun createItems(data: StarredReposQuery.Data?): List<ModelRepo> {
+        val nodes = mutableListOf<ModelRepo>()
+        data?.user?.starredRepositories?.nodes?.forEach {
+            if (it != null) nodes.add(ModelRepo.fromStarredReposQuery(it))
         }
-    }.flow.cachedIn(coroutineScope)
+        return nodes
+    }
 
 }

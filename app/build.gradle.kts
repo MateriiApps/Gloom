@@ -98,11 +98,12 @@ dependencies {
 
     implementation("com.apollographql.apollo3:apollo-runtime:$apolloVersion")
 
-    val accompanistVersion = "0.26.3-beta"
+    val accompanistVersion = "0.27.0"
 
     implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-webview:$accompanistVersion")
+    implementation("com.google.accompanist:accompanist-swiperefresh:$accompanistVersion")
 
     val voyagerVersion = "1.0.0-rc02"
 

@@ -1,47 +1,28 @@
 package com.materiapps.gloom.ui.viewmodels.list
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
-import androidx.paging.cachedIn
-import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.repository.GraphQLRepository
 import com.materiapps.gloom.rest.utils.getOrNull
+import com.materiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
 
 class OrgListViewModel(
-    repo: GraphQLRepository,
+    private val repo: GraphQLRepository,
     private val username: String
-) : ScreenModel {
+) : BaseListViewModel<ModelUser, JoinedOrgsQuery.Data?>() {
 
-    val orgs = Pager(PagingConfig(pageSize = 30)) {
-        object : PagingSource<String, ModelUser>() {
-            override suspend fun load(params: LoadParams<String>): LoadResult<String, ModelUser> {
-                val page = params.key
+    override suspend fun loadPage(cursor: String?) =
+        repo.getJoinedOrgs(username, cursor).getOrNull()
 
-                val response = repo.getJoinedOrgs(username, page).getOrNull()
+    override fun getCursor(data: JoinedOrgsQuery.Data?) =
+        data?.user?.organizations?.pageInfo?.endCursor
 
-                val nextKey = response?.user?.organizations?.pageInfo?.endCursor
-
-                val nodes = mutableListOf<ModelUser>()
-                response?.user?.organizations?.nodes?.forEach {
-                    if (it != null) nodes.add(ModelUser.fromJoinedOrgsQuery(it))
-                }
-
-                return LoadResult.Page(
-                    data = nodes,
-                    nextKey = nextKey,
-                    prevKey = null
-                )
-            }
-
-            override fun getRefreshKey(state: PagingState<String, ModelUser>): String? =
-                state.anchorPosition?.let {
-                    state.closestPageToPosition(it)?.prevKey
-                }
+    override fun createItems(data: JoinedOrgsQuery.Data?): List<ModelUser> {
+        val nodes = mutableListOf<ModelUser>()
+        data?.user?.organizations?.nodes?.forEach {
+            if (it != null) nodes.add(ModelUser.fromJoinedOrgsQuery(it))
         }
-    }.flow.cachedIn(coroutineScope)
+        return nodes
+    }
 
 }
