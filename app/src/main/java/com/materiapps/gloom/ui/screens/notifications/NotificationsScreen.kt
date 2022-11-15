@@ -22,7 +22,7 @@ class NotificationsScreen : Tab {
             val selected = navigator.current == this
             return TabOptions(
                 0u,
-                stringResource(R.string.navigation_notifications),
+                stringResource(R.string.navigation_inbox),
                 rememberVectorPainter(if (selected) Icons.Filled.Notifications else Icons.Outlined.Notifications)
             )
         }

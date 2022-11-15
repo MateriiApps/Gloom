@@ -3,7 +3,7 @@
 
     <string name="navigation_explore">Explore</string>
     <string name="navigation_home">Home</string>
-    <string name="navigation_notifications">Notifications</string>
+    <string name="navigation_inbox">Inbox</string>
     <string name="navigation_profile">Profile</string>
 
     <string name="login_welcome">Welcome!</string>
