@@ -84,7 +84,6 @@ abstract class BaseListScreen<I : Any, D : Query.Data?, VM : BaseListViewModel<I
     ) {
         LargeToolbar(
             title = stringResource(titleRes),
-            showBackButton = true,
             scrollBehavior = scrollBehavior
         )
     }

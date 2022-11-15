@@ -13,7 +13,6 @@ import com.materiapps.gloom.R
 @OptIn(ExperimentalMaterial3Api::class)
 fun LargeToolbar(
     title: String,
-    showBackButton: Boolean = false,
     actions: @Composable RowScope.() -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
@@ -21,14 +20,7 @@ fun LargeToolbar(
 
     LargeTopAppBar(
         title = { Text(text = title) },
-        navigationIcon = {
-            if (showBackButton) IconButton(onClick = { navigator?.pop() }) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.action_back)
-                )
-            }
-        },
+        navigationIcon = { BackButton() },
         actions = actions,
         scrollBehavior = scrollBehavior
     )

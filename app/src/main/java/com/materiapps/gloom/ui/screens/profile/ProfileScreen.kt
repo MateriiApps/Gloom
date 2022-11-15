@@ -76,6 +76,7 @@ import com.materiapps.gloom.domain.models.ModelRepo
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.models.Pinnable
 import com.materiapps.gloom.rest.dto.user.User
+import com.materiapps.gloom.ui.components.BackButton
 import com.materiapps.gloom.ui.components.RefreshIndicator
 import com.materiapps.gloom.ui.screens.list.OrgsListScreen
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
@@ -180,6 +181,7 @@ open class ProfileScreen(
                     color = textColor
                 )
             },
+            navigationIcon = { BackButton() },
             scrollBehavior = scrollBehavior
         )
     }
