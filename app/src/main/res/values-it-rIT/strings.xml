@@ -2,7 +2,7 @@
 <resources>
     <string name="navigation_explore">Esplora</string>
     <string name="navigation_home">Home</string>
-    <string name="navigation_notifications">Notifiche</string>
+    <string name="navigation_inbox">Inbox</string>
     <string name="navigation_profile">Profilo</string>
     <string name="login_welcome">Benvenuto!</string>
     <string name="login_sign_in_github">Accedi con GitHub</string>

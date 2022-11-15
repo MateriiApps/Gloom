@@ -2,7 +2,7 @@
 <resources>
     <string name="navigation_explore">Галерея</string>
     <string name="navigation_home">Главная</string>
-    <string name="navigation_notifications">Нотификации</string>
+    <string name="navigation_inbox">Inbox</string>
     <string name="navigation_profile">Профиль</string>
     <string name="login_welcome">Добро пожаловать!</string>
     <string name="login_sign_in_github">Авторизоваться c помощью GitHub</string>
