@@ -73,6 +73,7 @@ import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.materiapps.gloom.R
 import com.materiapps.gloom.domain.models.ModelRepo
+import com.materiapps.gloom.domain.models.ModelStatus
 import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.models.Pinnable
 import com.materiapps.gloom.rest.dto.user.User
@@ -85,6 +86,7 @@ import com.materiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
 import com.materiapps.gloom.ui.widgets.repo.RepoItem
+import com.materiapps.gloom.utils.EmojiUtils
 import com.materiapps.gloom.utils.navigate
 import org.koin.core.parameter.parametersOf
 
@@ -235,8 +237,12 @@ open class ProfileScreen(
                 }
             }
 
+            user.status?.let {
+                Status(it)
+            }
+
             user.bio?.let {
-                Text(
+                if(it.isNotEmpty()) Text(
                     text = it,
                     textAlign = TextAlign.Center
                 )
@@ -306,6 +312,40 @@ open class ProfileScreen(
                         Text(stringResource(R.string.noun_following_count, user.following ?: 0))
                     }
                 }
+            }
+        }
+    }
+
+    @Composable
+    private fun Status(
+        status: ModelStatus
+    ) {
+        if(status.emoji == null && status.message == null) return
+        Box(modifier = Modifier.padding(10.dp)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp))
+                    .padding(5.dp)
+            ) {
+                if(status.emoji != null)
+                    AsyncImage(
+                        model = EmojiUtils.emojis[status.emoji.replace(":", "")],
+                        contentDescription = status.emoji,
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp))
+                            .size(30.dp)
+                            .padding(6.dp)
+                    )
+
+                if(status.message != null)
+                    Text(
+                        text = status.message,
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier.padding(horizontal = 10.dp)
+                    )
             }
         }
     }
