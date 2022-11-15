@@ -107,7 +107,7 @@ open class ProfileScreen(
     ) {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
         val refreshState =
-            rememberSwipeRefreshState(isRefreshing = viewModel.user == null && !viewModel.hasErrors)
+            rememberSwipeRefreshState(isRefreshing = viewModel.isLoading)
 
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),

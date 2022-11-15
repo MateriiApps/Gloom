@@ -14,12 +14,12 @@ import kotlinx.coroutines.launch
 
 class ProfileViewModel(
     private val gqlRepo: GraphQLRepository,
-    private val repo: GithubRepository,
     private val username: String
 ) : ScreenModel {
 
     var user: ModelUser? by mutableStateOf(null)
     var hasErrors by mutableStateOf(false)
+    var isLoading by mutableStateOf(false)
 
     init {
         loadData()
@@ -33,28 +33,34 @@ class ProfileViewModel(
     }
 
     private fun getCurrentUser() {
+        isLoading = true
         coroutineScope.launch(Dispatchers.IO) {
             gqlRepo.getCurrentProfile().fold(
                 onSuccess = {
+                    isLoading = false
                     if(it.username == null) return@fold
                     user = it
                 },
                 onError = {
                     hasErrors = true
+                    isLoading = false
                 }
             )
         }
     }
 
     private fun getUser() {
+        isLoading = true
         coroutineScope.launch(Dispatchers.IO) {
             gqlRepo.getProfile(username).fold(
                 onSuccess = {
+                    isLoading = false
                     if(it.username == null) return@fold
                     user = it
                 },
                 onError = {
                     hasErrors = true
+                    isLoading = false
                 }
             )
         }
