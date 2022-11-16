@@ -82,9 +82,13 @@ fun RepoItem(
             text = repo.name ?: stringResource(R.string.noun_empty_repo),
             style = MaterialTheme.typography.labelLarge.copy(
                 fontSize = 16.sp
-            )
+            ),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
-        repo.description?.let {
+
+        val desc = if(repo.description == null && card) "" else repo.description
+        desc?.let {
             Text(
                 text = it,
                 style = MaterialTheme.typography.labelLarge.copy(
@@ -94,7 +98,8 @@ fun RepoItem(
                 overflow = TextOverflow.Ellipsis
             )
         }
-        if (repo.fork == true) {
+
+        if (repo.fork == true && !card) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(6.dp),
                 verticalAlignment = Alignment.CenterVertically,
