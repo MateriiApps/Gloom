@@ -276,7 +276,8 @@ open class ProfileScreen(
                             text = site,
                             icon = { Icon(Icons.Outlined.Link, contentDescription = null) }
                         ) {
-                            it.openUri("http://$site")
+                            val url = if(site.startsWith("http://") || site.startsWith("https://")) site else "http://${site}"
+                            it.openUri(url)
                         }
                     }
 
