@@ -22,6 +22,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Business
@@ -30,6 +31,8 @@ import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -69,8 +72,6 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import coil.compose.AsyncImage
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
-import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.materiapps.gloom.R
 import com.materiapps.gloom.domain.models.ModelRepo
 import com.materiapps.gloom.domain.models.ModelStatus
@@ -101,25 +102,23 @@ open class ProfileScreen(
     override fun Content() = Screen()
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
     private fun Screen(
         viewModel: ProfileViewModel = getScreenModel { parametersOf(user) }
     ) {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
         val refreshState =
-            rememberSwipeRefreshState(isRefreshing = viewModel.isLoading)
+            rememberPullRefreshState(viewModel.isLoading, onRefresh = { viewModel.loadData() })
 
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = { TopBar(viewModel, scrollBehavior) }
         ) {
-            SwipeRefresh(
-                state = refreshState,
-                onRefresh = { viewModel.loadData() },
-                indicator = { state, t -> RefreshIndicator(state, t) },
+            Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it)
+                    .pullRefresh(refreshState)
             ) {
                 Column(
                     Modifier
@@ -159,6 +158,8 @@ open class ProfileScreen(
                         }
                     }
                 }
+
+                RefreshIndicator(refreshState, isRefreshing = viewModel.isLoading)
             }
         }
     }

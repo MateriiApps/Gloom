@@ -74,7 +74,7 @@ fun ReadMeCard(
             )
         }
         Box(
-            modifier = if (isCollapsed) Modifier.height(160.dp) else Modifier
+            modifier = if (isCollapsed) Modifier.height(160.dp) else Modifier.wrapContentHeight()
         ) {
             Markdown(
                 text,
