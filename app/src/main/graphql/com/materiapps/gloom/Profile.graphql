@@ -12,76 +12,79 @@ query UserProfileQuery($username: String!) {
 }
 
 fragment UserProfile on User {
-    anyPinnableItems(type: REPOSITORY)
-    avatarUrl(size: 256)
-    bio
-    name
-    login
-    profileReadme {
-      contentHTML
-    }
-    email
-    location
-    status {
-      emoji
-      message
-    }
-    websiteUrl
-    url
-    twitterUsername
-    pinnedItems(first: 6) {
-      nodes {
-        ...PinnedRepo
-      }
-    }
-    repositories(ownerAffiliations: [OWNER]) {
-      totalCount
-    }
-    organizations {
-      totalCount
-    }
-    starredRepositories {
-      totalCount
-    }
-    company
-    sponsoring {
-      totalCount
-    }
-    followers {
-      totalCount
-    }
-    following {
-      totalCount
+  id
+  anyPinnableItems(type: REPOSITORY)
+  avatarUrl(size: 256)
+  bio
+  name
+  login
+  profileReadme {
+    contentHTML
+  }
+  email
+  location
+  status {
+    emoji
+    message
+  }
+  websiteUrl
+  url
+  twitterUsername
+  pinnedItems(first: 6) {
+    nodes {
+      ...PinnedRepo
     }
   }
+  repositories(ownerAffiliations: [OWNER]) {
+    totalCount
+  }
+  organizations {
+    totalCount
+  }
+  starredRepositories {
+    totalCount
+  }
+  company
+  sponsoring {
+    totalCount
+  }
+  followers {
+    totalCount
+  }
+  following {
+    totalCount
+  }
+  viewerCanFollow
+  viewerIsFollowing
+}
 
 fragment OrgProfile on Organization {
-      anyPinnableItems(type: REPOSITORY)
-      avatarUrl(size: 256)
-      bio: description
-      name
-      login
-      readme {
-        contentHTML
-      }
-      publicEmail: email
-      location
-      websiteUrl
-      url
-      twitterUsername
-      viewerIsAMember
-      repositories {
-        totalCount
-      }
-      sponsoring {
-        totalCount
-      }
-      pinnedItems(first: 6) {
-        nodes {
-          ...PinnedRepo
-        }
-      }
+  anyPinnableItems(type: REPOSITORY)
+  avatarUrl(size: 256)
+  bio: description
+  name
+  login
+  readme {
+    contentHTML
+  }
+  publicEmail: email
+  location
+  websiteUrl
+  url
+  twitterUsername
+  viewerIsAMember
+  repositories {
+    totalCount
+  }
+  sponsoring {
+    totalCount
+  }
+  pinnedItems(first: 6) {
+    nodes {
+      ...PinnedRepo
     }
+  }
+}
 
 fragment PinnedRepo on Repository {
   name

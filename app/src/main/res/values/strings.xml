@@ -11,6 +11,8 @@
 
     <string name="action_back">Back</string>
     <string name="action_read_more">Read More</string>
+    <string name="action_follow_user">Follow %s</string>
+    <string name="action_unfollow_user">Unfollow %s</string>
 
     <string name="title_pinned">Pinned</string>
 

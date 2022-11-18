@@ -6,9 +6,9 @@ import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiapps.gloom.domain.models.ModelUser
-import com.materiapps.gloom.domain.repository.GithubRepository
 import com.materiapps.gloom.domain.repository.GraphQLRepository
 import com.materiapps.gloom.rest.utils.fold
+import com.materiapps.gloom.rest.utils.ifSuccessful
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -55,7 +55,7 @@ class ProfileViewModel(
             gqlRepo.getProfile(username).fold(
                 onSuccess = {
                     isLoading = false
-                    if(it.username == null) return@fold
+                    if (it.username == null) return@fold
                     user = it
                 },
                 onError = {
@@ -63,6 +63,22 @@ class ProfileViewModel(
                     isLoading = false
                 }
             )
+        }
+    }
+
+    fun toggleFollowing() {
+        if (user?.id == null) return
+        val isFollowing = user?.isFollowing
+
+        coroutineScope.launch {
+            if (isFollowing == false)
+                gqlRepo.followUser(user!!.id!!).ifSuccessful {
+                    user = user!!.copy(isFollowing = it)
+                }
+            else
+                gqlRepo.unfollowUser(user!!.id!!).ifSuccessful {
+                    user = user!!.copy(isFollowing = it)
+                }
         }
     }
 

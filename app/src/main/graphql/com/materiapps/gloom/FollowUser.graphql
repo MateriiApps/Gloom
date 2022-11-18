@@ -1,0 +1,9 @@
+mutation FollowUser($id: ID!) {
+  followUser(input: {
+    userId: $id
+  }) {
+    user {
+      viewerIsFollowing
+    }
+  }
+}

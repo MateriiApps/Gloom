@@ -4,6 +4,7 @@ import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.api.Optional
+import com.materiapps.gloom.FollowUserMutation
 import com.materiapps.gloom.FollowersQuery
 import com.materiapps.gloom.FollowingQuery
 import com.materiapps.gloom.JoinedOrgsQuery
@@ -11,6 +12,7 @@ import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.RepoListQuery
 import com.materiapps.gloom.SponsoringQuery
 import com.materiapps.gloom.StarredReposQuery
+import com.materiapps.gloom.UnfollowUserMutation
 import com.materiapps.gloom.UserProfileQuery
 import com.materiapps.gloom.domain.manager.AuthManager
 import com.materiapps.gloom.rest.utils.response
@@ -130,6 +132,18 @@ class GraphQLService(
                 total = if (count != null) Optional.present(count) else Optional.absent()
             )
         )
+            .addToken()
+            .response()
+    }
+
+    suspend fun followUser(id: String) = withContext(Dispatchers.IO) {
+        client.mutation(FollowUserMutation(id))
+            .addToken()
+            .response()
+    }
+
+    suspend fun unfollowUser(id: String) = withContext(Dispatchers.IO) {
+        client.mutation(UnfollowUserMutation(id))
             .addToken()
             .response()
     }

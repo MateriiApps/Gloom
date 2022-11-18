@@ -13,7 +13,7 @@ data class ModelUser(
     val username: String? = null,
     val displayName: String? = null,
     val bio: String? = null,
-    val id: Long? = null,
+    val id: String? = null,
     val nodeId: String? = null,
     val avatar: String? = null,
     val gravatarId: String? = null,
@@ -37,7 +37,9 @@ data class ModelUser(
     val starred: Long? = null,
     val orgs: Long? = null,
     val isMember: Boolean? = null,
-    val pinnedItems: List<Pinnable?> = emptyList()
+    val pinnedItems: List<Pinnable?> = emptyList(),
+    val canFollow: Boolean? = null,
+    val isFollowing: Boolean? = null
 ) {
 
     companion object {
@@ -47,7 +49,7 @@ data class ModelUser(
                 username = username,
                 displayName = displayName,
                 bio = bio,
-                id = id,
+                id = id.toString(),
                 nodeId = nodeId,
                 avatar = avatar,
                 gravatarId = gravatarId,
@@ -70,6 +72,7 @@ data class ModelUser(
 
         fun fromProfileQuery(pq: ProfileQuery.Data) = with(pq.viewer.userProfile) {
             ModelUser(
+                id = id,
                 username = login,
                 displayName = name,
                 bio = bio,
@@ -89,7 +92,9 @@ data class ModelUser(
                 email = email,
                 location = location,
                 pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
-                    ?: emptyList()
+                    ?: emptyList(),
+                canFollow = viewerCanFollow,
+                isFollowing = viewerIsFollowing
             )
         }
 
@@ -100,6 +105,7 @@ data class ModelUser(
             if (isUser) {
                 with(upq.repositoryOwner!!.userProfile!!) {
                     ModelUser(
+                        id = id,
                         username = login,
                         displayName = name,
                         bio = bio,
@@ -119,7 +125,9 @@ data class ModelUser(
                         email = email,
                         location = location,
                         pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
-                            ?: emptyList()
+                            ?: emptyList(),
+                        canFollow = viewerCanFollow,
+                        isFollowing = viewerIsFollowing
                     )
                 }
             } else if (isOrg) {

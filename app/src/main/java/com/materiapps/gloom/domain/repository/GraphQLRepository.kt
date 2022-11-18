@@ -50,4 +50,10 @@ class GraphQLRepository(
         count: Int? = null
     ) = service.getSponsoring(username, after, count)
 
+    suspend fun followUser(id: String) =
+        service.followUser(id).transform { it.followUser?.user?.viewerIsFollowing }
+
+    suspend fun unfollowUser(id: String) =
+        service.unfollowUser(id).transform { it.unfollowUser?.user?.viewerIsFollowing }
+
 }

@@ -23,12 +23,15 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.HowToReg
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Business
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Link
+import androidx.compose.material.icons.outlined.PersonAddAlt
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.pullrefresh.pullRefresh
@@ -185,7 +188,10 @@ open class ProfileScreen(
                 )
             },
             navigationIcon = { BackButton() },
-            scrollBehavior = scrollBehavior
+            scrollBehavior = scrollBehavior,
+            actions = {
+                FollowButton(viewModel)
+            }
         )
     }
 
@@ -497,6 +503,25 @@ open class ProfileScreen(
                     }
                 }
             }
+        }
+    }
+
+    @Composable
+    fun FollowButton(
+        viewModel: ProfileViewModel
+    ) {
+        val (icon, alt) = if (viewModel.user?.isFollowing == true)
+            Icons.Filled.HowToReg to stringResource(
+                R.string.action_unfollow_user,
+                viewModel.user?.username ?: "ghost"
+            )
+        else Icons.Outlined.PersonAddAlt to stringResource(
+            R.string.action_follow_user,
+            viewModel.user?.username ?: "ghost"
+        )
+
+        if (viewModel.user?.canFollow == true) IconButton(onClick = { viewModel.toggleFollowing() }) {
+            Icon(icon, contentDescription = alt)
         }
     }
 
