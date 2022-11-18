@@ -97,6 +97,7 @@ dependencies {
     val apolloVersion = "3.6.2"
 
     implementation("com.apollographql.apollo3:apollo-runtime:$apolloVersion")
+    implementation("com.apollographql.apollo3:apollo-normalized-cache:$apolloVersion")
 
     val accompanistVersion = "0.27.0"
 

@@ -1,6 +1,10 @@
 package com.materiapps.gloom.di.modules
 
 import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
+import com.apollographql.apollo3.cache.normalized.api.NormalizedCache
+import com.apollographql.apollo3.cache.normalized.api.NormalizedCacheFactory
+import com.apollographql.apollo3.cache.normalized.normalizedCache
 import com.apollographql.apollo3.network.http.LoggingInterceptor
 import com.materiapps.gloom.BuildConfig
 import com.materiapps.gloom.domain.manager.AuthManager
@@ -30,6 +34,7 @@ fun serviceModule() = module {
             .addHttpInterceptor(LoggingInterceptor(LoggingInterceptor.Level.BODY) {
                 if(BuildConfig.DEBUG) logger.debug("GraphQL", it)
             })
+            .normalizedCache(MemoryCacheFactory(10 * 1024 * 1024, 1000 * 60 * 5))
             .build()
     }
 
