@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="navigation_explore">Explore</string>
-    <string name="navigation_home">Home</string>
-    <string name="navigation_inbox">Inbox</string>
-    <string name="navigation_profile">Profile</string>
-    <string name="login_welcome">Welcome!</string>
-    <string name="login_sign_in_github">Sign in with GitHub</string>
-    <string name="action_back">Back</string>
-    <string name="action_read_more">Read More</string>
-    <string name="title_pinned">Pinned</string>
-    <string name="noun_starred">Starred</string>
-    <string name="noun_orgs">Organizations</string>
-    <string name="noun_repos">Repositories</string>
-    <string name="noun_sponsoring">Sponsoring</string>
-    <string name="noun_forked_repo">Forked Repository</string>
-    <string name="noun_empty_repo">Empty Repository</string>
-    <string name="noun_users_avatar">%s\'s avatar</string>
-    <string name="noun_follower_count">%d Followers</string>
-    <string name="noun_following_count">%d Following</string>
-    <string name="noun_followers">Followers</string>
-    <string name="noun_following">Following</string>
-    <string name="forked_from">Forked from %s</string>
+    <string name="navigation_explore">Keşfet</string>
+    <string name="navigation_home">Ev</string>
+    <string name="navigation_inbox">Gelen Kutusu</string>
+    <string name="navigation_profile">Profil</string>
+    <string name="login_welcome">Hoşgeldiniz!</string>
+    <string name="login_sign_in_github">GitHub ile Oturum Aç</string>
+    <string name="action_back">Geri</string>
+    <string name="action_read_more">Daha fazla oku</string>
+    <string name="action_follow_user">Follow %s</string>
+    <string name="action_unfollow_user">Unfollow %s</string>
+    <string name="title_pinned">Sabitlenmiş</string>
+    <string name="noun_starred">Yıldızlanmış</string>
+    <string name="noun_orgs">Organizasyonlar</string>
+    <string name="noun_repos">Depolar</string>
+    <string name="noun_sponsoring">Sponsorlanıyor</string>
+    <string name="noun_forked_repo">Alınmış Depo</string>
+    <string name="noun_empty_repo">Boş Depo</string>
+    <string name="noun_users_avatar">%s\'ın Avatarı</string>
+    <string name="noun_follower_count">%d Takipçi</string>
+    <string name="noun_following_count">%d Takip</string>
+    <string name="noun_followers">Takipçiler</string>
+    <string name="noun_following">Takip Ediliyor</string>
+    <string name="forked_from">%s\'dan Alınmış</string>
 </resources>
