@@ -2,7 +2,7 @@
 <resources>
     <string name="navigation_explore">Keşfet</string>
     <string name="navigation_home">Ev</string>
-    <string name="navigation_inbox">Gelen Kutusu</string>
+    <string name="navigation_inbox">Gelen kutusu</string>
     <string name="navigation_profile">Profil</string>
     <string name="login_welcome">Hoşgeldiniz!</string>
     <string name="login_sign_in_github">GitHub ile Oturum Aç</string>

@@ -2,14 +2,14 @@
 <resources>
     <string name="navigation_explore">Explorar</string>
     <string name="navigation_home">Inicio</string>
-    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_inbox">Inox</string>
     <string name="navigation_profile">Perfil</string>
     <string name="login_welcome">Bem-vindo!</string>
     <string name="login_sign_in_github">Entrar com GitHub</string>
     <string name="action_back">Voltar</string>
     <string name="action_read_more">Leia mais</string>
-    <string name="action_follow_user">Follow %s</string>
-    <string name="action_unfollow_user">Unfollow %s</string>
+    <string name="action_follow_user">%s Seguir agora</string>
+    <string name="action_unfollow_user">%s</string>
     <string name="title_pinned">Fixado</string>
     <string name="noun_starred">Com estrela</string>
     <string name="noun_orgs">Organizações</string>
