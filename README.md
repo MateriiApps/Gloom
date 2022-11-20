@@ -20,6 +20,14 @@
   ![GitHub top language](https://img.shields.io/github/languages/top/MateriApps/Gloom?style=for-the-badge)
 </div>
 
+
+## Screenshots
+
+
+| Profile | Starred | Repositories | Organizations |
+| --------------- | --------------- | --------------- | --------------- |
+| <img src="github/images/Profile.png" width="200px"> | <img src="github/images/Starred.png" width="200px"> | <img src="github/images/Repositories.png" width="200px"> | <img src="github/images/Organizations.png" width="200px"> |
+
 Installation
 ---
  1. Download the [latest actions build](https://nightly.link/MateriApps/Gloom/workflows/android/main/artifact.zip), if on PC then transfer the file over to your phone
@@ -45,6 +53,15 @@ Build
 3. Install on device
     - [Enable usb debugging](https://developer.android.com/studio/debug/dev-options) and plug in your phone
     - Run `adb install app/build/outputs/apk/debug/app-debug.apk`
+    
+## Contributing
+
+This is an open-source project, you can do so without any programming.
+
+Here are a few things you can do:
+
+- [Test and report issues](https://github.com/MateriApps/Gloom/issues/new/choose)
+- [Translate the app into your language](https://crowdin.com/project/gloom)
     
 License
 ---
