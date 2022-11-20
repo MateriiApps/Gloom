@@ -26,7 +26,7 @@
 
 | Profile | Starred | Repositories | Organizations |
 | --------------- | --------------- | --------------- | --------------- |
-| <img src=".github/images/Profile.png" width="200px"> | <img src=".github/images/Starred.png" width="200px"> | <img src=".github/images/Repositories.png" width="200px"> | <img src=".github/images/Organizations.png" width="200px"> |
+| <img src="github/images/Profile.png" width="200px"> | <img src="github/images/Starred.png" width="200px"> | <img src="github/images/Repositories.png" width="200px"> | <img src="github/images/Organizations.png" width="200px"> |
 
 Installation
 ---
