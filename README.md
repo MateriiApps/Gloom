@@ -23,7 +23,10 @@
 
 ## Screenshots
 
-<img src="https://i.imgur.com/aTf8dE1.png" width="200px"> <img src="https://i.imgur.com/C0RxZve.png" width="200px"> <img src="https://i.imgur.com/YOe8Lsi.png" width="200px"> <img src="https://i.imgur.com/RjQEaY8.png" width="200px">
+
+| Profile | Starred | Repositories | Organizations |
+| --------------- | --------------- | --------------- | --------------- |
+| <img src=".github/images/Profile.png" width="200px"> | <img src=".github/images/Starred.png" width="200px"> | <img src=".github/images/Repositories.png" width="200px"> | <img src=".github/images/Organizations.png" width="200px"> |
 
 Installation
 ---
