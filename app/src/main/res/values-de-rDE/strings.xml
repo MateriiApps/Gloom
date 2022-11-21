@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="navigation_explore">Explore</string>
     <string name="navigation_home">Home</string>
     <string name="navigation_inbox">Inbox</string>
     <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
     <string name="login_welcome">Willkommen!</string>
     <string name="login_sign_in_github">Mit GitHub anmelden</string>
     <string name="action_back">Zurück</string>
     <string name="action_read_more">Mehr lesen</string>
     <string name="action_follow_user">Follow %s</string>
     <string name="action_unfollow_user">Unfollow %s</string>
+    <string name="action_sign_out">Sign Out</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="dismiss_nevermind">Nevermind</string>
     <string name="title_pinned">Pinned</string>
     <string name="noun_starred">Starred</string>
     <string name="noun_orgs">Organisationen</string>
@@ -23,4 +27,16 @@
     <string name="noun_followers">Followers</string>
     <string name="noun_following">Following</string>
     <string name="forked_from">Forked from %s</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_description">Theme, code style</string>
+    <string name="settings_accounts">Accounts</string>
+    <string name="settings_accounts_description">Add or switch accounts</string>
+    <string name="settings_sign_out_header">Sign Out?</string>
+    <string name="settings_sign_out_text">Are you sure you want to sign out? You can always sign back in later.</string>
+    <string name="appearance_theme">Theme</string>
+    <string name="appearance_monet">Dynamic Theme</string>
+    <string name="appearance_monet_description">Available on Android 12+</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
 </resources>

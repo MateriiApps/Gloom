@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="navigation_explore">Галерея</string>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="navigation_explore">Обзор</string>
     <string name="navigation_home">Главная</string>
-    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_inbox">Входящие</string>
     <string name="navigation_profile">Профиль</string>
+    <string name="navigation_settings">Settings</string>
     <string name="login_welcome">Добро пожаловать!</string>
     <string name="login_sign_in_github">Авторизоваться c помощью GitHub</string>
     <string name="action_back">Назад</string>
-    <string name="action_read_more">Читать дальше</string>
-    <string name="action_follow_user">Follow %s</string>
-    <string name="action_unfollow_user">Unfollow %s</string>
-    <string name="title_pinned">Pinned</string>
-    <string name="noun_starred">Звёздные</string>
+    <string name="action_read_more">Читать Далее</string>
+    <string name="action_follow_user">Подписаться на %s</string>
+    <string name="action_unfollow_user">Отписаться от %s</string>
+    <string name="action_sign_out">Sign Out</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="dismiss_nevermind">Nevermind</string>
+    <string name="title_pinned">Закреплено</string>
+    <string name="noun_starred">Отмеченные звездой</string>
     <string name="noun_orgs">Организации</string>
     <string name="noun_repos">Репозитории</string>
-    <string name="noun_sponsoring">Sponsoring</string>
-    <string name="noun_forked_repo">Forked Repository</string>
+    <string name="noun_sponsoring">Спонсорство</string>
+    <string name="noun_forked_repo">Ответвлённый Репозиторий</string>
     <string name="noun_empty_repo">Пустой Репозиторий</string>
     <string name="noun_users_avatar">Аватар %s</string>
-    <string name="noun_follower_count">%d Followers</string>
-    <string name="noun_following_count">%d Following</string>
-    <string name="noun_followers">Followers</string>
-    <string name="noun_following">Following</string>
-    <string name="forked_from">Forked from %s</string>
+    <string name="noun_follower_count">%d Подписчиков</string>
+    <string name="noun_following_count">%d Подписаны</string>
+    <string name="noun_followers">Подписчики</string>
+    <string name="noun_following">Подписки</string>
+    <string name="forked_from">Ответвлено от %s</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_description">Theme, code style</string>
+    <string name="settings_accounts">Accounts</string>
+    <string name="settings_accounts_description">Add or switch accounts</string>
+    <string name="settings_sign_out_header">Sign Out?</string>
+    <string name="settings_sign_out_text">Are you sure you want to sign out? You can always sign back in later.</string>
+    <string name="appearance_theme">Theme</string>
+    <string name="appearance_monet">Dynamic Theme</string>
+    <string name="appearance_monet_description">Available on Android 12+</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
 </resources>
