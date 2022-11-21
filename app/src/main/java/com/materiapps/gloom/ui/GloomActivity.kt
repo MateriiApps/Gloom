@@ -16,6 +16,8 @@ import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
 import cafe.adriel.voyager.transitions.SlideTransition
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.materiapps.gloom.domain.manager.AuthManager
+import com.materiapps.gloom.domain.manager.PreferenceManager
+import com.materiapps.gloom.domain.manager.Theme
 import com.materiapps.gloom.domain.repository.GithubAuthRepository
 import com.materiapps.gloom.rest.utils.ifSuccessful
 import com.materiapps.gloom.ui.screens.auth.LandingScreen
@@ -31,6 +33,7 @@ class GloomActivity : ComponentActivity() {
 
     private val authRepo: GithubAuthRepository by inject()
     private val auth: AuthManager by inject()
+    private val prefs: PreferenceManager by inject()
     private lateinit var navigator: Navigator
 
     @OptIn(ExperimentalAnimationApi::class)
@@ -41,10 +44,14 @@ class GloomActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            GloomTheme {
-                val systemUiController = rememberSystemUiController()
-                val isDark = isSystemInDarkTheme()
+            val isDark = when (prefs.theme) {
+                Theme.SYSTEM -> isSystemInDarkTheme()
+                Theme.LIGHT -> false
+                Theme.DARK -> true
+            }
 
+            GloomTheme(isDark, prefs.monet) {
+                val systemUiController = rememberSystemUiController()
                 val defaultScreen = if (auth.isSignedIn)
                     RootScreen()
                 else

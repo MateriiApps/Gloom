@@ -1,14 +1,22 @@
 package com.materiapps.gloom.ui.theme
 
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.Typography
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 @Composable
-fun GloomTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val dynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+fun GloomTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    dynamicColor: Boolean,
+    content: @Composable () -> Unit
+) {
     val colors = when {
         dynamicColor && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
         dynamicColor && !darkTheme -> dynamicLightColorScheme(LocalContext.current)

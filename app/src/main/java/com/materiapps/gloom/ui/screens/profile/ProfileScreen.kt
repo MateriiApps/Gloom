@@ -33,6 +33,7 @@ import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material.icons.outlined.PersonAddAlt
 import androidx.compose.material.icons.outlined.Place
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
@@ -87,6 +88,7 @@ import com.materiapps.gloom.ui.screens.list.OrgsListScreen
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiapps.gloom.ui.screens.list.SponsoringScreen
 import com.materiapps.gloom.ui.screens.list.StarredReposListScreen
+import com.materiapps.gloom.ui.screens.settings.SettingsScreen
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.widgets.ReadMeCard
 import com.materiapps.gloom.ui.widgets.repo.RepoItem
@@ -173,6 +175,8 @@ open class ProfileScreen(
         viewModel: ProfileViewModel,
         scrollBehavior: TopAppBarScrollBehavior
     ) {
+        val nav = LocalNavigator.current
+
         TopAppBar(
             title = {
                 val opacity = scrollBehavior.state.overlappedFraction
@@ -191,6 +195,11 @@ open class ProfileScreen(
             scrollBehavior = scrollBehavior,
             actions = {
                 FollowButton(viewModel)
+                if (user.isBlank()) {
+                    IconButton(onClick = { nav?.navigate(SettingsScreen()) }) {
+                        Icon(Icons.Outlined.Settings, stringResource(R.string.navigation_settings))
+                    }
+                }
             }
         )
     }

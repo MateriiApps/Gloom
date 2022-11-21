@@ -9,6 +9,9 @@ object Credentials {
 
     val CLIENT_SECRET = String(Base64.decode(BuildConfig.CLIENT_SECRET, Base64.DEFAULT))
 
+    val BASIC_TOKEN: String =
+        Base64.encodeToString("$CLIENT_ID:$CLIENT_SECRET".toByteArray(), Base64.NO_WRAP)
+
 }
 
 object URLs {
@@ -20,6 +23,7 @@ object URLs {
     object AUTH {
         const val ACCESS_TOKEN = "https://github.com/login/oauth/access_token"
         const val LOGIN = "https://github.com/login/oauth/authorize"
+        fun DELETE_TOKEN(clientId: String) = "$BASE_URL/applications/$clientId/token"
     }
 
     object REPOS {

@@ -8,4 +8,6 @@ class GithubAuthRepository(
 
     suspend fun getAccessToken(code: String) = service.getAccessToken(code)
 
+    suspend fun deleteAccessToken(token: String) = service.deleteAccessToken(token)
+
 }
