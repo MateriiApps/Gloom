@@ -28,6 +28,10 @@
 | --------------- | --------------- | --------------- | --------------- |
 | <img src="github/images/Profile.png" width="200px"> | <img src="github/images/Starred.png" width="200px"> | <img src="github/images/Repositories.png" width="200px"> | <img src="github/images/Organizations.png" width="200px"> |
 
+## Roadmap
+
+You can view the project roadmap [here](https://github.com/orgs/MateriApps/projects/2)
+
 Installation
 ---
  1. Download the [latest actions build](https://nightly.link/MateriApps/Gloom/workflows/android/main/artifact.zip), if on PC then transfer the file over to your phone
@@ -53,7 +57,7 @@ Build
 3. Install on device
     - [Enable usb debugging](https://developer.android.com/studio/debug/dev-options) and plug in your phone
     - Run `adb install app/build/outputs/apk/debug/app-debug.apk`
-    
+
 ## Contributing
 
 This is an open-source project, you can do so without any programming.
@@ -68,3 +72,4 @@ License
 Gloom is licensed under the GNU General Public License v3.0
 
 [![License: GPLv2](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://github.com/MateriApps/Gloom/blob/main/LICENSE)
+)
