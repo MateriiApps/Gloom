@@ -51,9 +51,28 @@ class GraphQLRepository(
     ) = service.getSponsoring(username, after, count)
 
     suspend fun followUser(id: String) =
-        service.followUser(id).transform { it.followUser?.user?.viewerIsFollowing }
+        service.followUser(id).transform {
+            (it.followUser?.user?.viewerIsFollowing
+                ?: false) to (it.followUser?.user?.followers?.totalCount ?: 0)
+        }
 
     suspend fun unfollowUser(id: String) =
-        service.unfollowUser(id).transform { it.unfollowUser?.user?.viewerIsFollowing }
+        service.unfollowUser(id).transform {
+            (it.unfollowUser?.user?.viewerIsFollowing
+                ?: false) to (it.unfollowUser?.user?.followers?.totalCount ?: 0)
+        }
 
+    suspend fun getFeed(cursor: String? = null) = service.getFeed(cursor)
+
+    suspend fun starRepo(id: String) = service.starRepo(id).transform {
+        (it.addStar?.starrable?.viewerHasStarred
+            ?: false) to (it.addStar?.starrable?.stargazers?.totalCount ?: 0)
+    }
+
+    suspend fun unstarRepo(id: String) = service.unstarRepo(id).transform {
+        (it.removeStar?.starrable?.viewerHasStarred
+            ?: false) to (it.removeStar?.starrable?.stargazers?.totalCount ?: 0)
+    }
+
+    suspend fun identify() = service.identify().transform { it.viewer }
 }

@@ -1,0 +1,163 @@
+query Feed($after: String) {
+  viewer {
+    login
+    dashboard {
+      feed {
+        items(
+          first: 100
+          after: $after
+          itemTypes: [
+            STARRED_REPOSITORY_FEED_ITEM
+            PUBLISHED_RELEASE_FEED_ITEM
+            CREATED_REPOSITORY_FEED_ITEM
+            FOLLOWED_USER_FEED_ITEM
+            REPOSITORY_RECOMMENDATION_FEED_ITEM
+            FORKED_REPOSITORY_FEED_ITEM
+            FOLLOW_RECOMMENDATION_FEED_ITEM
+          ]
+        ) {
+          totalCount
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          nodes {
+            __typename
+            ...StarredFeedItemFragment
+            ...CreatedRepoItemFragment
+            ...NewReleaseItemFragment
+            ...FollowedUserFeedItemFragment
+            ...RecommendedRepositoryFeedItemFragment
+            ...ForkedRepositoryFeedItemFragment
+            ...FollowRecommendationFeedItemFragment
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment FeedRepository on Repository {
+  id
+  name
+  owner {
+    __typename
+    login
+    avatarUrl
+  }
+  description
+  stargazerCount
+  primaryLanguage {
+    color
+    name
+  }
+  contributorsCount
+  openGraphImageUrl
+  viewerHasStarred
+}
+
+fragment FeedUser on User {
+  id
+  login
+  name
+  avatarUrl
+  bio
+  isFollowingViewer
+  isViewer
+  viewerIsFollowing
+  repositories {
+    totalCount
+  }
+  followers {
+    totalCount
+  }
+}
+
+fragment FeedOrg on Organization {
+  id
+  login
+  name
+  avatarUrl
+  description
+  repositories {
+    totalCount
+  }
+}
+
+fragment ActorFragment on Actor {
+  login
+  avatarUrl
+}
+
+fragment NewReleaseItemFragment on PublishedReleaseFeedItem {
+  actor {
+    ...ActorFragment
+  }
+  release {
+    name
+    tagName
+    isLatest
+    tagCommit {
+      abbreviatedOid
+    }
+    descriptionHTML
+    repository {
+      ...FeedRepository
+    }
+  }
+}
+
+fragment CreatedRepoItemFragment on CreatedRepositoryFeedItem {
+  actor {
+    ...ActorFragment
+  }
+  repository {
+    ...FeedRepository
+  }
+}
+
+fragment StarredFeedItemFragment on StarredRepositoryFeedItem {
+  actor {
+    ...ActorFragment
+  }
+  repository {
+    ...FeedRepository
+  }
+}
+
+fragment FollowedUserFeedItemFragment on FollowedUserFeedItem {
+  createdAt
+  follower {
+    login
+    avatarUrl
+  }
+  followee {
+    __typename
+    ...FeedUser
+    ...FeedOrg
+  }
+}
+
+fragment FollowRecommendationFeedItemFragment on FollowRecommendationFeedItem {
+  createdAt
+  followee {
+    __typename
+    ...FeedUser
+    ...FeedOrg
+  }
+}
+
+fragment RecommendedRepositoryFeedItemFragment on RepositoryRecommendationFeedItem {
+  repository {
+    ...FeedRepository
+  }
+}
+
+fragment ForkedRepositoryFeedItemFragment on ForkedRepositoryFeedItem {
+  actor {
+    ...ActorFragment
+  }
+  repository {
+    ...FeedRepository
+  }
+}

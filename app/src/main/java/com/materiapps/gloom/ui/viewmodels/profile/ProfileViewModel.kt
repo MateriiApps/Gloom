@@ -73,11 +73,11 @@ class ProfileViewModel(
         coroutineScope.launch {
             if (isFollowing == false)
                 gqlRepo.followUser(user!!.id!!).ifSuccessful {
-                    user = user!!.copy(isFollowing = it)
+                    user = user!!.copy(isFollowing = it.first)
                 }
             else
                 gqlRepo.unfollowUser(user!!.id!!).ifSuccessful {
-                    user = user!!.copy(isFollowing = it)
+                    user = user!!.copy(isFollowing = it.first)
                 }
         }
     }

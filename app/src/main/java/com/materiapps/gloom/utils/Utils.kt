@@ -2,7 +2,6 @@ package com.materiapps.gloom.utils
 
 import android.content.Context
 import android.net.Uri
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -36,6 +35,18 @@ val Color.hexCode: String
         val g: Int = (green * 255).toInt()
         val b: Int = (blue * 255).toInt()
         return java.lang.String.format(Locale.getDefault(), "%02X%02X%02X%02X", r, g, b, a)
+    }
+
+val String.parsedColor: Color
+    get() {
+        val langColor =
+            if (length == 4) this + substring(1..3) else this
+
+        return try {
+            Color(android.graphics.Color.parseColor(langColor))
+        } catch (e: Throwable) {
+            Color.Black
+        }
     }
 
 fun Context.openLink(url: Uri) {

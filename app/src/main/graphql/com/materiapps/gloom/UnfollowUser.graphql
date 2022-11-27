@@ -4,6 +4,9 @@ mutation UnfollowUser($id: ID!) {
   }) {
     user {
       viewerIsFollowing
+      followers {
+        totalCount
+      }
     }
   }
 }
