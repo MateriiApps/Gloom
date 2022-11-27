@@ -13,8 +13,14 @@
     <string name="action_unfollow_user">Unfollow %s</string>
     <string name="action_sign_out">Sign Out</string>
     <string name="action_confirm">Confirm</string>
+    <string name="action_star">Star</string>
+    <string name="action_unstar">Unstar</string>
+    <string name="action_follow">Follow</string>
+    <string name="action_unfollow">Unfollow</string>
+    <string name="action_view_details">Details</string>
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="title_pinned">Pinned</string>
+    <string name="adj_latest">Latest</string>
     <string name="noun_starred">Starred</string>
     <string name="noun_orgs">Organizations</string>
     <string name="noun_repos">Repositories</string>
@@ -26,7 +32,24 @@
     <string name="noun_following_count">%d Following</string>
     <string name="noun_followers">Followers</string>
     <string name="noun_following">Following</string>
+    <string name="noun_repo">Repository</string>
+    <string name="noun_release">Release</string>
+    <string name="noun_tag">Tag</string>
+    <string name="noun_followed">Followed</string>
+    <plurals name="noun_contributors">
+        <item quantity="other">%d Contributors</item>
+    </plurals>
+    <plurals name="repositories">
+        <item quantity="other">%d Repositories</item>
+    </plurals>
     <string name="forked_from">Forked from %s</string>
+    <string name="created_repo">§name§%1$s§ §text§created a repository§</string>
+    <string name="starred_repo">§name§%1$s§ §text§starred a repository§</string>
+    <string name="forked_repo">§name§%1$s§ §text§forked a repository§</string>
+    <string name="followed_user">§name§%1$s§ §text§followed§ §other§%2$s§</string>
+    <string name="followed_you">§name§%1$s§ §text§followed you§</string>
+    <string name="published_release">§name§%1$s§ §text§published a release§</string>
+    <string name="recommended">Recommended for you</string>
     <string name="settings_appearance">Appearance</string>
     <string name="settings_appearance_description">Theme, code style</string>
     <string name="settings_accounts">Accounts</string>
