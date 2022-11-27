@@ -21,6 +21,7 @@
     <string name="action_follow">Follow</string>
     <string name="action_unfollow">Unfollow</string>
     <string name="action_view_details">Details</string>
+    <string name="action_share">Share</string>
 
     <string name="dismiss_nevermind">Nevermind</string>
 

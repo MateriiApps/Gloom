@@ -1,6 +1,7 @@
 package com.materiapps.gloom.utils
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -54,6 +55,14 @@ fun Context.openLink(url: Uri) {
     openCustomTab(url.toString(), force = false)
 }
 
+fun Context.shareText(text: String) = Intent(Intent.ACTION_SEND).apply {
+    putExtra(Intent.EXTRA_TEXT, text)
+    type = "text/plain"
+    Intent.createChooser(this, null).also {
+        it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        this@shareText.startActivity(it)
+    }
+}
 
 @Composable
 fun generateMdHtml(

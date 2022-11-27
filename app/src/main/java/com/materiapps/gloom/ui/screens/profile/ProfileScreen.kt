@@ -26,6 +26,7 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.HowToReg
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Business
 import androidx.compose.material.icons.outlined.Email
@@ -34,6 +35,7 @@ import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material.icons.outlined.PersonAddAlt
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
@@ -60,6 +62,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.res.painterResource
@@ -94,6 +97,7 @@ import com.materiapps.gloom.ui.widgets.ReadMeCard
 import com.materiapps.gloom.ui.widgets.repo.RepoItem
 import com.materiapps.gloom.utils.EmojiUtils
 import com.materiapps.gloom.utils.navigate
+import com.materiapps.gloom.utils.shareText
 import org.koin.core.parameter.parametersOf
 
 open class ProfileScreen(
@@ -176,6 +180,7 @@ open class ProfileScreen(
         scrollBehavior: TopAppBarScrollBehavior
     ) {
         val nav = LocalNavigator.current
+        val ctx = LocalContext.current
 
         TopAppBar(
             title = {
@@ -194,7 +199,14 @@ open class ProfileScreen(
             navigationIcon = { BackButton() },
             scrollBehavior = scrollBehavior,
             actions = {
+                if (!viewModel.user?.username.isNullOrBlank()) {
+                    IconButton(onClick = { ctx.shareText("https://github.com/${viewModel.user!!.username}") }) {
+                        Icon(Icons.Filled.Share, stringResource(R.string.action_share))
+                    }
+                }
+
                 FollowButton(viewModel)
+
                 if (user.isBlank()) {
                     IconButton(onClick = { nav?.navigate(SettingsScreen()) }) {
                         Icon(Icons.Outlined.Settings, stringResource(R.string.navigation_settings))
