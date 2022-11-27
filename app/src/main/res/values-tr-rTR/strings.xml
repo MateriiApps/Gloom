@@ -18,6 +18,7 @@
     <string name="action_follow">Follow</string>
     <string name="action_unfollow">Unfollow</string>
     <string name="action_view_details">Details</string>
+    <string name="action_share">Share</string>
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="title_pinned">Sabitlenmiş</string>
     <string name="adj_latest">Latest</string>
