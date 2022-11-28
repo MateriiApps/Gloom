@@ -3,6 +3,7 @@ package com.materiapps.gloom.ui.screens.profile
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -35,7 +36,6 @@ import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material.icons.outlined.PersonAddAlt
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
@@ -86,6 +86,7 @@ import com.materiapps.gloom.domain.models.ModelUser
 import com.materiapps.gloom.domain.models.Pinnable
 import com.materiapps.gloom.rest.dto.user.User
 import com.materiapps.gloom.ui.components.BackButton
+import com.materiapps.gloom.ui.components.BadgedItem
 import com.materiapps.gloom.ui.components.RefreshIndicator
 import com.materiapps.gloom.ui.screens.list.OrgsListScreen
 import com.materiapps.gloom.ui.screens.list.RepositoryListScreen
@@ -98,6 +99,7 @@ import com.materiapps.gloom.ui.widgets.repo.RepoItem
 import com.materiapps.gloom.utils.EmojiUtils
 import com.materiapps.gloom.utils.navigate
 import com.materiapps.gloom.utils.shareText
+import com.materiapps.gloom.utils.showToast
 import org.koin.core.parameter.parametersOf
 
 open class ProfileScreen(
@@ -229,16 +231,8 @@ open class ProfileScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
         ) {
-            AsyncImage(
-                model = user.avatar,
-                contentDescription = stringResource(
-                    R.string.noun_users_avatar,
-                    user.displayName ?: "ghost"
-                ),
-                modifier = Modifier
-                    .size(90.dp)
-                    .clip(if (user.type == User.Type.USER) CircleShape else RoundedCornerShape(28.dp))
-            )
+            Avatar(user)
+
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -346,10 +340,41 @@ open class ProfileScreen(
     }
 
     @Composable
+    private fun Avatar(user: ModelUser) {
+        val ctx = LocalContext.current
+
+        val (badge, msg) =
+            if (user.isSupporter) painterResource(R.drawable.img_badge_sponsor) to R.string.badge_supporter
+            else if (user.id == "MDQ6VXNlcjQ0OTkyNTM3") painterResource(R.drawable.img_badge_dev) to R.string.badge_dev
+            else null to null
+
+        BadgedItem(badge = if (badge != null && msg != null) { ->
+            Image(
+                painter = badge,
+                contentDescription = stringResource(msg),
+                modifier = Modifier
+                    .size(24.dp)
+                    .clickable { ctx.showToast(ctx.getString(msg)) }
+            )
+        } else null) {
+            AsyncImage(
+                model = user.avatar,
+                contentDescription = stringResource(
+                    R.string.noun_users_avatar,
+                    user.displayName ?: "ghost"
+                ),
+                modifier = Modifier
+                    .size(90.dp)
+                    .clip(if (user.type == User.Type.USER) CircleShape else RoundedCornerShape(28.dp))
+            )
+        }
+    }
+
+    @Composable
     private fun Status(
         status: ModelStatus
     ) {
-        if(status.emoji == null && status.message == null) return
+        if (status.emoji == null && status.message == null) return
         Box(modifier = Modifier.padding(10.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,

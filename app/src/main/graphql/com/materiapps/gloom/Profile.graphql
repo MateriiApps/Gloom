@@ -2,12 +2,18 @@ query Profile {
   viewer {
     ...UserProfile
   }
+  user(login: "wingio"){
+    viewerIsSponsoring
+  }
 }
 
 query UserProfileQuery($username: String!) {
   repositoryOwner(login: $username) {
     ...OrgProfile
     ...UserProfile
+  }
+  user(login: "wingio"){
+    isSponsoredBy(accountLogin: $username)
   }
 }
 

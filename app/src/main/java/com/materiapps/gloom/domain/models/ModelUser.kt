@@ -39,7 +39,8 @@ data class ModelUser(
     val isMember: Boolean? = null,
     val pinnedItems: List<Pinnable?> = emptyList(),
     val canFollow: Boolean? = null,
-    val isFollowing: Boolean? = null
+    val isFollowing: Boolean? = null,
+    val isSupporter: Boolean = false
 ) {
 
     companion object {
@@ -70,37 +71,41 @@ data class ModelUser(
             )
         }
 
-        fun fromProfileQuery(pq: ProfileQuery.Data) = with(pq.viewer.userProfile) {
-            ModelUser(
-                id = id,
-                username = login,
-                displayName = name,
-                bio = bio,
-                avatar = avatarUrl.toString(),
-                readme = profileReadme?.contentHTML?.toString(),
-                type = User.Type.USER,
-                company = company,
-                website = websiteUrl.toString(),
-                twitterUsername = twitterUsername,
-                repos = repositories.totalCount.toLong(),
-                orgs = organizations.totalCount.toLong(),
-                starred = starredRepositories.totalCount.toLong(),
-                sponsoring = sponsoring.totalCount.toLong(),
-                followers = followers.totalCount.toLong(),
-                following = following.totalCount.toLong(),
-                status = ModelStatus.fromProfileQuery(pq),
-                email = email,
-                location = location,
-                pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
-                    ?: emptyList(),
-                canFollow = viewerCanFollow,
-                isFollowing = viewerIsFollowing
-            )
+        fun fromProfileQuery(pq: ProfileQuery.Data) = with(pq) {
+            with(viewer.userProfile) {
+                ModelUser(
+                    id = id,
+                    username = login,
+                    displayName = name,
+                    bio = bio,
+                    avatar = avatarUrl.toString(),
+                    readme = profileReadme?.contentHTML?.toString(),
+                    type = User.Type.USER,
+                    company = company,
+                    website = websiteUrl.toString(),
+                    twitterUsername = twitterUsername,
+                    repos = repositories.totalCount.toLong(),
+                    orgs = organizations.totalCount.toLong(),
+                    starred = starredRepositories.totalCount.toLong(),
+                    sponsoring = sponsoring.totalCount.toLong(),
+                    followers = followers.totalCount.toLong(),
+                    following = following.totalCount.toLong(),
+                    status = ModelStatus.fromProfileQuery(pq),
+                    email = email,
+                    location = location,
+                    pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
+                        ?: emptyList(),
+                    canFollow = viewerCanFollow,
+                    isFollowing = viewerIsFollowing,
+                    isSupporter = user?.viewerIsSponsoring ?: false
+                )
+            }
         }
 
         fun fromUserProfileQuery(upq: UserProfileQuery.Data) = with(upq) {
             val isUser = upq.repositoryOwner?.userProfile != null
             val isOrg = upq.repositoryOwner?.orgProfile != null && !isUser
+            val isSupporter = user?.isSponsoredBy ?: false
 
             if (isUser) {
                 with(upq.repositoryOwner!!.userProfile!!) {
@@ -127,7 +132,8 @@ data class ModelUser(
                         pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
                             ?: emptyList(),
                         canFollow = viewerCanFollow,
-                        isFollowing = viewerIsFollowing
+                        isFollowing = viewerIsFollowing,
+                        isSupporter = isSupporter
                     )
                 }
             } else if (isOrg) {
@@ -147,7 +153,8 @@ data class ModelUser(
                         sponsoring = sponsoring.totalCount.toLong(),
                         isMember = viewerIsAMember,
                         pinnedItems = pinnedItems.nodes?.map { ModelRepo.fromPinnedRepo(it?.pinnedRepo) }
-                            ?: emptyList()
+                            ?: emptyList(),
+                        isSupporter = isSupporter
                     )
                 }
             } else {

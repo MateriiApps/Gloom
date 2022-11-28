@@ -3,6 +3,7 @@ package com.materiapps.gloom.utils
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -49,6 +50,10 @@ val String.parsedColor: Color
             Color.Black
         }
     }
+
+fun Context.showToast(text: String) {
+    Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+}
 
 fun Context.openLink(url: Uri) {
     // TODO: Setting to disable custom tabs
