@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="navigation_explore">Explorar</string>
     <string name="navigation_home">Inicio</string>
-    <string name="navigation_inbox">Inox</string>
+    <string name="navigation_inbox">Inbox</string>
     <string name="navigation_profile">Perfil</string>
     <string name="navigation_settings">Configurações</string>
     <string name="login_welcome">Bem-vindo!</string>
@@ -65,6 +65,6 @@
     <string name="theme_system">Sistema</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
-    <string name="badge_dev">Gloom Developer</string>
-    <string name="badge_supporter">Gloom Supporter</string>
+    <string name="badge_dev">Desenvolvedor do Gloom</string>
+    <string name="badge_supporter">Apoiador do Gloom</string>
 </resources>
