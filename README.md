@@ -72,4 +72,3 @@ License
 Gloom is licensed under the GNU General Public License v3.0
 
 [![License: GPLv2](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://github.com/MateriApps/Gloom/blob/main/LICENSE)
-)
