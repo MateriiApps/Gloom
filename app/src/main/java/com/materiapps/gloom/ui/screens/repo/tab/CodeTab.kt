@@ -1,5 +1,6 @@
 package com.materiapps.gloom.ui.screens.repo.tab
 
+<<<<<<< HEAD
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -97,4 +98,19 @@ class CodeTab(
         }
     }
 
+=======
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+
+@Composable
+fun CodeTab() {
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Text("Code")
+    }
+>>>>>>> 430f7f6 (Setup and details tab)
 }

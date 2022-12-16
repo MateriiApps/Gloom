@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+<<<<<<< HEAD
 import androidx.compose.ui.res.stringResource
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
@@ -22,4 +23,14 @@ class ReleasesTab: Tab {
 
     }
 
+=======
+
+@Composable
+fun ReleasesTab() {
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Text("Releases")
+    }
+>>>>>>> 430f7f6 (Setup and details tab)
 }

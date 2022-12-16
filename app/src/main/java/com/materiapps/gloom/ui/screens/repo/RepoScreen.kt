@@ -9,7 +9,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+<<<<<<< HEAD
 import androidx.compose.foundation.layout.fillMaxSize
+=======
+>>>>>>> 430f7f6 (Setup and details tab)
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -29,8 +32,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
+<<<<<<< HEAD
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
+=======
+>>>>>>> 430f7f6 (Setup and details tab)
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -39,7 +45,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+<<<<<<< HEAD
 import androidx.compose.runtime.rememberCoroutineScope
+=======
+>>>>>>> 430f7f6 (Setup and details tab)
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -57,9 +66,12 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import coil.compose.AsyncImage
+<<<<<<< HEAD
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+=======
+>>>>>>> 430f7f6 (Setup and details tab)
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.components.BackButton
 import com.materiapps.gloom.ui.screens.profile.ProfileScreen
@@ -71,7 +83,10 @@ import com.materiapps.gloom.ui.screens.repo.tab.ReleasesTab
 import com.materiapps.gloom.ui.viewmodels.repo.RepoViewModel
 import com.materiapps.gloom.utils.navigate
 import com.materiapps.gloom.utils.shareText
+<<<<<<< HEAD
 import kotlinx.coroutines.launch
+=======
+>>>>>>> 430f7f6 (Setup and details tab)
 import org.koin.core.parameter.parametersOf
 import java.util.UUID
 
@@ -86,15 +101,22 @@ class RepoScreen(
     override fun Content() = Screen()
 
     @Composable
+<<<<<<< HEAD
     @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class,
         ExperimentalPagerApi::class
     )
+=======
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
+>>>>>>> 430f7f6 (Setup and details tab)
     private fun Screen(
         viewModel: RepoViewModel = getScreenModel { parametersOf(owner to name) }
     ) {
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+<<<<<<< HEAD
         val pagerState = rememberPagerState()
         val coroutineScope = rememberCoroutineScope()
+=======
+>>>>>>> 430f7f6 (Setup and details tab)
 
         Scaffold(
             topBar = { Toolbar(scrollBehavior, viewModel) }
@@ -125,7 +147,11 @@ class RepoScreen(
                 )
 
                 ScrollableTabRow(
+<<<<<<< HEAD
                     selectedTabIndex = pagerState.currentPage,
+=======
+                    selectedTabIndex = viewModel.currentTab.ordinal,
+>>>>>>> 430f7f6 (Setup and details tab)
                     edgePadding = 0.dp,
                     divider = {
                         Divider(
@@ -136,6 +162,7 @@ class RepoScreen(
                     containerColor = tabColor,
                     modifier = Modifier.fillMaxWidth()
                 ) {
+<<<<<<< HEAD
                     viewModel.tabs.forEachIndexed { i, tab ->
                         Tab(
                             selected = pagerState.currentPage == i,
@@ -146,11 +173,23 @@ class RepoScreen(
                             },
                             text = {
                                 val badgeCount = viewModel.badgeCounts[i]
+=======
+                    RepoViewModel.Tab.values().forEach {
+                        Tab(
+                            selected = viewModel.currentTab == it,
+                            onClick = { viewModel.selectTab(it) },
+                            text = {
+                                val badgeCount = viewModel.badgeCounts[it.ordinal]
+>>>>>>> 430f7f6 (Setup and details tab)
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                                 ) {
+<<<<<<< HEAD
                                     Text(tab.options.title)
+=======
+                                    Text(stringResource(it.nameRes))
+>>>>>>> 430f7f6 (Setup and details tab)
                                     if (badgeCount != null && badgeCount > 0)
                                         Text(
                                             text = badgeCount.toString(),
@@ -170,6 +209,7 @@ class RepoScreen(
                     }
                 }
 
+<<<<<<< HEAD
                 HorizontalPager(
                     count = viewModel.tabs.size,
                     state = pagerState
@@ -181,6 +221,17 @@ class RepoScreen(
                             .fillMaxSize()
                     ) {
                         tab.Content()
+=======
+                AnimatedContent(
+                    targetState = viewModel.currentTab
+                ) {
+                    when (it) {
+                        RepoViewModel.Tab.DETAILS -> DetailsTab(viewModel)
+                        RepoViewModel.Tab.CODE -> CodeTab()
+                        RepoViewModel.Tab.ISSUES -> IssuesTab()
+                        RepoViewModel.Tab.PRs -> PullRequestTab()
+                        RepoViewModel.Tab.RELEASES -> ReleasesTab()
+>>>>>>> 430f7f6 (Setup and details tab)
                     }
                 }
             }
