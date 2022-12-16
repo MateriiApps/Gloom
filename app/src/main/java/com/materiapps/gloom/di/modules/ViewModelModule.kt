@@ -9,6 +9,7 @@ import com.materiapps.gloom.ui.viewmodels.list.StarredReposListViewModel
 import com.materiapps.gloom.ui.viewmodels.profile.FollowersViewModel
 import com.materiapps.gloom.ui.viewmodels.profile.FollowingViewModel
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
+import com.materiapps.gloom.ui.viewmodels.repo.RepoViewModel
 import com.materiapps.gloom.ui.viewmodels.settings.AppearanceSettingsViewModel
 import com.materiapps.gloom.ui.viewmodels.settings.SettingsViewModel
 import org.koin.core.module.dsl.factoryOf
@@ -27,5 +28,6 @@ fun viewModelModule() = module {
     factoryOf(::SettingsViewModel)
     factoryOf(::AppearanceSettingsViewModel)
     factoryOf(::HomeViewModel)
+    factoryOf(::RepoViewModel)
 
 }
