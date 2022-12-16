@@ -75,4 +75,10 @@ class GraphQLRepository(
     }
 
     suspend fun identify() = service.identify().transform { it.viewer }
+
+    suspend fun getRepoOverview(owner: String, name: String) =
+        service.getRepoName(owner, name).transform { it.repository?.repoOverview }
+
+    suspend fun getRepoDetails(owner: String, name: String) =
+        service.getRepoDetails(owner, name).transform { it.repository?.repoDetails }
 }

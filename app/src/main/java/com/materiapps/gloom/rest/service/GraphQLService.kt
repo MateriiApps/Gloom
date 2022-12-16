@@ -11,7 +11,9 @@ import com.materiapps.gloom.FollowingQuery
 import com.materiapps.gloom.IdentifyQuery
 import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.ProfileQuery
+import com.materiapps.gloom.RepoDetailsQuery
 import com.materiapps.gloom.RepoListQuery
+import com.materiapps.gloom.RepoNameQuery
 import com.materiapps.gloom.SponsoringQuery
 import com.materiapps.gloom.StarRepoMutation
 import com.materiapps.gloom.StarredReposQuery
@@ -176,6 +178,18 @@ class GraphQLService(
 
     suspend fun identify() = withContext(Dispatchers.IO) {
         client.query(IdentifyQuery())
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoName(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(RepoNameQuery(owner, name))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoDetails(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(RepoDetailsQuery(owner, name))
             .addToken()
             .response()
     }
