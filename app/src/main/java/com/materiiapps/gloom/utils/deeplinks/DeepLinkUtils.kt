@@ -1,6 +1,7 @@
 package com.materiiapps.gloom.utils.deeplinks
 
 import cafe.adriel.voyager.navigator.Navigator
+import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiiapps.gloom.ui.screens.list.StarredReposListScreen
@@ -22,7 +23,7 @@ fun DeepLinkHandler.addAllRoutes(navigator: Navigator, auth: AuthManager) {
     addOnLinkVisitedListener("/{owner}/{repo}") { params, _ ->
         val owner = params["owner"]!!
         val repo = params["repo"]!!
-        println("Repo $repo by $owner")
+        navigator push RepoScreen(owner, repo)
     }
 
     addOnLinkVisitedListener("/dashboard") { _, _ ->

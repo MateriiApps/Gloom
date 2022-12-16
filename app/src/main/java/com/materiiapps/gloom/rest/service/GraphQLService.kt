@@ -19,6 +19,10 @@ import com.materiiapps.gloom.gql.UnfollowUserMutation
 import com.materiiapps.gloom.gql.UnstarRepoMutation
 import com.materiiapps.gloom.gql.UserProfileQuery
 import com.materiiapps.gloom.domain.manager.AuthManager
+import com.materiiapps.gloom.gql.DefaultBranchQuery
+import com.materiiapps.gloom.gql.RepoDetailsQuery
+import com.materiiapps.gloom.gql.RepoFilesQuery
+import com.materiiapps.gloom.gql.RepoNameQuery
 import com.materiiapps.gloom.rest.utils.response
 import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.Dispatchers
@@ -176,6 +180,30 @@ class GraphQLService(
 
     suspend fun identify() = withContext(Dispatchers.IO) {
         client.query(IdentifyQuery())
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoName(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(RepoNameQuery(owner, name))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoDetails(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(RepoDetailsQuery(owner, name))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) = withContext(Dispatchers.IO) {
+        client.query(RepoFilesQuery(owner, name, branchAndPath))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getDefaultBranch(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(DefaultBranchQuery(owner, name))
             .addToken()
             .response()
     }

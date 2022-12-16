@@ -22,6 +22,8 @@
     <string name="action_unfollow">Unfollow</string>
     <string name="action_view_details">Details</string>
     <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
 
     <string name="dismiss_nevermind">Nevermind</string>
 
@@ -32,9 +34,11 @@
     <string name="noun_starred">Starred</string>
     <string name="noun_orgs">Organizations</string>
     <string name="noun_repos">Repositories</string>
+    <string name="noun_contributors">Contributors</string>
     <string name="noun_sponsoring">Sponsoring</string>
     <string name="noun_forked_repo">Forked Repository</string>
     <string name="noun_empty_repo">Empty Repository</string>
+    <string name="noun_license">License</string>
     <string name="noun_users_avatar">%s\'s avatar</string>
     <string name="noun_follower_count">%d Followers</string>
     <string name="noun_following_count">%d Following</string>
@@ -44,6 +48,7 @@
     <string name="noun_release">Release</string>
     <string name="noun_tag">Tag</string>
     <string name="noun_followed">Followed</string>
+    <string name="noun_other">Other</string>
     <plurals name="noun_contributors">
         <item quantity="one">%d Contributor</item>
         <item quantity="other">%d Contributors</item>
@@ -52,6 +57,14 @@
     <plurals name="repositories">
         <item quantity="one">%d Repository</item>
         <item quantity="other">%d Repositories</item>
+    </plurals>
+    <plurals name="stars">
+        <item quantity="one">%d Star</item>
+        <item quantity="other">%d Stars</item>
+    </plurals>
+    <plurals name="forks">
+        <item quantity="one">%d Fork</item>
+        <item quantity="other">%d Forks</item>
     </plurals>
 
     <string name="forked_from">Forked from %s</string>
@@ -80,5 +93,16 @@
 
     <string name="badge_dev">Gloom Developer</string>
     <string name="badge_supporter">Gloom Supporter</string>
+
+    <string name="repo_tab_details">Details</string>
+    <string name="repo_tab_code">Code</string>
+    <string name="repo_tab_issues">Issues</string>
+    <string name="repo_tab_prs">Pull Requests</string>
+    <string name="repo_tab_releases">Releases</string>
+
+    <plurals name="plural_language">
+        <item quantity="one">Language</item>
+        <item quantity="other">Languages</item>
+    </plurals>
 
 </resources>

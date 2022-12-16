@@ -16,6 +16,12 @@ class DeepLinkHandler {
         linkVisitedListeners[r.split("/")] = callback
     }
 
+    fun removeOnLinkVisitedListener(route: String) {
+        val r = route.removePrefix("/").split("/")
+
+        linkVisitedListeners.remove(r)
+    }
+
     private fun getQueryParams(path: String): Map<String, String> {
         val parts = path.split("?")
 

@@ -1,0 +1,4 @@
+fragment ContributorAvatar on User {
+    avatarUrl
+    login
+}

@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Circle
@@ -30,10 +29,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
+import cafe.adriel.voyager.navigator.LocalNavigator
+import com.materiiapps.gloom.ui.screens.repo.RepoScreen
+import com.materiiapps.gloom.utils.navigate
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.domain.models.ModelRepo
-import com.materiiapps.gloom.rest.dto.user.User
 import com.materiiapps.gloom.ui.components.Avatar
 
 @Composable
@@ -41,6 +41,7 @@ fun RepoItem(
     repo: ModelRepo,
     card: Boolean = false
 ) {
+    val nav = LocalNavigator.current
     Column(
         Modifier
             .run {
@@ -49,7 +50,10 @@ fun RepoItem(
                 } else this
             }
             .background(if (card) MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp) else Color.Transparent)
-            .clickable { }
+            .clickable {
+                if (!repo.name.isNullOrBlank() && !repo.owner?.username.isNullOrBlank())
+                    nav?.navigate(RepoScreen(repo.owner?.username!!, repo.name))
+            }
             .padding(16.dp)
             .run {
                 if (card) {
