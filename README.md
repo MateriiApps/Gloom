@@ -30,7 +30,7 @@
 
 ## Roadmap
 
-You can view the project roadmap [here](https://github.com/orgs/MateriApps/projects/2)
+You can view the project roadmap [here](https://github.com/orgs/MateriiApps/projects/2)
 
 Installation
 ---
