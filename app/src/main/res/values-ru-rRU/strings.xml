@@ -22,7 +22,7 @@
     <string name="dismiss_nevermind">Не сейчас</string>
     <string name="title_pinned">Закреплено</string>
     <string name="adj_latest">Последнее</string>
-    <string name="noun_starred">Отмеченные звездой</string>
+    <string name="noun_starred">Со звездой</string>
     <string name="noun_orgs">Организации</string>
     <string name="noun_repos">Репозитории</string>
     <string name="noun_sponsoring">Спонсорство</string>
@@ -50,9 +50,9 @@
         <item quantity="other">%d Repositories</item>
     </plurals>
     <string name="forked_from">Ответвлено от %s</string>
-    <string name="created_repo">§name§%1$s§ §text§created a repository§</string>
-    <string name="starred_repo">§name§%1$s§ §text§starred a repository§</string>
-    <string name="forked_repo">§name§%1$s§ §text§forked a repository§</string>
+    <string name="created_repo">§name§%1$s§ §text§создал репозиторий§</string>
+    <string name="starred_repo">§name§%1$s§ §text§поставил звезду репозиторию§</string>
+    <string name="forked_repo">§name§%1$s§ §text§ответвил репозиторий§</string>
     <string name="followed_user">§name§%1$s§ §text§followed§ §other§%2$s§</string>
     <string name="followed_you">§name§%1$s§ §text§followed you§</string>
     <string name="published_release">§name§%1$s§ §text§published a release§</string>
