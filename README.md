@@ -9,7 +9,7 @@
   Material You Github client
   
   ---
-  ![Debug build status](https://img.shields.io/github/workflow/status/MateriApps/Gloom/Build%20debug%20APK/main?label=Debug%20Build&logo=github&style=for-the-badge)
+  ![Debug build status](https://img.shields.io/github/actions/workflow/status/MateriApps/Gloom/android.yml?label=Debug%20Build&logo=github&style=for-the-badge&branch=main)
   [![Stars](https://img.shields.io/github/stars/MateriApps/Gloom?logo=github&style=for-the-badge)](https://github.com/MateriApps/Gloom/stargazers)
   [![GitHub downloads](https://img.shields.io/discord/885879572447522817?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/3y6vbneMsW)
   
