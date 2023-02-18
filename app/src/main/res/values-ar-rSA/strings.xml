@@ -14,7 +14,7 @@
     <string name="action_sign_out">تسجيل الخروج</string>
     <string name="action_confirm">تأكيد</string>
     <string name="action_star">نجمة</string>
-    <string name="action_unstar">الغاء النجمة</string>
+    <string name="action_unstar">إلغاء النجمة</string>
     <string name="action_follow">متابعة</string>
     <string name="action_unfollow">إلغاء المتابعة</string>
     <string name="action_view_details">التفاصيل</string>
@@ -43,7 +43,7 @@
         <item quantity="two">%d Contributors</item>
         <item quantity="few">%d Contributors</item>
         <item quantity="many">المساهمين %d</item>
-        <item quantity="other">%d Contributors</item>
+        <item quantity="other">مساهم %d</item>
     </plurals>
     <plurals name="repositories">
         <item quantity="zero">%d Repositories</item>
@@ -51,7 +51,7 @@
         <item quantity="two">%d Repositories</item>
         <item quantity="few">%d Repositories</item>
         <item quantity="many">مستودعات %d</item>
-        <item quantity="other">%d Repositories</item>
+        <item quantity="other">المستودعات %d</item>
     </plurals>
     <string name="forked_from">اِشتُقَّ من %s</string>
     <string name="created_repo">§اسم§%1$s§ §نص§أنشء مستودع§</string>
@@ -66,7 +66,7 @@
     <string name="settings_accounts">حِسابات</string>
     <string name="settings_accounts_description">إضافة أو تبديل الحسابات</string>
     <string name="settings_sign_out_header">تسجيل الخروج؟</string>
-    <string name="settings_sign_out_text">هل أنت متأكد من أنك تريد تسجيل الخروج؟ يمكنك دائماً تسجيل الدخول لاحقاً.</string>
+    <string name="settings_sign_out_text">هل أنت متيقِّن من أنك تريد تسجيل الخروج؟ يمكنك دائماً تسجيل الدخول لاحقاً.</string>
     <string name="appearance_theme">السمة</string>
     <string name="appearance_monet">سمة ديناميكية</string>
     <string name="appearance_monet_description">متوفر على أندرويد ١٢ وما فوق</string>
