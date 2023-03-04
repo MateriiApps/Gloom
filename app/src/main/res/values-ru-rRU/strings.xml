@@ -38,16 +38,16 @@
     <string name="noun_tag">Тег</string>
     <string name="noun_followed">Подписанный</string>
     <plurals name="noun_contributors">
-        <item quantity="one">%d Contributor</item>
+        <item quantity="one">%d Участника</item>
         <item quantity="few">%d Contributors</item>
         <item quantity="many">%d Contributors</item>
-        <item quantity="other">%d Участника</item>
+        <item quantity="other">%d Участников</item>
     </plurals>
     <plurals name="repositories">
         <item quantity="one">%d Репозиторий</item>
         <item quantity="few">%d Repositories</item>
         <item quantity="many">%d Repositories</item>
-        <item quantity="other">%d Repositories</item>
+        <item quantity="other">%d Репозитории</item>
     </plurals>
     <string name="forked_from">Ответвлено от %s</string>
     <string name="created_repo">§name§%1$s§ §text§создал репозиторий§</string>
@@ -56,19 +56,19 @@
     <string name="followed_user">§name§%1$s§ §text§followed§ §other§%2$s§</string>
     <string name="followed_you">§name§%1$s§ §text§followed you§</string>
     <string name="published_release">§name§%1$s§ §text§published a release§</string>
-    <string name="recommended">Recommended for you</string>
-    <string name="settings_appearance">Appearance</string>
-    <string name="settings_appearance_description">Theme, code style</string>
-    <string name="settings_accounts">Accounts</string>
-    <string name="settings_accounts_description">Add or switch accounts</string>
-    <string name="settings_sign_out_header">Sign Out?</string>
-    <string name="settings_sign_out_text">Are you sure you want to sign out? You can always sign back in later.</string>
-    <string name="appearance_theme">Theme</string>
-    <string name="appearance_monet">Dynamic Theme</string>
-    <string name="appearance_monet_description">Available on Android 12+</string>
-    <string name="theme_system">System</string>
-    <string name="theme_light">Light</string>
-    <string name="theme_dark">Dark</string>
-    <string name="badge_dev">Gloom Developer</string>
-    <string name="badge_supporter">Gloom Supporter</string>
+    <string name="recommended">Рекомендуется для вас</string>
+    <string name="settings_appearance">Внешний вид</string>
+    <string name="settings_appearance_description">Тема, стиль кода</string>
+    <string name="settings_accounts">Учётные записи</string>
+    <string name="settings_accounts_description">Добавить или изменить учётные записи</string>
+    <string name="settings_sign_out_header">Выйти?</string>
+    <string name="settings_sign_out_text">Вы уверены, что хотите выйти? Вы всегда можете войти позже.</string>
+    <string name="appearance_theme">Тема</string>
+    <string name="appearance_monet">Динамические темы</string>
+    <string name="appearance_monet_description">Доступно на Android 12+</string>
+    <string name="theme_system">Системная</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="badge_dev">Разработчик Gloom</string>
+    <string name="badge_supporter">Groom помощник</string>
 </resources>
