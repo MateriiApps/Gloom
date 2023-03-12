@@ -9,15 +9,15 @@
   Material You Github client
   
   ---
-  ![Debug build status](https://img.shields.io/github/actions/workflow/status/MateriApps/Gloom/android.yml?label=Debug%20Build&logo=github&style=for-the-badge&branch=main)
-  [![Stars](https://img.shields.io/github/stars/MateriApps/Gloom?logo=github&style=for-the-badge)](https://github.com/MateriApps/Gloom/stargazers)
+  ![Debug build status](https://img.shields.io/github/actions/workflow/status/MateriiApps/Gloom/android.yml?label=Debug%20Build&logo=github&style=for-the-badge&branch=main)
+  [![Stars](https://img.shields.io/github/stars/MateriiApps/Gloom?logo=github&style=for-the-badge)](https://github.com/MateriiApps/Gloom/stargazers)
   [![GitHub downloads](https://img.shields.io/discord/885879572447522817?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/3y6vbneMsW)
   
   <br>
   
-  ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MateriApps/Gloom?logo=github&logoColor=%23fff&style=for-the-badge)
-  ![Line count](https://img.shields.io/tokei/lines/github/MateriApps/Gloom?logo=github&logoColor=%23fff&style=for-the-badge)
-  ![GitHub top language](https://img.shields.io/github/languages/top/MateriApps/Gloom?style=for-the-badge)
+  ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MateriiApps/Gloom?logo=github&logoColor=%23fff&style=for-the-badge)
+  ![Line count](https://img.shields.io/tokei/lines/github/MateriiApps/Gloom?logo=github&logoColor=%23fff&style=for-the-badge)
+  ![GitHub top language](https://img.shields.io/github/languages/top/MateriiApps/Gloom?style=for-the-badge)
 </div>
 
 
@@ -34,7 +34,7 @@ You can view the project roadmap [here](https://github.com/orgs/MateriiApps/proj
 
 Installation
 ---
- 1. Download the [latest actions build](https://nightly.link/MateriApps/Gloom/workflows/android/main/artifact.zip), if on PC then transfer the file over to your phone
+ 1. Download the [latest actions build](https://nightly.link/MateriiApps/Gloom/workflows/android/main/artifact.zip), if on PC then transfer the file over to your phone
  2. Unzip `artifact.zip`
  3. Make sure to allow install unknown apps
  4. Install the apk
@@ -50,7 +50,7 @@ Build
 #### Instructions
 
 1. Clone the repo
-    - `git clone https://github.com/MateriApps/Gloom.git && cd Gloom`
+    - `git clone https://github.com/MateriiApps/Gloom.git && cd Gloom`
 2. Build the project
     - Linux: `chmod +x ./gradlew && gradlew assembleDebug`
     - Windows: `./gradlew assembleDebug`
@@ -64,11 +64,11 @@ This is an open-source project, you can do so without any programming.
 
 Here are a few things you can do:
 
-- [Test and report issues](https://github.com/MateriApps/Gloom/issues/new/choose)
+- [Test and report issues](https://github.com/MateriiApps/Gloom/issues/new/choose)
 - [Translate the app into your language](https://crowdin.com/project/gloom)
     
 License
 ---
 Gloom is licensed under the GNU General Public License v3.0
 
-[![License: GPLv2](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://github.com/MateriApps/Gloom/blob/main/LICENSE)
+[![License: GPLv2](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://github.com/MateriiApps/Gloom/blob/main/LICENSE)
