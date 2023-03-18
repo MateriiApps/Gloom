@@ -13,8 +13,8 @@
     <string name="action_unfollow_user">Отписаться от %s</string>
     <string name="action_sign_out">Выйти</string>
     <string name="action_confirm">Подтвердить</string>
-    <string name="action_star">Поставить звёздочку ⭐️</string>
-    <string name="action_unstar">Убрать звёздочку ⭐️</string>
+    <string name="action_star">Поставить звёздочку</string>
+    <string name="action_unstar">Убрать звёздочку</string>
     <string name="action_follow">Подписаться</string>
     <string name="action_unfollow">Отписаться</string>
     <string name="action_view_details">Детали</string>
