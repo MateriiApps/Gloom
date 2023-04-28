@@ -1,5 +1,6 @@
 package com.materiapps.gloom.ui.widgets.feed
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -36,10 +37,14 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.LocalNavigator
 import coil.compose.AsyncImage
 import com.materiapps.gloom.R
 import com.materiapps.gloom.fragment.FeedRepository
+import com.materiapps.gloom.ui.screens.repo.RepoScreen
 import com.materiapps.gloom.utils.parsedColor
+import com.materiapps.gloom.utils.navigate
+
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -52,6 +57,7 @@ fun FeedRepoCard(
     val viewerHasStarred = starData?.first ?: repo.viewerHasStarred
     val starCount = starData?.second ?: repo.stargazerCount
     val (starColor, starIcon) = if (viewerHasStarred) Color(0xFFF1E05A) to Icons.Filled.Star else LocalContentColor.current to Icons.Outlined.StarBorder
+    val nav = LocalNavigator.current
 
     ElevatedCard(
         modifier = Modifier
@@ -71,6 +77,10 @@ fun FeedRepoCard(
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier
+                .clickable {
+                    if (!repo.name.isNullOrBlank() && !repo.owner.login.isNullOrBlank())
+                        nav?.navigate(RepoScreen(repo.owner.login, repo.name))
+                }
                 .padding(16.dp)
                 .fillMaxWidth()
         ) {
