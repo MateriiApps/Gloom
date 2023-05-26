@@ -104,6 +104,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-webview:$accompanistVersion")
+    implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
 
     val voyagerVersion = "1.0.0-rc02"
 

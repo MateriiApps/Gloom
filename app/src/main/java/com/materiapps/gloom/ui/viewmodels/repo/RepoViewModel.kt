@@ -7,11 +7,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.navigator.tab.Tab
 import com.materiapps.gloom.R
 import com.materiapps.gloom.domain.repository.GraphQLRepository
 import com.materiapps.gloom.fragment.RepoDetails
 import com.materiapps.gloom.fragment.RepoOverview
 import com.materiapps.gloom.rest.utils.fold
+import com.materiapps.gloom.ui.screens.repo.tab.CodeTab
+import com.materiapps.gloom.ui.screens.repo.tab.DetailsTab
+import com.materiapps.gloom.ui.screens.repo.tab.IssuesTab
+import com.materiapps.gloom.ui.screens.repo.tab.PullRequestTab
+import com.materiapps.gloom.ui.screens.repo.tab.ReleasesTab
 import kotlinx.coroutines.launch
 
 class RepoViewModel(
@@ -22,24 +28,17 @@ class RepoViewModel(
     val owner = nameWithOwner.first
     val name = nameWithOwner.second
 
-    enum class Tab(
-        @StringRes val nameRes: Int
-    ) {
-        DETAILS(R.string.repo_tab_details),
-        CODE(R.string.repo_tab_code),
-        ISSUES(R.string.repo_tab_issues),
-        PRs(R.string.repo_tab_prs),
-        RELEASES(R.string.repo_tab_releases),
-    }
+    val tabs = listOf(
+        DetailsTab(owner, name),
+        CodeTab(owner, name),
+        IssuesTab(),
+        PullRequestTab(),
+        ReleasesTab()
+    )
 
     val badgeCounts = mutableStateMapOf<Int, Int>()
 
     var hasError by mutableStateOf(false)
-    var currentTab by mutableStateOf(Tab.DETAILS)
-
-    fun selectTab(tab: Tab) {
-        currentTab = tab
-    }
 
     var repoOverview by mutableStateOf(null as RepoOverview?)
     var repoOverviewLoading by mutableStateOf(false)
@@ -51,33 +50,12 @@ class RepoViewModel(
                 onSuccess = {
                     repoOverviewLoading = false
                     repoOverview = it
-                    badgeCounts[Tab.ISSUES.ordinal] = it?.issues?.totalCount ?: 0
-                    badgeCounts[Tab.PRs.ordinal] = it?.pullRequests?.totalCount ?: 0
+                    badgeCounts[2] = it?.issues?.totalCount ?: 0
+                    badgeCounts[3] = it?.pullRequests?.totalCount ?: 0
                 },
                 onError = {
                     repoOverviewLoading = false
                     hasError = true
-                }
-            )
-        }
-    }
-
-    // Details
-
-    var details by mutableStateOf(null as RepoDetails?)
-    var detailsLoading by mutableStateOf(false)
-
-    fun loadDetailsTab() {
-        coroutineScope.launch {
-            detailsLoading = true
-            gql.getRepoDetails(owner, name).fold(
-                onSuccess = {
-                    details = it
-                    detailsLoading = false
-                },
-                onError = {
-                    hasError = true
-                    detailsLoading = false
                 }
             )
         }
