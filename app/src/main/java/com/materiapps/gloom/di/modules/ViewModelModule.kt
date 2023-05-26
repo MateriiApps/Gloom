@@ -12,10 +12,15 @@ import com.materiapps.gloom.ui.viewmodels.profile.FollowingViewModel
 import com.materiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiapps.gloom.ui.viewmodels.repo.RepoViewModel
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.materiapps.gloom.ui.viewmodels.repo.tab.RepoCodeViewModel
 import com.materiapps.gloom.ui.viewmodels.repo.tab.RepoDetailsViewModel
 =======
 >>>>>>> 430f7f6 (Setup and details tab)
+=======
+import com.materiapps.gloom.ui.viewmodels.repo.tab.RepoCodeViewModel
+import com.materiapps.gloom.ui.viewmodels.repo.tab.RepoDetailsViewModel
+>>>>>>> 40743ab ([WIP] Code tab)
 import com.materiapps.gloom.ui.viewmodels.settings.AppearanceSettingsViewModel
 import com.materiapps.gloom.ui.viewmodels.settings.SettingsViewModel
 import org.koin.core.module.dsl.factoryOf
@@ -34,7 +39,11 @@ fun viewModelModule() = module {
     factoryOf(::SettingsViewModel)
     factoryOf(::AppearanceSettingsViewModel)
     factoryOf(::HomeViewModel)
+
     factoryOf(::RepoViewModel)
+    factoryOf(::RepoDetailsViewModel)
+    factoryOf(::RepoCodeViewModel)
+    factoryOf(::DirectoryListingViewModel)
 
     factoryOf(::RepoViewModel)
     factoryOf(::RepoDetailsViewModel)
