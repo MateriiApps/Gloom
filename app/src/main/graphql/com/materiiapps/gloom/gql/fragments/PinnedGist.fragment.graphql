@@ -1,0 +1,7 @@
+# fragment PinnedGist on Gist {
+#   files(limit: 1) {
+#     name
+#     text
+#   }
+#   description
+# }

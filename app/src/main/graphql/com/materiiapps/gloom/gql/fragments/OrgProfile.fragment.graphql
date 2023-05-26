@@ -1,0 +1,27 @@
+fragment OrgProfile on Organization {
+    anyPinnableItems(type: REPOSITORY)
+    avatarUrl(size: 256)
+    bio: description
+    name
+    login
+    readme {
+        contentHTML
+    }
+    publicEmail: email
+    location
+    websiteUrl
+    url
+    twitterUsername
+    viewerIsAMember
+    repositories {
+        totalCount
+    }
+    sponsoring {
+        totalCount
+    }
+    pinnedItems(first: 6) {
+        nodes {
+            ...PinnedRepo
+        }
+    }
+}

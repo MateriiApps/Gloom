@@ -10,7 +10,7 @@ android {
     buildToolsVersion = "30.0.3"
 
     defaultConfig {
-        applicationId = "com.materiapps.gloom"
+        applicationId = "com.materiiapps.gloom"
         minSdk = 21
         targetSdk = 33
         versionCode = 100
@@ -49,7 +49,7 @@ android {
     }
 
     apollo {
-        packageName.set("com.materiapps.gloom")
+        packageName.set("com.materiiapps.gloom.gql")
     }
 
 }

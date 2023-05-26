@@ -1,0 +1,38 @@
+query Feed($after: String) {
+    viewer {
+        login
+        dashboard {
+            feed {
+                items(
+                    first: 100
+                    after: $after
+                    itemTypes: [
+                        STARRED_REPOSITORY_FEED_ITEM
+                        PUBLISHED_RELEASE_FEED_ITEM
+                        CREATED_REPOSITORY_FEED_ITEM
+                        FOLLOWED_USER_FEED_ITEM
+                        REPOSITORY_RECOMMENDATION_FEED_ITEM
+                        FORKED_REPOSITORY_FEED_ITEM
+                        FOLLOW_RECOMMENDATION_FEED_ITEM
+                    ]
+                ) {
+                    totalCount
+                    pageInfo {
+                        hasNextPage
+                        endCursor
+                    }
+                    nodes {
+                        __typename
+                        ...StarredFeedItemFragment
+                        ...CreatedRepoItemFragment
+                        ...NewReleaseItemFragment
+                        ...FollowedUserFeedItemFragment
+                        ...RecommendedRepositoryFeedItemFragment
+                        ...ForkedRepositoryFeedItemFragment
+                        ...FollowRecommendationFeedItemFragment
+                    }
+                }
+            }
+        }
+    }
+}

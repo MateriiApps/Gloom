@@ -1,7 +1,0 @@
-package com.materiapps.gloom.utils.deeplinks
-
-import androidx.compose.runtime.ProvidableCompositionLocal
-import androidx.compose.runtime.staticCompositionLocalOf
-
-val LocalDeepLinkHandler: ProvidableCompositionLocal<DeepLinkHandler?> =
-    staticCompositionLocalOf { null }

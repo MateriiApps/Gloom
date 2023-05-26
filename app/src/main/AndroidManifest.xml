@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" package="com.materiapps.gloom">
+    xmlns:tools="http://schemas.android.com/tools" package="com.materiiapps.gloom">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
@@ -14,10 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gloom"
-        android:name=".Gloom"
+        android:name="com.materiiapps.gloom.Gloom"
         tools:targetApi="31">
         <activity
-            android:name=".ui.GloomActivity"
+            android:name="com.materiiapps.gloom.ui.GloomActivity"
             android:launchMode="singleTask"
             android:exported="true"
             android:label="@string/app_name"

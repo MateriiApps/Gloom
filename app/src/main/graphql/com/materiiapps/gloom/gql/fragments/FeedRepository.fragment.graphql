@@ -1,0 +1,18 @@
+fragment FeedRepository on Repository {
+    id
+    name
+    owner {
+        __typename
+        login
+        avatarUrl
+    }
+    description
+    stargazerCount
+    primaryLanguage {
+        color
+        name
+    }
+    contributorsCount
+    openGraphImageUrl
+    viewerHasStarred
+}
