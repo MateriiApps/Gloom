@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -28,6 +29,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -36,6 +39,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -53,6 +57,9 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import coil.compose.AsyncImage
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.rememberPagerState
 import com.materiapps.gloom.R
 import com.materiapps.gloom.ui.components.BackButton
 import com.materiapps.gloom.ui.screens.profile.ProfileScreen
@@ -64,6 +71,7 @@ import com.materiapps.gloom.ui.screens.repo.tab.ReleasesTab
 import com.materiapps.gloom.ui.viewmodels.repo.RepoViewModel
 import com.materiapps.gloom.utils.navigate
 import com.materiapps.gloom.utils.shareText
+import kotlinx.coroutines.launch
 import org.koin.core.parameter.parametersOf
 import java.util.UUID
 
@@ -78,11 +86,15 @@ class RepoScreen(
     override fun Content() = Screen()
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class,
+        ExperimentalPagerApi::class
+    )
     private fun Screen(
         viewModel: RepoViewModel = getScreenModel { parametersOf(owner to name) }
     ) {
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+        val pagerState = rememberPagerState()
+        val coroutineScope = rememberCoroutineScope()
 
         Scaffold(
             topBar = { Toolbar(scrollBehavior, viewModel) }
@@ -113,7 +125,7 @@ class RepoScreen(
                 )
 
                 ScrollableTabRow(
-                    selectedTabIndex = viewModel.currentTab.ordinal,
+                    selectedTabIndex = pagerState.currentPage,
                     edgePadding = 0.dp,
                     divider = {
                         Divider(
@@ -124,17 +136,21 @@ class RepoScreen(
                     containerColor = tabColor,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    RepoViewModel.Tab.values().forEach {
+                    viewModel.tabs.forEachIndexed { i, tab ->
                         Tab(
-                            selected = viewModel.currentTab == it,
-                            onClick = { viewModel.selectTab(it) },
+                            selected = pagerState.currentPage == i,
+                            onClick = {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(i)
+                                }
+                            },
                             text = {
-                                val badgeCount = viewModel.badgeCounts[it.ordinal]
+                                val badgeCount = viewModel.badgeCounts[i]
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                                 ) {
-                                    Text(stringResource(it.nameRes))
+                                    Text(tab.options.title)
                                     if (badgeCount != null && badgeCount > 0)
                                         Text(
                                             text = badgeCount.toString(),
@@ -154,15 +170,17 @@ class RepoScreen(
                     }
                 }
 
-                AnimatedContent(
-                    targetState = viewModel.currentTab
+                HorizontalPager(
+                    count = viewModel.tabs.size,
+                    state = pagerState
                 ) {
-                    when (it) {
-                        RepoViewModel.Tab.DETAILS -> DetailsTab(viewModel)
-                        RepoViewModel.Tab.CODE -> CodeTab()
-                        RepoViewModel.Tab.ISSUES -> IssuesTab()
-                        RepoViewModel.Tab.PRs -> PullRequestTab()
-                        RepoViewModel.Tab.RELEASES -> ReleasesTab()
+                    val tab = viewModel.tabs[it]
+
+                    Box(
+                        Modifier
+                            .fillMaxSize()
+                    ) {
+                        tab.Content()
                     }
                 }
             }
