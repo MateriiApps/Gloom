@@ -4,6 +4,7 @@ import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.api.Optional
+import com.materiapps.gloom.DefaultBranchQuery
 import com.materiapps.gloom.FeedQuery
 import com.materiapps.gloom.FollowUserMutation
 import com.materiapps.gloom.FollowersQuery
@@ -12,6 +13,7 @@ import com.materiapps.gloom.IdentifyQuery
 import com.materiapps.gloom.JoinedOrgsQuery
 import com.materiapps.gloom.ProfileQuery
 import com.materiapps.gloom.RepoDetailsQuery
+import com.materiapps.gloom.RepoFilesQuery
 import com.materiapps.gloom.RepoListQuery
 import com.materiapps.gloom.RepoNameQuery
 import com.materiapps.gloom.SponsoringQuery
@@ -190,6 +192,18 @@ class GraphQLService(
 
     suspend fun getRepoDetails(owner: String, name: String) = withContext(Dispatchers.IO) {
         client.query(RepoDetailsQuery(owner, name))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) = withContext(Dispatchers.IO) {
+        client.query(RepoFilesQuery(owner, name, branchAndPath))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getDefaultBranch(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(DefaultBranchQuery(owner, name))
             .addToken()
             .response()
     }

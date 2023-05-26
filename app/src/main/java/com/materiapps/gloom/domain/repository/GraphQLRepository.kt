@@ -81,4 +81,13 @@ class GraphQLRepository(
 
     suspend fun getRepoDetails(owner: String, name: String) =
         service.getRepoDetails(owner, name).transform { it.repository?.repoDetails }
+
+    suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) =
+        service.getRepoFiles(owner, name, branchAndPath).transform {
+            it.repository?.gitObject?.treeFragment?.entries?.map { entry -> entry.fileEntryFragment } ?: emptyList()
+        }
+
+    suspend fun getDefaultBranch(owner: String, name: String) = service.getDefaultBranch(owner, name).transform {
+        it.repository?.defaultBranchRef?.name
+    }
 }

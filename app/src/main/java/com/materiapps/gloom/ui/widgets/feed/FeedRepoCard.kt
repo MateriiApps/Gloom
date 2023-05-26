@@ -18,6 +18,7 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
@@ -36,12 +37,16 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import coil.compose.AsyncImage
 import com.materiapps.gloom.R
 import com.materiapps.gloom.fragment.FeedRepository
+import com.materiapps.gloom.ui.screens.repo.RepoScreen
+import com.materiapps.gloom.utils.navigate
 import com.materiapps.gloom.utils.parsedColor
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun FeedRepoCard(
     repo: FeedRepository,
@@ -49,11 +54,13 @@ fun FeedRepoCard(
     onStarPressed: () -> Unit = {},
     onUnstarPressed: () -> Unit = {},
 ) {
+    val nav = LocalNavigator.currentOrThrow
     val viewerHasStarred = starData?.first ?: repo.viewerHasStarred
     val starCount = starData?.second ?: repo.stargazerCount
     val (starColor, starIcon) = if (viewerHasStarred) Color(0xFFF1E05A) to Icons.Filled.Star else LocalContentColor.current to Icons.Outlined.StarBorder
 
     ElevatedCard(
+        onClick = { nav.navigate(RepoScreen(repo.owner.login, repo.name)) },
         modifier = Modifier
             .fillMaxWidth()
     ) {
