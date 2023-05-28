@@ -1,0 +1,15 @@
+fragment OrgSponsoringFragment on Organization {
+    sponsoring(first: $total, after: $cursor) {
+        pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
+        }
+        totalCount
+        nodes {
+            ...UserListUserFragment
+            ...OrgListOrgFragment
+        }
+    }
+}

@@ -85,17 +85,17 @@ data class ModelRepo(
             )
         }
 
-        fun fromRepoListQuery(rlq: RepoListQuery.Node) = with(rlq) {
+        fun fromRepoListQuery(rlq: RepoListQuery.Node) = with(rlq.repoListRepoFragment) {
             val lang = languages?.nodes?.firstOrNull()
             val modelLang = if (lang != null) {
                 val color = try {
                     val langColor =
-                        if (lang.color?.length == 4) lang.color + lang.color.substring(1..3) else lang.color
+                        if (lang.language.color?.length == 4) lang.language.color + lang.language.color.substring(1..3) else lang.language.color
                     Color(android.graphics.Color.parseColor(langColor))
                 } catch (e: Throwable) {
                     Color.Black
                 }
-                ModelLanguage(lang.name, color)
+                ModelLanguage(lang.language.name, color)
             } else null
 
             ModelRepo(
@@ -108,10 +108,10 @@ data class ModelRepo(
             )
         }
 
-        fun fromStarredReposQuery(srq: StarredReposQuery.Node) = with(srq) {
+        fun fromStarredReposQuery(srq: StarredReposQuery.Node) = with(srq.repoListRepoFragment) {
             val lang = languages?.nodes?.firstOrNull()
             val modelLang = if (lang != null)
-                ModelLanguage(lang.name, Color(android.graphics.Color.parseColor(lang.color)))
+                ModelLanguage(lang.language.name, Color(android.graphics.Color.parseColor(lang.language.color)))
             else
                 null
 

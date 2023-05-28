@@ -15,15 +15,15 @@ class SponsoringViewModel(
         repo.getSponsoring(username, cursor).getOrNull()
 
     override fun getCursor(data: SponsoringQuery.Data?) =
-        data?.repositoryOwner?.onUser?.sponsoring?.pageInfo?.endCursor
-            ?: data?.repositoryOwner?.onOrganization?.sponsoring?.pageInfo?.endCursor
+        data?.repositoryOwner?.userSponsoringFragment?.sponsoring?.pageInfo?.endCursor
+            ?: data?.repositoryOwner?.orgSponsoringFragment?.sponsoring?.pageInfo?.endCursor
 
     override fun createItems(data: SponsoringQuery.Data?): List<ModelUser> {
         val nodes = mutableListOf<ModelUser>()
-        data?.repositoryOwner?.onUser?.sponsoring?.nodes?.forEach {
+        data?.repositoryOwner?.userSponsoringFragment?.sponsoring?.nodes?.forEach {
             if (it != null) nodes.add(ModelUser.fromSponsoringQuery(it))
         }
-        data?.repositoryOwner?.onOrganization?.sponsoring?.nodes?.forEach {
+        data?.repositoryOwner?.orgSponsoringFragment?.sponsoring?.nodes?.forEach {
             if (it != null) nodes.add(ModelUser.fromSponsoringQuery(it))
         }
         return nodes

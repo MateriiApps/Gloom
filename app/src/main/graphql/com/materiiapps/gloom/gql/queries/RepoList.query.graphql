@@ -14,19 +14,7 @@ query RepoList($username: String!, $total: Int = 100, $cursor: String) {
       }
       totalCount
       nodes {
-        name
-        description
-        isFork
-        parent {
-          nameWithOwner
-        }
-        languages(orderBy: {field: SIZE, direction: DESC}, first: 1) {
-          nodes {
-            name
-            color
-          }
-        }
-        stargazerCount
+        ...RepoListRepoFragment
       }
     }
   }

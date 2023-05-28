@@ -12,10 +12,7 @@ query JoinedOrgs($username: String!, $total: Int = 20, $cursor: String) {
       }
       totalCount
       nodes {
-        name
-        login
-        avatarUrl
-        description
+        ...OrgListOrgFragment
       }
     }
   }

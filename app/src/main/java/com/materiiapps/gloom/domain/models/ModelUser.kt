@@ -6,6 +6,8 @@ import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.gql.ProfileQuery
 import com.materiiapps.gloom.gql.SponsoringQuery
 import com.materiiapps.gloom.gql.UserProfileQuery
+import com.materiiapps.gloom.gql.fragment.OrgSponsoringFragment
+import com.materiiapps.gloom.gql.fragment.UserSponsoringFragment
 import com.materiiapps.gloom.rest.dto.user.User
 import kotlinx.datetime.LocalDateTime
 
@@ -163,7 +165,7 @@ data class ModelUser(
 
         }
 
-        fun fromJoinedOrgsQuery(joq: JoinedOrgsQuery.Node) = with(joq) {
+        fun fromJoinedOrgsQuery(joq: JoinedOrgsQuery.Node) = with(joq.orgListOrgFragment) {
             ModelUser(
                 username = login,
                 displayName = name,
@@ -173,7 +175,7 @@ data class ModelUser(
             )
         }
 
-        fun fromFollowersQuery(followersQuery: FollowersQuery.Node) = with(followersQuery) {
+        fun fromFollowersQuery(followersQuery: FollowersQuery.Node) = with(followersQuery.userListUserFragment) {
             ModelUser(
                 username = login,
                 displayName = name,
@@ -183,7 +185,7 @@ data class ModelUser(
             )
         }
 
-        fun fromFollowingQuery(followingQuery: FollowingQuery.Node) = with(followingQuery) {
+        fun fromFollowingQuery(followingQuery: FollowingQuery.Node) = with(followingQuery.userListUserFragment) {
             ModelUser(
                 username = login,
                 displayName = name,
@@ -193,12 +195,12 @@ data class ModelUser(
             )
         }
 
-        fun fromSponsoringQuery(sponsoringQuery: SponsoringQuery.Node1) = with(sponsoringQuery) {
-            val isUser = sponsoringQuery.onUser != null
-            val isOrg = sponsoringQuery.onOrganization != null && !isUser
+        fun fromSponsoringQuery(sponsoringQuery: UserSponsoringFragment.Node) = with(sponsoringQuery) {
+            val isUser = sponsoringQuery.userListUserFragment != null
+            val isOrg = sponsoringQuery.orgListOrgFragment != null && !isUser
 
             if (isUser) {
-                with(sponsoringQuery.onUser!!) {
+                with(sponsoringQuery.userListUserFragment!!) {
                     ModelUser(
                         username = login,
                         displayName = name,
@@ -208,7 +210,7 @@ data class ModelUser(
                     )
                 }
             } else if (isOrg) {
-                with(sponsoringQuery.onOrganization!!) {
+                with(sponsoringQuery.orgListOrgFragment!!) {
                     ModelUser(
                         username = login,
                         displayName = name,
@@ -222,32 +224,32 @@ data class ModelUser(
             }
         }
 
-        fun fromSponsoringQuery(sponsoringQuery: SponsoringQuery.Node) = with(sponsoringQuery) {
-            val isUser = sponsoringQuery.onUser != null
-            val isOrg = sponsoringQuery.onOrganization != null && !isUser
+        fun fromSponsoringQuery(sponsoringQuery: OrgSponsoringFragment.Node) = with(sponsoringQuery) {
+            val isUser = sponsoringQuery.userListUserFragment != null
+            val isOrg = sponsoringQuery.orgListOrgFragment != null && !isUser
 
             if (isUser) {
-                with(sponsoringQuery.onUser!!) {
+                with(sponsoringQuery.userListUserFragment!!) {
                     ModelUser(
                         username = login,
                         displayName = name,
                         bio = bio,
                         avatar = avatarUrl.toString(),
-                        type = User.Type.USER
+                        type = com.materiiapps.gloom.rest.dto.user.User.Type.USER
                     )
                 }
             } else if (isOrg) {
-                with(sponsoringQuery.onOrganization!!) {
+                with(sponsoringQuery.orgListOrgFragment!!) {
                     ModelUser(
                         username = login,
                         displayName = name,
                         bio = description,
                         avatar = avatarUrl.toString(),
-                        type = User.Type.USER
+                        type = com.materiiapps.gloom.rest.dto.user.User.Type.USER
                     )
                 }
             } else {
-                ModelUser(type = User.Type.USER)
+                ModelUser(type = com.materiiapps.gloom.rest.dto.user.User.Type.USER)
             }
         }
 

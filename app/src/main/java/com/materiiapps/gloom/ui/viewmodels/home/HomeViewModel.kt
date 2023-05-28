@@ -30,18 +30,7 @@ class HomeViewModel(
         data?.viewer?.dashboard?.feed?.items?.pageInfo?.endCursor
 
     override fun createItems(data: FeedQuery.Data?): List<FeedQuery.Node> {
-        return data?.viewer?.dashboard?.feed?.items?.nodes?.map {
-            it ?: FeedQuery.Node(
-                "StarredRepositoryFeedItem",
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-            )
-        } ?: emptyList()
+        return data?.viewer?.dashboard?.feed?.items?.nodes?.filterNotNull() ?: emptyList()
     }
 
     fun starRepo(id: String) = coroutineScope.launch {
