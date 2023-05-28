@@ -37,6 +37,7 @@ import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.FeedOrg
 import com.materiiapps.gloom.gql.fragment.FeedUser
 import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiiapps.gloom.utils.navigate
 
@@ -78,19 +79,14 @@ fun FeedUserCard(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                AsyncImage(
-                    model = avatarUrl,
+                Avatar(
+                    url = avatarUrl as? String,
                     contentDescription = stringResource(
                         R.string.noun_users_avatar,
                         login ?: "ghost"
                     ),
-                    modifier = Modifier
-                        .size(47.dp)
-                        .clip(
-                            if (type == User.Type.USER) CircleShape else RoundedCornerShape(
-                                15.dp
-                            )
-                        )
+                    type = type,
+                    modifier = Modifier.size(47.dp)
                 )
 
                 Column {

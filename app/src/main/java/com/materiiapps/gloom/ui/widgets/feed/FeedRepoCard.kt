@@ -39,6 +39,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.FeedRepository
+import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.utils.parsedColor
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -79,19 +81,14 @@ fun FeedRepoCard(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                AsyncImage(
-                    model = repo.owner.avatarUrl,
+                Avatar(
+                    url = repo.owner.avatarUrl as? String,
                     contentDescription = stringResource(
                         R.string.noun_users_avatar,
                         repo.owner.login
                     ),
-                    modifier = Modifier
-                        .size(20.dp)
-                        .clip(
-                            if (repo.owner.__typename == "User") CircleShape else RoundedCornerShape(
-                                5.dp
-                            )
-                        )
+                    type = User.Type.fromTypeName(repo.owner.__typename),
+                    modifier = Modifier.size(20.dp)
                 )
                 Text(
                     buildAnnotatedString {

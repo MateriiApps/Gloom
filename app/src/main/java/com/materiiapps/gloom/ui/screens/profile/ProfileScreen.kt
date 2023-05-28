@@ -85,6 +85,7 @@ import com.materiiapps.gloom.domain.models.ModelStatus
 import com.materiiapps.gloom.domain.models.ModelUser
 import com.materiiapps.gloom.domain.models.Pinnable
 import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.BackButton
 import com.materiiapps.gloom.ui.components.BadgedItem
 import com.materiiapps.gloom.ui.components.RefreshIndicator
@@ -231,7 +232,7 @@ open class ProfileScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
         ) {
-            Avatar(user)
+            ProfileAvatar(user)
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -340,7 +341,7 @@ open class ProfileScreen(
     }
 
     @Composable
-    private fun Avatar(user: ModelUser) {
+    private fun ProfileAvatar(user: ModelUser) {
         val ctx = LocalContext.current
 
         val (badge, msg) =
@@ -357,15 +358,14 @@ open class ProfileScreen(
                     .clickable { ctx.showToast(ctx.getString(msg)) }
             )
         } else null) {
-            AsyncImage(
-                model = user.avatar,
+            Avatar(
+                url = user.avatar,
                 contentDescription = stringResource(
                     R.string.noun_users_avatar,
                     user.displayName ?: "ghost"
                 ),
-                modifier = Modifier
-                    .size(90.dp)
-                    .clip(if (user.type == User.Type.USER) CircleShape else RoundedCornerShape(28.dp))
+                type = user.type,
+                modifier = Modifier.size(90.dp)
             )
         }
     }

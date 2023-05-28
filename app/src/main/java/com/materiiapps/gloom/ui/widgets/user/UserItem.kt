@@ -28,6 +28,7 @@ import coil.compose.AsyncImage
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.domain.models.ModelUser
 import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiiapps.gloom.utils.navigate
 
@@ -52,19 +53,14 @@ fun UserItem(
             horizontalArrangement = Arrangement.spacedBy(14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            AsyncImage(
-                model = user.avatar,
+            Avatar(
+                url = user.avatar,
                 contentDescription = stringResource(
                     R.string.noun_users_avatar,
                     user.username ?: "ghost"
                 ),
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(
-                        if (user.type == User.Type.USER) CircleShape else RoundedCornerShape(
-                            12.dp
-                        )
-                    )
+                type = user.type,
+                modifier = Modifier.size(40.dp)
             )
             Column {
                 if (user.displayName.isNullOrEmpty()) {

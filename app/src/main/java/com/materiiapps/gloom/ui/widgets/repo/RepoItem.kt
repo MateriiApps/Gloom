@@ -34,6 +34,7 @@ import coil.compose.AsyncImage
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.domain.models.ModelRepo
 import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.ui.components.Avatar
 
 @Composable
 fun RepoItem(
@@ -61,16 +62,11 @@ fun RepoItem(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            AsyncImage(
-                model = repo.owner.avatar,
+            Avatar(
+                url = repo.owner.avatar,
                 contentDescription = stringResource(R.string.noun_users_avatar, repo.owner.username ?: "ghost"),
-                modifier = Modifier
-                    .size(20.dp)
-                    .clip(
-                        if (repo.owner.type == User.Type.USER)
-                            CircleShape
-                        else RoundedCornerShape(5.dp)
-                    )
+                type = repo.owner.type,
+                modifier = Modifier.size(20.dp)
             )
             Text(
                 text = repo.owner.username ?: "ghost",

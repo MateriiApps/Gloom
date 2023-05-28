@@ -46,7 +46,11 @@ data class User(
         @SerialName("User")
         USER,
         @SerialName("Organization")
-        ORG,
+        ORG;
+
+        companion object {
+            fun fromTypeName(name: String) = if(name == "User") USER else ORG
+        }
     }
 
 }
