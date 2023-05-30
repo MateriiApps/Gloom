@@ -41,8 +41,8 @@ import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiiapps.gloom.utils.navigate
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
+@Suppress("LocalVariableName")
 fun FeedUserCard(
     user: Pair<FeedUser?, FeedOrg?>,
     followData: Pair<Boolean, Int>? = null,

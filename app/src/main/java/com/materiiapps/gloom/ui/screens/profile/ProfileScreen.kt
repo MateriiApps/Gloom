@@ -97,6 +97,7 @@ import com.materiiapps.gloom.ui.screens.settings.SettingsScreen
 import com.materiiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiiapps.gloom.ui.widgets.ReadMeCard
 import com.materiiapps.gloom.ui.widgets.repo.RepoItem
+import com.materiiapps.gloom.utils.Constants
 import com.materiiapps.gloom.utils.EmojiUtils
 import com.materiiapps.gloom.utils.navigate
 import com.materiiapps.gloom.utils.shareText
@@ -164,9 +165,9 @@ open class ProfileScreen(
                             Modifier.fillMaxWidth(),
                             contentAlignment = Alignment.Center
                         ) {
-                            if (viewModel.hasErrors) {
-                                //TODO: Show error indicator
-                            }
+//                            if (viewModel.hasErrors) {
+//                                // TODO: Show error indicator
+//                            }
                         }
                     }
                 }
@@ -192,7 +193,7 @@ open class ProfileScreen(
                     targetValue = MaterialTheme.colorScheme.onSurface.copy(
                         alpha = opacity
                     ),
-                    animationSpec = spring(stiffness = Spring.StiffnessMediumLow)
+                    animationSpec = spring(stiffness = Spring.StiffnessMediumLow), label = "Username fade"
                 )
                 Text(
                     text = viewModel.user?.username ?: "",
@@ -346,7 +347,7 @@ open class ProfileScreen(
 
         val (badge, msg) =
             if (user.isSupporter) painterResource(R.drawable.img_badge_sponsor) to R.string.badge_supporter
-            else if (user.id == "MDQ6VXNlcjQ0OTkyNTM3") painterResource(R.drawable.img_badge_dev) to R.string.badge_dev
+            else if (user.id == Constants.DEV_USER_ID) painterResource(R.drawable.img_badge_dev) to R.string.badge_dev
             else null to null
 
         BadgedItem(badge = if (badge != null && msg != null) { ->

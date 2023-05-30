@@ -18,9 +18,8 @@ inline fun <reified E : Enum<E>> SettingsItemChoice(
     crossinline labelFactory: (E) -> String = { it.toString() },
     crossinline onPrefChange: (E) -> Unit,
 ) {
-    val ctx = LocalContext.current
     val choiceLabel = labelFactory(pref)
-    var opened = remember {
+    val opened = remember {
         mutableStateOf(false)
     }
 

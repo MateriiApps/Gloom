@@ -18,7 +18,7 @@ class ProfileViewModel(
 ) : ScreenModel {
 
     var user: ModelUser? by mutableStateOf(null)
-    var hasErrors by mutableStateOf(false)
+    private var hasErrors by mutableStateOf(false)
     var isLoading by mutableStateOf(false)
 
     init {

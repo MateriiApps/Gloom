@@ -19,7 +19,6 @@ class RootScreen : Screen {
     override fun Content() = Screen()
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
     ) {
         val systemNavBarHeight = WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()

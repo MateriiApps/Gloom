@@ -17,6 +17,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.util.Locale
 
+@Suppress("unused")
 object Utils: KoinComponent {
     private val json: Json by inject()
     private val logger: Logger by inject()

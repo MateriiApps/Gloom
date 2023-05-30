@@ -1,5 +1,6 @@
 package com.materiiapps.gloom.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
@@ -15,6 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 val BadgeGreen = Color(0xFF5CA259)
 
 @Composable
+@SuppressLint("NewApi")
 fun GloomTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean,

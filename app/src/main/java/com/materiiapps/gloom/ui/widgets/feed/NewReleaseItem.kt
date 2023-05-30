@@ -44,6 +44,7 @@ import com.materiiapps.gloom.ui.widgets.Markdown
 import com.materiiapps.gloom.utils.annotatingStringResource
 
 @Composable
+@Suppress("UNUSED_PARAMETER")
 fun NewReleaseItem(
     item: NewReleaseItemFragment,
     starData: Pair<Boolean, Int>? = null,
@@ -76,7 +77,6 @@ fun NewReleaseItem(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReleaseCard(
     release: NewReleaseItemFragment.Release

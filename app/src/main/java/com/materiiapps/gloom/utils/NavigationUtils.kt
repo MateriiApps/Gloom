@@ -8,6 +8,7 @@ import com.materiiapps.gloom.ui.screens.home.HomeScreen
 import com.materiiapps.gloom.ui.screens.notifications.NotificationsScreen
 import com.materiiapps.gloom.ui.screens.profile.ProfileTab
 
+@Suppress("unused")
 enum class RootTab(val tab: Tab) {
     HOME(HomeScreen()),
     EXPLORE(ExploreScreen()),

@@ -23,7 +23,6 @@ inline fun <reified E : Enum<E>> EnumRadioController(
     crossinline onChoiceSelected: (E) -> Unit
 ) {
     var choice by remember { mutableStateOf(default) }
-    val ctx = LocalContext.current
 
     Column {
         enumValues<E>().forEach {

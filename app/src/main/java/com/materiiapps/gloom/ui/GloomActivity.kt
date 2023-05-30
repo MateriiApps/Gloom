@@ -70,7 +70,10 @@ class GloomActivity : ComponentActivity() {
                 DeepLinkWrapper { handler ->
                     Navigator(
                         screen = defaultScreen,
-                        disposeBehavior = NavigatorDisposeBehavior(false, true)
+                        disposeBehavior = NavigatorDisposeBehavior(
+                            disposeNestedNavigators = false,
+                            disposeSteps = true
+                        )
                     ) {
                         navigator = it
                         SlideTransition(it)

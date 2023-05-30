@@ -6,6 +6,7 @@ import io.ktor.client.*
 import io.ktor.client.engine.*
 import io.ktor.client.plugins.logging.*
 
+@Suppress("unused")
 class Logger {
 
     fun error(tag: String, message: String?, throwable: Throwable?) {

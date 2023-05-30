@@ -1,7 +1,15 @@
+@file:Suppress("FunctionName")
+
 package com.materiiapps.gloom.utils
 
 import android.util.Base64
 import com.materiiapps.gloom.BuildConfig
+
+object Constants {
+
+    const val DEV_USER_ID = "MDQ6VXNlcjQ0OTkyNTM3"
+
+}
 
 object Credentials {
 
@@ -24,18 +32,6 @@ object URLs {
         const val ACCESS_TOKEN = "https://github.com/login/oauth/access_token"
         const val LOGIN = "https://github.com/login/oauth/authorize"
         fun DELETE_TOKEN(clientId: String) = "$BASE_URL/applications/$clientId/token"
-    }
-
-    object REPOS {
-
-        fun README(owner: String, repo: String) = "$BASE_URL/repos/$owner/$repo/readme"
-
-    }
-
-    object ORG {
-
-        fun README(org: String, isMember: Boolean) = "$BASE_URL/repos/$org/.github${if (isMember) "-private" else ""}/readme/profile"
-
     }
 
 }

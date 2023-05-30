@@ -21,7 +21,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.items
+import androidx.paging.compose.itemContentType
+import androidx.paging.compose.itemKey
 import cafe.adriel.voyager.core.screen.Screen
 import com.apollographql.apollo3.api.Query
 import com.materiiapps.gloom.ui.components.LargeToolbar
@@ -65,9 +66,15 @@ abstract class BaseListScreen<I : Any, D : Query.Data?, VM : BaseListViewModel<I
                     modifier = Modifier
                         .nestedScroll(scrollBehavior.nestedScrollConnection)
                 ) {
-                    items(items) {
-                        if (it != null) {
-                            Item(it)
+                    items(
+                        count = items.itemCount,
+                        key = items.itemKey(),
+                        contentType = items.itemContentType(
+                        )
+                    ) { index ->
+                        val item = items[index]
+                        if (item != null) {
+                            Item(item)
                             Divider(
                                 color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
                                 thickness = 0.5.dp,

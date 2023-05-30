@@ -1,5 +1,6 @@
 package com.materiiapps.gloom.ui.screens.explore
 
+import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.outlined.Explore
@@ -31,7 +32,7 @@ class ExploreScreen : Tab {
     override fun Content() = Screen()
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class)
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     private fun Screen() {
         Scaffold(
             topBar = { TopBar() }
