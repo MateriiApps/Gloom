@@ -1,5 +1,0 @@
-fragment TreeFragment on Tree {
-	entries {
-		...FileEntryFragment
-	}
-}
