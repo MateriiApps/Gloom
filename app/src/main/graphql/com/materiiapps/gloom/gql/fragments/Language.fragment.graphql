@@ -1,0 +1,4 @@
+fragment Language on Language {
+    name
+    color
+}

@@ -1,0 +1,12 @@
+mutation UnfollowUser($id: ID!) {
+    unfollowUser(input: {
+        userId: $id
+    }) {
+        user {
+            viewerIsFollowing
+            followers {
+                totalCount
+            }
+        }
+    }
+}

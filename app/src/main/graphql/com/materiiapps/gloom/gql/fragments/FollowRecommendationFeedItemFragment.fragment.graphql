@@ -1,0 +1,8 @@
+fragment FollowRecommendationFeedItemFragment on FollowRecommendationFeedItem {
+    createdAt
+    followee {
+        __typename
+        ...FeedUser
+        ...FeedOrg
+    }
+}

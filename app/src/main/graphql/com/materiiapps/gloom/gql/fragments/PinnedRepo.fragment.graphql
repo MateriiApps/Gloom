@@ -1,0 +1,18 @@
+fragment PinnedRepo on Repository {
+    name
+    description
+    isFork
+    owner {
+        __typename
+        login
+        avatarUrl
+    }
+    parent {
+        nameWithOwner
+    }
+    primaryLanguage {
+        name
+        color
+    }
+    stargazerCount
+}

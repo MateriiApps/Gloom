@@ -1,0 +1,19 @@
+query JoinedOrgs($username: String!, $total: Int = 20, $cursor: String) {
+  user(login: $username) {
+    organizations(
+      first: $total
+      after: $cursor
+    ) {
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+      totalCount
+      nodes {
+        ...OrgListOrgFragment
+      }
+    }
+  }
+}

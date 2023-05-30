@@ -1,0 +1,17 @@
+fragment NewReleaseItemFragment on PublishedReleaseFeedItem {
+    actor {
+        ...ActorFragment
+    }
+    release {
+        name
+        tagName
+        isLatest
+        tagCommit {
+            abbreviatedOid
+        }
+        descriptionHTML
+        repository {
+            ...FeedRepository
+        }
+    }
+}

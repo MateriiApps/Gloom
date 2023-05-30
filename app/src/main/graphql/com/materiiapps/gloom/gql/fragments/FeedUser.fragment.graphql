@@ -1,0 +1,16 @@
+fragment FeedUser on User {
+    id
+    login
+    name
+    avatarUrl
+    bio
+    isFollowingViewer
+    isViewer
+    viewerIsFollowing
+    repositories {
+        totalCount
+    }
+    followers {
+        totalCount
+    }
+}

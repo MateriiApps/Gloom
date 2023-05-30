@@ -1,0 +1,6 @@
+fragment OrgListOrgFragment on Organization {
+    name
+    login
+    avatarUrl
+    description
+}

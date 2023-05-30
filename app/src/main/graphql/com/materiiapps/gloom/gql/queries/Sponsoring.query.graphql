@@ -1,0 +1,6 @@
+query Sponsoring($username: String!, $total: Int = 20, $cursor: String) {
+    repositoryOwner(login: $username) {
+        ...OrgSponsoringFragment
+        ...UserSponsoringFragment
+    }
+}

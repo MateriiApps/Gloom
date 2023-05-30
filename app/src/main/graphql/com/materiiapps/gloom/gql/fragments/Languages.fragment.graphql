@@ -1,0 +1,6 @@
+fragment Languages on LanguageConnection {
+    totalSize
+    edges {
+        ...Lang
+    }
+}

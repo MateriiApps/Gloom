@@ -1,0 +1,8 @@
+query Profile {
+    viewer {
+        ...UserProfile
+    }
+    user(login: "wingio"){
+        viewerIsSponsoring
+    }
+}

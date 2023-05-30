@@ -1,0 +1,8 @@
+fragment StarredFeedItemFragment on StarredRepositoryFeedItem {
+    actor {
+        ...ActorFragment
+    }
+    repository {
+        ...FeedRepository
+    }
+}

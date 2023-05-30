@@ -1,0 +1,19 @@
+fragment RepoListRepoFragment on Repository {
+    name
+    description
+    isFork
+    owner {
+        __typename
+        login
+        avatarUrl
+    }
+    parent {
+        nameWithOwner
+    }
+    languages(orderBy: {field: SIZE, direction: DESC}, first: 1) {
+        nodes {
+            ...Language
+        }
+    }
+    stargazerCount
+}

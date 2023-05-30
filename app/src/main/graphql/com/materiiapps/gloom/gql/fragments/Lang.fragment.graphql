@@ -1,0 +1,7 @@
+fragment Lang on LanguageEdge {
+    node {
+        name
+        color
+    }
+    size
+}
