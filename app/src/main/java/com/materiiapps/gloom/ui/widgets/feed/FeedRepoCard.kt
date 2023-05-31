@@ -85,7 +85,7 @@ fun FeedRepoCard(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Avatar(
-                    url = repo.owner.avatarUrl as? String,
+                    url = repo.owner.avatarUrl,
                     contentDescription = stringResource(
                         R.string.noun_users_avatar,
                         repo.owner.login

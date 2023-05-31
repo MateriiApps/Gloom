@@ -35,12 +35,13 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.materiiapps.gloom.R
+import com.materiiapps.gloom.ui.components.LargeSegmentedButton
+import com.materiiapps.gloom.ui.components.LargeSegmentedButtonRow
 import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoDetailsViewModel
 import com.materiiapps.gloom.ui.widgets.Markdown
 import com.materiiapps.gloom.ui.widgets.repo.ContributorsRow
 import com.materiiapps.gloom.ui.widgets.repo.LanguageMakeup
-import com.materiiapps.gloom.ui.widgets.repo.StatItem
 import org.koin.core.parameter.parametersOf
 import java.util.UUID
 
@@ -95,11 +96,8 @@ class DetailsTab(
                             .padding(16.dp)
                             .fillMaxWidth()
                     ) {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(2.dp),
-                            modifier = Modifier.clip(RoundedCornerShape(16.dp))
-                        ) {
-                            StatItem(
+                        LargeSegmentedButtonRow {
+                            LargeSegmentedButton(
                                 icon = if (repoDetails.viewerHasStarred) Icons.Filled.Star else Icons.Outlined.StarBorder,
                                 text = pluralStringResource(
                                     id = R.plurals.stars,
@@ -108,12 +106,12 @@ class DetailsTab(
                                 )
                             )
                             repoDetails.licenseInfo?.let {
-                                StatItem(
+                                LargeSegmentedButton(
                                     icon = painterResource(R.drawable.ic_balance_24),
                                     text = it.nickname ?: it.key.uppercase()
                                 )
                             }
-                            StatItem(
+                            LargeSegmentedButton(
                                 icon = painterResource(R.drawable.ic_fork_24),
                                 text = pluralStringResource(
                                     id = R.plurals.forks,
@@ -129,7 +127,7 @@ class DetailsTab(
                         thickness = 0.5.dp,
                     )
 
-                    if (!(details.readme?.contentHTML as String?).isNullOrBlank()) {
+                    if (!(details.readme?.contentHTML).isNullOrBlank()) {
                         Text(
                             buildAnnotatedString {
                                 append("README")

@@ -1,7 +1,9 @@
 package com.materiiapps.gloom.ui.screens.repo
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -176,7 +178,7 @@ class RepoScreen(
     }
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
     private fun Toolbar(
         scrollBehavior: TopAppBarScrollBehavior,
         viewModel: RepoViewModel
@@ -219,12 +221,12 @@ class RepoScreen(
                                     text = it.owner.login,
                                     style = MaterialTheme.typography.labelLarge,
                                     maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
+                                    modifier = Modifier.basicMarquee(Int.MAX_VALUE)
                                 )
                                 Text(
                                     text = it.name,
                                     maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
+                                    modifier = Modifier.basicMarquee(Int.MAX_VALUE)
                                 )
                             }
                         }

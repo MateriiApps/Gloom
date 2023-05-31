@@ -147,7 +147,7 @@ fun ReleaseCard(
             }
 
             if (release.descriptionHTML?.toString()?.isNotBlank() == true) {
-                Markdown(release.descriptionHTML as String)
+                Markdown(release.descriptionHTML)
             }
         }
 
