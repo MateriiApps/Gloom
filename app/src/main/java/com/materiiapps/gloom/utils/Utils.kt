@@ -44,9 +44,10 @@ val String.parsedColor: Color
     get() {
         val langColor =
             if (length == 4) this + substring(1..3) else this
+        val colorStr = if (!langColor.startsWith("#")) "#$langColor" else langColor
 
         return try {
-            Color(android.graphics.Color.parseColor(langColor))
+            Color(android.graphics.Color.parseColor(colorStr))
         } catch (e: Throwable) {
             Color.Black
         }

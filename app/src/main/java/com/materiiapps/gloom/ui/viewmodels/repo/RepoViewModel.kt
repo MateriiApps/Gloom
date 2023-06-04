@@ -27,7 +27,7 @@ class RepoViewModel(
     val tabs = listOf(
         DetailsTab(owner, name),
         CodeTab(owner, name),
-        IssuesTab(),
+        IssuesTab(owner, name),
         PullRequestTab(),
         ReleasesTab()
     )

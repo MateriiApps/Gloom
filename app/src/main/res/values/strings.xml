@@ -105,4 +105,19 @@
         <item quantity="other">Languages</item>
     </plurals>
 
+    <string name="cd_issue_title_opened">Issue number %1$d with title "%2$s"</string>
+    <string name="cd_issue_title_completed">Issue number %1$d with title "%2$s" marked as completed</string>
+    <string name="cd_issue_title_not_planned">Issue number %1$d with title "%2$s" marked as not planned</string>
+
+    <string name="msg_issue_untitled">Untitled issue</string>
+    <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
+
+    <string name="time_now">Now</string>
+    <string name="time_since_second">%1$ds</string>
+    <string name="time_since_minute">%1$dm</string>
+    <string name="time_since_hour">%1$dh</string>
+    <string name="time_since_day">%1$dd</string>
+    <string name="time_since_month">%1$dmo</string>
+    <string name="time_since_year">%1$dy</string>
+
 </resources>

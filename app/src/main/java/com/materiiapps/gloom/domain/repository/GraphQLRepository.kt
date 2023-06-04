@@ -1,6 +1,7 @@
 package com.materiiapps.gloom.domain.repository
 
 import com.materiiapps.gloom.domain.models.ModelUser
+import com.materiiapps.gloom.gql.type.IssueState
 import com.materiiapps.gloom.rest.service.GraphQLService
 import com.materiiapps.gloom.rest.utils.transform
 
@@ -84,10 +85,20 @@ class GraphQLRepository(
 
     suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) =
         service.getRepoFiles(owner, name, branchAndPath).transform {
-            it.repository?.gitObject?.treeFragment?.entries?.map { entry -> entry.fileEntryFragment } ?: emptyList()
+            it.repository?.gitObject?.treeFragment?.entries?.map { entry -> entry.fileEntryFragment }
+                ?: emptyList()
         }
 
-    suspend fun getDefaultBranch(owner: String, name: String) = service.getDefaultBranch(owner, name).transform {
-        it.repository?.defaultBranchRef?.name
-    }
+    suspend fun getDefaultBranch(owner: String, name: String) =
+        service.getDefaultBranch(owner, name).transform {
+            it.repository?.defaultBranchRef?.name
+        }
+
+    suspend fun getRepoIssues(
+        owner: String,
+        name: String,
+        after: String? = null,
+        states: List<IssueState> = listOf(IssueState.OPEN, IssueState.CLOSED)
+    ) = service.getRepoIssues(owner, name, after, states)
+
 }

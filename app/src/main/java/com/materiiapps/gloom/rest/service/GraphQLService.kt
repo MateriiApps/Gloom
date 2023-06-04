@@ -4,6 +4,8 @@ import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.api.Optional
+import com.materiiapps.gloom.domain.manager.AuthManager
+import com.materiiapps.gloom.gql.DefaultBranchQuery
 import com.materiiapps.gloom.gql.FeedQuery
 import com.materiiapps.gloom.gql.FollowUserMutation
 import com.materiiapps.gloom.gql.FollowersQuery
@@ -11,19 +13,20 @@ import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.gql.IdentifyQuery
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.gql.ProfileQuery
+import com.materiiapps.gloom.gql.RepoDetailsQuery
+import com.materiiapps.gloom.gql.RepoFilesQuery
+import com.materiiapps.gloom.gql.RepoIssuesQuery
 import com.materiiapps.gloom.gql.RepoListQuery
+import com.materiiapps.gloom.gql.RepoNameQuery
 import com.materiiapps.gloom.gql.SponsoringQuery
 import com.materiiapps.gloom.gql.StarRepoMutation
 import com.materiiapps.gloom.gql.StarredReposQuery
 import com.materiiapps.gloom.gql.UnfollowUserMutation
 import com.materiiapps.gloom.gql.UnstarRepoMutation
 import com.materiiapps.gloom.gql.UserProfileQuery
-import com.materiiapps.gloom.domain.manager.AuthManager
-import com.materiiapps.gloom.gql.DefaultBranchQuery
-import com.materiiapps.gloom.gql.RepoDetailsQuery
-import com.materiiapps.gloom.gql.RepoFilesQuery
-import com.materiiapps.gloom.gql.RepoNameQuery
+import com.materiiapps.gloom.gql.type.IssueState
 import com.materiiapps.gloom.rest.utils.response
+import com.materiiapps.gloom.rest.utils.toOptional
 import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -204,6 +207,17 @@ class GraphQLService(
 
     suspend fun getDefaultBranch(owner: String, name: String) = withContext(Dispatchers.IO) {
         client.query(DefaultBranchQuery(owner, name))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoIssues(
+        owner: String,
+        name: String,
+        after: String? = null,
+        states: List<IssueState> = listOf(IssueState.OPEN, IssueState.CLOSED)
+    ) = withContext(Dispatchers.IO) {
+        client.query(RepoIssuesQuery(owner, name, after.toOptional(), states))
             .addToken()
             .response()
     }
