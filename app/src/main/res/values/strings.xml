@@ -109,8 +109,21 @@
     <string name="cd_issue_title_completed">Issue number %1$d with title "%2$s" marked as completed</string>
     <string name="cd_issue_title_not_planned">Issue number %1$d with title "%2$s" marked as not planned</string>
 
+    <string name="cd_pr_title_opened">Opened pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_merged">Merged pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_closed">Closed pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_draft">Draft pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_merging_branch">Branch %1$s being merged into %2$s</string>
+
+    <string name="cd_label_comments">%1$d comments</string>
+
     <string name="msg_issue_untitled">Untitled issue</string>
+    <string name="msg_pr_untitled">Untitled pull request</string>
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
+
+    <string name="label_checks_failed">Checks failed</string>
+    <string name="label_checks">Checks</string>
+    <string name="label_reviews">Reviews</string>
 
     <string name="time_now">Now</string>
     <string name="time_since_second">%1$ds</string>

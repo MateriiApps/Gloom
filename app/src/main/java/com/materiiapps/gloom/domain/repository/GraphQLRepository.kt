@@ -2,6 +2,7 @@ package com.materiiapps.gloom.domain.repository
 
 import com.materiiapps.gloom.domain.models.ModelUser
 import com.materiiapps.gloom.gql.type.IssueState
+import com.materiiapps.gloom.gql.type.PullRequestState
 import com.materiiapps.gloom.rest.service.GraphQLService
 import com.materiiapps.gloom.rest.utils.transform
 
@@ -100,5 +101,12 @@ class GraphQLRepository(
         after: String? = null,
         states: List<IssueState> = listOf(IssueState.OPEN, IssueState.CLOSED)
     ) = service.getRepoIssues(owner, name, after, states)
+
+    suspend fun getRepoPullRequests(
+        owner: String,
+        name: String,
+        after: String? = null,
+        states: List<PullRequestState> = listOf(PullRequestState.OPEN)
+    ) = service.getRepoPullRequests(owner, name, after, states)
 
 }

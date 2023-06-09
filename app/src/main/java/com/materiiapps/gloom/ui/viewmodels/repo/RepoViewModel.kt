@@ -28,7 +28,7 @@ class RepoViewModel(
         DetailsTab(owner, name),
         CodeTab(owner, name),
         IssuesTab(owner, name),
-        PullRequestTab(),
+        PullRequestTab(owner, name),
         ReleasesTab()
     )
 

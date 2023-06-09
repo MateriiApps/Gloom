@@ -1,0 +1,37 @@
+fragment PullRequestOverview on PullRequest {
+    title
+    number
+    author {
+        login
+        avatarUrl
+    }
+    createdAt
+    state
+    comments {
+        totalCount
+    }
+    labels(first: 6) {
+        nodes {
+            name
+            color
+        }
+    }
+    assignees(first: 1) {
+        totalCount
+        nodes {
+            avatarUrl
+            login
+        }
+    }
+    reviewDecision
+    isDraft
+    commits(last: 1) {
+        nodes {
+            commit {
+                statusCheckRollup {
+                    state
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 package com.materiiapps.gloom.ui.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -26,16 +27,23 @@ fun Label(
     textColor: Color,
     borderColor: Color = textColor,
     fillColor: Color = Color.Transparent,
-    iconColor: Color = textColor
+    iconColor: Color = textColor,
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         modifier = Modifier
+            .then(modifier)
             .clip(CircleShape)
             .background(fillColor)
             .border(1.dp, borderColor, CircleShape)
-            .padding(vertical = 5.dp, horizontal = 7.dp)
+            .then(
+                if(text == null)
+                    Modifier.padding(5.dp)
+                else
+                    Modifier.padding(vertical = 5.dp, horizontal = 7.dp)
+            )
     ) {
         icon?.let {
             Icon(

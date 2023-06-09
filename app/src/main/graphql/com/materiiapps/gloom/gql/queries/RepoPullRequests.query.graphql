@@ -1,0 +1,18 @@
+query RepoPullRequests($owner: String!, $name: String!, $after: String, $states: [PullRequestState!]!) {
+    repository(owner: $owner, name: $name)	{
+        pullRequests(
+            first: 20,
+            after: $after
+            orderBy: { field: CREATED_AT, direction: DESC}
+            states: $states
+        ) {
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+            nodes {
+                ...PullRequestOverview
+            }
+        }
+    }
+}

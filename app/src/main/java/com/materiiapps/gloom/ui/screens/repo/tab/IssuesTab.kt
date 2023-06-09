@@ -24,7 +24,7 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoIssuesViewModel
-import com.materiiapps.gloom.ui.widgets.repo.IssueCard
+import com.materiiapps.gloom.ui.widgets.repo.IssueItem
 import org.koin.core.parameter.parametersOf
 import java.util.UUID
 
@@ -65,7 +65,7 @@ class IssuesTab(
                 ) { index ->
                     items[index]?.let { issue ->
                         Column {
-                            IssueCard(issue)
+                            IssueItem(issue)
                             Divider(
                                 color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
                                 thickness = 0.5.dp,

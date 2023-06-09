@@ -18,6 +18,7 @@ import com.materiiapps.gloom.gql.RepoFilesQuery
 import com.materiiapps.gloom.gql.RepoIssuesQuery
 import com.materiiapps.gloom.gql.RepoListQuery
 import com.materiiapps.gloom.gql.RepoNameQuery
+import com.materiiapps.gloom.gql.RepoPullRequestsQuery
 import com.materiiapps.gloom.gql.SponsoringQuery
 import com.materiiapps.gloom.gql.StarRepoMutation
 import com.materiiapps.gloom.gql.StarredReposQuery
@@ -25,6 +26,7 @@ import com.materiiapps.gloom.gql.UnfollowUserMutation
 import com.materiiapps.gloom.gql.UnstarRepoMutation
 import com.materiiapps.gloom.gql.UserProfileQuery
 import com.materiiapps.gloom.gql.type.IssueState
+import com.materiiapps.gloom.gql.type.PullRequestState
 import com.materiiapps.gloom.rest.utils.response
 import com.materiiapps.gloom.rest.utils.toOptional
 import io.ktor.http.HttpHeaders
@@ -218,6 +220,17 @@ class GraphQLService(
         states: List<IssueState> = listOf(IssueState.OPEN, IssueState.CLOSED)
     ) = withContext(Dispatchers.IO) {
         client.query(RepoIssuesQuery(owner, name, after.toOptional(), states))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoPullRequests(
+        owner: String,
+        name: String,
+        after: String? = null,
+        states: List<PullRequestState> = listOf(PullRequestState.OPEN)
+    ) = withContext(Dispatchers.IO) {
+        client.query(RepoPullRequestsQuery(owner, name, after.toOptional(), states))
             .addToken()
             .response()
     }
