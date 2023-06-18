@@ -15,6 +15,7 @@ import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoCodeViewModel
 import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoDetailsViewModel
 import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoIssuesViewModel
 import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoPullRequestsViewModel
+import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoReleasesViewModel
 import com.materiiapps.gloom.ui.viewmodels.settings.AppearanceSettingsViewModel
 import com.materiiapps.gloom.ui.viewmodels.settings.SettingsViewModel
 import org.koin.core.module.dsl.factoryOf
@@ -40,5 +41,6 @@ fun viewModelModule() = module {
     factoryOf(::DirectoryListingViewModel)
     factoryOf(::RepoIssuesViewModel)
     factoryOf(::RepoPullRequestsViewModel)
+    factoryOf(::RepoReleasesViewModel)
 
 }

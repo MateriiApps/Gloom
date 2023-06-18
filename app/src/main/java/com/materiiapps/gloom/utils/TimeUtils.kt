@@ -3,6 +3,9 @@ package com.materiiapps.gloom.utils
 import android.content.Context
 import com.materiiapps.gloom.R
 import kotlinx.datetime.Instant
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import kotlin.math.roundToInt
 
 object TimeUtils {
@@ -12,6 +15,8 @@ object TimeUtils {
     private const val DAY_MILLIS = 24 * HOUR_MILLIS
     private const val MONTH_MILLIS = 30 * DAY_MILLIS
     private const val YEAR_MILLIS = 12 * MONTH_MILLIS
+
+    private const val DATE_FORMAT = "MMM d"
 
     fun Context.getTimeSince(date: Instant): String {
         val now = System.currentTimeMillis()
@@ -52,4 +57,10 @@ object TimeUtils {
             else -> "??"
         }
     }
+
+    fun formatDate(instant: Instant): String =
+        SimpleDateFormat(
+            DATE_FORMAT,
+            Locale.getDefault()
+        ).format(Date(instant.toEpochMilliseconds()))
 }

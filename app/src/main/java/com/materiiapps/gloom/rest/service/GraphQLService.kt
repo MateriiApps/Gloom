@@ -19,6 +19,7 @@ import com.materiiapps.gloom.gql.RepoIssuesQuery
 import com.materiiapps.gloom.gql.RepoListQuery
 import com.materiiapps.gloom.gql.RepoNameQuery
 import com.materiiapps.gloom.gql.RepoPullRequestsQuery
+import com.materiiapps.gloom.gql.RepoReleasesQuery
 import com.materiiapps.gloom.gql.SponsoringQuery
 import com.materiiapps.gloom.gql.StarRepoMutation
 import com.materiiapps.gloom.gql.StarredReposQuery
@@ -231,6 +232,16 @@ class GraphQLService(
         states: List<PullRequestState> = listOf(PullRequestState.OPEN)
     ) = withContext(Dispatchers.IO) {
         client.query(RepoPullRequestsQuery(owner, name, after.toOptional(), states))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoReleases(
+        owner: String,
+        name: String,
+        after: String? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(RepoReleasesQuery(owner, name, after.toOptional()))
             .addToken()
             .response()
     }

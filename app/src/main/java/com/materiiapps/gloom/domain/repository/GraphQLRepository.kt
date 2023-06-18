@@ -109,4 +109,10 @@ class GraphQLRepository(
         states: List<PullRequestState> = listOf(PullRequestState.OPEN)
     ) = service.getRepoPullRequests(owner, name, after, states)
 
+    suspend fun getRepoReleases(
+        owner: String,
+        name: String,
+        after: String? = null
+    ) = service.getRepoReleases(owner, name, after)
+
 }

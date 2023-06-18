@@ -29,7 +29,7 @@ class RepoViewModel(
         CodeTab(owner, name),
         IssuesTab(owner, name),
         PullRequestTab(owner, name),
-        ReleasesTab()
+        ReleasesTab(owner, name)
     )
 
     val badgeCounts = mutableStateMapOf<Int, Int>()
