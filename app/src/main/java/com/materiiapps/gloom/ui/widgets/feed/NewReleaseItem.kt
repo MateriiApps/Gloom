@@ -18,7 +18,6 @@ import androidx.compose.material.icons.filled.LocalOffer
 import androidx.compose.material.icons.outlined.LocalOffer
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -39,7 +38,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.NewReleaseItemFragment
-import com.materiiapps.gloom.ui.theme.BadgeGreen
+import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.widgets.Markdown
 import com.materiiapps.gloom.utils.annotatingStringResource
 
@@ -137,10 +136,10 @@ fun ReleaseCard(
                         text = stringResource(R.string.adj_latest),
                         style = MaterialTheme.typography.labelSmall,
                         fontSize = 10.sp,
-                        color = BadgeGreen,
+                        color = DarkGreen,
                         modifier = Modifier
                             .clip(CircleShape)
-                            .border(1.dp, BadgeGreen, CircleShape)
+                            .border(1.dp, DarkGreen, CircleShape)
                             .padding(vertical = 4.dp, horizontal = 6.dp)
                     )
                 }

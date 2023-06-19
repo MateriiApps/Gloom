@@ -4,13 +4,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.DoNotDisturb
 import androidx.compose.material.icons.outlined.ModeStandby
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.IssueOverview
 import com.materiiapps.gloom.gql.type.IssueStateReason
-import com.materiiapps.gloom.ui.theme.BadgeGreen
+import com.materiiapps.gloom.ui.theme.colors
 import kotlinx.datetime.toInstant
 
 @Composable
@@ -18,17 +18,17 @@ fun IssueItem(issue: IssueOverview) {
     val (icon, color, titleCDRes) = when (issue.stateReason) {
         IssueStateReason.COMPLETED -> Triple(
             Icons.Outlined.CheckCircle,
-            Color.Magenta,
+            MaterialTheme.colors.statusPurple,
             R.string.cd_issue_title_completed
         )
 
         IssueStateReason.NOT_PLANNED -> Triple(
             Icons.Outlined.DoNotDisturb,
-            Color.Gray,
+            MaterialTheme.colors.statusGrey,
             R.string.cd_issue_title_not_planned
         )
 
-        else -> Triple(Icons.Outlined.ModeStandby, BadgeGreen, R.string.cd_issue_title_opened)
+        else -> Triple(Icons.Outlined.ModeStandby, MaterialTheme.colors.statusGreen, R.string.cd_issue_title_opened)
     }
 
     IssueOrPRItem(

@@ -8,24 +8,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.text.InlineTextContent
-import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Circle
-import androidx.compose.material.icons.outlined.ArrowForward
-import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Circle
-import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.ModeComment
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -43,11 +36,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.Placeholder
-import androidx.compose.ui.text.PlaceholderVerticalAlign
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -55,7 +44,7 @@ import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.type.PullRequestReviewDecision
 import com.materiiapps.gloom.gql.type.StatusState
 import com.materiiapps.gloom.ui.components.Label
-import com.materiiapps.gloom.ui.theme.BadgeGreen
+import com.materiiapps.gloom.ui.theme.colors
 import com.materiiapps.gloom.utils.TimeUtils.getTimeSince
 import com.materiiapps.gloom.utils.parsedColor
 import kotlinx.datetime.Instant
@@ -184,10 +173,10 @@ fun IssueOrPRItem(
 
                 if(checksStatus != null) {
                     val (statusIcon, statusColor, statusLabelRes) = when(checksStatus) {
-                        StatusState.EXPECTED -> Triple(Icons.Outlined.Circle, MaterialTheme.colorScheme.onSecondaryContainer, R.string.label_checks)
-                        StatusState.PENDING -> Triple(Icons.Filled.Circle, Color.Yellow, R.string.label_checks)
-                        StatusState.SUCCESS -> Triple(Icons.Filled.CheckCircle, BadgeGreen, R.string.label_checks)
-                        else -> Triple(Icons.Filled.Cancel, Color(0xFFCF2525), R.string.label_checks_failed)
+                        StatusState.EXPECTED -> Triple(Icons.Outlined.Circle, MaterialTheme.colors.surfaceTint, R.string.label_checks)
+                        StatusState.PENDING -> Triple(Icons.Filled.Circle, MaterialTheme.colors.statusYellow, R.string.label_checks)
+                        StatusState.SUCCESS -> Triple(Icons.Filled.CheckCircle, MaterialTheme.colors.statusGreen, R.string.label_checks)
+                        else -> Triple(Icons.Filled.Cancel, MaterialTheme.colors.error, R.string.label_checks_failed)
                     }
 
                     Label(
@@ -202,9 +191,9 @@ fun IssueOrPRItem(
 
                 if(reviewDecision != null) {
                     val (statusIcon, statusColor) = when(reviewDecision) {
-                        PullRequestReviewDecision.CHANGES_REQUESTED -> Icons.Filled.Cancel to Color(0xFFCF2525)
-                        PullRequestReviewDecision.APPROVED -> Icons.Filled.CheckCircle to BadgeGreen
-                        else -> Icons.Filled.Circle to MaterialTheme.colorScheme.onSecondaryContainer
+                        PullRequestReviewDecision.CHANGES_REQUESTED -> Icons.Filled.Cancel to MaterialTheme.colors.error
+                        PullRequestReviewDecision.APPROVED -> Icons.Filled.CheckCircle to MaterialTheme.colors.statusGreen
+                        else -> Icons.Filled.Circle to MaterialTheme.colors.surfaceTint
                     }
 
                     Label(

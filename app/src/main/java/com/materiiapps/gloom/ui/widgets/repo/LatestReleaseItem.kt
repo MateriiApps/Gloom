@@ -37,7 +37,7 @@ import com.materiiapps.gloom.gql.fragment.ReleaseItem
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.Label
 import com.materiiapps.gloom.ui.components.ThinDivider
-import com.materiiapps.gloom.ui.theme.BadgeGreen
+import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.widgets.Markdown
 import com.materiiapps.gloom.utils.TimeUtils
 import com.materiiapps.gloom.utils.annotatingStringResource
@@ -75,7 +75,7 @@ fun LatestReleaseItem(
 
                 Label(
                     text = stringResource(R.string.label_latest),
-                    textColor = BadgeGreen
+                    textColor = DarkGreen
                 )
             }
 

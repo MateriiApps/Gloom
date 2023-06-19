@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.ReleaseItem
 import com.materiiapps.gloom.ui.components.Label
-import com.materiiapps.gloom.ui.theme.BadgeGreen
+import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.utils.TimeUtils.getTimeSince
 import kotlinx.datetime.toInstant
 
@@ -58,7 +58,7 @@ fun ReleaseItem(
             if (release.isLatest) {
                 Label(
                     text = stringResource(R.string.label_latest),
-                    textColor = BadgeGreen
+                    textColor = DarkGreen
                 )
             }
 
