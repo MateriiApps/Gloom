@@ -13,6 +13,7 @@ import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.gql.IdentifyQuery
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.gql.ProfileQuery
+import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.RepoDetailsQuery
 import com.materiiapps.gloom.gql.RepoFilesQuery
 import com.materiiapps.gloom.gql.RepoIssuesQuery
@@ -242,6 +243,17 @@ class GraphQLService(
         after: String? = null
     ) = withContext(Dispatchers.IO) {
         client.query(RepoReleasesQuery(owner, name, after.toOptional()))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getReleaseDetails(
+        owner: String,
+        name: String,
+        tag: String,
+        after: String? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(ReleaseDetailsQuery(owner, name, tag, after.toOptional()))
             .addToken()
             .response()
     }

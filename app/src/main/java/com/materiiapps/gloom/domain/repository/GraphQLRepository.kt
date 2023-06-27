@@ -115,4 +115,11 @@ class GraphQLRepository(
         after: String? = null
     ) = service.getRepoReleases(owner, name, after)
 
+    suspend fun getReleaseDetails(
+        owner: String,
+        name: String,
+        tag: String,
+        after: String? = null
+    ) = service.getReleaseDetails(owner, name, tag, after)
+
 }

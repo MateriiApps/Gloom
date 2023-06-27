@@ -49,6 +49,7 @@
     <string name="noun_tag">Tag</string>
     <string name="noun_followed">Followed</string>
     <string name="noun_other">Other</string>
+    <string name="noun_commit">Commit</string>
     <plurals name="noun_contributors">
         <item quantity="one">%d Contributor</item>
         <item quantity="other">%d Contributors</item>
@@ -137,5 +138,12 @@
     <string name="time_since_day">%1$dd</string>
     <string name="time_since_month">%1$dmo</string>
     <string name="time_since_year">%1$dy</string>
+
+    <string name="file_size_bytes">%1$d B</string>
+    <string name="file_size_kilobytes">%1$d KB</string>
+    <string name="file_size_megabytes">%1$d MB</string>
+    <string name="file_size_gigabytes">%1$d GB</string>
+
+    <string name="error_release_load">Couldn\'t load release</string>
 
 </resources>

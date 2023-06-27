@@ -66,7 +66,7 @@ class ReleasesTab(
                 latest?.let {
                     item {
                         Column {
-                            LatestReleaseItem(it)
+                            LatestReleaseItem(owner, name, it)
                             ThinDivider()
                         }
                     }
@@ -96,7 +96,7 @@ class ReleasesTab(
                 ) { index ->
                     items[index]?.let { release ->
                         Column {
-                            ReleaseItem(release)
+                            ReleaseItem(owner, name, release)
                             ThinDivider()
                         }
                     }

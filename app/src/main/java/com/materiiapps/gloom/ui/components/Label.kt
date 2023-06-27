@@ -39,7 +39,7 @@ fun Label(
             .background(fillColor)
             .border(1.dp, borderColor, CircleShape)
             .then(
-                if(text == null)
+                if (text == null)
                     Modifier.padding(5.dp)
                 else
                     Modifier.padding(vertical = 5.dp, horizontal = 7.dp)
@@ -58,7 +58,8 @@ fun Label(
                 text = text,
                 style = MaterialTheme.typography.labelSmall,
                 fontSize = 10.sp,
-                color = textColor
+                color = textColor,
+                maxLines = 1
             )
         }
     }

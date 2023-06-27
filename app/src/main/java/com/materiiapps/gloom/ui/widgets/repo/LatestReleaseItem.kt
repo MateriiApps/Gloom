@@ -32,21 +32,28 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.ReleaseItem
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.Label
 import com.materiiapps.gloom.ui.components.ThinDivider
+import com.materiiapps.gloom.ui.screens.release.ReleaseScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.widgets.Markdown
 import com.materiiapps.gloom.utils.TimeUtils
 import com.materiiapps.gloom.utils.annotatingStringResource
+import com.materiiapps.gloom.utils.ifNullOrBlank
 import kotlinx.datetime.toInstant
 
 @Composable
 fun LatestReleaseItem(
+    repoOwner: String,
+    repoName: String,
     release: ReleaseItem
 ) {
+    val nav = LocalNavigator.currentOrThrow
     val createdAt = remember {
         (release.createdAt as String).toInstant()
     }
@@ -66,7 +73,7 @@ fun LatestReleaseItem(
                     )
             ) {
                 Text(
-                    text = release.name ?: release.tagName,
+                    text = release.name.ifNullOrBlank { release.tagName },
                     style = MaterialTheme.typography.titleLarge,
                     fontSize = 24.sp,
                     maxLines = 1,
@@ -163,7 +170,9 @@ fun LatestReleaseItem(
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.labelLarge,
             modifier = Modifier
-                .clickable { }
+                .clickable {
+                    nav.push(ReleaseScreen(repoOwner, repoName, release.tagName))
+                }
                 .fillMaxWidth()
                 .padding(16.dp)
         )
