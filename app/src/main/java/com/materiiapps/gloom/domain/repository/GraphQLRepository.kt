@@ -3,6 +3,7 @@ package com.materiiapps.gloom.domain.repository
 import com.materiiapps.gloom.domain.models.ModelUser
 import com.materiiapps.gloom.gql.type.IssueState
 import com.materiiapps.gloom.gql.type.PullRequestState
+import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.rest.service.GraphQLService
 import com.materiiapps.gloom.rest.utils.transform
 
@@ -121,5 +122,9 @@ class GraphQLRepository(
         tag: String,
         after: String? = null
     ) = service.getReleaseDetails(owner, name, tag, after)
+
+    suspend fun react(id: String, reaction: ReactionContent) = service.react(id, reaction)
+
+    suspend fun unreact(id: String, reaction: ReactionContent) = service.unreact(id, reaction)
 
 }

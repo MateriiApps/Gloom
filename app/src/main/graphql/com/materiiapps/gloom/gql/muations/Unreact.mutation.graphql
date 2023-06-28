@@ -1,0 +1,10 @@
+mutation Unreact($id: ID!, $reaction: ReactionContent!) {
+    removeReaction(input: {
+        content: $reaction
+        subjectId: $id
+    }) {
+        subject {
+            id
+        }
+    }
+}

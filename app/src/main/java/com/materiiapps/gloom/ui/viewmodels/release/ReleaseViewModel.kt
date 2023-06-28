@@ -3,12 +3,15 @@ package com.materiiapps.gloom.ui.viewmodels.release
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiiapps.gloom.domain.repository.GraphQLRepository
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.fragment.ReleaseAssetFragment
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
+import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.rest.utils.getOrNull
 import com.materiiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
+import kotlinx.coroutines.launch
 
 class ReleaseViewModel(
     private val repo: GraphQLRepository,
@@ -34,5 +37,17 @@ class ReleaseViewModel(
         data?.repository?.release?.releaseDetails?.releaseAssets?.nodes?.mapNotNull { it?.releaseAssetFragment }
             ?: emptyList()
 
+
+    fun react(reaction: ReactionContent, unreact: Boolean) {
+        details?.let {
+            coroutineScope.launch {
+                if (unreact) {
+                    repo.unreact(it.id, reaction)
+                } else {
+                    repo.react(it.id, reaction)
+                }
+            }
+        }
+    }
 
 }

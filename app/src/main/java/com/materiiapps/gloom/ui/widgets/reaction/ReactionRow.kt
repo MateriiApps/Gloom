@@ -13,11 +13,17 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AddReaction
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,11 +33,72 @@ import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.ui.theme.colors
 import com.materiiapps.gloom.utils.Constants
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReactionRow(
     reactions: List<Reaction>,
-    onReactionClick: (ReactionContent) -> Unit
+    onReactionClick: (reaction: ReactionContent, unreact: Boolean) -> Unit,
+    forRelease: Boolean = false
 ) {
+    val _reactions = remember {
+        mutableStateListOf<Reaction>().apply {
+            addAll(reactions.filter { it.reactors.totalCount > 0 })
+        }
+    }
+    var opened by remember {
+        mutableStateOf(false)
+    }
+
+    fun react(reaction: ReactionContent) {
+        val fullReaction = _reactions.firstOrNull { it.content == reaction }
+        opened = false
+
+        when {
+            _reactions.isEmpty() || fullReaction == null -> {
+                onReactionClick(reaction, false)
+                _reactions.add(
+                    Reaction(reaction, true, Reaction.Reactors(1))
+                )
+            }
+
+            fullReaction.viewerHasReacted -> {
+                val i = _reactions.indexOf(fullReaction)
+                val newCount = fullReaction.reactors.totalCount - 1
+                onReactionClick(reaction, true)
+
+                if (newCount == 0)
+                    _reactions.remove(fullReaction)
+                else
+                    _reactions[i] = fullReaction.copy(
+                        viewerHasReacted = false,
+                        reactors = fullReaction.reactors.copy(
+                            totalCount = newCount
+                        )
+                    )
+            }
+
+            !fullReaction.viewerHasReacted -> {
+                val i = _reactions.indexOf(fullReaction)
+                onReactionClick(reaction, false)
+
+                _reactions[i] = fullReaction.copy(
+                    viewerHasReacted = true,
+                    reactors = fullReaction.reactors.copy(
+                        totalCount = fullReaction.reactors.totalCount + 1
+                    )
+                )
+            }
+        }
+    }
+
+    if (opened) {
+        ReactionSheet(
+            forRelease = forRelease,
+            onReactionClick = ::react,
+            onClose = { opened = false }
+        )
+    }
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -45,13 +112,13 @@ fun ReactionRow(
             contentDescription = null,
             modifier = Modifier
                 .clip(CircleShape)
-                .clickable { /* TODO: Open reaction dialog */ }
+                .clickable { opened = true }
                 .background(MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp))
                 .padding(6.dp)
                 .size(20.dp)
         )
 
-        reactions.filter { it.reactors.totalCount > 0 }.forEach { reaction ->
+        _reactions.forEach { reaction ->
             val (backgroundColor, textColor) =
                 if (reaction.viewerHasReacted)
                     MaterialTheme.colors.primaryContainer to MaterialTheme.colors.primary
@@ -63,7 +130,7 @@ fun ReactionRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier
                     .clip(CircleShape)
-                    .clickable { onReactionClick(reaction.content) }
+                    .clickable { react(reaction.content) }
                     .background(backgroundColor)
                     .padding(horizontal = 8.dp, vertical = 6.dp)
             ) {

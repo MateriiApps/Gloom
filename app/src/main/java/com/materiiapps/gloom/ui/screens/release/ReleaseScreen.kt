@@ -128,7 +128,10 @@ class ReleaseScreen(
                         item {
                             ReactionRow(
                                 reactions = it,
-                                onReactionClick = {}
+                                onReactionClick = { reaction, unreact ->
+                                    viewModel.react(reaction, unreact)
+                                },
+                                forRelease = true
                             )
                         }
                     }

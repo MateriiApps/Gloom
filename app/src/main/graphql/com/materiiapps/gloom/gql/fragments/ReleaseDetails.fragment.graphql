@@ -1,4 +1,5 @@
 fragment ReleaseDetails on Release {
+    id
     repository {
         name
         owner {

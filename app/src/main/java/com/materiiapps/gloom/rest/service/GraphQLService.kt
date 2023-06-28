@@ -13,6 +13,7 @@ import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.gql.IdentifyQuery
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.gql.ProfileQuery
+import com.materiiapps.gloom.gql.ReactMutation
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.RepoDetailsQuery
 import com.materiiapps.gloom.gql.RepoFilesQuery
@@ -25,10 +26,12 @@ import com.materiiapps.gloom.gql.SponsoringQuery
 import com.materiiapps.gloom.gql.StarRepoMutation
 import com.materiiapps.gloom.gql.StarredReposQuery
 import com.materiiapps.gloom.gql.UnfollowUserMutation
+import com.materiiapps.gloom.gql.UnreactMutation
 import com.materiiapps.gloom.gql.UnstarRepoMutation
 import com.materiiapps.gloom.gql.UserProfileQuery
 import com.materiiapps.gloom.gql.type.IssueState
 import com.materiiapps.gloom.gql.type.PullRequestState
+import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.rest.utils.response
 import com.materiiapps.gloom.rest.utils.toOptional
 import io.ktor.http.HttpHeaders
@@ -254,6 +257,18 @@ class GraphQLService(
         after: String? = null
     ) = withContext(Dispatchers.IO) {
         client.query(ReleaseDetailsQuery(owner, name, tag, after.toOptional()))
+            .addToken()
+            .response()
+    }
+
+    suspend fun react(id: String, reaction: ReactionContent) = withContext(Dispatchers.IO) {
+        client.mutation(ReactMutation(id, reaction))
+            .addToken()
+            .response()
+    }
+
+    suspend fun unreact(id: String, reaction: ReactionContent) = withContext(Dispatchers.IO) {
+        client.mutation(UnreactMutation(id, reaction))
             .addToken()
             .response()
     }
