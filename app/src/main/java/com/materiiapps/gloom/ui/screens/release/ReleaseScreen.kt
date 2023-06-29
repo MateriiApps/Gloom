@@ -179,7 +179,7 @@ class ReleaseScreen(
                             ReleaseAsset(
                                 name = asset.name,
                                 size = asset.size,
-                                onDownloadClick = { /*TODO*/ }
+                                onDownloadClick = { viewModel.downloadAsset(asset.downloadUrl) }
                             )
                         }
                     }
