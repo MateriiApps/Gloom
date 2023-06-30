@@ -6,6 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.net.toUri
 import cafe.adriel.voyager.core.model.coroutineScope
+import com.materiiapps.gloom.domain.manager.DialogManager
+import com.materiiapps.gloom.domain.manager.DialogState
 import com.materiiapps.gloom.domain.manager.DownloadManager
 import com.materiiapps.gloom.domain.repository.GraphQLRepository
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery

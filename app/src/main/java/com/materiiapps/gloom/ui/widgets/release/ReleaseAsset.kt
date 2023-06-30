@@ -20,6 +20,10 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,7 +31,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.materiiapps.gloom.domain.manager.DialogManager
+import com.materiiapps.gloom.domain.manager.DialogState
+import com.materiiapps.gloom.ui.widgets.release.dialog.ReleaseAssetDownloadDialog
 import com.materiiapps.gloom.utils.getFileSizeString
+import org.koin.androidx.compose.get
 
 @Composable
 fun ReleaseAsset(
@@ -35,6 +43,10 @@ fun ReleaseAsset(
     size: Int,
     onDownloadClick: () -> Unit
 ) {
+    val dialogManager: DialogManager = get()
+    var showConfirmDialog by remember {
+        mutableStateOf(false)
+    }
     val icon = when (name.split(".").lastOrNull()?.lowercase()) {
         "apks",
         "apkx",
@@ -90,7 +102,7 @@ fun ReleaseAsset(
             )
 
             Text(
-                text = getFileSizeString(size, LocalContext.current),
+                text = getFileSizeString(size),
                 style = MaterialTheme.typography.labelMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -98,8 +110,27 @@ fun ReleaseAsset(
             )
         }
 
+        if(showConfirmDialog) {
+            ReleaseAssetDownloadDialog(
+                fileName = name,
+                fileSize = size,
+                onClose = { showConfirmDialog = false },
+                onConfirm = { dontShowAgain ->
+                    if(dontShowAgain) dialogManager.downloadAsset = DialogState.CONFIRMED
+                    showConfirmDialog = false
+                    onDownloadClick()
+                }
+            )
+        }
 
-        IconButton(onClick = onDownloadClick) {
+        IconButton(
+            onClick = {
+                if (dialogManager.downloadAsset == DialogState.UNKNOWN)
+                    showConfirmDialog = true
+                else
+                    onDownloadClick()
+            }
+        ) {
             Icon(
                 imageVector = Icons.Filled.Download,
                 contentDescription = null

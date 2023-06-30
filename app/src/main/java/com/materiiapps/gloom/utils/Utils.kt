@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import com.materiiapps.gloom.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -73,6 +74,9 @@ fun Context.shareText(text: String) = Intent(Intent.ACTION_SEND).apply {
 }
 
 fun String?.ifNullOrBlank(block: () -> String) = if (isNullOrBlank()) block() else this
+
+@Composable
+fun getFileSizeString(size: Int) = getFileSizeString(size, LocalContext.current)
 
 fun getFileSizeString(size: Int, context: Context): String {
     return when {
