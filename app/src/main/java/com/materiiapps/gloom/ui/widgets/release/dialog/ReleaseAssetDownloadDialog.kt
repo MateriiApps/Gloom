@@ -45,12 +45,12 @@ fun ReleaseAssetDownloadDialog(
         onDismissRequest = onClose,
         confirmButton = {
             FilledTonalButton(onClick = { onConfirm(checked) }) {
-                Text("Download")
+                Text(stringResource(R.string.action_download))
             }
         },
         dismissButton = {
             TextButton(onClick = onClose) {
-                Text("Cancel")
+                Text(stringResource(R.string.dismiss_cancel))
             }
         },
         icon = {
@@ -62,7 +62,7 @@ fun ReleaseAssetDownloadDialog(
         },
         title = {
             Text(
-                text = "Confirm download",
+                text = stringResource(R.string.title_download_confirm),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -72,7 +72,7 @@ fun ReleaseAssetDownloadDialog(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Text(
-                    text = "You are about to download $fileName (${getFileSizeString(fileSize)}), are you sure you want to do that?",
+                    text = stringResource(R.string.msg_download_dialog_body, fileName, getFileSizeString(fileSize)),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -84,7 +84,7 @@ fun ReleaseAssetDownloadDialog(
                         .fillMaxWidth()
                 ) {
                     Checkbox(checked = checked, onCheckedChange = { checked = it })
-                    Text("Don't show this again")
+                    Text(stringResource(R.string.label_dont_show_again))
                 }
             }
         }

@@ -24,10 +24,13 @@
     <string name="action_share">Share</string>
     <string name="action_expand">View More</string>
     <string name="action_collapse">View Less</string>
+    <string name="action_download">Download</string>
 
     <string name="dismiss_nevermind">Nevermind</string>
+    <string name="dismiss_cancel">Cancel</string>
 
     <string name="title_pinned">Pinned</string>
+    <string name="title_download_confirm">Confirm download</string>
 
     <string name="adj_latest">Latest</string>
 
@@ -122,6 +125,7 @@
     <string name="msg_pr_untitled">Untitled pull request</string>
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
     <string name="msg_release_author">§author§%1$s§ released this %2$s</string>
+    <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
 
     <string name="label_checks_failed">Checks failed</string>
     <string name="label_checks">Checks</string>
@@ -130,6 +134,7 @@
     <string name="label_latest">Latest</string>
     <string name="label_prerelease">Pre-release</string>
     <string name="label_all_releases">All releases</string>
+    <string name="label_dont_show_again">Don\'t show this again</string>
 
     <string name="time_now">Now</string>
     <string name="time_since_second">%1$ds</string>
