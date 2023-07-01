@@ -29,12 +29,15 @@ class DownloadManager(
     private val downloadScope = CoroutineScope(Dispatchers.IO)
     private val gloomDownloadFolder = File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOWNLOADS).resolve("Gloom")
 
-    fun download(url: String) {
+    fun download(url: String, block: (File) -> Unit = {}) {
         val name = url.toUri().lastPathSegment!!
         downloadScope.launch {
             download(url, File(gloomDownloadFolder, name)).also {
                 Handler(Looper.getMainLooper()).post {
-                    if(it.exists()) context.showToast("Download complete: $name")
+                    if(it.exists()) {
+                        context.showToast("Download complete: $name")
+                        block(it)
+                    }
                 }
             }
         }

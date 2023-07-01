@@ -25,12 +25,15 @@
     <string name="action_expand">View More</string>
     <string name="action_collapse">View Less</string>
     <string name="action_download">Download</string>
+    <string name="action_install">Install</string>
 
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
 
     <string name="title_pinned">Pinned</string>
     <string name="title_download_confirm">Confirm download</string>
+    <string name="title_install_app">Install this app?</string>
 
     <string name="adj_latest">Latest</string>
 
@@ -126,6 +129,7 @@
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
     <string name="msg_release_author">§author§%1$s§ released this %2$s</string>
     <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
+    <string name="msg_install_dialog_body">We have detected that %1$s is an Android application, would you like to install it?</string>
 
     <string name="label_checks_failed">Checks failed</string>
     <string name="label_checks">Checks</string>
@@ -150,5 +154,15 @@
     <string name="file_size_gigabytes">%1$d GB</string>
 
     <string name="error_release_load">Couldn\'t load release</string>
+
+    <string name="install_fail_generic">Failed to install: Unknown reason</string>
+    <string name="install_fail_blocked">Installation was blocked</string>
+    <string name="install_fail_invalid">One or more apks were invalid or corrupt</string>
+    <string name="install_fail_conflict">Conflicts with an existing app, usually due to mismatched signatures</string>
+    <string name="install_fail_storage">Not enough available storage to install</string>
+    <string name="install_fail_incompatible">Application is incompatible with this device</string>
+    <string name="install_fail_timeout">Installation timed out</string>
+    <string name="install_success">App installed successfully!</string>
+    <string name="install_cancelled">Installation cancelled</string>
 
 </resources>

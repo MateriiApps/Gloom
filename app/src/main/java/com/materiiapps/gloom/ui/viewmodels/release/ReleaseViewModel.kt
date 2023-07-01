@@ -16,8 +16,10 @@ import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.rest.utils.getOrNull
 import com.materiiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
+import com.materiiapps.gloom.utils.installApks
 import com.materiiapps.gloom.utils.showToast
 import kotlinx.coroutines.launch
+import java.io.File
 
 class ReleaseViewModel(
     private val repo: GraphQLRepository,
@@ -31,6 +33,9 @@ class ReleaseViewModel(
     val tag = nameAndTag.third
 
     var details by mutableStateOf<ReleaseDetails?>(null)
+        private set
+
+    var apkFile by mutableStateOf<File?>(null)
         private set
 
     override suspend fun loadPage(cursor: String?): ReleaseDetailsQuery.Data? =
@@ -58,9 +63,19 @@ class ReleaseViewModel(
         }
     }
 
-    fun downloadAsset(url: String) {
+    fun downloadAsset(url: String, mimeType: String) {
         context.showToast("Downloading ${url.toUri().lastPathSegment}...")
-        downloadManager.download(url)
+        downloadManager.download(url) {
+            if(mimeType == "application/vnd.android.package-archive") apkFile = it
+        }
+    }
+
+    fun clearApk() {
+        apkFile = null
+    }
+
+    fun installApk() {
+        apkFile?.let { context.installApks(it) }
     }
 
 }

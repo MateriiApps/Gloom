@@ -40,6 +40,8 @@ import androidx.paging.compose.itemKey
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.R
+import com.materiiapps.gloom.domain.manager.DialogManager
+import com.materiiapps.gloom.domain.manager.DialogState
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.ui.components.BackButton
 import com.materiiapps.gloom.ui.components.RefreshIndicator
@@ -53,8 +55,10 @@ import com.materiiapps.gloom.ui.widgets.release.ReleaseAuthor
 import com.materiiapps.gloom.ui.widgets.release.ReleaseContributors
 import com.materiiapps.gloom.ui.widgets.release.ReleaseHeader
 import com.materiiapps.gloom.ui.widgets.release.ReleaseInfo
+import com.materiiapps.gloom.ui.widgets.release.dialog.ReleaseAssetInstallDialog
 import com.materiiapps.gloom.utils.shareText
 import kotlinx.datetime.toInstant
+import org.koin.androidx.compose.get
 import org.koin.core.parameter.parametersOf
 import java.util.UUID
 
@@ -70,6 +74,7 @@ class ReleaseScreen(
     @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
     override fun Content() {
         val viewModel: ReleaseViewModel = getScreenModel { parametersOf(Triple(owner, name, tag)) }
+        val dialogManager: DialogManager = get()
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
         val items = viewModel.items.collectAsLazyPagingItems()
         val details = viewModel.details
@@ -96,6 +101,27 @@ class ReleaseScreen(
                     .clipToBounds()
                     .nestedScroll(scrollBehavior.nestedScrollConnection)
             ) {
+                if(viewModel.apkFile != null) {
+                    when(dialogManager.installApk) {
+                        DialogState.UNKNOWN -> {
+                            ReleaseAssetInstallDialog(
+                                fileName = viewModel.apkFile!!.name,
+                                onClose = { dontShowAgain ->
+                                    viewModel.clearApk()
+                                    if (dontShowAgain == true) dialogManager.installApk = DialogState.DENIED
+                                },
+                                onConfirm = { dontShowAgain ->
+                                    viewModel.installApk()
+                                    viewModel.clearApk()
+                                    if(dontShowAgain) dialogManager.installApk = DialogState.CONFIRMED
+                                }
+                            )
+                        }
+                        DialogState.CONFIRMED -> viewModel.installApk()
+                        else -> {}
+                    }
+                }
+
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier.fillMaxSize()
@@ -179,7 +205,7 @@ class ReleaseScreen(
                             ReleaseAsset(
                                 name = asset.name,
                                 size = asset.size,
-                                onDownloadClick = { viewModel.downloadAsset(asset.downloadUrl) }
+                                onDownloadClick = { viewModel.downloadAsset(asset.downloadUrl, asset.contentType) }
                             )
                         }
                     }

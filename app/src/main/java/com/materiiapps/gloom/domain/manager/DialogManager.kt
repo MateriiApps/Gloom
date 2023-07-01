@@ -7,6 +7,8 @@ class DialogManager(context: Context): BasePreferenceManager(context.getSharedPr
 
     var downloadAsset by enumPreference("release_asset_download", DialogState.UNKNOWN)
 
+    var installApk by enumPreference("install_apk", DialogState.UNKNOWN)
+
 }
 
 enum class DialogState {
