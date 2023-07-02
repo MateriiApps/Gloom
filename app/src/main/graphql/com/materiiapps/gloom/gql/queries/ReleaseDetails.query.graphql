@@ -1,0 +1,7 @@
+query ReleaseDetails($owner: String!, $name: String!, $tag: String!, $after: String) {
+    repository(owner: $owner, name: $name) {
+        release(tagName: $tag) {
+            ...ReleaseDetails
+        }
+    }
+}

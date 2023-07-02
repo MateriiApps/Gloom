@@ -4,6 +4,8 @@ import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.api.Optional
+import com.materiiapps.gloom.domain.manager.AuthManager
+import com.materiiapps.gloom.gql.DefaultBranchQuery
 import com.materiiapps.gloom.gql.FeedQuery
 import com.materiiapps.gloom.gql.FollowUserMutation
 import com.materiiapps.gloom.gql.FollowersQuery
@@ -11,15 +13,27 @@ import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.gql.IdentifyQuery
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.gql.ProfileQuery
+import com.materiiapps.gloom.gql.ReactMutation
+import com.materiiapps.gloom.gql.ReleaseDetailsQuery
+import com.materiiapps.gloom.gql.RepoDetailsQuery
+import com.materiiapps.gloom.gql.RepoFilesQuery
+import com.materiiapps.gloom.gql.RepoIssuesQuery
 import com.materiiapps.gloom.gql.RepoListQuery
+import com.materiiapps.gloom.gql.RepoNameQuery
+import com.materiiapps.gloom.gql.RepoPullRequestsQuery
+import com.materiiapps.gloom.gql.RepoReleasesQuery
 import com.materiiapps.gloom.gql.SponsoringQuery
 import com.materiiapps.gloom.gql.StarRepoMutation
 import com.materiiapps.gloom.gql.StarredReposQuery
 import com.materiiapps.gloom.gql.UnfollowUserMutation
+import com.materiiapps.gloom.gql.UnreactMutation
 import com.materiiapps.gloom.gql.UnstarRepoMutation
 import com.materiiapps.gloom.gql.UserProfileQuery
-import com.materiiapps.gloom.domain.manager.AuthManager
+import com.materiiapps.gloom.gql.type.IssueState
+import com.materiiapps.gloom.gql.type.PullRequestState
+import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.rest.utils.response
+import com.materiiapps.gloom.rest.utils.toOptional
 import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -176,6 +190,85 @@ class GraphQLService(
 
     suspend fun identify() = withContext(Dispatchers.IO) {
         client.query(IdentifyQuery())
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoName(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(RepoNameQuery(owner, name))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoDetails(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(RepoDetailsQuery(owner, name))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) = withContext(Dispatchers.IO) {
+        client.query(RepoFilesQuery(owner, name, branchAndPath))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getDefaultBranch(owner: String, name: String) = withContext(Dispatchers.IO) {
+        client.query(DefaultBranchQuery(owner, name))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoIssues(
+        owner: String,
+        name: String,
+        after: String? = null,
+        states: List<IssueState> = listOf(IssueState.OPEN, IssueState.CLOSED)
+    ) = withContext(Dispatchers.IO) {
+        client.query(RepoIssuesQuery(owner, name, after.toOptional(), states))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoPullRequests(
+        owner: String,
+        name: String,
+        after: String? = null,
+        states: List<PullRequestState> = listOf(PullRequestState.OPEN)
+    ) = withContext(Dispatchers.IO) {
+        client.query(RepoPullRequestsQuery(owner, name, after.toOptional(), states))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getRepoReleases(
+        owner: String,
+        name: String,
+        after: String? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(RepoReleasesQuery(owner, name, after.toOptional()))
+            .addToken()
+            .response()
+    }
+
+    suspend fun getReleaseDetails(
+        owner: String,
+        name: String,
+        tag: String,
+        after: String? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(ReleaseDetailsQuery(owner, name, tag, after.toOptional()))
+            .addToken()
+            .response()
+    }
+
+    suspend fun react(id: String, reaction: ReactionContent) = withContext(Dispatchers.IO) {
+        client.mutation(ReactMutation(id, reaction))
+            .addToken()
+            .response()
+    }
+
+    suspend fun unreact(id: String, reaction: ReactionContent) = withContext(Dispatchers.IO) {
+        client.mutation(UnreactMutation(id, reaction))
             .addToken()
             .response()
     }

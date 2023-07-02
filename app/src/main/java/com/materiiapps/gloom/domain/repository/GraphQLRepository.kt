@@ -1,6 +1,9 @@
 package com.materiiapps.gloom.domain.repository
 
 import com.materiiapps.gloom.domain.models.ModelUser
+import com.materiiapps.gloom.gql.type.IssueState
+import com.materiiapps.gloom.gql.type.PullRequestState
+import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.rest.service.GraphQLService
 import com.materiiapps.gloom.rest.utils.transform
 
@@ -75,4 +78,53 @@ class GraphQLRepository(
     }
 
     suspend fun identify() = service.identify().transform { it.viewer }
+
+    suspend fun getRepoOverview(owner: String, name: String) =
+        service.getRepoName(owner, name).transform { it.repository?.repoOverview }
+
+    suspend fun getRepoDetails(owner: String, name: String) =
+        service.getRepoDetails(owner, name).transform { it.repository?.repoDetails }
+
+    suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) =
+        service.getRepoFiles(owner, name, branchAndPath).transform {
+            it.repository?.gitObject?.treeFragment?.entries?.map { entry -> entry.fileEntryFragment }
+                ?: emptyList()
+        }
+
+    suspend fun getDefaultBranch(owner: String, name: String) =
+        service.getDefaultBranch(owner, name).transform {
+            it.repository?.defaultBranchRef?.name
+        }
+
+    suspend fun getRepoIssues(
+        owner: String,
+        name: String,
+        after: String? = null,
+        states: List<IssueState> = listOf(IssueState.OPEN, IssueState.CLOSED)
+    ) = service.getRepoIssues(owner, name, after, states)
+
+    suspend fun getRepoPullRequests(
+        owner: String,
+        name: String,
+        after: String? = null,
+        states: List<PullRequestState> = listOf(PullRequestState.OPEN)
+    ) = service.getRepoPullRequests(owner, name, after, states)
+
+    suspend fun getRepoReleases(
+        owner: String,
+        name: String,
+        after: String? = null
+    ) = service.getRepoReleases(owner, name, after)
+
+    suspend fun getReleaseDetails(
+        owner: String,
+        name: String,
+        tag: String,
+        after: String? = null
+    ) = service.getReleaseDetails(owner, name, tag, after)
+
+    suspend fun react(id: String, reaction: ReactionContent) = service.react(id, reaction)
+
+    suspend fun unreact(id: String, reaction: ReactionContent) = service.unreact(id, reaction)
+
 }

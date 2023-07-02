@@ -1,0 +1,6 @@
+fragment ReleaseAssetFragment on ReleaseAsset {
+    name
+    downloadUrl
+    size
+    contentType
+}

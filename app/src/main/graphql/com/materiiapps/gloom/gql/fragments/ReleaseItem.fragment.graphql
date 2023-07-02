@@ -1,0 +1,15 @@
+fragment ReleaseItem on Release {
+    name
+    tagName
+    isLatest
+    isPrerelease
+    tagCommit {
+        abbreviatedOid
+    }
+    descriptionHTML
+    author {
+        avatarUrl
+        login
+    }
+    createdAt
+}

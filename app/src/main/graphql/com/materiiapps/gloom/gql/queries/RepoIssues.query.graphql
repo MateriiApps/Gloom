@@ -1,0 +1,20 @@
+query RepoIssues($owner: String!, $name: String!, $after: String, $states: [IssueState!]!) {
+    repository(owner: $owner, name: $name)	{
+        issues(
+            first: 20,
+            after: $after
+            orderBy: { field: CREATED_AT, direction: DESC}
+            filterBy: {
+                states: $states
+            }
+        ) {
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+            nodes {
+                ...IssueOverview
+            }
+        }
+    }
+}

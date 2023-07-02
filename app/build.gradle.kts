@@ -53,6 +53,8 @@ android {
 
     apollo {
         packageName.set("com.materiiapps.gloom.gql")
+        customTypeMapping.put("URI", "kotlin.String")
+        customTypeMapping.put("HTML", "kotlin.String")
     }
 
 }

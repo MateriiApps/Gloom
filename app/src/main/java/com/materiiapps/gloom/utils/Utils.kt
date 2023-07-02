@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import com.materiiapps.gloom.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,9 +46,10 @@ val String.parsedColor: Color
     get() {
         val langColor =
             if (length == 4) this + substring(1..3) else this
+        val colorStr = if (!langColor.startsWith("#")) "#$langColor" else langColor
 
         return try {
-            Color(android.graphics.Color.parseColor(langColor))
+            Color(android.graphics.Color.parseColor(colorStr))
         } catch (e: Throwable) {
             Color.Black
         }
@@ -70,6 +73,28 @@ fun Context.shareText(text: String) = Intent(Intent.ACTION_SEND).apply {
     }
 }
 
+fun String?.ifNullOrBlank(block: () -> String) = if (isNullOrBlank()) block() else this
+
+@Composable
+fun getFileSizeString(size: Int) = getFileSizeString(size, LocalContext.current)
+
+fun getFileSizeString(size: Int, context: Context): String {
+    return when {
+        size < Constants.FILE_SIZES.KILO -> context.getString(R.string.file_size_bytes, size)
+        size < Constants.FILE_SIZES.MEGA -> context.getString(
+            R.string.file_size_kilobytes,
+            size / Constants.FILE_SIZES.KILO
+        )
+
+        size < Constants.FILE_SIZES.GIGA -> context.getString(
+            R.string.file_size_megabytes,
+            size / Constants.FILE_SIZES.MEGA
+        )
+
+        else -> context.getString(R.string.file_size_gigabytes, size / Constants.FILE_SIZES.GIGA)
+    }
+}
+
 @Composable
 fun generateMdHtml(
     source: String,
@@ -77,7 +102,7 @@ fun generateMdHtml(
     textColor: Color = MaterialTheme.colorScheme.onSurface,
     linkColor: Color = MaterialTheme.colorScheme.primary
 ): String {
-        return """<html>
+    return """<html>
                     <head>
                         <meta charset="utf-8" />
                         <title>Markdown</title>

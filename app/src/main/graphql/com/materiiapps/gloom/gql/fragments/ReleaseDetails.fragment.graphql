@@ -1,0 +1,44 @@
+fragment ReleaseDetails on Release {
+    id
+    repository {
+        name
+        owner {
+            __typename
+            login
+            avatarUrl
+        }
+    }
+    name
+    isLatest
+    isPrerelease
+    author {
+        login
+        avatarUrl
+    }
+    createdAt
+    descriptionHTML
+    reactionGroups {
+        ...Reaction
+    }
+    mentions(first: 20) {
+        totalCount
+        nodes {
+            login
+            avatarUrl
+        }
+    }
+    tagName
+    tagCommit {
+        abbreviatedOid
+    }
+    releaseAssets(first: 20, after: $after) {
+        pageInfo {
+            hasNextPage
+            endCursor
+        }
+        nodes {
+            ...ReleaseAssetFragment
+        }
+    }
+    url
+}

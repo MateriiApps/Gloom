@@ -1,0 +1,10 @@
+mutation React($id: ID!, $reaction: ReactionContent!) {
+    addReaction(input: {
+        content: $reaction
+        subjectId: $id
+    }) {
+        subject {
+            id
+        }
+    }
+}

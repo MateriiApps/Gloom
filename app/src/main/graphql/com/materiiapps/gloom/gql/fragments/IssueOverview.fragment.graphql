@@ -1,0 +1,27 @@
+fragment IssueOverview on Issue {
+    title
+    number
+    author {
+        login
+        avatarUrl
+    }
+    createdAt
+    state
+    stateReason
+    comments {
+        totalCount
+    }
+    labels(first: 6) {
+        nodes {
+            name
+            color
+        }
+    }
+    assignees(first: 1) {
+        totalCount
+        nodes {
+            avatarUrl
+            login
+        }
+    }
+}

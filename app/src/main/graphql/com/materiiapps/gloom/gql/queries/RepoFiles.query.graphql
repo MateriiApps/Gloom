@@ -1,0 +1,8 @@
+query RepoFilesQuery($owner: String!, $name: String!, $branchAndPath: String!) {
+	repository(owner: $owner, name: $name) {
+		gitObject: object(expression: $branchAndPath) {
+			__typename
+			...TreeFragment
+		}
+	}
+}

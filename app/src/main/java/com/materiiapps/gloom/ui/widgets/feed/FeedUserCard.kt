@@ -80,7 +80,7 @@ fun FeedUserCard(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Avatar(
-                    url = avatarUrl as? String,
+                    url = avatarUrl,
                     contentDescription = stringResource(
                         R.string.noun_users_avatar,
                         login ?: "ghost"

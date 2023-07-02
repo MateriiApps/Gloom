@@ -18,7 +18,6 @@ import androidx.compose.material.icons.filled.LocalOffer
 import androidx.compose.material.icons.outlined.LocalOffer
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,12 +35,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import coil.compose.AsyncImage
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.NewReleaseItemFragment
-import com.materiiapps.gloom.ui.theme.BadgeGreen
+import com.materiiapps.gloom.ui.screens.release.ReleaseScreen
+import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.widgets.Markdown
 import com.materiiapps.gloom.utils.annotatingStringResource
+import com.materiiapps.gloom.utils.navigate
 
 @Composable
 @Suppress("UNUSED_PARAMETER")
@@ -82,6 +85,8 @@ fun ReleaseCard(
     release: NewReleaseItemFragment.Release
 ) {
     val repo = release.repository.feedRepository
+    val nav = LocalNavigator.currentOrThrow
+
     ElevatedCard(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -137,17 +142,17 @@ fun ReleaseCard(
                         text = stringResource(R.string.adj_latest),
                         style = MaterialTheme.typography.labelSmall,
                         fontSize = 10.sp,
-                        color = BadgeGreen,
+                        color = DarkGreen,
                         modifier = Modifier
                             .clip(CircleShape)
-                            .border(1.dp, BadgeGreen, CircleShape)
+                            .border(1.dp, DarkGreen, CircleShape)
                             .padding(vertical = 4.dp, horizontal = 6.dp)
                     )
                 }
             }
 
-            if (release.descriptionHTML?.toString()?.isNotBlank() == true) {
-                Markdown(release.descriptionHTML as String)
+            if (release.descriptionHTML?.isNotBlank() == true) {
+                Markdown(release.descriptionHTML)
             }
         }
 
@@ -161,32 +166,37 @@ fun ReleaseCard(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(16.dp)
         ) {
-            ReleaseDetail(
-                icon = Icons.Outlined.LocalOffer,
-                iconDescription = stringResource(R.string.noun_tag),
-                text = release.tagName
-            )
-            if (release.tagCommit?.abbreviatedOid?.isNotBlank() == true) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.weight(1f)
+            ) {
                 ReleaseDetail(
-                    icon = painterResource(R.drawable.ic_commit_24),
+                    icon = Icons.Outlined.LocalOffer,
                     iconDescription = stringResource(R.string.noun_tag),
-                    text = release.tagCommit.abbreviatedOid
+                    text = release.tagName
                 )
+                if (release.tagCommit?.abbreviatedOid?.isNotBlank() == true) {
+                    ReleaseDetail(
+                        icon = painterResource(R.drawable.ic_commit_24),
+                        iconDescription = stringResource(R.string.noun_tag),
+                        text = release.tagCommit.abbreviatedOid
+                    )
+                }
             }
-
-            Spacer(Modifier.weight(1f))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .clip(CircleShape)
-                    .clickable { }
+                    .clickable { nav.navigate(ReleaseScreen(repo.owner.login, repo.name, release.tagName)) }
                     .padding(vertical = 3.dp, horizontal = 5.dp)
             ) {
                 Text(
                     stringResource(R.string.action_view_details),
                     style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onSurface,
+                    maxLines = 1
                 )
                 Spacer(Modifier.width(2.dp))
                 Icon(Icons.Default.ChevronRight, null)

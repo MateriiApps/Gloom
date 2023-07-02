@@ -1,0 +1,13 @@
+query RepoReleases($owner: String!, $name: String!, $after: String) {
+    repository(owner: $owner, name: $name) {
+        releases(first: 20, after: $after) {
+            pageInfo {
+                endCursor
+                hasNextPage
+            }
+            nodes {
+                ...ReleaseItem
+            }
+        }
+    }
+}

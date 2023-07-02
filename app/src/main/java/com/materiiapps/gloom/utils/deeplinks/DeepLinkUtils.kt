@@ -5,6 +5,8 @@ import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.ui.screens.list.RepositoryListScreen
 import com.materiiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
+import com.materiiapps.gloom.ui.screens.release.ReleaseScreen
+import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 
 fun DeepLinkHandler.addAllRoutes(navigator: Navigator, auth: AuthManager) {
     addOnLinkVisitedListener("/{username}") { params, query ->
@@ -22,7 +24,14 @@ fun DeepLinkHandler.addAllRoutes(navigator: Navigator, auth: AuthManager) {
     addOnLinkVisitedListener("/{owner}/{repo}") { params, _ ->
         val owner = params["owner"]!!
         val repo = params["repo"]!!
-        println("Repo $repo by $owner")
+        navigator push RepoScreen(owner, repo)
+    }
+
+    addOnLinkVisitedListener("/{owner}/{repo}/releases/tag/{tag}") { params, _ ->
+        val owner = params["owner"]!!
+        val repo = params["repo"]!!
+        val tag = params["tag"]!!
+        navigator push ReleaseScreen(owner, repo, tag)
     }
 
     addOnLinkVisitedListener("/dashboard") { _, _ ->

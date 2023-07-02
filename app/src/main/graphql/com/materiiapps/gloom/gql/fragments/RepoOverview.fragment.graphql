@@ -1,0 +1,14 @@
+fragment RepoOverview on Repository {
+    name
+    owner {
+        __typename
+        login
+        avatarUrl
+    }
+    issues(states: OPEN) {
+        totalCount
+    }
+    pullRequests(states: OPEN) {
+        totalCount
+    }
+}
