@@ -1,6 +1,6 @@
 [versions]
 accompanist = "0.30.1"
-agp = "8.2.0-alpha07"
+agp = "8.2.0-alpha10"
 apollo = "3.6.2"
 coil = "2.4.0"
 compose = "1.5.0-alpha04"
