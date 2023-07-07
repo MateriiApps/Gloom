@@ -4,7 +4,7 @@ query Feed($after: String) {
         dashboard {
             feed {
                 items(
-                    first: 100
+                    first: 20
                     after: $after
                     itemTypes: [
                         STARRED_REPOSITORY_FEED_ITEM
