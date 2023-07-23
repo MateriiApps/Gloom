@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.R
@@ -51,7 +52,9 @@ fun ReleaseInfo(
             Text(
                 text = tagName,
                 style = MaterialTheme.typography.labelLarge,
-                fontSize = 15.sp
+                fontSize = 15.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
         if (commit?.isNotBlank() == true) {
@@ -73,7 +76,9 @@ fun ReleaseInfo(
                 Text(
                     text = commit,
                     style = MaterialTheme.typography.labelLarge,
-                    fontSize = 15.sp
+                    fontSize = 15.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
