@@ -56,9 +56,11 @@ import coil.compose.AsyncImage
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.NewReleaseItemFragment
 import com.materiiapps.gloom.ui.screens.release.ReleaseScreen
+import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.widgets.Markdown
 import com.materiiapps.gloom.utils.annotatingStringResource
+import com.materiiapps.gloom.utils.ifNullOrBlank
 import com.materiiapps.gloom.utils.navigate
 
 @Composable
@@ -110,38 +112,44 @@ fun ReleaseCard(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-                verticalAlignment = Alignment.CenterVertically,
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp, start = 16.dp, end = 16.dp)
             ) {
-                AsyncImage(
-                    model = repo.owner.avatarUrl,
-                    contentDescription = stringResource(
-                        R.string.noun_users_avatar,
-                        repo.owner.login
-                    ),
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .size(20.dp)
-                        .clip(
-                            if (repo.owner.__typename == "User") CircleShape else RoundedCornerShape(
-                                5.dp
+                        .clickable { nav.navigate(RepoScreen(repo.owner.login, repo.name)) }
+                ) {
+                    AsyncImage(
+                        model = repo.owner.avatarUrl,
+                        contentDescription = stringResource(
+                            R.string.noun_users_avatar,
+                            repo.owner.login
+                        ),
+                        modifier = Modifier
+                            .size(20.dp)
+                            .clip(
+                                if (repo.owner.__typename == "User") CircleShape else RoundedCornerShape(
+                                    5.dp
+                                )
                             )
-                        )
-                )
-                Text(
-                    buildAnnotatedString {
-                        append(repo.owner.login)
-                        withStyle(SpanStyle(color = MaterialTheme.colorScheme.onSurface.copy(0.5f))) {
-                            append(" / ")
-                        }
-                        append(repo.name)
-                    },
-                    style = MaterialTheme.typography.labelMedium
-                )
+                    )
+                    Text(
+                        buildAnnotatedString {
+                            append(repo.owner.login)
+                            withStyle(SpanStyle(color = MaterialTheme.colorScheme.onSurface.copy(0.5f))) {
+                                append(" / ")
+                            }
+                            append(repo.name)
+                        },
+                        style = MaterialTheme.typography.labelMedium
+                    )
+                }
             }
+
 
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -149,7 +157,7 @@ fun ReleaseCard(
                 modifier = Modifier.padding(horizontal = 16.dp)
             ) {
                 Text(
-                    text = release.name ?: release.tagName,
+                    text = release.name.ifNullOrBlank { release.tagName },
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold
                 )
