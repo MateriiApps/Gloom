@@ -10,6 +10,9 @@ fragment RepoDetails on Repository {
     homepageUrl
     stargazerCount
     forkCount
+    parent {
+        nameWithOwner
+    }
     viewerHasStarred
     viewerBlockedByOwner
     latestRelease {
