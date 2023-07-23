@@ -20,7 +20,7 @@ class RepositoryListScreen(
         @Composable get() = getScreenModel { parametersOf(username) }
 
     @Composable
-    override fun Item(item: ModelRepo) = RepoItem(repo = item)
+    override fun Item(item: ModelRepo) = RepoItem(repo = item, login = username)
 
     override val key: ScreenKey
         get() = "${javaClass.name}($username)"

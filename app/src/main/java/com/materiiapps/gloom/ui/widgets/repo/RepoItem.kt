@@ -30,6 +30,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 import com.materiiapps.gloom.utils.navigate
 import com.materiiapps.gloom.R
@@ -39,9 +40,10 @@ import com.materiiapps.gloom.ui.components.Avatar
 @Composable
 fun RepoItem(
     repo: ModelRepo,
+    login: String? = null,
     card: Boolean = false
 ) {
-    val nav = LocalNavigator.current
+    val nav = LocalNavigator.currentOrThrow
     Column(
         Modifier
             .run {
@@ -51,8 +53,8 @@ fun RepoItem(
             }
             .background(if (card) MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp) else Color.Transparent)
             .clickable {
-                if (!repo.name.isNullOrBlank() && !repo.owner?.username.isNullOrBlank())
-                    nav?.navigate(RepoScreen(repo.owner?.username!!, repo.name))
+                if (!repo.name.isNullOrBlank() && (!repo.owner?.username.isNullOrBlank() || login != null))
+                    nav.navigate(RepoScreen(login ?: repo.owner?.username!!, repo.name))
             }
             .padding(16.dp)
             .run {
