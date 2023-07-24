@@ -7,6 +7,7 @@ import com.materiiapps.gloom.gql.fragment.PinnedRepo
 import com.materiiapps.gloom.rest.dto.license.License
 import com.materiiapps.gloom.rest.dto.repo.Repository
 import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.utils.parsedColor
 import kotlinx.datetime.LocalDateTime
 
 data class ModelRepo(
@@ -111,7 +112,7 @@ data class ModelRepo(
         fun fromStarredReposQuery(srq: StarredReposQuery.Node) = with(srq.repoListRepoFragment) {
             val lang = languages?.nodes?.firstOrNull()
             val modelLang = if (lang != null)
-                ModelLanguage(lang.language.name, Color(android.graphics.Color.parseColor(lang.language.color)))
+                ModelLanguage(lang.language.name, lang.language.color?.parsedColor)
             else
                 null
 
@@ -124,7 +125,7 @@ data class ModelRepo(
                 stars = stargazerCount,
                 owner = ModelUser(
                     username = owner.login,
-                    avatar = owner.avatarUrl.toString(),
+                    avatar = owner.avatarUrl,
                     type = if (owner.__typename == "User") User.Type.USER else User.Type.ORG
                 )
             )
