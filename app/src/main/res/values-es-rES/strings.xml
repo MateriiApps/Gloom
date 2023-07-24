@@ -33,6 +33,7 @@
     <string name="noun_starred">Destacado</string>
     <string name="noun_orgs">Organizaciones</string>
     <string name="noun_repos">Repositorios</string>
+    <string name="noun_contributions">Contributions: %1$d</string>
     <string name="noun_contributors">Colaboradores</string>
     <string name="noun_sponsoring">Patrocinando</string>
     <string name="noun_forked_repo">Repositorio bifurcado</string>
@@ -49,6 +50,8 @@
     <string name="noun_followed">Seguido</string>
     <string name="noun_other">Otro</string>
     <string name="noun_commit">Cambio</string>
+    <string name="noun_more">More</string>
+    <string name="noun_less">Less</string>
     <plurals name="noun_contributors">
         <item quantity="one">%d Colaborador</item>
         <item quantity="other">%d Colaboradores</item>
@@ -64,6 +67,10 @@
     <plurals name="forks">
         <item quantity="one">%d Bifurcación</item>
         <item quantity="other">%d Bifurcaciones</item>
+    </plurals>
+    <plurals name="contributions_toast">
+        <item quantity="one">%1$s: %2$d Contribution</item>
+        <item quantity="other">%1$s: %2$d Contributions</item>
     </plurals>
     <string name="forked_from">Bifurcado de %s</string>
     <string name="created_repo">§name§%1$s§ §text§creado un repositorio§</string>

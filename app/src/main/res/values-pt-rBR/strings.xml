@@ -33,6 +33,7 @@
     <string name="noun_starred">Com estrela</string>
     <string name="noun_orgs">Organizações</string>
     <string name="noun_repos">Repositórios</string>
+    <string name="noun_contributions">Contributions: %1$d</string>
     <string name="noun_contributors">Colaboradores</string>
     <string name="noun_sponsoring">Patrocínio</string>
     <string name="noun_forked_repo">Repositórios Forks</string>
@@ -49,6 +50,8 @@
     <string name="noun_followed">Seguido</string>
     <string name="noun_other">Outros</string>
     <string name="noun_commit">Commit</string>
+    <string name="noun_more">More</string>
+    <string name="noun_less">Less</string>
     <plurals name="noun_contributors">
         <item quantity="one">%d Contribuidor</item>
         <item quantity="other">%d Contribuidores</item>
@@ -64,6 +67,10 @@
     <plurals name="forks">
         <item quantity="one">%d Fork</item>
         <item quantity="other">%d Forks</item>
+    </plurals>
+    <plurals name="contributions_toast">
+        <item quantity="one">%1$s: %2$d Contribution</item>
+        <item quantity="other">%1$s: %2$d Contributions</item>
     </plurals>
     <string name="forked_from">Fork de %s</string>
     <string name="created_repo">§name§%1$s§ §text§criou um repositório§</string>

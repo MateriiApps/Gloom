@@ -33,6 +33,7 @@
     <string name="noun_starred">Yıldızlanmış</string>
     <string name="noun_orgs">Organizasyonlar</string>
     <string name="noun_repos">Depolar</string>
+    <string name="noun_contributions">Contributions: %1$d</string>
     <string name="noun_contributors">Contributors</string>
     <string name="noun_sponsoring">Sponsorlanıyor</string>
     <string name="noun_forked_repo">Alınmış Depo</string>
@@ -49,6 +50,8 @@
     <string name="noun_followed">Takip edildi</string>
     <string name="noun_other">Other</string>
     <string name="noun_commit">Commit</string>
+    <string name="noun_more">More</string>
+    <string name="noun_less">Less</string>
     <plurals name="noun_contributors">
         <item quantity="one">%d Katılımcı</item>
         <item quantity="other">%d Katılımcılar</item>
@@ -64,6 +67,10 @@
     <plurals name="forks">
         <item quantity="one">%d Fork</item>
         <item quantity="other">%d Forks</item>
+    </plurals>
+    <plurals name="contributions_toast">
+        <item quantity="one">%1$s: %2$d Contribution</item>
+        <item quantity="other">%1$s: %2$d Contributions</item>
     </plurals>
     <string name="forked_from">%s\'dan Alınmış</string>
     <string name="created_repo">§isim§%1$s§ §yazı§bir kaynak oluşturdu§</string>
