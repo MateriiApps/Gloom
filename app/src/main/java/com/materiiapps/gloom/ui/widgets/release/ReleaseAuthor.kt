@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.ui.components.Avatar
-import com.materiiapps.gloom.utils.TimeUtils
+import com.materiiapps.gloom.utils.TimeUtils.format
 import com.materiiapps.gloom.utils.annotatingStringResource
 import kotlinx.datetime.Instant
 
@@ -39,7 +39,7 @@ fun ReleaseAuthor(
             text = annotatingStringResource(
                 R.string.msg_release_author,
                 login,
-                TimeUtils.formatDate(timestamp)
+                timestamp.format()
             ) {
                 when (it) {
                     "author" -> SpanStyle(

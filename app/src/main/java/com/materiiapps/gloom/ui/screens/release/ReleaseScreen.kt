@@ -57,7 +57,6 @@ import com.materiiapps.gloom.ui.widgets.release.ReleaseHeader
 import com.materiiapps.gloom.ui.widgets.release.ReleaseInfo
 import com.materiiapps.gloom.ui.widgets.release.dialog.ReleaseAssetInstallDialog
 import com.materiiapps.gloom.utils.shareText
-import kotlinx.datetime.toInstant
 import org.koin.androidx.compose.get
 import org.koin.core.parameter.parametersOf
 import java.util.UUID
@@ -136,7 +135,7 @@ class ReleaseScreen(
                             ReleaseAuthor(
                                 login = author.login,
                                 avatarUrl = author.avatarUrl,
-                                timestamp = (details.createdAt as String).toInstant()
+                                timestamp = details.createdAt
                             )
                         }
                     }

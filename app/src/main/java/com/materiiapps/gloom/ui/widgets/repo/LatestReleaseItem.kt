@@ -42,10 +42,9 @@ import com.materiiapps.gloom.ui.components.ThinDivider
 import com.materiiapps.gloom.ui.screens.release.ReleaseScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.widgets.Markdown
-import com.materiiapps.gloom.utils.TimeUtils
+import com.materiiapps.gloom.utils.TimeUtils.format
 import com.materiiapps.gloom.utils.annotatingStringResource
 import com.materiiapps.gloom.utils.ifNullOrBlank
-import kotlinx.datetime.toInstant
 
 @Composable
 fun LatestReleaseItem(
@@ -54,9 +53,6 @@ fun LatestReleaseItem(
     release: ReleaseItem
 ) {
     val nav = LocalNavigator.currentOrThrow
-    val createdAt = remember {
-        (release.createdAt as String).toInstant()
-    }
 
     Column {
         Column(
@@ -101,7 +97,7 @@ fun LatestReleaseItem(
                         text = annotatingStringResource(
                             R.string.msg_release_author,
                             author.login,
-                            TimeUtils.formatDate(createdAt)
+                            release.createdAt.format()
                         ) {
                             when (it) {
                                 "author" -> SpanStyle(

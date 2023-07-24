@@ -58,9 +58,10 @@ object TimeUtils {
         }
     }
 
-    fun formatDate(instant: Instant): String =
+    fun Instant.format(format: String = DATE_FORMAT): String =
         SimpleDateFormat(
-            DATE_FORMAT,
+            format,
             Locale.getDefault()
-        ).format(Date(instant.toEpochMilliseconds()))
+        ).format(Date(toEpochMilliseconds()))
+
 }

@@ -10,7 +10,6 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,7 +28,6 @@ import com.materiiapps.gloom.ui.screens.release.ReleaseScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.utils.TimeUtils.getTimeSince
 import com.materiiapps.gloom.utils.ifNullOrBlank
-import kotlinx.datetime.toInstant
 
 @Composable
 fun ReleaseItem(
@@ -39,7 +37,6 @@ fun ReleaseItem(
 ) {
     val ctx = LocalContext.current
     val nav = LocalNavigator.currentOrThrow
-    val createdAt = remember { (release.createdAt as String).toInstant() }
 
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -62,7 +59,7 @@ fun ReleaseItem(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = ctx.getTimeSince(createdAt),
+                text = ctx.getTimeSince(release.createdAt),
                 color = LocalContentColor.current.copy(alpha = 0.5f),
                 style = MaterialTheme.typography.labelLarge
             )

@@ -53,8 +53,11 @@ android {
 
     apollo {
         packageName.set("com.materiiapps.gloom.gql")
-        customTypeMapping.put("URI", "kotlin.String")
-        customTypeMapping.put("HTML", "kotlin.String")
+
+        mapScalarToKotlinString("URI")
+        mapScalarToKotlinString("HTML")
+        mapScalar("Date", "kotlinx.datetime.Instant", "com.materiiapps.gloom.rest.utils.DateAdapter")
+        mapScalar("DateTime", "kotlinx.datetime.Instant", "com.apollographql.apollo3.adapter.KotlinxInstantAdapter")
     }
 
 }

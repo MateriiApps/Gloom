@@ -13,7 +13,6 @@ import com.materiiapps.gloom.ui.icons.DraftPullRequest
 import com.materiiapps.gloom.ui.icons.MergedPullRequest
 import com.materiiapps.gloom.ui.icons.OpenPullRequest
 import com.materiiapps.gloom.ui.theme.colors
-import kotlinx.datetime.toInstant
 
 @Composable
 fun PullRequestItem(
@@ -42,16 +41,18 @@ fun PullRequestItem(
     }
 
     IssueOrPRItem(
-        createdAt = (pullRequest.createdAt as String).toInstant(),
+        createdAt = pullRequest.createdAt,
         icon = icon,
         color = color,
         titleCDRes = titleCDRes,
         number = pullRequest.number,
         title = if (pullRequest.title == "\u200E") stringResource(R.string.msg_issue_untitled) else pullRequest.title,
         authorUsername = pullRequest.author?.login,
-        labels = pullRequest.labels?.nodes?.filterNotNull()?.map { it.name to it.color } ?: emptyList(),
+        labels = pullRequest.labels?.nodes?.filterNotNull()?.map { it.name to it.color }
+            ?: emptyList(),
         totalAssigned = pullRequest.assignees.totalCount,
-        assignedUsers = pullRequest.assignees.nodes?.filterNotNull()?.map { it.login to it.avatarUrl } ?: emptyList(),
+        assignedUsers = pullRequest.assignees.nodes?.filterNotNull()
+            ?.map { it.login to it.avatarUrl } ?: emptyList(),
         totalComments = pullRequest.comments.totalCount,
         checksStatus = pullRequest.commits.nodes?.firstOrNull()?.commit?.statusCheckRollup?.state,
         reviewDecision = pullRequest.reviewDecision

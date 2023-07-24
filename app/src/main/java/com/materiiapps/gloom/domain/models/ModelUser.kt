@@ -4,8 +4,8 @@ import com.materiiapps.gloom.gql.FollowersQuery
 import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.gql.ProfileQuery
-import com.materiiapps.gloom.gql.SponsoringQuery
 import com.materiiapps.gloom.gql.UserProfileQuery
+import com.materiiapps.gloom.gql.fragment.Contributions
 import com.materiiapps.gloom.gql.fragment.OrgSponsoringFragment
 import com.materiiapps.gloom.gql.fragment.UserSponsoringFragment
 import com.materiiapps.gloom.rest.dto.user.User
@@ -42,7 +42,8 @@ data class ModelUser(
     val pinnedItems: List<Pinnable?> = emptyList(),
     val canFollow: Boolean? = null,
     val isFollowing: Boolean? = null,
-    val isSupporter: Boolean = false
+    val isSupporter: Boolean = false,
+    val contributions: Contributions? = null
 ) {
 
     companion object {
@@ -99,7 +100,8 @@ data class ModelUser(
                         ?: emptyList(),
                     canFollow = viewerCanFollow,
                     isFollowing = viewerIsFollowing,
-                    isSupporter = user?.viewerIsSponsoring ?: false
+                    isSupporter = user?.viewerIsSponsoring ?: false,
+                    contributions = contributionsCollection.contributions
                 )
             }
         }
@@ -135,7 +137,8 @@ data class ModelUser(
                             ?: emptyList(),
                         canFollow = viewerCanFollow,
                         isFollowing = viewerIsFollowing,
-                        isSupporter = isSupporter
+                        isSupporter = isSupporter,
+                        contributions = contributionsCollection.contributions
                     )
                 }
             } else if (isOrg) {

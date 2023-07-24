@@ -1,0 +1,12 @@
+fragment Contributions on ContributionsCollection {
+    contributionCalendar {
+        weeks {
+            contributionDays {
+                contributionLevel
+                contributionCount
+                date
+            }
+        }
+        totalContributions
+    }
+}

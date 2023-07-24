@@ -11,7 +11,6 @@ import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.IssueOverview
 import com.materiiapps.gloom.gql.type.IssueStateReason
 import com.materiiapps.gloom.ui.theme.colors
-import kotlinx.datetime.toInstant
 
 @Composable
 fun IssueItem(issue: IssueOverview) {
@@ -32,7 +31,7 @@ fun IssueItem(issue: IssueOverview) {
     }
 
     IssueOrPRItem(
-        createdAt = (issue.createdAt as String).toInstant(),
+        createdAt = issue.createdAt,
         icon = icon,
         color = color,
         titleCDRes = titleCDRes,
@@ -41,7 +40,8 @@ fun IssueItem(issue: IssueOverview) {
         authorUsername = issue.author?.login,
         labels = issue.labels?.nodes?.filterNotNull()?.map { it.name to it.color } ?: emptyList(),
         totalAssigned = issue.assignees.totalCount,
-        assignedUsers = issue.assignees.nodes?.filterNotNull()?.map { it.login to it.avatarUrl } ?: emptyList(),
+        assignedUsers = issue.assignees.nodes?.filterNotNull()?.map { it.login to it.avatarUrl }
+            ?: emptyList(),
         totalComments = issue.comments.totalCount
     )
 }

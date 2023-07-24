@@ -21,6 +21,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.1
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.0.1" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.6.1" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version = "1.0.0-alpha20" }
+apollo-adapters = { group = "com.apollographql.apollo3", name = "apollo-adapters", version.ref = "apollo" }
 apollo-normalized-cache = { group = "com.apollographql.apollo3", name = "apollo-normalized-cache", version.ref = "apollo" }
 apollo-runtime = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo" }
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
@@ -54,7 +55,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 [bundles]
 accompanist = ["accompanist-systemuicontroller", "accompanist-flowlayout", "accompanist-webview", "accompanist-pager"]
 androidx = ["androidx-paging-compose", "androidx-activity-compose", "androidx-lifecycle-runtime-ktx", "androidx-browser", "androidx-core-ktx", "androidx-core-splashscreen"]
-apollo = ["apollo-runtime", "apollo-normalized-cache"]
+apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters"]
 coil = ["coil", "coil-compose"]
 compose = ["compose-material-icons-extended", "compose-material", "compose-material3", "compose-ui"]
 koin = ["koin-android", "koin-androidx-compose", "koin-core"]

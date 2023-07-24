@@ -43,4 +43,7 @@ fragment UserProfile on User {
     }
     viewerCanFollow
     viewerIsFollowing
+    contributionsCollection {
+        ...Contributions
+    }
 }

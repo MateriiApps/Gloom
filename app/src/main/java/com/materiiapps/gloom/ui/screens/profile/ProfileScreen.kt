@@ -96,6 +96,7 @@ import com.materiiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiiapps.gloom.ui.screens.settings.SettingsScreen
 import com.materiiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiiapps.gloom.ui.widgets.ReadMeCard
+import com.materiiapps.gloom.ui.widgets.profile.ContributionGraph
 import com.materiiapps.gloom.ui.widgets.repo.RepoItem
 import com.materiiapps.gloom.utils.Constants
 import com.materiiapps.gloom.utils.EmojiUtils
@@ -126,11 +127,11 @@ open class ProfileScreen(
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = { TopBar(viewModel, scrollBehavior) }
-        ) {
+        ) { pv ->
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(it)
+                    .padding(pv)
                     .pullRefresh(refreshState)
             ) {
                 Column(
@@ -138,37 +139,31 @@ open class ProfileScreen(
                         .verticalScroll(rememberScrollState()),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    if (viewModel.user != null) {
-                        Header(user = viewModel.user!!)
+                    viewModel.user?.let { user ->
+                        Header(user = user)
 
-                        viewModel.user!!.readme?.let { readme ->
+                        user.readme?.let { readme ->
                             Box(modifier = Modifier.padding(horizontal = 16.dp)) {
                                 ReadMeCard(readme, viewModel.user!!.username ?: "ghost")
                             }
                         }
 
-                        if (viewModel.user!!.pinnedItems.isNotEmpty()) PinnedItems(pinned = viewModel.user!!.pinnedItems)
+                        if (user.pinnedItems.isNotEmpty()) PinnedItems(pinned = user.pinnedItems)
+
+                        user.contributions?.let {
+                            ContributionGraph(calendar = it.contributionCalendar)
+                        }
 
                         StatCard(
-                            isOrg = viewModel.user!!.type == User.Type.ORG,
-                            repoCount = viewModel.user!!.repos ?: 0L,
-                            orgCount = viewModel.user!!.orgs ?: 0L,
-                            starCount = viewModel.user!!.starred ?: 0L,
-                            sponsoringCount = viewModel.user!!.sponsoring ?: 0L,
-                            username = viewModel.user!!.username
+                            isOrg = user.type == User.Type.ORG,
+                            repoCount = user.repos ?: 0L,
+                            orgCount = user.orgs ?: 0L,
+                            starCount = user.starred ?: 0L,
+                            sponsoringCount = user.sponsoring ?: 0L,
+                            username = user.username
                         )
 
                         Spacer(modifier = Modifier.height(16.dp))
-
-                    } else {
-                        Box(
-                            Modifier.fillMaxWidth(),
-                            contentAlignment = Alignment.Center
-                        ) {
-//                            if (viewModel.hasErrors) {
-//                                // TODO: Show error indicator
-//                            }
-                        }
                     }
                 }
 
