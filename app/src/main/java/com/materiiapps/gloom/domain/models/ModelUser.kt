@@ -43,6 +43,7 @@ data class ModelUser(
     val canFollow: Boolean? = null,
     val isFollowing: Boolean? = null,
     val isSupporter: Boolean = false,
+    val isFollowingYou: Boolean = false,
     val contributions: Contributions? = null
 ) {
 
@@ -101,6 +102,7 @@ data class ModelUser(
                     canFollow = viewerCanFollow,
                     isFollowing = viewerIsFollowing,
                     isSupporter = user?.viewerIsSponsoring ?: false,
+                    isFollowingYou = isFollowingViewer,
                     contributions = contributionsCollection.contributions
                 )
             }
@@ -138,6 +140,7 @@ data class ModelUser(
                         canFollow = viewerCanFollow,
                         isFollowing = viewerIsFollowing,
                         isSupporter = isSupporter,
+                        isFollowingYou = isFollowingViewer,
                         contributions = contributionsCollection.contributions
                     )
                 }

@@ -256,6 +256,18 @@ open class ProfileScreen(
                 }
             }
 
+            if(user.isFollowingYou) {
+                Text(
+                    text = stringResource(R.string.label_follows_you),
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.Medium,
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp))
+                        .padding(horizontal = 9.dp, vertical = 5.dp)
+                )
+            }
+
             user.status?.let {
                 Status(it)
             }
@@ -320,16 +332,18 @@ open class ProfileScreen(
                     }
                 }
 
-                if(user.type == User.Type.USER) Row {
-                    TextButton(onClick = {
-                        if (user.username?.isNotBlank() == true) nav?.navigate(FollowersScreen(user.username))
-                    }) {
-                        Text(stringResource(R.string.noun_follower_count, user.followers ?: 0))
-                    }
-                    TextButton(onClick = {
-                        if (user.username?.isNotBlank() == true) nav?.navigate(FollowingScreen(user.username))
-                    }) {
-                        Text(stringResource(R.string.noun_following_count, user.following ?: 0))
+                if(user.type == User.Type.USER) {
+                    Row {
+                        TextButton(onClick = {
+                            if (user.username?.isNotBlank() == true) nav?.navigate(FollowersScreen(user.username))
+                        }) {
+                            Text(stringResource(R.string.noun_follower_count, user.followers ?: 0))
+                        }
+                        TextButton(onClick = {
+                            if (user.username?.isNotBlank() == true) nav?.navigate(FollowingScreen(user.username))
+                        }) {
+                            Text(stringResource(R.string.noun_following_count, user.following ?: 0))
+                        }
                     }
                 }
             }
