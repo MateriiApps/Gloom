@@ -33,7 +33,7 @@
     <string name="noun_starred">Com estrela</string>
     <string name="noun_orgs">Organizações</string>
     <string name="noun_repos">Repositórios</string>
-    <string name="noun_contributions">Contributions: %1$d</string>
+    <string name="noun_contributions">Contribuições: %1$d</string>
     <string name="noun_contributors">Colaboradores</string>
     <string name="noun_sponsoring">Patrocínio</string>
     <string name="noun_forked_repo">Repositórios Forks</string>
@@ -50,8 +50,8 @@
     <string name="noun_followed">Seguido</string>
     <string name="noun_other">Outros</string>
     <string name="noun_commit">Commit</string>
-    <string name="noun_more">More</string>
-    <string name="noun_less">Less</string>
+    <string name="noun_more">Mais</string>
+    <string name="noun_less">Menos</string>
     <plurals name="noun_contributors">
         <item quantity="one">%d Contribuidor</item>
         <item quantity="other">%d Contribuidores</item>
@@ -69,8 +69,8 @@
         <item quantity="other">%d Forks</item>
     </plurals>
     <plurals name="contributions_toast">
-        <item quantity="one">%1$s: %2$d Contribution</item>
-        <item quantity="other">%1$s: %2$d Contributions</item>
+        <item quantity="one">%1$s: Contribuição %2$d</item>
+        <item quantity="other">%1$s: %2$d Contribuições</item>
     </plurals>
     <string name="forked_from">Fork de %s</string>
     <string name="created_repo">§name§%1$s§ §text§criou um repositório§</string>
@@ -112,6 +112,16 @@
     <string name="cd_pr_title_draft">Pull request %1$d com título \"%2$s\" é um rascunho</string>
     <string name="cd_pr_merging_branch">Branch %1$s sendo mesclado em %2$s</string>
     <string name="cd_label_comments">%1$d comentários</string>
+    <string name="cd_twitter">Twitter</string>
+    <string name="cd_youtube">YouTube</string>
+    <string name="cd_mastodon">Mastodon</string>
+    <string name="cd_hometown">Hometown</string>
+    <string name="cd_facebook">Facebook</string>
+    <string name="cd_instagram">Instagram</string>
+    <string name="cd_linkedin">LinkedIn</string>
+    <string name="cd_reddit">Reddit</string>
+    <string name="cd_twitch">Twitch</string>
+    <string name="cd_link">Link</string>
     <string name="msg_issue_untitled">Issue sem título</string>
     <string name="msg_pr_untitled">Pull request sem título</string>
     <string name="msg_issue_or_pr_author">#%1$d por %2$s</string>
@@ -125,6 +135,7 @@
     <string name="label_prerelease">Pré-lançamento</string>
     <string name="label_all_releases">Todas as versões</string>
     <string name="label_dont_show_again">Não mostrar novamente</string>
+    <string name="label_follows_you">Follows You</string>
     <string name="time_now">Agora</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>

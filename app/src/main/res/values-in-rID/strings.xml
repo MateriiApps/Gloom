@@ -106,6 +106,16 @@
     <string name="cd_pr_title_draft">Draft pull request number %1$d with title \"%2$s\"</string>
     <string name="cd_pr_merging_branch">Branch %1$s being merged into %2$s</string>
     <string name="cd_label_comments">%1$d comments</string>
+    <string name="cd_twitter">Twitter</string>
+    <string name="cd_youtube">YouTube</string>
+    <string name="cd_mastodon">Mastodon</string>
+    <string name="cd_hometown">Hometown</string>
+    <string name="cd_facebook">Facebook</string>
+    <string name="cd_instagram">Instagram</string>
+    <string name="cd_linkedin">LinkedIn</string>
+    <string name="cd_reddit">Reddit</string>
+    <string name="cd_twitch">Twitch</string>
+    <string name="cd_link">Link</string>
     <string name="msg_issue_untitled">Untitled issue</string>
     <string name="msg_pr_untitled">Untitled pull request</string>
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
@@ -119,6 +129,7 @@
     <string name="label_prerelease">Pre-release</string>
     <string name="label_all_releases">All releases</string>
     <string name="label_dont_show_again">Don\'t show this again</string>
+    <string name="label_follows_you">Follows You</string>
     <string name="time_now">Now</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
