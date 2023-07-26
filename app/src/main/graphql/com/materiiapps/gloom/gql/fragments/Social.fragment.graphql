@@ -1,0 +1,5 @@
+fragment Social on SocialAccount {
+    displayName
+    provider
+    url
+}

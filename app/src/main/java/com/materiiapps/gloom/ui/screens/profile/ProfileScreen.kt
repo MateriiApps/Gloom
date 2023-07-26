@@ -57,6 +57,7 @@ import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -84,6 +85,7 @@ import com.materiiapps.gloom.domain.models.ModelRepo
 import com.materiiapps.gloom.domain.models.ModelStatus
 import com.materiiapps.gloom.domain.models.ModelUser
 import com.materiiapps.gloom.domain.models.Pinnable
+import com.materiiapps.gloom.gql.type.SocialAccountProvider
 import com.materiiapps.gloom.rest.dto.user.User
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.BackButton
@@ -104,6 +106,7 @@ import com.materiiapps.gloom.utils.navigate
 import com.materiiapps.gloom.utils.shareText
 import com.materiiapps.gloom.utils.showToast
 import org.koin.core.parameter.parametersOf
+import java.net.URI
 
 open class ProfileScreen(
     val user: String = ""
@@ -302,22 +305,47 @@ open class ProfileScreen(
                     }
 
                     user.website?.let { site ->
-                        if(site == "null") return@let
+                        if (site == "null") return@let
                         ProfileDetail(
                             text = site,
                             icon = { Icon(Icons.Outlined.Link, contentDescription = null) }
                         ) {
-                            val url = if(site.startsWith("http://") || site.startsWith("https://")) site else "http://${site}"
+                            val url =
+                                if (site.startsWith("http://") || site.startsWith("https://")) site else "http://${site}"
                             it.openUri(url)
                         }
                     }
 
-                    user.twitterUsername?.let { handle ->
+                    user.socials.forEach { social ->
+                        val (icon, cdRes) = when (social.provider) {
+                            SocialAccountProvider.TWITTER -> R.drawable.ic_twitter_24 to R.string.cd_twitter
+                            SocialAccountProvider.YOUTUBE -> R.drawable.ic_youtube_24 to R.string.cd_youtube
+                            SocialAccountProvider.MASTODON -> R.drawable.ic_mastodon_24 to R.string.cd_mastodon
+                            SocialAccountProvider.HOMETOWN -> R.drawable.ic_hometown_24 to R.string.cd_hometown
+                            SocialAccountProvider.FACEBOOK -> R.drawable.ic_facebook_24 to R.string.cd_facebook
+                            SocialAccountProvider.INSTAGRAM -> R.drawable.ic_instagram_24 to R.string.cd_instagram
+                            SocialAccountProvider.LINKEDIN -> R.drawable.ic_linkedin_24 to R.string.cd_linkedin
+                            SocialAccountProvider.REDDIT -> R.drawable.ic_reddit_24 to R.string.cd_reddit
+                            SocialAccountProvider.TWITCH -> R.drawable.ic_twitch_24 to R.string.cd_twitch
+                            else -> R.drawable.ic_link_24 to R.string.cd_link
+                        }
+                        val socialName = remember {
+                            if (social.provider == SocialAccountProvider.GENERIC) {
+                                val link = URI.create(social.url)
+                                "${link.authority.replaceFirst("www.", "")}${link.path}"
+                            } else social.displayName
+                        }
+
                         ProfileDetail(
-                            text = "@${handle}",
-                            icon = { Icon(painterResource(R.drawable.ic_twitter_24), contentDescription = null) }
+                            text = socialName,
+                            icon = {
+                                Icon(
+                                    painterResource(icon),
+                                    contentDescription = stringResource(cdRes)
+                                )
+                            }
                         ) {
-                            it.openUri("https://twitter.com/$handle")
+                            it.openUri(social.url)
                         }
                     }
 

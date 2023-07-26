@@ -131,6 +131,17 @@
 
     <string name="cd_label_comments">%1$d comments</string>
 
+    <string name="cd_twitter">Twitter</string>
+    <string name="cd_youtube">YouTube</string>
+    <string name="cd_mastodon">Mastodon</string>
+    <string name="cd_hometown">Hometown</string>
+    <string name="cd_facebook">Facebook</string>
+    <string name="cd_instagram">Instagram</string>
+    <string name="cd_linkedin">LinkedIn</string>
+    <string name="cd_reddit">Reddit</string>
+    <string name="cd_twitch">Twitch</string>
+    <string name="cd_link">Link</string>
+
     <string name="msg_issue_untitled">Untitled issue</string>
     <string name="msg_pr_untitled">Untitled pull request</string>
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>

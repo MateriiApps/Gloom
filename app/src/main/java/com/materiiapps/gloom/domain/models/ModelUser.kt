@@ -7,7 +7,9 @@ import com.materiiapps.gloom.gql.ProfileQuery
 import com.materiiapps.gloom.gql.UserProfileQuery
 import com.materiiapps.gloom.gql.fragment.Contributions
 import com.materiiapps.gloom.gql.fragment.OrgSponsoringFragment
+import com.materiiapps.gloom.gql.fragment.Social
 import com.materiiapps.gloom.gql.fragment.UserSponsoringFragment
+import com.materiiapps.gloom.gql.type.SocialAccountProvider
 import com.materiiapps.gloom.rest.dto.user.User
 import kotlinx.datetime.LocalDateTime
 
@@ -27,7 +29,7 @@ data class ModelUser(
     val location: String? = null,
     val email: String? = null,
     val hireable: Boolean? = null,
-    val twitterUsername: String? = null,
+    val socials: List<Social> = emptyList(),
     val repos: Long? = null,
     val gists: Long? = null,
     val followers: Long? = null,
@@ -65,7 +67,13 @@ data class ModelUser(
                 location = location,
                 email = email,
                 hireable = hireable,
-                twitterUsername = twitterUsername,
+                socials = listOf(
+                    Social(
+                        "@$twitterUsername",
+                        SocialAccountProvider.TWITTER,
+                        "https://twitter.com/$twitterUsername"
+                    )
+                ),
                 repos = repos,
                 gists = gists,
                 followers = followers,
@@ -87,7 +95,7 @@ data class ModelUser(
                     type = User.Type.USER,
                     company = company,
                     website = websiteUrl.toString(),
-                    twitterUsername = twitterUsername,
+                    socials = socialAccounts.nodes?.mapNotNull { it?.social } ?: emptyList(),
                     repos = repositories.totalCount.toLong(),
                     orgs = organizations.totalCount.toLong(),
                     starred = starredRepositories.totalCount.toLong(),
@@ -125,7 +133,7 @@ data class ModelUser(
                         type = User.Type.USER,
                         company = company,
                         website = websiteUrl.toString(),
-                        twitterUsername = twitterUsername,
+                        socials = socialAccounts.nodes?.mapNotNull { it?.social } ?: emptyList(),
                         repos = repositories.totalCount.toLong(),
                         orgs = organizations.totalCount.toLong(),
                         starred = starredRepositories.totalCount.toLong(),
@@ -154,7 +162,15 @@ data class ModelUser(
                         readme = readme?.contentHTML?.toString(),
                         type = User.Type.ORG,
                         website = websiteUrl.toString(),
-                        twitterUsername = twitterUsername,
+                        socials = twitterUsername?.let {
+                            listOf(
+                                Social(
+                                    "@$it",
+                                    SocialAccountProvider.TWITTER,
+                                    "https://twitter.com/$it"
+                                )
+                            )
+                        } ?: emptyList(),
                         email = publicEmail,
                         location = location,
                         repos = repositories.totalCount.toLong(),
@@ -176,7 +192,7 @@ data class ModelUser(
                 username = login,
                 displayName = name,
                 bio = description,
-                avatar = avatarUrl.toString(),
+                avatar = avatarUrl,
                 type = User.Type.ORG
             )
         }
@@ -186,7 +202,7 @@ data class ModelUser(
                 username = login,
                 displayName = name,
                 bio = bio,
-                avatar = avatarUrl.toString(),
+                avatar = avatarUrl,
                 type = User.Type.USER
             )
         }
@@ -196,7 +212,7 @@ data class ModelUser(
                 username = login,
                 displayName = name,
                 bio = bio,
-                avatar = avatarUrl.toString(),
+                avatar = avatarUrl,
                 type = User.Type.USER
             )
         }
@@ -211,7 +227,7 @@ data class ModelUser(
                         username = login,
                         displayName = name,
                         bio = bio,
-                        avatar = avatarUrl.toString(),
+                        avatar = avatarUrl,
                         type = User.Type.USER
                     )
                 }
@@ -221,7 +237,7 @@ data class ModelUser(
                         username = login,
                         displayName = name,
                         bio = description,
-                        avatar = avatarUrl.toString(),
+                        avatar = avatarUrl,
                         type = User.Type.USER
                     )
                 }
@@ -240,7 +256,7 @@ data class ModelUser(
                         username = login,
                         displayName = name,
                         bio = bio,
-                        avatar = avatarUrl.toString(),
+                        avatar = avatarUrl,
                         type = com.materiiapps.gloom.rest.dto.user.User.Type.USER
                     )
                 }
@@ -250,7 +266,7 @@ data class ModelUser(
                         username = login,
                         displayName = name,
                         bio = description,
-                        avatar = avatarUrl.toString(),
+                        avatar = avatarUrl,
                         type = com.materiiapps.gloom.rest.dto.user.User.Type.USER
                     )
                 }

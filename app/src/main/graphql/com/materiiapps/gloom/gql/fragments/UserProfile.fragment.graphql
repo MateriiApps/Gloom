@@ -16,7 +16,6 @@ fragment UserProfile on User {
     }
     websiteUrl
     url
-    twitterUsername
     pinnedItems(first: 6) {
         nodes {
             ...PinnedRepo
@@ -40,6 +39,11 @@ fragment UserProfile on User {
     }
     following {
         totalCount
+    }
+    socialAccounts(first: 4) {
+        nodes {
+            ...Social
+        }
     }
     viewerCanFollow
     viewerIsFollowing
