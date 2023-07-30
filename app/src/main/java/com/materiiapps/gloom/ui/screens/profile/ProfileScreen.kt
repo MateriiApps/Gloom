@@ -81,12 +81,12 @@ import coil.compose.AsyncImage
 import com.google.accompanist.flowlayout.FlowMainAxisAlignment
 import com.google.accompanist.flowlayout.FlowRow
 import com.materiiapps.gloom.R
-import com.materiiapps.gloom.domain.models.ModelRepo
-import com.materiiapps.gloom.domain.models.ModelStatus
-import com.materiiapps.gloom.domain.models.ModelUser
-import com.materiiapps.gloom.domain.models.Pinnable
+import com.materiiapps.gloom.api.models.ModelRepo
+import com.materiiapps.gloom.api.models.ModelStatus
+import com.materiiapps.gloom.api.models.ModelUser
+import com.materiiapps.gloom.api.models.Pinnable
 import com.materiiapps.gloom.gql.type.SocialAccountProvider
-import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.BackButton
 import com.materiiapps.gloom.ui.components.BadgedItem
@@ -239,7 +239,7 @@ open class ProfileScreen(
                 Spacer(modifier = Modifier.height(5.dp))
                 if (user.displayName != null) {
                     Text(
-                        text = user.displayName,
+                        text = user.displayName!!,
                         style = MaterialTheme.typography.headlineLarge,
                         fontWeight = FontWeight.Bold
                     )
@@ -363,12 +363,16 @@ open class ProfileScreen(
                 if(user.type == User.Type.USER) {
                     Row {
                         TextButton(onClick = {
-                            if (user.username?.isNotBlank() == true) nav?.navigate(FollowersScreen(user.username))
+                            if (user.username?.isNotBlank() == true) nav?.navigate(FollowersScreen(
+                                user.username!!
+                            ))
                         }) {
                             Text(stringResource(R.string.noun_follower_count, user.followers ?: 0))
                         }
                         TextButton(onClick = {
-                            if (user.username?.isNotBlank() == true) nav?.navigate(FollowingScreen(user.username))
+                            if (user.username?.isNotBlank() == true) nav?.navigate(FollowingScreen(
+                                user.username!!
+                            ))
                         }) {
                             Text(stringResource(R.string.noun_following_count, user.following ?: 0))
                         }
@@ -423,7 +427,7 @@ open class ProfileScreen(
             ) {
                 if(status.emoji != null)
                     AsyncImage(
-                        model = EmojiUtils.emojis[status.emoji.replace(":", "")],
+                        model = EmojiUtils.emojis[status.emoji!!.replace(":", "")],
                         contentDescription = status.emoji,
                         modifier = Modifier
                             .clip(CircleShape)
@@ -434,7 +438,7 @@ open class ProfileScreen(
 
                 if(status.message != null)
                     Text(
-                        text = status.message,
+                        text = status.message!!,
                         style = MaterialTheme.typography.labelLarge,
                         modifier = Modifier.padding(horizontal = 10.dp)
                     )

@@ -22,7 +22,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
-import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.Label
 import com.materiiapps.gloom.ui.screens.repo.RepoScreen

@@ -36,12 +36,12 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import coil.compose.AsyncImage
+import com.materiiapps.gloom.R
+import com.materiiapps.gloom.api.dto.user.User
+import com.materiiapps.gloom.gql.fragment.FeedRepository
+import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 import com.materiiapps.gloom.utils.navigate
-import com.materiiapps.gloom.R
-import com.materiiapps.gloom.gql.fragment.FeedRepository
-import com.materiiapps.gloom.rest.dto.user.User
-import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.utils.parsedColor
 
 @Composable
@@ -137,12 +137,12 @@ fun FeedRepoCard(
                         ) {
                             Icon(
                                 Icons.Filled.Circle,
-                                contentDescription = repo.primaryLanguage.name,
+                                contentDescription = repo.primaryLanguage!!.name,
                                 modifier = Modifier.size(15.dp),
-                                tint = repo.primaryLanguage.color?.parsedColor
+                                tint = repo.primaryLanguage!!.color?.parsedColor
                                     ?: MaterialTheme.colorScheme.surfaceVariant
                             )
-                            Text(text = repo.primaryLanguage.name)
+                            Text(text = repo.primaryLanguage!!.name)
                         }
                     }
                 }

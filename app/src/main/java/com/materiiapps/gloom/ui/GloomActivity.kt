@@ -15,11 +15,11 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
 import cafe.adriel.voyager.transitions.SlideTransition
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.materiiapps.gloom.api.repository.GithubAuthRepository
+import com.materiiapps.gloom.api.utils.ifSuccessful
 import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.domain.manager.Theme
-import com.materiiapps.gloom.domain.repository.GithubAuthRepository
-import com.materiiapps.gloom.rest.utils.ifSuccessful
 import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.theme.GloomTheme

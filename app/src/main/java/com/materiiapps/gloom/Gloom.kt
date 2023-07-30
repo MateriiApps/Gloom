@@ -1,7 +1,12 @@
 package com.materiiapps.gloom
 
 import android.app.Application
-import com.materiiapps.gloom.di.modules.*
+import com.materiiapps.gloom.di.httpModule
+import com.materiiapps.gloom.di.modules.loggerModule
+import com.materiiapps.gloom.di.modules.managerModule
+import com.materiiapps.gloom.di.modules.viewModelModule
+import com.materiiapps.gloom.di.repositoryModule
+import com.materiiapps.gloom.di.serviceModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

@@ -36,7 +36,7 @@ import coil.compose.AsyncImage
 import com.materiiapps.gloom.R
 import com.materiiapps.gloom.gql.fragment.FeedOrg
 import com.materiiapps.gloom.gql.fragment.FeedUser
-import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiiapps.gloom.utils.navigate

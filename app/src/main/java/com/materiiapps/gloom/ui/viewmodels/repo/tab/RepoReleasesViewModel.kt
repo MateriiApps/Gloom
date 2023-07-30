@@ -1,9 +1,9 @@
 package com.materiiapps.gloom.ui.viewmodels.repo.tab
 
-import com.materiiapps.gloom.domain.repository.GraphQLRepository
+import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.gql.RepoReleasesQuery
 import com.materiiapps.gloom.gql.fragment.ReleaseItem
-import com.materiiapps.gloom.rest.utils.getOrNull
+import com.materiiapps.gloom.api.utils.getOrNull
 import com.materiiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
 
 class RepoReleasesViewModel(

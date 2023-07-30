@@ -6,9 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
-import com.materiiapps.gloom.domain.repository.GraphQLRepository
+import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.gql.fragment.RepoOverview
-import com.materiiapps.gloom.rest.utils.fold
+import com.materiiapps.gloom.api.utils.fold
 import com.materiiapps.gloom.ui.screens.repo.tab.CodeTab
 import com.materiiapps.gloom.ui.screens.repo.tab.DetailsTab
 import com.materiiapps.gloom.ui.screens.repo.tab.IssuesTab

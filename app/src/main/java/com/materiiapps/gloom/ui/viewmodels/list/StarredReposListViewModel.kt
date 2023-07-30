@@ -1,9 +1,9 @@
 package com.materiiapps.gloom.ui.viewmodels.list
 
 import com.materiiapps.gloom.gql.StarredReposQuery
-import com.materiiapps.gloom.domain.models.ModelRepo
-import com.materiiapps.gloom.domain.repository.GraphQLRepository
-import com.materiiapps.gloom.rest.utils.getOrNull
+import com.materiiapps.gloom.api.models.ModelRepo
+import com.materiiapps.gloom.api.repository.GraphQLRepository
+import com.materiiapps.gloom.api.utils.getOrNull
 import com.materiiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
 
 class StarredReposListViewModel(

@@ -2,6 +2,7 @@
 accompanist = "0.30.1"
 agp = "8.2.0-alpha10"
 apollo = "3.6.2"
+buildkonfig = "0.13.3"
 coil = "2.4.0"
 compose = "1.5.0-alpha04"
 compose-compiler = "1.4.7"
@@ -9,6 +10,7 @@ koin = "3.4.0"
 kotlin = "1.8.21"
 ktor = "2.3.0"
 voyager = "1.0.0-rc06"
+org-jetbrains-kotlin-jvm = "1.8.21"
 
 [libraries]
 accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
@@ -49,7 +51,9 @@ voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitio
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 [bundles]

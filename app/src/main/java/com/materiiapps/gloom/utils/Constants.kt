@@ -2,8 +2,6 @@
 
 package com.materiiapps.gloom.utils
 
-import android.util.Base64
-import com.materiiapps.gloom.BuildConfig
 import com.materiiapps.gloom.gql.type.ReactionContent
 
 object Constants {
@@ -27,17 +25,6 @@ object Constants {
         const val MEGA = 1024 * KILO
         const val GIGA = 1024 * MEGA
     }
-
-}
-
-object Credentials {
-
-    val CLIENT_ID = String(Base64.decode(BuildConfig.CLIENT_ID, Base64.DEFAULT))
-
-    val CLIENT_SECRET = String(Base64.decode(BuildConfig.CLIENT_SECRET, Base64.DEFAULT))
-
-    val BASIC_TOKEN: String =
-        Base64.encodeToString("$CLIENT_ID:$CLIENT_SECRET".toByteArray(), Base64.NO_WRAP)
 
 }
 

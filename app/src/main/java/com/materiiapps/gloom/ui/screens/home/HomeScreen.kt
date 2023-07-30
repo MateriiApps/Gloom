@@ -90,22 +90,22 @@ class HomeScreen : Tab {
                             when {
                                 feedItem.createdRepoItemFragment != null -> {
                                     val starData =
-                                        viewModel.starredRepos[feedItem.createdRepoItemFragment.repository.feedRepository.id]
+                                        viewModel.starredRepos[feedItem.createdRepoItemFragment!!.repository.feedRepository.id]
                                     CreatedRepoItem(
-                                        item = feedItem.createdRepoItemFragment,
+                                        item = feedItem.createdRepoItemFragment!!,
                                         starData = starData,
                                         onStarPressed = viewModel::starRepo,
                                         onUnstarPressed = viewModel::unstarRepo
                                     )
                                 }
 
-                                feedItem.newReleaseItemFragment != null -> NewReleaseItem(item = feedItem.newReleaseItemFragment)
+                                feedItem.newReleaseItemFragment != null -> NewReleaseItem(item = feedItem.newReleaseItemFragment!!)
                                 feedItem.followedUserFeedItemFragment != null -> {
-                                    val id = feedItem.followedUserFeedItemFragment.followee.feedUser?.id
-                                        ?: feedItem.followedUserFeedItemFragment.followee.feedOrg?.id!!
+                                    val id = feedItem.followedUserFeedItemFragment!!.followee.feedUser?.id
+                                        ?: feedItem.followedUserFeedItemFragment!!.followee.feedOrg?.id!!
                                     val followData = viewModel.followedUsers[id]
                                     FollowedUserItem(
-                                        item = feedItem.followedUserFeedItemFragment,
+                                        item = feedItem.followedUserFeedItemFragment!!,
                                         followData = followData,
                                         onFollowPressed = viewModel::followUser,
                                         onUnfollowPressed = viewModel::unfollowUser
@@ -114,9 +114,9 @@ class HomeScreen : Tab {
 
                                 feedItem.starredFeedItemFragment != null -> {
                                     val starData =
-                                        viewModel.starredRepos[feedItem.starredFeedItemFragment.repository.feedRepository.id]
+                                        viewModel.starredRepos[feedItem.starredFeedItemFragment!!.repository.feedRepository.id]
                                     StarredRepoItem(
-                                        item = feedItem.starredFeedItemFragment,
+                                        item = feedItem.starredFeedItemFragment!!,
                                         starData = starData,
                                         onStarPressed = viewModel::starRepo,
                                         onUnstarPressed = viewModel::unstarRepo
@@ -125,9 +125,9 @@ class HomeScreen : Tab {
 
                                 feedItem.recommendedRepositoryFeedItemFragment != null -> {
                                     val starData =
-                                        viewModel.starredRepos[feedItem.recommendedRepositoryFeedItemFragment.repository.feedRepository.id]
+                                        viewModel.starredRepos[feedItem.recommendedRepositoryFeedItemFragment!!.repository.feedRepository.id]
                                     RecommendedRepoItem(
-                                        item = feedItem.recommendedRepositoryFeedItemFragment,
+                                        item = feedItem.recommendedRepositoryFeedItemFragment!!,
                                         starData = starData,
                                         onStarPressed = viewModel::starRepo,
                                         onUnstarPressed = viewModel::unstarRepo
@@ -136,9 +136,9 @@ class HomeScreen : Tab {
 
                                 feedItem.forkedRepositoryFeedItemFragment != null -> {
                                     val starData =
-                                        viewModel.starredRepos[feedItem.forkedRepositoryFeedItemFragment.repository.feedRepository.id]
+                                        viewModel.starredRepos[feedItem.forkedRepositoryFeedItemFragment!!.repository.feedRepository.id]
                                     ForkedRepoItem(
-                                        item = feedItem.forkedRepositoryFeedItemFragment,
+                                        item = feedItem.forkedRepositoryFeedItemFragment!!,
                                         starData = starData,
                                         onStarPressed = viewModel::starRepo,
                                         onUnstarPressed = viewModel::unstarRepo
@@ -147,11 +147,11 @@ class HomeScreen : Tab {
 
                                 feedItem.followRecommendationFeedItemFragment != null -> {
                                     val id =
-                                        feedItem.followRecommendationFeedItemFragment.followee.feedUser?.id
-                                            ?: feedItem.followRecommendationFeedItemFragment.followee.feedOrg?.id!!
+                                        feedItem.followRecommendationFeedItemFragment!!.followee.feedUser?.id
+                                            ?: feedItem.followRecommendationFeedItemFragment!!.followee.feedOrg?.id!!
                                     val followData = viewModel.followedUsers[id]
                                     RecommendedFollowUserItem(
-                                        item = feedItem.followRecommendationFeedItemFragment,
+                                        item = feedItem.followRecommendationFeedItemFragment!!,
                                         followData = followData,
                                         onFollowPressed = viewModel::followUser,
                                         onUnfollowPressed = viewModel::unfollowUser

@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.LocalAbsoluteElevation
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.LocalOffer
@@ -242,7 +241,7 @@ fun ReleaseCard(
                     ReleaseDetail(
                         icon = painterResource(R.drawable.ic_commit_24),
                         iconDescription = stringResource(R.string.noun_tag),
-                        text = release.tagCommit.abbreviatedOid
+                        text = release.tagCommit!!.abbreviatedOid
                     )
                 }
             }

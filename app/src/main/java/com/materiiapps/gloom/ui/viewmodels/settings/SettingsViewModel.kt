@@ -6,19 +6,16 @@ import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.ScreenModelStore
 import cafe.adriel.voyager.core.model.coroutineScope
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.cache.normalized.apolloStore
+import com.materiiapps.gloom.api.repository.GithubAuthRepository
+import com.materiiapps.gloom.api.utils.ifSuccessful
 import com.materiiapps.gloom.domain.manager.AuthManager
-import com.materiiapps.gloom.domain.repository.GithubAuthRepository
-import com.materiiapps.gloom.rest.utils.ifSuccessful
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiiapps.gloom.ui.screens.profile.ProfileTab
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
     private val repo: GithubAuthRepository,
-    private val auth: AuthManager,
-    private val gqlClient: ApolloClient
+    private val auth: AuthManager
 ) : ScreenModel {
 
     var signOutDialogOpened by mutableStateOf(false)
@@ -40,7 +37,7 @@ class SettingsViewModel(
         coroutineScope.launch {
             repo.deleteAccessToken(token).ifSuccessful { ->
                 auth.authToken = ""
-                gqlClient.apolloStore.clearAll()
+                auth.clearApolloCache()
                 ScreenModelStore.remove(ProfileScreen())
                 ScreenModelStore.remove(ProfileTab())
                 signedOut = true

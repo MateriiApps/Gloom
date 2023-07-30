@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import coil.compose.AsyncImage
-import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.api.dto.user.User
 
 @Composable
 fun Avatar(

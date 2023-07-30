@@ -5,7 +5,7 @@ import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.R
-import com.materiiapps.gloom.domain.models.ModelUser
+import com.materiiapps.gloom.api.models.ModelUser
 import com.materiiapps.gloom.ui.screens.list.base.BaseListScreen
 import com.materiiapps.gloom.ui.viewmodels.profile.FollowingViewModel
 import com.materiiapps.gloom.ui.widgets.user.UserItem

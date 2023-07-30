@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,10 +23,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
-import coil.compose.AsyncImage
 import com.materiiapps.gloom.R
-import com.materiiapps.gloom.domain.models.ModelUser
-import com.materiiapps.gloom.rest.dto.user.User
+import com.materiiapps.gloom.api.models.ModelUser
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiiapps.gloom.utils.navigate
@@ -74,7 +71,7 @@ fun UserItem(
                     )
                 } else {
                     Text(
-                        text = user.displayName,
+                        text = user.displayName!!,
                         style = MaterialTheme.typography.labelLarge.copy(
                             fontSize = 16.sp
                         ),
@@ -93,7 +90,7 @@ fun UserItem(
             }
         }
         if (!user.bio.isNullOrBlank()) {
-            Text(text = user.bio, style = MaterialTheme.typography.labelLarge)
+            Text(text = user.bio!!, style = MaterialTheme.typography.labelLarge)
         }
     }
 }

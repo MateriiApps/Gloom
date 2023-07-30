@@ -31,11 +31,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.materiiapps.gloom.R
+import com.materiiapps.gloom.api.models.ModelRepo
+import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 import com.materiiapps.gloom.utils.navigate
-import com.materiiapps.gloom.R
-import com.materiiapps.gloom.domain.models.ModelRepo
-import com.materiiapps.gloom.ui.components.Avatar
+import com.materiiapps.gloom.utils.parsedColor
 
 @Composable
 fun RepoItem(
@@ -54,7 +55,7 @@ fun RepoItem(
             .background(if (card) MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp) else Color.Transparent)
             .clickable {
                 if (!repo.name.isNullOrBlank() && (!repo.owner?.username.isNullOrBlank() || login != null))
-                    nav.navigate(RepoScreen(login ?: repo.owner?.username!!, repo.name))
+                    nav.navigate(RepoScreen(login ?: repo.owner?.username!!, repo.name!!))
             }
             .padding(16.dp)
             .run {
@@ -69,13 +70,13 @@ fun RepoItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Avatar(
-                url = repo.owner.avatar,
-                contentDescription = stringResource(R.string.noun_users_avatar, repo.owner.username ?: "ghost"),
-                type = repo.owner.type,
+                url = repo.owner!!.avatar,
+                contentDescription = stringResource(R.string.noun_users_avatar, repo.owner!!.username ?: "ghost"),
+                type = repo.owner!!.type,
                 modifier = Modifier.size(20.dp)
             )
             Text(
-                text = repo.owner.username ?: "ghost",
+                text = repo.owner!!.username ?: "ghost",
                 style = MaterialTheme.typography.labelMedium
             )
         }
@@ -149,12 +150,12 @@ fun RepoItem(
                     ) {
                         Icon(
                             Icons.Filled.Circle,
-                            contentDescription = repo.language.name,
+                            contentDescription = repo.language!!.name,
                             modifier = Modifier.size(15.dp),
-                            tint = repo.language.color
+                            tint = repo.language?.color?.parsedColor
                                 ?: MaterialTheme.colorScheme.surfaceVariant
                         )
-                        Text(text = repo.language.name)
+                        Text(text = repo.language!!.name)
                     }
                 }
             }
