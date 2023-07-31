@@ -3,7 +3,7 @@ package com.materiiapps.gloom.ui.viewmodels.auth
 import android.content.Context
 import cafe.adriel.voyager.core.model.ScreenModel
 import com.materiiapps.gloom.api.Credentials
-import com.materiiapps.gloom.utils.URLs
+import com.materiiapps.gloom.api.URLs
 import com.materiiapps.gloom.utils.openCustomTab
 import io.ktor.http.URLBuilder
 

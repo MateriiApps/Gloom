@@ -1,11 +1,14 @@
 package com.materiiapps.gloom.utils
 
+import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import com.materiiapps.gloom.R
 
 // Credit to rushii (github.com/DiamondMiner88)
 
@@ -57,5 +60,25 @@ inline fun annotatingStringResource(
         }
 
         append(string.substring(lastIndex))
+    }
+}
+
+@Composable
+fun getFileSizeString(size: Int) = getFileSizeString(size, LocalContext.current)
+
+fun getFileSizeString(size: Int, context: Context): String {
+    return when {
+        size < Constants.FILE_SIZES.KILO -> context.getString(R.string.file_size_bytes, size)
+        size < Constants.FILE_SIZES.MEGA -> context.getString(
+            R.string.file_size_kilobytes,
+            size / Constants.FILE_SIZES.KILO
+        )
+
+        size < Constants.FILE_SIZES.GIGA -> context.getString(
+            R.string.file_size_megabytes,
+            size / Constants.FILE_SIZES.MEGA
+        )
+
+        else -> context.getString(R.string.file_size_gigabytes, size / Constants.FILE_SIZES.GIGA)
     }
 }

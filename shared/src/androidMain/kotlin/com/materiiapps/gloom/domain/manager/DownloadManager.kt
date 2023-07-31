@@ -2,7 +2,6 @@ package com.materiiapps.gloom.domain.manager
 
 import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
-import android.app.DownloadManager as AndroidDownloadManager
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -12,7 +11,6 @@ import android.os.Looper
 import androidx.core.content.getSystemService
 import androidx.core.net.toUri
 import com.materiiapps.gloom.utils.showToast
-import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,8 +18,9 @@ import java.io.File
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
+import android.app.DownloadManager as AndroidDownloadManager
 
-class DownloadManager(
+actual class DownloadManager(
     private val context: Context,
     private val authManager: AuthManager
 ) {
@@ -29,14 +28,14 @@ class DownloadManager(
     private val downloadScope = CoroutineScope(Dispatchers.IO)
     private val gloomDownloadFolder = File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOWNLOADS).resolve("Gloom")
 
-    fun download(url: String, block: (File) -> Unit = {}) {
+    actual fun download(url: String, block: (String) -> Unit) {
         val name = url.toUri().lastPathSegment!!
         downloadScope.launch {
             download(url, File(gloomDownloadFolder, name)).also {
                 Handler(Looper.getMainLooper()).post {
                     if(it.exists()) {
                         context.showToast("Download complete: $name")
-                        block(it)
+                        block(it.absolutePath)
                     }
                 }
             }
@@ -102,7 +101,7 @@ class DownloadManager(
                 setTitle("Gloom: Downloading ${out.name}")
                 setNotificationVisibility(AndroidDownloadManager.Request.VISIBILITY_VISIBLE)
                 setDestinationUri(out.toUri())
-                addRequestHeader(HttpHeaders.Authorization, authManager.authToken)
+                addRequestHeader("Authorization", authManager.authToken)
                 downloadManager.enqueue(this)
             }
         }

@@ -1,37 +1,11 @@
 package com.materiiapps.gloom.utils
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.widget.Toast
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import com.materiiapps.gloom.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import com.materiiapps.gloom.gql.type.ReactionContent
 import java.util.Locale
-
-@Suppress("unused")
-object Utils: KoinComponent {
-    private val json: Json by inject()
-    private val logger: Logger by inject()
-
-    fun @Serializable Any?.log() {
-        logger.debug("Model", json.encodeToString(this))
-    }
-}
-
-fun coroutine(block: suspend CoroutineScope.() -> Unit) {
-    CoroutineScope(Dispatchers.IO).launch(block = block)
-}
+import android.graphics.Color as AndroidColor
 
 val Color.hexCode: String
     inline get() {
@@ -49,51 +23,23 @@ val String.parsedColor: Color
         val colorStr = if (!langColor.startsWith("#")) "#$langColor" else langColor
 
         return try {
-            Color(android.graphics.Color.parseColor(colorStr))
+            Color(AndroidColor.parseColor(colorStr))
         } catch (e: Throwable) {
             Color.Black
         }
     }
 
-fun Context.showToast(text: String) {
-    Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
-}
-
-fun Context.openLink(url: Uri) {
-    // TODO: Setting to disable custom tabs
-    openCustomTab(url.toString(), force = false)
-}
-
-fun Context.shareText(text: String) = Intent(Intent.ACTION_SEND).apply {
-    putExtra(Intent.EXTRA_TEXT, text)
-    type = "text/plain"
-    Intent.createChooser(this, null).also {
-        it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        this@shareText.startActivity(it)
-    }
-}
-
-fun String?.ifNullOrBlank(block: () -> String) = if (isNullOrBlank()) block() else this
-
-@Composable
-fun getFileSizeString(size: Int) = getFileSizeString(size, LocalContext.current)
-
-fun getFileSizeString(size: Int, context: Context): String {
-    return when {
-        size < Constants.FILE_SIZES.KILO -> context.getString(R.string.file_size_bytes, size)
-        size < Constants.FILE_SIZES.MEGA -> context.getString(
-            R.string.file_size_kilobytes,
-            size / Constants.FILE_SIZES.KILO
-        )
-
-        size < Constants.FILE_SIZES.GIGA -> context.getString(
-            R.string.file_size_megabytes,
-            size / Constants.FILE_SIZES.MEGA
-        )
-
-        else -> context.getString(R.string.file_size_gigabytes, size / Constants.FILE_SIZES.GIGA)
-    }
-}
+val REACTION_EMOJIS = mapOf(
+    ReactionContent.HEART to "♥",
+    ReactionContent.CONFUSED to "😕",
+    ReactionContent.EYES to "👀",
+    ReactionContent.HOORAY to "🎉",
+    ReactionContent.LAUGH to "😄",
+    ReactionContent.ROCKET to "🚀",
+    ReactionContent.THUMBS_UP to "👍",
+    ReactionContent.THUMBS_DOWN to "👎",
+    ReactionContent.UNKNOWN__ to "❓"
+)
 
 @Composable
 fun generateMdHtml(

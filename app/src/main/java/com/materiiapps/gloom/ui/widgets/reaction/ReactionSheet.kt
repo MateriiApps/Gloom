@@ -16,7 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.gql.type.ReactionContent
-import com.materiiapps.gloom.utils.Constants
+import com.materiiapps.gloom.utils.REACTION_EMOJIS
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -25,7 +25,7 @@ fun ReactionSheet(
     onReactionClick: (ReactionContent) -> Unit,
     onClose: () -> Unit
 ) {
-    val emojis = Constants.REACTION_EMOJIS.filter { (reaction, _) ->
+    val emojis = REACTION_EMOJIS.filter { (reaction, _) ->
         if (forRelease)
             !listOf(
                 ReactionContent.THUMBS_DOWN,

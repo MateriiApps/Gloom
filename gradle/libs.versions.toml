@@ -37,11 +37,13 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "1.7.1" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version = "0.4.0" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.5.1" }
 ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+multiplatform-settings = { group = "com.russhwolf", name = "multiplatform-settings-no-arg", version = "1.0.0" }
 voyager-koin = { group = "cafe.adriel.voyager", name = "voyager-koin", version.ref = "voyager" }
 voyager-navigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "voyager" }
 voyager-tab-navigator = { group = "cafe.adriel.voyager", name = "voyager-tab-navigator", version.ref = "voyager" }
@@ -52,6 +54,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
+compose = { id = "org.jetbrains.compose", version = "1.4.3" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
@@ -63,6 +66,6 @@ apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters"]
 coil = ["coil", "coil-compose"]
 compose = ["compose-material-icons-extended", "compose-material", "compose-material3", "compose-ui"]
 koin = ["koin-android", "koin-androidx-compose", "koin-core"]
-kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime"]
+kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime", "kotlinx-serialization"]
 ktor = ["ktor-serialization-kotlinx-json", "ktor-client-logging", "ktor-client-core", "ktor-client-content-negotiation", "ktor-client-cio"]
 voyager = ["voyager-tab-navigator", "voyager-koin", "voyager-navigator", "voyager-transitions"]

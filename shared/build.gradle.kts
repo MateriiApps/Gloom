@@ -1,6 +1,7 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.compose)
     alias(libs.plugins.kotlin.multiplatform)
 }
 
@@ -27,8 +28,11 @@ kotlin {
             dependencies {
                 implementation(libs.koin.core)
                 implementation(libs.bundles.kotlinx)
+
+                implementation(libs.multiplatform.settings)
                 api(libs.apollo.runtime)
                 api(libs.apollo.normalized.cache)
+                api(compose.runtime)
             }
         }
         val androidMain by getting {

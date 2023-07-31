@@ -27,3 +27,8 @@ fun Context.openCustomTab(url: String, force: Boolean) = CustomTabsIntent.Builde
     if(force) intent.setPackage(defaultBrowserPackage)
     launchUrl(this@openCustomTab, Uri.parse(url))
 }
+
+fun Context.openLink(url: Uri) {
+    // TODO: Setting to disable custom tabs
+    openCustomTab(url.toString(), force = false)
+}
