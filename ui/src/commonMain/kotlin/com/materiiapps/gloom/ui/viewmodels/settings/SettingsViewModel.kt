@@ -9,6 +9,9 @@ import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiiapps.gloom.api.repository.GithubAuthRepository
 import com.materiiapps.gloom.api.utils.ifSuccessful
 import com.materiiapps.gloom.domain.manager.AuthManager
+import com.materiiapps.gloom.ui.screens.explore.ExploreScreen
+import com.materiiapps.gloom.ui.screens.home.HomeScreen
+import com.materiiapps.gloom.ui.screens.notifications.NotificationsScreen
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiiapps.gloom.ui.screens.profile.ProfileTab
 import kotlinx.coroutines.launch
@@ -38,6 +41,9 @@ class SettingsViewModel(
             repo.deleteAccessToken(token).ifSuccessful { ->
                 auth.authToken = ""
                 auth.clearApolloCache()
+                ScreenModelStore.remove(HomeScreen())
+                ScreenModelStore.remove(ExploreScreen())
+                ScreenModelStore.remove(NotificationsScreen())
                 ScreenModelStore.remove(ProfileScreen())
                 ScreenModelStore.remove(ProfileTab())
                 signedOut = true
