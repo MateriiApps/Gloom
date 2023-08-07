@@ -1,11 +1,11 @@
 package com.materiiapps.gloom.api.repository
 
 import com.materiiapps.gloom.api.models.ModelUser
+import com.materiiapps.gloom.api.service.GraphQLService
+import com.materiiapps.gloom.api.utils.transform
 import com.materiiapps.gloom.gql.type.IssueState
 import com.materiiapps.gloom.gql.type.PullRequestState
 import com.materiiapps.gloom.gql.type.ReactionContent
-import com.materiiapps.gloom.api.service.GraphQLService
-import com.materiiapps.gloom.api.utils.transform
 
 class GraphQLRepository(
     private val service: GraphQLService

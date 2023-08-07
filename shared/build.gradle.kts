@@ -26,17 +26,19 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.koin.core)
-                implementation(libs.bundles.kotlinx)
+                api(compose.runtime)
+                api(libs.bundles.kotlinx)
 
-                implementation(libs.multiplatform.settings)
                 api(libs.apollo.runtime)
                 api(libs.apollo.normalized.cache)
-                api(compose.runtime)
+                api(libs.koin.core)
+                api(libs.multiplatform.settings)
             }
         }
         val androidMain by getting {
+            dependsOn(commonMain)
             dependencies {
+                implementation(libs.androidx.browser)
                 implementation(libs.androidx.core.ktx)
             }
         }

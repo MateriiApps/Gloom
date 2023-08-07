@@ -26,14 +26,17 @@ actual class DownloadManager(
 ) {
     private val downloadManager = context.getSystemService<AndroidDownloadManager>()!!
     private val downloadScope = CoroutineScope(Dispatchers.IO)
-    private val gloomDownloadFolder = File(Environment.getExternalStorageDirectory(), Environment.DIRECTORY_DOWNLOADS).resolve("Gloom")
+    private val gloomDownloadFolder = File(
+        Environment.getExternalStorageDirectory(),
+        Environment.DIRECTORY_DOWNLOADS
+    ).resolve("Gloom")
 
     actual fun download(url: String, block: (String) -> Unit) {
         val name = url.toUri().lastPathSegment!!
         downloadScope.launch {
             download(url, File(gloomDownloadFolder, name)).also {
                 Handler(Looper.getMainLooper()).post {
-                    if(it.exists()) {
+                    if (it.exists()) {
                         context.showToast("Download complete: $name")
                         block(it.absolutePath)
                     }
@@ -54,7 +57,7 @@ actual class DownloadManager(
                 override fun onReceive(context: Context, intent: Intent) {
                     val id = intent.getLongExtra(AndroidDownloadManager.EXTRA_DOWNLOAD_ID, -1)
 
-                    if(dlId != id) return
+                    if (dlId != id) return
 
                     val (status, reason) = AndroidDownloadManager.Query().run {
                         setFilterById(dlId)
@@ -65,14 +68,16 @@ actual class DownloadManager(
                         if (cursor.count == 0) {
                             -1 to -1
                         } else {
-                            val status = cursor.run { getInt(getColumnIndex(AndroidDownloadManager.COLUMN_STATUS)) }
-                            val reason = cursor.run { getInt(getColumnIndex(AndroidDownloadManager.COLUMN_REASON)) }
+                            val status =
+                                cursor.run { getInt(getColumnIndex(AndroidDownloadManager.COLUMN_STATUS)) }
+                            val reason =
+                                cursor.run { getInt(getColumnIndex(AndroidDownloadManager.COLUMN_REASON)) }
 
                             status to reason
                         }
                     }
 
-                    when(status) {
+                    when (status) {
                         -1 -> {
                             context.unregisterReceiver(this)
                             continuation.resumeWithException(Error("Download canceled"))
@@ -95,7 +100,10 @@ actual class DownloadManager(
                 }
             }
 
-            context.registerReceiver(receiver, IntentFilter(AndroidDownloadManager.ACTION_DOWNLOAD_COMPLETE))
+            context.registerReceiver(
+                receiver,
+                IntentFilter(AndroidDownloadManager.ACTION_DOWNLOAD_COMPLETE)
+            )
 
             receiver.dlId = AndroidDownloadManager.Request(url.toUri()).run {
                 setTitle("Gloom: Downloading ${out.name}")

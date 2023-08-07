@@ -1,5 +1,6 @@
 package com.materiiapps.gloom.api
 
+import com.materiiapps.gloom.gql.type.ReactionContent
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
@@ -28,3 +29,15 @@ object URLs {
     }
 
 }
+
+val REACTION_EMOJIS = mapOf(
+    ReactionContent.HEART to "♥",
+    ReactionContent.CONFUSED to "😕",
+    ReactionContent.EYES to "👀",
+    ReactionContent.HOORAY to "🎉",
+    ReactionContent.LAUGH to "😄",
+    ReactionContent.ROCKET to "🚀",
+    ReactionContent.THUMBS_UP to "👍",
+    ReactionContent.THUMBS_DOWN to "👎",
+    ReactionContent.UNKNOWN__ to "❓"
+)

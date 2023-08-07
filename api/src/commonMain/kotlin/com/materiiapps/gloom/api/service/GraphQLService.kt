@@ -205,11 +205,12 @@ class GraphQLService(
             .response()
     }
 
-    suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) = withContext(Dispatchers.IO) {
-        client.query(RepoFilesQuery(owner, name, branchAndPath))
-            .addToken()
-            .response()
-    }
+    suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) =
+        withContext(Dispatchers.IO) {
+            client.query(RepoFilesQuery(owner, name, branchAndPath))
+                .addToken()
+                .response()
+        }
 
     suspend fun getDefaultBranch(owner: String, name: String) = withContext(Dispatchers.IO) {
         client.query(DefaultBranchQuery(owner, name))

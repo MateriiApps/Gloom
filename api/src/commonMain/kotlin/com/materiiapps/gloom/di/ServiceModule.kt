@@ -21,9 +21,11 @@ fun serviceModule() = module {
 
     fun provideHttpService(json: Json, client: HttpClient) = HttpService(json, client)
 
-    fun provideAuthApiService(httpService: HttpService): GithubAuthApiService = GithubAuthApiService(httpService)
+    fun provideAuthApiService(httpService: HttpService): GithubAuthApiService =
+        GithubAuthApiService(httpService)
 
-    fun provideApiService(httpService: HttpService, authManager: AuthManager) = GithubApiService(httpService, authManager)
+    fun provideApiService(httpService: HttpService, authManager: AuthManager) =
+        GithubApiService(httpService, authManager)
 
     fun provideApolloClient(logger: Logger): ApolloClient {
         return ApolloClient.Builder()

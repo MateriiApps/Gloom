@@ -13,7 +13,6 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
-import cafe.adriel.voyager.transitions.SlideTransition
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.materiiapps.gloom.api.repository.GithubAuthRepository
 import com.materiiapps.gloom.api.utils.ifSuccessful
@@ -23,6 +22,7 @@ import com.materiiapps.gloom.domain.manager.Theme
 import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.theme.GloomTheme
+import com.materiiapps.gloom.ui.transitions.SlideTransition
 import com.materiiapps.gloom.utils.deeplinks.DeepLinkWrapper
 import com.materiiapps.gloom.utils.deeplinks.addAllRoutes
 import kotlinx.coroutines.Dispatchers

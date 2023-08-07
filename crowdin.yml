@@ -3,5 +3,13 @@ api_token_env: CROWDIN_PERSONAL_TOKEN
 
 preserve_hierarchy: true
 files:
-  - source: app/src/main/res/values/strings.xml
-    translation: app/src/main/res/values-%android_code%/strings.xml
+  - source: ui/src/commonMain/resources/MR/base/strings.xml
+    translation: ui/src/commonMain/resources/MR/%locale%/strings.xml
+    ignore:
+      - ui/src/commonMain/resources/MR/images/
+      - ui/src/commonMain/resources/MR/files/
+  - source: ui/src/commonMain/resources/MR/base/plurals.xml
+    translation: ui/src/commonMain/resources/MR/%locale%/plurals.xml
+    ignore:
+      - ui/src/commonMain/resources/MR/images/
+      - ui/src/commonMain/resources/MR/files/

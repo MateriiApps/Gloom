@@ -30,6 +30,10 @@ val DateAdapter = object : Adapter<Instant> {
         value: Instant
     ) {
         val ldt = value.toLocalDateTime(TimeZone.currentSystemDefault())
-        StringAdapter.toJson(writer, customScalarAdapters, "${ldt.year}-${ldt.monthNumber}-${ldt.dayOfMonth}")
+        StringAdapter.toJson(
+            writer,
+            customScalarAdapters,
+            "${ldt.year}-${ldt.monthNumber}-${ldt.dayOfMonth}"
+        )
     }
 }

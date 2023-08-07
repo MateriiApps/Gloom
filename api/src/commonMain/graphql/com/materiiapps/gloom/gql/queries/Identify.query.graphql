@@ -1,6 +1,6 @@
 query Identify {
-  viewer {
-    login
-    id
-  }
+    viewer {
+        login
+        id
+    }
 }

@@ -1,5 +1,5 @@
 query RepoIssues($owner: String!, $name: String!, $after: String, $states: [IssueState!]!) {
-    repository(owner: $owner, name: $name)	{
+    repository(owner: $owner, name: $name)    {
         issues(
             first: 20,
             after: $after

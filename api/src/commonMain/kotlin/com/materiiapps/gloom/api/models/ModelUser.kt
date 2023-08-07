@@ -1,5 +1,6 @@
 package com.materiiapps.gloom.api.models
 
+import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.FollowersQuery
 import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
@@ -10,7 +11,6 @@ import com.materiiapps.gloom.gql.fragment.OrgSponsoringFragment
 import com.materiiapps.gloom.gql.fragment.Social
 import com.materiiapps.gloom.gql.fragment.UserSponsoringFragment
 import com.materiiapps.gloom.gql.type.SocialAccountProvider
-import com.materiiapps.gloom.api.dto.user.User
 import kotlinx.datetime.LocalDateTime
 
 data class ModelUser(
@@ -197,83 +197,87 @@ data class ModelUser(
             )
         }
 
-        fun fromFollowersQuery(followersQuery: FollowersQuery.Node) = with(followersQuery.userListUserFragment) {
-            ModelUser(
-                username = login,
-                displayName = name,
-                bio = bio,
-                avatar = avatarUrl,
-                type = User.Type.USER
-            )
-        }
-
-        fun fromFollowingQuery(followingQuery: FollowingQuery.Node) = with(followingQuery.userListUserFragment) {
-            ModelUser(
-                username = login,
-                displayName = name,
-                bio = bio,
-                avatar = avatarUrl,
-                type = User.Type.USER
-            )
-        }
-
-        fun fromSponsoringQuery(sponsoringQuery: UserSponsoringFragment.Node) = with(sponsoringQuery) {
-            val isUser = sponsoringQuery.userListUserFragment != null
-            val isOrg = sponsoringQuery.orgListOrgFragment != null && !isUser
-
-            if (isUser) {
-                with(sponsoringQuery.userListUserFragment!!) {
-                    ModelUser(
-                        username = login,
-                        displayName = name,
-                        bio = bio,
-                        avatar = avatarUrl,
-                        type = User.Type.USER
-                    )
-                }
-            } else if (isOrg) {
-                with(sponsoringQuery.orgListOrgFragment!!) {
-                    ModelUser(
-                        username = login,
-                        displayName = name,
-                        bio = description,
-                        avatar = avatarUrl,
-                        type = User.Type.USER
-                    )
-                }
-            } else {
-                ModelUser(type = User.Type.USER)
+        fun fromFollowersQuery(followersQuery: FollowersQuery.Node) =
+            with(followersQuery.userListUserFragment) {
+                ModelUser(
+                    username = login,
+                    displayName = name,
+                    bio = bio,
+                    avatar = avatarUrl,
+                    type = User.Type.USER
+                )
             }
-        }
 
-        fun fromSponsoringQuery(sponsoringQuery: OrgSponsoringFragment.Node) = with(sponsoringQuery) {
-            val isUser = sponsoringQuery.userListUserFragment != null
-            val isOrg = sponsoringQuery.orgListOrgFragment != null && !isUser
-
-            if (isUser) {
-                with(sponsoringQuery.userListUserFragment!!) {
-                    ModelUser(
-                        username = login,
-                        displayName = name,
-                        bio = bio,
-                        avatar = avatarUrl,
-                        type = User.Type.USER
-                    )
-                }
-            } else if (isOrg) {
-                with(sponsoringQuery.orgListOrgFragment!!) {
-                    ModelUser(
-                        username = login,
-                        displayName = name,
-                        bio = description,
-                        avatar = avatarUrl,
-                        type = User.Type.USER
-                    )
-                }
-            } else {
-                ModelUser(type = User.Type.USER)
+        fun fromFollowingQuery(followingQuery: FollowingQuery.Node) =
+            with(followingQuery.userListUserFragment) {
+                ModelUser(
+                    username = login,
+                    displayName = name,
+                    bio = bio,
+                    avatar = avatarUrl,
+                    type = User.Type.USER
+                )
             }
-        }
+
+        fun fromSponsoringQuery(sponsoringQuery: UserSponsoringFragment.Node) =
+            with(sponsoringQuery) {
+                val isUser = sponsoringQuery.userListUserFragment != null
+                val isOrg = sponsoringQuery.orgListOrgFragment != null && !isUser
+
+                if (isUser) {
+                    with(sponsoringQuery.userListUserFragment!!) {
+                        ModelUser(
+                            username = login,
+                            displayName = name,
+                            bio = bio,
+                            avatar = avatarUrl,
+                            type = User.Type.USER
+                        )
+                    }
+                } else if (isOrg) {
+                    with(sponsoringQuery.orgListOrgFragment!!) {
+                        ModelUser(
+                            username = login,
+                            displayName = name,
+                            bio = description,
+                            avatar = avatarUrl,
+                            type = User.Type.USER
+                        )
+                    }
+                } else {
+                    ModelUser(type = User.Type.USER)
+                }
+            }
+
+        fun fromSponsoringQuery(sponsoringQuery: OrgSponsoringFragment.Node) =
+            with(sponsoringQuery) {
+                val isUser = sponsoringQuery.userListUserFragment != null
+                val isOrg = sponsoringQuery.orgListOrgFragment != null && !isUser
+
+                if (isUser) {
+                    with(sponsoringQuery.userListUserFragment!!) {
+                        ModelUser(
+                            username = login,
+                            displayName = name,
+                            bio = bio,
+                            avatar = avatarUrl,
+                            type = User.Type.USER
+                        )
+                    }
+                } else if (isOrg) {
+                    with(sponsoringQuery.orgListOrgFragment!!) {
+                        ModelUser(
+                            username = login,
+                            displayName = name,
+                            bio = description,
+                            avatar = avatarUrl,
+                            type = User.Type.USER
+                        )
+                    }
+                } else {
+                    ModelUser(type = User.Type.USER)
+                }
+            }
 
     }
 

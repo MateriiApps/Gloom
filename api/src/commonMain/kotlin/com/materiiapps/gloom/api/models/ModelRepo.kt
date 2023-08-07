@@ -141,7 +141,7 @@ data class ModelRepo(
                 owner = ModelUser(
                     username = owner.login,
                     avatar = owner.avatarUrl.toString(),
-                    type = if(owner.__typename == "User") User.Type.USER else User.Type.ORG
+                    type = if (owner.__typename == "User") User.Type.USER else User.Type.ORG
                 )
             )
         }

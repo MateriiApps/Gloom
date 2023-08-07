@@ -21,8 +21,9 @@ actual class Logger(private val context: Context) {
     }
 
     actual fun debug(tag: String, message: String) {
-        val isDebug = (context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0 /* TODO: Move this into some util function */
-        if(isDebug)
+        val isDebug =
+            (context.applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0 /* TODO: Move this into some util function */
+        if (isDebug)
             Log.d(tag, message)
     }
 }

@@ -13,7 +13,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 @Suppress("unused")
-object Utils: KoinComponent {
+object Utils : KoinComponent {
     private val json: Json by inject()
     private val logger: Logger by inject()
 

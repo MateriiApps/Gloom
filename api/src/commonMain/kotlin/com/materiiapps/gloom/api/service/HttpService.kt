@@ -9,7 +9,6 @@ import io.ktor.client.request.request
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.isSuccess
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 class HttpService(

@@ -45,11 +45,12 @@ data class User(
     enum class Type {
         @SerialName("User")
         USER,
+
         @SerialName("Organization")
         ORG;
 
         companion object {
-            fun fromTypeName(name: String) = if(name == "User") USER else ORG
+            fun fromTypeName(name: String) = if (name == "User") USER else ORG
         }
     }
 

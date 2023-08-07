@@ -61,6 +61,7 @@ data class Repository(
     enum class Visibility {
         @SerialName("public")
         PUBLIC,
+
         @SerialName("private")
         PRIVATE,
     }

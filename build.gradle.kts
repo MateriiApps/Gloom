@@ -17,6 +17,7 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.moko.resources) apply false
 }
 
 tasks.register<Delete>("clean").configure {

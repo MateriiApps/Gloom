@@ -12,7 +12,7 @@ inline fun <T, R> GraphQLResponse<T>.fold(
     onSuccess: (T, GQLErrors) -> R,
     onError: (GQLErrors) -> R,
     onFailure: (ApiFailure) -> R,
-): R = when(this) {
+): R = when (this) {
     is GraphQLResponse.Success -> onSuccess(data, errors)
     is GraphQLResponse.Error -> onError(errors)
     is GraphQLResponse.Failure -> onFailure(error)
@@ -21,7 +21,7 @@ inline fun <T, R> GraphQLResponse<T>.fold(
 inline fun <T, R> GraphQLResponse<T>.fold(
     onSuccess: (T) -> R,
     onError: (String) -> R,
-): R = when(this) {
+): R = when (this) {
     is GraphQLResponse.Success -> onSuccess(data)
     is GraphQLResponse.Error -> onError(errors.joinToString())
     is GraphQLResponse.Failure -> onError(error.message ?: "")
@@ -33,7 +33,7 @@ inline fun <T> GraphQLResponse<T>.ifSuccessful(block: (T) -> Unit) {
     }
 }
 
-fun <T> GraphQLResponse<T>.getOrNull(): T? = when(this) {
+fun <T> GraphQLResponse<T>.getOrNull(): T? = when (this) {
     is GraphQLResponse.Success -> data
     is GraphQLResponse.Error,
     is GraphQLResponse.Failure -> null
@@ -41,9 +41,9 @@ fun <T> GraphQLResponse<T>.getOrNull(): T? = when(this) {
 
 @Suppress("UNCHECKED_CAST")
 fun <T, R> GraphQLResponse<T>.transform(block: (T) -> R): GraphQLResponse<R> {
-    return when(this) {
+    return when (this) {
         is GraphQLResponse.Success -> GraphQLResponse.Success(block(data), errors)
         is GraphQLResponse.Error -> this as GraphQLResponse.Error<R>
-        is GraphQLResponse.Failure ->this as GraphQLResponse.Failure<R>
+        is GraphQLResponse.Failure -> this as GraphQLResponse.Failure<R>
     }
 }

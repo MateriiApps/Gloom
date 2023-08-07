@@ -1,5 +1,5 @@
 query RepoPullRequests($owner: String!, $name: String!, $after: String, $states: [PullRequestState!]!) {
-    repository(owner: $owner, name: $name)	{
+    repository(owner: $owner, name: $name)    {
         pullRequests(
             first: 20,
             after: $after

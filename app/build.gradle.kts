@@ -23,7 +23,12 @@ android {
     buildTypes {
         named("release") {
             isMinifyEnabled = false
-            setProguardFiles(listOf(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"))
+            setProguardFiles(
+                listOf(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+            )
         }
         named("debug") {
             applicationIdSuffix = ".debug"
@@ -53,17 +58,12 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.bundles.accompanist)
-    implementation(libs.bundles.androidx)
-    implementation(libs.bundles.coil)
-    implementation(libs.bundles.compose)
-    implementation(libs.bundles.koin)
     implementation(libs.bundles.kotlinx)
-    implementation(libs.bundles.ktor)
-    implementation(libs.bundles.voyager)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     implementation(project(":api"))
     implementation(project(":shared"))
-
+    implementation(project(":ui"))
 }

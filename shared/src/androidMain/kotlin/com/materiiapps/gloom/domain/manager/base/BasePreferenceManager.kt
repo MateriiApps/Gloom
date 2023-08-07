@@ -8,11 +8,15 @@ actual abstract class BasePreferenceManager(
 
     actual val prefs = provider.createSettings()
 
-    protected actual fun getString(key: String, defaultValue: String) = prefs.getString(key, defaultValue)
+    protected actual fun getString(key: String, defaultValue: String) =
+        prefs.getString(key, defaultValue)
 
-    protected actual fun getBoolean(key: String, defaultValue: Boolean) = prefs.getBoolean(key, defaultValue)
+    protected actual fun getBoolean(key: String, defaultValue: Boolean) =
+        prefs.getBoolean(key, defaultValue)
+
     protected actual fun getInt(key: String, defaultValue: Int) = prefs.getInt(key, defaultValue)
-    protected actual fun getFloat(key: String, defaultValue: Float) = prefs.getFloat(key, defaultValue)
+    protected actual fun getFloat(key: String, defaultValue: Float) =
+        prefs.getFloat(key, defaultValue)
 
     protected actual inline fun <reified E : Enum<E>> getEnum(key: String, defaultValue: E) =
         enumValueOf<E>(getString(key, defaultValue.name))

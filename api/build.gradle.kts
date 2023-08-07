@@ -30,12 +30,12 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(libs.bundles.apollo)
-                implementation(libs.koin.core)
-                implementation(libs.bundles.kotlinx)
-                implementation(libs.bundles.ktor)
-
                 implementation(project(":shared"))
+
+                api(libs.bundles.apollo)
+                api(libs.koin.core)
+                api(libs.bundles.kotlinx)
+                api(libs.bundles.ktor)
             }
         }
     }
@@ -47,7 +47,11 @@ apollo {
     mapScalarToKotlinString("URI")
     mapScalarToKotlinString("HTML")
     mapScalar("Date", "kotlinx.datetime.Instant", "com.materiiapps.gloom.api.utils.DateAdapter")
-    mapScalar("DateTime", "kotlinx.datetime.Instant", "com.apollographql.apollo3.adapter.KotlinxInstantAdapter")
+    mapScalar(
+        "DateTime",
+        "kotlinx.datetime.Instant",
+        "com.apollographql.apollo3.adapter.KotlinxInstantAdapter"
+    )
 }
 
 buildkonfig {
@@ -56,6 +60,10 @@ buildkonfig {
 
     defaultConfigs {
         buildConfigField(FieldSpec.Type.STRING, "CLIENT_ID", "M2Y4Yjg4MzRhOTFmMGNhYWQzOTI=")
-        buildConfigField(FieldSpec.Type.STRING, "CLIENT_SECRET", "MDBlNzZmYzgzNTg4OTlkNzc5NWE0NmNkMDRhY2U4NjVmY2RjMDE2NQ==")
+        buildConfigField(
+            FieldSpec.Type.STRING,
+            "CLIENT_SECRET",
+            "MDBlNzZmYzgzNTg4OTlkNzc5NWE0NmNkMDRhY2U4NjVmY2RjMDE2NQ=="
+        )
     }
 }
