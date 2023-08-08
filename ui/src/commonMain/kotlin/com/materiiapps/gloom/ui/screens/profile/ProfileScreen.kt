@@ -9,6 +9,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -74,8 +76,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
-import com.google.accompanist.flowlayout.FlowMainAxisAlignment
-import com.google.accompanist.flowlayout.FlowRow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.api.models.ModelRepo
@@ -231,6 +231,7 @@ open class ProfileScreen(
         )
     }
 
+    @OptIn(ExperimentalLayoutApi::class)
     @Composable
     private fun Header(
         user: ModelUser
@@ -300,8 +301,7 @@ open class ProfileScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 FlowRow(
-                    mainAxisAlignment = FlowMainAxisAlignment.Center,
-                    mainAxisSpacing = 5.dp
+                    horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally)
                 ) {
                     user.company?.let {
                         ProfileDetail(

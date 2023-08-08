@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -51,8 +53,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.benasher44.uuid.uuid4
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.domain.manager.ShareManager
@@ -77,13 +77,18 @@ class RepoScreen(
     override fun Content() = Screen()
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
     private fun Screen(
         viewModel: RepoViewModel = getScreenModel { parametersOf(owner to name) }
     ) {
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
-        val pagerState = rememberPagerState()
         val coroutineScope = rememberCoroutineScope()
+        val pagerState = rememberPagerState(
+            initialPage = 0,
+            initialPageOffsetFraction = 0f
+        ) {
+            viewModel.tabs.size
+        }
 
         Scaffold(
             topBar = { Toolbar(scrollBehavior, viewModel) }
@@ -160,7 +165,6 @@ class RepoScreen(
                 }
 
                 HorizontalPager(
-                    count = viewModel.tabs.size,
                     state = pagerState
                 ) {
                     val tab = viewModel.tabs[it]

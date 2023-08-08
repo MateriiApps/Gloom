@@ -46,8 +46,6 @@ kotlin {
                 api(compose.materialIconsExtended)
                 api(compose.runtime)
 
-                api(libs.accompanist.flowlayout)
-                api(libs.accompanist.pager)
                 api(libs.androidx.paging.compose)
                 api(libs.compose.imageloader)
                 api(libs.koin.core)
@@ -59,8 +57,7 @@ kotlin {
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
-                api(libs.accompanist.systemuicontroller)
-                api(libs.accompanist.webview)
+                api(libs.bundles.accompanist)
                 api(libs.androidx.core.ktx)
                 api(libs.koin.android)
             }

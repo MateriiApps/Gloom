@@ -13,8 +13,6 @@ moko-resources = "0.23.0"
 voyager = "1.0.0-rc06"
 
 [libraries]
-accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
-accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanist" }
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-webview = { group = "com.google.accompanist", name = "accompanist-webview", version.ref = "accompanist" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
@@ -64,7 +62,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
 
 [bundles]
-accompanist = ["accompanist-systemuicontroller", "accompanist-flowlayout", "accompanist-webview", "accompanist-pager"]
+accompanist = ["accompanist-systemuicontroller", "accompanist-webview"]
 androidx = ["androidx-paging-compose", "androidx-activity-compose", "androidx-lifecycle-runtime-ktx", "androidx-browser", "androidx-core-ktx", "androidx-core-splashscreen"]
 apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters"]
 coil = ["coil", "coil-compose"]

@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,7 +24,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.flowlayout.FlowRow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.Languages
 import com.materiiapps.gloom.ui.utils.parsedColor
@@ -30,6 +31,7 @@ import com.materiiapps.gloom.ui.utils.pluralStringResource
 import dev.icerock.moko.resources.compose.stringResource
 import java.text.DecimalFormat
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun LanguageMakeup(
     languages: Languages
@@ -95,8 +97,8 @@ fun LanguageMakeup(
         }
 
         FlowRow(
-            mainAxisSpacing = 16.dp,
-            crossAxisSpacing = 14.dp
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             _languages.forEach {
                 Row(
