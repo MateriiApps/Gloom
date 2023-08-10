@@ -4,5 +4,5 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun App() {
-
+    // TODO: Make common entry point
 }

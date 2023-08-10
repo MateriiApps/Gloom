@@ -9,13 +9,13 @@ import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.getOrNull
 import com.materiiapps.gloom.domain.manager.DownloadManager
+import com.materiiapps.gloom.domain.manager.ToastManager
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.fragment.ReleaseAssetFragment
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.ui.utils.installApks
 import com.materiiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
-import com.materiiapps.gloom.utils.showToast
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -23,6 +23,7 @@ actual class ReleaseViewModel(
     private val repo: GraphQLRepository,
     private val downloadManager: DownloadManager,
     private val context: Context,
+    private val toastManager: ToastManager,
     nameAndTag: Triple<String, String, String>
 ) : BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?>() {
 
@@ -62,7 +63,7 @@ actual class ReleaseViewModel(
     }
 
     fun downloadAsset(url: String, mimeType: String) {
-        context.showToast("Downloading ${url.toUri().lastPathSegment}...")
+        toastManager.showToast("Downloading ${url.toUri().lastPathSegment}...")
         downloadManager.download(url) {
             if (mimeType == "application/vnd.android.package-archive") apkFile = File(it)
         }

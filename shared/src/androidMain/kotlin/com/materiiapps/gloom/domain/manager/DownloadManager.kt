@@ -10,7 +10,6 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.content.getSystemService
 import androidx.core.net.toUri
-import com.materiiapps.gloom.utils.showToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,7 +21,8 @@ import android.app.DownloadManager as AndroidDownloadManager
 
 actual class DownloadManager(
     private val context: Context,
-    private val authManager: AuthManager
+    private val authManager: AuthManager,
+    private val toastManager: ToastManager
 ) {
     private val downloadManager = context.getSystemService<AndroidDownloadManager>()!!
     private val downloadScope = CoroutineScope(Dispatchers.IO)
@@ -37,7 +37,7 @@ actual class DownloadManager(
             download(url, File(gloomDownloadFolder, name)).also {
                 Handler(Looper.getMainLooper()).post {
                     if (it.exists()) {
-                        context.showToast("Download complete: $name")
+                        toastManager.showToast("Download complete: $name")
                         block(it.absolutePath)
                     }
                 }

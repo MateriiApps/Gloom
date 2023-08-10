@@ -34,6 +34,7 @@ import com.materiiapps.gloom.gql.UserProfileQuery
 import com.materiiapps.gloom.gql.type.IssueState
 import com.materiiapps.gloom.gql.type.PullRequestState
 import com.materiiapps.gloom.gql.type.ReactionContent
+import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -43,7 +44,7 @@ class GraphQLService(
 ) {
 
     private fun <D : Operation.Data> ApolloCall<D>.addToken() =
-        addHttpHeader("Authorization", "Bearer ${authManager.authToken}")
+        addHttpHeader(HttpHeaders.Authorization, "Bearer ${authManager.authToken}")
 
     suspend fun getCurrentProfile() = withContext(Dispatchers.IO) {
         client.query(ProfileQuery())

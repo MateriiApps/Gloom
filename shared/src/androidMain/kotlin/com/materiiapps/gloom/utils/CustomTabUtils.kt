@@ -8,7 +8,6 @@ import androidx.browser.customtabs.CustomTabsIntent
 
 private var mDefaultBrowserPackage: String? = null
 
-@Suppress("DEPRECATION")
 private val Context.defaultBrowserPackage: String?
     get() {
         return if (mDefaultBrowserPackage == null) {

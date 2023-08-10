@@ -5,11 +5,14 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.os.IBinder
 import com.materiiapps.gloom.Res
+import com.materiiapps.gloom.domain.manager.ToastManager
 import com.materiiapps.gloom.ui.utils.getString
-import com.materiiapps.gloom.utils.showToast
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class InstallService : Service() {
+class InstallService : Service(), KoinComponent {
 
+    private val toastManager: ToastManager by inject()
     private val messages = mapOf(
         PackageInstaller.STATUS_FAILURE to Res.strings.install_fail_generic,
         PackageInstaller.STATUS_FAILURE_BLOCKED to Res.strings.install_fail_blocked,
@@ -29,11 +32,11 @@ class InstallService : Service() {
                 startActivity(confirmationIntent)
             }
 
-            PackageInstaller.STATUS_SUCCESS -> showToast(getString(Res.strings.install_success))
+            PackageInstaller.STATUS_SUCCESS -> toastManager.showToast(getString(Res.strings.install_success))
 
-            PackageInstaller.STATUS_FAILURE_ABORTED -> showToast(getString(Res.strings.install_cancelled))
+            PackageInstaller.STATUS_FAILURE_ABORTED -> toastManager.showToast(getString(Res.strings.install_cancelled))
 
-            else -> messages[statusCode]?.let { showToast(getString(it)) }
+            else -> messages[statusCode]?.let { toastManager.showToast(getString(it)) }
         }
 
         stopSelf()
