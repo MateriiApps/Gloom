@@ -5,11 +5,6 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
 android {
     namespace = "com.materiiapps.gloom.shared"
 
