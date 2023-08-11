@@ -83,6 +83,7 @@ import com.materiiapps.gloom.api.models.ModelStatus
 import com.materiiapps.gloom.api.models.ModelUser
 import com.materiiapps.gloom.api.models.Pinnable
 import com.materiiapps.gloom.domain.manager.ShareManager
+import com.materiiapps.gloom.domain.manager.ToastManager
 import com.materiiapps.gloom.gql.type.SocialAccountProvider
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.BackButton
@@ -411,20 +412,24 @@ open class ProfileScreen(
 
     @Composable
     private fun ProfileAvatar(user: ModelUser) {
+        val toastManager: ToastManager = get()
         val (badge, msg) =
-            if (user.isSupporter) painterResource(Res.images.img_badge_sponsor) to Res.strings.badge_supporter
-            else if (user.id == Constants.DEV_USER_ID) painterResource(Res.images.img_badge_dev) to Res.strings.badge_dev
+            if (user.isSupporter) painterResource(Res.images.img_badge_sponsor) to stringResource(Res.strings.badge_supporter)
+            else if (user.id == Constants.DEV_USER_ID) painterResource(Res.images.img_badge_dev) to stringResource(Res.strings.badge_dev)
             else null to null
 
-        BadgedItem(badge = if (badge != null && msg != null) { ->
-            Image(
-                painter = badge,
-                contentDescription = stringResource(msg),
-                modifier = Modifier
-                    .size(24.dp)
-                    .clickable { }
-            )
-        } else null) {
+        BadgedItem(
+            badge =
+                if (badge != null && msg != null) { ->
+                    Image(
+                        painter = badge,
+                        contentDescription = msg,
+                        modifier = Modifier
+                            .size(24.dp)
+                            .clickable { toastManager.showToast(msg) }
+                    )
+                } else null
+        ) {
             Avatar(
                 url = user.avatar,
                 contentDescription = stringResource(

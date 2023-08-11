@@ -14,8 +14,9 @@ import org.koin.core.parameter.parametersOf
 
 class FollowingScreen(
     private val username: String,
-    override val titleRes: StringResource = Res.strings.noun_following
 ) : BaseListScreen<ModelUser, FollowingQuery.Data?, FollowingViewModel>() {
+
+    override val titleRes: StringResource = Res.strings.noun_following
 
     override val viewModel: FollowingViewModel
         @Composable get() = getScreenModel { parametersOf(username) }

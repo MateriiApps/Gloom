@@ -14,8 +14,9 @@ import org.koin.core.parameter.parametersOf
 
 class StarredReposListScreen(
     private val username: String,
-    override val titleRes: StringResource = Res.strings.noun_starred
 ) : BaseListScreen<ModelRepo, StarredReposQuery.Data?, StarredReposListViewModel>() {
+
+    override val titleRes: StringResource = Res.strings.noun_starred
 
     override val viewModel: StarredReposListViewModel
         @Composable get() = getScreenModel { parametersOf(username) }
