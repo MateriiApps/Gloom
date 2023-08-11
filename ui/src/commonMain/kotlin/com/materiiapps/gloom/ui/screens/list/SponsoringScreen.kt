@@ -16,7 +16,7 @@ class SponsoringScreen(
     private val username: String,
 ) : BaseListScreen<ModelUser, SponsoringQuery.Data?, SponsoringViewModel>() {
 
-    override val titleRes: StringResource = Res.strings.noun_sponsoring
+    override val titleRes: StringResource get() = Res.strings.noun_sponsoring
 
     override val viewModel: SponsoringViewModel
         @Composable get() = getScreenModel { parametersOf(username) }

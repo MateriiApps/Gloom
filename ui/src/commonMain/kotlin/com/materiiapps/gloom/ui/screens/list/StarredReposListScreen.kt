@@ -16,7 +16,7 @@ class StarredReposListScreen(
     private val username: String,
 ) : BaseListScreen<ModelRepo, StarredReposQuery.Data?, StarredReposListViewModel>() {
 
-    override val titleRes: StringResource = Res.strings.noun_starred
+    override val titleRes: StringResource get() = Res.strings.noun_starred
 
     override val viewModel: StarredReposListViewModel
         @Composable get() = getScreenModel { parametersOf(username) }

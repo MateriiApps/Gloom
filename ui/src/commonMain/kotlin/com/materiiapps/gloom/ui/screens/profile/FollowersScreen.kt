@@ -16,7 +16,7 @@ class FollowersScreen(
     private val username: String,
 ) : BaseListScreen<ModelUser, FollowersQuery.Data?, FollowersViewModel>() {
 
-    override val titleRes: StringResource = Res.strings.noun_followers
+    override val titleRes: StringResource get() = Res.strings.noun_followers
 
     override val viewModel: FollowersViewModel
         @Composable get() = getScreenModel { parametersOf(username) }

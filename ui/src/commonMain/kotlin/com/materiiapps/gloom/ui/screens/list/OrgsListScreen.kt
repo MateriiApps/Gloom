@@ -16,7 +16,7 @@ class OrgsListScreen(
     private val username: String,
 ) : BaseListScreen<ModelUser, JoinedOrgsQuery.Data?, OrgListViewModel>() {
 
-    override val titleRes: StringResource = Res.strings.noun_orgs
+    override val titleRes: StringResource get() = Res.strings.noun_orgs
 
     override val viewModel: OrgListViewModel
         @Composable get() = getScreenModel { parametersOf(username) }
