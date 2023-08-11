@@ -6,23 +6,27 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
-import cafe.adriel.voyager.transitions.SlideTransition
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.materiiapps.gloom.api.repository.GithubAuthRepository
+import com.materiiapps.gloom.api.utils.ifSuccessful
 import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.domain.manager.Theme
-import com.materiiapps.gloom.domain.repository.GithubAuthRepository
-import com.materiiapps.gloom.rest.utils.ifSuccessful
 import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.theme.GloomTheme
+import com.materiiapps.gloom.ui.transitions.SlideTransition
+import com.materiiapps.gloom.utils.LinkHandler
+import com.materiiapps.gloom.utils.LocalLinkHandler
 import com.materiiapps.gloom.utils.deeplinks.DeepLinkWrapper
 import com.materiiapps.gloom.utils.deeplinks.addAllRoutes
 import kotlinx.coroutines.Dispatchers
@@ -75,9 +79,13 @@ class GloomActivity : ComponentActivity() {
                             disposeSteps = true
                         )
                     ) {
-                        navigator = it
-                        SlideTransition(it)
-                        handler.addAllRoutes(it, auth)
+                        CompositionLocalProvider(
+                            LocalLinkHandler provides LinkHandler(LocalContext.current)
+                        ) {
+                            navigator = it
+                            SlideTransition(it)
+                            handler.addAllRoutes(it, auth)
+                        }
                     }
                 }
             }

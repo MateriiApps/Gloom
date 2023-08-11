@@ -1,18 +1,18 @@
 [versions]
 accompanist = "0.30.1"
-agp = "8.2.0-alpha10"
+agp = "8.2.0-alpha15"
 apollo = "3.6.2"
+buildkonfig = "0.13.3"
 coil = "2.4.0"
-compose = "1.5.0-alpha04"
+compose = "1.6.0-alpha02"
 compose-compiler = "1.4.7"
 koin = "3.4.0"
 kotlin = "1.8.21"
-ktor = "2.3.0"
+ktor = "2.3.1"
+moko-resources = "0.23.0"
 voyager = "1.0.0-rc06"
 
 [libraries]
-accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
-accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanist" }
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-webview = { group = "com.google.accompanist", name = "accompanist-webview", version.ref = "accompanist" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
@@ -30,16 +30,21 @@ compose-material3 = { group = "androidx.compose.material3", name = "material3", 
 compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose" }
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "compose" }
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
+compose-imageloader = { group = "io.github.qdsfdhvh", name = "image-loader", version = "1.6.4" }
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version = "3.2.0" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "1.7.1" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version = "0.4.0" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.5.1" }
 ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+moko-resources-compose = { group = "dev.icerock.moko", name = "resources-compose", version.ref = "moko-resources" }
+multiplatform-settings = { group = "com.russhwolf", name = "multiplatform-settings-no-arg", version = "1.0.0" }
+multiplatform-paging = { group = "app.cash.paging", name = "paging-common", version = "3.2.0-alpha05-0.2.3" }
 voyager-koin = { group = "cafe.adriel.voyager", name = "voyager-koin", version.ref = "voyager" }
 voyager-navigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "voyager" }
 voyager-tab-navigator = { group = "cafe.adriel.voyager", name = "voyager-tab-navigator", version.ref = "voyager" }
@@ -49,16 +54,20 @@ voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitio
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
+buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
+compose = { id = "org.jetbrains.compose", version = "1.5.0-beta01" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
 
 [bundles]
-accompanist = ["accompanist-systemuicontroller", "accompanist-flowlayout", "accompanist-webview", "accompanist-pager"]
+accompanist = ["accompanist-systemuicontroller", "accompanist-webview"]
 androidx = ["androidx-paging-compose", "androidx-activity-compose", "androidx-lifecycle-runtime-ktx", "androidx-browser", "androidx-core-ktx", "androidx-core-splashscreen"]
 apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters"]
 coil = ["coil", "coil-compose"]
 compose = ["compose-material-icons-extended", "compose-material", "compose-material3", "compose-ui"]
 koin = ["koin-android", "koin-androidx-compose", "koin-core"]
-kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime"]
+kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime", "kotlinx-serialization"]
 ktor = ["ktor-serialization-kotlinx-json", "ktor-client-logging", "ktor-client-core", "ktor-client-content-negotiation", "ktor-client-cio"]
 voyager = ["voyager-tab-navigator", "voyager-koin", "voyager-navigator", "voyager-transitions"]

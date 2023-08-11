@@ -1,0 +1,11 @@
+fragment FileEntryFragment on TreeEntry {
+    name
+    type
+    mode
+    language {
+        name
+    }
+    submodule {
+        gitUrl
+    }
+}

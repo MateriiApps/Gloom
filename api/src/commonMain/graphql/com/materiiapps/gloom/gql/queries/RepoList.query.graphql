@@ -1,0 +1,21 @@
+query RepoList($username: String!, $total: Int = 100, $cursor: String) {
+    repositoryOwner(login: $username) {
+        repositories(
+            first: $total
+            after: $cursor
+            orderBy: {field: PUSHED_AT, direction: DESC}
+            ownerAffiliations: OWNER
+        ) {
+            pageInfo {
+                endCursor
+                hasNextPage
+                hasPreviousPage
+                startCursor
+            }
+            totalCount
+            nodes {
+                ...RepoListRepoFragment
+            }
+        }
+    }
+}

@@ -8,3 +8,6 @@ pluginManagement {
 
 rootProject.name = "Gloom"
 include(":app")
+include(":api")
+include(":shared")
+include(":ui")

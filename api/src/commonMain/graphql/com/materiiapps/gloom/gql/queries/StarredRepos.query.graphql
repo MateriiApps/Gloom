@@ -1,0 +1,20 @@
+query StarredRepos($username: String!, $total: Int = 100, $cursor: String) {
+    user(login: $username) {
+        starredRepositories(
+            first: $total
+            after: $cursor
+            orderBy: {field: STARRED_AT, direction: DESC}
+        ) {
+            pageInfo {
+                endCursor
+                hasNextPage
+                hasPreviousPage
+                startCursor
+            }
+            totalCount
+            nodes {
+                ...RepoListRepoFragment
+            }
+        }
+    }
+}

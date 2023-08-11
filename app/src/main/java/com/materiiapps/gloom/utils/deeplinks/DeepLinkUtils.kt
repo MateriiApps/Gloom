@@ -10,13 +10,21 @@ import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 
 fun DeepLinkHandler.addAllRoutes(navigator: Navigator, auth: AuthManager) {
     addOnLinkVisitedListener("/{username}") { params, query ->
-        if(!auth.isSignedIn) return@addOnLinkVisitedListener
+        if (!auth.isSignedIn) return@addOnLinkVisitedListener
         val username = params["username"]!!
         when (query["tab"]) {
-            "repositories" -> navigator push listOf(ProfileScreen(username), RepositoryListScreen(username))
+            "repositories" -> navigator push listOf(
+                ProfileScreen(username),
+                RepositoryListScreen(username)
+            )
+
             "projects" -> println("$username's projects")
             "packages" -> println("$username's packages")
-            "stars" -> navigator push listOf(ProfileScreen(username), StarredReposListScreen(username))
+            "stars" -> navigator push listOf(
+                ProfileScreen(username),
+                StarredReposListScreen(username)
+            )
+
             else -> navigator push ProfileScreen(username)
         }
     }

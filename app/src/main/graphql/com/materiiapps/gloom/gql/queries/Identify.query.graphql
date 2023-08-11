@@ -1,6 +1,0 @@
-query Identify {
-  viewer {
-    login
-    id
-  }
-}

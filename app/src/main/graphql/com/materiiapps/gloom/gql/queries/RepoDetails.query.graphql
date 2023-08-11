@@ -1,5 +1,0 @@
-query RepoDetails($owner: String!, $name: String!) {
-  repository(owner: $owner, name: $name) {
-    ...RepoDetails
-  }
-}
