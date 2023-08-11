@@ -33,7 +33,7 @@ kotlin {
     jvmToolchain(17)
 
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 implementation(project(":api"))
                 implementation(project(":shared"))
@@ -55,7 +55,6 @@ kotlin {
             }
         }
         val androidMain by getting {
-            dependsOn(commonMain)
             dependencies {
                 api(libs.bundles.accompanist)
                 api(libs.androidx.core.ktx)

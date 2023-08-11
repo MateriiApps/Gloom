@@ -24,7 +24,7 @@ kotlin {
     jvmToolchain(17)
 
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 api(compose.runtime)
                 api(libs.bundles.kotlinx)
@@ -36,7 +36,6 @@ kotlin {
             }
         }
         val androidMain by getting {
-            dependsOn(commonMain)
             dependencies {
                 implementation(libs.androidx.browser)
                 implementation(libs.androidx.core.ktx)

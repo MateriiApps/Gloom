@@ -10,42 +10,18 @@ expect abstract class BasePreferenceManager {
 
     val prefs: Settings
 
-    protected fun getString(key: String, defaultValue: String): String
-    protected fun getBoolean(key: String, defaultValue: Boolean): Boolean
-    protected fun getInt(key: String, defaultValue: Int): Int
-    protected fun getFloat(key: String, defaultValue: Float): Float
-    protected inline fun <reified E : Enum<E>> getEnum(key: String, defaultValue: E): E
+    fun getString(key: String, defaultValue: String): String
+    fun getBoolean(key: String, defaultValue: Boolean): Boolean
+    fun getInt(key: String, defaultValue: Int): Int
+    fun getFloat(key: String, defaultValue: Float): Float
+    inline fun <reified E : Enum<E>> getEnum(key: String, defaultValue: E): E
 
-    protected fun putString(key: String, value: String)
-    protected fun putBoolean(key: String, value: Boolean)
-    protected fun putInt(key: String, value: Int)
-    protected fun putFloat(key: String, value: Float)
-    protected inline fun <reified E : Enum<E>> putEnum(key: String, value: E)
+    fun putString(key: String, value: String)
+    fun putBoolean(key: String, value: Boolean)
+    fun putInt(key: String, value: Int)
+    fun putFloat(key: String, value: Float)
+    inline fun <reified E : Enum<E>> putEnum(key: String, value: E)
 
-    protected fun stringPreference(
-        key: String,
-        defaultValue: String = ""
-    ): Preference<String>
-
-    protected fun booleanPreference(
-        key: String,
-        defaultValue: Boolean
-    ): Preference<Boolean>
-
-    protected fun intPreference(
-        key: String,
-        defaultValue: Int
-    ): Preference<Int>
-
-    protected fun floatPreference(
-        key: String,
-        defaultValue: Float
-    ): Preference<Float>
-
-    protected inline fun <reified E : Enum<E>> enumPreference(
-        key: String,
-        defaultValue: E
-    ): Preference<E>
 }
 
 class Preference<T>(
