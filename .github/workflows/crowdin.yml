@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'app/src/main/res/values/strings.xml'
+      - 'ui/src/commonMain/resources/MR/base/strings.xml'
       - '.github/workflows/crowdin.yml'
   schedule:
     - cron: "0 17 * * 6" # "At 17:00 on Saturday."
