@@ -1,0 +1,5 @@
+query AccountId {
+    viewer {
+        id
+    }
+}

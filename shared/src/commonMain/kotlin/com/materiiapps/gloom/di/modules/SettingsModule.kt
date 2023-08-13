@@ -14,4 +14,8 @@ fun settingsModule() = module {
         SettingsProvider(get(), "dialogs")
     }
 
+    single(named("auth")) {
+        SettingsProvider(get(), "auth")
+    }
+
 }

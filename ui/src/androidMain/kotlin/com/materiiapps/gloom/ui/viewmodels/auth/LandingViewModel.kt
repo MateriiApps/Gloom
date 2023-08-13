@@ -4,12 +4,14 @@ import android.content.Context
 import cafe.adriel.voyager.core.model.ScreenModel
 import com.materiiapps.gloom.api.Credentials
 import com.materiiapps.gloom.api.URLs
+import com.materiiapps.gloom.domain.manager.Account
+import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.utils.openCustomTab
 import io.ktor.http.URLBuilder
 
-actual class LandingViewModel(private val context: Context) : ScreenModel {
+actual class LandingViewModel(private val context: Context, val authManager: AuthManager) : ScreenModel {
 
-    actual fun signIn() {
+    actual fun signIn(type: Account.Type) {
         val url = URLBuilder(URLs.AUTH.LOGIN).also {
             it.parameters.apply {
                 append("client_id", Credentials.CLIENT_ID)
@@ -43,6 +45,7 @@ actual class LandingViewModel(private val context: Context) : ScreenModel {
             }
         }.buildString()
 
+        authManager.setAuthState(authType = type)
         context.openCustomTab(url, force = true)
     }
 

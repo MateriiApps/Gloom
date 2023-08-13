@@ -39,7 +39,7 @@ class SettingsViewModel(
         val token = auth.authToken
         coroutineScope.launch {
             repo.deleteAccessToken(token).ifSuccessful { ->
-                auth.authToken = ""
+                auth.removeAccount(auth.currentAccount!!.id)
                 auth.clearApolloCache()
                 ScreenModelStore.remove(HomeScreen())
                 ScreenModelStore.remove(ExploreScreen())
