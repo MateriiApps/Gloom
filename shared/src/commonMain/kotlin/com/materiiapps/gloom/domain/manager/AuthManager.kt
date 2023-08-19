@@ -1,6 +1,8 @@
 package com.materiiapps.gloom.domain.manager
 
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.apollographql.apollo3.ApolloClient
@@ -22,7 +24,7 @@ class AuthManager(
     private val settings = settingsProvider.createSettings()
 
     // ID to account
-    private val accounts: MutableMap<String, Account> = mutableMapOf()
+    val accounts: MutableMap<String, Account> = mutableStateMapOf()
 
     init {
         settings.remove("authToken")
@@ -62,10 +64,63 @@ class AuthManager(
         this.loading = loading
     }
 
-    fun addAccount(id: String, token: String, type: Account.Type = Account.Type.REGULAR, baseUrl: String? = null) {
-        Account(id, token, type, baseUrl).let {
+    fun addAccount(
+        id: String,
+        token: String,
+        type: Account.Type = Account.Type.REGULAR,
+        baseUrl: String? = null,
+        avatarUrl: String,
+        username: String,
+        displayName: String?,
+        notificationCount: Int = 0
+    ) {
+        Account(id, token, type, baseUrl, avatarUrl, username, displayName, notificationCount).let {
             accounts[id] = it
             settings.putString(id, json.encodeToString(it))
+        }
+    }
+
+    fun editAccount(
+        id: String,
+        token: String = accounts[id]!!.token,
+        type: Account.Type = accounts[id]!!.type,
+        baseUrl: String? = accounts[id]!!.baseUrl,
+        avatarUrl: String = accounts[id]!!.avatarUrl,
+        username: String = accounts[id]!!.username,
+        displayName: String? = accounts[id]!!.displayName,
+        notificationCount: Int = accounts[id]!!.notificationCount
+    ) = editAccount(
+        accounts[id]!!,
+        token,
+        type,
+        baseUrl,
+        avatarUrl,
+        username,
+        displayName,
+        notificationCount
+    )
+
+    private fun editAccount(
+        account: Account,
+        token: String = account.token,
+        type: Account.Type = account.type,
+        baseUrl: String? = account.baseUrl,
+        avatarUrl: String = account.avatarUrl,
+        username: String = account.username,
+        displayName: String? = account.displayName,
+        notificationCount: Int = account.notificationCount
+    ) {
+        accounts[account.id]?.let {
+            accounts[account.id] = account.copy(
+                token = token,
+                type = type,
+                baseUrl = baseUrl,
+                avatarUrl = avatarUrl,
+                username = username,
+                displayName = displayName,
+                notificationCount = notificationCount
+            )
+            settings.putString(it.id, json.encodeToString(it))
         }
     }
 
@@ -75,7 +130,7 @@ class AuthManager(
     }
 
     fun switchToAccount(id: String) {
-        if(accounts.containsKey(id)) currentAccountId = id
+        if (accounts.containsKey(id)) currentAccountId = id
         clearApolloCache()
     }
 
@@ -85,12 +140,17 @@ class AuthManager(
 
 }
 
+@Stable
 @Serializable
-data class Account (
+data class Account(
     val id: String,
     val token: String,
     val type: Type,
-    val baseUrl: String?
+    val baseUrl: String?,
+    val avatarUrl: String,
+    val username: String,
+    val displayName: String?,
+    val notificationCount: Int = 0
 ) {
 
     @Serializable

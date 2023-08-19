@@ -27,6 +27,7 @@ import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.theme.GloomTheme
 import com.materiiapps.gloom.ui.transitions.SlideTransition
+import com.materiiapps.gloom.ui.utils.clearRootNavigation
 import com.materiiapps.gloom.utils.LinkHandler
 import com.materiiapps.gloom.utils.LocalLinkHandler
 import com.materiiapps.gloom.utils.deeplinks.DeepLinkWrapper
@@ -108,9 +109,18 @@ class GloomActivity : ComponentActivity() {
                         val res = authRepo.getAccessToken(it)
                         res.fold(
                             success = { token ->
-                                gqlRepo.getAccountId(token.accessToken).ifSuccessful { id ->
-                                    auth.addAccount(id, token.accessToken, auth.awaitingAuthType!!)
-                                    auth.switchToAccount(id)
+                                gqlRepo.getAccountInfo(token.accessToken).ifSuccessful { account ->
+                                    auth.addAccount(
+                                        id = account.id,
+                                        token = token.accessToken,
+                                        type = auth.awaitingAuthType!!,
+                                        username = account.login,
+                                        avatarUrl = account.avatarUrl,
+                                        displayName = account.name,
+                                        notificationCount = account.notificationListsWithThreadCount.totalCount
+                                    )
+                                    auth.switchToAccount(account.id)
+                                    clearRootNavigation()
                                     navigator.replaceAll(RootScreen())
                                 }
                                 auth.setAuthState(authType = null, loading = false)

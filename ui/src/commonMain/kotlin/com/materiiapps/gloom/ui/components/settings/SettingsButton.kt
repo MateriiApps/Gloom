@@ -19,7 +19,7 @@ fun SettingsButton(
         modifier = Modifier
             .heightIn(min = 64.dp)
             .fillMaxWidth()
-            .padding(horizontal = 18.dp, vertical = 14.dp)
+            .padding(horizontal = 16.dp, vertical = 14.dp)
     ) {
         Button(onClick, modifier = Modifier.fillMaxWidth()) {
             Text(text = label)

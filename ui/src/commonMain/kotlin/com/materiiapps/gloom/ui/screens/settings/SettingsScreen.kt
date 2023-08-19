@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -58,12 +59,12 @@ class SettingsScreen : Screen {
                     destination = ::AppearanceSettingsScreen
                 )
 
-//                TODO: Account Switcher
-//                SettingsCategory(
-//                    icon = Icons.Outlined.AccountCircle,
-//                    text = stringResource(Res.strings.settings_accounts),
-//                    subtext = stringResource(Res.strings.settings_accounts_description)
-//                )
+                SettingsCategory(
+                    icon = Icons.Outlined.AccountCircle,
+                    text = stringResource(Res.strings.settings_accounts),
+                    subtext = stringResource(Res.strings.settings_accounts_description),
+                    destination = ::AccountSettingsScreen
+                )
 
                 SettingsButton(label = stringResource(Res.strings.action_sign_out)) {
                     viewModel.openSignOutDialog()
