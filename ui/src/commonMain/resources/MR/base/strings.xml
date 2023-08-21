@@ -123,6 +123,8 @@
     <string name="cd_twitch">Twitch</string>
     <string name="cd_link">Link</string>
 
+    <string name="cd_enterprise_domain">Enterprise domain: %1$s</string>
+
     <string name="msg_issue_untitled">Untitled issue</string>
     <string name="msg_pr_untitled">Untitled pull request</string>
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>

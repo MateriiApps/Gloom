@@ -8,58 +8,125 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.outlined.Public
+import androidx.compose.material3.Badge
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.Account
 import com.materiiapps.gloom.ui.components.Avatar
+import com.materiiapps.gloom.ui.components.BadgedItem
 import dev.icerock.moko.resources.compose.stringResource
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AccountItem(
     account: Account,
     isCurrent: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
+        modifier = modifier
             .clickable(onClick = onClick)
             .padding(16.dp)
     ) {
-        Avatar(
-            url = account.avatarUrl,
-            contentDescription = stringResource(
-                Res.strings.noun_users_avatar,
-                account.displayName ?: account.username
-            ),
-            modifier = Modifier.size(45.dp)
-        )
+        BadgedItem(
+            badge = {
+                if (account.notificationCount > 0) {
+                    Badge {
+                        Text(
+                            text = if (account.notificationCount > 99) "99+" else account.notificationCount.toString(),
+                            style = MaterialTheme.typography.labelSmall
+                        )
+                    }
+                }
+            }
+        ) {
+            Avatar(
+                url = account.avatarUrl,
+                contentDescription = stringResource(
+                    Res.strings.noun_users_avatar,
+                    account.displayName ?: account.username
+                ),
+                modifier = Modifier.size(45.dp)
+            )
+        }
+
         Column(
             verticalArrangement = Arrangement.spacedBy(3.dp),
             modifier = Modifier.weight(1f)
         ) {
-            Text(
-                text = account.username,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Medium,
-                fontSize = 17.sp
-            )
-            account.displayName?.let {
+            val isEnterprise = account.type == Account.Type.ENTERPRISE
+            val hasDisplayName = !account.displayName.isNullOrBlank()
+            val usernameSubtitle: @Composable (includeParenthesis: Boolean) -> Unit =
+                { includeParenthesis ->
+                    Text(
+                        text = if (includeParenthesis) "(${account.username})" else account.username,
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier.alpha(0.5f)
+                    )
+                }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
                 Text(
-                    text = it,
-                    style = MaterialTheme.typography.labelLarge,
-                    color = LocalContentColor.current.copy(alpha = 0.5f)
+                    text = if (hasDisplayName) account.displayName!! else account.username,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 17.sp
                 )
+                if (hasDisplayName && isEnterprise) {
+                    usernameSubtitle(includeParenthesis = true)
+                }
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                if (hasDisplayName && !isEnterprise) {
+                    usernameSubtitle(includeParenthesis = false)
+                }
+                account.baseUrl?.let { baseUrl ->
+                    val enterpriseCD = stringResource(Res.strings.cd_enterprise_domain, baseUrl)
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(5.dp),
+                        modifier = Modifier
+                            .padding(top = 2.dp)
+                            .semantics(mergeDescendants = true) {
+                                contentDescription = enterpriseCD
+                            }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Public,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Text(
+                            text = baseUrl,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                }
             }
         }
         if (isCurrent) {

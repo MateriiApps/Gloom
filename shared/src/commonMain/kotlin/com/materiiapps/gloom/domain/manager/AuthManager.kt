@@ -24,7 +24,7 @@ class AuthManager(
     private val settings = settingsProvider.createSettings()
 
     // ID to account
-    val accounts: MutableMap<String, Account> = mutableStateMapOf()
+    val accounts = mutableStateMapOf<String, Account>()
 
     init {
         settings.remove("authToken")

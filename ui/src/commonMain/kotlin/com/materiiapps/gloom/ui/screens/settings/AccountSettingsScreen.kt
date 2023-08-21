@@ -1,5 +1,7 @@
 package com.materiiapps.gloom.ui.screens.settings
 
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -32,7 +34,10 @@ import dev.icerock.moko.resources.compose.stringResource
 class AccountSettingsScreen : Screen {
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
+    @OptIn(
+        ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class,
+        ExperimentalFoundationApi::class
+    )
     override fun Content() {
         val viewModel: AccountSettingsViewModel = getScreenModel()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
@@ -58,7 +63,8 @@ class AccountSettingsScreen : Screen {
                     modifier = Modifier.fillMaxSize()
                 ) {
                     items(
-                        count = accounts.size
+                        count = accounts.size,
+                        key = { accounts[it].id }
                     ) {
                         accounts[it].let { account ->
                             val isCurrent = viewModel.authManager.currentAccount?.id == account.id
@@ -70,7 +76,8 @@ class AccountSettingsScreen : Screen {
                                         viewModel.switchToAccount(account.id)
                                         nav.replaceAll(RootScreen())
                                     }
-                                }
+                                },
+                                modifier = Modifier.animateItemPlacement(tween(200))
                             )
                         }
                     }
