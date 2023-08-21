@@ -26,6 +26,7 @@
     <string name="action_collapse">View Less</string>
     <string name="action_download">Download</string>
     <string name="action_install">Install</string>
+    <string name="action_add_account">Add account</string>
 
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">Cancel</string>

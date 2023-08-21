@@ -76,7 +76,7 @@ class AccountSettingsScreen : Screen {
                     }
                     item {
                         SettingsButton(
-                            label = "Add account",
+                            label = stringResource(Res.strings.action_add_account),
                             onClick = {
                                 nav.navigate(LandingScreen())
                             }
