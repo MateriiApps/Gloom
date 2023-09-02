@@ -1,15 +1,24 @@
 package com.materiiapps.gloom.ui.screens.settings
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.IconToggleButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -29,6 +38,8 @@ import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.viewmodels.settings.AccountSettingsViewModel
 import com.materiiapps.gloom.ui.widgets.accounts.AccountItem
+import com.materiiapps.gloom.ui.widgets.accounts.SignOutButton
+import com.materiiapps.gloom.ui.widgets.accounts.SignOutDialog
 import dev.icerock.moko.resources.compose.stringResource
 
 class AccountSettingsScreen : Screen {
@@ -41,16 +52,43 @@ class AccountSettingsScreen : Screen {
     override fun Content() {
         val viewModel: AccountSettingsViewModel = getScreenModel()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+        val nav = LocalNavigator.currentOrThrow
+
         val pullRefreshState = rememberPullRefreshState(
             refreshing = viewModel.isLoading,
-            onRefresh = { viewModel.loadAccounts() })
-        val nav = LocalNavigator.currentOrThrow
+            onRefresh = { viewModel.loadAccounts() }
+        )
+
         val accounts = viewModel.authManager.accounts.values
             .toList()
             .sortedByDescending { viewModel.authManager.currentAccount?.id == it.id }
 
+        if (viewModel.signOutDialogOpen) {
+            SignOutDialog(
+                signedOut = viewModel.signedOut,
+                onSignedOut = {
+                    val signedOutWasCurrent = viewModel.wasCurrent
+                    viewModel.closeSignOutDialog()
+                    if(signedOutWasCurrent) nav.replaceAll(LandingScreen())
+                },
+                onDismiss = { viewModel.closeSignOutDialog() },
+                onSignOutClick = {
+                    if (viewModel.attemptedSignOutId == null)
+                        viewModel.signOutAll()
+                    else
+                        viewModel.signOut(viewModel.attemptedSignOutId!!)
+                }
+            )
+        }
+
         Scaffold(
-            topBar = { Toolbar(scrollBehavior) },
+            topBar = {
+                Toolbar(
+                    scrollBehavior = scrollBehavior,
+                    isEditMode = viewModel.isEditMode,
+                    onEditClick = { viewModel.isEditMode = !viewModel.isEditMode }
+                )
+            },
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
         ) { pv ->
             Box(
@@ -60,7 +98,9 @@ class AccountSettingsScreen : Screen {
                     .pullRefresh(state = pullRefreshState)
             ) {
                 LazyColumn(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .animateContentSize()
                 ) {
                     items(
                         count = accounts.size,
@@ -71,21 +111,34 @@ class AccountSettingsScreen : Screen {
                             AccountItem(
                                 account = account,
                                 isCurrent = isCurrent,
+                                isEditMode = viewModel.isEditMode,
                                 onClick = {
                                     if (!isCurrent) {
                                         viewModel.switchToAccount(account.id)
                                         nav.replaceAll(RootScreen())
                                     }
                                 },
-                                modifier = Modifier.animateItemPlacement(tween(200))
+                                signOutButton = {
+                                    SignOutButton(
+                                        visible = viewModel.isEditMode,
+                                        onClick = { viewModel.openSignOutDialog(account.id) }
+                                    )
+                                },
+                                modifier = Modifier
+                                    .animateItemPlacement(tween(200))
                             )
                         }
                     }
                     item {
                         SettingsButton(
-                            label = stringResource(Res.strings.action_add_account),
+                            label = stringResource(if (viewModel.isEditMode) Res.strings.action_sign_out_all else Res.strings.action_add_account),
+                            isDanger = viewModel.isEditMode,
                             onClick = {
-                                nav.navigate(LandingScreen())
+                                if (viewModel.isEditMode) {
+                                    viewModel.signOutDialogOpen = true
+                                } else {
+                                    nav.navigate(LandingScreen())
+                                }
                             }
                         )
                     }
@@ -98,11 +151,27 @@ class AccountSettingsScreen : Screen {
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     private fun Toolbar(
-        scrollBehavior: TopAppBarScrollBehavior
+        scrollBehavior: TopAppBarScrollBehavior,
+        isEditMode: Boolean,
+        onEditClick: () -> Unit
     ) {
         LargeToolbar(
             title = stringResource(Res.strings.settings_accounts),
-            scrollBehavior = scrollBehavior
+            scrollBehavior = scrollBehavior,
+            actions = {
+                IconToggleButton(
+                    checked = isEditMode,
+                    onCheckedChange = { onEditClick() },
+                    colors = IconButtonDefaults.iconToggleButtonColors(
+                        checkedContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
+                    )
+                ) {
+                    Icon(
+                        imageVector = if(isEditMode) Icons.Filled.Edit else Icons.Outlined.Edit,
+                        contentDescription = stringResource(if(isEditMode) Res.strings.action_stop_edit else Res.strings.action_edit)
+                    )
+                }
+            }
         )
     }
 

@@ -27,6 +27,9 @@
     <string name="action_download">Download</string>
     <string name="action_install">Install</string>
     <string name="action_add_account">Add account</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_stop_edit">Stop editing</string>
+    <string name="action_sign_out_all">Sign out of all accounts</string>
 
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">Cancel</string>

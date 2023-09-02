@@ -125,6 +125,7 @@ class AuthManager(
     }
 
     fun removeAccount(id: String) {
+        if(id == currentAccountId) currentAccountId = ""
         accounts.remove(id)
         settings.remove(id)
     }

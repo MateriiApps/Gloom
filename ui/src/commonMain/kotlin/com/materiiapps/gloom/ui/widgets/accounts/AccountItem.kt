@@ -1,9 +1,13 @@
 package com.materiiapps.gloom.ui.widgets.accounts
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -15,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -35,13 +40,15 @@ fun AccountItem(
     account: Account,
     isCurrent: Boolean,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    signOutButton: @Composable () -> Unit = {},
+    modifier: Modifier = Modifier,
+    isEditMode: Boolean = false
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .clickable(onClick = onClick)
+            .clickable(onClick = onClick, enabled = !isEditMode && !isCurrent)
             .padding(16.dp)
     ) {
         BadgedItem(
@@ -68,7 +75,8 @@ fun AccountItem(
 
         Column(
             verticalArrangement = Arrangement.spacedBy(3.dp),
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .weight(1f)
         ) {
             val isEnterprise = account.type == Account.Type.ENTERPRISE
             val hasDisplayName = !account.displayName.isNullOrBlank()
@@ -129,12 +137,31 @@ fun AccountItem(
                 }
             }
         }
-        if (isCurrent) {
-            Icon(
-                imageVector = Icons.Filled.CheckCircle,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary
-            )
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            modifier = Modifier
+                .animateContentSize()
+        ) {
+            Spacer(Modifier.height(48.dp))
+
+            if (isCurrent) {
+                val opacity by animateFloatAsState(
+                    targetValue = if(isEditMode) 0.4f else 1f,
+                    label = "Current account edit mode"
+                )
+
+                Icon(
+                    imageVector = Icons.Filled.CheckCircle,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier
+                        .alpha(opacity)
+                )
+            }
+
+            signOutButton()
         }
     }
 }
