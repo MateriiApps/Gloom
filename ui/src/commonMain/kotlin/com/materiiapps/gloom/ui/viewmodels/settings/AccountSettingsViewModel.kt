@@ -65,20 +65,20 @@ class AccountSettingsViewModel(
     }
 
     fun loadAccounts() {
-        coroutineScope.launch {
-            isLoading = true
-            gqlRepo.getAccountsByIds(authManager.accounts.keys.toList()).ifSuccessful {
-                it.forEach { user ->
+        authManager.accounts.values.forEach { account ->
+            coroutineScope.launch {
+                isLoading = true
+                gqlRepo.getAccountInfo(account.token).ifSuccessful { user ->
                     authManager.editAccount(
-                        user.id,
+                        id = account.id,
                         avatarUrl = user.avatarUrl,
                         username = user.login,
                         displayName = user.name,
                         notificationCount = user.notificationListsWithThreadCount.totalCount
                     )
                 }
+                isLoading = false
             }
-            isLoading = false
         }
     }
 
