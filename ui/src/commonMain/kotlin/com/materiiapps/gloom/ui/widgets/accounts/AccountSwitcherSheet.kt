@@ -67,7 +67,7 @@ fun AccountSwitcherSheet(
                         label = stringResource(Res.strings.action_add_account),
                         onClick = {
                             animateToDismiss()
-                            nav.navigate(LandingScreen())
+                            nav.navigate(LandingScreen(showAccountCard = false))
                         }
                     )
                 }

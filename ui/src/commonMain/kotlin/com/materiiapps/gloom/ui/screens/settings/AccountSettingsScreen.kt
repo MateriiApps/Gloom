@@ -137,7 +137,7 @@ class AccountSettingsScreen : Screen {
                                 if (viewModel.isEditMode) {
                                     viewModel.signOutDialogOpen = true
                                 } else {
-                                    nav.navigate(LandingScreen())
+                                    nav.navigate(LandingScreen(showAccountCard = false))
                                 }
                             }
                         )

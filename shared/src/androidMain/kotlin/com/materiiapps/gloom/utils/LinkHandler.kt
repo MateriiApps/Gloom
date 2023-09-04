@@ -7,9 +7,9 @@ import androidx.core.net.toUri
 
 actual class LinkHandler(private val ctx: Context) {
 
-    actual fun openLink(link: String) {
+    actual fun openLink(link: String, forceCustomTab: Boolean) {
         try {
-            ctx.openLink(link.toUri())
+            ctx.openLink(link.toUri(), forceCustomTab)
         } catch (e: Throwable) {
             Log.e("LinkHandler", "Failed to open link", e)
         }

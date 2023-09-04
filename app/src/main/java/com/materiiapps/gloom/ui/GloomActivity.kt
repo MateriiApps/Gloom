@@ -100,9 +100,11 @@ class GloomActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
+        this.intent = intent
+        println("Activity re-entered")
         intent?.let {
             if (it.isOAuthUri()) {
-                if(auth.awaitingAuthType == null) return
+                if (auth.awaitingAuthType == null) return
                 it.getOAuthCode()?.let {
                     lifecycleScope.launch {
                         auth.setAuthState(loading = true)
@@ -132,6 +134,13 @@ class GloomActivity : ComponentActivity() {
                     }
                 }
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!intent.isOAuthUri()) {
+            auth.setAuthState(authType = null)
         }
     }
 
