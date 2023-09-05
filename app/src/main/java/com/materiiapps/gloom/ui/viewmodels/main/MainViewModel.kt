@@ -17,7 +17,6 @@ class MainViewModel(
 ) : ViewModel() {
 
     fun loginWithOAuthCode(code: String, onLoggedIn: () -> Unit) {
-        println(authManager.awaitingAuthType)
         viewModelScope.launch {
             authManager.setAuthState(loading = true)
             authRepository.getAccessToken(code).fold(

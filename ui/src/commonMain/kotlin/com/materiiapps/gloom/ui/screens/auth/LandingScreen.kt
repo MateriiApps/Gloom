@@ -38,6 +38,7 @@ import com.materiiapps.gloom.ui.components.LoadingButton
 import com.materiiapps.gloom.ui.icons.GitHub
 import com.materiiapps.gloom.ui.icons.Social
 import com.materiiapps.gloom.ui.screens.root.RootScreen
+import com.materiiapps.gloom.ui.utils.toImmutableList
 import com.materiiapps.gloom.ui.viewmodels.auth.LandingViewModel
 import com.materiiapps.gloom.ui.widgets.accounts.AccountItem
 import com.materiiapps.gloom.utils.LocalLinkHandler
@@ -84,7 +85,7 @@ class LandingScreen(
                 if (viewModel.authManager.accounts.size > 0 && showAccountCard) {
                     val accounts by remember(viewModel.authManager.accounts) {
                         derivedStateOf {
-                            viewModel.authManager.accounts.values.toList()
+                            viewModel.authManager.accounts.values.toList().toImmutableList()
                         }
                     }
 

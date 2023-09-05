@@ -23,6 +23,7 @@ import com.materiiapps.gloom.ui.components.settings.SettingsButton
 import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.utils.navigate
+import com.materiiapps.gloom.ui.utils.toImmutableList
 import com.materiiapps.gloom.ui.viewmodels.settings.AccountSettingsViewModel
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.androidx.compose.get
@@ -39,6 +40,7 @@ fun AccountSwitcherSheet(
             viewModel.authManager.accounts.values
                 .toList()
                 .sortedByDescending { viewModel.authManager.currentAccount?.id == it.id }
+                .toImmutableList()
         }
     }
 
@@ -54,8 +56,10 @@ fun AccountSwitcherSheet(
                     items = accounts,
                     key = { it.id }
                 ) { account ->
-                    val isCurrent = remember(viewModel.authManager.currentAccount) {
-                        viewModel.authManager.currentAccount?.id == account.id
+                    val isCurrent by remember(viewModel.authManager.currentAccount) {
+                        derivedStateOf {
+                            viewModel.authManager.currentAccount?.id == account.id
+                        }
                     }
 
                     AccountItem(
