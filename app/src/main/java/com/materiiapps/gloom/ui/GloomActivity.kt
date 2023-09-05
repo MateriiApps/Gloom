@@ -12,14 +12,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.lifecycleScope
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.materiiapps.gloom.api.repository.GithubAuthRepository
-import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.fold
-import com.materiiapps.gloom.api.utils.ifSuccessful
 import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.domain.manager.Theme
@@ -27,24 +22,25 @@ import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.theme.GloomTheme
 import com.materiiapps.gloom.ui.transitions.SlideTransition
-import com.materiiapps.gloom.ui.utils.clearRootNavigation
+import com.materiiapps.gloom.ui.viewmodels.main.MainViewModel
 import com.materiiapps.gloom.utils.LinkHandler
 import com.materiiapps.gloom.utils.LocalLinkHandler
 import com.materiiapps.gloom.utils.deeplinks.DeepLinkWrapper
 import com.materiiapps.gloom.utils.deeplinks.addAllRoutes
 import com.materiiapps.gloom.utils.getOAuthCode
 import com.materiiapps.gloom.utils.isOAuthUri
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GloomActivity : ComponentActivity() {
 
-    private val authRepo: GithubAuthRepository by inject()
-    private val gqlRepo: GraphQLRepository by inject()
+    private val viewModel: MainViewModel by viewModel()
     private val auth: AuthManager by inject()
     private val prefs: PreferenceManager by inject()
+
     private lateinit var navigator: Navigator
+    private var isLastIntentOauth: Boolean = intent?.isOAuthUri() ?: false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -100,37 +96,13 @@ class GloomActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        this.intent = intent
-        println("Activity re-entered")
+        isLastIntentOauth = intent?.isOAuthUri() ?: false
         intent?.let {
             if (it.isOAuthUri()) {
-                if (auth.awaitingAuthType == null) return
-                it.getOAuthCode()?.let {
-                    lifecycleScope.launch {
-                        auth.setAuthState(loading = true)
-                        val res = authRepo.getAccessToken(it)
-                        res.fold(
-                            success = { token ->
-                                gqlRepo.getAccountInfo(token.accessToken).ifSuccessful { account ->
-                                    auth.addAccount(
-                                        id = account.id,
-                                        token = token.accessToken,
-                                        type = auth.awaitingAuthType!!,
-                                        username = account.login,
-                                        avatarUrl = account.avatarUrl,
-                                        displayName = account.name,
-                                        notificationCount = account.notificationListsWithThreadCount.totalCount
-                                    )
-                                    auth.switchToAccount(account.id)
-                                    clearRootNavigation()
-                                    navigator.replaceAll(RootScreen())
-                                }
-                                auth.setAuthState(authType = null, loading = false)
-                            },
-                            error = { auth.setAuthState(authType = null, loading = false) },
-                            failure = { auth.setAuthState(authType = null, loading = false) },
-                            empty = { auth.setAuthState(authType = null, loading = false) }
-                        )
+                if (viewModel.authManager.awaitingAuthType == null) return
+                it.getOAuthCode()?.let { code ->
+                    viewModel.loginWithOAuthCode(code) {
+                        navigator.replaceAll(RootScreen())
                     }
                 }
             }
@@ -139,7 +111,7 @@ class GloomActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (!intent.isOAuthUri()) {
+        if (!isLastIntentOauth) {
             auth.setAuthState(authType = null)
         }
     }

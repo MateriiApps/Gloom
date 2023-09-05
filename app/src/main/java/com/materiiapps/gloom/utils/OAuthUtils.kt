@@ -6,5 +6,6 @@ fun Intent.isOAuthUri() = data.toString().startsWith("github://com.github.androi
 
 fun Intent.getOAuthCode(): String? {
     if(!isOAuthUri()) return null
-    return data?.getQueryParameter("code")
+    val code = data?.getQueryParameter("code")
+    return code?.ifBlank { null }
 }
