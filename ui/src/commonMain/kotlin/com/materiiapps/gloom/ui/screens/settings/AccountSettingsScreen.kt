@@ -136,7 +136,7 @@ class AccountSettingsScreen : Screen {
                         )
                     }
                     item(
-                        key = { "Add/Sign all out" }
+                        key = "Add/Sign all out"
                     ) {
                         SettingsButton(
                             label = stringResource(if (viewModel.isEditMode) Res.strings.action_sign_out_all else Res.strings.action_add_account),

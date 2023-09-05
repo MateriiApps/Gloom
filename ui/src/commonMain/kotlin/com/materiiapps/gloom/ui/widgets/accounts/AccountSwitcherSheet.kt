@@ -72,7 +72,7 @@ fun AccountSwitcherSheet(
                     )
                 }
                 item(
-                    key = { "Add account" }
+                    key = "Add account"
                 ) {
                     SettingsButton(
                         label = stringResource(Res.strings.action_add_account),
