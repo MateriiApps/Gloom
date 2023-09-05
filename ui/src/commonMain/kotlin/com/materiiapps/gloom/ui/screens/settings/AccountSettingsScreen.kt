@@ -1,13 +1,12 @@
 package com.materiiapps.gloom.ui.screens.settings
 
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
@@ -23,6 +22,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import cafe.adriel.voyager.core.screen.Screen
@@ -59,9 +61,13 @@ class AccountSettingsScreen : Screen {
             onRefresh = { viewModel.loadAccounts() }
         )
 
-        val accounts = viewModel.authManager.accounts.values
-            .toList()
-            .sortedByDescending { viewModel.authManager.currentAccount?.id == it.id }
+        val accounts by remember(viewModel.authManager.accounts) {
+            derivedStateOf {
+                viewModel.authManager.accounts.values
+                    .toList()
+                    .sortedByDescending { viewModel.authManager.currentAccount?.id == it.id }
+            }
+        }
 
         if (viewModel.signOutDialogOpen) {
             SignOutDialog(
@@ -69,7 +75,7 @@ class AccountSettingsScreen : Screen {
                 onSignedOut = {
                     val signedOutWasCurrent = viewModel.wasCurrent
                     viewModel.closeSignOutDialog()
-                    if(signedOutWasCurrent) nav.replaceAll(LandingScreen())
+                    if (signedOutWasCurrent) nav.replaceAll(LandingScreen())
                 },
                 onDismiss = { viewModel.closeSignOutDialog() },
                 onSignOutClick = {
@@ -99,37 +105,39 @@ class AccountSettingsScreen : Screen {
             ) {
                 LazyColumn(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .animateContentSize()
+                        .fillMaxSize()
                 ) {
                     items(
-                        count = accounts.size,
-                        key = { accounts[it].id }
-                    ) {
-                        accounts[it].let { account ->
-                            val isCurrent = viewModel.authManager.currentAccount?.id == account.id
-                            AccountItem(
-                                account = account,
-                                isCurrent = isCurrent,
-                                isEditMode = viewModel.isEditMode,
-                                onClick = {
-                                    if (!isCurrent) {
-                                        viewModel.switchToAccount(account.id)
-                                        nav.replaceAll(RootScreen())
-                                    }
-                                },
-                                signOutButton = {
-                                    SignOutButton(
-                                        visible = viewModel.isEditMode,
-                                        onClick = { viewModel.openSignOutDialog(account.id) }
-                                    )
-                                },
-                                modifier = Modifier
-                                    .animateItemPlacement(tween(200))
-                            )
+                        items = accounts,
+                        key = { it.id }
+                    ) { account ->
+                        val isCurrent = remember(viewModel.authManager.currentAccount) {
+                            viewModel.authManager.currentAccount?.id == account.id
                         }
+
+                        AccountItem(
+                            account = account,
+                            isCurrent = isCurrent,
+                            isEditMode = viewModel.isEditMode,
+                            onClick = {
+                                if (!isCurrent) {
+                                    viewModel.switchToAccount(account.id)
+                                    nav.replaceAll(RootScreen())
+                                }
+                            },
+                            signOutButton = {
+                                SignOutButton(
+                                    visible = viewModel.isEditMode,
+                                    onClick = { viewModel.openSignOutDialog(account.id) }
+                                )
+                            },
+                            modifier = Modifier
+                                .animateItemPlacement(tween(200))
+                        )
                     }
-                    item {
+                    item(
+                        key = { "Add/Sign all out" }
+                    ) {
                         SettingsButton(
                             label = stringResource(if (viewModel.isEditMode) Res.strings.action_sign_out_all else Res.strings.action_add_account),
                             isDanger = viewModel.isEditMode,
@@ -167,8 +175,8 @@ class AccountSettingsScreen : Screen {
                     )
                 ) {
                     Icon(
-                        imageVector = if(isEditMode) Icons.Filled.Edit else Icons.Outlined.Edit,
-                        contentDescription = stringResource(if(isEditMode) Res.strings.action_stop_edit else Res.strings.action_edit)
+                        imageVector = if (isEditMode) Icons.Filled.Edit else Icons.Outlined.Edit,
+                        contentDescription = stringResource(if (isEditMode) Res.strings.action_stop_edit else Res.strings.action_edit)
                     )
                 }
             }

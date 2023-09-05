@@ -17,10 +17,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.materiiapps.gloom.ui.utils.thenIf
 
 @Composable
 fun LoadingButton(
@@ -54,11 +55,11 @@ fun LoadingButton(
             Row(
                 horizontalArrangement = Arrangement.spacedBy(ButtonDefaults.IconSpacing),
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = if(loading) Modifier.graphicsLayer(alpha = 0f) else Modifier
+                modifier = Modifier.thenIf(loading) { alpha(0f) }
             ) {
                 content()
             }
-            if(loading) {
+            if (loading) {
                 CircularProgressIndicator(
                     strokeWidth = loadingIndicatorStrokeWidth,
                     modifier = Modifier.size(loadingIndicatorSize)

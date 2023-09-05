@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -18,6 +19,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -78,7 +82,11 @@ class LandingScreen(
                 )
 
                 if (viewModel.authManager.accounts.size > 0 && showAccountCard) {
-                    val accounts = viewModel.authManager.accounts.values.toList()
+                    val accounts by remember(viewModel.authManager.accounts) {
+                        derivedStateOf {
+                            viewModel.authManager.accounts.values.toList()
+                        }
+                    }
 
                     Box(
                         Modifier.padding(horizontal = 16.dp)
@@ -96,17 +104,15 @@ class LandingScreen(
                             )
 
                             LazyColumn {
-                                items(accounts.size) {
-                                    accounts[it].let { account ->
-                                        AccountItem(
-                                            account = account,
-                                            isCurrent = false,
-                                            onClick = {
-                                                viewModel.switchToAccount(account.id)
-                                                nav.replaceAll(RootScreen())
-                                            }
-                                        )
-                                    }
+                                items(accounts) { account ->
+                                    AccountItem(
+                                        account = account,
+                                        isCurrent = false,
+                                        onClick = {
+                                            viewModel.switchToAccount(account.id)
+                                            nav.replaceAll(RootScreen())
+                                        }
+                                    )
                                 }
                             }
                         }

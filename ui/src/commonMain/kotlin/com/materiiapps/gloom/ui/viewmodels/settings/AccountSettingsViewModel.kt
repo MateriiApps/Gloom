@@ -24,7 +24,7 @@ class AccountSettingsViewModel(
 
     var signOutDialogOpen by mutableStateOf(false)
 
-    var attemptedSignOutId by mutableStateOf(null as String?)
+    var attemptedSignOutId by mutableStateOf<String?>(null)
         private set
 
     var signedOut by mutableStateOf(false)

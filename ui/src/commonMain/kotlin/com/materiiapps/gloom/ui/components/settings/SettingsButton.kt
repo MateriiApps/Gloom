@@ -27,10 +27,11 @@ fun SettingsButton(
         Button(
             onClick,
             colors = ButtonDefaults.buttonColors(
-                containerColor = if(isDanger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
-                contentColor = if(isDanger) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.onPrimary
+                containerColor = if (isDanger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                contentColor = if (isDanger) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.onPrimary
             ),
-            modifier = Modifier.fillMaxWidth())
+            modifier = Modifier.fillMaxWidth()
+        )
         {
             Text(text = label)
         }

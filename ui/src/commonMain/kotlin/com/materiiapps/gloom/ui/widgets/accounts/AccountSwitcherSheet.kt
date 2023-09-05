@@ -5,9 +5,13 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -30,9 +34,13 @@ fun AccountSwitcherSheet(
 ) {
     val nav = LocalNavigator.currentOrThrow
     val viewModel: AccountSettingsViewModel = get()
-    val accounts = viewModel.authManager.accounts.values
-        .toList()
-        .sortedByDescending { viewModel.authManager.currentAccount?.id == it.id }
+    val accounts by remember(viewModel.authManager.accounts) {
+        derivedStateOf {
+            viewModel.authManager.accounts.values
+                .toList()
+                .sortedByDescending { viewModel.authManager.currentAccount?.id == it.id }
+        }
+    }
 
     BottomSheet(onDismiss = onDismiss) {
         BottomSheetLayout(
@@ -43,26 +51,29 @@ fun AccountSwitcherSheet(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 items(
-                    count = accounts.size,
-                    key = { accounts[it].id }
-                ) {
-                    accounts[it].let { account ->
-                        val isCurrent = viewModel.authManager.currentAccount?.id == account.id
-                        AccountItem(
-                            account = account,
-                            isCurrent = isCurrent,
-                            onClick = {
-                                animateToDismiss()
-                                if (!isCurrent) {
-                                    viewModel.switchToAccount(account.id)
-                                    nav.replaceAll(RootScreen())
-                                }
-                            },
-                            modifier = Modifier.animateItemPlacement(tween(200))
-                        )
+                    items = accounts,
+                    key = { it.id }
+                ) { account ->
+                    val isCurrent = remember(viewModel.authManager.currentAccount) {
+                        viewModel.authManager.currentAccount?.id == account.id
                     }
+
+                    AccountItem(
+                        account = account,
+                        isCurrent = isCurrent,
+                        onClick = {
+                            animateToDismiss()
+                            if (!isCurrent) {
+                                viewModel.switchToAccount(account.id)
+                                nav.replaceAll(RootScreen())
+                            }
+                        },
+                        modifier = Modifier.animateItemPlacement(tween(200))
+                    )
                 }
-                item {
+                item(
+                    key = { "Add account" }
+                ) {
                     SettingsButton(
                         label = stringResource(Res.strings.action_add_account),
                         onClick = {
