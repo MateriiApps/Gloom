@@ -7,6 +7,6 @@ import androidx.compose.runtime.Stable
 
 @Stable
 class BottomSheetScope(
-    columnScope: ColumnScope,
+    val columnScope: ColumnScope,
     val animateToDismiss: () -> Unit
 )

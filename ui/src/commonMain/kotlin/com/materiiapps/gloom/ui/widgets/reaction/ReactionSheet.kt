@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.api.REACTION_EMOJIS
 import com.materiiapps.gloom.gql.type.ReactionContent
+import com.materiiapps.gloom.ui.components.bottomsheet.BottomSheet
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -36,8 +36,8 @@ fun ReactionSheet(
             reaction != ReactionContent.UNKNOWN__
     }
 
-    ModalBottomSheet(
-        onDismissRequest = onClose
+    BottomSheet(
+        onDismiss = onClose
     ) {
         FlowRow(
             maxItemsInEachRow = emojis.size / 2,
@@ -56,7 +56,10 @@ fun ReactionSheet(
                     modifier = Modifier
                         .clip(RoundedCornerShape(16.dp))
                         .weight(1f)
-                        .clickable { onReactionClick(reaction) }
+                        .clickable {
+                            onReactionClick(reaction)
+                            animateToDismiss()
+                        }
                         .padding(16.dp)
                 )
             }
