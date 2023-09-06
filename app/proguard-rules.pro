@@ -20,3 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keep class org.opcsoft.prettytime.i18n.**
+-dontwarn org.slf4j.impl.StaticLoggerBinder
