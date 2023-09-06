@@ -90,7 +90,7 @@ class LandingScreen(
                     }
 
                     Box(
-                        Modifier.padding(horizontal = 16.dp)
+                        modifier = Modifier.padding(horizontal = 16.dp)
                     ) {
                         ElevatedCard(
                             modifier = Modifier.heightIn(max = ((77 * 3) + 12).dp)
@@ -133,7 +133,7 @@ class LandingScreen(
                     }
                 ) {
                     Icon(
-                        Icons.Social.GitHub,
+                        imageVector = Icons.Social.GitHub,
                         contentDescription = null
                     )
                     Text(stringResource(Res.strings.login_sign_in_github))

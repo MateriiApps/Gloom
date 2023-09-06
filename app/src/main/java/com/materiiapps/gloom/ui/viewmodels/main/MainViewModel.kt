@@ -35,13 +35,15 @@ class MainViewModel(
                         clearRootNavigation()
                         onLoggedIn()
                     }
-                    authManager.setAuthState(authType = null, loading = false)
+                    clearAuthState()
                 },
-                error = { authManager.setAuthState(authType = null, loading = false) },
-                failure = { authManager.setAuthState(authType = null, loading = false) },
-                empty = { authManager.setAuthState(authType = null, loading = false) }
+                error = { clearAuthState() },
+                failure = { clearAuthState() },
+                empty = { clearAuthState() }
             )
         }
     }
+
+    private fun clearAuthState() = authManager.setAuthState(authType = null, loading = false)
 
 }

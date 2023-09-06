@@ -31,15 +31,6 @@ fun BottomSheet(
     dragHandle: @Composable (() -> Unit)? = { BottomSheetDefaults.DragHandle() },
     content: @Composable BottomSheetScope.() -> Unit,
 ) {
-    val coroutineScope = rememberCoroutineScope()
-    val animateToDismiss: () -> Unit = {
-        coroutineScope.launch { sheetState.hide() }.invokeOnCompletion {
-            if (!sheetState.isVisible) {
-                onDismiss()
-            }
-        }
-    }
-
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         modifier = modifier,
@@ -52,6 +43,15 @@ fun BottomSheet(
         dragHandle = dragHandle,
         windowInsets = WindowInsets(0, 0, 0, 0),
         content = {
+            val coroutineScope = rememberCoroutineScope()
+            val animateToDismiss: () -> Unit = {
+                coroutineScope.launch { sheetState.hide() }.invokeOnCompletion {
+                    if (!sheetState.isVisible) {
+                        onDismiss()
+                    }
+                }
+            }
+
             content(
                 remember {
                     BottomSheetScope(this, animateToDismiss)

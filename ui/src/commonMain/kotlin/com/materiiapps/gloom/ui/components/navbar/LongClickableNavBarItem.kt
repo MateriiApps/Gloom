@@ -108,7 +108,7 @@ fun RowScope.LongClickableNavBarItem(
         ) {
             // Indicator pill
             Box(
-                Modifier
+                modifier = Modifier
                     .background(
                         color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = animationProgress),
                         shape = CircleShape,
@@ -127,7 +127,7 @@ fun RowScope.LongClickableNavBarItem(
 
             // Indicator pill ripple
             Box(
-                Modifier
+                modifier = Modifier
                     .clip(CircleShape)
                     .indication(offsetInteractionSource, rememberRipple())
                     .size(height = 32.dp, width = 64.dp)
@@ -137,7 +137,7 @@ fun RowScope.LongClickableNavBarItem(
         // Optional label
         if (label != null) {
             Box(
-                Modifier
+                modifier = Modifier
                     .layoutId("label")
                     .alpha(if (alwaysShowLabel) 1f else animationProgress)
                     .padding(horizontal = 4.dp)

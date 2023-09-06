@@ -148,7 +148,7 @@ fun AccountItem(
 
             if (isCurrent) {
                 val opacity by animateFloatAsState(
-                    targetValue = if(isEditMode) 0.4f else 1f,
+                    targetValue = if (isEditMode) 0.4f else 1f,
                     label = "Current account edit mode"
                 )
 

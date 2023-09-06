@@ -31,8 +31,7 @@ fun SettingsButton(
                 contentColor = if (isDanger) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.onPrimary
             ),
             modifier = Modifier.fillMaxWidth()
-        )
-        {
+        ) {
             Text(text = label)
         }
     }
