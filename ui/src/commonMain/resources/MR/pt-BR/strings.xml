@@ -23,6 +23,10 @@
     <string name="action_collapse">Ver menos</string>
     <string name="action_download">Download</string>
     <string name="action_install">Instalar</string>
+    <string name="action_add_account">Add account</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_stop_edit">Stop editing</string>
+    <string name="action_sign_out_all">Sign out of all accounts</string>
     <string name="dismiss_nevermind">Deixa para lá</string>
     <string name="dismiss_cancel">Cancelar</string>
     <string name="dismiss_no_thanks">Não obrigado</string>
@@ -98,6 +102,7 @@
     <string name="cd_reddit">Reddit</string>
     <string name="cd_twitch">Twitch</string>
     <string name="cd_link">Link</string>
+    <string name="cd_enterprise_domain">Enterprise domain: %1$s</string>
     <string name="msg_issue_untitled">Issue sem título</string>
     <string name="msg_pr_untitled">Pull request sem título</string>
     <string name="msg_issue_or_pr_author">#%1$d por %2$s</string>
@@ -112,6 +117,8 @@
     <string name="label_all_releases">Todas as versões</string>
     <string name="label_dont_show_again">Não mostrar novamente</string>
     <string name="label_follows_you">Segue você</string>
+    <string name="label_choose_account">Choose an account</string>
+    <string name="label_or">or</string>
     <string name="time_now">Agora</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
