@@ -25,8 +25,7 @@ fun Avatar(
     Image(
         painter = painter,
         contentDescription = contentDescription,
-        modifier = modifier.then(
-            Modifier.clip(shape)
-        )
+        modifier = modifier
+            .clip(shape)
     )
 }

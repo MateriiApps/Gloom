@@ -11,6 +11,9 @@ class GraphQLRepository(
     private val service: GraphQLService
 ) {
 
+    suspend fun getAccountInfo(token: String) =
+        service.getAccountInfo(token).transform { it.viewer.userAccount }
+
     suspend fun getCurrentProfile() =
         service.getCurrentProfile().transform { ModelUser.fromProfileQuery(it) }
 

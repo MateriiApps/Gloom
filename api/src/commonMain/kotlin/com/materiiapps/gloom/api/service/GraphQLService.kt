@@ -4,9 +4,11 @@ import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Operation
 import com.apollographql.apollo3.api.Optional
+import com.apollographql.apollo3.cache.normalized.doNotStore
 import com.materiiapps.gloom.api.utils.response
 import com.materiiapps.gloom.api.utils.toOptional
 import com.materiiapps.gloom.domain.manager.AuthManager
+import com.materiiapps.gloom.gql.AccountInfoQuery
 import com.materiiapps.gloom.gql.DefaultBranchQuery
 import com.materiiapps.gloom.gql.FeedQuery
 import com.materiiapps.gloom.gql.FollowUserMutation
@@ -45,6 +47,13 @@ class GraphQLService(
 
     private fun <D : Operation.Data> ApolloCall<D>.addToken() =
         addHttpHeader(HttpHeaders.Authorization, "Bearer ${authManager.authToken}")
+
+    suspend fun getAccountInfo(token: String) = withContext(Dispatchers.IO) {
+        client.query(AccountInfoQuery())
+            .doNotStore(true)
+            .addHttpHeader(HttpHeaders.Authorization, "Bearer $token")
+            .response()
+    }
 
     suspend fun getCurrentProfile() = withContext(Dispatchers.IO) {
         client.query(ProfileQuery())

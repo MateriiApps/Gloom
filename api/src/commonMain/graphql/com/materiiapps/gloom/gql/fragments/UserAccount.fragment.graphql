@@ -1,0 +1,9 @@
+fragment UserAccount on User {
+    login
+    name
+    avatarUrl
+    id
+    notificationListsWithThreadCount(statuses: UNREAD) {
+        totalCount
+    }
+}
