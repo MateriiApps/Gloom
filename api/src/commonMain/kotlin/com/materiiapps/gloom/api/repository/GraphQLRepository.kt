@@ -14,10 +14,6 @@ class GraphQLRepository(
     suspend fun getAccountInfo(token: String) =
         service.getAccountInfo(token).transform { it.viewer.userAccount }
 
-    suspend fun getAccountsByIds(ids: List<String>) = service.getAccountsByIds(ids).transform {
-        it.nodes.mapNotNull { it?.userAccount }
-    }
-
     suspend fun getCurrentProfile() =
         service.getCurrentProfile().transform { ModelUser.fromProfileQuery(it) }
 

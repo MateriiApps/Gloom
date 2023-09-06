@@ -1,5 +1,0 @@
-query Accounts($ids: [ID!]!) {
-    nodes(ids: $ids) {
-        ...UserAccount
-    }
-}
