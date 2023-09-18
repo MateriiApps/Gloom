@@ -23,6 +23,7 @@ import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.theme.GloomTheme
 import com.materiiapps.gloom.ui.transitions.SlideTransition
 import com.materiiapps.gloom.ui.viewmodels.main.MainViewModel
+import com.materiiapps.gloom.ui.widgets.alerts.AlertHost
 import com.materiiapps.gloom.utils.LinkHandler
 import com.materiiapps.gloom.utils.LocalLinkHandler
 import com.materiiapps.gloom.utils.deeplinks.DeepLinkWrapper
@@ -74,19 +75,21 @@ class GloomActivity : ComponentActivity() {
                 }
 
                 DeepLinkWrapper { handler ->
-                    Navigator(
-                        screen = defaultScreen,
-                        disposeBehavior = NavigatorDisposeBehavior(
-                            disposeNestedNavigators = false,
-                            disposeSteps = true
-                        )
-                    ) {
-                        CompositionLocalProvider(
-                            LocalLinkHandler provides LinkHandler(LocalContext.current)
+                    AlertHost {
+                        Navigator(
+                            screen = defaultScreen,
+                            disposeBehavior = NavigatorDisposeBehavior(
+                                disposeNestedNavigators = false,
+                                disposeSteps = true
+                            )
                         ) {
-                            navigator = it
-                            SlideTransition(it)
-                            handler.addAllRoutes(it, auth)
+                            CompositionLocalProvider(
+                                LocalLinkHandler provides LinkHandler(LocalContext.current)
+                            ) {
+                                navigator = it
+                                SlideTransition(it)
+                                handler.addAllRoutes(it, auth)
+                            }
                         }
                     }
                 }

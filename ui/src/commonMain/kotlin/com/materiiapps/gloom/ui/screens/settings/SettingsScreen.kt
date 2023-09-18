@@ -6,6 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -23,8 +24,10 @@ import com.materiiapps.gloom.ui.components.LargeToolbar
 import com.materiiapps.gloom.ui.components.settings.SettingsButton
 import com.materiiapps.gloom.ui.components.settings.SettingsCategory
 import com.materiiapps.gloom.ui.screens.auth.LandingScreen
+import com.materiiapps.gloom.ui.screens.settings.developer.DeveloperSettingsScreen
 import com.materiiapps.gloom.ui.viewmodels.settings.SettingsViewModel
 import com.materiiapps.gloom.ui.widgets.accounts.SignOutDialog
+import com.materiiapps.gloom.utils.IsDeveloper
 import dev.icerock.moko.resources.compose.stringResource
 
 class SettingsScreen : Screen {
@@ -74,6 +77,15 @@ class SettingsScreen : Screen {
                     subtext = stringResource(Res.strings.settings_accounts_description),
                     destination = ::AccountSettingsScreen
                 )
+
+                if (IsDeveloper) {
+                    SettingsCategory(
+                        icon = Icons.Outlined.Code,
+                        text = stringResource(Res.strings.settings_development),
+                        subtext = stringResource(Res.strings.settings_development_description),
+                        destination = ::DeveloperSettingsScreen
+                    )
+                }
 
                 SettingsButton(label = stringResource(Res.strings.action_sign_out)) {
                     viewModel.openSignOutDialog()

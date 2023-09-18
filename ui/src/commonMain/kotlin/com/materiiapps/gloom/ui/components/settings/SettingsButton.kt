@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 fun SettingsButton(
     label: String,
     isDanger: Boolean = false,
+    outlined: Boolean = false,
     onClick: () -> Unit = {}
 ) {
     Box(
@@ -24,15 +26,27 @@ fun SettingsButton(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 14.dp)
     ) {
-        Button(
-            onClick,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = if (isDanger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
-                contentColor = if (isDanger) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.onPrimary
-            ),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(text = label)
+        if (outlined) {
+            OutlinedButton(
+                onClick,
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = if (isDanger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
+                ),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = label)
+            }
+        } else {
+            Button(
+                onClick,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = if (isDanger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                    contentColor = if (isDanger) MaterialTheme.colorScheme.onError else MaterialTheme.colorScheme.onPrimary
+                ),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = label)
+            }
         }
     }
 }

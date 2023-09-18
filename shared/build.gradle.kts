@@ -13,6 +13,10 @@ android {
         compileSdk = 34
         minSdk = 21
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 kotlin {
