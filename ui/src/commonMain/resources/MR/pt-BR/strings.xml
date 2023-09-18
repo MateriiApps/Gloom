@@ -70,6 +70,16 @@
     <string name="settings_accounts_description">Adicionar ou trocar de conta</string>
     <string name="settings_sign_out_header">Sair?</string>
     <string name="settings_sign_out_text">Tem certeza que deseja sair? Você pode voltar mais tarde</string>
+    <string name="settings_development">Development</string>
+    <string name="settings_development_description">Debug and test new features</string>
+    <string name="dev_alert_testing">Alert Testing</string>
+    <string name="dev_alert_testing_description">Create custom alerts to use for testing</string>
+    <string name="dev_alert_title">Title</string>
+    <string name="dev_alert_message">Message</string>
+    <string name="dev_alert_show_icon">Show icon</string>
+    <string name="dev_alert_duration">Duration</string>
+    <string name="dev_alert_action_show_alert">Show alert</string>
+    <string name="dev_alert_action_fill_queue">Fill queue</string>
     <string name="appearance_theme">Tema</string>
     <string name="appearance_monet">Tema dinâmico</string>
     <string name="appearance_monet_description">Disponível para Android 12+</string>
