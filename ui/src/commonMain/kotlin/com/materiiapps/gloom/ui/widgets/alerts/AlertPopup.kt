@@ -11,7 +11,7 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -39,16 +39,19 @@ fun AlertPopup(
     message: String?,
     icon: ImageVector?,
     iconContentDescription: String?,
+    position: Alert.Position = Alert.Position.TOP,
     onClick: (() -> Unit)?,
     onDismissed: () -> Unit,
     key: String?,
-    alignment: Alignment = Alignment.TopCenter,
+    offset: IntOffset
 ) {
     val coroutineScope = rememberCoroutineScope()
+    val posRemembered = remember(key) { position }
     val animSpring = spring(
         stiffness = Spring.StiffnessMediumLow,
         visibilityThreshold = IntOffset.VisibilityThreshold
     )
+
     val expandedState = remember {
         MutableTransitionState(false)
     }
@@ -58,19 +61,18 @@ fun AlertPopup(
     val draggableState = rememberDraggableState {
         y += it
     }
-
-    LaunchedEffect(visible) {
-        expandedState.targetState = visible
-    }
-
-    val (enterAnimation, exitAnimation) = remember(alignment) {
-        when (alignment) {
-            Alignment.TopCenter -> slideInVertically(animSpring) { -it } to slideOutVertically(
+    val (enterAnimation, exitAnimation) = remember(key) {
+        when (posRemembered) {
+            Alert.Position.TOP -> slideInVertically(animSpring) { -it } to slideOutVertically(
                 animSpring
             ) { -it }
 
-            else -> slideInVertically(animSpring) to slideOutVertically(animSpring)
+            Alert.Position.BOTTOM -> slideInVertically(animSpring) { it } to slideOutVertically(animSpring) { it }
         }
+    }
+
+    LaunchedEffect(visible) {
+        expandedState.targetState = visible
     }
 
     fun animateYTo(pos: Float, onFinished: () -> Unit = {}) {
@@ -83,14 +85,15 @@ fun AlertPopup(
 
     if (expandedState.currentState || expandedState.targetState || !expandedState.isIdle) {
         Popup(
-            alignment = alignment
+            alignment = if (posRemembered == Alert.Position.TOP) Alignment.TopCenter else Alignment.BottomCenter,
+            offset = if(posRemembered == Alert.Position.BOTTOM) offset else IntOffset.Zero
         ) {
             AnimatedVisibility(
                 visibleState = expandedState,
                 enter = enterAnimation,
                 exit = exitAnimation
             ) {
-                Box(
+                Column(
                     modifier = Modifier
                         .padding(16.dp)
                         .fillMaxWidth()

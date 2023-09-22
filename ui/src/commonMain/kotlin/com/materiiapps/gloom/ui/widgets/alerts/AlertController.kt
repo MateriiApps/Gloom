@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.IntOffset
 import com.benasher44.uuid.Uuid
 import com.benasher44.uuid.uuid4
 import kotlinx.coroutines.CoroutineScope
@@ -25,7 +26,9 @@ class AlertController(coroutineScope: CoroutineScope = CoroutineScope(Dispatcher
     var displayedAlert by mutableStateOf<Alert?>(null)
         private set
 
-    fun showText(text: String) = showAlert(title = text, icon = Icons.Outlined.Info)
+    var currentOffset by mutableStateOf<IntOffset>(IntOffset.Zero)
+
+    fun showText(text: String) = showAlert(title = text, icon = Icons.Outlined.Info, position = Alert.Position.BOTTOM)
 
     fun showAlert(
         title: String? = null,
@@ -33,6 +36,7 @@ class AlertController(coroutineScope: CoroutineScope = CoroutineScope(Dispatcher
         icon: ImageVector? = null,
         iconContentDescription: String? = null,
         duration: Alert.Duration = Alert.Duration.SHORT,
+        position: Alert.Position = Alert.Position.TOP,
         onClick: (() -> Unit)? = null,
     ) {
         val alert = Alert(
@@ -41,6 +45,7 @@ class AlertController(coroutineScope: CoroutineScope = CoroutineScope(Dispatcher
             icon = icon,
             iconContentDescription = iconContentDescription,
             duration = duration,
+            position = position,
             onClick = onClick
         )
 
@@ -77,6 +82,7 @@ data class Alert(
     val icon: ImageVector? = null,
     val iconContentDescription: String? = null,
     val duration: Duration = Duration.SHORT,
+    val position: Position = Position.TOP,
     val onClick: (() -> Unit)? = null,
     val id: Uuid = uuid4()
 ) {
@@ -86,6 +92,12 @@ data class Alert(
         SHORT(millis = 4000),
         MEDIUM(millis = 7000),
         LONG(millis = 10_000)
+    }
+
+    @Stable
+    enum class Position {
+        TOP,
+        BOTTOM
     }
 
 }

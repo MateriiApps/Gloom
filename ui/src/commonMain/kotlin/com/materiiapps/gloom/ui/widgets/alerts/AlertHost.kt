@@ -14,7 +14,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun AlertHost(
-    content: @Composable () -> Unit
+    content: @Composable (AlertController) -> Unit
 ) {
     val controller = remember { AlertController() }
 
@@ -24,7 +24,7 @@ fun AlertHost(
         CompositionLocalProvider(
             LocalAlertController provides controller
         ) {
-            content()
+            content(controller)
         }
 
         val currentAlert = controller.displayedAlert
@@ -46,8 +46,10 @@ fun AlertHost(
             message = currentAlert?.message,
             icon = currentAlert?.icon,
             iconContentDescription = currentAlert?.iconContentDescription,
+            position = currentAlert?.position ?: Alert.Position.TOP,
             onClick = currentAlert?.onClick,
             key = id,
+            offset = controller.currentOffset,
             onDismissed = {
                 controller.processQueue()
             }

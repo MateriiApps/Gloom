@@ -7,9 +7,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import cafe.adriel.voyager.navigator.Navigator
@@ -22,6 +25,7 @@ import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.theme.GloomTheme
 import com.materiiapps.gloom.ui.transitions.SlideTransition
+import com.materiiapps.gloom.ui.utils.toPx
 import com.materiiapps.gloom.ui.viewmodels.main.MainViewModel
 import com.materiiapps.gloom.ui.widgets.alerts.AlertHost
 import com.materiiapps.gloom.utils.LinkHandler
@@ -59,6 +63,7 @@ class GloomActivity : ComponentActivity() {
 
             GloomTheme(isDark, prefs.monet) {
                 val systemUiController = rememberSystemUiController()
+                val navNarOffset = -((80 + 24).dp.toPx())
                 val defaultScreen = if (auth.isSignedIn)
                     RootScreen()
                 else
@@ -75,7 +80,7 @@ class GloomActivity : ComponentActivity() {
                 }
 
                 DeepLinkWrapper { handler ->
-                    AlertHost {
+                    AlertHost { alertController ->
                         Navigator(
                             screen = defaultScreen,
                             disposeBehavior = NavigatorDisposeBehavior(
@@ -83,6 +88,13 @@ class GloomActivity : ComponentActivity() {
                                 disposeSteps = true
                             )
                         ) {
+                            LaunchedEffect(it.lastItem) {
+                                if(it.lastItem is RootScreen)
+                                    alertController.currentOffset = IntOffset(0, navNarOffset)
+                                else
+                                    alertController.currentOffset = IntOffset.Zero
+                            }
+
                             CompositionLocalProvider(
                                 LocalLinkHandler provides LinkHandler(LocalContext.current)
                             ) {

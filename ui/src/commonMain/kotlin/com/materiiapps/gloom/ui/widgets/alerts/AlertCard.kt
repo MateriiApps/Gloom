@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
@@ -27,6 +28,7 @@ fun AlertCard(
     modifier: Modifier = Modifier
 ) {
     ElevatedCard(
+        elevation = CardDefaults.elevatedCardElevation(10.dp),
         modifier = modifier
     ) {
         Row(

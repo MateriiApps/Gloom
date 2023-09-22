@@ -51,6 +51,9 @@ class AlertTestingScreen : Screen {
         var duration by remember {
             mutableStateOf(Alert.Duration.SHORT)
         }
+        var position by remember {
+            mutableStateOf(Alert.Position.TOP)
+        }
 
         Scaffold(
             topBar = { Toolbar(scrollBehavior) },
@@ -103,6 +106,12 @@ class AlertTestingScreen : Screen {
                     onPrefChange = { duration = it }
                 )
 
+                SettingsItemChoice(
+                    label = "Position",
+                    pref = position,
+                    onPrefChange = { position = it }
+                )
+
                 SettingsButton(
                     label = stringResource(Res.strings.dev_alert_action_show_alert),
                     onClick = {
@@ -110,7 +119,8 @@ class AlertTestingScreen : Screen {
                             title = title.ifBlank { null },
                             message = message.ifBlank { null },
                             icon = if (showIcon) Icons.Outlined.Info else null,
-                            duration = duration
+                            duration = duration,
+                            position = position
                         )
                     }
                 )
@@ -124,7 +134,8 @@ class AlertTestingScreen : Screen {
                                 title = title.ifBlank { null },
                                 message = message.ifBlank { null },
                                 icon = if (showIcon) Icons.Outlined.Info else null,
-                                duration = duration
+                                duration = duration,
+                                position = position
                             )
                         }
                     }

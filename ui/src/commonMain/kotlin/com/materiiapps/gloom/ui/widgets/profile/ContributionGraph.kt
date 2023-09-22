@@ -34,6 +34,7 @@ import com.materiiapps.gloom.gql.fragment.Contributions
 import com.materiiapps.gloom.gql.type.ContributionLevel
 import com.materiiapps.gloom.ui.utils.format
 import com.materiiapps.gloom.ui.utils.getPluralString
+import com.materiiapps.gloom.ui.widgets.alerts.LocalAlertController
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.androidx.compose.get
 
@@ -42,7 +43,7 @@ fun ContributionGraph(
     calendar: Contributions.ContributionCalendar,
     spacing: Dp = 5.dp
 ) {
-    val toastManager: ToastManager = get()
+    val alertController = LocalAlertController.current
     val lazyListState =
         rememberLazyListState(initialFirstVisibleItemIndex = calendar.weeks.lastIndex)
 
@@ -76,7 +77,7 @@ fun ContributionGraph(
                                 DayTile(
                                     level = day.contributionLevel,
                                     onClick = {
-                                        toastManager.showToast(
+                                        alertController.showText(
                                             getPluralString(
                                                 Res.plurals.contributions_toast,
                                                 day.contributionCount,
