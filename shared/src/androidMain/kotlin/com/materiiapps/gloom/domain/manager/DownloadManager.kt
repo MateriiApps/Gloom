@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
@@ -21,8 +22,7 @@ import android.app.DownloadManager as AndroidDownloadManager
 
 actual class DownloadManager(
     private val context: Context,
-    private val authManager: AuthManager,
-    private val toastManager: ToastManager
+    private val authManager: AuthManager
 ) {
     private val downloadManager = context.getSystemService<AndroidDownloadManager>()!!
     private val downloadScope = CoroutineScope(Dispatchers.IO)
@@ -37,7 +37,6 @@ actual class DownloadManager(
             download(url, File(gloomDownloadFolder, name)).also {
                 Handler(Looper.getMainLooper()).post {
                     if (it.exists()) {
-                        toastManager.showToast("Download complete: $name")
                         block(it.absolutePath)
                     }
                 }
@@ -100,10 +99,19 @@ actual class DownloadManager(
                 }
             }
 
-            context.registerReceiver(
-                receiver,
-                IntentFilter(AndroidDownloadManager.ACTION_DOWNLOAD_COMPLETE)
-            )
+            @SuppressLint("UnspecifiedRegisterReceiverFlag")
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                context.registerReceiver(
+                    receiver,
+                    IntentFilter(AndroidDownloadManager.ACTION_DOWNLOAD_COMPLETE),
+                    Context.RECEIVER_EXPORTED
+                )
+            } else {
+                context.registerReceiver(
+                    receiver,
+                    IntentFilter(AndroidDownloadManager.ACTION_DOWNLOAD_COMPLETE)
+                )
+            }
 
             receiver.dlId = AndroidDownloadManager.Request(url.toUri()).run {
                 setTitle("Gloom: Downloading ${out.name}")

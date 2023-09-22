@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.domain.manager.ToastManager
 import com.materiiapps.gloom.gql.fragment.Contributions
 import com.materiiapps.gloom.gql.type.ContributionLevel
 import com.materiiapps.gloom.ui.utils.format

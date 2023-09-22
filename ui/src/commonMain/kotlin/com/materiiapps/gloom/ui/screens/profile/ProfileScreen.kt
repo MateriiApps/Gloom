@@ -83,7 +83,6 @@ import com.materiiapps.gloom.api.models.ModelStatus
 import com.materiiapps.gloom.api.models.ModelUser
 import com.materiiapps.gloom.api.models.Pinnable
 import com.materiiapps.gloom.domain.manager.ShareManager
-import com.materiiapps.gloom.domain.manager.ToastManager
 import com.materiiapps.gloom.gql.type.SocialAccountProvider
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.BackButton
@@ -108,6 +107,7 @@ import com.materiiapps.gloom.ui.utils.EmojiUtils
 import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.viewmodels.profile.ProfileViewModel
 import com.materiiapps.gloom.ui.widgets.ReadMeCard
+import com.materiiapps.gloom.ui.widgets.alerts.LocalAlertController
 import com.materiiapps.gloom.ui.widgets.profile.ContributionGraph
 import com.materiiapps.gloom.ui.widgets.repo.RepoItem
 import com.materiiapps.gloom.utils.Constants
@@ -412,7 +412,7 @@ open class ProfileScreen(
 
     @Composable
     private fun ProfileAvatar(user: ModelUser) {
-        val toastManager: ToastManager = get()
+        val alertController = LocalAlertController.current
         val (badge, msg) =
             if (user.isSupporter) painterResource(Res.images.img_badge_sponsor) to stringResource(Res.strings.badge_supporter)
             else if (user.id == Constants.DEV_USER_ID) painterResource(Res.images.img_badge_dev) to stringResource(Res.strings.badge_dev)
@@ -426,7 +426,7 @@ open class ProfileScreen(
                         contentDescription = msg,
                         modifier = Modifier
                             .size(24.dp)
-                            .clickable { toastManager.showToast(msg) }
+                            .clickable { alertController.showText(msg) }
                     )
                 } else null
         ) {

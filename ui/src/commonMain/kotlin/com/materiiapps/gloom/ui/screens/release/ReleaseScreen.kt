@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.outlined.CheckCircleOutline
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -49,6 +51,7 @@ import com.materiiapps.gloom.ui.components.ThinDivider
 import com.materiiapps.gloom.ui.theme.colors
 import com.materiiapps.gloom.ui.viewmodels.release.ReleaseViewModel
 import com.materiiapps.gloom.ui.widgets.Markdown
+import com.materiiapps.gloom.ui.widgets.alerts.LocalAlertController
 import com.materiiapps.gloom.ui.widgets.reaction.ReactionRow
 import com.materiiapps.gloom.ui.widgets.release.ReleaseAsset
 import com.materiiapps.gloom.ui.widgets.release.ReleaseAuthor
@@ -74,6 +77,7 @@ class ReleaseScreen(
     @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
     override fun Content() {
         val viewModel: ReleaseViewModel = getScreenModel { parametersOf(Triple(owner, name, tag)) }
+        val alertController = LocalAlertController.current
         val dialogManager: DialogManager = get()
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
         val items = viewModel.items.collectAsLazyPagingItems()
@@ -209,10 +213,13 @@ class ReleaseScreen(
                                 name = asset.name,
                                 size = asset.size,
                                 onDownloadClick = {
+                                    alertController.showText("Downloading ${asset.name}...", icon = Icons.Filled.Download)
                                     viewModel.downloadAsset(
                                         asset.downloadUrl,
                                         asset.contentType
-                                    )
+                                    ) {
+                                        alertController.showText("Download completed", icon = Icons.Outlined.CheckCircleOutline)
+                                    }
                                 }
                             )
                         }

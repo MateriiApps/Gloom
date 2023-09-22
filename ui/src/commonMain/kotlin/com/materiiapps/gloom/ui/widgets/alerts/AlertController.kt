@@ -28,7 +28,11 @@ class AlertController(coroutineScope: CoroutineScope = CoroutineScope(Dispatcher
 
     var currentOffset by mutableStateOf<IntOffset>(IntOffset.Zero)
 
-    fun showText(text: String) = showAlert(title = text, icon = Icons.Outlined.Info, position = Alert.Position.BOTTOM)
+    fun showText(
+        text: String,
+        icon: ImageVector = Icons.Outlined.Info,
+        position: Alert.Position = Alert.Position.BOTTOM
+    ) = showAlert(title = text, icon = icon, position = position)
 
     fun showAlert(
         title: String? = null,

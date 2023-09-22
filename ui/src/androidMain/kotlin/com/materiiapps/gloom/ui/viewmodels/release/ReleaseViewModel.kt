@@ -4,12 +4,10 @@ import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.core.net.toUri
 import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.getOrNull
 import com.materiiapps.gloom.domain.manager.DownloadManager
-import com.materiiapps.gloom.domain.manager.ToastManager
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.fragment.ReleaseAssetFragment
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
@@ -23,7 +21,6 @@ actual class ReleaseViewModel(
     private val repo: GraphQLRepository,
     private val downloadManager: DownloadManager,
     private val context: Context,
-    private val toastManager: ToastManager,
     nameAndTag: Triple<String, String, String>
 ) : BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?>() {
 
@@ -62,9 +59,9 @@ actual class ReleaseViewModel(
         }
     }
 
-    fun downloadAsset(url: String, mimeType: String) {
-        toastManager.showToast("Downloading ${url.toUri().lastPathSegment}...")
+    fun downloadAsset(url: String, mimeType: String, onFinish: () -> Unit) {
         downloadManager.download(url) {
+            onFinish()
             if (mimeType == "application/vnd.android.package-archive") apkFile = File(it)
         }
     }
