@@ -4,6 +4,7 @@ import com.apollographql.apollo3.ApolloClient
 import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.domain.manager.DialogManager
 import com.materiiapps.gloom.domain.manager.DownloadManager
+import com.materiiapps.gloom.domain.manager.LibraryManager
 import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.domain.manager.ShareManager
 import com.materiiapps.gloom.domain.manager.ToastManager
@@ -19,6 +20,7 @@ fun managerModule() = module {
     singleOf(::DownloadManager)
     singleOf(::ShareManager)
     singleOf(::ToastManager)
+    singleOf(::LibraryManager)
 
     fun providePreferenceManager(settings: SettingsProvider) = PreferenceManager(settings)
     fun provideDialogManager(settings: SettingsProvider) = DialogManager(settings)

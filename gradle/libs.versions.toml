@@ -1,4 +1,5 @@
 [versions]
+aboutlibraries = "10.9.0"
 accompanist = "0.30.1"
 agp = "8.3.0-alpha02"
 apollo = "3.6.2"
@@ -13,6 +14,7 @@ moko-resources = "0.23.0"
 voyager = "1.0.0-rc07"
 
 [libraries]
+aboutlibraries-core = { group = "com.mikepenz", name = "aboutlibraries", version.ref = "aboutlibraries" }
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-webview = { group = "com.google.accompanist", name = "accompanist-webview", version.ref = "accompanist" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
@@ -51,6 +53,7 @@ voyager-tab-navigator = { group = "cafe.adriel.voyager", name = "voyager-tab-nav
 voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitions", version.ref = "voyager" }
 
 [plugins]
+aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries"}
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }

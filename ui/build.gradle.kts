@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.moko.resources)
+    alias(libs.plugins.aboutlibraries)
 }
 
 android {

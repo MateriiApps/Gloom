@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.apollo)
     alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.aboutlibraries)
 }
 
 android {

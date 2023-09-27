@@ -9,6 +9,7 @@ import com.materiiapps.gloom.di.repositoryModule
 import com.materiiapps.gloom.di.serviceModule
 import com.materiiapps.gloom.di.viewModelModule
 import com.materiiapps.gloom.ui.viewmodels.main.MainViewModel
+import com.materiiapps.gloom.utils.VersionName
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.startKoin
@@ -18,6 +19,7 @@ class Gloom : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        VersionName = BuildConfig.VERSION_NAME
 
         startKoin {
             androidContext(this@Gloom)

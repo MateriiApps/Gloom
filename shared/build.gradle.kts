@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.aboutlibraries)
 }
 
 android {
@@ -29,6 +30,7 @@ kotlin {
                 api(compose.runtime)
                 api(libs.bundles.kotlinx)
 
+                api(libs.aboutlibraries.core)
                 api(libs.apollo.runtime)
                 api(libs.apollo.normalized.cache)
                 api(libs.koin.core)
