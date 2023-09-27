@@ -68,6 +68,9 @@
     <string name="settings_appearance_description">テーマ、コードスタイル</string>
     <string name="settings_accounts">アカウント</string>
     <string name="settings_accounts_description">アカウントの追加または切り替え</string>
+    <string name="settings_about">About</string>
+    <string name="settings_libraries">Libraries</string>
+    <string name="settings_libraries_description">The libraries used to make Gloom</string>
     <string name="settings_sign_out_header">サインアウトしますか？</string>
     <string name="settings_sign_out_text">サインアウトしてもよろしいですか？後でサインインすることができます。</string>
     <string name="settings_development">開発</string>
@@ -117,6 +120,8 @@
     <string name="cd_twitch">Twitch</string>
     <string name="cd_link">リンク</string>
     <string name="cd_enterprise_domain">エンタープライズドメイン: %1$s</string>
+    <string name="cd_library_author">Author: %1$s</string>
+    <string name="cd_library_license">License: %1$s</string>
     <string name="msg_issue_untitled">無題の課題</string>
     <string name="msg_pr_untitled">無題のプルリクエスト</string>
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
@@ -133,6 +138,8 @@
     <string name="label_follows_you">フォローされています</string>
     <string name="label_choose_account">アカウントを選択</string>
     <string name="label_or">または</string>
+    <string name="label_open_source">Open Source</string>
+    <string name="label_closed_source">Closed Source</string>
     <string name="time_now">たった今</string>
     <string name="time_since_second">%1$d 秒</string>
     <string name="time_since_minute">%1$d 分</string>
