@@ -20,6 +20,7 @@ import com.materiiapps.gloom.gql.ProfileQuery
 import com.materiiapps.gloom.gql.ReactMutation
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.RepoDetailsQuery
+import com.materiiapps.gloom.gql.RepoFileQuery
 import com.materiiapps.gloom.gql.RepoFilesQuery
 import com.materiiapps.gloom.gql.RepoIssuesQuery
 import com.materiiapps.gloom.gql.RepoListQuery
@@ -218,6 +219,13 @@ class GraphQLService(
     suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) =
         withContext(Dispatchers.IO) {
             client.query(RepoFilesQuery(owner, name, branchAndPath))
+                .addToken()
+                .response()
+        }
+
+    suspend fun getRepoFile(owner: String, name: String, branch: String, path: String) =
+        withContext(Dispatchers.IO) {
+            client.query(RepoFileQuery(owner, name, branch, path))
                 .addToken()
                 .response()
         }

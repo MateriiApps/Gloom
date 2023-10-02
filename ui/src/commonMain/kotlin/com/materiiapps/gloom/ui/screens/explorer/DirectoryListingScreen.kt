@@ -23,6 +23,7 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.benasher44.uuid.uuid4
+import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.viewmodels.explorer.DirectoryListingViewModel
 import org.koin.core.parameter.parametersOf
 
@@ -61,14 +62,27 @@ class DirectoryListingScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .clickable {
-                            if (entry.type == "tree")
-                                nav.push(
+                            when(entry.type) {
+                                "tree" -> nav.push(
                                     DirectoryListingScreen(
                                         owner,
                                         name,
                                         branchAndPath + "${entry.name}/"
                                     )
                                 )
+                                "blob" -> {
+                                    val (branch, path) = branchAndPath.split(":")
+                                    nav.navigate(
+                                        FileViewerScreen(
+                                            owner,
+                                            name,
+                                            branch,
+                                            "$path${entry.name}"
+                                        )
+                                    )
+                                }
+                            }
+
                         }
                         .padding(22.dp)
                         .fillMaxWidth()

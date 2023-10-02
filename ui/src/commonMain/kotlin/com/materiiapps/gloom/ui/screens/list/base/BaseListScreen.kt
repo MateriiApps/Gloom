@@ -23,7 +23,7 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import cafe.adriel.voyager.core.screen.Screen
 import com.apollographql.apollo3.api.Query
-import com.materiiapps.gloom.ui.components.LargeToolbar
+import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
 import dev.icerock.moko.resources.StringResource

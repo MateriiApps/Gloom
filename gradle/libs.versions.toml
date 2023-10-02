@@ -33,6 +33,7 @@ compose-material = { group = "androidx.compose.material", name = "material", ver
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "compose" }
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
 compose-imageloader = { group = "io.github.qdsfdhvh", name = "image-loader", version = "1.6.4" }
+highlights = { group = "dev.snipme", name = "highlights", version = "0.7.1" }
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version = "3.4.0" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }

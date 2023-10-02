@@ -24,7 +24,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.LargeToolbar
+import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.settings.SettingsButton
 import com.materiiapps.gloom.ui.components.settings.SettingsItemChoice
 import com.materiiapps.gloom.ui.components.settings.SettingsSwitch

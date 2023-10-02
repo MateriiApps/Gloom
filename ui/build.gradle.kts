@@ -44,6 +44,7 @@ kotlin {
 
                 api(libs.androidx.paging.compose)
                 api(libs.compose.imageloader)
+                api(libs.highlights)
                 api(libs.koin.core)
                 api(libs.koin.androidx.compose)
                 api(libs.moko.resources.compose)
