@@ -49,6 +49,7 @@ kotlin {
                 api(libs.koin.androidx.compose)
                 api(libs.moko.resources.compose)
                 api(libs.multiplatform.paging)
+                api(libs.zoomable)
             }
         }
         val androidMain by getting {

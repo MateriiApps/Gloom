@@ -52,6 +52,7 @@ voyager-koin = { group = "cafe.adriel.voyager", name = "voyager-koin", version.r
 voyager-navigator = { group = "cafe.adriel.voyager", name = "voyager-navigator", version.ref = "voyager" }
 voyager-tab-navigator = { group = "cafe.adriel.voyager", name = "voyager-tab-navigator", version.ref = "voyager" }
 voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitions", version.ref = "voyager" }
+zoomable = { group = "net.engawapg.lib", name = "zoomable", version = "1.5.1" }
 
 [plugins]
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries"}
