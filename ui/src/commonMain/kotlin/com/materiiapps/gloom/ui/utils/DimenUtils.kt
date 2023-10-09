@@ -18,3 +18,8 @@ object DimenUtils {
 fun Dp.toPx() = with(LocalDensity.current) {
     toPx().toInt()
 }
+
+@Composable
+fun Int.toDp() = with(LocalDensity.current) {
+    toDp()
+}
