@@ -68,9 +68,9 @@
     <string name="settings_appearance_description">テーマ、コードスタイル</string>
     <string name="settings_accounts">アカウント</string>
     <string name="settings_accounts_description">アカウントの追加または切り替え</string>
-    <string name="settings_about">About</string>
-    <string name="settings_libraries">Libraries</string>
-    <string name="settings_libraries_description">The libraries used to make Gloom</string>
+    <string name="settings_about">このアプリについて</string>
+    <string name="settings_libraries">ライブラリ</string>
+    <string name="settings_libraries_description">Gloom の制作に使用されたライブラリ</string>
     <string name="settings_sign_out_header">サインアウトしますか？</string>
     <string name="settings_sign_out_text">サインアウトしてもよろしいですか？後でサインインすることができます。</string>
     <string name="settings_development">開発</string>
