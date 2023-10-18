@@ -2,6 +2,7 @@ package com.materiiapps.gloom.ui.widgets.code
 
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -35,6 +36,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.ui.components.CodeText
+import com.materiiapps.gloom.ui.components.scrollbar.ScrollBar
 import com.materiiapps.gloom.ui.theme.CodeTheme
 import com.materiiapps.gloom.ui.utils.DimenUtils
 import com.materiiapps.gloom.ui.utils.digits
@@ -55,7 +57,9 @@ fun CodeViewer(
     val maxLineNumWidthAnimated by animateIntAsState(maxLineNumWidth, label = "Line number width")
     val layoutDirection = LocalLayoutDirection.current
     val lineNumberHorizontalPadding = remember(lineNumberPadding, layoutDirection) {
-        lineNumberPadding.calculateStartPadding(layoutDirection) + lineNumberPadding.calculateEndPadding(layoutDirection)
+        lineNumberPadding.calculateStartPadding(layoutDirection) + lineNumberPadding.calculateEndPadding(
+            layoutDirection
+        )
     }
 
     // State
@@ -71,60 +75,73 @@ fun CodeViewer(
         lines.maxOf { it.length }
     }
 
-    LazyColumn(
-        state = lazyListState,
-        contentPadding = PaddingValues(bottom = if(canScroll) DimenUtils.navBarPadding else 0.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .horizontalScroll(scrollState)
-            .background(theme.background)
+    Box(
+        modifier = Modifier.fillMaxWidth()
     ) {
-        itemsIndexed(
-            items = lines,
-            key = { i, code -> "$i-${code.sumOf { it.code }}" }
-        ) { i, code ->
-            Box(
-                contentAlignment = Alignment.CenterStart
-            ) {
-                CodeText(
-                    text = code.padEnd(maxLineLength) /* Probably a better way to do this but idk */,
-                    extension = extension,
-                    theme = theme.syntaxTheme,
-                    modifier = Modifier
-                        .padding(
-                            start = maxLineNumWidthAnimated.toDp()
-                                    + lineNumberHorizontalPadding /* Account for line number padding */
-                                    + codePadding, /* Desired padding */
-                            end = codePadding
-                        )
-                        .fillParentMaxWidth()
-                )
-                Row(
-                    modifier = Modifier
-                        .offset { IntOffset(scrollState.value, 0) }
-                        .background(theme.linesBackground)
+        LazyColumn(
+            state = lazyListState,
+            contentPadding = PaddingValues(bottom = if (canScroll) DimenUtils.navBarPadding else 0.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(scrollState)
+        ) {
+            itemsIndexed(
+                items = lines,
+                key = { i, code -> "$i-${code.sumOf { it.code }}" }
+            ) { i, code ->
+                Box(
+                    contentAlignment = Alignment.CenterStart,
+                    modifier = Modifier.background(theme.background)
                 ) {
-                    Text(
-                        (i + 1).padLineNumber(maxDigits = lines.size.digits),
-                        fontFamily = FontFamily.Monospace,
-                        fontSize = 13.sp,
-                        textAlign = TextAlign.End,
-                        color = theme.linesContent,
-                        fontWeight = FontWeight.Bold,
+                    CodeText(
+                        text = code.padEnd(maxLineLength) /* Probably a better way to do this but idk */,
+                        extension = extension,
+                        theme = theme.syntaxTheme,
                         modifier = Modifier
-                            .padding(lineNumberPadding)
-                            .onGloballyPositioned {
-                                if(it.size.width > maxLineNumWidth) maxLineNumWidth = it.size.width
-                            }
+                            .padding(
+                                start = maxLineNumWidthAnimated.toDp()
+                                        + lineNumberHorizontalPadding /* Account for line number padding */
+                                        + codePadding, /* Desired padding */
+                                end = codePadding
+                            )
+                            .fillParentMaxWidth()
                     )
-                    Box(
+                    Row(
                         modifier = Modifier
-                            .background(theme.linesContent)
-                            .width(2.dp)
-                            .fillMaxHeight()
-                    )
+                            .offset { IntOffset(scrollState.value, 0) }
+                            .background(theme.linesBackground)
+                    ) {
+                        Text(
+                            (i + 1).padLineNumber(maxDigits = lines.size.digits),
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 13.sp,
+                            textAlign = TextAlign.End,
+                            color = theme.linesContent,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .padding(lineNumberPadding)
+                                .onGloballyPositioned {
+                                    if (it.size.width > maxLineNumWidth) maxLineNumWidth =
+                                        it.size.width
+                                }
+                        )
+                        Box(
+                            modifier = Modifier
+                                .background(theme.linesContent)
+                                .width(2.dp)
+                                .fillMaxHeight()
+                        )
+                    }
                 }
             }
         }
+
+        ScrollBar(
+            scrollState = scrollState,
+            orientation = Orientation.Horizontal,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = if (canScroll) DimenUtils.navBarPadding else 0.dp)
+        )
     }
 }
