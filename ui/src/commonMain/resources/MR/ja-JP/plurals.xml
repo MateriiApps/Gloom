@@ -7,10 +7,10 @@
         <item quantity="other">%d 個のリポジトリ</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="other">%d 件のスター</item>
+        <item quantity="other">%d スター</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="other">%d 件のフォーク</item>
+        <item quantity="other">%d フォーク</item>
     </plurals>
     <plurals name="contributions_toast">
         <item quantity="other">%1$s: %2$d 件のコントリビューション</item>
