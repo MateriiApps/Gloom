@@ -35,11 +35,10 @@ fun RowScope.LargeSegmentedButton(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
         modifier = Modifier
-            .clickable(enabled) { onClick() }
+            .clickable(enabled = enabled, role = Role.Button) { onClick() }
             .background(MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp))
             .weight(1f)
             .padding(16.dp)
-
     ) {
         when (icon) {
             is ImageVector -> {

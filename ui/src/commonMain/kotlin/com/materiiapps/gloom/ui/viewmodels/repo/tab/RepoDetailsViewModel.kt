@@ -52,7 +52,7 @@ class RepoDetailsViewModel(
     }
 
     fun starRepo() {
-        updateStarDetails(true)
+        updateStarDetails(starred = true)
 
         coroutineScope.launch {
             isStarLoading = true
@@ -62,7 +62,7 @@ class RepoDetailsViewModel(
                     isStarLoading = false
                 },
                 onError = {
-                    updateStarDetails(false)
+                    updateStarDetails(starred = false)
 
                     isStarLoading = false
                     hasError = true
@@ -72,7 +72,7 @@ class RepoDetailsViewModel(
     }
 
     fun unstarRepo() {
-        updateStarDetails(false)
+        updateStarDetails(starred = false)
 
         coroutineScope.launch {
             isStarLoading = true
@@ -82,7 +82,7 @@ class RepoDetailsViewModel(
                     isStarLoading = false
                 },
                 onError = {
-                    updateStarDetails(true)
+                    updateStarDetails(starred = true)
 
                     isStarLoading = false
                     hasError = true
