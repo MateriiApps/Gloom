@@ -162,7 +162,14 @@ class DetailsTab(
                                     res = Res.plurals.stars,
                                     count = repoDetails.stargazerCount,
                                     repoDetails.stargazerCount
-                                )
+                                ),
+                                onClick = {
+                                    if (!repoDetails.viewerHasStarred)
+                                        viewModel.starRepo()
+                                    else
+                                        viewModel.unstarRepo()
+                                },
+                                enabled = !viewModel.isStarLoading
                             )
                             repoDetails.licenseInfo?.let {
                                 LargeSegmentedButton(

@@ -3,6 +3,7 @@ package com.materiiapps.gloom.ui.components
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,15 +27,19 @@ import androidx.compose.ui.unit.dp
 fun RowScope.LargeSegmentedButton(
     icon: Any,
     iconDescription: String? = null,
-    text: String
+    text: String,
+    onClick: () -> Unit = {},
+    enabled: Boolean = true
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
         modifier = Modifier
+            .clickable(enabled) { onClick() }
             .background(MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp))
             .weight(1f)
             .padding(16.dp)
+
     ) {
         when (icon) {
             is ImageVector -> {

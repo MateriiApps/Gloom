@@ -22,6 +22,8 @@ class RepoDetailsViewModel(
     var detailsLoading by mutableStateOf(false)
     var hasError by mutableStateOf(false)
 
+    var isStarLoading by mutableStateOf(false)
+
     init {
         loadDetails()
     }
@@ -42,4 +44,50 @@ class RepoDetailsViewModel(
         }
     }
 
+    private fun updateStarDetails(starred: Boolean) {
+        details = details!!.copy(
+            viewerHasStarred = starred,
+            stargazerCount = details!!.stargazerCount + if (starred) 1 else -1
+        )
+    }
+
+    fun starRepo() {
+        updateStarDetails(true)
+
+        coroutineScope.launch {
+            isStarLoading = true
+
+            gql.starRepo(details!!.id).fold(
+                onSuccess = {
+                    isStarLoading = false
+                },
+                onError = {
+                    updateStarDetails(false)
+
+                    isStarLoading = false
+                    hasError = true
+                }
+            )
+        }
+    }
+
+    fun unstarRepo() {
+        updateStarDetails(false)
+
+        coroutineScope.launch {
+            isStarLoading = true
+
+            gql.unstarRepo(details!!.id).fold(
+                onSuccess = {
+                    isStarLoading = false
+                },
+                onError = {
+                    updateStarDetails(true)
+
+                    isStarLoading = false
+                    hasError = true
+                }
+            )
+        }
+    }
 }
