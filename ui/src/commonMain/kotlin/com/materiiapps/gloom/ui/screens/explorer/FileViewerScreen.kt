@@ -1,10 +1,12 @@
 package com.materiiapps.gloom.ui.screens.explorer
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
@@ -18,9 +20,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.Res
@@ -34,6 +41,7 @@ import com.materiiapps.gloom.ui.screens.explorer.viewers.ImageFileViewer
 import com.materiiapps.gloom.ui.screens.explorer.viewers.MarkdownFileViewer
 import com.materiiapps.gloom.ui.screens.explorer.viewers.PdfFileViewer
 import com.materiiapps.gloom.ui.screens.explorer.viewers.TextFileViewer
+import com.materiiapps.gloom.ui.utils.thenIf
 import com.materiiapps.gloom.ui.viewmodels.explorer.FileViewerViewModel
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.androidx.compose.get
@@ -56,8 +64,12 @@ class FileViewerScreen(
             rememberPullRefreshState(viewModel.isLoading, onRefresh = { viewModel.getRepoFile() })
         val file = viewModel.file?.gitObject?.onCommit?.file
 
+        var topBarHidden by remember {
+            mutableStateOf(false)
+        }
+
         Scaffold(
-            topBar = { Toolbar(scrollBehavior, file) },
+            topBar = { Toolbar(scrollBehavior, file, topBarHidden) },
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             contentWindowInsets = WindowInsets(0, 0, 0, 0)
         ) { pv ->
@@ -76,7 +88,12 @@ class FileViewerScreen(
                             .fillMaxWidth()
                     )
 
-                    false -> FileContent(file)
+                    false -> FileContent(
+                        file = file,
+                        onHideToggled = {
+                            topBarHidden = !topBarHidden
+                        }
+                    )
                 }
 
                 RefreshIndicator(pullRefreshState, viewModel.isLoading)
@@ -85,12 +102,19 @@ class FileViewerScreen(
     }
 
     @Composable
-    private fun FileContent(file: RepoFile.File?) {
+    private fun FileContent(
+        file: RepoFile.File?,
+        onHideToggled: () -> Unit
+    ) {
         when (file?.fileType?.__typename) {
             "MarkdownFileType" -> MarkdownFileViewer(file.fileType?.onMarkdownFileType!!)
             "ImageFileType" -> ImageFileViewer(file.fileType?.onImageFileType!!)
             "PdfFileType" -> PdfFileViewer(file.fileType?.onPdfFileType!!)
-            "TextFileType" -> TextFileViewer(file.fileType?.onTextFileType!!, file.extension ?: "")
+            "TextFileType" -> TextFileViewer(
+                file.fileType?.onTextFileType!!,
+                file.extension ?: "",
+                onHideToggled
+            )
             else -> {}
         }
     }
@@ -117,11 +141,17 @@ class FileViewerScreen(
     private fun Toolbar(
         scrollBehavior: TopAppBarScrollBehavior,
         file: RepoFile.File?,
+        hidden: Boolean
     ) {
         SmallToolbar(
             title = path.split("/").lastOrNull() ?: "File",
             actions = { FileActions(file) },
-            scrollBehavior = scrollBehavior
+            scrollBehavior = scrollBehavior,
+            modifier = Modifier
+                .animateContentSize()
+                .thenIf(hidden) {
+                    height(0.dp)
+                }
         )
     }
 

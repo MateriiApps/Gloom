@@ -31,6 +31,7 @@
     <string name="action_stop_edit">Stop editing</string>
     <string name="action_sign_out_all">Sign out of all accounts</string>
     <string name="action_try_again">Try again</string>
+    <string name="action_reset_zoom">Reset zoom</string>
 
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">Cancel</string>

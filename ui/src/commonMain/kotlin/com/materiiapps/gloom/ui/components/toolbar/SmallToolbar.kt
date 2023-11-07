@@ -6,12 +6,14 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import com.materiiapps.gloom.ui.components.BackButton
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun SmallToolbar(
     title: String,
+    modifier: Modifier = Modifier,
     actions: @Composable RowScope.() -> Unit = {},
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
@@ -19,6 +21,7 @@ fun SmallToolbar(
         title = { Text(text = title) },
         navigationIcon = { BackButton() },
         actions = actions,
-        scrollBehavior = scrollBehavior
+        scrollBehavior = scrollBehavior,
+        modifier = modifier
     )
 }

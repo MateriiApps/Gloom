@@ -18,6 +18,7 @@ data class CodeTheme(
     val background: Color,
     val linesBackground: Color,
     val linesContent: Color,
+    val selectedHighlight: Color,
     val code: Color,
     val keyword: Color,
     val string: Color,
@@ -33,11 +34,13 @@ data class CodeTheme(
         background: Color,
         linesBackground: Color,
         linesContent: Color,
+        selectedHighlight: Color,
         syntaxTheme: SyntaxTheme
     ): this(
         background = background,
         linesBackground = linesBackground,
         linesContent = linesContent,
+        selectedHighlight = selectedHighlight,
         code = Color(syntaxTheme.code),
         keyword = Color(syntaxTheme.keyword),
         string = Color(syntaxTheme.string),
@@ -77,6 +80,7 @@ data class CodeTheme(
                 background = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp).copy(alpha = 0.2f),
                 linesBackground = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp),
                 linesContent = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+                selectedHighlight = Color(0xFFFF9800), // Orange
                 syntaxTheme = syntaxTheme
             )
         }
