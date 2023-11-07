@@ -44,45 +44,34 @@ class RepoDetailsViewModel(
         }
     }
 
-    private fun updateStarDetails(starred: Boolean) {
-        details = details!!.copy(
-            viewerHasStarred = starred,
-            stargazerCount = details!!.stargazerCount + if (starred) 1 else -1
-        )
-    }
-
-    fun starRepo() {
-        updateStarDetails(starred = true)
-
-        coroutineScope.launch {
-            isStarLoading = true
-
-            gql.starRepo(details!!.id).fold(
-                onSuccess = {
-                    isStarLoading = false
-                },
-                onError = {
-                    updateStarDetails(starred = false)
-
-                    isStarLoading = false
-                    hasError = true
-                }
+    fun toggleStar() {
+        fun updateStarDetails(starred: Boolean) {
+            details = details!!.copy(
+                viewerHasStarred = starred,
+                stargazerCount = details!!.stargazerCount + if (starred) 1 else -1
             )
         }
-    }
 
-    fun unstarRepo() {
-        updateStarDetails(starred = false)
+        val details = details!!
+        val hasStarred = details.viewerHasStarred
+
+        // Optimistic update
+        updateStarDetails(starred = !hasStarred)
 
         coroutineScope.launch {
             isStarLoading = true
 
-            gql.unstarRepo(details!!.id).fold(
+            if (hasStarred) {
+                gql.unstarRepo(details.id)
+            } else {
+                gql.starRepo(details.id)
+            }.fold(
                 onSuccess = {
                     isStarLoading = false
                 },
                 onError = {
-                    updateStarDetails(starred = true)
+                    // Revert optimistic update
+                    updateStarDetails(starred = hasStarred)
 
                     isStarLoading = false
                     hasError = true

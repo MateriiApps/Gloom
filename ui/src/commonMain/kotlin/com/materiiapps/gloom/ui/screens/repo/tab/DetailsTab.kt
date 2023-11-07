@@ -163,12 +163,7 @@ class DetailsTab(
                                     count = repoDetails.stargazerCount,
                                     repoDetails.stargazerCount
                                 ),
-                                onClick = {
-                                    if (!repoDetails.viewerHasStarred)
-                                        viewModel.starRepo()
-                                    else
-                                        viewModel.unstarRepo()
-                                },
+                                onClick = viewModel::toggleStar,
                                 enabled = !viewModel.isStarLoading
                             )
                             repoDetails.licenseInfo?.let {
