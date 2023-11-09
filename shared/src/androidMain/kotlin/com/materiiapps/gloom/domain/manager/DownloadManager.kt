@@ -11,6 +11,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.content.getSystemService
 import androidx.core.net.toUri
+import com.benasher44.uuid.uuid4
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +33,7 @@ actual class DownloadManager(
     ).resolve("Gloom")
 
     actual fun download(url: String, block: (String) -> Unit) {
-        val name = url.toUri().lastPathSegment!!
+        val name = url.toUri().lastPathSegment ?: "${uuid4()}.blob"
         downloadScope.launch {
             download(url, File(gloomDownloadFolder, name)).also {
                 Handler(Looper.getMainLooper()).post {

@@ -159,6 +159,8 @@
         would you like to install it?
     </string>
     <string name="msg_file_load_error">Could not load this file</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
 
     <string name="label_checks_failed">Checks failed</string>
     <string name="label_checks">Checks</string>

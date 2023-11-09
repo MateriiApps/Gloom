@@ -66,7 +66,7 @@ fun CodeViewer(
     extension: String,
     modifier: Modifier = Modifier,
     linesSelected: IntRange? = null,
-    onLinesSelected: ((IntRange?) -> Unit)? = null,
+    onLinesSelected: ((lineNumbers: IntRange?, snippet: String) -> Unit)? = null,
     onDoubleClick: (() -> Unit)? = null,
     verticalScrollState: LazyListState = rememberLazyListState(),
     horizontalScrollState: ScrollState = rememberScrollState(),
@@ -124,7 +124,10 @@ fun CodeViewer(
                                     val itemPressed = verticalScrollState.getItemAtOffset(offset)
                                     val lineNumber = itemPressed?.index?.plus(1)
                                     lineNumber?.let {
-                                        onLinesSelected!!(lineNumber..lineNumber)
+                                        onLinesSelected!!(
+                                            lineNumber..lineNumber,
+                                            lines[lineNumber - 1].trimIndent()
+                                        )
                                     }
                                 }
                             },
@@ -142,7 +145,13 @@ fun CodeViewer(
                                             else -> linesSelected
                                         }
 
-                                        onLinesSelected!!(if (newRange.isEmpty()) null else newRange)
+                                        onLinesSelected!!(
+                                            if (newRange.isEmpty()) null else newRange,
+                                            lines
+                                                .subList(newRange.first - 1, newRange.last)
+                                                .joinToString("\n")
+                                                .trimIndent()
+                                        )
                                     }
                                 }
                             },

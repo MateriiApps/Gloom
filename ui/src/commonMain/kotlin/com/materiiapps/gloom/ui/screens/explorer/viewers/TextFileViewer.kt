@@ -39,7 +39,9 @@ import dev.icerock.moko.resources.compose.stringResource
 fun TextFileViewer(
     textFile: RepoFile.OnTextFileType,
     extension: String,
-    onHideToggled: () -> Unit
+    linesSelected: IntRange?,
+    onHideToggled: () -> Unit,
+    onLinesSelected: (lineNumbers: IntRange?, snippet: String) -> Unit
 ) {
     val content = textFile.contentRaw ?: return
 
@@ -51,7 +53,6 @@ fun TextFileViewer(
     var scale by remember { mutableFloatStateOf(1f) }
     var lineNumberPadding by remember { mutableStateOf(defaultLineNumberPadding) }
     var hideFAB by remember { mutableStateOf(false) }
-    var linesSelected by remember { mutableStateOf(null as IntRange?) }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -63,9 +64,7 @@ fun TextFileViewer(
             codePadding = 16.dp * scale,
             lineNumberPadding = lineNumberPadding,
             linesSelected = linesSelected,
-            onLinesSelected = {
-                linesSelected = it
-            },
+            onLinesSelected = onLinesSelected,
             onDoubleClick = { // Double tap to hide the ui
                 onHideToggled()
                 hideFAB = !hideFAB
