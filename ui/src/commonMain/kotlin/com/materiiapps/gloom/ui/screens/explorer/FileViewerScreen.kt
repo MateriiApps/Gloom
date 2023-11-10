@@ -17,6 +17,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.ContentCopy
+import androidx.compose.material.icons.outlined.Description
+import androidx.compose.material.icons.outlined.FormatColorText
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -74,7 +76,7 @@ class FileViewerScreen(
             getScreenModel { parametersOf(FileViewerViewModel.Input(owner, name, branch, path)) }
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
         val pullRefreshState =
-            rememberPullRefreshState(viewModel.isLoading, onRefresh = { viewModel.getRepoFile() })
+            rememberPullRefreshState(viewModel.isLoading, onRefresh = viewModel::refresh)
         val file = viewModel.file?.gitObject?.onCommit?.file
 
         var topBarHidden by remember {
@@ -92,10 +94,10 @@ class FileViewerScreen(
                     .fillMaxSize()
                     .pullRefresh(pullRefreshState)
             ) {
-                when (viewModel.hasError) {
+                when (viewModel.fileHasError) {
                     true -> ErrorMessage(
                         message = stringResource(Res.strings.msg_file_load_error),
-                        onRetryClick = viewModel::getRepoFile,
+                        onRetryClick = viewModel::refresh,
                         modifier = Modifier
                             .align(Alignment.Center)
                             .fillMaxWidth()
@@ -122,19 +124,38 @@ class FileViewerScreen(
         onHideToggled: () -> Unit
     ) {
         when (file?.fileType?.__typename) {
-            "MarkdownFileType" -> MarkdownFileViewer(file.fileType?.onMarkdownFileType!!)
+            "MarkdownFileType" -> {
+                MarkdownFileViewer(
+                    markdownFile = file.fileType?.onMarkdownFileType!!,
+                    rawFile = viewModel.rawMarkdown,
+                    showRaw = viewModel.showRawMarkdown,
+                    rawHasError = viewModel.rawMarkdownHasError,
+                    linesSelected = viewModel.selectedLines,
+                    onHideToggled = onHideToggled,
+                    onLinesSelected = { lineNumbers, snippet ->
+                        viewModel.selectedLines = lineNumbers
+                        viewModel.selectedSnippet = snippet
+                    }
+                )
+            }
+
             "ImageFileType" -> ImageFileViewer(file.fileType?.onImageFileType!!)
             "PdfFileType" -> PdfFileViewer(file.fileType?.onPdfFileType!!)
-            "TextFileType" -> TextFileViewer(
-                textFile = file.fileType?.onTextFileType!!,
-                extension = file.extension ?: "",
-                linesSelected = viewModel.selectedLines,
-                onHideToggled = onHideToggled,
-                onLinesSelected = { lineNumbers, snippet ->
-                    viewModel.selectedLines = lineNumbers
-                    viewModel.selectedSnippet = snippet
+            "TextFileType" -> {
+                file.fileType?.onTextFileType?.contentRaw?.let { content ->
+                    TextFileViewer(
+                        content = content,
+                        extension = file.extension ?: "",
+                        linesSelected = viewModel.selectedLines,
+                        onHideToggled = onHideToggled,
+                        onLinesSelected = { lineNumbers, snippet ->
+                            viewModel.selectedLines = lineNumbers
+                            viewModel.selectedSnippet = snippet
+                        }
+                    )
                 }
-            )
+            }
+
             else -> {}
         }
     }
@@ -146,35 +167,45 @@ class FileViewerScreen(
     ) {
         val shareManager: ShareManager = get()
         val clipboardManager = LocalClipboardManager.current
+        val fileType = file?.fileType?.__typename
 
-        when (file?.fileType?.__typename) {
-            "MarkdownFileType" -> {}
-            "ImageFileType" -> {
-                DownloadButton(
-                    downloadUrl = file.fileType!!.onImageFileType!!.url!!
-                )
-            }
-
-            "PdfFileType" -> {
-                DownloadButton(
-                    downloadUrl = file.fileType!!.onPdfFileType!!.url!!
-                )
-            }
-
-            "TextFileType" -> {
-                if (viewModel.selectedSnippet.isNotBlank()) {
-                    IconButton(
-                        onClick = { clipboardManager.setText(AnnotatedString(viewModel.selectedSnippet)) }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Outlined.ContentCopy,
-                            contentDescription = null
-                        )
-                    }
+        if (fileType == "MarkdownFileType") {
+            IconButton(
+                onClick = {
+                    viewModel.toggleMarkdown()
                 }
-            }
+            ) {
+                val (icon, contentDescription) = if (!viewModel.showRawMarkdown) {
+                    Icons.Outlined.Description to Res.strings.action_view_raw
+                } else {
+                    Icons.Outlined.FormatColorText to Res.strings.action_view_markdown
+                }
 
-            else -> {}
+                Icon(
+                    imageVector = icon,
+                    contentDescription = stringResource(contentDescription)
+                )
+            }
+        }
+
+        if (fileType == "ImageFileType" || fileType == "PdfFileType") {
+            val url = file.fileType!!.onImageFileType?.url ?: file.fileType!!.onPdfFileType!!.url
+            if (url != null) {
+                DownloadButton(
+                    downloadUrl = url
+                )
+            }
+        }
+
+        if (viewModel.selectedSnippet.isNotBlank()) {
+            IconButton(
+                onClick = { clipboardManager.setText(AnnotatedString(viewModel.selectedSnippet)) }
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.ContentCopy,
+                    contentDescription = stringResource(Res.strings.action_copy)
+                )
+            }
         }
 
         IconButton(

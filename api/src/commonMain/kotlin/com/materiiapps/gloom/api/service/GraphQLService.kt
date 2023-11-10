@@ -17,6 +17,7 @@ import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.gql.IdentifyQuery
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.gql.ProfileQuery
+import com.materiiapps.gloom.gql.RawMarkdownQuery
 import com.materiiapps.gloom.gql.ReactMutation
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.RepoDetailsQuery
@@ -226,6 +227,13 @@ class GraphQLService(
     suspend fun getRepoFile(owner: String, name: String, branch: String, path: String) =
         withContext(Dispatchers.IO) {
             client.query(RepoFileQuery(owner, name, branch, path))
+                .addToken()
+                .response()
+        }
+
+    suspend fun getRawMarkdown(owner: String, name: String, branch: String, path: String) =
+        withContext(Dispatchers.IO) {
+            client.query(RawMarkdownQuery(owner, name, branch, path))
                 .addToken()
                 .response()
         }

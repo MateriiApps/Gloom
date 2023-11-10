@@ -6,7 +6,7 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -30,21 +30,18 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.gql.fragment.RepoFile
 import com.materiiapps.gloom.ui.utils.DimenUtils.multiply
 import com.materiiapps.gloom.ui.widgets.code.CodeViewer
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun TextFileViewer(
-    textFile: RepoFile.OnTextFileType,
+    content: String,
     extension: String,
     linesSelected: IntRange?,
     onHideToggled: () -> Unit,
     onLinesSelected: (lineNumbers: IntRange?, snippet: String) -> Unit
 ) {
-    val content = textFile.contentRaw ?: return
-
     val lazyListState = rememberLazyListState()
     val scrollState = rememberScrollState()
     val layoutDirection = LocalLayoutDirection.current
@@ -55,7 +52,7 @@ fun TextFileViewer(
     var hideFAB by remember { mutableStateOf(false) }
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxWidth()
     ) {
         CodeViewer(
             code = content,

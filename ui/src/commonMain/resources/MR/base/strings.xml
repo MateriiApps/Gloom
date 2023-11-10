@@ -32,6 +32,9 @@
     <string name="action_sign_out_all">Sign out of all accounts</string>
     <string name="action_try_again">Try again</string>
     <string name="action_reset_zoom">Reset zoom</string>
+    <string name="action_view_raw">View raw</string>
+    <string name="action_view_markdown">View as markdown</string>
+    <string name="action_copy">Copy</string>
 
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">Cancel</string>
@@ -159,6 +162,7 @@
         would you like to install it?
     </string>
     <string name="msg_file_load_error">Could not load this file</string>
+    <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
     <string name="msg_downloading_file">Downloading %1$s...</string>
     <string name="msg_download_completed">Download completed</string>
 

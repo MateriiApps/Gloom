@@ -98,6 +98,10 @@ class GraphQLRepository(
         service.getRepoFile(owner, name, branch, path)
             .transform { it.repository?.repoFile }
 
+    suspend fun getRawMarkdown(owner: String, name: String, branch: String, path: String) =
+        service.getRawMarkdown(owner, name, branch, path)
+            .transform { it.repository?.gitObject?.onCommit?.file?.fileType?.rawMarkdownFile }
+
     suspend fun getDefaultBranch(owner: String, name: String) =
         service.getDefaultBranch(owner, name).transform {
             it.repository?.defaultBranchRef?.name

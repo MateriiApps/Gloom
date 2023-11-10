@@ -9,6 +9,7 @@ import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.fold
 import com.materiiapps.gloom.domain.manager.AuthManager
+import com.materiiapps.gloom.gql.fragment.RawMarkdownFile
 import com.materiiapps.gloom.gql.fragment.RepoFile
 import kotlinx.coroutines.launch
 
@@ -23,10 +24,13 @@ class FileViewerViewModel(
     data class Input(val owner: String, val name: String, val branch: String, val path: String)
 
     var file by mutableStateOf<RepoFile?>(null)
+    var rawMarkdown by mutableStateOf<RawMarkdownFile?>(null)
 
     var isLoading by mutableStateOf(false)
-    var hasError by mutableStateOf(false)
+    var fileHasError by mutableStateOf(false)
+    var rawMarkdownHasError by mutableStateOf(false)
 
+    var showRawMarkdown by mutableStateOf(false)
     var selectedLines: IntRange? by mutableStateOf(null)
     var selectedSnippet: String = ""
 
@@ -34,18 +38,50 @@ class FileViewerViewModel(
         getRepoFile()
     }
 
-    fun getRepoFile() {
+    private fun getRepoFile() {
         with(input) {
             isLoading = true
             coroutineScope.launch {
                 gqlRepo.getRepoFile(owner, name, branch, path).fold(
                     onSuccess = {
                         file = it
+                        fileHasError = false
                     },
-                    onError = { hasError = true }
+                    onError = { fileHasError = true }
                 )
                 isLoading = false
             }
+        }
+    }
+
+    private fun getRawMarkdown() {
+        with(input) {
+            isLoading = true
+            coroutineScope.launch {
+                gqlRepo.getRawMarkdown(owner, name, branch, path).fold(
+                    onSuccess = {
+                        rawMarkdown = it
+                        rawMarkdownHasError = false
+                    },
+                    onError = { rawMarkdownHasError = true }
+                )
+                isLoading = false
+            }
+        }
+    }
+
+    fun refresh() {
+        if (showRawMarkdown) getRawMarkdown() else getRepoFile()
+    }
+
+    fun toggleMarkdown() {
+        if(!showRawMarkdown) {
+            showRawMarkdown = true
+            if(rawMarkdown == null) getRawMarkdown()
+        } else {
+            showRawMarkdown = false
+            selectedSnippet = ""
+            selectedLines = null
         }
     }
 
