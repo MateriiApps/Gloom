@@ -74,7 +74,6 @@ class RepoDetailsViewModel(
                     updateStarDetails(starred = hasStarred)
 
                     isStarLoading = false
-                    hasError = true
                 }
             )
         }
