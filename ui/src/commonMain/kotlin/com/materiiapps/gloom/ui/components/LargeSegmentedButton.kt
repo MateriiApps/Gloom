@@ -29,7 +29,7 @@ fun RowScope.LargeSegmentedButton(
     icon: Any,
     iconDescription: String? = null,
     text: String,
-    onClick: () -> Unit = {},
+    onClick: () -> Unit,
     enabled: Boolean = true
 ) {
     Column(

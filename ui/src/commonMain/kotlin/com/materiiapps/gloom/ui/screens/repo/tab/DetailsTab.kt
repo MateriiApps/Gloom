@@ -169,7 +169,8 @@ class DetailsTab(
                             repoDetails.licenseInfo?.let {
                                 LargeSegmentedButton(
                                     icon = Icons.Custom.Balance,
-                                    text = it.nickname ?: it.key.uppercase()
+                                    text = it.nickname ?: it.key.uppercase(),
+                                    onClick = { }
                                 )
                             }
                             LargeSegmentedButton(
@@ -178,7 +179,8 @@ class DetailsTab(
                                     res = Res.plurals.forks,
                                     count = repoDetails.forkCount,
                                     repoDetails.forkCount
-                                )
+                                ),
+                                onClick = { }
                             )
                         }
                     }
