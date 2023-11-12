@@ -46,7 +46,7 @@ fun RowScope.LargeSegmentedButton(
                 Icon(
                     imageVector = icon,
                     contentDescription = iconDescription,
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
                 )
             }
 
@@ -54,7 +54,7 @@ fun RowScope.LargeSegmentedButton(
                 Icon(
                     painter = icon,
                     contentDescription = iconDescription,
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
                 )
             }
         }
@@ -62,7 +62,7 @@ fun RowScope.LargeSegmentedButton(
         Text(
             text = text,
             style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.primary,
+            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
             maxLines = 1,
             modifier = Modifier.basicMarquee(Int.MAX_VALUE)
         )
