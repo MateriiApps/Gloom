@@ -28,7 +28,7 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.LargeToolbar
+import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.viewmodels.home.HomeViewModel
 import com.materiiapps.gloom.ui.widgets.feed.CreatedRepoItem

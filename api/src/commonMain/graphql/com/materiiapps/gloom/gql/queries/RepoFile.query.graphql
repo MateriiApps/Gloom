@@ -1,0 +1,12 @@
+query RepoFile(
+    $owner: String!
+    $name: String!
+    $branch: String!
+    $path: String!
+) {
+    repository(owner: $owner, name: $name) {
+        __typename
+        ...RepoFile
+        id
+    }
+}

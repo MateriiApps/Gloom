@@ -1,0 +1,40 @@
+fragment RepoFile on Repository {
+    id
+    gitObject: object(expression: $branch) {
+        __typename
+        ...NodeId
+        ... on Commit {
+            file(path: $path) {
+                extension
+                path
+                fileType {
+                    __typename
+                    ... on MarkdownFileType {
+                        contentHTML
+                    }
+                    ... on ImageFileType {
+                        url
+                    }
+                    ... on PdfFileType {
+                        url
+                    }
+                    ... on TextFileType {
+                        contentRaw
+                    }
+                }
+            }
+            id
+        }
+    }
+    viewerCanPush
+    ref(qualifiedName: $branch) {
+        id
+        viewerCanCommitToBranch
+        target {
+            id
+            oid
+        }
+        __typename
+    }
+    __typename
+}

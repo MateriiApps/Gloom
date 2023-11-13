@@ -1,0 +1,4 @@
+fragment NodeId on Node {
+    id
+    __typename
+}

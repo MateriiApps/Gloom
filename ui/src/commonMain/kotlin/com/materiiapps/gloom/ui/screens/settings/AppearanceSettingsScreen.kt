@@ -16,7 +16,7 @@ import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.domain.manager.Theme
-import com.materiiapps.gloom.ui.components.LargeToolbar
+import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.settings.SettingsItemChoice
 import com.materiiapps.gloom.ui.utils.getString
 import com.materiiapps.gloom.ui.viewmodels.settings.AppearanceSettingsViewModel

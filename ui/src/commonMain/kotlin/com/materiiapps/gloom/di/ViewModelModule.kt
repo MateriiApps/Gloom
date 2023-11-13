@@ -2,6 +2,7 @@ package com.materiiapps.gloom.di
 
 import com.materiiapps.gloom.ui.viewmodels.auth.LandingViewModel
 import com.materiiapps.gloom.ui.viewmodels.explorer.DirectoryListingViewModel
+import com.materiiapps.gloom.ui.viewmodels.explorer.FileViewerViewModel
 import com.materiiapps.gloom.ui.viewmodels.home.HomeViewModel
 import com.materiiapps.gloom.ui.viewmodels.list.OrgListViewModel
 import com.materiiapps.gloom.ui.viewmodels.list.RepositoryListViewModel
@@ -42,6 +43,7 @@ fun viewModelModule() = module {
     factoryOf(::RepoDetailsViewModel)
     factoryOf(::RepoCodeViewModel)
     factoryOf(::DirectoryListingViewModel)
+    factoryOf(::FileViewerViewModel)
     factoryOf(::RepoIssuesViewModel)
     factoryOf(::RepoPullRequestsViewModel)
     factoryOf(::RepoReleasesViewModel)

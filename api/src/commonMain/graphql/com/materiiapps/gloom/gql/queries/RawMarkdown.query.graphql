@@ -1,0 +1,18 @@
+query RawMarkdown(
+    $owner: String!
+    $name: String!
+    $branch: String!
+    $path: String!
+) {
+    repository(owner: $owner, name: $name) {
+        gitObject: object(expression: $branch) {
+            ... on Commit {
+                file(path: $path) {
+                    fileType {
+                        ...RawMarkdownFile
+                    }
+                }
+            }
+        }
+    }
+}
