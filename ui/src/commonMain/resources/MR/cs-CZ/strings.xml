@@ -27,6 +27,11 @@
     <string name="action_edit">Edit</string>
     <string name="action_stop_edit">Stop editing</string>
     <string name="action_sign_out_all">Sign out of all accounts</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_reset_zoom">Reset zoom</string>
+    <string name="action_view_raw">View raw</string>
+    <string name="action_view_markdown">View as markdown</string>
+    <string name="action_copy">Copy</string>
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">Zrušit</string>
     <string name="dismiss_no_thanks">Ne, děkuji</string>
@@ -134,6 +139,10 @@
     <string name="msg_install_dialog_body">We have detected that %1$s is an Android application,
         would you like to install it?
     </string>
+    <string name="msg_file_load_error">Could not load this file</string>
+    <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
     <string name="label_checks_failed">Checks failed</string>
     <string name="label_checks">Checks</string>
     <string name="label_reviews">Reviews</string>

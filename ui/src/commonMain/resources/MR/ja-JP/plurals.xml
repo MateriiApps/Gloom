@@ -18,4 +18,7 @@
     <plurals name="plural_language">
         <item quantity="other">言語</item>
     </plurals>
+    <plurals name="plural_lines_selected">
+        <item quantity="other">Lines %1$s-%2$s</item>
+    </plurals>
 </resources>

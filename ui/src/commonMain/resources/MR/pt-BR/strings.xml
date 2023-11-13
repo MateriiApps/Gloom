@@ -27,6 +27,11 @@
     <string name="action_edit">Editar</string>
     <string name="action_stop_edit">Parar de editar</string>
     <string name="action_sign_out_all">Sair de todas as contas</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_reset_zoom">Reset zoom</string>
+    <string name="action_view_raw">View raw</string>
+    <string name="action_view_markdown">View as markdown</string>
+    <string name="action_copy">Copy</string>
     <string name="dismiss_nevermind">Deixa para lá</string>
     <string name="dismiss_cancel">Cancelar</string>
     <string name="dismiss_no_thanks">Não obrigado</string>
@@ -124,6 +129,10 @@
     <string name="msg_release_author">§author§%1$s§ lançou esse %2$s</string>
     <string name="msg_download_dialog_body">Você está prestes a baixar %1$s (%2$s), tem certeza que quer fazer isso?</string>
     <string name="msg_install_dialog_body">Detectamos que %1$s é um app Android, você gostaria de instalá-lo?</string>
+    <string name="msg_file_load_error">Could not load this file</string>
+    <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
     <string name="label_checks_failed">Falha nas verificações</string>
     <string name="label_checks">Verificações</string>
     <string name="label_reviews">Revisões</string>

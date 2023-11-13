@@ -27,6 +27,11 @@
     <string name="action_edit">編集</string>
     <string name="action_stop_edit">編集をやめる</string>
     <string name="action_sign_out_all">すべてのアカウントからサインアウト</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_reset_zoom">Reset zoom</string>
+    <string name="action_view_raw">View raw</string>
+    <string name="action_view_markdown">View as markdown</string>
+    <string name="action_copy">Copy</string>
     <string name="dismiss_nevermind">やめる</string>
     <string name="dismiss_cancel">キャンセル</string>
     <string name="dismiss_no_thanks">いいえ</string>
@@ -124,6 +129,10 @@
     <string name="msg_release_author">§author§%1$s§ が %2$s をリリースしました</string>
     <string name="msg_download_dialog_body">%1$s (%2$s) をダウンロードしようとしています。続行しますか？</string>
     <string name="msg_install_dialog_body">%1$s がAndroidアプリであることを検出しました。インストールしますか？</string>
+    <string name="msg_file_load_error">Could not load this file</string>
+    <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
     <string name="label_checks_failed">チェック失敗</string>
     <string name="label_checks">チェック成功</string>
     <string name="label_reviews">レビュー</string>
