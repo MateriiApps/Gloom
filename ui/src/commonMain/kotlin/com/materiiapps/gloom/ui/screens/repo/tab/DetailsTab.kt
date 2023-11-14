@@ -170,7 +170,7 @@ class DetailsTab(
                                 LargeSegmentedButton(
                                     icon = Icons.Custom.Balance,
                                     text = it.nickname ?: it.key.uppercase(),
-                                    onClick = { }
+                                    onClick = { /* TODO */ }
                                 )
                             }
                             LargeSegmentedButton(
@@ -180,7 +180,7 @@ class DetailsTab(
                                     count = repoDetails.forkCount,
                                     repoDetails.forkCount
                                 ),
-                                onClick = { }
+                                onClick = { /* TODO */ }
                             )
                         }
                     }

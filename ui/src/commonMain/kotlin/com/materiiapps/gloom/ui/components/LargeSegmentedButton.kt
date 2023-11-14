@@ -11,10 +11,12 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,31 +43,32 @@ fun RowScope.LargeSegmentedButton(
             .weight(1f)
             .padding(16.dp)
     ) {
-        when (icon) {
-            is ImageVector -> {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = iconDescription,
-                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
-                )
+        CompositionLocalProvider(
+            LocalContentColor provides MaterialTheme.colorScheme.primary.copy(if (enabled) 1f else 0.5f)
+        ) {
+            when (icon) {
+                is ImageVector -> {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = iconDescription
+                    )
+                }
+
+                is Painter -> {
+                    Icon(
+                        painter = icon,
+                        contentDescription = iconDescription
+                    )
+                }
             }
 
-            is Painter -> {
-                Icon(
-                    painter = icon,
-                    contentDescription = iconDescription,
-                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
-                )
-            }
+            Text(
+                text = text,
+                style = MaterialTheme.typography.labelLarge,
+                maxLines = 1,
+                modifier = Modifier.basicMarquee(Int.MAX_VALUE)
+            )
         }
-
-        Text(
-            text = text,
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-            maxLines = 1,
-            modifier = Modifier.basicMarquee(Int.MAX_VALUE)
-        )
     }
 }
 

@@ -7,6 +7,7 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.fold
+import com.materiiapps.gloom.api.utils.ifUnsuccessful
 import com.materiiapps.gloom.gql.fragment.RepoDetails
 import kotlinx.coroutines.launch
 
@@ -44,14 +45,14 @@ class RepoDetailsViewModel(
         }
     }
 
-    fun toggleStar() {
-        fun updateStarDetails(starred: Boolean) {
-            details = details!!.copy(
-                viewerHasStarred = starred,
-                stargazerCount = details!!.stargazerCount + if (starred) 1 else -1
-            )
-        }
+    private fun updateStarDetails(starred: Boolean) {
+        details = details?.copy(
+            viewerHasStarred = starred,
+            stargazerCount = details!!.stargazerCount + if (starred) 1 else -1
+        )
+    }
 
+    fun toggleStar() {
         val details = details!!
         val hasStarred = details.viewerHasStarred
 
@@ -65,17 +66,12 @@ class RepoDetailsViewModel(
                 gql.unstarRepo(details.id)
             } else {
                 gql.starRepo(details.id)
-            }.fold(
-                onSuccess = {
-                    isStarLoading = false
-                },
-                onError = {
-                    // Revert optimistic update
-                    updateStarDetails(starred = hasStarred)
-
-                    isStarLoading = false
-                }
-            )
+            }.ifUnsuccessful {
+                // Revert optimistic update
+                updateStarDetails(starred = hasStarred)
+            }
+            isStarLoading = false
         }
     }
+
 }

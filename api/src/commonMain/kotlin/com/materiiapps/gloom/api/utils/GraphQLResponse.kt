@@ -33,6 +33,13 @@ inline fun <T> GraphQLResponse<T>.ifSuccessful(block: (T) -> Unit) {
     }
 }
 
+inline fun <T> GraphQLResponse<T>.ifUnsuccessful(block: (String) -> Unit) {
+    fold(
+        onSuccess = {},
+        onError = block
+    )
+}
+
 fun <T> GraphQLResponse<T>.getOrNull(): T? = when (this) {
     is GraphQLResponse.Success -> data
     is GraphQLResponse.Error,
