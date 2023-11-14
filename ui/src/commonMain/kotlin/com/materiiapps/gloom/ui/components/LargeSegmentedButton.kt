@@ -29,9 +29,9 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun RowScope.LargeSegmentedButton(
     icon: Any,
-    iconDescription: String? = null,
     text: String,
     onClick: () -> Unit,
+    iconDescription: String? = null,
     enabled: Boolean = true
 ) {
     Column(
