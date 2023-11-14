@@ -162,12 +162,15 @@ class DetailsTab(
                                     res = Res.plurals.stars,
                                     count = repoDetails.stargazerCount,
                                     repoDetails.stargazerCount
-                                )
+                                ),
+                                onClick = viewModel::toggleStar,
+                                enabled = !viewModel.isStarLoading
                             )
                             repoDetails.licenseInfo?.let {
                                 LargeSegmentedButton(
                                     icon = Icons.Custom.Balance,
-                                    text = it.nickname ?: it.key.uppercase()
+                                    text = it.nickname ?: it.key.uppercase(),
+                                    onClick = { /* TODO */ }
                                 )
                             }
                             LargeSegmentedButton(
@@ -176,7 +179,8 @@ class DetailsTab(
                                     res = Res.plurals.forks,
                                     count = repoDetails.forkCount,
                                     repoDetails.forkCount
-                                )
+                                ),
+                                onClick = { /* TODO */ }
                             )
                         }
                     }
