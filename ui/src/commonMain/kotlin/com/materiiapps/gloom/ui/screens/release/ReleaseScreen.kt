@@ -62,7 +62,7 @@ import com.materiiapps.gloom.ui.widgets.release.dialog.ReleaseAssetInstallDialog
 import com.materiiapps.gloom.utils.Feature
 import com.materiiapps.gloom.utils.Features
 import dev.icerock.moko.resources.compose.stringResource
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
 class ReleaseScreen(
@@ -78,7 +78,7 @@ class ReleaseScreen(
     override fun Content() {
         val viewModel: ReleaseViewModel = getScreenModel { parametersOf(Triple(owner, name, tag)) }
         val alertController = LocalAlertController.current
-        val dialogManager: DialogManager = get()
+        val dialogManager: DialogManager = koinInject()
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
         val items = viewModel.items.collectAsLazyPagingItems()
         val details = viewModel.details
@@ -238,7 +238,7 @@ class ReleaseScreen(
         scrollBehavior: TopAppBarScrollBehavior
     ) {
         val titleAlpha = scrollBehavior.state.overlappedFraction
-        val shareManager: ShareManager = get()
+        val shareManager: ShareManager = koinInject()
 
         TopAppBar(
             navigationIcon = { BackButton() },

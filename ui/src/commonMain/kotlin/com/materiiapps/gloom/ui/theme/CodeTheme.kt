@@ -12,7 +12,7 @@ import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.domain.manager.Theme
 import dev.snipme.highlights.model.SyntaxTheme
 import dev.snipme.highlights.model.SyntaxThemes
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 
 data class CodeTheme(
     val background: Color,
@@ -69,7 +69,7 @@ data class CodeTheme(
 
         @Composable
         fun getDefault(): CodeTheme {
-            val prefs: PreferenceManager = get()
+            val prefs: PreferenceManager = koinInject()
             val isSystemInDarkTheme = isSystemInDarkTheme()
             val darkMode = remember(prefs.theme, isSystemInDarkTheme) {
                 (prefs.theme == Theme.DARK && prefs.theme != Theme.LIGHT) || (prefs.theme == Theme.SYSTEM  && isSystemInDarkTheme)

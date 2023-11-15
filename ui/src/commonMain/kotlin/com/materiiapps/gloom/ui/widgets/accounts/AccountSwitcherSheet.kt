@@ -26,7 +26,7 @@ import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.utils.toImmutableList
 import com.materiiapps.gloom.ui.viewmodels.settings.AccountSettingsViewModel
 import dev.icerock.moko.resources.compose.stringResource
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -34,7 +34,7 @@ fun AccountSwitcherSheet(
     onDismiss: () -> Unit,
 ) {
     val nav = LocalNavigator.currentOrThrow
-    val viewModel: AccountSettingsViewModel = get()
+    val viewModel: AccountSettingsViewModel = koinInject()
     val accounts by remember(viewModel.authManager.accounts) {
         derivedStateOf {
             viewModel.authManager.accounts.values

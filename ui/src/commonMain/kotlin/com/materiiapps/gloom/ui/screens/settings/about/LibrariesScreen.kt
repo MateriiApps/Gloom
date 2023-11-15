@@ -17,14 +17,14 @@ import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.ThinDivider
 import com.materiiapps.gloom.ui.widgets.about.LibraryItem
 import dev.icerock.moko.resources.compose.stringResource
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 
 class LibrariesScreen: Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
-        val libraryManager: LibraryManager = get()
+        val libraryManager: LibraryManager = koinInject()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
         Scaffold(

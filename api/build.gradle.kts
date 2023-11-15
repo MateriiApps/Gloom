@@ -20,7 +20,7 @@ android {
 }
 
 kotlin {
-    android()
+    androidTarget()
     jvmToolchain(17)
 
     sourceSets {

@@ -35,7 +35,6 @@ import com.materiiapps.gloom.ui.utils.format
 import com.materiiapps.gloom.ui.utils.getPluralString
 import com.materiiapps.gloom.ui.widgets.alerts.LocalAlertController
 import dev.icerock.moko.resources.compose.stringResource
-import org.koin.androidx.compose.get
 
 @Composable
 fun ContributionGraph(

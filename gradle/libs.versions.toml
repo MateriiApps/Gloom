@@ -1,14 +1,12 @@
 [versions]
 aboutlibraries = "10.9.0"
 accompanist = "0.30.1"
-agp = "8.3.0-alpha02"
+agp = "8.1.3"
 apollo = "3.6.2"
 buildkonfig = "0.13.3"
-coil = "2.4.0"
-compose = "1.6.0-alpha05"
-compose-compiler = "1.4.8"
-koin = "3.4.3"
-kotlin = "1.8.22"
+compose-compiler = "1.5.4"
+koin = "3.5.2-RC1"
+kotlin = "1.9.20"
 ktor = "2.3.3"
 moko-resources = "0.23.0"
 voyager = "1.0.0-rc07"
@@ -17,7 +15,7 @@ voyager = "1.0.0-rc07"
 aboutlibraries-core = { group = "com.mikepenz", name = "aboutlibraries", version.ref = "aboutlibraries" }
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-webview = { group = "com.google.accompanist", name = "accompanist-webview", version.ref = "accompanist" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.7.2" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.8.0" }
 androidx-browser = { group = "androidx.browser", name = "browser", version = "1.6.0" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.12.0" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.0.1" }
@@ -26,21 +24,15 @@ androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", 
 apollo-adapters = { group = "com.apollographql.apollo3", name = "apollo-adapters", version.ref = "apollo" }
 apollo-normalized-cache = { group = "com.apollographql.apollo3", name = "apollo-normalized-cache", version.ref = "apollo" }
 apollo-runtime = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo" }
-coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 compose-imageloader = { group = "io.github.qdsfdhvh", name = "image-loader", version = "1.6.4" }
-compose-material3 = { group = "androidx.compose.material3", name = "material3", version = "1.2.0-alpha07" }
-compose-material = { group = "androidx.compose.material", name = "material", version.ref = "compose" }
-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "compose" }
 compose-pdf = { group = "dev.zt64", name = "compose-pdf", version = "1.0.0" }
-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
 highlights = { group = "dev.snipme", name = "highlights", version = "0.7.1" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version = "3.4.0" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose", version = "1.1.1-RC1" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "1.7.3" }
-kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version = "0.4.0" }
-kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.5.1" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version = "0.4.1" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.6.0" }
 ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
@@ -61,7 +53,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
-compose = { id = "org.jetbrains.compose", version = "1.5.0" }
+compose = { id = "org.jetbrains.compose", version = "1.5.10" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
@@ -69,11 +61,7 @@ moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.re
 
 [bundles]
 accompanist = ["accompanist-systemuicontroller", "accompanist-webview"]
-androidx = ["androidx-paging-compose", "androidx-activity-compose", "androidx-lifecycle-runtime-ktx", "androidx-browser", "androidx-core-ktx", "androidx-core-splashscreen"]
 apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters"]
-coil = ["coil", "coil-compose"]
-compose = ["compose-material-icons-extended", "compose-material", "compose-material3", "compose-ui"]
-koin = ["koin-android", "koin-androidx-compose", "koin-core"]
 kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime", "kotlinx-serialization"]
 ktor = ["ktor-serialization-kotlinx-json", "ktor-client-logging", "ktor-client-core", "ktor-client-content-negotiation", "ktor-client-cio"]
 voyager = ["voyager-tab-navigator", "voyager-koin", "voyager-navigator", "voyager-transitions"]

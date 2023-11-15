@@ -59,7 +59,7 @@ import com.materiiapps.gloom.ui.screens.explorer.viewers.TextFileViewer
 import com.materiiapps.gloom.ui.utils.thenIf
 import com.materiiapps.gloom.ui.viewmodels.explorer.FileViewerViewModel
 import dev.icerock.moko.resources.compose.stringResource
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
 class FileViewerScreen(
@@ -165,7 +165,7 @@ class FileViewerScreen(
         viewModel: FileViewerViewModel,
         file: RepoFile.File?
     ) {
-        val shareManager: ShareManager = get()
+        val shareManager: ShareManager = koinInject()
         val clipboardManager = LocalClipboardManager.current
         val fileType = file?.fileType?.__typename
 
@@ -219,7 +219,7 @@ class FileViewerScreen(
     }
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     private fun Toolbar(
         scrollBehavior: TopAppBarScrollBehavior,
         viewModel: FileViewerViewModel,

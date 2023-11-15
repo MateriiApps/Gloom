@@ -36,7 +36,7 @@ import com.materiiapps.gloom.domain.manager.DialogState
 import com.materiiapps.gloom.ui.utils.getFileSizeString
 import com.materiiapps.gloom.ui.widgets.release.dialog.ReleaseAssetDownloadDialog
 import dev.icerock.moko.resources.compose.stringResource
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 
 @Composable
 fun ReleaseAsset(
@@ -44,7 +44,7 @@ fun ReleaseAsset(
     size: Int,
     onDownloadClick: () -> Unit
 ) {
-    val dialogManager: DialogManager = get()
+    val dialogManager: DialogManager = koinInject()
     var showConfirmDialog by remember {
         mutableStateOf(false)
     }

@@ -27,7 +27,7 @@ import com.materiiapps.gloom.ui.components.navbar.LongClickableNavBarItem
 import com.materiiapps.gloom.ui.utils.DimenUtils
 import com.materiiapps.gloom.ui.utils.RootTab
 import com.materiiapps.gloom.ui.widgets.accounts.AccountSwitcherSheet
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 
 class RootScreen : Screen {
 
@@ -67,11 +67,11 @@ class RootScreen : Screen {
     private fun TabBar(
         onProfileLongClick: () -> Unit
     ) {
-        val authManager: AuthManager = get()
+        val authManager: AuthManager = koinInject()
         val navigator = LocalTabNavigator.current
 
         NavigationBar {
-            RootTab.values().forEach {
+            RootTab.entries.forEach {
                 LongClickableNavBarItem(
                     selected = navigator.current == it.tab,
                     onClick = { navigator.current = it.tab },

@@ -12,7 +12,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.DownloadManager
 import com.materiiapps.gloom.ui.widgets.alerts.LocalAlertController
 import dev.icerock.moko.resources.compose.stringResource
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 
 @Composable
 fun DownloadButton(
@@ -21,7 +21,7 @@ fun DownloadButton(
     fileName: String = downloadUrl.split("/").lastOrNull() ?: "${uuid4()}.blob",
     onDownloadFinished: (String) -> Unit = {}
 ) {
-    val downloadManager: DownloadManager = get()
+    val downloadManager: DownloadManager = koinInject()
     val alertController = LocalAlertController.current
     val downloadingText = stringResource(Res.strings.msg_downloading_file, fileName)
     val downloadedText = stringResource(Res.strings.msg_download_completed)

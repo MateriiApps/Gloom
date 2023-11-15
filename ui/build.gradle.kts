@@ -25,7 +25,7 @@ android {
 }
 
 kotlin {
-    android()
+    androidTarget()
     jvmToolchain(17)
 
     sourceSets {
@@ -47,13 +47,14 @@ kotlin {
                 api(libs.compose.pdf)
                 api(libs.highlights)
                 api(libs.koin.core)
-                api(libs.koin.androidx.compose)
+                api(libs.koin.compose)
                 api(libs.moko.resources.compose)
                 api(libs.multiplatform.paging)
                 api(libs.zoomable)
             }
         }
         val androidMain by getting {
+            dependsOn(commonMain.get()) // Necessary for MOKO Resources
             dependencies {
                 api(libs.bundles.accompanist)
                 api(libs.androidx.core.ktx)

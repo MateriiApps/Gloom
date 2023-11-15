@@ -114,7 +114,7 @@ import com.materiiapps.gloom.utils.Constants
 import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 import java.net.URI
 
@@ -192,7 +192,7 @@ open class ProfileScreen(
         scrollBehavior: TopAppBarScrollBehavior
     ) {
         val nav = LocalNavigator.current
-        val shareManager: ShareManager = get()
+        val shareManager: ShareManager = koinInject()
 
         TopAppBar(
             title = {

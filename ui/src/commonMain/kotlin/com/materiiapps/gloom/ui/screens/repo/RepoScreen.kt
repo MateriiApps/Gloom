@@ -63,7 +63,7 @@ import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.viewmodels.repo.RepoViewModel
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.get
+import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
 class RepoScreen(
@@ -186,7 +186,7 @@ class RepoScreen(
         scrollBehavior: TopAppBarScrollBehavior,
         viewModel: RepoViewModel
     ) {
-        val shareManager: ShareManager = get()
+        val shareManager: ShareManager = koinInject()
         val avSize = Dp(55 - scrollBehavior.state.collapsedFraction * 55)
         val nav = LocalNavigator.current
         val loading by remember {
