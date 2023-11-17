@@ -1,21 +1,32 @@
 package com.materiiapps.gloom.ui.screens.home
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -28,8 +39,8 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.RefreshIndicator
+import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.viewmodels.home.HomeViewModel
 import com.materiiapps.gloom.ui.widgets.feed.CreatedRepoItem
 import com.materiiapps.gloom.ui.widgets.feed.FollowedUserItem
@@ -39,6 +50,7 @@ import com.materiiapps.gloom.ui.widgets.feed.RecommendedFollowUserItem
 import com.materiiapps.gloom.ui.widgets.feed.RecommendedRepoItem
 import com.materiiapps.gloom.ui.widgets.feed.StarredRepoItem
 import dev.icerock.moko.resources.compose.stringResource
+import kotlinx.coroutines.launch
 
 class HomeScreen : Tab {
     override val options: TabOptions
@@ -66,9 +78,27 @@ class HomeScreen : Tab {
         val refreshState = rememberPullRefreshState(isLoading, onRefresh = {
             viewModel.refresh(items)
         })
+        val lazyListState = rememberLazyListState()
+        val coroutineScope = rememberCoroutineScope()
+        val canScrollBackToTop by remember { derivedStateOf { lazyListState.canScrollBackward } }
 
         Scaffold(
-            topBar = { TopBar(scrollBehavior) }
+            topBar = { TopBar(scrollBehavior) },
+            floatingActionButton = {
+                AnimatedVisibility(
+                    visible = canScrollBackToTop,
+                    enter = scaleIn(),
+                    exit = scaleOut()
+                ) {
+                    SmallFloatingActionButton(onClick = {
+                        coroutineScope.launch {
+                            lazyListState.animateScrollToItem(0)
+                        }.invokeOnCompletion { viewModel.refresh(items) }
+                    }) {
+                        Icon(imageVector = Icons.Filled.KeyboardArrowUp, null)
+                    }
+                }
+            }
         ) { pv ->
             Box(
                 modifier = Modifier
@@ -78,7 +108,8 @@ class HomeScreen : Tab {
                     .nestedScroll(scrollBehavior.nestedScrollConnection)
             ) {
                 LazyColumn(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    state = lazyListState
                 ) {
                     items(
                         count = items.itemCount,
