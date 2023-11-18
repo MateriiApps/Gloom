@@ -25,7 +25,7 @@
         <item quantity="other">Idiomas</item>
     </plurals>
     <plurals name="plural_lines_selected">
-        <item quantity="one">Line %1$s</item>
-        <item quantity="other">Lines %1$s-%2$s</item>
+        <item quantity="one">Linha %1$s</item>
+        <item quantity="other">Linhas %1$s-%2$s</item>
     </plurals>
 </resources>
