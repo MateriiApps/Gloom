@@ -2,6 +2,9 @@ package com.materiiapps.gloom.ui.utils
 
 import com.materiiapps.gloom.Res
 import kotlinx.datetime.Instant
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import kotlin.math.roundToInt
 
 object TimeUtils {
@@ -56,4 +59,7 @@ object TimeUtils {
 
 }
 
-expect fun Instant.format(format: String = TimeUtils.DATE_FORMAT): String
+fun Instant.format(format: String = TimeUtils.DATE_FORMAT): String = SimpleDateFormat(
+    format,
+    Locale.getDefault()
+).format(Date(toEpochMilliseconds()))

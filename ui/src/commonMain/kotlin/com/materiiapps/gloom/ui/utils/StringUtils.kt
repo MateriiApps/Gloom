@@ -6,6 +6,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import com.materiiapps.gloom.Res
+import com.materiiapps.gloom.utils.Constants
 import dev.icerock.moko.resources.PluralsResource
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -64,9 +66,22 @@ inline fun annotatingStringResource(
 }
 
 @Composable
-fun fileSizeString(size: Int) = getFileSizeString(size)
+fun getFileSizeString(size: Int): String {
+    return when {
+        size < Constants.FILE_SIZES.KILO -> getString(Res.strings.file_size_bytes, size)
+        size < Constants.FILE_SIZES.MEGA -> getString(
+            Res.strings.file_size_kilobytes,
+            size / Constants.FILE_SIZES.KILO
+        )
 
-expect fun getFileSizeString(size: Int): String
+        size < Constants.FILE_SIZES.GIGA -> getString(
+            Res.strings.file_size_megabytes,
+            size / Constants.FILE_SIZES.MEGA
+        )
+
+        else -> getString(Res.strings.file_size_gigabytes, size / Constants.FILE_SIZES.GIGA)
+    }
+}
 
 expect fun getString(res: StringResource): String
 

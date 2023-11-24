@@ -42,7 +42,7 @@ fun CodeText(
         text = buildAnnotatedString {
             append(hl.getCode())
 
-            if(!(extension.isBlank() || extension == ".txt")) {
+            if (!(extension.isBlank() || extension == ".txt")) {
                 highlights
                     .filterIsInstance<ColorHighlight>()
                     .forEach {

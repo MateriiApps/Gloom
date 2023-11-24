@@ -29,7 +29,10 @@ fun SignOutButton(
             onClick = onClick,
             colors = IconButtonDefaults.iconButtonColors(contentColor = MaterialTheme.colorScheme.error)
         ) {
-            Icon(imageVector = Icons.Outlined.Close, contentDescription = stringResource(Res.strings.action_sign_out))
+            Icon(
+                imageVector = Icons.Outlined.Close,
+                contentDescription = stringResource(Res.strings.action_sign_out)
+            )
         }
     }
 }

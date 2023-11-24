@@ -15,9 +15,14 @@ fun Modifier.contentDescription(descRes: StringResource, mergeDescendants: Boole
     contentDescription(stringResource(descRes), mergeDescendants)
 
 @Composable
-fun Modifier.contentDescription(descRes: StringResource, vararg args: Any, mergeDescendants: Boolean = false) =
+fun Modifier.contentDescription(
+    descRes: StringResource,
+    vararg args: Any,
+    mergeDescendants: Boolean = false
+) =
     contentDescription(stringResource(descRes, *args), mergeDescendants)
 
-fun Modifier.contentDescription(desc: String, mergeDescendants: Boolean = false) = semantics(mergeDescendants) {
-    contentDescription = desc
-}
+fun Modifier.contentDescription(desc: String, mergeDescendants: Boolean = false) =
+    semantics(mergeDescendants) {
+        contentDescription = desc
+    }

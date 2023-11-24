@@ -16,6 +16,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.FollowedUserFeedItemFragment
 import com.materiiapps.gloom.ui.R
 import com.materiiapps.gloom.ui.utils.annotatingStringResource
+import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun FollowedUserItem(

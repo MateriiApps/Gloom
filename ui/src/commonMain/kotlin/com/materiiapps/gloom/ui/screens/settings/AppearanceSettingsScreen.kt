@@ -14,14 +14,15 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.domain.manager.Theme
-import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.settings.SettingsItemChoice
+import com.materiiapps.gloom.ui.components.settings.SettingsSwitch
+import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.utils.getString
 import com.materiiapps.gloom.ui.viewmodels.settings.AppearanceSettingsViewModel
 import com.materiiapps.gloom.utils.Feature
 import com.materiiapps.gloom.utils.Features
+import com.materiiapps.gloom.utils.supportsMonet
 import dev.icerock.moko.resources.compose.stringResource
 
 class AppearanceSettingsScreen : Screen {
@@ -46,7 +47,12 @@ class AppearanceSettingsScreen : Screen {
                     .verticalScroll(rememberScrollState())
             ) {
                 if (Features.contains(Feature.DYNAMIC_COLOR)) {
-                    DynamicColorSetting(viewModel.prefs)
+                    SettingsSwitch(
+                        label = stringResource(Res.strings.appearance_monet),
+                        secondaryLabel = stringResource(Res.strings.appearance_monet_description),
+                        pref = viewModel.prefs.monet,
+                        disabled = !supportsMonet
+                    ) { viewModel.prefs.monet = it }
                 }
 
                 SettingsItemChoice(
@@ -76,6 +82,3 @@ class AppearanceSettingsScreen : Screen {
     }
 
 }
-
-@Composable
-expect fun DynamicColorSetting(prefs: PreferenceManager)

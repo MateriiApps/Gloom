@@ -65,7 +65,8 @@
     <string name="created_repo">§name§%1$s§ §text§がリポジトリを作成しました§</string>
     <string name="starred_repo">§name§%1$s§ §text§がスターを付けました§</string>
     <string name="forked_repo">§name§%1$s§ §text§がリポジトリをフォークしました§</string>
-    <string name="followed_user">§name§%1$s§ §text§が§ §other§%2$s§ §text§をフォローしました§</string>
+    <string name="followed_user">§name§%1$s§ §text§が§ §other§%2$s§ §text§をフォローしました§
+    </string>
     <string name="followed_you">§name§%1$s§ §text§があなたをフォローしました§</string>
     <string name="published_release">§name§%1$s§ §text§がリリースを公開しました§</string>
     <string name="recommended">あなたへのおすすめ</string>
@@ -77,7 +78,9 @@
     <string name="settings_libraries">ライブラリ</string>
     <string name="settings_libraries_description">Gloom の制作に使用されたライブラリ</string>
     <string name="settings_sign_out_header">サインアウトしますか？</string>
-    <string name="settings_sign_out_text">サインアウトしてもよろしいですか？後でサインインすることができます。</string>
+    <string name="settings_sign_out_text">
+        サインアウトしてもよろしいですか？後でサインインすることができます。
+    </string>
     <string name="settings_development">開発</string>
     <string name="settings_development_description">新機能のデバッグとテスト</string>
     <string name="dev_alert_testing">アラートのテスト</string>
@@ -102,11 +105,16 @@
     <string name="repo_tab_prs">プルリクエスト</string>
     <string name="repo_tab_releases">リリース</string>
     <string name="cd_issue_title_opened">タイトル「%2$s」の課題 %1$d</string>
-    <string name="cd_issue_title_completed">タイトル「%2$s」の課題 %1$d が完了としてマークされました</string>
-    <string name="cd_issue_title_not_planned">タイトル「%2$s」の課題 %1$d が計画外としてマークされました</string>
-    <string name="cd_pr_title_opened">タイトル「%2$s」のプルリクエスト %1$d をオープンしました</string>
+    <string name="cd_issue_title_completed">タイトル「%2$s」の課題 %1$d が完了としてマークされました
+    </string>
+    <string name="cd_issue_title_not_planned">タイトル「%2$s」の課題 %1$d
+        が計画外としてマークされました
+    </string>
+    <string name="cd_pr_title_opened">タイトル「%2$s」のプルリクエスト %1$d をオープンしました
+    </string>
     <string name="cd_pr_title_merged">タイトル「%2$s」のプルリクエスト %1$d をマージしました</string>
-    <string name="cd_pr_title_closed">タイトル「%2$s」のプルリクエスト %1$d をクローズしました</string>
+    <string name="cd_pr_title_closed">タイトル「%2$s」のプルリクエスト %1$d をクローズしました
+    </string>
     <string name="cd_pr_title_draft">タイトル「%2$s」のプルリクエスト %1$d をドラフトしました</string>
     <string name="cd_pr_merging_branch">ブランチ \"%1$s\" を \"%2$s\" にマージします</string>
     <string name="cd_label_comments">%1$d 件のコメント</string>
@@ -127,8 +135,12 @@
     <string name="msg_pr_untitled">無題のプルリクエスト</string>
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
     <string name="msg_release_author">§author§%1$s§ が %2$s をリリースしました</string>
-    <string name="msg_download_dialog_body">%1$s (%2$s) をダウンロードしようとしています。続行しますか？</string>
-    <string name="msg_install_dialog_body">%1$s がAndroidアプリであることを検出しました。インストールしますか？</string>
+    <string name="msg_download_dialog_body">%1$s (%2$s)
+        をダウンロードしようとしています。続行しますか？
+    </string>
+    <string name="msg_install_dialog_body">%1$s
+        がAndroidアプリであることを検出しました。インストールしますか？
+    </string>
     <string name="msg_file_load_error">Could not load this file</string>
     <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
     <string name="msg_downloading_file">Downloading %1$s...</string>
@@ -160,7 +172,9 @@
     <string name="install_fail_generic">インストールに失敗しました: 不明な理由</string>
     <string name="install_fail_blocked">インストールはブロックされました</string>
     <string name="install_fail_invalid">1つまたは複数のAPKが無効または破損しています</string>
-    <string name="install_fail_conflict">既存のアプリと競合します。通常、署名が一致しないことが原因です。</string>
+    <string name="install_fail_conflict">
+        既存のアプリと競合します。通常、署名が一致しないことが原因です。
+    </string>
     <string name="install_fail_storage">インストールするための空き容量が不足しています</string>
     <string name="install_fail_incompatible">アプリはこのデバイスと互換性がありません</string>
     <string name="install_fail_timeout">インストールがタイムアウトしました</string>

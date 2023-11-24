@@ -13,13 +13,13 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import cafe.adriel.voyager.core.screen.Screen
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.LibraryManager
-import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.ThinDivider
+import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.widgets.about.LibraryItem
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 
-class LibrariesScreen: Screen {
+class LibrariesScreen : Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
@@ -38,7 +38,7 @@ class LibrariesScreen: Screen {
                     LibraryItem(
                         library = library
                     )
-                    if(i != libraryManager.libs.libraries.lastIndex) {
+                    if (i != libraryManager.libs.libraries.lastIndex) {
                         ThinDivider()
                     }
                 }

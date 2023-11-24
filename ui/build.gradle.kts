@@ -26,6 +26,8 @@ android {
 
 kotlin {
     androidTarget()
+    jvm("desktop")
+
     jvmToolchain(17)
 
     sourceSets {

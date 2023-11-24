@@ -62,7 +62,7 @@ class DirectoryListingScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .clickable {
-                            when(entry.type) {
+                            when (entry.type) {
                                 "tree" -> nav.push(
                                     DirectoryListingScreen(
                                         owner,
@@ -70,6 +70,7 @@ class DirectoryListingScreen(
                                         branchAndPath + "${entry.name}/"
                                     )
                                 )
+
                                 "blob" -> {
                                     val (branch, path) = branchAndPath.split(":")
                                     nav.navigate(

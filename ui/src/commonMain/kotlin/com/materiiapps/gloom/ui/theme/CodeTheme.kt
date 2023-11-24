@@ -36,7 +36,7 @@ data class CodeTheme(
         linesContent: Color,
         selectedHighlight: Color,
         syntaxTheme: SyntaxTheme
-    ): this(
+    ) : this(
         background = background,
         linesBackground = linesBackground,
         linesContent = linesContent,
@@ -72,12 +72,13 @@ data class CodeTheme(
             val prefs: PreferenceManager = koinInject()
             val isSystemInDarkTheme = isSystemInDarkTheme()
             val darkMode = remember(prefs.theme, isSystemInDarkTheme) {
-                (prefs.theme == Theme.DARK && prefs.theme != Theme.LIGHT) || (prefs.theme == Theme.SYSTEM  && isSystemInDarkTheme)
+                (prefs.theme == Theme.DARK && prefs.theme != Theme.LIGHT) || (prefs.theme == Theme.SYSTEM && isSystemInDarkTheme)
             }
             val syntaxTheme = remember(darkMode) { SyntaxThemes.pastel(darkMode = darkMode) }
 
             return CodeTheme(
-                background = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp).copy(alpha = 0.2f),
+                background = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp)
+                    .copy(alpha = 0.2f),
                 linesBackground = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp),
                 linesContent = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
                 selectedHighlight = Color(0xFFFF9800), // Orange

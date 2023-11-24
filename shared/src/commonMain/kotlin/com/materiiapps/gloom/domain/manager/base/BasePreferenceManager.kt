@@ -3,24 +3,35 @@ package com.materiiapps.gloom.domain.manager.base
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.russhwolf.settings.Settings
+import com.materiiapps.gloom.utils.SettingsProvider
 import kotlin.reflect.KProperty
 
-expect abstract class BasePreferenceManager {
+abstract class BasePreferenceManager(
+    provider: SettingsProvider
+) {
 
-    val prefs: Settings
+    private val prefs = provider.createSettings()
 
-    fun getString(key: String, defaultValue: String): String
-    fun getBoolean(key: String, defaultValue: Boolean): Boolean
-    fun getInt(key: String, defaultValue: Int): Int
-    fun getFloat(key: String, defaultValue: Float): Float
-    inline fun <reified E : Enum<E>> getEnum(key: String, defaultValue: E): E
+    fun getString(key: String, defaultValue: String) =
+        prefs.getString(key, defaultValue)
 
-    fun putString(key: String, value: String)
-    fun putBoolean(key: String, value: Boolean)
-    fun putInt(key: String, value: Int)
-    fun putFloat(key: String, value: Float)
-    inline fun <reified E : Enum<E>> putEnum(key: String, value: E)
+    fun getBoolean(key: String, defaultValue: Boolean) =
+        prefs.getBoolean(key, defaultValue)
+
+    fun getInt(key: String, defaultValue: Int) = prefs.getInt(key, defaultValue)
+    fun getFloat(key: String, defaultValue: Float) =
+        prefs.getFloat(key, defaultValue)
+
+    inline fun <reified E : Enum<E>> getEnum(key: String, defaultValue: E) =
+        enumValueOf<E>(getString(key, defaultValue.name))
+
+    fun putString(key: String, value: String) = prefs.putString(key, value)
+    fun putBoolean(key: String, value: Boolean) = prefs.putBoolean(key, value)
+    fun putInt(key: String, value: Int) = prefs.putInt(key, value)
+    fun putFloat(key: String, value: Float) = prefs.putFloat(key, value)
+
+    inline fun <reified E : Enum<E>> putEnum(key: String, value: E) =
+        putString(key, value.name)
 
 }
 

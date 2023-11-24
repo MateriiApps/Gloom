@@ -21,9 +21,9 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.components.settings.SettingsButton
 import com.materiiapps.gloom.ui.components.settings.SettingsCategory
+import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.settings.about.AboutScreen
 import com.materiiapps.gloom.ui.screens.settings.developer.DeveloperSettingsScreen

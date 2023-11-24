@@ -2,7 +2,6 @@ package com.materiiapps.gloom.ui.screens.explorer
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box

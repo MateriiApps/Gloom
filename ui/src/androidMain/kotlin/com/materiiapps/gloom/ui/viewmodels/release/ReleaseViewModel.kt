@@ -24,30 +24,30 @@ actual class ReleaseViewModel(
     nameAndTag: Triple<String, String, String>
 ) : BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?>() {
 
-    val owner = nameAndTag.first
-    val name = nameAndTag.second
-    val tag = nameAndTag.third
+    actual val owner = nameAndTag.first
+    actual val name = nameAndTag.second
+    actual val tag = nameAndTag.third
 
-    var details by mutableStateOf<ReleaseDetails?>(null)
+    actual var details by mutableStateOf<ReleaseDetails?>(null)
         private set
 
-    var apkFile by mutableStateOf<File?>(null)
+    actual var apkFile by mutableStateOf<File?>(null)
         private set
 
-    override suspend fun loadPage(cursor: String?): ReleaseDetailsQuery.Data? =
+    actual override suspend fun loadPage(cursor: String?): ReleaseDetailsQuery.Data? =
         repo.getReleaseDetails(owner, name, tag, cursor)
             .getOrNull()
             .also { details = it?.repository?.release?.releaseDetails }
 
-    override fun getCursor(data: ReleaseDetailsQuery.Data?): String? =
+    actual override fun getCursor(data: ReleaseDetailsQuery.Data?): String? =
         data?.repository?.release?.releaseDetails?.releaseAssets?.pageInfo?.endCursor
 
-    override fun createItems(data: ReleaseDetailsQuery.Data?): List<ReleaseAssetFragment> =
+    actual override fun createItems(data: ReleaseDetailsQuery.Data?): List<ReleaseAssetFragment> =
         data?.repository?.release?.releaseDetails?.releaseAssets?.nodes?.mapNotNull { it?.releaseAssetFragment }
             ?: emptyList()
 
 
-    fun react(reaction: ReactionContent, unreact: Boolean) {
+    actual fun react(reaction: ReactionContent, unreact: Boolean) {
         details?.let {
             coroutineScope.launch {
                 if (unreact) {
@@ -59,18 +59,18 @@ actual class ReleaseViewModel(
         }
     }
 
-    fun downloadAsset(url: String, mimeType: String, onFinish: () -> Unit) {
+    actual fun downloadAsset(url: String, mimeType: String, onFinish: () -> Unit) {
         downloadManager.download(url) {
             onFinish()
             if (mimeType == "application/vnd.android.package-archive") apkFile = File(it)
         }
     }
 
-    fun clearApk() {
+    actual fun clearApk() {
         apkFile = null
     }
 
-    fun installApk() {
+    actual fun installApk() {
         apkFile?.let { context.installApks(it) }
     }
 

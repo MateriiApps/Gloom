@@ -56,7 +56,7 @@ fun LibraryItem(
             fontWeight = FontWeight.Bold
         )
 
-        if(!library.description.isNullOrBlank()) {
+        if (!library.description.isNullOrBlank()) {
             Text(
                 text = library.description!!,
                 style = MaterialTheme.typography.bodyMedium,
@@ -89,7 +89,11 @@ fun LibraryItem(
                     textColor = MaterialTheme.colorScheme.onSurface,
                     borderColor = labelColor,
                     fillColor = labelColor,
-                    modifier = Modifier.contentDescription(Res.strings.cd_library_author, library.author, mergeDescendants = true)
+                    modifier = Modifier.contentDescription(
+                        Res.strings.cd_library_author,
+                        library.author,
+                        mergeDescendants = true
+                    )
                 )
             }
 
@@ -100,15 +104,27 @@ fun LibraryItem(
                     textColor = MaterialTheme.colorScheme.onSurface,
                     borderColor = labelColor,
                     fillColor = labelColor,
-                    modifier = Modifier.contentDescription(Res.strings.cd_library_license, license.name, mergeDescendants = true)
+                    modifier = Modifier.contentDescription(
+                        Res.strings.cd_library_license,
+                        license.name,
+                        mergeDescendants = true
+                    )
                 )
             }
 
             key(library) {
                 val (label, color, icon) = if (library.openSource)
-                    Triple(Res.strings.label_open_source, MaterialTheme.colors.statusGreen, Icons.Filled.CheckCircle)
+                    Triple(
+                        Res.strings.label_open_source,
+                        MaterialTheme.colors.statusGreen,
+                        Icons.Filled.CheckCircle
+                    )
                 else
-                    Triple(Res.strings.label_closed_source, MaterialTheme.colors.statusRed, Icons.Filled.Cancel)
+                    Triple(
+                        Res.strings.label_closed_source,
+                        MaterialTheme.colors.statusRed,
+                        Icons.Filled.Cancel
+                    )
 
                 Label(
                     text = stringResource(label),

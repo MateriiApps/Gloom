@@ -213,12 +213,18 @@ class ReleaseScreen(
                                 name = asset.name,
                                 size = asset.size,
                                 onDownloadClick = {
-                                    alertController.showText("Downloading ${asset.name}...", icon = Icons.Filled.Download)
+                                    alertController.showText(
+                                        "Downloading ${asset.name}...",
+                                        icon = Icons.Filled.Download
+                                    )
                                     viewModel.downloadAsset(
                                         asset.downloadUrl,
                                         asset.contentType
                                     ) {
-                                        alertController.showText("Download completed", icon = Icons.Outlined.CheckCircleOutline)
+                                        alertController.showText(
+                                            "Download completed",
+                                            icon = Icons.Outlined.CheckCircleOutline
+                                        )
                                     }
                                 }
                             )

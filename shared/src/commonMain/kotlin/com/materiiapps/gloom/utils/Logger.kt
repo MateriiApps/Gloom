@@ -1,6 +1,6 @@
 package com.materiiapps.gloom.utils
 
-expect class Logger {
+expect class Logger() {
 
     fun error(tag: String, message: String?, throwable: Throwable?)
 

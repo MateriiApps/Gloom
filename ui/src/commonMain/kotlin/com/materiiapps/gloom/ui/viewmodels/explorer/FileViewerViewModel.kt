@@ -18,7 +18,7 @@ class FileViewerViewModel(
     private val input: Input,
     private val gqlRepo: GraphQLRepository,
     private val authManager: AuthManager
-): ScreenModel {
+) : ScreenModel {
 
     @Stable
     data class Input(val owner: String, val name: String, val branch: String, val path: String)
@@ -75,9 +75,9 @@ class FileViewerViewModel(
     }
 
     fun toggleMarkdown() {
-        if(!showRawMarkdown) {
+        if (!showRawMarkdown) {
             showRawMarkdown = true
-            if(rawMarkdown == null) getRawMarkdown()
+            if (rawMarkdown == null) getRawMarkdown()
         } else {
             showRawMarkdown = false
             selectedSnippet = ""

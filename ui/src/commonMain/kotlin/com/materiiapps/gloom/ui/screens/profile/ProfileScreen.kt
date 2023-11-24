@@ -414,21 +414,25 @@ open class ProfileScreen(
     private fun ProfileAvatar(user: ModelUser) {
         val alertController = LocalAlertController.current
         val (badge, msg) =
-            if (user.isSupporter) painterResource(Res.images.img_badge_sponsor) to stringResource(Res.strings.badge_supporter)
-            else if (user.id == Constants.DEV_USER_ID) painterResource(Res.images.img_badge_dev) to stringResource(Res.strings.badge_dev)
+            if (user.isSupporter) painterResource(Res.images.img_badge_sponsor) to stringResource(
+                Res.strings.badge_supporter
+            )
+            else if (user.id == Constants.DEV_USER_ID) painterResource(Res.images.img_badge_dev) to stringResource(
+                Res.strings.badge_dev
+            )
             else null to null
 
         BadgedItem(
             badge =
-                if (badge != null && msg != null) { ->
-                    Image(
-                        painter = badge,
-                        contentDescription = msg,
-                        modifier = Modifier
-                            .size(24.dp)
-                            .clickable { alertController.showText(msg) }
-                    )
-                } else null
+            if (badge != null && msg != null) { ->
+                Image(
+                    painter = badge,
+                    contentDescription = msg,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .clickable { alertController.showText(msg) }
+                )
+            } else null
         ) {
             Avatar(
                 url = user.avatar,

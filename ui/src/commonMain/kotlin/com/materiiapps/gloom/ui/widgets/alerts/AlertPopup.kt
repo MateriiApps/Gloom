@@ -67,7 +67,9 @@ fun AlertPopup(
                 animSpring
             ) { -it }
 
-            Alert.Position.BOTTOM -> slideInVertically(animSpring) { it } to slideOutVertically(animSpring) { it }
+            Alert.Position.BOTTOM -> slideInVertically(animSpring) { it } to slideOutVertically(
+                animSpring
+            ) { it }
         }
     }
 
@@ -86,7 +88,7 @@ fun AlertPopup(
     if (expandedState.currentState || expandedState.targetState || !expandedState.isIdle) {
         Popup(
             alignment = if (posRemembered == Alert.Position.TOP) Alignment.TopCenter else Alignment.BottomCenter,
-            offset = if(posRemembered == Alert.Position.BOTTOM) offset else IntOffset.Zero
+            offset = if (posRemembered == Alert.Position.BOTTOM) offset else IntOffset.Zero
         ) {
             AnimatedVisibility(
                 visibleState = expandedState,
