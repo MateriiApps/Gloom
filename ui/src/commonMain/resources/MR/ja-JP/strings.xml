@@ -78,8 +78,7 @@
     <string name="settings_libraries">ライブラリ</string>
     <string name="settings_libraries_description">Gloom の制作に使用されたライブラリ</string>
     <string name="settings_sign_out_header">サインアウトしますか？</string>
-    <string name="settings_sign_out_text">
-        サインアウトしてもよろしいですか？後でサインインすることができます。
+    <string name="settings_sign_out_text">        サインアウトしてもよろしいですか？後でサインインすることができます。
     </string>
     <string name="settings_development">開発</string>
     <string name="settings_development_description">新機能のデバッグとテスト</string>
@@ -172,8 +171,7 @@
     <string name="install_fail_generic">インストールに失敗しました: 不明な理由</string>
     <string name="install_fail_blocked">インストールはブロックされました</string>
     <string name="install_fail_invalid">1つまたは複数のAPKが無効または破損しています</string>
-    <string name="install_fail_conflict">
-        既存のアプリと競合します。通常、署名が一致しないことが原因です。
+    <string name="install_fail_conflict">        既存のアプリと競合します。通常、署名が一致しないことが原因です。
     </string>
     <string name="install_fail_storage">インストールするための空き容量が不足しています</string>
     <string name="install_fail_incompatible">アプリはこのデバイスと互換性がありません</string>
