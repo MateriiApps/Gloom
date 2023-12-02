@@ -27,11 +27,11 @@
     <string name="action_edit">編集</string>
     <string name="action_stop_edit">編集をやめる</string>
     <string name="action_sign_out_all">すべてのアカウントからサインアウト</string>
-    <string name="action_try_again">Try again</string>
-    <string name="action_reset_zoom">Reset zoom</string>
+    <string name="action_try_again">再試行</string>
+    <string name="action_reset_zoom">ズームをリセット</string>
     <string name="action_view_raw">View raw</string>
-    <string name="action_view_markdown">View as markdown</string>
-    <string name="action_copy">Copy</string>
+    <string name="action_view_markdown">マークダウンとして表示</string>
+    <string name="action_copy">コピー</string>
     <string name="dismiss_nevermind">やめる</string>
     <string name="dismiss_cancel">キャンセル</string>
     <string name="dismiss_no_thanks">いいえ</string>
@@ -142,8 +142,8 @@
     </string>
     <string name="msg_file_load_error">Could not load this file</string>
     <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
-    <string name="msg_downloading_file">Downloading %1$s...</string>
-    <string name="msg_download_completed">Download completed</string>
+    <string name="msg_downloading_file">%1$s をダウンロード中...</string>
+    <string name="msg_download_completed">ダウンロード完了</string>
     <string name="label_checks_failed">チェック失敗</string>
     <string name="label_checks">チェック成功</string>
     <string name="label_reviews">レビュー</string>
