@@ -53,7 +53,7 @@ android {
         freeCompilerArgs += "-Xexpect-actual-classes"
         freeCompilerArgs += listOf(
             "-P",
-            "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=${project.buildDir.absolutePath + "/compose_compiler"}"
+            "plugin:androidx.compose.compiler.plugins.kotlin:stabilityConfigurationPath=${file("./stability.txt").absolutePath}"
         )
     }
 
