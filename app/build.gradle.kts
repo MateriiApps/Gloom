@@ -51,11 +51,10 @@ android {
         freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
         freeCompilerArgs += "-Xcontext-receivers"
         freeCompilerArgs += "-Xexpect-actual-classes"
-//        TODO: Get this thing to work
-//        freeCompilerArgs += listOf(
-//            "-P",
-//            "plugin:androidx.compose.compiler.plugins.kotlin:stabilityConfigurationPath=${file("./stability.txt").absolutePath}"
-//        )
+        freeCompilerArgs += listOf(
+            "-P",
+            "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=${project.buildDir.absolutePath + "/compose_compiler"}"
+        )
     }
 
     buildFeatures {
