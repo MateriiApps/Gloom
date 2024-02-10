@@ -25,6 +25,8 @@ android {
 }
 
 kotlin {
+    applyDefaultHierarchyTemplate()
+
     androidTarget()
     jvm("desktop")
 
@@ -58,7 +60,6 @@ kotlin {
         }
 
         val androidMain by getting {
-            dependsOn(commonMain.get()) // Necessary for MOKO Resources
             dependencies {
                 api(libs.bundles.accompanist)
                 api(libs.androidx.core.ktx)
@@ -69,7 +70,6 @@ kotlin {
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "com.materiiapps.gloom"
-    multiplatformResourcesClassName = "Res"
-    iosBaseLocalizationRegion = "en"
+    resourcesPackage = "com.materiiapps.gloom"
+    resourcesClassName = "Res"
 }

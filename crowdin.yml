@@ -4,12 +4,29 @@ api_token_env: CROWDIN_PERSONAL_TOKEN
 preserve_hierarchy: true
 files:
   - source: ui/src/commonMain/resources/MR/base/strings.xml
-    translation: ui/src/commonMain/resources/MR/%locale%/strings.xml
+    translation: ui/src/commonMain/moko-resources/%locale%/strings.xml
+    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/resources/MR/images/
       - ui/src/commonMain/resources/MR/files/
+
+  - source: ui/src/commonMain/moko-resources/base/strings.xml
+    translation: ui/src/commonMain/moko-resources/%locale%/strings.xml
+    update_option: update_as_unapproved
+    ignore:
+      - ui/src/commonMain/moko-resources/images/
+      - ui/src/commonMain/moko-resources/files/
+
   - source: ui/src/commonMain/resources/MR/base/plurals.xml
-    translation: ui/src/commonMain/resources/MR/%locale%/plurals.xml
+    translation: ui/src/commonMain/moko-resources/%locale%/plurals.xml
+    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/resources/MR/images/
       - ui/src/commonMain/resources/MR/files/
+
+  - source: ui/src/commonMain/moko-resources/base/plurals.xml
+    translation: ui/src/commonMain/moko-resources/%locale%/plurals.xml
+    update_option: update_as_unapproved
+    ignore:
+      - ui/src/commonMain/moko-resources/images/
+      - ui/src/commonMain/moko-resources/files/

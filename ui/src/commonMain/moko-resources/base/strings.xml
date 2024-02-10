@@ -1,0 +1,213 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name" translatable="false">Gloom</string>
+
+    <string name="navigation_explore">Explore</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
+
+    <string name="login_welcome">Welcome!</string>
+    <string name="login_sign_in_github">Sign in with GitHub</string>
+
+    <string name="action_back">Back</string>
+    <string name="action_read_more">Read More</string>
+    <string name="action_follow_user">Follow %s</string>
+    <string name="action_unfollow_user">Unfollow %s</string>
+    <string name="action_sign_out">Sign Out</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_star">Star</string>
+    <string name="action_unstar">Unstar</string>
+    <string name="action_follow">Follow</string>
+    <string name="action_unfollow">Unfollow</string>
+    <string name="action_view_details">Details</string>
+    <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
+    <string name="action_download">Download</string>
+    <string name="action_install">Install</string>
+    <string name="action_add_account">Add account</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_stop_edit">Stop editing</string>
+    <string name="action_sign_out_all">Sign out of all accounts</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_reset_zoom">Reset zoom</string>
+    <string name="action_view_raw">View raw</string>
+    <string name="action_view_markdown">View as markdown</string>
+    <string name="action_copy">Copy</string>
+
+    <string name="dismiss_nevermind">Nevermind</string>
+    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
+
+    <string name="title_pinned">Pinned</string>
+    <string name="title_download_confirm">Confirm download</string>
+    <string name="title_install_app">Install this app?</string>
+
+    <string name="adj_latest">Latest</string>
+
+    <string name="noun_starred">Starred</string>
+    <string name="noun_orgs">Organizations</string>
+    <string name="noun_repos">Repositories</string>
+    <string name="noun_contributions">Contributions: %1$d</string>
+    <string name="noun_contributors">Contributors</string>
+    <string name="noun_sponsoring">Sponsoring</string>
+    <string name="noun_forked_repo">Forked Repository</string>
+    <string name="noun_empty_repo">Empty Repository</string>
+    <string name="noun_license">License</string>
+    <string name="noun_users_avatar">%s\'s avatar</string>
+    <string name="noun_follower_count">%d Followers</string>
+    <string name="noun_following_count">%d Following</string>
+    <string name="noun_followers">Followers</string>
+    <string name="noun_following">Following</string>
+    <string name="noun_repo">Repository</string>
+    <string name="noun_release">Release</string>
+    <string name="noun_tag">Tag</string>
+    <string name="noun_followed">Followed</string>
+    <string name="noun_other">Other</string>
+    <string name="noun_commit">Commit</string>
+    <string name="noun_more">More</string>
+    <string name="noun_less">Less</string>
+
+    <string name="forked_from">Forked from %s</string>
+    <string name="created_repo">§name§%1$s§ §text§created a repository§</string>
+    <string name="starred_repo">§name§%1$s§ §text§starred a repository§</string>
+    <string name="forked_repo">§name§%1$s§ §text§forked a repository§</string>
+    <string name="followed_user">§name§%1$s§ §text§followed§ §other§%2$s§</string>
+    <string name="followed_you">§name§%1$s§ §text§followed you§</string>
+    <string name="published_release">§name§%1$s§ §text§published a release§</string>
+    <string name="recommended">Recommended for you</string>
+
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_description">Theme, code style</string>
+    <string name="settings_accounts">Accounts</string>
+    <string name="settings_accounts_description">Add or switch accounts</string>
+    <string name="settings_about">About</string>
+    <string name="settings_libraries">Libraries</string>
+    <string name="settings_libraries_description">The libraries used to make Gloom</string>
+    <string name="settings_sign_out_header">Sign Out?</string>
+    <string name="settings_sign_out_text">Are you sure you want to sign out? You can always sign
+        back in later.
+    </string>
+
+    <string name="settings_development">Development</string>
+    <string name="settings_development_description">Debug and test new features</string>
+
+    <string name="dev_alert_testing">Alert Testing</string>
+    <string name="dev_alert_testing_description">Create custom alerts to use for testing</string>
+    <string name="dev_alert_title">Title</string>
+    <string name="dev_alert_message">Message</string>
+    <string name="dev_alert_show_icon">Show icon</string>
+    <string name="dev_alert_duration">Duration</string>
+    <string name="dev_alert_action_show_alert">Show alert</string>
+    <string name="dev_alert_action_fill_queue">Fill queue</string>
+
+    <string name="appearance_theme">Theme</string>
+    <string name="appearance_monet">Dynamic Theme</string>
+    <string name="appearance_monet_description">Available on Android 12+</string>
+
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+
+    <string name="badge_dev">Gloom Developer</string>
+    <string name="badge_supporter">Gloom Supporter</string>
+
+    <string name="repo_tab_details">Details</string>
+    <string name="repo_tab_code">Code</string>
+    <string name="repo_tab_issues">Issues</string>
+    <string name="repo_tab_prs">Pull Requests</string>
+    <string name="repo_tab_releases">Releases</string>
+
+    <string name="cd_issue_title_opened">Issue number %1$d with title "%2$s"</string>
+    <string name="cd_issue_title_completed">Issue number %1$d with title "%2$s" marked as
+        completed
+    </string>
+    <string name="cd_issue_title_not_planned">Issue number %1$d with title "%2$s" marked as not
+        planned
+    </string>
+
+    <string name="cd_pr_title_opened">Opened pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_merged">Merged pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_closed">Closed pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_draft">Draft pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_merging_branch">Branch %1$s being merged into %2$s</string>
+
+    <string name="cd_label_comments">%1$d comments</string>
+
+    <string name="cd_twitter">Twitter</string>
+    <string name="cd_youtube">YouTube</string>
+    <string name="cd_mastodon">Mastodon</string>
+    <string name="cd_hometown">Hometown</string>
+    <string name="cd_facebook">Facebook</string>
+    <string name="cd_instagram">Instagram</string>
+    <string name="cd_linkedin">LinkedIn</string>
+    <string name="cd_reddit">Reddit</string>
+    <string name="cd_twitch">Twitch</string>
+    <string name="cd_link">Link</string>
+
+    <string name="cd_enterprise_domain">Enterprise domain: %1$s</string>
+
+    <string name="cd_library_author">Author: %1$s</string>
+    <string name="cd_library_license">License: %1$s</string>
+
+    <string name="msg_issue_untitled">Untitled issue</string>
+    <string name="msg_pr_untitled">Untitled pull request</string>
+    <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
+    <string name="msg_release_author">§author§%1$s§ released this %2$s</string>
+    <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you
+        want to do that?
+    </string>
+    <string name="msg_install_dialog_body">We have detected that %1$s is an Android application,
+        would you like to install it?
+    </string>
+    <string name="msg_file_load_error">Could not load this file</string>
+    <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
+
+    <string name="label_checks_failed">Checks failed</string>
+    <string name="label_checks">Checks</string>
+    <string name="label_reviews">Reviews</string>
+
+    <string name="label_latest">Latest</string>
+    <string name="label_prerelease">Pre-release</string>
+    <string name="label_all_releases">All releases</string>
+    <string name="label_dont_show_again">Don\'t show this again</string>
+
+    <string name="label_follows_you">Follows You</string>
+
+    <string name="label_choose_account">Choose an account</string>
+    <string name="label_or">or</string>
+
+    <string name="label_open_source">Open Source</string>
+    <string name="label_closed_source">Closed Source</string>
+
+    <string name="time_now">Now</string>
+    <string name="time_since_second">%1$ds</string>
+    <string name="time_since_minute">%1$dm</string>
+    <string name="time_since_hour">%1$dh</string>
+    <string name="time_since_day">%1$dd</string>
+    <string name="time_since_month">%1$dmo</string>
+    <string name="time_since_year">%1$dy</string>
+
+    <string name="file_size_bytes">%1$d B</string>
+    <string name="file_size_kilobytes">%1$d KB</string>
+    <string name="file_size_megabytes">%1$d MB</string>
+    <string name="file_size_gigabytes">%1$d GB</string>
+
+    <string name="error_release_load">Couldn\'t load release</string>
+
+    <string name="install_fail_generic">Failed to install: Unknown reason</string>
+    <string name="install_fail_blocked">Installation was blocked</string>
+    <string name="install_fail_invalid">One or more apks were invalid or corrupt</string>
+    <string name="install_fail_conflict">Conflicts with an existing app, usually due to mismatched
+        signatures
+    </string>
+    <string name="install_fail_storage">Not enough available storage to install</string>
+    <string name="install_fail_incompatible">Application is incompatible with this device</string>
+    <string name="install_fail_timeout">Installation timed out</string>
+    <string name="install_success">App installed successfully!</string>
+    <string name="install_cancelled">Installation cancelled</string>
+
+</resources>

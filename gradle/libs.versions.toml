@@ -8,7 +8,7 @@ compose-compiler = "1.5.6"
 koin = "3.6.0-wasm-alpha2"
 kotlin = "1.9.21"
 ktor = "2.3.8"
-moko-resources = "0.23.0"
+moko-resources = "0.24.0-alpha-3"
 voyager = "1.0.0"
 
 [libraries]
