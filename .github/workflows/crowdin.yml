@@ -5,8 +5,10 @@ on:
     branches:
       - 'main'
     paths:
-      - 'ui/src/commonMain/resources/MR/base/strings.xml'
+      - 'ui/src/commonMain/moko-resources/base/strings.xml'
+      - 'ui/src/commonMain/moko-resources/base/plurals.xml'
       - '.github/workflows/crowdin.yml'
+      - 'crowdin.yml'
   schedule:
     - cron: "0 17 * * 6" # "At 17:00 on Saturday."
   workflow_dispatch:
