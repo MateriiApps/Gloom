@@ -52,9 +52,11 @@ kotlin {
                 api(libs.koin.compose)
                 api(libs.moko.resources.compose)
                 api(libs.multiplatform.paging)
+                api(libs.multiplatform.paging.compose)
                 api(libs.zoomable)
             }
         }
+
         val androidMain by getting {
             dependsOn(commonMain.get()) // Necessary for MOKO Resources
             dependencies {

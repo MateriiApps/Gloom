@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.fold
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ class RepoCodeViewModel(
     }
 
     fun loadDefaultBranch() {
-        coroutineScope.launch {
+        screenModelScope.launch {
             isLoading = true
             gql.getDefaultBranch(owner, name).fold(
                 onSuccess = {

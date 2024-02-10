@@ -201,6 +201,8 @@ fun CodeViewer(
             ) { i, code ->
                 val interactionSource =
                     remember { MutableInteractionSource().also { interactionMap[i] = it } }
+
+                @Suppress("DEPRECATION_ERROR") // Necessary for rememberRipple bc compose devs are stupid
                 Box(
                     contentAlignment = Alignment.CenterStart,
                     modifier = Modifier
@@ -230,6 +232,7 @@ fun CodeViewer(
                         extension = extension,
                         theme = theme.syntaxTheme,
                         fontSize = fontSize,
+                        lineHeight = fontSize,
                         modifier = Modifier
                             .fillParentMaxWidth()
                             .padding(
@@ -249,6 +252,7 @@ fun CodeViewer(
                             textAlign = TextAlign.End,
                             color = theme.linesContent,
                             fontWeight = FontWeight.Bold,
+                            lineHeight = fontSize,
                             modifier = Modifier
                                 .offset { IntOffset(horizontalScrollState.value, 0) }
                                 .background(theme.linesBackground)

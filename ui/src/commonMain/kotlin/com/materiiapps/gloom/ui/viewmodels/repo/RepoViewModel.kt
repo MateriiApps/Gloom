@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.fold
 import com.materiiapps.gloom.gql.fragment.RepoOverview
@@ -40,7 +40,7 @@ class RepoViewModel(
     var repoOverviewLoading by mutableStateOf(false)
 
     init {
-        coroutineScope.launch {
+        screenModelScope.launch {
             repoOverviewLoading = true
             gql.getRepoOverview(owner, name).fold(
                 onSuccess = {

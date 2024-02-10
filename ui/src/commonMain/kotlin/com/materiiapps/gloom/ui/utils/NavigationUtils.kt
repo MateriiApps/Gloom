@@ -1,5 +1,6 @@
 package com.materiiapps.gloom.ui.utils
 
+import cafe.adriel.voyager.core.annotation.InternalVoyagerApi
 import cafe.adriel.voyager.core.model.ScreenModelStore
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
@@ -26,10 +27,11 @@ tailrec fun Navigator.navigate(screen: Screen) {
     else parent!!.navigate(screen)
 }
 
+@OptIn(InternalVoyagerApi::class)
 fun clearRootNavigation() {
-    ScreenModelStore.remove(HomeScreen())
-    ScreenModelStore.remove(ExploreScreen())
-    ScreenModelStore.remove(NotificationsScreen())
-    ScreenModelStore.remove(ProfileScreen())
-    ScreenModelStore.remove(ProfileTab())
+    ScreenModelStore.onDisposeNavigator(HomeScreen().key)
+    ScreenModelStore.onDisposeNavigator(ExploreScreen().key)
+    ScreenModelStore.onDisposeNavigator(NotificationsScreen().key)
+    ScreenModelStore.onDisposeNavigator(ProfileScreen().key)
+    ScreenModelStore.onDisposeNavigator(ProfileTab().key)
 }

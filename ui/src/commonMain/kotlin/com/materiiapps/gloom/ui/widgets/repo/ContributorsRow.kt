@@ -51,12 +51,13 @@ fun ContributorsRow(
                 text = contributors.totalCount.toString(),
                 style = MaterialTheme.typography.labelLarge,
                 fontSize = 11.sp,
+                lineHeight = 11.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .widthIn(21.dp)
                     .clip(CircleShape)
                     .background(MaterialTheme.colorScheme.secondaryContainer)
-                    .padding(5.dp, 3.dp)
+                    .padding(5.dp, 4.dp)
             )
         }
 

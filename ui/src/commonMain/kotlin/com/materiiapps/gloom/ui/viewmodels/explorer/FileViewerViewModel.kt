@@ -5,7 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.fold
 import com.materiiapps.gloom.domain.manager.AuthManager
@@ -41,7 +41,7 @@ class FileViewerViewModel(
     private fun getRepoFile() {
         with(input) {
             isLoading = true
-            coroutineScope.launch {
+            screenModelScope.launch {
                 gqlRepo.getRepoFile(owner, name, branch, path).fold(
                     onSuccess = {
                         file = it
@@ -57,7 +57,7 @@ class FileViewerViewModel(
     private fun getRawMarkdown() {
         with(input) {
             isLoading = true
-            coroutineScope.launch {
+            screenModelScope.launch {
                 gqlRepo.getRawMarkdown(owner, name, branch, path).fold(
                     onSuccess = {
                         rawMarkdown = it

@@ -40,16 +40,18 @@ kotlin {
 }
 
 apollo {
-    packageName.set("com.materiiapps.gloom.gql")
+    service("service") {
+        packageName = "com.materiiapps.gloom.gql"
 
-    mapScalarToKotlinString("URI")
-    mapScalarToKotlinString("HTML")
-    mapScalar("Date", "kotlinx.datetime.Instant", "com.materiiapps.gloom.api.utils.DateAdapter")
-    mapScalar(
-        "DateTime",
-        "kotlinx.datetime.Instant",
-        "com.apollographql.apollo3.adapter.KotlinxInstantAdapter"
-    )
+        mapScalarToKotlinString("URI")
+        mapScalarToKotlinString("HTML")
+        mapScalar("Date", "kotlinx.datetime.Instant", "com.materiiapps.gloom.api.utils.DateAdapter")
+        mapScalar(
+            "DateTime",
+            "kotlinx.datetime.Instant",
+            "com.apollographql.apollo3.adapter.KotlinxInstantAdapter"
+        )
+    }
 }
 
 buildkonfig {

@@ -25,6 +25,7 @@ fun CodeText(
     theme: SyntaxTheme,
     softWrap: Boolean = false,
     fontSize: TextUnit = 13.sp,
+    lineHeight: TextUnit = fontSize,
     modifier: Modifier = Modifier
 ) {
     val hl = remember(text, theme) {
@@ -67,6 +68,7 @@ fun CodeText(
         fontFamily = FontFamily.Monospace,
         softWrap = softWrap,
         fontSize = fontSize,
+        lineHeight = lineHeight,
         modifier = modifier
     )
 }

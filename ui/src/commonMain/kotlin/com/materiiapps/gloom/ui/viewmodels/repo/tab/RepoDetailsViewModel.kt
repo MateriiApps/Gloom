@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.fold
 import com.materiiapps.gloom.api.utils.ifUnsuccessful
@@ -30,7 +30,7 @@ class RepoDetailsViewModel(
     }
 
     fun loadDetails() {
-        coroutineScope.launch {
+        screenModelScope.launch {
             detailsLoading = true
             gql.getRepoDetails(owner, name).fold(
                 onSuccess = {
@@ -59,7 +59,7 @@ class RepoDetailsViewModel(
         // Optimistic update
         updateStarDetails(starred = !hasStarred)
 
-        coroutineScope.launch {
+        screenModelScope.launch {
             isStarLoading = true
 
             if (hasStarred) {

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.fold
 import com.materiiapps.gloom.gql.fragment.FileEntryFragment
@@ -24,7 +24,7 @@ class DirectoryListingViewModel(
     }
 
     fun loadEntries() {
-        coroutineScope.launch {
+        screenModelScope.launch {
             isLoading = true
             gql.getRepoFiles(details.owner, details.name, details.branchAndPath).fold(
                 onSuccess = { directory ->

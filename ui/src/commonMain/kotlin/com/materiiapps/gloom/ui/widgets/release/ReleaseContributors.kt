@@ -42,6 +42,7 @@ fun ReleaseContributors(
     ) {
         Spacer(modifier = Modifier.width(0.dp))
         contributors.forEach { (username, avatarUrl) ->
+            @Suppress("DEPRECATION_ERROR") // Necessary for rememberRipple bc compose devs stupid
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,

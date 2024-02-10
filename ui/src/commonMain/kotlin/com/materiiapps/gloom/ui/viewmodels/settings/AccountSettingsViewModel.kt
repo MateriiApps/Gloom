@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GithubAuthRepository
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.ifSuccessful
@@ -53,7 +53,7 @@ class AccountSettingsViewModel(
     fun signOut(id: String) {
         val account = authManager.accounts[id] ?: return
         val token = account.token
-        coroutineScope.launch {
+        screenModelScope.launch {
             authRepo.deleteAccessToken(token).ifSuccessful { ->
                 wasCurrent = authManager.currentAccount?.id == id
                 authManager.removeAccount(account.id)
@@ -66,7 +66,7 @@ class AccountSettingsViewModel(
 
     fun loadAccounts() {
         authManager.accounts.values.forEach { account ->
-            coroutineScope.launch {
+            screenModelScope.launch {
                 isLoading = true
                 gqlRepo.getAccountInfo(account.token).ifSuccessful { user ->
                     authManager.editAccount(

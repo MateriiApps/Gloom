@@ -1,8 +1,8 @@
 package com.materiiapps.gloom.ui.viewmodels.home
 
 import androidx.compose.runtime.mutableStateMapOf
-import androidx.paging.compose.LazyPagingItems
-import cafe.adriel.voyager.core.model.coroutineScope
+import app.cash.paging.compose.LazyPagingItems
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.getOrNull
 import com.materiiapps.gloom.api.utils.ifSuccessful
@@ -33,27 +33,28 @@ class HomeViewModel(
         return data?.viewer?.dashboard?.feed?.items?.nodes?.filterNotNull() ?: emptyList()
     }
 
-    fun starRepo(id: String) = coroutineScope.launch {
+    fun starRepo(id: String) = screenModelScope.launch {
         repo.starRepo(id).ifSuccessful {
             starredRepos[id] = it
         }
     }
 
-    fun unstarRepo(id: String) = coroutineScope.launch {
+    fun unstarRepo(id: String) = screenModelScope.launch {
         repo.unstarRepo(id).ifSuccessful {
             starredRepos[id] = it
         }
     }
 
-    fun followUser(id: String) = coroutineScope.launch {
+    fun followUser(id: String) = screenModelScope.launch {
         repo.followUser(id).ifSuccessful {
             followedUsers[id] = it
         }
     }
 
-    fun unfollowUser(id: String) = coroutineScope.launch {
+    fun unfollowUser(id: String) = screenModelScope.launch {
         repo.unfollowUser(id).ifSuccessful {
             followedUsers[id] = it
         }
     }
+
 }

@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.models.ModelUser
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.fold
@@ -34,7 +34,7 @@ class ProfileViewModel(
 
     private fun getCurrentUser() {
         isLoading = true
-        coroutineScope.launch(Dispatchers.IO) {
+        screenModelScope.launch(Dispatchers.IO) {
             gqlRepo.getCurrentProfile().fold(
                 onSuccess = {
                     isLoading = false
@@ -51,7 +51,7 @@ class ProfileViewModel(
 
     private fun getUser() {
         isLoading = true
-        coroutineScope.launch(Dispatchers.IO) {
+        screenModelScope.launch(Dispatchers.IO) {
             gqlRepo.getProfile(username).fold(
                 onSuccess = {
                     isLoading = false
@@ -70,7 +70,7 @@ class ProfileViewModel(
         if (user?.id == null) return
         val isFollowing = user?.isFollowing
 
-        coroutineScope.launch {
+        screenModelScope.launch {
             if (isFollowing == false)
                 gqlRepo.followUser(user!!.id!!).ifSuccessful {
                     user = user!!.copy(isFollowing = it.first)

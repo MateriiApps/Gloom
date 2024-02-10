@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GithubAuthRepository
 import com.materiiapps.gloom.api.utils.ifSuccessful
 import com.materiiapps.gloom.domain.manager.AuthManager
@@ -32,7 +32,7 @@ class SettingsViewModel(
 
     fun signOut() {
         val token = auth.authToken
-        coroutineScope.launch {
+        screenModelScope.launch {
             repo.deleteAccessToken(token).ifSuccessful { ->
                 auth.removeAccount(auth.currentAccount!!.id)
                 auth.clearApolloCache()
