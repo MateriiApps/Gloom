@@ -69,7 +69,6 @@ class GloomActivity : ComponentActivity() {
                         )
                     },
                     onAttach = { nav, _ ->
-                        println("hi")
                         navigator = nav
                         handler.addAllRoutes(nav, auth)
                     }
