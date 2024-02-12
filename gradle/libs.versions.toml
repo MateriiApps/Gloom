@@ -13,7 +13,6 @@ voyager = "1.0.0"
 
 [libraries]
 aboutlibraries-core = { group = "com.mikepenz", name = "aboutlibraries", version.ref = "aboutlibraries" }
-accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-webview = { group = "com.google.accompanist", name = "accompanist-webview", version.ref = "accompanist" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.8.2" }
 androidx-browser = { group = "androidx.browser", name = "browser", version = "1.7.0" }
@@ -62,7 +61,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
 
 [bundles]
-accompanist = ["accompanist-systemuicontroller", "accompanist-webview"]
+accompanist = ["accompanist-webview"]
 apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters"]
 kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime", "kotlinx-serialization"]
 ktor = ["ktor-serialization-kotlinx-json", "ktor-client-logging", "ktor-client-core", "ktor-client-content-negotiation", "ktor-client-cio"]
