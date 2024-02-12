@@ -44,7 +44,7 @@ class GloomActivity : ComponentActivity() {
         getKoin().declare<Context>(this@GloomActivity)
 
         setContent {
-            val navNarOffset = -((80 + 24).dp.toPx()) // Roughly the height of a navbar
+            val navBarOffset = -((80 + 24).dp.toPx()) // Roughly the height of a navbar
             val defaultScreen = if (auth.isSignedIn) RootScreen() else LandingScreen()
 
             DeepLinkWrapper { handler ->
@@ -54,14 +54,11 @@ class GloomActivity : ComponentActivity() {
                     onScreenChange = { screen, alertController ->
                         // Displace bottom alerts when a navbar is present, only temporary
                         if (screen is RootScreen)
-                            alertController.currentOffset = IntOffset(0, navNarOffset)
+                            alertController.currentOffset = IntOffset(0, navBarOffset)
                         else
                             alertController.currentOffset = IntOffset.Zero
                     },
-                    onAttach = { nav, _ ->
-                        navigator = nav
-                        handler.addAllRoutes(nav, auth)
-
+                    onContentChange = {
                         val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
                         enableEdgeToEdge(
                             statusBarStyle = SystemBarStyle.auto(
@@ -70,6 +67,11 @@ class GloomActivity : ComponentActivity() {
                                 detectDarkMode = { isDark }
                             )
                         )
+                    },
+                    onAttach = { nav, _ ->
+                        println("hi")
+                        navigator = nav
+                        handler.addAllRoutes(nav, auth)
                     }
                 )
             }

@@ -23,6 +23,7 @@ import org.koin.compose.koinInject
  * @param startingScreen The screen to start the app on.
  * @param linkHandler Handles opening links.
  * @param onScreenChange Callback for when a new screen is navigated to.
+ * @param onContentChange Called when content is going through a transition
  * @param onAttach Called after the navigator is set up, used to initialize any platform-specific functionality
  */
 @Composable
@@ -30,7 +31,8 @@ fun App(
     startingScreen: Screen,
     linkHandler: LinkHandler,
     onScreenChange: (Screen, AlertController) -> Unit = { _, _, -> },
-    onAttach: @Composable (Navigator, AlertController) -> Unit = { _, _, -> },
+    onContentChange: @Composable () -> Unit = {},
+    onAttach: (Navigator, AlertController) -> Unit = { _, _, -> },
 ) {
     val prefs: PreferenceManager = koinInject()
 
@@ -53,12 +55,16 @@ fun App(
                     onScreenChange(navigator.lastItem, alertController)
                 }
 
+                LaunchedEffect(Unit) {
+                    onAttach(navigator, alertController)
+                }
+
                 CompositionLocalProvider(
                     LocalLinkHandler provides linkHandler
                 ) {
                     SlideTransition(navigator) { screen ->
                         screen.Content()
-                        onAttach(navigator, alertController)
+                        onContentChange()
                     }
                 }
             }
