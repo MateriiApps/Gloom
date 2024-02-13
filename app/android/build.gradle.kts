@@ -27,7 +27,7 @@ android {
             setProguardFiles(
                 listOf(
                     getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                    "../proguard-rules.pro"
                 )
             )
         }
@@ -53,7 +53,7 @@ android {
         freeCompilerArgs += "-Xexpect-actual-classes"
         freeCompilerArgs += listOf(
             "-P",
-            "plugin:androidx.compose.compiler.plugins.kotlin:stabilityConfigurationPath=${file("./stability.txt").absolutePath}"
+            "plugin:androidx.compose.compiler.plugins.kotlin:stabilityConfigurationPath=${file("../stability.txt").absolutePath}"
         )
     }
 
