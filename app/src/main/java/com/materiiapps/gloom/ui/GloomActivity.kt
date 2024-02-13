@@ -4,32 +4,23 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.WindowCompat
 import cafe.adriel.voyager.navigator.Navigator
-import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.materiiapps.gloom.domain.manager.AuthManager
-import com.materiiapps.gloom.domain.manager.PreferenceManager
-import com.materiiapps.gloom.domain.manager.Theme
 import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
-import com.materiiapps.gloom.ui.theme.GloomTheme
-import com.materiiapps.gloom.ui.transitions.SlideTransition
 import com.materiiapps.gloom.ui.utils.toPx
 import com.materiiapps.gloom.ui.viewmodels.main.MainViewModel
-import com.materiiapps.gloom.ui.widgets.alerts.AlertHost
 import com.materiiapps.gloom.utils.LinkHandler
-import com.materiiapps.gloom.utils.LocalLinkHandler
 import com.materiiapps.gloom.utils.deeplinks.DeepLinkWrapper
 import com.materiiapps.gloom.utils.deeplinks.addAllRoutes
 import com.materiiapps.gloom.utils.getOAuthCode
@@ -42,7 +33,6 @@ class GloomActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModel()
     private val auth: AuthManager by inject()
-    private val prefs: PreferenceManager by inject()
 
     private lateinit var navigator: Navigator
     private var isLastIntentOauth: Boolean = intent?.isOAuthUri() ?: false
@@ -51,60 +41,38 @@ class GloomActivity : ComponentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         getKoin().declare<Context>(this@GloomActivity)
 
         setContent {
-            val isDark = when (prefs.theme) {
-                Theme.SYSTEM -> isSystemInDarkTheme()
-                Theme.LIGHT -> false
-                Theme.DARK -> true
-            }
+            val navBarOffset = -((80 + 24).dp.toPx()) // Roughly the height of a navbar
+            val defaultScreen = if (auth.isSignedIn) RootScreen() else LandingScreen()
 
-            GloomTheme(isDark, prefs.monet) {
-                val systemUiController = rememberSystemUiController()
-                val navNarOffset = -((80 + 24).dp.toPx())
-                val defaultScreen = if (auth.isSignedIn)
-                    RootScreen()
-                else
-                    LandingScreen()
-
-                SideEffect {
-                    systemUiController.apply {
-                        setSystemBarsColor(
-                            color = Color.Transparent,
-                            darkIcons = !isDark,
-                        )
-                        isNavigationBarContrastEnforced = true
-                    }
-                }
-
-                DeepLinkWrapper { handler ->
-                    AlertHost { alertController ->
-                        Navigator(
-                            screen = defaultScreen,
-                            disposeBehavior = NavigatorDisposeBehavior(
-                                disposeNestedNavigators = false,
-                                disposeSteps = true
+            DeepLinkWrapper { handler ->
+                App(
+                    startingScreen = defaultScreen,
+                    linkHandler = LinkHandler(LocalContext.current),
+                    onScreenChange = { screen, alertController ->
+                        // Displace bottom alerts when a navbar is present, only temporary
+                        if (screen is RootScreen)
+                            alertController.currentOffset = IntOffset(0, navBarOffset)
+                        else
+                            alertController.currentOffset = IntOffset.Zero
+                    },
+                    onContentChange = {
+                        val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
+                        enableEdgeToEdge(
+                            statusBarStyle = SystemBarStyle.auto(
+                                MaterialTheme.colorScheme.scrim.toArgb(),
+                                MaterialTheme.colorScheme.scrim.toArgb(),
+                                detectDarkMode = { isDark }
                             )
-                        ) {
-                            LaunchedEffect(it.lastItem) {
-                                if(it.lastItem is RootScreen)
-                                    alertController.currentOffset = IntOffset(0, navNarOffset)
-                                else
-                                    alertController.currentOffset = IntOffset.Zero
-                            }
-
-                            CompositionLocalProvider(
-                                LocalLinkHandler provides LinkHandler(LocalContext.current)
-                            ) {
-                                navigator = it
-                                SlideTransition(it)
-                                handler.addAllRoutes(it, auth)
-                            }
-                        }
+                        )
+                    },
+                    onAttach = { nav, _ ->
+                        navigator = nav
+                        handler.addAllRoutes(nav, auth)
                     }
-                }
+                )
             }
         }
     }
