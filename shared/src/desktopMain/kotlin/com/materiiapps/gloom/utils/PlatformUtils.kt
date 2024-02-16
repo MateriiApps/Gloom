@@ -27,7 +27,9 @@ enum class OS(vararg keys: String) {
 
         private fun getTypeForKey(osKey: String): OS {
             for (osType in entries) {
-                if (osType.keys.contains(osKey)) return osType
+                if (
+                    osType.keys.any { osKey.contains(it) }
+                ) return osType
             }
             return Other
         }
@@ -45,5 +47,5 @@ val OSBaseDir = when (OS.Current) {
 
 actual val supportsMonet = false
 actual val isDebug = false
-actual val GloomPath = File(OSBaseDir, "Gloom")
+actual val GloomPath = File(OSBaseDir, "Gloom").also { it.mkdir() }
 actual val Features = emptyList<Feature>()

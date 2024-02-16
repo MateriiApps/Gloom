@@ -1,6 +1,5 @@
 package com.materiiapps.gloom.ui.components
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +27,7 @@ fun Label(
     borderColor: Color = textColor,
     fillColor: Color = Color.Transparent,
     iconColor: Color = textColor,
-    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
+    modifier: Modifier = Modifier
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,

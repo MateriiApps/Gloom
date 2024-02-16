@@ -9,12 +9,10 @@ import androidx.compose.material.icons.filled.PersonAddAlt1
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.FollowedUserFeedItemFragment
-import com.materiiapps.gloom.ui.R
 import com.materiiapps.gloom.ui.utils.annotatingStringResource
 import dev.icerock.moko.resources.compose.stringResource
 
@@ -46,9 +44,9 @@ fun FollowedUserItem(
     ) {
         FeedActor(
             iconUrl = actor.avatarUrl,
-            iconDescription = stringResource(R.string.noun_users_avatar, actor.login),
+            iconDescription = stringResource(Res.strings.noun_users_avatar, actor.login),
             badgeIcon = Icons.Filled.PersonAddAlt1,
-            badgeIconDescription = stringResource(R.string.noun_followed),
+            badgeIconDescription = stringResource(Res.strings.noun_followed),
             text = actorText
         )
 

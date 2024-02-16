@@ -3,7 +3,7 @@ package com.materiiapps.gloom.ui.viewmodels.release
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.utils.getOrNull
 import com.materiiapps.gloom.domain.manager.DownloadManager
@@ -46,7 +46,7 @@ actual class ReleaseViewModel(
 
     actual fun react(reaction: ReactionContent, unreact: Boolean) {
         details?.let {
-            coroutineScope.launch {
+            screenModelScope.launch {
                 if (unreact) {
                     repo.unreact(it.id, reaction)
                 } else {

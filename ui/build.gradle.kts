@@ -46,7 +46,6 @@ kotlin {
                 api(compose.materialIconsExtended)
                 api(compose.runtime)
 
-                api(libs.androidx.paging.compose)
                 api(libs.compose.imageloader)
                 api(libs.compose.pdf)
                 api(libs.highlights)
@@ -55,7 +54,6 @@ kotlin {
                 api(libs.moko.resources.compose)
                 api(libs.multiplatform.paging)
                 api(libs.multiplatform.paging.compose)
-                api(libs.zoomable)
             }
         }
 
@@ -64,6 +62,7 @@ kotlin {
                 api(libs.bundles.accompanist)
                 api(libs.androidx.core.ktx)
                 api(libs.koin.android)
+                api(libs.zoomable)
             }
         }
     }

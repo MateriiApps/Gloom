@@ -29,8 +29,8 @@ import com.materiiapps.gloom.ui.components.Label
 import com.materiiapps.gloom.ui.theme.colors
 import com.materiiapps.gloom.ui.utils.contentDescription
 import com.materiiapps.gloom.utils.LocalLinkHandler
+import com.materiiapps.gloom.utils.author
 import com.mikepenz.aboutlibraries.entity.Library
-import com.mikepenz.aboutlibraries.util.author
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

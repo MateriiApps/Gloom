@@ -1,6 +1,5 @@
 package com.materiiapps.gloom.ui.widgets.reaction
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -34,7 +33,6 @@ import com.materiiapps.gloom.gql.fragment.Reaction
 import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.ui.theme.colors
 
-@SuppressLint("UnrememberedMutableState")
 @Composable
 fun ReactionRow(
     reactions: List<Reaction>,

@@ -12,7 +12,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Error
 import androidx.compose.material.icons.outlined.Refresh
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,16 +22,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
-import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.RepoFile
-import com.materiiapps.gloom.ui.components.ErrorMessage
-import dev.icerock.moko.resources.compose.stringResource
+import com.materiiapps.gloom.ui.widgets.pdf.PdfPage
 import dev.zt64.compose.pdf.LoadState
 import dev.zt64.compose.pdf.RemotePdfState
-import dev.zt64.compose.pdf.component.PdfPage
 import dev.zt64.compose.pdf.component.PdfVerticalPager
-import net.engawapg.lib.zoomable.rememberZoomState
-import net.engawapg.lib.zoomable.zoomable
 import java.net.URL
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -57,30 +51,10 @@ fun PdfFileViewer(
                 state = pdfState,
                 pagerState = pagerState,
                 page = { page ->
-                    val zoomState = rememberZoomState()
-                    Box(
-                        modifier = Modifier.fillMaxSize()
-                    ) {
-                        PdfPage(
-                            state = pdfState,
-                            index = page,
-                            errorIndicator = {
-                                ErrorMessage(
-                                    message = stringResource(Res.strings.msg_file_load_error),
-                                    onRetryClick = { pdfState.loadPdf() },
-                                    modifier = Modifier.align(Alignment.Center)
-                                )
-                            },
-                            loadingIndicator = {
-                                CircularProgressIndicator(
-                                    modifier = Modifier.align(Alignment.Center)
-                                )
-                            },
-                            modifier = Modifier
-                                .align(Alignment.Center)
-                                .zoomable(zoomState)
-                        )
-                    }
+                   PdfPage(
+                       pdfState = pdfState,
+                       page = page
+                   )
                 },
                 modifier = Modifier.fillMaxSize()
             )
