@@ -55,7 +55,7 @@
     <string name="noun_following">Seguindo</string>
     <string name="noun_repo">Repositório</string>
     <string name="noun_release">Lançamento</string>
-    <string name="noun_tag">Tag</string>
+    <string name="noun_tag">Categoria</string>
     <string name="noun_followed">Seguido</string>
     <string name="noun_other">Outro</string>
     <string name="noun_commit">Commit</string>
@@ -101,7 +101,7 @@
     <string name="repo_tab_code">Código</string>
     <string name="repo_tab_issues">Issues</string>
     <string name="repo_tab_prs">Pull Requests</string>
-    <string name="repo_tab_releases">Releases</string>
+    <string name="repo_tab_releases">Lançamentos</string>
     <string name="cd_issue_title_opened">Issue número %1$d com título \"%2$s\"</string>
     <string name="cd_issue_title_completed">Issue número %1$d com título \"%2$s\" marcada como
         concluída
