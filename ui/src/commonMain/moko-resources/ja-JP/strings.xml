@@ -92,6 +92,13 @@
     <string name="appearance_theme">テーマ</string>
     <string name="appearance_monet">ダイナミックテーマ</string>
     <string name="appearance_monet_description">Android 12 以降で利用可能</string>
+    <string name="appearance_user_av_shape">User avatar shape</string>
+    <string name="appearance_org_av_shape">Organization avatar shape</string>
+    <string name="appearance_av_radius">Radius:</string>
+    <string name="appearance_av_radius_percent">%1$d%</string>
+    <string name="appearance_av_shape_circle">Circle</string>
+    <string name="appearance_av_shape_roundrect">Rounded square</string>
+    <string name="appearance_av_shape_squircle">Squircle</string>
     <string name="theme_system">システム</string>
     <string name="theme_light">ライト</string>
     <string name="theme_dark">ダーク</string>
