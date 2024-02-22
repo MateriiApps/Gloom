@@ -20,9 +20,10 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.outlined.Inventory2
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.LocalContentColor
@@ -58,7 +59,10 @@ import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.domain.manager.ShareManager
 import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.BackButton
+import com.materiiapps.gloom.ui.components.Collapsable
+import com.materiiapps.gloom.ui.components.TextBanner
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
+import com.materiiapps.gloom.ui.theme.colors
 import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.viewmodels.repo.RepoViewModel
 import dev.icerock.moko.resources.compose.stringResource
@@ -118,50 +122,71 @@ class RepoScreen(
                         ), label = "Badge text color"
                 )
 
-                ScrollableTabRow(
-                    selectedTabIndex = pagerState.currentPage,
-                    edgePadding = 0.dp,
-                    divider = {
-                        Divider(
-                            color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-                            thickness = 0.5.dp,
-                        )
-                    },
-                    containerColor = tabColor,
-                    modifier = Modifier.fillMaxWidth()
+                Collapsable(
+                    overlapFraction = scrollBehavior.state.collapsedFraction,
+                    under = {
+                        if (viewModel.repoOverview?.isArchived == true) {
+                            TextBanner(
+                                text = { Text(stringResource(Res.strings.label_repo_archived)) },
+                                icon = {
+                                    Icon(
+                                        Icons.Outlined.Inventory2,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                },
+                                backgroundColor = MaterialTheme.colors.warningContainer,
+                                contentColor = MaterialTheme.colors.onWarningContainer,
+                                outlineColor = MaterialTheme.colors.warning
+                            )
+                        }
+                    }
                 ) {
-                    viewModel.tabs.forEachIndexed { i, tab ->
-                        Tab(
-                            selected = pagerState.currentPage == i,
-                            onClick = {
-                                coroutineScope.launch {
-                                    pagerState.animateScrollToPage(i)
+                    ScrollableTabRow(
+                        selectedTabIndex = pagerState.currentPage,
+                        edgePadding = 0.dp,
+                        divider = {
+                            HorizontalDivider(
+                                color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
+                                thickness = 0.5.dp,
+                            )
+                        },
+                        containerColor = tabColor,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        viewModel.tabs.forEachIndexed { i, tab ->
+                            Tab(
+                                selected = pagerState.currentPage == i,
+                                onClick = {
+                                    coroutineScope.launch {
+                                        pagerState.animateScrollToPage(i)
+                                    }
+                                },
+                                text = {
+                                    val badgeCount = viewModel.badgeCounts[i]
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                    ) {
+                                        Text(tab.options.title)
+                                        if (badgeCount != null && badgeCount > 0)
+                                            Text(
+                                                text = badgeCount.toString(),
+                                                style = MaterialTheme.typography.labelLarge,
+                                                fontSize = 11.sp,
+                                                lineHeight = 11.sp,
+                                                textAlign = TextAlign.Center,
+                                                color = badgeTextColor,
+                                                modifier = Modifier
+                                                    .widthIn(21.dp)
+                                                    .clip(CircleShape)
+                                                    .background(badgeColor)
+                                                    .padding(5.dp, 4.dp)
+                                            )
+                                    }
                                 }
-                            },
-                            text = {
-                                val badgeCount = viewModel.badgeCounts[i]
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                                ) {
-                                    Text(tab.options.title)
-                                    if (badgeCount != null && badgeCount > 0)
-                                        Text(
-                                            text = badgeCount.toString(),
-                                            style = MaterialTheme.typography.labelLarge,
-                                            fontSize = 11.sp,
-                                            lineHeight = 11.sp,
-                                            textAlign = TextAlign.Center,
-                                            color = badgeTextColor,
-                                            modifier = Modifier
-                                                .widthIn(21.dp)
-                                                .clip(CircleShape)
-                                                .background(badgeColor)
-                                                .padding(5.dp, 4.dp)
-                                        )
-                                }
-                            }
-                        )
+                            )
+                        }
                     }
                 }
 

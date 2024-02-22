@@ -1,5 +1,6 @@
 fragment RepoOverview on Repository {
     name
+    isArchived
     owner {
         __typename
         login

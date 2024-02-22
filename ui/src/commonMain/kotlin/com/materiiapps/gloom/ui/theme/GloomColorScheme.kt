@@ -3,6 +3,7 @@ package com.materiiapps.gloom.ui.theme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
@@ -11,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.structuralEqualityPolicy
 import androidx.compose.ui.graphics.Color
 
+@Immutable
 class GloomColorScheme(
     primary: Color,
     onPrimary: Color,
@@ -47,7 +49,11 @@ class GloomColorScheme(
     statusPurple: Color,
     statusRed: Color,
     statusGrey: Color,
-    statusYellow: Color
+    statusYellow: Color,
+    warning: Color,
+    onWarning: Color,
+    warningContainer: Color,
+    onWarningContainer: Color
 ) {
 
     constructor(
@@ -56,7 +62,11 @@ class GloomColorScheme(
         statusPurple: Color,
         statusRed: Color,
         statusGrey: Color,
-        statusYellow: Color
+        statusYellow: Color,
+        warning: Color,
+        onWarning: Color,
+        warningContainer: Color,
+        onWarningContainer: Color
     ) : this(
         colorScheme.primary,
         colorScheme.onPrimary,
@@ -91,7 +101,11 @@ class GloomColorScheme(
         statusPurple,
         statusRed,
         statusGrey,
-        statusYellow
+        statusYellow,
+        warning,
+        onWarning,
+        warningContainer,
+        onWarningContainer
     )
 
     var primary by mutableStateOf(primary, structuralEqualityPolicy())
@@ -166,6 +180,18 @@ class GloomColorScheme(
         internal set
 
     var statusYellow by mutableStateOf(statusYellow, structuralEqualityPolicy())
+        internal set
+
+    var warning by mutableStateOf(warning, structuralEqualityPolicy())
+        internal set
+
+    var onWarning by mutableStateOf(onWarning, structuralEqualityPolicy())
+        internal set
+
+    var warningContainer by mutableStateOf(warningContainer, structuralEqualityPolicy())
+        internal set
+
+    var onWarningContainer by mutableStateOf(onWarningContainer, structuralEqualityPolicy())
         internal set
 
     fun toColorScheme() = with(this) {
