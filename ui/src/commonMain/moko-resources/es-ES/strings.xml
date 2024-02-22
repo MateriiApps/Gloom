@@ -152,6 +152,7 @@
     <string name="label_or">o</string>
     <string name="label_open_source">Código abierto</string>
     <string name="label_closed_source">Código cerrado</string>
+    <string name="label_repo_archived">Archived by owner</string>
     <string name="time_now">Ahora</string>
     <string name="time_since_second">%1$d s</string>
     <string name="time_since_minute">%1$d min</string>

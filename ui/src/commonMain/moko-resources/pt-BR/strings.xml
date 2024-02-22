@@ -92,13 +92,13 @@
     <string name="appearance_theme">Tema</string>
     <string name="appearance_monet">Tema dinâmico</string>
     <string name="appearance_monet_description">Disponível para Android 12+</string>
-    <string name="appearance_user_av_shape">User avatar shape</string>
-    <string name="appearance_org_av_shape">Organization avatar shape</string>
-    <string name="appearance_av_radius">Radius:</string>
+    <string name="appearance_user_av_shape">Formato do avatar do usuário</string>
+    <string name="appearance_org_av_shape">Formato do avatar da organização</string>
+    <string name="appearance_av_radius">Raio:</string>
     <string name="appearance_av_radius_percent">%1$d%</string>
-    <string name="appearance_av_shape_circle">Circle</string>
-    <string name="appearance_av_shape_roundrect">Rounded square</string>
-    <string name="appearance_av_shape_squircle">Squircle</string>
+    <string name="appearance_av_shape_circle">Círculo</string>
+    <string name="appearance_av_shape_roundrect">Quadrado arredondado</string>
+    <string name="appearance_av_shape_squircle">Circulo quadrado</string>
     <string name="theme_system">Sistema</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Escuro</string>
@@ -162,6 +162,7 @@
     <string name="label_or">ou</string>
     <string name="label_open_source">Código Aberto</string>
     <string name="label_closed_source">Código fonte privado</string>
+    <string name="label_repo_archived">Archived by owner</string>
     <string name="time_now">Agora</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
