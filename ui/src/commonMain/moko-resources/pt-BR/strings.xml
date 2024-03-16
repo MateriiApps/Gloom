@@ -162,7 +162,7 @@
     <string name="label_or">ou</string>
     <string name="label_open_source">Código Aberto</string>
     <string name="label_closed_source">Código fonte privado</string>
-    <string name="label_repo_archived">Archived by owner</string>
+    <string name="label_repo_archived">Arquivado pelo proprietário</string>
     <string name="time_now">Agora</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
