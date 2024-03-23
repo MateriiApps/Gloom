@@ -75,7 +75,7 @@
     <string name="settings_accounts_description">Hesap ekleme veya değiştirme</string>
     <string name="settings_about">Hakkında</string>
     <string name="settings_libraries">Kütüphaneler</string>
-    <string name="settings_libraries_description">Kasvetli yapmak için kullanılan kütüphaneler</string>
+    <string name="settings_libraries_description">Gloomu yapmak için kullanılan kütüphaneler</string>
     <string name="settings_sign_out_header">Oturum Kapatılsın mı?</string>
     <string name="settings_sign_out_text">Çıkış yapmak istediğinizden emin misiniz? Her zaman imzalayabilirsiniz
         daha sonra tekrar girin.
@@ -103,8 +103,8 @@
     <string name="theme_system">Sistem</string>
     <string name="theme_light">Açık</string>
     <string name="theme_dark">Koyu</string>
-    <string name="badge_dev">Kasvet Geliştirici</string>
-    <string name="badge_supporter">Kasvet Destekçisi</string>
+    <string name="badge_dev">Gloom Geliştiricisi</string>
+    <string name="badge_supporter">Gloom Destekçisi</string>
     <string name="repo_tab_details">Detaylar</string>
     <string name="repo_tab_code">Kod</string>
     <string name="repo_tab_issues">Sorunlar</string>
