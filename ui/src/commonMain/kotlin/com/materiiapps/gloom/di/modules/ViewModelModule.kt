@@ -11,6 +11,7 @@ import com.materiiapps.gloom.ui.viewmodels.list.StarredReposListViewModel
 import com.materiiapps.gloom.ui.viewmodels.profile.FollowersViewModel
 import com.materiiapps.gloom.ui.viewmodels.profile.FollowingViewModel
 import com.materiiapps.gloom.ui.viewmodels.profile.ProfileViewModel
+import com.materiiapps.gloom.ui.viewmodels.repo.LicenseViewModel
 import com.materiiapps.gloom.ui.viewmodels.repo.RepoViewModel
 import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoCodeViewModel
 import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoDetailsViewModel
@@ -46,5 +47,6 @@ fun viewModelModule() = module {
     factoryOf(::RepoIssuesViewModel)
     factoryOf(::RepoPullRequestsViewModel)
     factoryOf(::RepoReleasesViewModel)
+    factoryOf(::LicenseViewModel)
 
 }

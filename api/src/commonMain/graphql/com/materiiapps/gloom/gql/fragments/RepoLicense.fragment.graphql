@@ -1,0 +1,14 @@
+fragment RepoLicense on License {
+    name
+    description
+    pseudoLicense
+    permissions {
+        label
+    }
+    limitations {
+        label
+    }
+    conditions {
+        label
+    }
+}

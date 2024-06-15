@@ -1,0 +1,8 @@
+query RepoLicense($owner: String!, $name: String!) {
+    repository(owner: $owner, name: $name) {
+        licenseContents
+        licenseInfo {
+            ...RepoLicense
+        }
+    }
+}

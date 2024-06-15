@@ -88,6 +88,9 @@ class GraphQLRepository(
     suspend fun getRepoDetails(owner: String, name: String) =
         service.getRepoDetails(owner, name).transform { it.repository?.repoDetails }
 
+    suspend fun getRepoLicense(owner: String, name: String) =
+        service.getRepoLicense(owner, name).transform { it.repository?.licenseContents to it.repository?.licenseInfo?.repoLicense }
+
     suspend fun getRepoFiles(owner: String, name: String, branchAndPath: String) =
         service.getRepoFiles(owner, name, branchAndPath).transform {
             it.repository?.gitObject?.treeFragment?.entries?.map { entry -> entry.fileEntryFragment }

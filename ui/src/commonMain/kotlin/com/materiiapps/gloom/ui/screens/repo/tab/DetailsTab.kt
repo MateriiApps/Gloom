@@ -45,6 +45,7 @@ import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.icons.Balance
 import com.materiiapps.gloom.ui.icons.Custom
 import com.materiiapps.gloom.ui.icons.Fork
+import com.materiiapps.gloom.ui.screens.repo.LicenseScreen
 import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.utils.pluralStringResource
@@ -166,13 +167,15 @@ class DetailsTab(
                                 onClick = viewModel::toggleStar,
                                 enabled = !viewModel.isStarLoading
                             )
+
                             repoDetails.licenseInfo?.let {
                                 LargeSegmentedButton(
                                     icon = Icons.Custom.Balance,
                                     text = it.nickname ?: it.key.uppercase(),
-                                    onClick = { /* TODO */ }
+                                    onClick = { nav.navigate(LicenseScreen(owner, name)) }
                                 )
                             }
+
                             LargeSegmentedButton(
                                 icon = Icons.Custom.Fork,
                                 text = pluralStringResource(
