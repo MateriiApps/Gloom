@@ -32,6 +32,8 @@
     <string name="action_view_raw">Ham görüntüle</string>
     <string name="action_view_markdown">İndirim olarak görüntüle</string>
     <string name="action_copy">Kopyala</string>
+    <string name="action_show_license_details">Show license details</string>
+    <string name="action_hide_license_details">Hide license details</string>
     <string name="dismiss_nevermind">Boş ver</string>
     <string name="dismiss_cancel">İptal</string>
     <string name="dismiss_no_thanks">Hayır, teşekkürler</string>
@@ -61,6 +63,7 @@
     <string name="noun_commit">Taahhüt</string>
     <string name="noun_more">Daha fazla</string>
     <string name="noun_less">Daha Az</string>
+    <string name="noun_license">License</string>
     <string name="forked_from">%s çatallandı</string>
     <string name="created_repo">§name§%1$s§§text§ bir depo oluşturdu §</string>
     <string name="starred_repo">§isim§%1$s§ §metin§ bir depoya yıldız verdi §</string>
@@ -157,6 +160,9 @@
     <string name="label_prerelease">Ön sürüm</string>
     <string name="label_all_releases">Tüm sürümler</string>
     <string name="label_dont_show_again">Bunu bir daha gösterme</string>
+    <string name="label_permissions">Permissions</string>
+    <string name="label_limitations">Limitations</string>
+    <string name="label_conditions">Conditions</string>
     <string name="label_follows_you">Sizi Takip Ediyor</string>
     <string name="label_choose_account">Bir hesap seçin</string>
     <string name="label_or">veya</string>

@@ -32,6 +32,8 @@
     <string name="action_view_raw">Ver original</string>
     <string name="action_view_markdown">Ver como markdown</string>
     <string name="action_copy">Copiar</string>
+    <string name="action_show_license_details">Show license details</string>
+    <string name="action_hide_license_details">Hide license details</string>
     <string name="dismiss_nevermind">No importa</string>
     <string name="dismiss_cancel">Cancelar</string>
     <string name="dismiss_no_thanks">No, gracias</string>
@@ -61,6 +63,7 @@
     <string name="noun_commit">Commit</string>
     <string name="noun_more">Más</string>
     <string name="noun_less">Menos</string>
+    <string name="noun_license">License</string>
     <string name="forked_from">Bifurcado de %s</string>
     <string name="created_repo">§name§%1$s§ §text§created a repository§</string>
     <string name="starred_repo">§name§%1$s§ §text§starred a repository§</string>
@@ -147,6 +150,9 @@
     <string name="label_prerelease">Prelanzamiento</string>
     <string name="label_all_releases">Todos los lanzamientos</string>
     <string name="label_dont_show_again">No volver a mostrar</string>
+    <string name="label_permissions">Permissions</string>
+    <string name="label_limitations">Limitations</string>
+    <string name="label_conditions">Conditions</string>
     <string name="label_follows_you">Te sigue</string>
     <string name="label_choose_account">Selecciona una cuenta</string>
     <string name="label_or">o</string>

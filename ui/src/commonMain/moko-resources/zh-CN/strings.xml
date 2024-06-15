@@ -32,6 +32,8 @@
     <string name="action_view_raw">View raw</string>
     <string name="action_view_markdown">View as markdown</string>
     <string name="action_copy">Copy</string>
+    <string name="action_show_license_details">Show license details</string>
+    <string name="action_hide_license_details">Hide license details</string>
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">取消</string>
     <string name="dismiss_no_thanks">No thanks</string>
@@ -61,6 +63,7 @@
     <string name="noun_commit">提交</string>
     <string name="noun_more">更多</string>
     <string name="noun_less">Less</string>
+    <string name="noun_license">License</string>
     <string name="forked_from">分叉自 %s</string>
     <string name="created_repo">§name§%1$s§ §text§created a repository§</string>
     <string name="starred_repo">§name§%1$s§ §text§starred a repository§</string>
@@ -157,6 +160,9 @@
     <string name="label_prerelease">Pre-release</string>
     <string name="label_all_releases">All releases</string>
     <string name="label_dont_show_again">Don\'t show this again</string>
+    <string name="label_permissions">Permissions</string>
+    <string name="label_limitations">Limitations</string>
+    <string name="label_conditions">Conditions</string>
     <string name="label_follows_you">Follows You</string>
     <string name="label_choose_account">Choose an account</string>
     <string name="label_or">or</string>
