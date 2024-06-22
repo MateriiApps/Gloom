@@ -32,8 +32,8 @@
     <string name="action_view_raw">Exibir raw</string>
     <string name="action_view_markdown">Exibir como markdown</string>
     <string name="action_copy">Copiar</string>
-    <string name="action_show_license_details">Show license details</string>
-    <string name="action_hide_license_details">Hide license details</string>
+    <string name="action_show_license_details">Mostrar detalhes da licença</string>
+    <string name="action_hide_license_details">Ocultar detalhes da licença</string>
     <string name="dismiss_nevermind">Deixa para lá</string>
     <string name="dismiss_cancel">Cancelar</string>
     <string name="dismiss_no_thanks">Não obrigado</string>
@@ -63,7 +63,7 @@
     <string name="noun_commit">Commit</string>
     <string name="noun_more">Mais</string>
     <string name="noun_less">Menos</string>
-    <string name="noun_license">License</string>
+    <string name="noun_license">Licença</string>
     <string name="forked_from">Fork de %s</string>
     <string name="created_repo">§name§%1$s§ §text§criou um repositório§</string>
     <string name="starred_repo">§name§%1$s§ §text§marcou com estrela um repositório§</string>
@@ -160,9 +160,9 @@
     <string name="label_prerelease">Pré-lançamento</string>
     <string name="label_all_releases">Todas as versões</string>
     <string name="label_dont_show_again">Não mostrar novamente</string>
-    <string name="label_permissions">Permissions</string>
-    <string name="label_limitations">Limitations</string>
-    <string name="label_conditions">Conditions</string>
+    <string name="label_permissions">Permissões</string>
+    <string name="label_limitations">Limitações</string>
+    <string name="label_conditions">Condições</string>
     <string name="label_follows_you">Segue você</string>
     <string name="label_choose_account">Escolha uma conta</string>
     <string name="label_or">ou</string>
