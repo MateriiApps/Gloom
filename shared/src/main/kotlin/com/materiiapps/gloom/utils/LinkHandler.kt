@@ -7,7 +7,7 @@ import androidx.core.net.toUri
 
 class LinkHandler(private val ctx: Context) {
 
-    fun openLink(link: String, forceCustomTab: Boolean) {
+    fun openLink(link: String, forceCustomTab: Boolean = false) {
         try {
             ctx.openLink(link.toUri(), forceCustomTab)
         } catch (e: Throwable) {

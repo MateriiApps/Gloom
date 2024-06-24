@@ -16,3 +16,18 @@ files:
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
+
+
+  - source: ui/src/main/res/strings.xml
+    translation: ui/src/commonMain/moko-resources/%locale%/strings.xml
+    update_option: update_as_unapproved
+    ignore:
+      - ui/src/commonMain/moko-resources/images/
+      - ui/src/commonMain/moko-resources/files/
+
+  - source: ui/src/commonMain/moko-resources/base/plurals.xml
+    translation: ui/src/commonMain/moko-resources/%locale%/plurals.xml
+    update_option: update_as_unapproved
+    ignore:
+      - ui/src/commonMain/moko-resources/images/
+      - ui/src/commonMain/moko-resources/files/

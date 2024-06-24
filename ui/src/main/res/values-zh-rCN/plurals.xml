@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="noun_contributors">
+        <item quantity="other">%d 位贡献者</item>
+    </plurals>
+    <plurals name="repositories">
+        <item quantity="other">%d 个存储库</item>
+    </plurals>
+    <plurals name="stars">
+        <item quantity="other">%d Stars</item>
+    </plurals>
+    <plurals name="forks">
+        <item quantity="other">%d 个分叉</item>
+    </plurals>
+    <plurals name="contributions_toast">
+        <item quantity="other">%1$s: %2$d Contributions</item>
+    </plurals>
+    <plurals name="plural_language">
+        <item quantity="other">语言</item>
+    </plurals>
+    <plurals name="plural_lines_selected">
+        <item quantity="other">Lines %1$s-%2$s</item>
+    </plurals>
+</resources>

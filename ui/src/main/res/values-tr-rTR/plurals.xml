@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="noun_contributors">
+        <item quantity="one">%d Destekçi</item>
+        <item quantity="other">%d Destekçiler</item>
+    </plurals>
+    <plurals name="repositories">
+        <item quantity="one">%d Depo</item>
+        <item quantity="other">%d Depolar</item>
+    </plurals>
+    <plurals name="stars">
+        <item quantity="one">%d Yıldız</item>
+        <item quantity="other">%d Yıldızlar</item>
+    </plurals>
+    <plurals name="forks">
+        <item quantity="one">%d çatallanma</item>
+        <item quantity="other">%d çatallanma</item>
+    </plurals>
+    <plurals name="contributions_toast">
+        <item quantity="one">%1$s: %2$d Katkı</item>
+        <item quantity="other">%1$s: %2$d Katkılar</item>
+    </plurals>
+    <plurals name="plural_language">
+        <item quantity="one">Dil</item>
+        <item quantity="other">Diller</item>
+    </plurals>
+    <plurals name="plural_lines_selected">
+        <item quantity="one">Çizgi %1$s</item>
+        <item quantity="other">Çizgiler %1$s-%2$s</item>
+    </plurals>
+</resources>
