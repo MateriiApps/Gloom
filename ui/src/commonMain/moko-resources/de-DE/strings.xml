@@ -6,9 +6,9 @@
     <string name="navigation_profile">Profil</string>
     <string name="navigation_settings">Einstellungen</string>
     <string name="login_welcome">Willkommen!</string>
-    <string name="login_sign_in_github">Sign in with GitHub</string>
+    <string name="login_sign_in_github">Mit GitHub anmelden</string>
     <string name="action_back">Zurück</string>
-    <string name="action_read_more">Read More</string>
+    <string name="action_read_more">Weiterlesen</string>
     <string name="action_follow_user">Follow %s</string>
     <string name="action_unfollow_user">Unfollow %s</string>
     <string name="action_sign_out">Sign Out</string>
