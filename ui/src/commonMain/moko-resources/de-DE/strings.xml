@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="navigation_explore">Explore</string>
+    <string name="navigation_explore">Erkunden</string>
     <string name="navigation_home">Home</string>
     <string name="navigation_inbox">Inbox</string>
     <string name="navigation_profile">Profil</string>
