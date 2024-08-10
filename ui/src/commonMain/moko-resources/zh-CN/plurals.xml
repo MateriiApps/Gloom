@@ -7,18 +7,18 @@
         <item quantity="other">%d 个存储库</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="other">%d Stars</item>
+        <item quantity="other">%d 个星标</item>
     </plurals>
     <plurals name="forks">
         <item quantity="other">%d 个分叉</item>
     </plurals>
     <plurals name="contributions_toast">
-        <item quantity="other">%1$s: %2$d Contributions</item>
+        <item quantity="other">%1$s：%2$d 项贡献</item>
     </plurals>
     <plurals name="plural_language">
         <item quantity="other">语言</item>
     </plurals>
     <plurals name="plural_lines_selected">
-        <item quantity="other">Lines %1$s-%2$s</item>
+        <item quantity="other">第 %1$s-%2$s 行</item>
     </plurals>
 </resources>
