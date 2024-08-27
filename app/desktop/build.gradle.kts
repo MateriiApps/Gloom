@@ -5,6 +5,7 @@ import java.util.UUID
 plugins {
     alias(libs.plugins.buildkonfig)
     alias(libs.plugins.compose)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.multiplatform)
 }
 

@@ -77,16 +77,13 @@ class GloomActivity : ComponentActivity() {
         }
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        isLastIntentOauth = intent?.isOAuthUri() ?: false
-        intent?.let {
-            if (it.isOAuthUri()) {
-                if (viewModel.authManager.awaitingAuthType == null) return
-                it.getOAuthCode()?.let { code ->
-                    viewModel.loginWithOAuthCode(code) {
-                        navigator.replaceAll(RootScreen())
-                    }
+        if (intent.isOAuthUri()) {
+            if (viewModel.authManager.awaitingAuthType == null) return
+            intent.getOAuthCode()?.let { code ->
+                viewModel.loginWithOAuthCode(code) {
+                    navigator.replaceAll(RootScreen())
                 }
             }
         }

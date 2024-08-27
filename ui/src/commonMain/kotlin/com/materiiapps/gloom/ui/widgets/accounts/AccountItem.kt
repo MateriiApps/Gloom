@@ -100,7 +100,7 @@ fun AccountItem(
                     fontSize = 17.sp
                 )
                 if (hasDisplayName && isEnterprise) {
-                    usernameSubtitle(includeParenthesis = true)
+                    usernameSubtitle(true)
                 }
             }
 
@@ -109,7 +109,7 @@ fun AccountItem(
                 horizontalArrangement = Arrangement.spacedBy(6.dp)
             ) {
                 if (hasDisplayName && !isEnterprise) {
-                    usernameSubtitle(includeParenthesis = false)
+                    usernameSubtitle(false)
                 }
                 account.baseUrl?.let { baseUrl ->
                     val enterpriseCD = stringResource(Res.strings.cd_enterprise_domain, baseUrl)
