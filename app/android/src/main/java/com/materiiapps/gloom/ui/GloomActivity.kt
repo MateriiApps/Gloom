@@ -35,7 +35,7 @@ class GloomActivity : ComponentActivity() {
     private val auth: AuthManager by inject()
 
     private lateinit var navigator: Navigator
-    private var isLastIntentOauth: Boolean = intent?.isOAuthUri() ?: false
+    private var isLastIntentOauth: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -79,6 +79,7 @@ class GloomActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        isLastIntentOauth = intent.isOAuthUri()
         if (intent.isOAuthUri()) {
             if (viewModel.authManager.awaitingAuthType == null) return
             intent.getOAuthCode()?.let { code ->
