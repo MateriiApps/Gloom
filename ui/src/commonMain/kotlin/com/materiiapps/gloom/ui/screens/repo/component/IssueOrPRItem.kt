@@ -25,6 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -132,11 +133,10 @@ fun IssueOrPRItem(
                             .height(23.dp)
                             .padding(horizontal = 3.dp)
                     ) {
-                        Divider(
+                        VerticalDivider(
                             color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-                            modifier = Modifier
-                                .height(18.dp)
-                                .width(1.dp)
+                            thickness = 1.dp,
+                            modifier = Modifier.height(18.dp)
                         )
                     }
                 }

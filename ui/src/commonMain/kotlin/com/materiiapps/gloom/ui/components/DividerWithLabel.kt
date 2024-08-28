@@ -4,8 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
 import androidx.compose.material3.DividerDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.runtime.Composable
@@ -28,7 +28,7 @@ fun DividerWithLabel(
         contentAlignment = Alignment.Center,
         modifier = modifier
     ) {
-        Divider(
+        HorizontalDivider(
             thickness = thickness,
             color = color
         )

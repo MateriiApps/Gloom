@@ -7,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
-import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,6 +22,7 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.RefreshIndicator
+import com.materiiapps.gloom.ui.components.ThinDivider
 import com.materiiapps.gloom.ui.screens.repo.viewmodel.RepoIssuesViewModel
 import com.materiiapps.gloom.ui.screens.repo.component.IssueItem
 import dev.icerock.moko.resources.compose.stringResource
@@ -66,10 +66,7 @@ class IssuesTab(
                     items[index]?.let { issue ->
                         Column {
                             IssueItem(issue)
-                            Divider(
-                                color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-                                thickness = 0.5.dp,
-                            )
+                            ThinDivider()
                         }
                     }
                 }

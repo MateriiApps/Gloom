@@ -23,6 +23,7 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.RefreshIndicator
+import com.materiiapps.gloom.ui.components.ThinDivider
 import com.materiiapps.gloom.ui.screens.repo.viewmodel.RepoPullRequestsViewModel
 import com.materiiapps.gloom.ui.screens.repo.component.PullRequestItem
 import dev.icerock.moko.resources.compose.stringResource
@@ -66,10 +67,7 @@ class PullRequestTab(
                     items[index]?.let { pullRequest ->
                         Column {
                             PullRequestItem(pullRequest)
-                            Divider(
-                                color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-                                thickness = 0.5.dp,
-                            )
+                            ThinDivider()
                         }
                     }
                 }

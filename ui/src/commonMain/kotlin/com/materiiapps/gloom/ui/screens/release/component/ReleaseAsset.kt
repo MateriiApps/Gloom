@@ -9,11 +9,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.InsertDriveFile
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.outlined.Android
 import androidx.compose.material.icons.outlined.Archive
 import androidx.compose.material.icons.outlined.FolderZip
-import androidx.compose.material.icons.outlined.InsertDriveFile
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
@@ -33,8 +33,8 @@ import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.DialogManager
 import com.materiiapps.gloom.domain.manager.DialogState
-import com.materiiapps.gloom.ui.utils.getFileSizeString
 import com.materiiapps.gloom.ui.screens.release.dialog.ReleaseAssetDownloadDialog
+import com.materiiapps.gloom.ui.utils.getFileSizeString
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 
@@ -70,7 +70,7 @@ fun ReleaseAsset(
         "tar",
         "gz" -> Icons.Outlined.FolderZip
 
-        else -> Icons.Outlined.InsertDriveFile
+        else -> Icons.AutoMirrored.Outlined.InsertDriveFile
     }
 
     Row(

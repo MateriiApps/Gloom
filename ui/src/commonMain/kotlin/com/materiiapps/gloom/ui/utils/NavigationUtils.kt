@@ -19,7 +19,7 @@ enum class RootTab(val tab: Tab) {
     PROFILE(ProfileTab())
 }
 
-tailrec fun Navigator.navigate(screen: Screen) {
+fun Navigator.navigate(screen: Screen) {
     return if (parent == null && items.firstOrNull { it.key == screen.key } == null) try {
         push(screen)
     } catch (_: Throwable) {

@@ -24,6 +24,7 @@ import androidx.paging.compose.itemKey
 import cafe.adriel.voyager.core.screen.Screen
 import com.apollographql.apollo.api.Query
 import com.materiiapps.gloom.ui.components.RefreshIndicator
+import com.materiiapps.gloom.ui.components.ThinDivider
 import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screens.list.viewmodel.BaseListViewModel
 import dev.icerock.moko.resources.StringResource
@@ -74,10 +75,7 @@ abstract class BaseListScreen<I : Any, D : Query.Data?, VM : BaseListViewModel<I
                         val item = items[index]
                         if (item != null) {
                             Item(item)
-                            Divider(
-                                color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-                                thickness = 0.5.dp,
-                            )
+                            ThinDivider()
                         }
                     }
                 }

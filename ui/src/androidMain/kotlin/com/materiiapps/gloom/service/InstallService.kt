@@ -3,6 +3,7 @@ package com.materiiapps.gloom.service
 import android.app.Service
 import android.content.Intent
 import android.content.pm.PackageInstaller
+import android.os.Build
 import android.os.IBinder
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.ToastManager
@@ -26,8 +27,12 @@ class InstallService : Service(), KoinComponent {
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         when (val statusCode = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -999)) {
             PackageInstaller.STATUS_PENDING_USER_ACTION -> {
-                val confirmationIntent = intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)!!
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+                @Suppress("DEPRECATION")
+                val confirmationIntent = when {
+                    Build.VERSION.SDK_INT < 34 -> intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)!!
+                    else -> intent.getParcelableExtra(Intent.EXTRA_INTENT, Intent::class.java)!!
+                }.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
                 startActivity(confirmationIntent)
             }

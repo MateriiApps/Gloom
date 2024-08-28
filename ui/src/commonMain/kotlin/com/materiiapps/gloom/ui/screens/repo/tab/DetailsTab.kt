@@ -42,6 +42,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.LargeSegmentedButton
 import com.materiiapps.gloom.ui.components.LargeSegmentedButtonRow
 import com.materiiapps.gloom.ui.components.RefreshIndicator
+import com.materiiapps.gloom.ui.components.ThinDivider
 import com.materiiapps.gloom.ui.icons.Balance
 import com.materiiapps.gloom.ui.icons.Custom
 import com.materiiapps.gloom.ui.icons.Fork
@@ -145,10 +146,7 @@ class DetailsTab(
                             }
                         }
 
-                        Divider(
-                            color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-                            thickness = 0.5.dp,
-                        )
+                        ThinDivider()
                     }
 
                     Box(
@@ -188,10 +186,7 @@ class DetailsTab(
                         }
                     }
 
-                    Divider(
-                        color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-                        thickness = 0.5.dp,
-                    )
+                    ThinDivider()
 
                     if (!(details.readme?.contentHTML).isNullOrBlank()) {
                         Text(
@@ -214,19 +209,13 @@ class DetailsTab(
                     }
 
                     repoDetails.contributors.let {
-                        if (it.nodes?.isNotEmpty() == true) Divider(
-                            color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-                            thickness = 0.5.dp,
-                        )
+                        if (it.nodes?.isNotEmpty() == true) ThinDivider()
 
                         ContributorsRow(contributors = it)
                     }
 
                     repoDetails.languages?.languages?.let {
-                        if (it.edges?.isNotEmpty() == true) Divider(
-                            color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-                            thickness = 0.5.dp,
-                        )
+                        if (it.edges?.isNotEmpty() == true) ThinDivider()
                         LanguageMakeup(it)
                     }
                 }

@@ -19,7 +19,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.LocalOffer
 import androidx.compose.material.icons.outlined.LocalOffer
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -52,6 +51,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.NewReleaseItemFragment
 import com.materiiapps.gloom.ui.components.Avatar
+import com.materiiapps.gloom.ui.components.ThinDivider
 import com.materiiapps.gloom.ui.icons.Commit
 import com.materiiapps.gloom.ui.icons.Custom
 import com.materiiapps.gloom.ui.screens.release.ReleaseScreen
@@ -219,10 +219,7 @@ fun ReleaseCard(
             }
         }
 
-        Divider(
-            color = MaterialTheme.colorScheme.onSurface.copy(0.1f),
-            thickness = 0.5.dp,
-        )
+        ThinDivider()
 
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
