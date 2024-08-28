@@ -26,7 +26,7 @@ import com.materiiapps.gloom.ui.components.Avatar
 import com.materiiapps.gloom.ui.components.navbar.LongClickableNavBarItem
 import com.materiiapps.gloom.ui.utils.DimenUtils
 import com.materiiapps.gloom.ui.utils.RootTab
-import com.materiiapps.gloom.ui.widgets.accounts.AccountSwitcherSheet
+import com.materiiapps.gloom.ui.screens.settings.component.account.AccountSwitcherSheet
 import org.koin.compose.koinInject
 
 class RootScreen : Screen {

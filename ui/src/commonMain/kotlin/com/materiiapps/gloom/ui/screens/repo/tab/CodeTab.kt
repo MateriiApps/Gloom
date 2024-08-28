@@ -27,7 +27,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.screens.explorer.DirectoryListingScreen
 import com.materiiapps.gloom.ui.transitions.SlideTransition
-import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoCodeViewModel
+import com.materiiapps.gloom.ui.screens.repo.viewmodel.RepoCodeViewModel
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.parameter.parametersOf
 

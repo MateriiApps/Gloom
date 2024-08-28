@@ -7,8 +7,8 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.models.ModelRepo
 import com.materiiapps.gloom.gql.StarredReposQuery
 import com.materiiapps.gloom.ui.screens.list.base.BaseListScreen
-import com.materiiapps.gloom.ui.viewmodels.list.StarredReposListViewModel
-import com.materiiapps.gloom.ui.widgets.repo.RepoItem
+import com.materiiapps.gloom.ui.screens.list.viewmodel.StarredReposListViewModel
+import com.materiiapps.gloom.ui.screens.repo.component.RepoItem
 import dev.icerock.moko.resources.StringResource
 import org.koin.core.parameter.parametersOf
 

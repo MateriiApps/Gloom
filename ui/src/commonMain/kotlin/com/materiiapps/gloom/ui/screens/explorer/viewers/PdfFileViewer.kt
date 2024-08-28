@@ -23,7 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.gql.fragment.RepoFile
-import com.materiiapps.gloom.ui.widgets.pdf.PdfPage
+import com.materiiapps.gloom.ui.screens.explorer.component.PdfPage
 import dev.zt64.compose.pdf.LoadState
 import dev.zt64.compose.pdf.RemotePdfState
 import dev.zt64.compose.pdf.component.PdfVerticalPager

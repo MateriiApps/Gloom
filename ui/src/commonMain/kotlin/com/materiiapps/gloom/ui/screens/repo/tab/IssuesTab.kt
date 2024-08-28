@@ -23,8 +23,8 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.RefreshIndicator
-import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoIssuesViewModel
-import com.materiiapps.gloom.ui.widgets.repo.IssueItem
+import com.materiiapps.gloom.ui.screens.repo.viewmodel.RepoIssuesViewModel
+import com.materiiapps.gloom.ui.screens.repo.component.IssueItem
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.parameter.parametersOf
 

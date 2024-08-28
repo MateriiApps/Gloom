@@ -7,7 +7,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.models.ModelUser
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.ui.screens.list.base.BaseListScreen
-import com.materiiapps.gloom.ui.viewmodels.list.OrgListViewModel
+import com.materiiapps.gloom.ui.screens.list.viewmodel.OrgListViewModel
 import com.materiiapps.gloom.ui.widgets.user.UserItem
 import dev.icerock.moko.resources.StringResource
 import org.koin.core.parameter.parametersOf

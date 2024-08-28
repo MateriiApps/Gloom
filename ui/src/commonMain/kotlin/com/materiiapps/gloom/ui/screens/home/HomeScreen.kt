@@ -41,14 +41,14 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
-import com.materiiapps.gloom.ui.viewmodels.home.HomeViewModel
-import com.materiiapps.gloom.ui.widgets.feed.CreatedRepoItem
-import com.materiiapps.gloom.ui.widgets.feed.FollowedUserItem
-import com.materiiapps.gloom.ui.widgets.feed.ForkedRepoItem
-import com.materiiapps.gloom.ui.widgets.feed.NewReleaseItem
-import com.materiiapps.gloom.ui.widgets.feed.RecommendedFollowUserItem
-import com.materiiapps.gloom.ui.widgets.feed.RecommendedRepoItem
-import com.materiiapps.gloom.ui.widgets.feed.StarredRepoItem
+import com.materiiapps.gloom.ui.screens.home.viewmodel.HomeViewModel
+import com.materiiapps.gloom.ui.screens.home.component.CreatedRepoItem
+import com.materiiapps.gloom.ui.screens.home.component.FollowedUserItem
+import com.materiiapps.gloom.ui.screens.home.component.ForkedRepoItem
+import com.materiiapps.gloom.ui.screens.home.component.NewReleaseItem
+import com.materiiapps.gloom.ui.screens.home.component.RecommendedFollowUserItem
+import com.materiiapps.gloom.ui.screens.home.component.RecommendedRepoItem
+import com.materiiapps.gloom.ui.screens.home.component.StarredRepoItem
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.launch
 

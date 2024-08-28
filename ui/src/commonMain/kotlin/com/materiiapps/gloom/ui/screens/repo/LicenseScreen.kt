@@ -32,8 +32,8 @@ import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.BackButton
 import com.materiiapps.gloom.ui.components.NavBarSpacer
-import com.materiiapps.gloom.ui.viewmodels.repo.LicenseViewModel
-import com.materiiapps.gloom.ui.widgets.repo.LicenseDetails
+import com.materiiapps.gloom.ui.screens.repo.viewmodel.LicenseViewModel
+import com.materiiapps.gloom.ui.screens.repo.component.LicenseDetails
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.parameter.parametersOf
 

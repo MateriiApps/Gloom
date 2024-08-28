@@ -7,7 +7,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.models.ModelUser
 import com.materiiapps.gloom.gql.FollowersQuery
 import com.materiiapps.gloom.ui.screens.list.base.BaseListScreen
-import com.materiiapps.gloom.ui.viewmodels.profile.FollowersViewModel
+import com.materiiapps.gloom.ui.screens.profile.viewmodel.FollowersViewModel
 import com.materiiapps.gloom.ui.widgets.user.UserItem
 import dev.icerock.moko.resources.StringResource
 import org.koin.core.parameter.parametersOf

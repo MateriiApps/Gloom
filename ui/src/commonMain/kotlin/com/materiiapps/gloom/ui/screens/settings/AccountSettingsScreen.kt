@@ -33,16 +33,16 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.RefreshIndicator
-import com.materiiapps.gloom.ui.components.settings.SettingsButton
+import com.materiiapps.gloom.ui.screens.settings.component.SettingsButton
 import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screens.auth.LandingScreen
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.utils.toImmutableList
-import com.materiiapps.gloom.ui.viewmodels.settings.AccountSettingsViewModel
-import com.materiiapps.gloom.ui.widgets.accounts.AccountItem
-import com.materiiapps.gloom.ui.widgets.accounts.SignOutButton
-import com.materiiapps.gloom.ui.widgets.accounts.SignOutDialog
+import com.materiiapps.gloom.ui.screens.settings.viewmodel.AccountSettingsViewModel
+import com.materiiapps.gloom.ui.screens.settings.component.account.AccountItem
+import com.materiiapps.gloom.ui.screens.settings.component.account.SignOutButton
+import com.materiiapps.gloom.ui.screens.settings.component.account.SignOutDialog
 import dev.icerock.moko.resources.compose.stringResource
 
 class AccountSettingsScreen : Screen {

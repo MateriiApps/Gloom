@@ -105,11 +105,11 @@ import com.materiiapps.gloom.ui.screens.list.StarredReposListScreen
 import com.materiiapps.gloom.ui.screens.settings.SettingsScreen
 import com.materiiapps.gloom.ui.utils.EmojiUtils
 import com.materiiapps.gloom.ui.utils.navigate
-import com.materiiapps.gloom.ui.viewmodels.profile.ProfileViewModel
+import com.materiiapps.gloom.ui.screens.profile.viewmodel.ProfileViewModel
 import com.materiiapps.gloom.ui.widgets.ReadMeCard
 import com.materiiapps.gloom.ui.widgets.alerts.LocalAlertController
-import com.materiiapps.gloom.ui.widgets.profile.ContributionGraph
-import com.materiiapps.gloom.ui.widgets.repo.RepoItem
+import com.materiiapps.gloom.ui.screens.profile.component.ContributionGraph
+import com.materiiapps.gloom.ui.screens.repo.component.RepoItem
 import com.materiiapps.gloom.utils.Constants
 import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.painterResource

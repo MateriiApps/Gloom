@@ -39,8 +39,8 @@ import com.materiiapps.gloom.ui.icons.GitHub
 import com.materiiapps.gloom.ui.icons.Social
 import com.materiiapps.gloom.ui.screens.root.RootScreen
 import com.materiiapps.gloom.ui.utils.toImmutableList
-import com.materiiapps.gloom.ui.viewmodels.auth.LandingViewModel
-import com.materiiapps.gloom.ui.widgets.accounts.AccountItem
+import com.materiiapps.gloom.ui.screens.auth.viewmodel.LandingViewModel
+import com.materiiapps.gloom.ui.screens.settings.component.account.AccountItem
 import com.materiiapps.gloom.utils.LocalLinkHandler
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource

@@ -25,9 +25,9 @@ import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.components.ThinDivider
-import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoReleasesViewModel
-import com.materiiapps.gloom.ui.widgets.repo.LatestReleaseItem
-import com.materiiapps.gloom.ui.widgets.repo.ReleaseItem
+import com.materiiapps.gloom.ui.screens.repo.viewmodel.RepoReleasesViewModel
+import com.materiiapps.gloom.ui.screens.repo.component.LatestReleaseItem
+import com.materiiapps.gloom.ui.screens.repo.component.ReleaseItem
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.parameter.parametersOf
 

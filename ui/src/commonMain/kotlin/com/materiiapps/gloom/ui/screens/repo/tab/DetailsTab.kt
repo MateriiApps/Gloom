@@ -49,10 +49,10 @@ import com.materiiapps.gloom.ui.screens.repo.LicenseScreen
 import com.materiiapps.gloom.ui.screens.repo.RepoScreen
 import com.materiiapps.gloom.ui.utils.navigate
 import com.materiiapps.gloom.ui.utils.pluralStringResource
-import com.materiiapps.gloom.ui.viewmodels.repo.tab.RepoDetailsViewModel
+import com.materiiapps.gloom.ui.screens.repo.viewmodel.RepoDetailsViewModel
 import com.materiiapps.gloom.ui.widgets.Markdown
-import com.materiiapps.gloom.ui.widgets.repo.ContributorsRow
-import com.materiiapps.gloom.ui.widgets.repo.LanguageMakeup
+import com.materiiapps.gloom.ui.screens.repo.component.ContributorsRow
+import com.materiiapps.gloom.ui.screens.repo.component.LanguageMakeup
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.parameter.parametersOf
 

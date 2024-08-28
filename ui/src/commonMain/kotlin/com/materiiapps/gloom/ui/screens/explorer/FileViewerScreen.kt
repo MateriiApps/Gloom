@@ -56,7 +56,7 @@ import com.materiiapps.gloom.ui.screens.explorer.viewers.MarkdownFileViewer
 import com.materiiapps.gloom.ui.screens.explorer.viewers.PdfFileViewer
 import com.materiiapps.gloom.ui.screens.explorer.viewers.TextFileViewer
 import com.materiiapps.gloom.ui.utils.thenIf
-import com.materiiapps.gloom.ui.viewmodels.explorer.FileViewerViewModel
+import com.materiiapps.gloom.ui.screens.explorer.viewmodel.FileViewerViewModel
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf

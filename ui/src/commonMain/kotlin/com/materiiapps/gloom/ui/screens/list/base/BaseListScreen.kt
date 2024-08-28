@@ -25,7 +25,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import com.apollographql.apollo.api.Query
 import com.materiiapps.gloom.ui.components.RefreshIndicator
 import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
-import com.materiiapps.gloom.ui.viewmodels.list.base.BaseListViewModel
+import com.materiiapps.gloom.ui.screens.list.viewmodel.BaseListViewModel
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 

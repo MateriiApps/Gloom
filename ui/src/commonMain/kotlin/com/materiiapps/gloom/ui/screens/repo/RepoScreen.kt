@@ -64,7 +64,7 @@ import com.materiiapps.gloom.ui.components.TextBanner
 import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
 import com.materiiapps.gloom.ui.theme.colors
 import com.materiiapps.gloom.ui.utils.navigate
-import com.materiiapps.gloom.ui.viewmodels.repo.RepoViewModel
+import com.materiiapps.gloom.ui.screens.repo.viewmodel.RepoViewModel
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
