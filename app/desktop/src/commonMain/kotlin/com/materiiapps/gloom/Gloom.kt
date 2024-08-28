@@ -11,7 +11,7 @@ import com.materiiapps.gloom.di.modules.viewModelModule
 import com.materiiapps.gloom.di.repositoryModule
 import com.materiiapps.gloom.di.serviceModule
 import com.materiiapps.gloom.ui.App
-import com.materiiapps.gloom.ui.screens.auth.LandingScreen
+import com.materiiapps.gloom.ui.screen.auth.LandingScreen
 import com.materiiapps.gloom.utils.LinkHandler
 import com.materiiapps.gloom.utils.VersionName
 import dev.icerock.moko.resources.compose.stringResource

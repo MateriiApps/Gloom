@@ -5,11 +5,11 @@ import cafe.adriel.voyager.core.model.ScreenModelStore
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.tab.Tab
-import com.materiiapps.gloom.ui.screens.explore.ExploreScreen
-import com.materiiapps.gloom.ui.screens.home.HomeScreen
-import com.materiiapps.gloom.ui.screens.notifications.NotificationsScreen
-import com.materiiapps.gloom.ui.screens.profile.ProfileScreen
-import com.materiiapps.gloom.ui.screens.profile.ProfileTab
+import com.materiiapps.gloom.ui.screen.explore.ExploreScreen
+import com.materiiapps.gloom.ui.screen.home.HomeScreen
+import com.materiiapps.gloom.ui.screen.notifications.NotificationsScreen
+import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
+import com.materiiapps.gloom.ui.screen.profile.ProfileTab
 
 @Suppress("unused")
 enum class RootTab(val tab: Tab) {

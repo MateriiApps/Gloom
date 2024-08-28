@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import cafe.adriel.voyager.navigator.Navigator
 import com.materiiapps.gloom.domain.manager.AuthManager
-import com.materiiapps.gloom.ui.screens.auth.LandingScreen
-import com.materiiapps.gloom.ui.screens.root.RootScreen
+import com.materiiapps.gloom.ui.screen.auth.LandingScreen
+import com.materiiapps.gloom.ui.screen.root.RootScreen
 import com.materiiapps.gloom.ui.utils.toPx
 import com.materiiapps.gloom.ui.viewmodels.main.MainViewModel
 import com.materiiapps.gloom.utils.LinkHandler
