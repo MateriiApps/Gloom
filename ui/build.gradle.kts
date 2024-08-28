@@ -52,6 +52,7 @@ kotlin {
 
                 api(libs.compose.imageloader)
                 api(libs.compose.pdf)
+                implementation(libs.compose.webview.multiplatform)
                 api(libs.highlights)
                 api(libs.koin.core)
                 api(libs.koin.compose)
@@ -63,7 +64,6 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                api(libs.bundles.accompanist)
                 api(libs.androidx.core.ktx)
                 api(libs.koin.android)
                 api(libs.zoomable)

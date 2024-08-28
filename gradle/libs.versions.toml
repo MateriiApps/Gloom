@@ -22,11 +22,11 @@ kotlin = "2.0.0"
 
 # Misc
 aboutlibraries = "10.10.0"
-accompanist = "0.35.0-alpha"
 apollo = "4.0.0"
 apollo-adapters = "0.0.3"
 buildkonfig = "0.15.1"
 compose-pdf = "1.0.0"
+compose-webview-multiplatform = "1.9.20"
 highlights = "0.7.1"
 koin = "3.6.0-wasm-alpha2"
 ktor = "2.3.12"
@@ -84,9 +84,9 @@ voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitio
 
 # Misc
 aboutlibraries-core = { group = "com.mikepenz", name = "aboutlibraries", version.ref = "aboutlibraries" }
-accompanist-webview = { group = "com.google.accompanist", name = "accompanist-webview", version.ref = "accompanist" }
 compose-imageloader = { group = "io.github.qdsfdhvh", name = "image-loader", version = "1.6.4" }
 compose-pdf = { group = "dev.zt64", name = "compose-pdf", version.ref = "compose-pdf" }
+compose-webview-multiplatform = { group = "io.github.kevinnzou", name = "compose-webview-multiplatform", version.ref = "compose-webview-multiplatform" }
 highlights = { group = "dev.snipme", name = "highlights", version.ref = "highlights" }
 moko-resources-compose = { group = "dev.icerock.moko", name = "resources-compose", version.ref = "moko-resources" }
 multiplatform-settings = { group = "com.russhwolf", name = "multiplatform-settings-no-arg", version.ref = "multiplatform-settings" }
@@ -117,7 +117,6 @@ buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig"
 
 [bundles]
 
-accompanist = ["accompanist-webview"]
 apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters-datetime"]
 kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime", "kotlinx-serialization-json"]
 ktor = ["ktor-serialization-kotlinx-json", "ktor-client-logging", "ktor-client-core", "ktor-client-content-negotiation", "ktor-client-cio"]
