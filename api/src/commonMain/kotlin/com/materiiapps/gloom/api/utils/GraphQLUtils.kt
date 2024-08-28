@@ -1,8 +1,8 @@
 package com.materiiapps.gloom.api.utils
 
-import com.apollographql.apollo3.ApolloCall
-import com.apollographql.apollo3.api.Operation
-import com.apollographql.apollo3.api.Optional
+import com.apollographql.apollo.ApolloCall
+import com.apollographql.apollo.api.Operation
+import com.apollographql.apollo.api.Optional
 
 suspend fun <D : Operation.Data> ApolloCall<D>.response(): GraphQLResponse<D> {
     return try {

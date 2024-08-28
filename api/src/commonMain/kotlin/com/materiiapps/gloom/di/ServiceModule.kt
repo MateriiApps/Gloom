@@ -1,9 +1,9 @@
 package com.materiiapps.gloom.di
 
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
-import com.apollographql.apollo3.cache.normalized.normalizedCache
-import com.apollographql.apollo3.network.http.LoggingInterceptor
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.cache.normalized.api.MemoryCacheFactory
+import com.apollographql.apollo.cache.normalized.normalizedCache
+import com.apollographql.apollo.network.http.LoggingInterceptor
 import com.materiiapps.gloom.api.URLs
 import com.materiiapps.gloom.api.service.GithubApiService
 import com.materiiapps.gloom.api.service.GithubAuthApiService

@@ -43,13 +43,24 @@ apollo {
     service("service") {
         packageName = "com.materiiapps.gloom.gql"
 
+        introspection {
+            endpointUrl = "https://api.github.com/graphql"
+            headers = mapOf(
+                // GLOOM_INTROSPECTION_TOKEN Should be set to the authorization token obtained after
+                // logging in to the mobile client, it should start with "gho_"
+                "Authorization" to "Bearer ${System.getenv("GLOOM_INTROSPECTION_TOKEN")}",
+                "User-Agent" to "Apollo GQL Introspection"
+            )
+            schemaFile = file("src/commonMain/graphql/com/materiiapps/gloom/gql/schemas/github.schema.graphqls")
+        }
+
         mapScalarToKotlinString("URI")
         mapScalarToKotlinString("HTML")
         mapScalar("Date", "kotlinx.datetime.Instant", "com.materiiapps.gloom.api.utils.DateAdapter")
         mapScalar(
             "DateTime",
             "kotlinx.datetime.Instant",
-            "com.apollographql.apollo3.adapter.KotlinxInstantAdapter"
+            "com.apollographql.adapter.datetime.KotlinxInstantAdapter"
         )
     }
 }

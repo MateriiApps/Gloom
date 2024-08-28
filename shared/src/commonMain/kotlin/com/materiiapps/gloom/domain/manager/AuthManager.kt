@@ -5,8 +5,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.cache.normalized.apolloStore
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.cache.normalized.apolloStore
 import com.materiiapps.gloom.utils.Logger
 import com.materiiapps.gloom.utils.SettingsProvider
 import kotlinx.serialization.Serializable

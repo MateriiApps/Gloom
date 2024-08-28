@@ -7,7 +7,7 @@ import androidx.paging.PagingState
 import androidx.paging.cachedIn
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.apollographql.apollo3.api.Query
+import com.apollographql.apollo.api.Query
 
 abstract class BaseListViewModel<I : Any, D : Query.Data?> : ScreenModel {
 

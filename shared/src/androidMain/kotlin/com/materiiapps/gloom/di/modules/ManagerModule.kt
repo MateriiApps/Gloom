@@ -1,6 +1,6 @@
 package com.materiiapps.gloom.di.modules
 
-import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo.ApolloClient
 import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.domain.manager.DialogManager
 import com.materiiapps.gloom.domain.manager.DownloadManager

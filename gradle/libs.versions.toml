@@ -23,7 +23,8 @@ kotlin = "2.0.0"
 # Misc
 aboutlibraries = "10.10.0"
 accompanist = "0.35.0-alpha"
-apollo = "3.8.2"
+apollo = "4.0.0"
+apollo-adapters = "0.0.3"
 buildkonfig = "0.15.1"
 compose-pdf = "1.0.0"
 highlights = "0.7.1"
@@ -45,9 +46,9 @@ androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscree
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-runtime-ktx" }
 
 # Apollo
-apollo-adapters = { group = "com.apollographql.apollo3", name = "apollo-adapters", version.ref = "apollo" }
-apollo-normalized-cache = { group = "com.apollographql.apollo3", name = "apollo-normalized-cache", version.ref = "apollo" }
-apollo-runtime = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo" }
+apollo-adapters-datetime = { group = "com.apollographql.adapters", name = "apollo-adapters-kotlinx-datetime", version.ref = "apollo-adapters" }
+apollo-normalized-cache = { group = "com.apollographql.apollo", name = "apollo-normalized-cache", version.ref = "apollo" }
+apollo-runtime = { group = "com.apollographql.apollo", name = "apollo-runtime", version.ref = "apollo" }
 
 # Compose
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity-compose" }
@@ -110,14 +111,14 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 
 # Misc
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries"}
-apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
+apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 
 
 [bundles]
 
 accompanist = ["accompanist-webview"]
-apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters"]
+apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters-datetime"]
 kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime", "kotlinx-serialization-json"]
 ktor = ["ktor-serialization-kotlinx-json", "ktor-client-logging", "ktor-client-core", "ktor-client-content-negotiation", "ktor-client-cio"]
 voyager = ["voyager-tab-navigator", "voyager-koin", "voyager-navigator", "voyager-transitions", "voyager-screenmodel"]

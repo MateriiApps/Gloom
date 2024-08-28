@@ -1,6 +1,6 @@
 package com.materiiapps.gloom.api.utils
 
-typealias GQLErrors = List<com.apollographql.apollo3.api.Error>
+typealias GQLErrors = List<com.apollographql.apollo.api.Error>
 
 sealed interface GraphQLResponse<out T> {
     data class Success<T>(val data: T, val errors: GQLErrors) : GraphQLResponse<T>
