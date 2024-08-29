@@ -56,7 +56,7 @@ apollo {
 
         mapScalarToKotlinString("URI")
         mapScalarToKotlinString("HTML")
-        mapScalar("Date", "kotlinx.datetime.Instant", "com.materiiapps.gloom.api.utils.DateAdapter")
+        mapScalar("Date", "kotlinx.datetime.Instant", "com.materiiapps.gloom.api.util.DateAdapter")
         mapScalar(
             "DateTime",
             "kotlinx.datetime.Instant",
