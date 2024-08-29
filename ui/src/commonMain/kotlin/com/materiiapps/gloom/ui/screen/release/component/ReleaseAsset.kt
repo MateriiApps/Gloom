@@ -33,6 +33,8 @@ import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.DialogManager
 import com.materiiapps.gloom.domain.manager.DialogState
+import com.materiiapps.gloom.ui.icon.Custom
+import com.materiiapps.gloom.ui.icon.custom.IOS
 import com.materiiapps.gloom.ui.screen.release.dialog.ReleaseAssetDownloadDialog
 import com.materiiapps.gloom.ui.util.getFileSizeString
 import dev.icerock.moko.resources.compose.stringResource
@@ -52,6 +54,9 @@ fun ReleaseAsset(
         "apks",
         "apkx",
         "apk" -> Icons.Outlined.Android
+
+        "ipa",
+        "tipa" -> Icons.Custom.IOS
 
         "dmg",
         "msi",
