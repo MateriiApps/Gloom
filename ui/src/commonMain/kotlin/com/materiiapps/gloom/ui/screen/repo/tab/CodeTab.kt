@@ -1,6 +1,5 @@
 package com.materiiapps.gloom.ui.screen.repo.tab
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,11 +8,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
@@ -24,7 +23,6 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.component.RefreshIndicator
 import com.materiiapps.gloom.ui.screen.explorer.DirectoryListingScreen
 import com.materiiapps.gloom.ui.transition.SlideTransition
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoCodeViewModel
@@ -43,20 +41,16 @@ class CodeTab(
     @Composable
     override fun Content() = Screen()
 
-    @OptIn(ExperimentalMaterialApi::class, ExperimentalAnimationApi::class)
     @Composable
+    @OptIn(ExperimentalMaterial3Api::class)
     fun Screen(
         viewModel: RepoCodeViewModel = getScreenModel { parametersOf(owner to name) }
     ) {
-        val pullRefreshState = rememberPullRefreshState(
-            refreshing = viewModel.isLoading,
-            onRefresh = { viewModel.loadDefaultBranch() }
-        )
-
-        Box(
+        PullToRefreshBox(
+            isRefreshing = viewModel.isLoading,
+            onRefresh = { viewModel.loadDefaultBranch() },
             modifier = Modifier
                 .fillMaxSize()
-                .pullRefresh(pullRefreshState)
                 .clipToBounds()
         ) {
             Column(
@@ -96,7 +90,6 @@ class CodeTab(
                     }
                 }
             }
-            RefreshIndicator(state = pullRefreshState, isRefreshing = viewModel.isLoading)
         }
     }
 

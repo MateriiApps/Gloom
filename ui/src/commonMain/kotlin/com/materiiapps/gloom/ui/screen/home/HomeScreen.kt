@@ -9,19 +9,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -39,7 +37,6 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.component.RefreshIndicator
 import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screen.home.viewmodel.HomeViewModel
 import com.materiiapps.gloom.ui.screen.home.component.CreatedRepoItem
@@ -68,16 +65,13 @@ class HomeScreen : Tab {
     override fun Content() = Screen()
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
         viewModel: HomeViewModel = getScreenModel()
     ) {
         val items = viewModel.items.collectAsLazyPagingItems()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
         val isLoading = items.loadState.refresh == LoadState.Loading
-        val refreshState = rememberPullRefreshState(isLoading, onRefresh = {
-            viewModel.refresh(items)
-        })
         val lazyListState = rememberLazyListState()
         val coroutineScope = rememberCoroutineScope()
         val canScrollBackToTop by remember { derivedStateOf { lazyListState.canScrollBackward } }
@@ -100,11 +94,12 @@ class HomeScreen : Tab {
                 }
             }
         ) { pv ->
-            Box(
+            PullToRefreshBox(
+                isRefreshing = isLoading,
+                onRefresh = { viewModel.refresh(items) },
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(pv)
-                    .pullRefresh(refreshState)
                     .nestedScroll(scrollBehavior.nestedScrollConnection)
             ) {
                 LazyColumn(
@@ -193,8 +188,6 @@ class HomeScreen : Tab {
                         }
                     }
                 }
-
-                RefreshIndicator(refreshState, isRefreshing = isLoading)
             }
         }
     }

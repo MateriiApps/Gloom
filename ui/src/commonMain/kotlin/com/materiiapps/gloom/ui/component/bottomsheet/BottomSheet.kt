@@ -41,7 +41,7 @@ fun BottomSheet(
         tonalElevation = tonalElevation,
         scrimColor = scrimColor,
         dragHandle = dragHandle,
-        windowInsets = WindowInsets(0, 0, 0, 0),
+        contentWindowInsets = { WindowInsets(0, 0, 0, 0) },
         content = {
             val coroutineScope = rememberCoroutineScope()
             val animateToDismiss: () -> Unit = {

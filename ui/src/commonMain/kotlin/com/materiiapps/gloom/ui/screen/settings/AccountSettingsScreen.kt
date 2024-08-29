@@ -7,12 +7,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.outlined.Edit
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
@@ -21,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -32,7 +30,6 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.component.RefreshIndicator
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsButton
 import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screen.auth.LandingScreen
@@ -48,19 +45,11 @@ import dev.icerock.moko.resources.compose.stringResource
 class AccountSettingsScreen : Screen {
 
     @Composable
-    @OptIn(
-        ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class,
-        ExperimentalFoundationApi::class
-    )
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
         val viewModel: AccountSettingsViewModel = getScreenModel()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
         val nav = LocalNavigator.currentOrThrow
-
-        val pullRefreshState = rememberPullRefreshState(
-            refreshing = viewModel.isLoading,
-            onRefresh = { viewModel.loadAccounts() }
-        )
 
         val accounts by remember(viewModel.authManager.accounts) {
             derivedStateOf {
@@ -99,11 +88,12 @@ class AccountSettingsScreen : Screen {
             },
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
         ) { pv ->
-            Box(
+            PullToRefreshBox(
+                isRefreshing = viewModel.isLoading,
+                onRefresh = { viewModel.loadAccounts() },
                 modifier = Modifier
                     .padding(pv)
                     .fillMaxSize()
-                    .pullRefresh(state = pullRefreshState)
             ) {
                 LazyColumn(
                     modifier = Modifier
@@ -135,8 +125,7 @@ class AccountSettingsScreen : Screen {
                                     onClick = { viewModel.openSignOutDialog(account.id) }
                                 )
                             },
-                            modifier = Modifier
-                                .animateItemPlacement(tween(200))
+                            modifier = Modifier.animateItem(tween(200))
                         )
                     }
                     item(
@@ -155,7 +144,6 @@ class AccountSettingsScreen : Screen {
                         )
                     }
                 }
-                RefreshIndicator(state = pullRefreshState, isRefreshing = viewModel.isLoading)
             }
         }
     }

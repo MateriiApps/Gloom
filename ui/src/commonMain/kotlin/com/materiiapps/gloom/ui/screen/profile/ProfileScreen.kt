@@ -25,8 +25,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.HowToReg
 import androidx.compose.material.icons.filled.Share
@@ -39,12 +37,11 @@ import androidx.compose.material.icons.outlined.PersonAddAlt
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Star
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
@@ -55,6 +52,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -87,7 +85,6 @@ import com.materiiapps.gloom.gql.type.SocialAccountProvider
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.BackButton
 import com.materiiapps.gloom.ui.component.BadgedItem
-import com.materiiapps.gloom.ui.component.RefreshIndicator
 import com.materiiapps.gloom.ui.icon.social.Facebook
 import com.materiiapps.gloom.ui.icon.social.Hometown
 import com.materiiapps.gloom.ui.icon.social.Instagram
@@ -129,23 +126,22 @@ open class ProfileScreen(
     override fun Content() = Screen()
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen(
         viewModel: ProfileViewModel = getScreenModel { parametersOf(user) }
     ) {
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-        val refreshState =
-            rememberPullRefreshState(viewModel.isLoading, onRefresh = { viewModel.loadData() })
 
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             topBar = { TopBar(viewModel, scrollBehavior) }
         ) { pv ->
-            Box(
+            PullToRefreshBox(
+                isRefreshing = viewModel.isLoading,
+                onRefresh = { viewModel.loadData() },
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(pv)
-                    .pullRefresh(refreshState)
             ) {
                 Column(
                     Modifier
@@ -179,8 +175,6 @@ open class ProfileScreen(
                         Spacer(modifier = Modifier.height(16.dp))
                     }
                 }
-
-                RefreshIndicator(refreshState, isRefreshing = viewModel.isLoading)
             }
         }
     }

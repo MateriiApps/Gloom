@@ -43,6 +43,13 @@ class GloomColorScheme(
     outline: Color,
     outlineVariant: Color,
     scrim: Color,
+    surfaceBright: Color,
+    surfaceDim: Color,
+    surfaceContainer: Color,
+    surfaceContainerHigh: Color,
+    surfaceContainerHighest: Color,
+    surfaceContainerLow: Color,
+    surfaceContainerLowest: Color,
 
     //Custom colors
     statusGreen: Color,
@@ -97,6 +104,13 @@ class GloomColorScheme(
         colorScheme.outline,
         colorScheme.outlineVariant,
         colorScheme.scrim,
+        colorScheme.surfaceBright,
+        colorScheme.surfaceDim,
+        colorScheme.surfaceContainer,
+        colorScheme.surfaceContainerHigh,
+        colorScheme.surfaceContainerHighest,
+        colorScheme.surfaceContainerLow,
+        colorScheme.surfaceContainerLowest,
         statusGreen,
         statusPurple,
         statusRed,
@@ -166,6 +180,20 @@ class GloomColorScheme(
         internal set
     var scrim by mutableStateOf(scrim, structuralEqualityPolicy())
         internal set
+    var surfaceBright by mutableStateOf(surfaceBright, structuralEqualityPolicy())
+        internal set
+    var surfaceDim by mutableStateOf(surfaceDim, structuralEqualityPolicy())
+        internal set
+    var surfaceContainer by mutableStateOf(surfaceContainer, structuralEqualityPolicy())
+        internal set
+    var surfaceContainerHigh by mutableStateOf(surfaceContainerHigh, structuralEqualityPolicy())
+        internal set
+    var surfaceContainerHighest by mutableStateOf(surfaceContainerHighest, structuralEqualityPolicy())
+        internal set
+    var surfaceContainerLow by mutableStateOf(surfaceContainerLow, structuralEqualityPolicy())
+        internal set
+    var surfaceContainerLowest by mutableStateOf(surfaceContainerLowest, structuralEqualityPolicy())
+        internal set
 
     var statusGreen by mutableStateOf(statusGreen, structuralEqualityPolicy())
         internal set
@@ -224,7 +252,14 @@ class GloomColorScheme(
             onErrorContainer,
             outline,
             outlineVariant,
-            scrim
+            scrim,
+            surfaceBright,
+            surfaceDim,
+            surfaceContainer,
+            surfaceContainerHigh,
+            surfaceContainerHighest,
+            surfaceContainerLow,
+            surfaceContainerLowest
         )
     }
 }

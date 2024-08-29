@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,9 +18,13 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Label
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -27,6 +32,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.AvatarShape
@@ -45,6 +52,7 @@ import kotlin.math.roundToInt
  * @param onCornerRadiusUpdate Callback for when the user changes the radius
  * @param modifier The [Modifier] for this component
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AvatarShapeSetting(
     currentShape: AvatarShape,
@@ -100,27 +108,52 @@ fun AvatarShapeSetting(
         }
 
         AnimatedVisibility(currentShape == AvatarShape.RoundedCorner) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+            Column(
+                verticalArrangement = Arrangement.spacedBy(0.dp),
                 modifier = Modifier.padding(top = 16.dp)
             ) {
-                Text(
-                    text = stringResource(Res.strings.appearance_av_radius),
-                    style = MaterialTheme.typography.labelMedium
-                )
+                val sliderInteractionSource = remember { MutableInteractionSource() }
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(Res.strings.appearance_av_radius),
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.weight(1f)
+                    )
+
+                    Text(
+                        text = DecimalFormat("#%").format(cornerRadius/100f),
+                        color = MaterialTheme.colorScheme.primary,
+                        style = MaterialTheme.typography.labelMedium
+                    )
+                }
 
                 Slider(
                     value = cornerRadius.toFloat(),
                     onValueChange = { onCornerRadiusUpdate(it.roundToInt()) },
                     valueRange = 0f..50f,
-                    modifier = Modifier
-                        .weight(1f)
-                )
-
-                Text(
-                    text = DecimalFormat("#%").format(cornerRadius/100f),
-                    style = MaterialTheme.typography.labelSmall
+                    interactionSource = sliderInteractionSource,
+                    thumb = {
+                        Label(
+                            label = {
+                                PlainTooltip {
+                                    Text(
+                                        text = DecimalFormat("#%").format(cornerRadius/100f)
+                                    )
+                                }
+                            },
+                            interactionSource = sliderInteractionSource
+                        ) {
+                            SliderDefaults.Thumb(
+                                interactionSource = sliderInteractionSource,
+                                thumbSize = DpSize(width = 4.dp, height = 32.dp)
+                            )
+                        }
+                    }
                 )
             }
         }

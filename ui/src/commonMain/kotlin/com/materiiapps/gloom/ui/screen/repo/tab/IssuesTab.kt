@@ -4,9 +4,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
@@ -19,7 +18,6 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.component.RefreshIndicator
 import com.materiiapps.gloom.ui.component.ThinDivider
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoIssuesViewModel
 import com.materiiapps.gloom.ui.screen.repo.component.IssueItem
@@ -39,20 +37,17 @@ class IssuesTab(
     override fun Content() = Screen()
 
     @Composable
-    @OptIn(ExperimentalMaterialApi::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     fun Screen() {
         val viewModel: RepoIssuesViewModel = getScreenModel { parametersOf(owner to name) }
         val items = viewModel.items.collectAsLazyPagingItems()
         val isLoading = items.loadState.refresh == LoadState.Loading
-        val pullRefreshState = rememberPullRefreshState(
-            refreshing = isLoading,
-            onRefresh = { items.refresh() }
-        )
 
-        Box(
+        PullToRefreshBox(
+            isRefreshing = isLoading,
+            onRefresh = { items.refresh() },
             modifier = Modifier
                 .fillMaxSize()
-                .pullRefresh(pullRefreshState)
                 .clipToBounds()
         ) {
             LazyColumn {
@@ -69,7 +64,6 @@ class IssuesTab(
                     }
                 }
             }
-            RefreshIndicator(state = pullRefreshState, isRefreshing = isLoading)
         }
     }
 

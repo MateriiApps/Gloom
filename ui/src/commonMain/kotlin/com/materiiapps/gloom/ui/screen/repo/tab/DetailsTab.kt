@@ -11,16 +11,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarBorder
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
@@ -40,7 +39,6 @@ import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.component.LargeSegmentedButton
 import com.materiiapps.gloom.ui.component.LargeSegmentedButtonRow
-import com.materiiapps.gloom.ui.component.RefreshIndicator
 import com.materiiapps.gloom.ui.component.ThinDivider
 import com.materiiapps.gloom.ui.icon.custom.Balance
 import com.materiiapps.gloom.ui.icon.Custom
@@ -68,22 +66,19 @@ class DetailsTab(
     @Composable
     override fun Content() = Screen()
 
-    @OptIn(ExperimentalMaterialApi::class)
     @Composable
+    @OptIn(ExperimentalMaterial3Api::class)
     fun Screen(
         viewModel: RepoDetailsViewModel = getScreenModel { parametersOf(owner to name) }
     ) {
         val nav = LocalNavigator.currentOrThrow
-        val refreshState = rememberPullRefreshState(
-            refreshing = viewModel.detailsLoading,
-            onRefresh = { viewModel.loadDetails() }
-        )
         val repoDetails = viewModel.details
 
-        Box(
+        PullToRefreshBox(
+            isRefreshing = viewModel.detailsLoading,
+            onRefresh = { viewModel.loadDetails() },
             modifier = Modifier
                 .fillMaxSize()
-                .pullRefresh(refreshState)
                 .clipToBounds()
         ) {
             Column(
@@ -109,13 +104,13 @@ class DetailsTab(
                             )
                         }
 
-                        details.parent?.let { parent ->
+                        details.parent?.let { (nameWithOwner) ->
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                                 modifier = Modifier
                                     .clickable {
-                                        val (owner, name) = parent.nameWithOwner.split("/")
+                                        val (owner, name) = nameWithOwner.split("/")
                                         nav.navigate(RepoScreen(owner, name))
                                     }
                                     .fillMaxWidth()
@@ -137,7 +132,7 @@ class DetailsTab(
                                     Text(
                                         text = stringResource(
                                             Res.strings.forked_from,
-                                            parent.nameWithOwner
+                                            nameWithOwner
                                         ),
                                         style = MaterialTheme.typography.bodySmall
                                     )
@@ -219,7 +214,6 @@ class DetailsTab(
                     }
                 }
             }
-            RefreshIndicator(state = refreshState, isRefreshing = viewModel.detailsLoading)
         }
     }
 

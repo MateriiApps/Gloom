@@ -8,13 +8,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.CheckCircleOutline
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
@@ -46,7 +44,6 @@ import com.materiiapps.gloom.domain.manager.DialogState
 import com.materiiapps.gloom.domain.manager.ShareManager
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.ui.component.BackButton
-import com.materiiapps.gloom.ui.component.RefreshIndicator
 import com.materiiapps.gloom.ui.component.ThinDivider
 import com.materiiapps.gloom.ui.theme.colors
 import com.materiiapps.gloom.ui.screen.release.viewmodel.ReleaseViewModel
@@ -74,7 +71,7 @@ class ReleaseScreen(
     override val key = "$owner/$name-$tag-${uuid4()}"
 
     @Composable
-    @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
         val viewModel: ReleaseViewModel = getScreenModel { parametersOf(Triple(owner, name, tag)) }
         val alertController = LocalAlertController.current
@@ -83,10 +80,6 @@ class ReleaseScreen(
         val items = viewModel.items.collectAsLazyPagingItems()
         val details = viewModel.details
         val isLoading = items.loadState.refresh == LoadState.Loading
-        val pullRefreshState = rememberPullRefreshState(
-            refreshing = isLoading,
-            onRefresh = { items.refresh() }
-        )
 
         Scaffold(
             topBar = {
@@ -97,10 +90,11 @@ class ReleaseScreen(
                 )
             }
         ) { pv ->
-            Box(
+            PullToRefreshBox(
+                isRefreshing = isLoading,
+                onRefresh = { items.refresh() },
                 modifier = Modifier
                     .padding(pv)
-                    .pullRefresh(pullRefreshState)
                     .fillMaxSize()
                     .clipToBounds()
                     .nestedScroll(scrollBehavior.nestedScrollConnection)
@@ -231,13 +225,12 @@ class ReleaseScreen(
                         }
                     }
                 }
-                RefreshIndicator(state = pullRefreshState, isRefreshing = isLoading)
             }
         }
     }
 
     @Composable
-    @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     fun TitleBar(
         details: ReleaseDetails?,
         isLoading: Boolean,

@@ -11,15 +11,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.ContentCopy
 import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material.icons.outlined.FormatColorText
-import androidx.compose.material.pullrefresh.pullRefresh
-import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,6 +26,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,7 +48,6 @@ import com.materiiapps.gloom.gql.fragment.RepoFile
 import com.materiiapps.gloom.ui.component.BackButton
 import com.materiiapps.gloom.ui.component.DownloadButton
 import com.materiiapps.gloom.ui.component.ErrorMessage
-import com.materiiapps.gloom.ui.component.RefreshIndicator
 import com.materiiapps.gloom.ui.screen.explorer.viewers.ImageFileViewer
 import com.materiiapps.gloom.ui.screen.explorer.viewers.MarkdownFileViewer
 import com.materiiapps.gloom.ui.screen.explorer.viewers.PdfFileViewer
@@ -69,13 +66,11 @@ class FileViewerScreen(
 ) : Screen {
 
     @Composable
-    @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
         val viewModel: FileViewerViewModel =
             getScreenModel { parametersOf(FileViewerViewModel.Input(owner, name, branch, path)) }
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-        val pullRefreshState =
-            rememberPullRefreshState(viewModel.isLoading, onRefresh = viewModel::refresh)
         val file = viewModel.file?.gitObject?.onCommit?.file
 
         var topBarHidden by remember {
@@ -87,11 +82,12 @@ class FileViewerScreen(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
             contentWindowInsets = WindowInsets(0, 0, 0, 0)
         ) { pv ->
-            Box(
+            PullToRefreshBox(
+                isRefreshing = viewModel.isLoading,
+                onRefresh = { viewModel.refresh() },
                 modifier = Modifier
                     .padding(pv)
                     .fillMaxSize()
-                    .pullRefresh(pullRefreshState)
             ) {
                 when (viewModel.fileHasError) {
                     true -> ErrorMessage(
@@ -110,8 +106,6 @@ class FileViewerScreen(
                         }
                     )
                 }
-
-                RefreshIndicator(pullRefreshState, viewModel.isLoading)
             }
         }
     }

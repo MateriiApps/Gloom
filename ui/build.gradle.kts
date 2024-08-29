@@ -46,7 +46,6 @@ kotlin {
                 api(libs.bundles.voyager)
 
                 api(compose.material3)
-                api(compose.material)
                 api(compose.materialIconsExtended)
                 api(compose.runtime)
 

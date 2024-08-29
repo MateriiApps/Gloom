@@ -29,7 +29,7 @@ import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 fun AccountSwitcherSheet(
     onDismiss: () -> Unit,
 ) {
@@ -72,7 +72,7 @@ fun AccountSwitcherSheet(
                                 nav.replaceAll(RootScreen())
                             }
                         },
-                        modifier = Modifier.animateItemPlacement(tween(200))
+                        modifier = Modifier.animateItem(tween(200))
                     )
                 }
                 item(
