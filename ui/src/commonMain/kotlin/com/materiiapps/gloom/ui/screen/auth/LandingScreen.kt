@@ -33,15 +33,15 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.Account
-import com.materiiapps.gloom.ui.components.DividerWithLabel
-import com.materiiapps.gloom.ui.components.LoadingButton
-import com.materiiapps.gloom.ui.icons.GitHub
-import com.materiiapps.gloom.ui.icons.Social
+import com.materiiapps.gloom.ui.component.DividerWithLabel
+import com.materiiapps.gloom.ui.component.LoadingButton
+import com.materiiapps.gloom.ui.icon.social.GitHub
+import com.materiiapps.gloom.ui.icon.Social
 import com.materiiapps.gloom.ui.screen.root.RootScreen
-import com.materiiapps.gloom.ui.utils.toImmutableList
+import com.materiiapps.gloom.ui.util.toImmutableList
 import com.materiiapps.gloom.ui.screen.auth.viewmodel.LandingViewModel
 import com.materiiapps.gloom.ui.screen.settings.component.account.AccountItem
-import com.materiiapps.gloom.utils.LocalLinkHandler
+import com.materiiapps.gloom.util.LocalLinkHandler
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.stringResource
 

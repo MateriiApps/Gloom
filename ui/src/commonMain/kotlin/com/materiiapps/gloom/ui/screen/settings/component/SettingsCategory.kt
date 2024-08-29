@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
-import com.materiiapps.gloom.ui.utils.navigate
+import com.materiiapps.gloom.ui.util.navigate
 
 @Composable
 fun SettingsCategory(

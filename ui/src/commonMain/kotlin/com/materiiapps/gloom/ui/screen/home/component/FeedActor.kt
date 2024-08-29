@@ -18,7 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
-import com.materiiapps.gloom.ui.components.BadgedItem
+import com.materiiapps.gloom.ui.component.BadgedItem
 import com.seiko.imageloader.rememberImagePainter
 
 @Composable

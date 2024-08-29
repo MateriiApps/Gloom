@@ -4,7 +4,7 @@ import com.materiiapps.gloom.api.Credentials
 import com.materiiapps.gloom.api.URLs
 import com.materiiapps.gloom.api.dto.auth.AccessTokenResponse
 import com.materiiapps.gloom.api.dto.auth.DeleteTokenBody
-import com.materiiapps.gloom.api.utils.ApiResponse
+import com.materiiapps.gloom.api.util.ApiResponse
 import io.ktor.client.request.forms.FormDataContent
 import io.ktor.client.request.header
 import io.ktor.client.request.setBody

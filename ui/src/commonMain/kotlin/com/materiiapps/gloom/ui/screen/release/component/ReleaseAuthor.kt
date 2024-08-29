@@ -14,9 +14,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.Avatar
-import com.materiiapps.gloom.ui.utils.annotatingStringResource
-import com.materiiapps.gloom.ui.utils.format
+import com.materiiapps.gloom.ui.component.Avatar
+import com.materiiapps.gloom.ui.util.annotatingStringResource
+import com.materiiapps.gloom.ui.util.format
 import kotlinx.datetime.Instant
 
 @Composable

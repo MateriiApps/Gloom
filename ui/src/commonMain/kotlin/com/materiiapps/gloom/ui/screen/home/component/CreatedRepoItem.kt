@@ -13,7 +13,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.CreatedRepoItemFragment
-import com.materiiapps.gloom.ui.utils.annotatingStringResource
+import com.materiiapps.gloom.ui.util.annotatingStringResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

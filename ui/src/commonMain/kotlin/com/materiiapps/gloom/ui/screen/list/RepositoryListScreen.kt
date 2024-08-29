@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.api.models.ModelRepo
+import com.materiiapps.gloom.api.model.ModelRepo
 import com.materiiapps.gloom.gql.RepoListQuery
 import com.materiiapps.gloom.ui.screen.list.base.BaseListScreen
 import com.materiiapps.gloom.ui.screen.list.viewmodel.RepositoryListViewModel

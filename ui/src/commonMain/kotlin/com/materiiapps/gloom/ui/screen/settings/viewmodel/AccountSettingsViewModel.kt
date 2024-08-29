@@ -7,9 +7,9 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GithubAuthRepository
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.ifSuccessful
+import com.materiiapps.gloom.api.util.ifSuccessful
 import com.materiiapps.gloom.domain.manager.AuthManager
-import com.materiiapps.gloom.ui.utils.clearRootNavigation
+import com.materiiapps.gloom.ui.util.clearRootNavigation
 import kotlinx.coroutines.launch
 
 class AccountSettingsViewModel(

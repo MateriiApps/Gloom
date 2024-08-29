@@ -6,14 +6,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.getOrNull
+import com.materiiapps.gloom.api.util.getOrNull
 import com.materiiapps.gloom.domain.manager.DownloadManager
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.fragment.ReleaseAssetFragment
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.ui.screen.list.viewmodel.BaseListViewModel
-import com.materiiapps.gloom.ui.utils.installApks
+import com.materiiapps.gloom.ui.util.installApks
 import kotlinx.coroutines.launch
 import java.io.File
 

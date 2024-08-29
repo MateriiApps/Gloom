@@ -1,8 +1,8 @@
 package com.materiiapps.gloom.api.service
 
-import com.materiiapps.gloom.api.utils.ApiError
-import com.materiiapps.gloom.api.utils.ApiFailure
-import com.materiiapps.gloom.api.utils.ApiResponse
+import com.materiiapps.gloom.api.util.ApiError
+import com.materiiapps.gloom.api.util.ApiFailure
+import com.materiiapps.gloom.api.util.ApiResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.request

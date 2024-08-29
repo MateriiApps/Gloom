@@ -20,8 +20,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.icons.Commit
-import com.materiiapps.gloom.ui.icons.Custom
+import com.materiiapps.gloom.ui.icon.custom.Commit
+import com.materiiapps.gloom.ui.icon.Custom
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

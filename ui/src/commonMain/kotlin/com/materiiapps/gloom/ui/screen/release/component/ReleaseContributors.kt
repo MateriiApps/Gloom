@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.Avatar
+import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
 import dev.icerock.moko.resources.compose.stringResource
 

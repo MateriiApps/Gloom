@@ -13,8 +13,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import cafe.adriel.voyager.core.screen.Screen
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.LibraryManager
-import com.materiiapps.gloom.ui.components.ThinDivider
-import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
+import com.materiiapps.gloom.ui.component.ThinDivider
+import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screen.settings.component.about.LibraryItem
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject

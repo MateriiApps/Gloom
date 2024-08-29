@@ -27,9 +27,9 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsButton
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsItemChoice
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsSwitch
-import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
-import com.materiiapps.gloom.ui.widgets.alerts.Alert
-import com.materiiapps.gloom.ui.widgets.alerts.LocalAlertController
+import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
+import com.materiiapps.gloom.ui.widget.alert.Alert
+import com.materiiapps.gloom.ui.widget.alert.LocalAlertController
 import dev.icerock.moko.resources.compose.stringResource
 
 class AlertTestingScreen : Screen {

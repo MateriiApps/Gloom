@@ -34,7 +34,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.DialogManager
 import com.materiiapps.gloom.domain.manager.DialogState
 import com.materiiapps.gloom.ui.screen.release.dialog.ReleaseAssetDownloadDialog
-import com.materiiapps.gloom.ui.utils.getFileSizeString
+import com.materiiapps.gloom.ui.util.getFileSizeString
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 

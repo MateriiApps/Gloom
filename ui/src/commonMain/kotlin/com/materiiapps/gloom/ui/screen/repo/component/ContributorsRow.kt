@@ -27,7 +27,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.RepoDetails
 import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
-import com.materiiapps.gloom.ui.utils.navigate
+import com.materiiapps.gloom.ui.util.navigate
 import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.stringResource
 

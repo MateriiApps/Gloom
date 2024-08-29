@@ -11,8 +11,8 @@ import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.RawMarkdownFile
 import com.materiiapps.gloom.gql.fragment.RepoFile
-import com.materiiapps.gloom.ui.components.ErrorMessage
-import com.materiiapps.gloom.ui.widgets.Markdown
+import com.materiiapps.gloom.ui.component.ErrorMessage
+import com.materiiapps.gloom.ui.widget.Markdown
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

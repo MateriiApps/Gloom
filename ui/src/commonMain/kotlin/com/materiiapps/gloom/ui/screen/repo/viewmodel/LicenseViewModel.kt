@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.ifSuccessful
+import com.materiiapps.gloom.api.util.ifSuccessful
 import com.materiiapps.gloom.gql.fragment.RepoLicense
 import kotlinx.coroutines.launch
 

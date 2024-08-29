@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.ErrorMessage
+import com.materiiapps.gloom.ui.component.ErrorMessage
 import dev.icerock.moko.resources.compose.stringResource
 import dev.zt64.compose.pdf.RemotePdfState
 

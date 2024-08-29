@@ -30,8 +30,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.AvatarShape
-import com.materiiapps.gloom.ui.utils.contentDescription
-import com.materiiapps.gloom.ui.utils.getShapeForPref
+import com.materiiapps.gloom.ui.util.contentDescription
+import com.materiiapps.gloom.ui.util.getShapeForPref
 import dev.icerock.moko.resources.compose.stringResource
 import java.text.DecimalFormat
 import kotlin.math.roundToInt

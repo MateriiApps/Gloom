@@ -25,11 +25,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.Label
+import com.materiiapps.gloom.ui.component.Label
 import com.materiiapps.gloom.ui.theme.colors
-import com.materiiapps.gloom.ui.utils.contentDescription
-import com.materiiapps.gloom.utils.LocalLinkHandler
-import com.materiiapps.gloom.utils.author
+import com.materiiapps.gloom.ui.util.contentDescription
+import com.materiiapps.gloom.util.LocalLinkHandler
+import com.materiiapps.gloom.util.author
 import com.mikepenz.aboutlibraries.entity.Library
 import dev.icerock.moko.resources.compose.stringResource
 

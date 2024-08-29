@@ -20,13 +20,13 @@ import com.materiiapps.gloom.domain.manager.Theme
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsHeader
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsItemChoice
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsSwitch
-import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
-import com.materiiapps.gloom.ui.utils.getString
+import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
+import com.materiiapps.gloom.ui.util.getString
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.AppearanceSettingsViewModel
 import com.materiiapps.gloom.ui.screen.settings.component.AvatarShapeSetting
-import com.materiiapps.gloom.utils.Feature
-import com.materiiapps.gloom.utils.Features
-import com.materiiapps.gloom.utils.supportsMonet
+import com.materiiapps.gloom.util.Feature
+import com.materiiapps.gloom.util.Features
+import com.materiiapps.gloom.util.supportsMonet
 import dev.icerock.moko.resources.compose.stringResource
 
 class AppearanceSettingsScreen : Screen {

@@ -4,8 +4,8 @@ import com.materiiapps.gloom.domain.manager.base.BasePreferenceManager
 import com.materiiapps.gloom.domain.manager.base.booleanPreference
 import com.materiiapps.gloom.domain.manager.base.enumPreference
 import com.materiiapps.gloom.domain.manager.base.intPreference
-import com.materiiapps.gloom.utils.SettingsProvider
-import com.materiiapps.gloom.utils.supportsMonet
+import com.materiiapps.gloom.util.SettingsProvider
+import com.materiiapps.gloom.util.supportsMonet
 
 class PreferenceManager(provider: SettingsProvider) :
     BasePreferenceManager(provider) {

@@ -3,7 +3,7 @@ package com.materiiapps.gloom.domain.manager.base
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.materiiapps.gloom.utils.SettingsProvider
+import com.materiiapps.gloom.util.SettingsProvider
 import kotlin.reflect.KProperty
 
 abstract class BasePreferenceManager(

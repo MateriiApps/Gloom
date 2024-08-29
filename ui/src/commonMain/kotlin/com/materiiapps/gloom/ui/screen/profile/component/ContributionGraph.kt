@@ -31,9 +31,9 @@ import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.Contributions
 import com.materiiapps.gloom.gql.type.ContributionLevel
-import com.materiiapps.gloom.ui.utils.format
-import com.materiiapps.gloom.ui.utils.getPluralString
-import com.materiiapps.gloom.ui.widgets.alerts.LocalAlertController
+import com.materiiapps.gloom.ui.util.format
+import com.materiiapps.gloom.ui.util.getPluralString
+import com.materiiapps.gloom.ui.widget.alert.LocalAlertController
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

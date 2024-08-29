@@ -10,11 +10,11 @@ import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
 import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.domain.manager.Theme
 import com.materiiapps.gloom.ui.theme.GloomTheme
-import com.materiiapps.gloom.ui.transitions.SlideTransition
-import com.materiiapps.gloom.ui.widgets.alerts.AlertController
-import com.materiiapps.gloom.ui.widgets.alerts.AlertHost
-import com.materiiapps.gloom.utils.LinkHandler
-import com.materiiapps.gloom.utils.LocalLinkHandler
+import com.materiiapps.gloom.ui.transition.SlideTransition
+import com.materiiapps.gloom.ui.widget.alert.AlertController
+import com.materiiapps.gloom.ui.widget.alert.AlertHost
+import com.materiiapps.gloom.util.LinkHandler
+import com.materiiapps.gloom.util.LocalLinkHandler
 import org.koin.compose.koinInject
 
 /**

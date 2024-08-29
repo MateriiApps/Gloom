@@ -30,13 +30,13 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.api.models.ModelRepo
-import com.materiiapps.gloom.ui.components.Avatar
-import com.materiiapps.gloom.ui.icons.Custom
-import com.materiiapps.gloom.ui.icons.Fork
+import com.materiiapps.gloom.api.model.ModelRepo
+import com.materiiapps.gloom.ui.component.Avatar
+import com.materiiapps.gloom.ui.icon.Custom
+import com.materiiapps.gloom.ui.icon.custom.Fork
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
-import com.materiiapps.gloom.ui.utils.navigate
-import com.materiiapps.gloom.ui.utils.parsedColor
+import com.materiiapps.gloom.ui.util.navigate
+import com.materiiapps.gloom.ui.util.parsedColor
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

@@ -30,8 +30,8 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.utils.DimenUtils.multiply
-import com.materiiapps.gloom.ui.widgets.code.CodeViewer
+import com.materiiapps.gloom.ui.util.DimenUtils.multiply
+import com.materiiapps.gloom.ui.widget.code.CodeViewer
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

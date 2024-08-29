@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.BackButton
-import com.materiiapps.gloom.ui.components.NavBarSpacer
+import com.materiiapps.gloom.ui.component.BackButton
+import com.materiiapps.gloom.ui.component.NavBarSpacer
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.LicenseViewModel
 import com.materiiapps.gloom.ui.screen.repo.component.LicenseDetails
 import dev.icerock.moko.resources.compose.stringResource

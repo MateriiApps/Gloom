@@ -39,10 +39,10 @@ import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.type.PullRequestReviewDecision
 import com.materiiapps.gloom.gql.type.StatusState
-import com.materiiapps.gloom.ui.components.Label
+import com.materiiapps.gloom.ui.component.Label
 import com.materiiapps.gloom.ui.theme.colors
-import com.materiiapps.gloom.ui.utils.TimeUtils.getTimeSince
-import com.materiiapps.gloom.ui.utils.parsedColor
+import com.materiiapps.gloom.ui.util.TimeUtils.getTimeSince
+import com.materiiapps.gloom.ui.util.parsedColor
 import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource

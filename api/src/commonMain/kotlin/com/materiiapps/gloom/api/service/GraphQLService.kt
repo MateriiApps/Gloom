@@ -5,8 +5,8 @@ import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Operation
 import com.apollographql.apollo.api.Optional
 import com.apollographql.apollo.cache.normalized.doNotStore
-import com.materiiapps.gloom.api.utils.response
-import com.materiiapps.gloom.api.utils.toOptional
+import com.materiiapps.gloom.api.util.response
+import com.materiiapps.gloom.api.util.toOptional
 import com.materiiapps.gloom.domain.manager.AuthManager
 import com.materiiapps.gloom.gql.AccountInfoQuery
 import com.materiiapps.gloom.gql.DefaultBranchQuery

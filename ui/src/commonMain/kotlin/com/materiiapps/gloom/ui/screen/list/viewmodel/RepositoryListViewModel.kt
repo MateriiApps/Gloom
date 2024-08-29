@@ -1,8 +1,8 @@
 package com.materiiapps.gloom.ui.screen.list.viewmodel
 
-import com.materiiapps.gloom.api.models.ModelRepo
+import com.materiiapps.gloom.api.model.ModelRepo
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.getOrNull
+import com.materiiapps.gloom.api.util.getOrNull
 import com.materiiapps.gloom.gql.RepoListQuery
 
 class RepositoryListViewModel(

@@ -23,8 +23,8 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.RefreshIndicator
-import com.materiiapps.gloom.ui.components.ThinDivider
+import com.materiiapps.gloom.ui.component.RefreshIndicator
+import com.materiiapps.gloom.ui.component.ThinDivider
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoReleasesViewModel
 import com.materiiapps.gloom.ui.screen.repo.component.LatestReleaseItem
 import com.materiiapps.gloom.ui.screen.repo.component.ReleaseItem

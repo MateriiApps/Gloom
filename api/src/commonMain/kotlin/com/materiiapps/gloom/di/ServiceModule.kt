@@ -10,7 +10,7 @@ import com.materiiapps.gloom.api.service.GithubAuthApiService
 import com.materiiapps.gloom.api.service.GraphQLService
 import com.materiiapps.gloom.api.service.HttpService
 import com.materiiapps.gloom.domain.manager.AuthManager
-import com.materiiapps.gloom.utils.Logger
+import com.materiiapps.gloom.util.Logger
 import io.ktor.client.HttpClient
 import kotlinx.serialization.json.Json
 import org.koin.core.module.dsl.singleOf

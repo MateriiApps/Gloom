@@ -25,7 +25,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.utils.getFileSizeString
+import com.materiiapps.gloom.ui.util.getFileSizeString
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

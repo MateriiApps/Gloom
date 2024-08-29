@@ -1,8 +1,8 @@
 package com.materiiapps.gloom.ui.screen.profile.viewmodel
 
-import com.materiiapps.gloom.api.models.ModelUser
+import com.materiiapps.gloom.api.model.ModelUser
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.getOrNull
+import com.materiiapps.gloom.api.util.getOrNull
 import com.materiiapps.gloom.gql.FollowingQuery
 import com.materiiapps.gloom.ui.screen.list.viewmodel.BaseListViewModel
 

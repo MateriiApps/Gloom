@@ -21,11 +21,11 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.ReleaseItem
-import com.materiiapps.gloom.ui.components.Label
+import com.materiiapps.gloom.ui.component.Label
 import com.materiiapps.gloom.ui.screen.release.ReleaseScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
-import com.materiiapps.gloom.ui.utils.TimeUtils.getTimeSince
-import com.materiiapps.gloom.utils.ifNullOrBlank
+import com.materiiapps.gloom.ui.util.TimeUtils.getTimeSince
+import com.materiiapps.gloom.util.ifNullOrBlank
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

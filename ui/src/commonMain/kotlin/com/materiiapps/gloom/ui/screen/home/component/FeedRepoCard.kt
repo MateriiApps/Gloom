@@ -37,11 +37,11 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.FeedRepository
-import com.materiiapps.gloom.ui.components.Avatar
+import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
-import com.materiiapps.gloom.ui.utils.navigate
-import com.materiiapps.gloom.ui.utils.parsedColor
-import com.materiiapps.gloom.ui.utils.pluralStringResource
+import com.materiiapps.gloom.ui.util.navigate
+import com.materiiapps.gloom.ui.util.parsedColor
+import com.materiiapps.gloom.ui.util.pluralStringResource
 import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.stringResource
 

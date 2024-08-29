@@ -12,9 +12,9 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.ForkedRepositoryFeedItemFragment
-import com.materiiapps.gloom.ui.icons.Custom
-import com.materiiapps.gloom.ui.icons.Fork
-import com.materiiapps.gloom.ui.utils.annotatingStringResource
+import com.materiiapps.gloom.ui.icon.Custom
+import com.materiiapps.gloom.ui.icon.custom.Fork
+import com.materiiapps.gloom.ui.util.annotatingStringResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

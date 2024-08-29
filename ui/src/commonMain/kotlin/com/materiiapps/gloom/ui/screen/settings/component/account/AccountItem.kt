@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.Account
-import com.materiiapps.gloom.ui.components.Avatar
-import com.materiiapps.gloom.ui.components.BadgedItem
+import com.materiiapps.gloom.ui.component.Avatar
+import com.materiiapps.gloom.ui.component.BadgedItem
 import dev.icerock.moko.resources.compose.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

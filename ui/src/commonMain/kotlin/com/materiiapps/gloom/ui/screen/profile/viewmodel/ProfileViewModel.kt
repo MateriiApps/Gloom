@@ -5,10 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.materiiapps.gloom.api.models.ModelUser
+import com.materiiapps.gloom.api.model.ModelUser
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.fold
-import com.materiiapps.gloom.api.utils.ifSuccessful
+import com.materiiapps.gloom.api.util.fold
+import com.materiiapps.gloom.api.util.ifSuccessful
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -6,11 +6,11 @@ import androidx.compose.runtime.Composable
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.PullRequestOverview
 import com.materiiapps.gloom.gql.type.PullRequestState
-import com.materiiapps.gloom.ui.icons.ClosedPullRequest
-import com.materiiapps.gloom.ui.icons.Custom
-import com.materiiapps.gloom.ui.icons.DraftPullRequest
-import com.materiiapps.gloom.ui.icons.MergedPullRequest
-import com.materiiapps.gloom.ui.icons.OpenPullRequest
+import com.materiiapps.gloom.ui.icon.custom.ClosedPullRequest
+import com.materiiapps.gloom.ui.icon.Custom
+import com.materiiapps.gloom.ui.icon.custom.DraftPullRequest
+import com.materiiapps.gloom.ui.icon.custom.MergedPullRequest
+import com.materiiapps.gloom.ui.icon.custom.OpenPullRequest
 import com.materiiapps.gloom.ui.theme.colors
 import dev.icerock.moko.resources.compose.stringResource
 

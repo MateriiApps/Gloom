@@ -3,7 +3,7 @@ package com.materiiapps.gloom.ui.screen.release.viewmodel
 import androidx.compose.runtime.mutableStateOf
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.getOrNull
+import com.materiiapps.gloom.api.util.getOrNull
 import com.materiiapps.gloom.domain.manager.DownloadManager
 import com.materiiapps.gloom.gql.ReleaseDetailsQuery
 import com.materiiapps.gloom.gql.fragment.ReleaseAssetFragment

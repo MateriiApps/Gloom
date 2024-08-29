@@ -4,8 +4,8 @@ import androidx.compose.runtime.mutableStateMapOf
 import app.cash.paging.compose.LazyPagingItems
 import cafe.adriel.voyager.core.model.screenModelScope
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.getOrNull
-import com.materiiapps.gloom.api.utils.ifSuccessful
+import com.materiiapps.gloom.api.util.getOrNull
+import com.materiiapps.gloom.api.util.ifSuccessful
 import com.materiiapps.gloom.gql.FeedQuery
 import com.materiiapps.gloom.ui.screen.list.viewmodel.BaseListViewModel
 import kotlinx.coroutines.launch

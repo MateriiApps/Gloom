@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.Languages
-import com.materiiapps.gloom.ui.utils.parsedColor
-import com.materiiapps.gloom.ui.utils.pluralStringResource
+import com.materiiapps.gloom.ui.util.parsedColor
+import com.materiiapps.gloom.ui.util.pluralStringResource
 import dev.icerock.moko.resources.compose.stringResource
 import java.text.DecimalFormat
 

@@ -4,11 +4,11 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.getScreenModel
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.api.models.ModelUser
+import com.materiiapps.gloom.api.model.ModelUser
 import com.materiiapps.gloom.gql.JoinedOrgsQuery
 import com.materiiapps.gloom.ui.screen.list.base.BaseListScreen
 import com.materiiapps.gloom.ui.screen.list.viewmodel.OrgListViewModel
-import com.materiiapps.gloom.ui.widgets.user.UserItem
+import com.materiiapps.gloom.ui.widget.user.UserItem
 import dev.icerock.moko.resources.StringResource
 import org.koin.core.parameter.parametersOf
 

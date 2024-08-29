@@ -1,7 +1,7 @@
 package com.materiiapps.gloom.ui.screen.repo.viewmodel
 
 import com.materiiapps.gloom.api.repository.GraphQLRepository
-import com.materiiapps.gloom.api.utils.getOrNull
+import com.materiiapps.gloom.api.util.getOrNull
 import com.materiiapps.gloom.gql.RepoPullRequestsQuery
 import com.materiiapps.gloom.gql.fragment.PullRequestOverview
 import com.materiiapps.gloom.gql.type.PullRequestState

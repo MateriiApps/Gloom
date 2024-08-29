@@ -4,7 +4,7 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import com.materiiapps.gloom.api.Credentials
 import com.materiiapps.gloom.api.URLs
 import com.materiiapps.gloom.domain.manager.AuthManager
-import com.materiiapps.gloom.ui.utils.clearRootNavigation
+import com.materiiapps.gloom.ui.util.clearRootNavigation
 import io.ktor.http.URLBuilder
 
 class LandingViewModel(

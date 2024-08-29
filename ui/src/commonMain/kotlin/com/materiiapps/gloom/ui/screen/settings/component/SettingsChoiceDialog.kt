@@ -12,7 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.components.EnumRadioController
+import com.materiiapps.gloom.ui.component.EnumRadioController
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

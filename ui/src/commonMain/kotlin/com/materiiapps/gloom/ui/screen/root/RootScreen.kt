@@ -22,10 +22,10 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.domain.manager.AuthManager
-import com.materiiapps.gloom.ui.components.Avatar
-import com.materiiapps.gloom.ui.components.navbar.LongClickableNavBarItem
-import com.materiiapps.gloom.ui.utils.DimenUtils
-import com.materiiapps.gloom.ui.utils.RootTab
+import com.materiiapps.gloom.ui.component.Avatar
+import com.materiiapps.gloom.ui.component.navbar.LongClickableNavBarItem
+import com.materiiapps.gloom.ui.util.DimenUtils
+import com.materiiapps.gloom.ui.util.RootTab
 import com.materiiapps.gloom.ui.screen.settings.component.account.AccountSwitcherSheet
 import org.koin.compose.koinInject
 

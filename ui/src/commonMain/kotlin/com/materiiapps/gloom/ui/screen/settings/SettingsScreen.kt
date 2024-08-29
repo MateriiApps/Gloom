@@ -23,14 +23,14 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsButton
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsCategory
-import com.materiiapps.gloom.ui.components.toolbar.LargeToolbar
+import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screen.auth.LandingScreen
 import com.materiiapps.gloom.ui.screen.settings.about.AboutScreen
 import com.materiiapps.gloom.ui.screen.settings.developer.DeveloperSettingsScreen
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.SettingsViewModel
 import com.materiiapps.gloom.ui.screen.settings.component.account.SignOutDialog
-import com.materiiapps.gloom.utils.IsDeveloper
-import com.materiiapps.gloom.utils.VersionName
+import com.materiiapps.gloom.util.IsDeveloper
+import com.materiiapps.gloom.util.VersionName
 import dev.icerock.moko.resources.compose.stringResource
 
 class SettingsScreen : Screen {

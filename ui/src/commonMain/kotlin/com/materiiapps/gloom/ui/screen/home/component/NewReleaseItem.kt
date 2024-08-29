@@ -50,17 +50,17 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.NewReleaseItemFragment
-import com.materiiapps.gloom.ui.components.Avatar
-import com.materiiapps.gloom.ui.components.ThinDivider
-import com.materiiapps.gloom.ui.icons.Commit
-import com.materiiapps.gloom.ui.icons.Custom
+import com.materiiapps.gloom.ui.component.Avatar
+import com.materiiapps.gloom.ui.component.ThinDivider
+import com.materiiapps.gloom.ui.icon.custom.Commit
+import com.materiiapps.gloom.ui.icon.Custom
 import com.materiiapps.gloom.ui.screen.release.ReleaseScreen
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
-import com.materiiapps.gloom.ui.utils.annotatingStringResource
-import com.materiiapps.gloom.ui.utils.navigate
-import com.materiiapps.gloom.ui.widgets.Markdown
-import com.materiiapps.gloom.utils.ifNullOrBlank
+import com.materiiapps.gloom.ui.util.annotatingStringResource
+import com.materiiapps.gloom.ui.util.navigate
+import com.materiiapps.gloom.ui.widget.Markdown
+import com.materiiapps.gloom.util.ifNullOrBlank
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
