@@ -64,6 +64,7 @@
     <string name="noun_more">更多</string>
     <string name="noun_less">更少</string>
     <string name="noun_license">许可证</string>
+    <string name="noun_trending">Trending</string>
     <string name="forked_from">分叉自 %s</string>
     <string name="created_repo">§name§%1$s§ §text§创建了一个仓库§</string>
     <string name="starred_repo">§name§%1$s§ §text§星标了一个仓库§</string>
@@ -147,6 +148,8 @@
     <string name="msg_raw_markdown_fail">无法加载原始 Markdown</string>
     <string name="msg_downloading_file">正在下载 %1$s…</string>
     <string name="msg_download_completed">下载完成</string>
+    <string name="msg_trending_footer_title">You\'ve reached the end!</string>
+    <string name="msg_trending_footer_description">Check back later to find new trending repositories</string>
     <string name="label_checks_failed">检查失败</string>
     <string name="label_checks">检查</string>
     <string name="label_reviews">审查</string>
@@ -163,6 +166,12 @@
     <string name="label_open_source">开源</string>
     <string name="label_closed_source">闭源</string>
     <string name="label_repo_archived">被所有者存档</string>
+    <string name="label_stars_day">%1$s today</string>
+    <string name="label_stars_week">%1$s this week</string>
+    <string name="label_stars_month">%1$s this month</string>
+    <string name="label_trending_daily">Today</string>
+    <string name="label_trending_weekly">This week</string>
+    <string name="label_trending_monthly">This month</string>
     <string name="time_now">刚刚</string>
     <string name="time_since_second">%1$d 秒</string>
     <string name="time_since_minute">%1$d 分钟</string>

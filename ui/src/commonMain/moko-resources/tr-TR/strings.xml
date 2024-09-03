@@ -64,6 +64,7 @@
     <string name="noun_more">Daha Fazla</string>
     <string name="noun_less">Daha Az</string>
     <string name="noun_license">Lisans</string>
+    <string name="noun_trending">Trending</string>
     <string name="forked_from">%s\'den Çatallandı</string>
     <string name="created_repo">§name§%1$s§ §text§bir depo oluşturdu§</string>
     <string name="starred_repo">§name§%1$s§ §text§bir depoya yıldız ekledi§</string>
@@ -145,6 +146,8 @@
     <string name="msg_raw_markdown_fail">Ham markdown yüklenemedi</string>
     <string name="msg_downloading_file">%1$s indiriliyor...</string>
     <string name="msg_download_completed">İndirme tamamlandı</string>
+    <string name="msg_trending_footer_title">You\'ve reached the end!</string>
+    <string name="msg_trending_footer_description">Check back later to find new trending repositories</string>
     <string name="label_checks_failed">Kontroller başarısız</string>
     <string name="label_checks">Kontroller</string>
     <string name="label_reviews">İncelemeler</string>
@@ -161,6 +164,12 @@
     <string name="label_open_source">Açık Kaynak</string>
     <string name="label_closed_source">Kapalı Kaynak</string>
     <string name="label_repo_archived">Sahibi tarafından arşivlendi</string>
+    <string name="label_stars_day">%1$s today</string>
+    <string name="label_stars_week">%1$s this week</string>
+    <string name="label_stars_month">%1$s this month</string>
+    <string name="label_trending_daily">Today</string>
+    <string name="label_trending_weekly">This week</string>
+    <string name="label_trending_monthly">This month</string>
     <string name="time_now">Şimdi</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
