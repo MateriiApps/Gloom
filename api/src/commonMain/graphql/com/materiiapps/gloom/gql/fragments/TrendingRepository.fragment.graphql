@@ -1,0 +1,20 @@
+fragment TrendingRepository on Repository {
+    id
+    name
+    description
+    openGraphImageUrl
+    usesCustomOpenGraphImage
+    starsSince(period: $period)
+    contributorsCount
+    viewerHasStarred
+    stargazerCount
+    primaryLanguage {
+        color
+        name
+    }
+    owner {
+        __typename
+        avatarUrl
+        login
+    }
+}

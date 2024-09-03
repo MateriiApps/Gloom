@@ -1,6 +1,7 @@
 package com.materiiapps.gloom.di.module
 
 import com.materiiapps.gloom.ui.screen.auth.viewmodel.LandingViewModel
+import com.materiiapps.gloom.ui.screen.explore.viewmodel.ExploreViewModel
 import com.materiiapps.gloom.ui.screen.explorer.viewmodel.DirectoryListingViewModel
 import com.materiiapps.gloom.ui.screen.explorer.viewmodel.FileViewerViewModel
 import com.materiiapps.gloom.ui.screen.home.viewmodel.HomeViewModel
@@ -12,12 +13,12 @@ import com.materiiapps.gloom.ui.screen.profile.viewmodel.FollowersViewModel
 import com.materiiapps.gloom.ui.screen.profile.viewmodel.FollowingViewModel
 import com.materiiapps.gloom.ui.screen.profile.viewmodel.ProfileViewModel
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.LicenseViewModel
-import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoViewModel
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoCodeViewModel
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoDetailsViewModel
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoIssuesViewModel
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoPullRequestsViewModel
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoReleasesViewModel
+import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoViewModel
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.AppearanceSettingsViewModel
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.SettingsViewModel
@@ -38,6 +39,7 @@ fun viewModelModule() = module {
     factoryOf(::AppearanceSettingsViewModel)
     factoryOf(::AccountSettingsViewModel)
     factoryOf(::HomeViewModel)
+    factoryOf(::ExploreViewModel)
 
     factoryOf(::RepoViewModel)
     factoryOf(::RepoDetailsViewModel)

@@ -1,0 +1,5 @@
+query Trending($period: TrendingPeriod!) {
+    trendingRepositories(period: $period, mobileSortOrder: true) {
+        ...TrendingRepository
+    }
+}

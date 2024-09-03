@@ -6,6 +6,7 @@ import com.materiiapps.gloom.api.util.transform
 import com.materiiapps.gloom.gql.type.IssueState
 import com.materiiapps.gloom.gql.type.PullRequestState
 import com.materiiapps.gloom.gql.type.ReactionContent
+import com.materiiapps.gloom.gql.type.TrendingPeriod
 
 class GraphQLRepository(
     private val service: GraphQLService
@@ -69,6 +70,10 @@ class GraphQLRepository(
         }
 
     suspend fun getFeed(cursor: String? = null) = service.getFeed(cursor)
+
+    suspend fun getTrending(period: TrendingPeriod = TrendingPeriod.DAILY) = service.getTrending(period).transform {
+        it.trendingRepositories?.filterNotNull()?.map { it.trendingRepository } ?: emptyList()
+    }
 
     suspend fun starRepo(id: String) = service.starRepo(id).transform {
         (it.addStar?.starrable?.viewerHasStarred

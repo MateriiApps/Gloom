@@ -1,5 +1,9 @@
 package com.materiiapps.gloom.ui.screen.explore
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.outlined.Explore
@@ -7,15 +11,31 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.materiiapps.gloom.Res
+import com.materiiapps.gloom.ui.screen.explore.component.TrendingFeedFooter
+import com.materiiapps.gloom.ui.screen.explore.component.TrendingFeedHeader
+import com.materiiapps.gloom.ui.screen.explore.component.TrendingRepoItem
+import com.materiiapps.gloom.ui.screen.explore.viewmodel.ExploreViewModel
+import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
+import com.materiiapps.gloom.ui.screen.repo.RepoScreen
+import com.materiiapps.gloom.ui.util.navigate
 import dev.icerock.moko.resources.compose.stringResource
 
 class ExploreScreen : Tab {
+
     override val options: TabOptions
         @Composable get() {
             val navigator = LocalTabNavigator.current
@@ -31,21 +51,69 @@ class ExploreScreen : Tab {
     override fun Content() = Screen()
 
     @Composable
+    @OptIn(ExperimentalMaterial3Api::class)
     private fun Screen() {
-        Scaffold(
-            topBar = { TopBar() }
-        ) {
+        val viewModel: ExploreViewModel = getScreenModel()
+        val navigator = LocalNavigator.currentOrThrow
+        val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
+        Scaffold(
+            topBar = { TopBar(scrollBehavior) }
+        ) { pv ->
+            PullToRefreshBox(
+                isRefreshing = viewModel.isLoading,
+                onRefresh = { viewModel.loadTrending() },
+                modifier = Modifier
+                    .padding(pv)
+                    .fillMaxSize()
+                    .nestedScroll(scrollBehavior.nestedScrollConnection)
+            ) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    item("header") {
+                        TrendingFeedHeader(
+                            currentTrendingPeriod = viewModel.trendingPeriod,
+                            onTrendingPeriodChange = { newPeriod -> viewModel.updateTrendingPeriod(newPeriod) }
+                        )
+                    }
+
+                    items(
+                        viewModel.trendingRepos,
+                        key = { it.id }
+                    ) { trendingRepo ->
+                        TrendingRepoItem(
+                            trendingRepository = trendingRepo,
+                            trendingPeriod = viewModel.trendingPeriod,
+                            starToggleEnabled = !viewModel.repoStarsPending.contains(trendingRepo.id),
+                            onClick = { navigator.navigate(RepoScreen(trendingRepo.owner.login, trendingRepo.name)) },
+                            onOwnerClick = { navigator.navigate(ProfileScreen(trendingRepo.owner.login)) },
+                            onStarClick = { viewModel.starRepo(trendingRepo.id) },
+                            onUnstarClick = { viewModel.unstarRepo(trendingRepo.id) }
+                        )
+                    }
+
+                    if (viewModel.trendingRepos.isNotEmpty()) {
+                        item("footer") {
+                            TrendingFeedFooter()
+                        }
+                    }
+                }
+            }
         }
     }
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
-    private fun TopBar() {
+    private fun TopBar(
+        scrollBehavior: TopAppBarScrollBehavior
+    ) {
         LargeTopAppBar(
             title = {
                 Text(text = options.title)
-            }
+            },
+            scrollBehavior = scrollBehavior
         )
     }
+
 }

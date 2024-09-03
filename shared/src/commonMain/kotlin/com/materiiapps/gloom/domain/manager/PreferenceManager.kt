@@ -19,11 +19,19 @@ class PreferenceManager(provider: SettingsProvider) :
     var orgAvatarShape by enumPreference("org_avatar_shape", AvatarShape.RoundedCorner)
     var orgAvatarRadius by intPreference("org_avatar_radius", 31)
 
+    var trendingPeriod by enumPreference("trending_period", Defaults.TRENDING_PERIOD)
+
     init {
         if (userAvatarRadius > 50) userAvatarRadius = 50
         if (userAvatarRadius < 0) userAvatarRadius = 0
         if (orgAvatarRadius > 50) orgAvatarRadius = 50
         if (orgAvatarRadius < 0) orgAvatarRadius = 0
+    }
+
+    companion object Defaults {
+
+        val TRENDING_PERIOD = TrendingPeriodPreference.DAILY
+
     }
 
 }
@@ -38,4 +46,10 @@ enum class AvatarShape {
     Circle,
     RoundedCorner,
     Squircle
+}
+
+enum class TrendingPeriodPreference {
+    DAILY,
+    WEEKLY,
+    MONTHLY
 }

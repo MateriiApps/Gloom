@@ -32,6 +32,7 @@ import com.materiiapps.gloom.gql.RepoReleasesQuery
 import com.materiiapps.gloom.gql.SponsoringQuery
 import com.materiiapps.gloom.gql.StarRepoMutation
 import com.materiiapps.gloom.gql.StarredReposQuery
+import com.materiiapps.gloom.gql.TrendingQuery
 import com.materiiapps.gloom.gql.UnfollowUserMutation
 import com.materiiapps.gloom.gql.UnreactMutation
 import com.materiiapps.gloom.gql.UnstarRepoMutation
@@ -39,6 +40,7 @@ import com.materiiapps.gloom.gql.UserProfileQuery
 import com.materiiapps.gloom.gql.type.IssueState
 import com.materiiapps.gloom.gql.type.PullRequestState
 import com.materiiapps.gloom.gql.type.ReactionContent
+import com.materiiapps.gloom.gql.type.TrendingPeriod
 import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -184,6 +186,13 @@ class GraphQLService(
                 after = if (cursor != null) Optional.present(cursor) else Optional.absent()
             )
         )
+            .addToken()
+            .response()
+    }
+
+    suspend fun getTrending(period: TrendingPeriod = TrendingPeriod.DAILY) = withContext(Dispatchers.IO) {
+        client
+            .query(TrendingQuery(period))
             .addToken()
             .response()
     }
