@@ -103,9 +103,10 @@ class RepoScreen(
                     .nestedScroll(scrollBehavior.nestedScrollConnection)
             ) {
                 val tabColor by animateColorAsState(
-                    targetValue = MaterialTheme.colorScheme.surfaceColorAtElevation(
-                        3.dp
-                    ).copy(scrollBehavior.state.collapsedFraction), label = "Tab color"
+                    targetValue = MaterialTheme.colorScheme.surfaceContainer.copy(
+                        alpha = scrollBehavior.state.collapsedFraction
+                    ),
+                    label = "Tab color"
                 )
                 val badgeColor by animateColorAsState(
                     targetValue = Color.Black
