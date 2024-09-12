@@ -63,7 +63,7 @@ fun TrendingRepoItem(
                 Image(
                     painter = rememberImagePainter(trendingRepository.openGraphImageUrl),
                     contentDescription = null,
-                    contentScale = ContentScale.FillBounds,
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .aspectRatio(2f)
                         .fillMaxWidth()
