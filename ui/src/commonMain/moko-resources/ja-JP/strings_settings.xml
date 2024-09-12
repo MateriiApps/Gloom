@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_sign_out">サインアウト</string>
     <string name="settings_sign_out_header">サインアウトしますか？</string>
     <string name="settings_sign_out_text">        サインアウトしてもよろしいですか？後でサインインすることができます。
     </string>
+    <!-- Appearance -->
     <string name="settings_appearance">外観</string>
     <string name="settings_appearance_description">テーマ、コードスタイル</string>
     <string name="appearance_theme">テーマ</string>
@@ -18,11 +20,15 @@
     <string name="appearance_av_shape_circle">Circle</string>
     <string name="appearance_av_shape_roundrect">Rounded square</string>
     <string name="appearance_av_shape_squircle">Squircle</string>
+    <!--            -->
+    <!-- Accounts -->
     <string name="settings_accounts">アカウント</string>
     <string name="settings_accounts_description">アカウントの追加または切り替え</string>
     <string name="action_add_account">アカウントを追加</string>
     <string name="action_sign_out_all">すべてのアカウントからサインアウト</string>
     <string name="cd_enterprise_domain">エンタープライズドメイン: %1$s</string>
+    <!--          -->
+    <!-- Development -->
     <string name="settings_development">開発</string>
     <string name="settings_development_description">新機能のデバッグとテスト</string>
     <string name="dev_alert_testing">アラートのテスト</string>
@@ -33,6 +39,8 @@
     <string name="dev_alert_duration">期間</string>
     <string name="dev_alert_action_show_alert">アラートを表示</string>
     <string name="dev_alert_action_fill_queue">キューを入力</string>
+    <!--             -->
+    <!-- About -->
     <string name="settings_about">このアプリについて</string>
     <string name="settings_libraries">ライブラリ</string>
     <string name="settings_libraries_description">Gloom の制作に使用されたライブラリ</string>
@@ -40,4 +48,5 @@
     <string name="cd_library_license">ライセンス: %1$s</string>
     <string name="label_open_source">オープンソース</string>
     <string name="label_closed_source">クローズドソース</string>
+    <!--       -->
 </resources>

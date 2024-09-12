@@ -16,6 +16,14 @@
         <item quantity="one">%d çatallanma</item>
         <item quantity="other">%d çatallanma</item>
     </plurals>
+    <plurals name="followers">
+        <item quantity="one">%d Follower</item>
+        <item quantity="other">%d Followers</item>
+    </plurals>
+    <plurals name="following">
+        <item quantity="one">%d Following</item>
+        <item quantity="other">%d Following</item>
+    </plurals>
     <plurals name="contributions_toast">
         <item quantity="one">%1$s: %2$d Katkı</item>
         <item quantity="other">%1$s: %2$d Katkılar</item>

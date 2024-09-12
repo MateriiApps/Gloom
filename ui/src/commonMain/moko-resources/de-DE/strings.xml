@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Root Tabs -->
+    <string name="navigation_explore">Erkunden</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_profile">Profil</string>
+    <string name="navigation_settings">Einstellungen</string>
+    <!--           -->
+    <!-- Generic Actions -->
+    <string name="action_back">Zurück</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
+    <string name="action_edit">Bearbeiten</string>
+    <string name="action_stop_edit">Stop editing</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_copy">Kopieren</string>
+    <!--                 -->
+    <!-- Dismiss Labels -->
+    <string name="dismiss_nevermind">Nevermind</string>
+    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
+    <!--                -->
+    <!-- Errors -->
+    <string name="error_release_load">Couldn\'t load release</string>
+    <!--        -->
+    <!-- Titles -->
+    <string name="title_starred">Starred</string>
+    <string name="title_orgs">Organizations</string>
+    <string name="title_repos">Repositories</string>
+    <string name="title_contributors">Contributors</string>
+    <string name="title_sponsoring">Sponsoring</string>
+    <string name="title_followers">Followers</string>
+    <string name="title_following">Following</string>
+    <!--        -->
+    <!-- Entities -->
+    <string name="noun_repo">Repository</string>
+    <string name="noun_release">Release</string>
+    <string name="noun_tag">Tag</string>
+    <string name="noun_other">Other</string>
+    <string name="noun_commit">Commit</string>
+    <string name="noun_license">License</string>
+    <string name="noun_users_avatar">%s\'s avatar</string>
+    <!--          -->
+    <!-- Issues and PRs -->
+    <string name="msg_issue_untitled">Untitled issue</string>
+    <string name="msg_pr_untitled">Untitled pull request</string>
+    <string name="label_checks">Checks</string>
+    <string name="label_reviews">Reviews</string>
+    <!--                -->
+    <string name="label_dont_show_again">Don\'t show this again</string>
+    <!-- Units -->
+    <string name="time_now">Now</string>
+    <string name="time_since_second">%1$ds</string>
+    <string name="time_since_minute">%1$dm</string>
+    <string name="time_since_hour">%1$dh</string>
+    <string name="time_since_day">%1$dd</string>
+    <string name="time_since_month">%1$dmo</string>
+    <string name="time_since_year">%1$dy</string>
+    <string name="file_size_bytes">%1$d B</string>
+    <string name="file_size_kilobytes">%1$d KB</string>
+    <string name="file_size_megabytes">%1$d MB</string>
+    <string name="file_size_gigabytes">%1$d GB</string>
+    <!--       -->
+    <!-- Downloading -->
+    <string name="action_download">Herunterladen</string>
+    <string name="title_download_confirm">Confirm download</string>
+    <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
+    <!--             -->
+    <!-- Installing -->
+    <string name="install_fail_generic">Failed to install: Unknown reason</string>
+    <string name="install_fail_blocked">Installation was blocked</string>
+    <string name="install_fail_invalid">One or more apks were invalid or corrupt</string>
+    <string name="install_fail_conflict">Conflicts with an existing app, usually due to mismatched
+        signatures
+    </string>
+    <string name="install_fail_storage">Not enough available storage to install</string>
+    <string name="install_fail_incompatible">Application is incompatible with this device</string>
+    <string name="install_fail_timeout">Installation timed out</string>
+    <string name="install_success">App installed successfully!</string>
+    <string name="install_cancelled">Installation cancelled</string>
+    <!--            -->
+</resources>

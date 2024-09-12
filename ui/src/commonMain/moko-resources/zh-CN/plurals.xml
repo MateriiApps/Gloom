@@ -12,6 +12,12 @@
     <plurals name="forks">
         <item quantity="other">%d 个分叉</item>
     </plurals>
+    <plurals name="followers">
+        <item quantity="other">%d Followers</item>
+    </plurals>
+    <plurals name="following">
+        <item quantity="other">%d Following</item>
+    </plurals>
     <plurals name="contributions_toast">
         <item quantity="other">%1$s：%2$d 项贡献</item>
     </plurals>

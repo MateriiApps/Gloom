@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Root Tabs -->
     <string name="navigation_explore">استكشف</string>
     <string name="navigation_home">الرئيسية</string>
     <string name="navigation_inbox">الإشعارات</string>
     <string name="navigation_profile">الملف الشخصي</string>
     <string name="navigation_settings">الإعدادات</string>
+    <!--           -->
+    <!-- Generic Actions -->
     <string name="action_back">رجوع</string>
     <string name="action_confirm">تأكيد</string>
     <string name="action_share">مشاركة</string>
@@ -14,10 +17,16 @@
     <string name="action_stop_edit">إيقاف التعديل</string>
     <string name="action_try_again">حاول مجددا</string>
     <string name="action_copy">نسخ</string>
+    <!--                 -->
+    <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">لا يهم</string>
     <string name="dismiss_cancel">إلغاء</string>
     <string name="dismiss_no_thanks">لا، شكراً</string>
+    <!--                -->
+    <!-- Errors -->
     <string name="error_release_load">تعذر تحميل الإصدار</string>
+    <!--        -->
+    <!-- Titles -->
     <string name="title_starred">مميّزة بنجمة</string>
     <string name="title_orgs">المنظمات</string>
     <string name="title_repos">المستودعات</string>
@@ -25,6 +34,8 @@
     <string name="title_sponsoring">الرعاية</string>
     <string name="title_followers">المتابِعون</string>
     <string name="title_following">يتابِع</string>
+    <!--        -->
+    <!-- Entities -->
     <string name="noun_repo">المُستودع</string>
     <string name="noun_release">الإصدار</string>
     <string name="noun_tag">علامة</string>
@@ -32,11 +43,15 @@
     <string name="noun_commit">نفذ</string>
     <string name="noun_license">الترخيص</string>
     <string name="noun_users_avatar">الأفاتار الخاص بـ %s</string>
+    <!--          -->
+    <!-- Issues and PRs -->
     <string name="msg_issue_untitled">مشكلة بلا عنوان</string>
     <string name="msg_pr_untitled">طلب السحب بدون عنوان</string>
     <string name="label_checks">تحقق</string>
     <string name="label_reviews">المراجعات</string>
+    <!--                -->
     <string name="label_dont_show_again">لا تظهر هذه مجددًا</string>
+    <!-- Units -->
     <string name="time_now">الآن</string>
     <string name="time_since_second">%1$d ثانية</string>
     <string name="time_since_minute">%1$d دقيقة</string>
@@ -48,11 +63,15 @@
     <string name="file_size_kilobytes">%1$d‏ كيلوبايت</string>
     <string name="file_size_megabytes">%1$d‏ ميغابايت</string>
     <string name="file_size_gigabytes">%1$d جيجابايت</string>
+    <!--       -->
+    <!-- Downloading -->
     <string name="action_download">تنزيل</string>
     <string name="title_download_confirm">تأكيد التنزيل</string>
     <string name="msg_download_dialog_body">أنت على وشك تنزيل %1$s (%2$s)، هل أنت متأكد أنك تريد متابعة ذلك؟    </string>
     <string name="msg_downloading_file">جارٍ تنزيل %1$s...</string>
     <string name="msg_download_completed">اكتمل التنزيل</string>
+    <!--             -->
+    <!-- Installing -->
     <string name="install_fail_generic">فشل التثبيت: سبب غير معروف</string>
     <string name="install_fail_blocked">تم حظر التثبيت</string>
     <string name="install_fail_invalid">واحدة أو أكثر من ملفات Apk كانت غير صالحة أو تالفة</string>
@@ -62,4 +81,5 @@
     <string name="install_fail_timeout">انتهت مهلة التثبيت</string>
     <string name="install_success">تم تثبيت التطبيق بنجاح!</string>
     <string name="install_cancelled">تم إلغاء التثبيت</string>
+    <!--            -->
 </resources>

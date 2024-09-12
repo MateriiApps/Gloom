@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_star">星标</string>
     <string name="action_unstar">取消星标</string>
     <string name="placeholder_empty_repo">空仓库</string>
     <string name="cd_forked_repo">分叉的存储库</string>
     <string name="label_repo_archived">被所有者存档</string>
+    <!-- Details -->
     <string name="repo_tab_details">详情</string>
     <string name="action_show_license_details">显示许可证详细信息</string>
     <string name="action_hide_license_details">隐藏许可证详细信息</string>
@@ -12,21 +14,32 @@
     <string name="label_limitations">限制</string>
     <string name="label_conditions">条件</string>
     <string name="label_forked_from">分叉自 %s</string>
+    <!--         -->
+    <!-- Code -->
     <string name="repo_tab_code">代码</string>
+    <!--      -->
+    <!-- Issues -->
     <string name="repo_tab_issues">问题</string>
     <string name="cd_issue_title_opened">问题编号 %1$d，标题为“%2$s”</string>
     <string name="cd_issue_title_completed">问题编号 %1$d，标题为“%2$s”，
         标记为已完成</string>
     <string name="cd_issue_title_not_planned">问题编号 %1$d，标题为“%2$s”，
         标记为未计划</string>
+    <!--        -->
+    <!-- Pull Requests -->
     <string name="repo_tab_prs">拉取请求</string>
     <string name="cd_pr_title_opened">已开启编号为 %1$d 的拉取请求，标题为“%2$s”</string>
     <string name="cd_pr_title_merged">已合并编号为 %1$d 的拉取请求，标题为“%2$s”</string>
     <string name="cd_pr_title_closed">已关闭编号为 %1$d 的拉取请求，标题为“%2$s”</string>
     <string name="cd_pr_title_draft">草拟拉取请求编号为 %1$d，标题为“%2$s”</string>
     <string name="label_checks_failed">检查失败</string>
+    <!--               -->
+    <!-- Issue or PR -->
     <string name="cd_label_comments">%1$d 条评论</string>
     <string name="msg_issue_or_pr_author">#%1$d 由 %2$s 编辑</string>
+    <!--             -->
+    <!-- Releases -->
     <string name="repo_tab_releases">发行版</string>
     <string name="label_all_releases">全部发行版</string>
+    <!--          -->
 </resources>

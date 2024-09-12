@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Root Tabs -->
     <string name="navigation_explore">探索</string>
     <string name="navigation_home">主页</string>
     <string name="navigation_inbox">收件箱</string>
     <string name="navigation_profile">个人资料</string>
     <string name="navigation_settings">设置</string>
+    <!--           -->
+    <!-- Generic Actions -->
     <string name="action_back">返回</string>
     <string name="action_confirm">确认</string>
     <string name="action_share">分享</string>
     <string name="action_expand">查看更多</string>
     <string name="action_collapse">查看更少</string>
-    <string name="action_download">下载</string>
     <string name="action_edit">编辑</string>
     <string name="action_stop_edit">停止编辑</string>
     <string name="action_try_again">重试</string>
     <string name="action_copy">复制</string>
+    <!--                 -->
+    <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">算了</string>
     <string name="dismiss_cancel">取消</string>
     <string name="dismiss_no_thanks">不，谢谢</string>
-    <string name="title_download_confirm">确认下载</string>
+    <!--                -->
+    <!-- Errors -->
+    <string name="error_release_load">无法加载发行版</string>
+    <!--        -->
+    <!-- Titles -->
     <string name="title_starred">已加星标</string>
     <string name="title_orgs">组织</string>
     <string name="title_repos">存储库</string>
@@ -26,21 +34,24 @@
     <string name="title_sponsoring">赞助</string>
     <string name="title_followers">关注者</string>
     <string name="title_following">关注</string>
-    <string name="noun_users_avatar">%s 的头像</string>
+    <!--        -->
+    <!-- Entities -->
     <string name="noun_repo">存储库</string>
     <string name="noun_release">发布</string>
     <string name="noun_tag">标签</string>
     <string name="noun_other">其他</string>
     <string name="noun_commit">提交</string>
     <string name="noun_license">许可证</string>
+    <string name="noun_users_avatar">%s 的头像</string>
+    <!--          -->
+    <!-- Issues and PRs -->
     <string name="msg_issue_untitled">无标题问题</string>
     <string name="msg_pr_untitled">无标题拉取请求</string>
-    <string name="msg_download_dialog_body">您即将下载 %1$s (%2$s)，您确定要这么做吗？</string>
-    <string name="msg_downloading_file">正在下载 %1$s…</string>
-    <string name="msg_download_completed">下载完成</string>
     <string name="label_checks">检查</string>
     <string name="label_reviews">审查</string>
+    <!--                -->
     <string name="label_dont_show_again">不再显示</string>
+    <!-- Units -->
     <string name="time_now">刚刚</string>
     <string name="time_since_second">%1$d 秒</string>
     <string name="time_since_minute">%1$d 分钟</string>
@@ -52,7 +63,15 @@
     <string name="file_size_kilobytes">%1$d KB</string>
     <string name="file_size_megabytes">%1$d MB</string>
     <string name="file_size_gigabytes">%1$d GB</string>
-    <string name="error_release_load">无法加载发行版</string>
+    <!--       -->
+    <!-- Downloading -->
+    <string name="action_download">下载</string>
+    <string name="title_download_confirm">确认下载</string>
+    <string name="msg_download_dialog_body">您即将下载 %1$s (%2$s)，您确定要这么做吗？</string>
+    <string name="msg_downloading_file">正在下载 %1$s…</string>
+    <string name="msg_download_completed">下载完成</string>
+    <!--             -->
+    <!-- Installing -->
     <string name="install_fail_generic">安装失败：未知原因</string>
     <string name="install_fail_blocked">安装被阻止</string>
     <string name="install_fail_invalid">一个或多个 APK 无效或损坏</string>
@@ -62,4 +81,5 @@
     <string name="install_fail_timeout">安装超时</string>
     <string name="install_success">应用程序安装成功！</string>
     <string name="install_cancelled">安装已取消</string>
+    <!--            -->
 </resources>

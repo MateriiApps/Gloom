@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="noun_contributors">
+        <item quantity="other">%d Contributors</item>
+    </plurals>
+    <plurals name="repositories">
+        <item quantity="other">%d Repositories</item>
+    </plurals>
+    <plurals name="stars">
+        <item quantity="other">%d Stars</item>
+    </plurals>
+    <plurals name="forks">
+        <item quantity="other">%d Forks</item>
+    </plurals>
+    <plurals name="followers">
+        <item quantity="other">%d Followers</item>
+    </plurals>
+    <plurals name="following">
+        <item quantity="other">%d Following</item>
+    </plurals>
+    <plurals name="contributions_toast">
+        <item quantity="other">%1$s: %2$d Contributions</item>
+    </plurals>
+    <plurals name="plural_language">
+        <item quantity="other">Languages</item>
+    </plurals>
+    <plurals name="plural_lines_selected">
+        <item quantity="other">Lines %1$s-%2$s</item>
+    </plurals>
+</resources>

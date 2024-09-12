@@ -32,6 +32,22 @@
         <item quantity="many">%d Forks</item>
         <item quantity="other">%d Forks</item>
     </plurals>
+    <plurals name="followers">
+        <item quantity="zero">%d Followers</item>
+        <item quantity="one">%d Follower</item>
+        <item quantity="two">%d Followers</item>
+        <item quantity="few">%d Followers</item>
+        <item quantity="many">%d Followers</item>
+        <item quantity="other">%d Followers</item>
+    </plurals>
+    <plurals name="following">
+        <item quantity="zero">%d Following</item>
+        <item quantity="one">%d Following</item>
+        <item quantity="two">%d Following</item>
+        <item quantity="few">%d Following</item>
+        <item quantity="many">%d Following</item>
+        <item quantity="other">%d Following</item>
+    </plurals>
     <plurals name="contributions_toast">
         <item quantity="zero">%1$s: %2$d Contributions</item>
         <item quantity="one">%1$s: %2$d Contribution</item>

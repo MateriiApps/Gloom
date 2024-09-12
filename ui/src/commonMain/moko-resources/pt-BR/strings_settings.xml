@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_sign_out">Sair</string>
     <string name="settings_sign_out_header">Sair?</string>
     <string name="settings_sign_out_text">Tem certeza que deseja sair? Você pode voltar mais tarde
     </string>
+    <!-- Appearance -->
     <string name="settings_appearance">Aparência</string>
     <string name="settings_appearance_description">Tema, estilo de código</string>
     <string name="appearance_theme">Tema</string>
@@ -18,11 +20,15 @@
     <string name="appearance_av_shape_circle">Círculo</string>
     <string name="appearance_av_shape_roundrect">Quadrado arredondado</string>
     <string name="appearance_av_shape_squircle">Circulo quadrado</string>
+    <!--            -->
+    <!-- Accounts -->
     <string name="settings_accounts">Contas</string>
     <string name="settings_accounts_description">Adicionar ou trocar de conta</string>
     <string name="action_add_account">Adicionar conta</string>
     <string name="action_sign_out_all">Sair de todas as contas</string>
     <string name="cd_enterprise_domain">Domínio empresarial: %1$s</string>
+    <!--          -->
+    <!-- Development -->
     <string name="settings_development">Desenvolvimento</string>
     <string name="settings_development_description">Debug e teste novos recursos</string>
     <string name="dev_alert_testing">Teste de alerta</string>
@@ -33,6 +39,8 @@
     <string name="dev_alert_duration">Duração</string>
     <string name="dev_alert_action_show_alert">Mostrar alerta</string>
     <string name="dev_alert_action_fill_queue">Preencher fila</string>
+    <!--             -->
+    <!-- About -->
     <string name="settings_about">Sobre</string>
     <string name="settings_libraries">Bibliotecas</string>
     <string name="settings_libraries_description">As bibliotecas usadas para fazer Gloom</string>
@@ -40,4 +48,5 @@
     <string name="cd_library_license">Licença: %1$s</string>
     <string name="label_open_source">Código Aberto</string>
     <string name="label_closed_source">Código fonte privado</string>
+    <!--       -->
 </resources>

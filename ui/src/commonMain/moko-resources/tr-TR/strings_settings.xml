@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_sign_out">Çıkış Yap</string>
     <string name="settings_sign_out_header">Çıkış Yap?</string>
     <string name="settings_sign_out_text">Çıkış yapmak istediğinizden emin misiniz? Daha sonra
         yeniden giriş yapabilirsiniz.
     </string>
+    <!-- Appearance -->
     <string name="settings_appearance">Görünüm</string>
     <string name="settings_appearance_description">Tema, kod stili</string>
     <string name="appearance_theme">Tema</string>
@@ -19,11 +21,15 @@
     <string name="appearance_av_shape_circle">Daire</string>
     <string name="appearance_av_shape_roundrect">Yuvarlatılmış kare</string>
     <string name="appearance_av_shape_squircle">Kare-Daire</string>
+    <!--            -->
+    <!-- Accounts -->
     <string name="settings_accounts">Hesaplar</string>
     <string name="settings_accounts_description">Hesap ekle veya değiştir</string>
     <string name="action_add_account">Hesap Ekle</string>
     <string name="action_sign_out_all">Tüm Hesaplardan Çıkış Yap</string>
     <string name="cd_enterprise_domain">Kurumsal alan adı: %1$s</string>
+    <!--          -->
+    <!-- Development -->
     <string name="settings_development">Geliştirme</string>
     <string name="settings_development_description">Yeni özellikleri hata ayıklayın ve test edin</string>
     <string name="dev_alert_testing">Uyarı Testi</string>
@@ -34,6 +40,8 @@
     <string name="dev_alert_duration">Süre</string>
     <string name="dev_alert_action_show_alert">Uyarıyı Göster</string>
     <string name="dev_alert_action_fill_queue">Kuyruğu Doldur</string>
+    <!--             -->
+    <!-- About -->
     <string name="settings_about">Hakkında</string>
     <string name="settings_libraries">Kütüphaneler</string>
     <string name="settings_libraries_description">Gloom\'u oluşturmak için kullanılan kütüphaneler</string>
@@ -41,4 +49,5 @@
     <string name="cd_library_license">Lisans: %1$s</string>
     <string name="label_open_source">Açık Kaynak</string>
     <string name="label_closed_source">Kapalı Kaynak</string>
+    <!--       -->
 </resources>

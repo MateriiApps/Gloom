@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Root Tabs -->
     <string name="navigation_explore">探索</string>
     <string name="navigation_home">ホーム</string>
     <string name="navigation_inbox">通知</string>
     <string name="navigation_profile">プロフィール</string>
     <string name="navigation_settings">設定</string>
+    <!--           -->
+    <!-- Generic Actions -->
     <string name="action_back">戻る</string>
     <string name="action_confirm">確定</string>
     <string name="action_share">共有</string>
     <string name="action_expand">さらに表示</string>
     <string name="action_collapse">表示を減らす</string>
-    <string name="action_download">ダウンロード</string>
     <string name="action_edit">編集</string>
     <string name="action_stop_edit">編集をやめる</string>
     <string name="action_try_again">再試行</string>
     <string name="action_copy">コピー</string>
+    <!--                 -->
+    <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">やめる</string>
     <string name="dismiss_cancel">キャンセル</string>
     <string name="dismiss_no_thanks">いいえ</string>
-    <string name="title_download_confirm">ダウンロードの確認</string>
+    <!--                -->
+    <!-- Errors -->
+    <string name="error_release_load">リリースを読み込めませんでした</string>
+    <!--        -->
+    <!-- Titles -->
     <string name="title_starred">スター付き</string>
     <string name="title_orgs">組織</string>
     <string name="title_repos">リポジトリ</string>
@@ -26,23 +34,24 @@
     <string name="title_sponsoring">スポンサー</string>
     <string name="title_followers">フォロワー</string>
     <string name="title_following">フォロー</string>
-    <string name="noun_license">ライセンス</string>
+    <!--        -->
+    <!-- Entities -->
     <string name="noun_repo">リポジトリ</string>
     <string name="noun_release">リリース</string>
     <string name="noun_tag">タグ</string>
     <string name="noun_other">その他</string>
     <string name="noun_commit">コミット</string>
+    <string name="noun_license">ライセンス</string>
     <string name="noun_users_avatar">%s のアバター</string>
+    <!--          -->
+    <!-- Issues and PRs -->
     <string name="msg_issue_untitled">無題の課題</string>
     <string name="msg_pr_untitled">無題のプルリクエスト</string>
-    <string name="msg_download_dialog_body">%1$s (%2$s) をダウンロードしようとしています
-        続行しますか？
-    </string>
-    <string name="msg_downloading_file">%1$s をダウンロード中...</string>
-    <string name="msg_download_completed">ダウンロード完了</string>
     <string name="label_checks">チェック成功</string>
     <string name="label_reviews">レビュー</string>
+    <!--                -->
     <string name="label_dont_show_again">今後表示しない</string>
+    <!-- Units -->
     <string name="time_now">たった今</string>
     <string name="time_since_second">%1$d 秒</string>
     <string name="time_since_minute">%1$d 分</string>
@@ -54,7 +63,17 @@
     <string name="file_size_kilobytes">%1$d KB</string>
     <string name="file_size_megabytes">%1$d MB</string>
     <string name="file_size_gigabytes">%1$d GB</string>
-    <string name="error_release_load">リリースを読み込めませんでした</string>
+    <!--       -->
+    <!-- Downloading -->
+    <string name="action_download">ダウンロード</string>
+    <string name="title_download_confirm">ダウンロードの確認</string>
+    <string name="msg_download_dialog_body">%1$s (%2$s) をダウンロードしようとしています
+        続行しますか？
+    </string>
+    <string name="msg_downloading_file">%1$s をダウンロード中...</string>
+    <string name="msg_download_completed">ダウンロード完了</string>
+    <!--             -->
+    <!-- Installing -->
     <string name="install_fail_generic">インストールに失敗しました: 不明な理由</string>
     <string name="install_fail_blocked">インストールはブロックされました</string>
     <string name="install_fail_invalid">1つまたは複数のAPKが無効または破損しています</string>
@@ -65,4 +84,5 @@
     <string name="install_fail_timeout">インストールがタイムアウトしました</string>
     <string name="install_success">アプリは正常にインストールされました！</string>
     <string name="install_cancelled">インストールはキャンセルされました</string>
+    <!--            -->
 </resources>

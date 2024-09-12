@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Root Tabs -->
     <string name="navigation_explore">Explorar</string>
     <string name="navigation_home">Inicio</string>
     <string name="navigation_inbox">Inbox</string>
     <string name="navigation_profile">Perfil</string>
     <string name="navigation_settings">Configurações</string>
+    <!--           -->
+    <!-- Generic Actions -->
     <string name="action_back">Voltar</string>
     <string name="action_confirm">Confirmar</string>
     <string name="action_share">Compartilhar</string>
     <string name="action_expand">Ver mais</string>
     <string name="action_collapse">Ver menos</string>
-    <string name="action_download">Download</string>
     <string name="action_edit">Editar</string>
     <string name="action_stop_edit">Parar de editar</string>
     <string name="action_try_again">Tente novamente</string>
     <string name="action_copy">Copiar</string>
+    <!--                 -->
+    <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">Deixa para lá</string>
     <string name="dismiss_cancel">Cancelar</string>
     <string name="dismiss_no_thanks">Não obrigado</string>
-    <string name="title_download_confirm">Confirmar download</string>
+    <!--                -->
+    <!-- Errors -->
+    <string name="error_release_load">Falha ao carregar o lançamento</string>
+    <!--        -->
+    <!-- Titles -->
     <string name="title_starred">Com estrela</string>
     <string name="title_orgs">Organizações</string>
     <string name="title_repos">Repositórios</string>
@@ -26,24 +34,24 @@
     <string name="title_sponsoring">Patrocinando</string>
     <string name="title_followers">Seguidores</string>
     <string name="title_following">Seguindo</string>
-    <string name="noun_license">Licença</string>
-    <string name="noun_users_avatar">%s\'s avatar</string>
+    <!--        -->
+    <!-- Entities -->
     <string name="noun_repo">Repositório</string>
     <string name="noun_release">Lançamento</string>
     <string name="noun_tag">Categoria</string>
     <string name="noun_other">Outro</string>
     <string name="noun_commit">Commit</string>
     <string name="noun_license">Licença</string>
+    <string name="noun_users_avatar">%s\'s avatar</string>
+    <!--          -->
+    <!-- Issues and PRs -->
     <string name="msg_issue_untitled">Issue sem título</string>
     <string name="msg_pr_untitled">Pull request sem título</string>
-    <string name="msg_download_dialog_body">Você está prestes a baixar %1$s (%2$s), tem certeza que
-        quer fazer isso?
-    </string>
-    <string name="msg_downloading_file">Baixando %1$s...</string>
-    <string name="msg_download_completed">Download concluído</string>
     <string name="label_checks">Verificações</string>
     <string name="label_reviews">Revisões</string>
+    <!--                -->
     <string name="label_dont_show_again">Não mostrar novamente</string>
+    <!-- Units -->
     <string name="time_now">Agora</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
@@ -55,7 +63,17 @@
     <string name="file_size_kilobytes">%1$d KB</string>
     <string name="file_size_megabytes">%1$d MB</string>
     <string name="file_size_gigabytes">%1$d GB</string>
-    <string name="error_release_load">Falha ao carregar o lançamento</string>
+    <!--       -->
+    <!-- Downloading -->
+    <string name="action_download">Download</string>
+    <string name="title_download_confirm">Confirmar download</string>
+    <string name="msg_download_dialog_body">Você está prestes a baixar %1$s (%2$s), tem certeza que
+        quer fazer isso?
+    </string>
+    <string name="msg_downloading_file">Baixando %1$s...</string>
+    <string name="msg_download_completed">Download concluído</string>
+    <!--             -->
+    <!-- Installing -->
     <string name="install_fail_generic">Falha ao instalar: Razão desconhecida</string>
     <string name="install_fail_blocked">A instalação foi bloqueada</string>
     <string name="install_fail_invalid">Um ou mais apks eram inválidos ou corrompidos</string>
@@ -68,4 +86,5 @@
     <string name="install_fail_timeout">A instalação expirou</string>
     <string name="install_success">App instalado com sucesso!</string>
     <string name="install_cancelled">Instalação cancelada</string>
+    <!--            -->
 </resources>

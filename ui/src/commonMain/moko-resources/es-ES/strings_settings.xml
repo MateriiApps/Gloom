@@ -1,45 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_sign_out">Cerrar sesión</string>
-
     <string name="settings_sign_out_header">¿Cerrar sesión?</string>
     <string name="settings_sign_out_text">¿Estás seguro de que quieres cerrar sesión? Siempre podrás volver a iniciar sesión más tarde.</string>
-
     <!-- Appearance -->
     <string name="settings_appearance">Apariencia</string>
     <string name="settings_appearance_description">Tema, estilo de código</string>
-
     <string name="appearance_theme">Tema</string>
     <string name="appearance_monet">Tema dinámico</string>
     <string name="appearance_monet_description">Disponible en Android 12+</string>
-
     <string name="theme_system">Sistema</string>
     <string name="theme_light">Claro</string>
     <string name="theme_dark">Oscuro</string>
-
     <string name="appearance_user_av_shape">Forma de avatar de usuario</string>
     <string name="appearance_org_av_shape">Forma del avatar de la organización</string>
     <string name="appearance_av_radius">Radio:</string>
     <string name="appearance_av_radius_percent">%1$d %</string>
-
     <string name="appearance_av_shape_circle">Círculo</string>
     <string name="appearance_av_shape_roundrect">Cuadrado redondeado</string>
     <string name="appearance_av_shape_squircle">Squircle</string>
     <!--            -->
-
     <!-- Accounts -->
     <string name="settings_accounts">Cuentas</string>
     <string name="settings_accounts_description">Añadir o cambiar cuentas</string>
-
     <string name="action_add_account">Añadir cuenta</string>
     <string name="action_sign_out_all">Cerrar sesión de todas las cuentas</string>
-
     <string name="cd_enterprise_domain">Dominio de empresa: %1$s</string>
     <!--          -->
-
     <!-- Development -->
     <string name="settings_development">Desarrollo</string>
     <string name="settings_development_description">Depurar y probar nuevas características</string>
-
     <string name="dev_alert_testing">Pruebas de alerta</string>
     <string name="dev_alert_testing_description">Crear alertas personalizadas para probar</string>
     <string name="dev_alert_title">Título</string>
@@ -49,16 +39,12 @@
     <string name="dev_alert_action_show_alert">Mostrar alerta</string>
     <string name="dev_alert_action_fill_queue">Rellenar cola</string>
     <!--             -->
-
     <!-- About -->
     <string name="settings_about">Acerca de</string>
-
     <string name="settings_libraries">Librerías</string>
     <string name="settings_libraries_description">Las librerías usadas para crear Gloom</string>
-
     <string name="cd_library_author">Autor: %1$s</string>
     <string name="cd_library_license">Licencia: %1$s</string>
-
     <string name="label_open_source">Código abierto</string>
     <string name="label_closed_source">Código cerrado</string>
     <!--       -->

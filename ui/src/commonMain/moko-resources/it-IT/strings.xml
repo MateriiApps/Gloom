@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Root Tabs -->
     <string name="navigation_explore">Esplora</string>
     <string name="navigation_home">Home</string>
     <string name="navigation_inbox">In arrivo</string>
     <string name="navigation_profile">Profilo</string>
     <string name="navigation_settings">Impostazioni</string>
+    <!--           -->
+    <!-- Generic Actions -->
     <string name="action_back">Indietro</string>
     <string name="action_confirm">Conferma</string>
     <string name="action_share">Condividi</string>
     <string name="action_expand">Vedi di più</string>
     <string name="action_collapse">Vedi Meno</string>
-    <string name="action_download">Scarica</string>
     <string name="action_edit">Modifica</string>
     <string name="action_stop_edit">Termina modifica</string>
     <string name="action_try_again">Riprova</string>
     <string name="action_copy">Copia</string>
+    <!--                 -->
+    <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">Lascia stare</string>
     <string name="dismiss_cancel">Cancella</string>
     <string name="dismiss_no_thanks">No, grazie</string>
-    <string name="title_download_confirm">Confermare il download</string>
+    <!--                -->
+    <!-- Errors -->
+    <string name="error_release_load">Couldn\'t load release</string>
+    <!--        -->
+    <!-- Titles -->
     <string name="title_starred">Preferiti</string>
     <string name="title_orgs">Organizzazioni</string>
     <string name="title_repos">Repository</string>
@@ -26,22 +34,24 @@
     <string name="title_sponsoring">Sponsorizzazione</string>
     <string name="title_followers">Followers</string>
     <string name="title_following">Following</string>
-    <string name="noun_license">Licenza</string>
-    <string name="noun_users_avatar">%s\'s avatar</string>
+    <!--        -->
+    <!-- Entities -->
     <string name="noun_repo">Repository</string>
     <string name="noun_release">Release</string>
     <string name="noun_tag">Tag</string>
     <string name="noun_other">Other</string>
     <string name="noun_commit">Commit</string>
+    <string name="noun_license">Licenza</string>
+    <string name="noun_users_avatar">%s\'s avatar</string>
+    <!--          -->
+    <!-- Issues and PRs -->
     <string name="msg_issue_untitled">Problema senza titolo</string>
     <string name="msg_pr_untitled">Richiesta pull senza titolo</string>
-    <string name="msg_release_author">§autore§%1$s§ rilasciato questo %2$s</string>
-    <string name="msg_download_dialog_body">Stai per scaricare %1$s (%2$s), sei sicuro di volerlo fare?    </string>
-    <string name="msg_downloading_file">Download in corso %1$s...</string>
-    <string name="msg_download_completed">Download completato</string>
     <string name="label_checks">Controlli</string>
     <string name="label_reviews">Valutazioni</string>
+    <!--                -->
     <string name="label_dont_show_again">Non visualizzare più</string>
+    <!-- Units -->
     <string name="time_now">Now</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
@@ -53,7 +63,15 @@
     <string name="file_size_kilobytes">%1$d KB</string>
     <string name="file_size_megabytes">%1$d MB</string>
     <string name="file_size_gigabytes">%1$d GB</string>
-    <string name="error_release_load">Couldn\'t load release</string>
+    <!--       -->
+    <!-- Downloading -->
+    <string name="action_download">Scarica</string>
+    <string name="title_download_confirm">Confermare il download</string>
+    <string name="msg_download_dialog_body">Stai per scaricare %1$s (%2$s), sei sicuro di volerlo fare?    </string>
+    <string name="msg_downloading_file">Download in corso %1$s...</string>
+    <string name="msg_download_completed">Download completato</string>
+    <!--             -->
+    <!-- Installing -->
     <string name="install_fail_generic">Failed to install: Unknown reason</string>
     <string name="install_fail_blocked">Installation was blocked</string>
     <string name="install_fail_invalid">One or more apks were invalid or corrupt</string>
@@ -65,4 +83,5 @@
     <string name="install_fail_timeout">Installation timed out</string>
     <string name="install_success">App installed successfully!</string>
     <string name="install_cancelled">Installation cancelled</string>
+    <!--            -->
 </resources>

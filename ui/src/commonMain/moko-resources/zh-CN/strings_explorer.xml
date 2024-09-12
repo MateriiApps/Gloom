@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_reset_zoom">重置缩放</string>
     <string name="action_view_raw">查看原始文件</string>

@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- Root Tabs -->
     <string name="navigation_explore">Keşfet</string>
     <string name="navigation_home">Ana Sayfa</string>
     <string name="navigation_inbox">Bildirimler</string>
     <string name="navigation_profile">Profil</string>
     <string name="navigation_settings">Ayarlar</string>
+    <!--           -->
+    <!-- Generic Actions -->
     <string name="action_back">Geri</string>
     <string name="action_confirm">Onayla</string>
     <string name="action_share">Paylaş</string>
     <string name="action_expand">Daha Fazlasını Gör</string>
     <string name="action_collapse">Daha Azını Gör</string>
-    <string name="action_download">İndir</string>
     <string name="action_edit">Düzenle</string>
     <string name="action_stop_edit">Düzenlemeyi Durdur</string>
     <string name="action_try_again">Tekrar Dene</string>
     <string name="action_copy">Kopyala</string>
+    <!--                 -->
+    <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">Boşver</string>
     <string name="dismiss_cancel">İptal</string>
     <string name="dismiss_no_thanks">Hayır, teşekkürler</string>
-    <string name="title_download_confirm">İndirme Onayı</string>
+    <!--                -->
+    <!-- Errors -->
+    <string name="error_release_load">Sürüm yüklenemedi</string>
+    <!--        -->
+    <!-- Titles -->
     <string name="title_starred">Yıldızlanan</string>
     <string name="title_orgs">Organizasyonlar</string>
     <string name="title_repos">Depolar</string>
@@ -26,21 +34,24 @@
     <string name="title_sponsoring">Sponsor Olunan</string>
     <string name="title_followers">Takipçiler</string>
     <string name="title_following">Takip Edilenler</string>
-    <string name="noun_license">Lisans</string>
-    <string name="noun_users_avatar">%s\'in avatarı</string>
+    <!--        -->
+    <!-- Entities -->
     <string name="noun_repo">Depo</string>
     <string name="noun_release">Sürüm</string>
     <string name="noun_tag">Etiket</string>
     <string name="noun_other">Diğer</string>
     <string name="noun_commit">Commit</string>
+    <string name="noun_license">Lisans</string>
+    <string name="noun_users_avatar">%s\'in avatarı</string>
+    <!--          -->
+    <!-- Issues and PRs -->
     <string name="msg_issue_untitled">Başlıksız sorun</string>
     <string name="msg_pr_untitled">Başlıksız çekme isteği</string>
-    <string name="msg_download_dialog_body">%1$s (%2$s) indirmek üzeresiniz, bunu yapmak istediğinizden emin misiniz?</string>
-    <string name="msg_downloading_file">%1$s indiriliyor...</string>
-    <string name="msg_download_completed">İndirme tamamlandı</string>
     <string name="label_checks">Kontroller</string>
     <string name="label_reviews">İncelemeler</string>
+    <!--                -->
     <string name="label_dont_show_again">Bunu tekrar gösterme</string>
+    <!-- Units -->
     <string name="time_now">Şimdi</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
@@ -52,7 +63,15 @@
     <string name="file_size_kilobytes">%1$d KB</string>
     <string name="file_size_megabytes">%1$d MB</string>
     <string name="file_size_gigabytes">%1$d GB</string>
-    <string name="error_release_load">Sürüm yüklenemedi</string>
+    <!--       -->
+    <!-- Downloading -->
+    <string name="action_download">İndir</string>
+    <string name="title_download_confirm">İndirme Onayı</string>
+    <string name="msg_download_dialog_body">%1$s (%2$s) indirmek üzeresiniz, bunu yapmak istediğinizden emin misiniz?</string>
+    <string name="msg_downloading_file">%1$s indiriliyor...</string>
+    <string name="msg_download_completed">İndirme tamamlandı</string>
+    <!--             -->
+    <!-- Installing -->
     <string name="install_fail_generic">Kurulum başarısız: Bilinmeyen sebep</string>
     <string name="install_fail_blocked">Kurulum engellendi</string>
     <string name="install_fail_invalid">Bir veya daha fazla apk geçersiz veya bozuk</string>
@@ -62,4 +81,5 @@
     <string name="install_fail_timeout">Kurulum zaman aşımına uğradı</string>
     <string name="install_success">Uygulama başarıyla yüklendi!</string>
     <string name="install_cancelled">Kurulum iptal edildi</string>
+    <!--            -->
 </resources>

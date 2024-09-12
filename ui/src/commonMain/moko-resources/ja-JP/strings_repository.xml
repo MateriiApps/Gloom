@@ -1,34 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_star">スター</string>
     <string name="action_unstar">スターを外す</string>
-
     <string name="placeholder_empty_repo">空のリポジトリ</string>
-
     <string name="cd_forked_repo">フォークされたリポジトリ</string>
-
     <string name="label_repo_archived">Archived by owner</string>
-
     <!-- Details -->
     <string name="repo_tab_details">詳細</string>
-
     <string name="action_show_license_details">Show license details</string>
     <string name="action_hide_license_details">Hide license details</string>
-
     <string name="title_license">ライセンス</string>
-
     <string name="label_permissions">Permissions</string>
     <string name="label_limitations">Limitations</string>
     <string name="label_conditions">Conditions</string>
     <string name="label_forked_from">%s からのフォーク</string>
     <!--         -->
-
     <!-- Code -->
     <string name="repo_tab_code">コード</string>
     <!--      -->
-
     <!-- Issues -->
     <string name="repo_tab_issues">課題</string>
-
     <string name="cd_issue_title_opened">タイトル「%2$s」の課題 %1$d</string>
     <string name="cd_issue_title_completed">タイトル「%2$s」の課題 %1$d が完了としてマークされました
     </string>
@@ -36,29 +27,22 @@
         が計画外としてマークされました
     </string>
     <!--        -->
-
     <!-- Pull Requests -->
     <string name="repo_tab_prs">プルリクエスト</string>
-
     <string name="cd_pr_title_opened">タイトル「%2$s」のプルリクエスト %1$d をオープンしました
     </string>
     <string name="cd_pr_title_merged">タイトル「%2$s」のプルリクエスト %1$d をマージしました</string>
     <string name="cd_pr_title_closed">タイトル「%2$s」のプルリクエスト %1$d をクローズしました
     </string>
     <string name="cd_pr_title_draft">タイトル「%2$s」のプルリクエスト %1$d をドラフトしました</string>
-
     <string name="label_checks_failed">チェック失敗</string>
     <!--               -->
-
     <!-- Issue or PR -->
     <string name="cd_label_comments">%1$d 件のコメント</string>
-
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
     <!--             -->
-
     <!-- Releases -->
     <string name="repo_tab_releases">リリース</string>
-
     <string name="label_all_releases">すべてのリリース</string>
     <!--          -->
 </resources>

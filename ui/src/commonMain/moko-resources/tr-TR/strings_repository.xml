@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_star">Yıldızla</string>
     <string name="action_unstar">Yıldızı Kaldır</string>
     <string name="placeholder_empty_repo">Boş Depo</string>
     <string name="cd_forked_repo">Çatallanan Depo</string>
     <string name="label_repo_archived">Sahibi tarafından arşivlendi</string>
+    <!-- Details -->
     <string name="repo_tab_details">Detaylar</string>
     <string name="action_show_license_details">Lisans Detaylarını Göster</string>
     <string name="action_hide_license_details">Lisans Detaylarını Gizle</string>
@@ -12,19 +14,30 @@
     <string name="label_limitations">Kısıtlamalar</string>
     <string name="label_conditions">Koşullar</string>
     <string name="label_forked_from">%s\'den Çatallandı</string>
+    <!--         -->
+    <!-- Code -->
     <string name="repo_tab_code">Kod</string>
+    <!--      -->
+    <!-- Issues -->
     <string name="repo_tab_issues">Sorunlar</string>
     <string name="cd_issue_title_opened">Başlığı \"%2$s\" olan %1$d numaralı sorun açıldı</string>
     <string name="cd_issue_title_completed">Başlığı \"%2$s\" olan %1$d numaralı sorun tamamlandı olarak işaretlendi</string>
     <string name="cd_issue_title_not_planned">Başlığı \"%2$s\" olan %1$d numaralı sorun planlanmadı olarak işaretlendi</string>
+    <!--        -->
+    <!-- Pull Requests -->
     <string name="repo_tab_prs">Çekme İstekleri</string>
     <string name="cd_pr_title_opened">Başlığı \"%2$s\" olan %1$d numaralı çekme isteği açıldı</string>
     <string name="cd_pr_title_merged">Başlığı \"%2$s\" olan %1$d numaralı çekme isteği birleştirildi</string>
     <string name="cd_pr_title_closed">Başlığı \"%2$s\" olan %1$d numaralı çekme isteği kapatıldı</string>
     <string name="cd_pr_title_draft">Başlığı \"%2$s\" olan %1$d numaralı taslak çekme isteği</string>
     <string name="label_checks_failed">Kontroller başarısız</string>
+    <!--               -->
+    <!-- Issue or PR -->
     <string name="cd_label_comments">%1$d yorum</string>
     <string name="msg_issue_or_pr_author">#%1$d, %2$s tarafından</string>
+    <!--             -->
+    <!-- Releases -->
     <string name="repo_tab_releases">Sürümler</string>
     <string name="label_all_releases">Tüm Sürümler</string>
+    <!--          -->
 </resources>

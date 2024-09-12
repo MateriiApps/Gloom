@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_sign_out">登出</string>
     <string name="settings_sign_out_header">登出?</string>
     <string name="settings_sign_out_text">您确定要登出吗？
         您可以随时稍后重新登录。</string>
+    <!-- Appearance -->
     <string name="settings_appearance">外观</string>
     <string name="settings_appearance_description">主题，代码样式</string>
     <string name="appearance_theme">主题</string>
@@ -18,11 +20,15 @@
     <string name="appearance_av_shape_circle">圆形</string>
     <string name="appearance_av_shape_roundrect">圆角方形</string>
     <string name="appearance_av_shape_squircle">方圆形</string>
+    <!--            -->
+    <!-- Accounts -->
     <string name="settings_accounts">帐户</string>
     <string name="settings_accounts_description">添加或切换账户</string>
     <string name="action_add_account">添加账户</string>
     <string name="action_sign_out_all">退出所有账户</string>
     <string name="cd_enterprise_domain">企业域：%1$s</string>
+    <!--          -->
+    <!-- Development -->
     <string name="settings_development">开发</string>
     <string name="settings_development_description">调试和测试新功能</string>
     <string name="dev_alert_testing">警报测试</string>
@@ -33,6 +39,8 @@
     <string name="dev_alert_duration">期间</string>
     <string name="dev_alert_action_show_alert">显示警报</string>
     <string name="dev_alert_action_fill_queue">填充队列</string>
+    <!--             -->
+    <!-- About -->
     <string name="settings_about">关于</string>
     <string name="settings_libraries">库</string>
     <string name="settings_libraries_description">用于开发 Gloom 的库</string>
@@ -40,4 +48,5 @@
     <string name="cd_library_license">许可证：%1$s</string>
     <string name="label_open_source">开源</string>
     <string name="label_closed_source">闭源</string>
+    <!--       -->
 </resources>

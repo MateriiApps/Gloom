@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_sign_out">تسجيل الخروج</string>
     <string name="settings_sign_out_header">تسجيل الخروج؟</string>
     <string name="settings_sign_out_text">هل أنت متيقِّن من أنك تريد تسجيل الخروج؟ يمكنك دائماً تسجيل الدخول لاحقاً.    </string>
+    <!-- Appearance -->
     <string name="settings_appearance">المظهر</string>
     <string name="settings_appearance_description">ثيم، نمط الكود</string>
     <string name="appearance_theme">الثيم</string>
@@ -17,11 +19,15 @@
     <string name="appearance_av_shape_circle">دائري</string>
     <string name="appearance_av_shape_roundrect">مربع دائري</string>
     <string name="appearance_av_shape_squircle">مربع دائري</string>
+    <!--            -->
+    <!-- Accounts -->
     <string name="settings_accounts">حِسابات</string>
     <string name="settings_accounts_description">إضافة أو تبديل الحسابات</string>
     <string name="action_add_account">إضافة حساب</string>
     <string name="action_sign_out_all">تسجيل الخروج من كافة الحسابات</string>
     <string name="cd_enterprise_domain">نطاق المؤسسة: %1$s</string>
+    <!--          -->
+    <!-- Development -->
     <string name="settings_development">التّطوير</string>
     <string name="settings_development_description">تصحيح واختبار الميزات الجديدة</string>
     <string name="dev_alert_testing">اختبار التنبيهات</string>
@@ -32,6 +38,8 @@
     <string name="dev_alert_duration">المدة</string>
     <string name="dev_alert_action_show_alert">إظهار التنبيهات</string>
     <string name="dev_alert_action_fill_queue">ملء قائمة الانتظار</string>
+    <!--             -->
+    <!-- About -->
     <string name="settings_about">حول</string>
     <string name="settings_libraries">المكتبات</string>
     <string name="settings_libraries_description">المكتبات المستخدمة لصنع Gloom</string>
@@ -39,4 +47,5 @@
     <string name="cd_library_license">الترخيص: %1$s</string>
     <string name="label_open_source">مفتوح المصدر</string>
     <string name="label_closed_source">مصدر مغلق</string>
+    <!--       -->
 </resources>
