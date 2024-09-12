@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId = "com.materiiapps.gloom"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 10000
         versionName = "1.0.0"
 
