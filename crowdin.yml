@@ -5,70 +5,60 @@ preserve_hierarchy: true
 files:
   - source: ui/src/commonMain/moko-resources/base/plurals.xml
     translation: ui/src/commonMain/moko-resources/%locale%/plurals.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings_auth.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings_auth.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings_explore.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings_explore.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings_explorer.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings_explorer.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings_home.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings_home.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings_profile.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings_profile.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings_release.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings_release.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings_repository.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings_repository.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
 
   - source: ui/src/commonMain/moko-resources/base/strings_settings.xml
     translation: ui/src/commonMain/moko-resources/%locale%/strings_settings.xml
-    update_option: update_as_unapproved
     ignore:
       - ui/src/commonMain/moko-resources/images/
       - ui/src/commonMain/moko-resources/files/
