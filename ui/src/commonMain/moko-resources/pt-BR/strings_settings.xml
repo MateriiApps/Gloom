@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_sign_out">Sair</string>
+    <string name="settings_sign_out_header">Sair?</string>
+    <string name="settings_sign_out_text">Tem certeza que deseja sair? Você pode voltar mais tarde
+    </string>
+    <string name="settings_appearance">Aparência</string>
+    <string name="settings_appearance_description">Tema, estilo de código</string>
+    <string name="appearance_theme">Tema</string>
+    <string name="appearance_monet">Tema dinâmico</string>
+    <string name="appearance_monet_description">Disponível para Android 12+</string>
+    <string name="theme_system">Sistema</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Escuro</string>
+    <string name="appearance_user_av_shape">Formato do avatar do usuário</string>
+    <string name="appearance_org_av_shape">Formato do avatar da organização</string>
+    <string name="appearance_av_radius">Raio:</string>
+    <string name="appearance_av_radius_percent">%1$d%</string>
+    <string name="appearance_av_shape_circle">Círculo</string>
+    <string name="appearance_av_shape_roundrect">Quadrado arredondado</string>
+    <string name="appearance_av_shape_squircle">Circulo quadrado</string>
+    <string name="settings_accounts">Contas</string>
+    <string name="settings_accounts_description">Adicionar ou trocar de conta</string>
+    <string name="action_add_account">Adicionar conta</string>
+    <string name="action_sign_out_all">Sair de todas as contas</string>
+    <string name="cd_enterprise_domain">Domínio empresarial: %1$s</string>
+    <string name="settings_development">Desenvolvimento</string>
+    <string name="settings_development_description">Debug e teste novos recursos</string>
+    <string name="dev_alert_testing">Teste de alerta</string>
+    <string name="dev_alert_testing_description">Criar alertas personalizados para testes</string>
+    <string name="dev_alert_title">Título</string>
+    <string name="dev_alert_message">Mensagem</string>
+    <string name="dev_alert_show_icon">Mostrar ícone</string>
+    <string name="dev_alert_duration">Duração</string>
+    <string name="dev_alert_action_show_alert">Mostrar alerta</string>
+    <string name="dev_alert_action_fill_queue">Preencher fila</string>
+    <string name="settings_about">Sobre</string>
+    <string name="settings_libraries">Bibliotecas</string>
+    <string name="settings_libraries_description">As bibliotecas usadas para fazer Gloom</string>
+    <string name="cd_library_author">Autor: %1$s</string>
+    <string name="cd_library_license">Licença: %1$s</string>
+    <string name="label_open_source">Código Aberto</string>
+    <string name="label_closed_source">Código fonte privado</string>
+</resources>

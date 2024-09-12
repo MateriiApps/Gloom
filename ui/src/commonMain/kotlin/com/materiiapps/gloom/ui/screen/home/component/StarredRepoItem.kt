@@ -36,7 +36,7 @@ fun StarredRepoItem(
             iconUrl = actor.avatarUrl,
             iconDescription = stringResource(Res.strings.noun_users_avatar, actor.login),
             badgeIcon = Icons.Filled.Star,
-            badgeIconDescription = stringResource(Res.strings.noun_starred),
+            badgeIconDescription = stringResource(Res.strings.title_starred),
             text = annotatingStringResource(res = Res.strings.starred_repo, actor.login) {
                 when (it) {
                     "name" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface)

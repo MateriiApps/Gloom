@@ -75,7 +75,7 @@ class LandingScreen(
                 Spacer(modifier = Modifier.weight(0.10f))
 
                 Text(
-                    text = stringResource(Res.strings.login_welcome),
+                    text = stringResource(Res.strings.msg_welcome),
                     style = MaterialTheme.typography.headlineLarge.copy(
                         fontWeight = FontWeight.Thin
                     ),
@@ -136,7 +136,7 @@ class LandingScreen(
                         imageVector = Icons.Social.GitHub,
                         contentDescription = null
                     )
-                    Text(stringResource(Res.strings.login_sign_in_github))
+                    Text(stringResource(Res.strings.action_github_sign_in))
                 }
                 Spacer(Modifier.weight(0.20f))
             }

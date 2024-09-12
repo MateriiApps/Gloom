@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="title_install_app">تثبيت هذا التطبيق؟</string>
+    <string name="msg_release_author">§المؤلف§%1$s§ أصدر هذا %2$s</string>
+    <string name="msg_install_dialog_body">لقد اكتشفنا أن %1$s تطبيق أندرويد،
+        هل ترغب في تثبيته؟
+    </string>
+    <string name="action_install">تثبيت</string>
+    <string name="label_latest">الأحدث</string>
+    <string name="label_prerelease">إصدار غير مُستقرّ</string>
+</resources>

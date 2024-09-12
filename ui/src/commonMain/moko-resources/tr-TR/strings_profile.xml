@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_follow_user">%s\'i Takip Et</string>
+    <string name="action_unfollow_user">%s\'i Takipten Çık</string>
+    <string name="action_follow">Takip Et</string>
+    <string name="action_unfollow">Takipten Çık</string>
+    <string name="action_read_more">Daha Fazla Oku</string>
+    <string name="badge_dev">Gloom Geliştiricisi</string>
+    <string name="badge_supporter">Gloom Destekçisi</string>
+    <string name="section_title_contributions">Katkılar: %1$d</string>
+    <string name="section_title_pinned">Sabitlenmiş</string>
+    <string name="cd_twitter">Twitter</string>
+    <string name="cd_youtube">YouTube</string>
+    <string name="cd_mastodon">Mastodon</string>
+    <string name="cd_hometown">Hometown</string>
+    <string name="cd_facebook">Facebook</string>
+    <string name="cd_instagram">Instagram</string>
+    <string name="cd_linkedin">LinkedIn</string>
+    <string name="cd_reddit">Reddit</string>
+    <string name="cd_twitch">Twitch</string>
+    <string name="cd_link">Bağlantı</string>
+    <string name="label_follows_you">Sizi Takip Ediyor</string>
+    <string name="noun_more">Daha Fazla</string>
+    <string name="noun_less">Daha Az</string>
+</resources>

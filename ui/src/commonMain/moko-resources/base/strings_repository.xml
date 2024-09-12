@@ -1,0 +1,59 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_star">Star</string>
+    <string name="action_unstar">Unstar</string>
+
+    <string name="placeholder_empty_repo">Empty Repository</string>
+
+    <string name="cd_forked_repo">Forked Repository</string>
+
+    <string name="label_repo_archived">Archived by owner</string>
+
+    <!-- Details -->
+    <string name="repo_tab_details">Details</string>
+
+    <string name="action_show_license_details">Show license details</string>
+    <string name="action_hide_license_details">Hide license details</string>
+
+    <string name="title_license">License</string>
+
+    <string name="label_permissions">Permissions</string>
+    <string name="label_limitations">Limitations</string>
+    <string name="label_conditions">Conditions</string>
+    <string name="label_forked_from">Forked from %s</string>
+    <!--         -->
+
+    <!-- Code -->
+    <string name="repo_tab_code">Code</string>
+    <!--      -->
+
+    <!-- Issues -->
+    <string name="repo_tab_issues">Issues</string>
+
+    <string name="cd_issue_title_opened">Issue number %1$d with title "%2$s"</string>
+    <string name="cd_issue_title_completed">Issue number %1$d with title "%2$s" marked as completed</string>
+    <string name="cd_issue_title_not_planned">Issue number %1$d with title "%2$s" marked as not planned</string>
+    <!--        -->
+
+    <!-- Pull Requests -->
+    <string name="repo_tab_prs">Pull Requests</string>
+
+    <string name="cd_pr_title_opened">Opened pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_merged">Merged pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_closed">Closed pull request number %1$d with title "%2$s"</string>
+    <string name="cd_pr_title_draft">Draft pull request number %1$d with title "%2$s"</string>
+
+    <string name="label_checks_failed">Checks failed</string>
+    <!--               -->
+
+    <!-- Issue or PR -->
+    <string name="cd_label_comments">%1$d comments</string>
+
+    <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
+    <!--             -->
+
+    <!-- Releases -->
+    <string name="repo_tab_releases">Releases</string>
+
+    <string name="label_all_releases">All releases</string>
+    <!--          -->
+</resources>

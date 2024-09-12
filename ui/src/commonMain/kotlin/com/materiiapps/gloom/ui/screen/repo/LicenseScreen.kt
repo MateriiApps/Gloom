@@ -119,7 +119,7 @@ class LicenseScreen(
                         },
                         style = MaterialTheme.typography.labelLarge
                     )
-                    Text(stringResource(Res.strings.noun_license))
+                    Text(stringResource(Res.strings.title_license))
                 }
             },
             navigationIcon = {

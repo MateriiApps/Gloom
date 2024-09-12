@@ -1,0 +1,34 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_star">Preferito</string>
+    <string name="action_unstar">Rimuovi dai preferiti</string>
+    <string name="placeholder_empty_repo">Repository Vuoto</string>
+    <string name="cd_forked_repo">Repository forkata</string>
+    <string name="label_repo_archived">Archived by owner</string>
+    <string name="repo_tab_details">Dettagli</string>
+    <string name="action_show_license_details">Visualizza dettagli licenza</string>
+    <string name="action_hide_license_details">Nascondi dettagli licenza</string>
+    <string name="title_license">Licenza</string>
+    <string name="label_permissions">Permissions</string>
+    <string name="label_limitations">Limitations</string>
+    <string name="label_conditions">Conditions</string>
+    <string name="label_forked_from">Forked from %s</string>
+    <string name="repo_tab_code">Codice</string>
+    <string name="repo_tab_issues">Problemi</string>
+    <string name="cd_issue_title_opened">Numero di rilascio %1$d con titolo \"%2$s\"</string>
+    <string name="cd_issue_title_completed">Numero di rilascio %1$d con titolo \"%2$s\" contrassegnato come
+        completato
+    </string>
+    <string name="cd_issue_title_not_planned">Numero di rilascio %1$d con titolo \"%2$s\" contrassegnato come non
+        pianificato
+    </string>
+    <string name="repo_tab_prs">Richieste Pull</string>
+    <string name="cd_pr_title_opened">Aperto pull request numero %1$d con titolo \"%2$s\"</string>
+    <string name="cd_pr_title_merged">Numero di richiesta pull unito %1$d con titolo \"%2$s\"</string>
+    <string name="cd_pr_title_closed">Chiuso il numero di pull request %1$d con titolo \"%2$s\"</string>
+    <string name="cd_pr_title_draft">Bozza pull request numero %1$d con titolo \"%2$s\"</string>
+    <string name="label_checks_failed">Controlli falliti</string>
+    <string name="cd_label_comments">%1$d commenti</string>
+    <string name="msg_issue_or_pr_author">#%1$d di %2$s</string>
+    <string name="repo_tab_releases">Release</string>
+    <string name="label_all_releases">Tutte le release</string>
+</resources>

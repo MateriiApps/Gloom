@@ -51,7 +51,7 @@ fun ContributionGraph(
             .padding(horizontal = 16.dp)
     ) {
         Text(
-            text = stringResource(Res.strings.noun_contributions, calendar.totalContributions),
+            text = stringResource(Res.strings.section_title_contributions, calendar.totalContributions),
             style = MaterialTheme.typography.labelLarge,
             fontSize = 15.sp
         )
@@ -99,7 +99,7 @@ fun ContributionGraph(
                     .padding(16.dp)
             ) {
                 Text(
-                    text = stringResource(Res.strings.noun_less),
+                    text = stringResource(Res.strings.label_less),
                     style = MaterialTheme.typography.labelMedium,
                     color = LocalContentColor.current.copy(0.5f)
                 )
@@ -115,7 +115,7 @@ fun ContributionGraph(
                 }
 
                 Text(
-                    text = stringResource(Res.strings.noun_more),
+                    text = stringResource(Res.strings.label_more),
                     style = MaterialTheme.typography.labelMedium,
                     color = LocalContentColor.current.copy(0.5f)
                 )

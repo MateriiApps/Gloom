@@ -126,6 +126,7 @@ class HomeScreen : Tab {
                                 }
 
                                 feedItem.newReleaseItemFragment != null -> NewReleaseItem(item = feedItem.newReleaseItemFragment!!)
+
                                 feedItem.followedUserFeedItemFragment != null -> {
                                     val id =
                                         feedItem.followedUserFeedItemFragment!!.followee.feedUser?.id

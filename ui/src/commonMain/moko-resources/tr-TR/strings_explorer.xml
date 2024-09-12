@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_reset_zoom">Yakınlaştırmayı Sıfırla</string>
+    <string name="action_view_raw">Ham Haliyle Gör</string>
+    <string name="action_view_markdown">Markdown Olarak Gör</string>
+    <string name="msg_file_load_error">Bu dosya yüklenemedi</string>
+    <string name="msg_raw_markdown_fail">Ham markdown yüklenemedi</string>
+</resources>

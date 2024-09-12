@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="created_repo">§اسم§%1$s§ §نص§أنشء مستودع§</string>
+    <string name="starred_repo">§اسم§%1$s§ §نص§أعطى نجمة لمستودع§</string>
+    <string name="forked_repo">§اسم§%1$s§ §نص§اشتق مستودع§</string>
+    <string name="followed_user">§اسم§%1$s§ §نص§تابع§ §آخرين§%2$s§</string>
+    <string name="followed_you">§اسم§%1$s§ §نص§بدأ بمتابعتك§</string>
+    <string name="published_release">§اسم§%1$s§ §نص§نشر أصدار جديد§</string>
+    <string name="recommended">موصى به لك</string>
+    <string name="cd_followed">تم متابعتة</string>
+    <string name="action_view_details">التفاصيل</string>
+</resources>

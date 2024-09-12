@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_github_sign_in">GitHub でサインイン</string>
+    <string name="label_choose_account">アカウントを選択</string>
+    <string name="label_or">または</string>
+    <string name="msg_welcome">ようこそ！</string>
+</resources>

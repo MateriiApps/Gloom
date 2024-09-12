@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_follow_user">Follow %s</string>
+    <string name="action_unfollow_user">Unfollow %s</string>
+    <string name="action_follow">Follow</string>
+    <string name="action_unfollow">Unfollow</string>
+    <string name="action_read_more">Read More</string>
+
+    <string name="badge_dev">Gloom Developer</string>
+    <string name="badge_supporter">Gloom Supporter</string>
+
+    <string name="section_title_contributions">Contributions: %1$d</string>
+    <string name="section_title_pinned">Pinned</string>
+
+    <string name="cd_twitter" translatable="false">Twitter</string>
+    <string name="cd_youtube" translatable="false">YouTube</string>
+    <string name="cd_mastodon" translatable="false">Mastodon</string>
+    <string name="cd_hometown" translatable="false">Hometown</string>
+    <string name="cd_facebook" translatable="false">Facebook</string>
+    <string name="cd_instagram" translatable="false">Instagram</string>
+    <string name="cd_linkedin" translatable="false">LinkedIn</string>
+    <string name="cd_reddit" translatable="false">Reddit</string>
+    <string name="cd_twitch" translatable="false">Twitch</string>
+    <string name="cd_link">Link</string>
+
+    <string name="label_follows_you">Follows You</string>
+    <string name="label_more">More</string>
+    <string name="label_less">Less</string>
+</resources>

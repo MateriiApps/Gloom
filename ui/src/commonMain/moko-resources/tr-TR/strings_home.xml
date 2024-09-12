@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="created_repo">§name§%1$s§ §text§bir depo oluşturdu§</string>
+    <string name="starred_repo">§name§%1$s§ §text§bir depoya yıldız ekledi§</string>
+    <string name="forked_repo">§name§%1$s§ §text§bir depoyu çatalladı§</string>
+    <string name="followed_user">§name§%1$s§ §text§takip etti§ §other§%2$s§</string>
+    <string name="followed_you">§name§%1$s§ §text§sizi takip etti§</string>
+    <string name="published_release">§name§%1$s§ §text§bir sürüm yayınladı§</string>
+    <string name="recommended">Size Önerilenler</string>
+    <string name="cd_followed">Takip Edilen</string>
+    <string name="action_view_details">Detaylar</string>
+</resources>

@@ -25,7 +25,7 @@ fun TrendingFeedHeader(
         modifier = modifier.padding(horizontal = 16.dp)
     ) {
         Text(
-            text = stringResource(Res.strings.noun_trending),
+            text = stringResource(Res.strings.title_trending),
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.weight(1f)
         )

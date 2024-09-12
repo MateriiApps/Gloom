@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_github_sign_in">使用 GitHub 登录</string>
+    <string name="label_choose_account">选择一个账户</string>
+    <string name="label_or">或</string>
+    <string name="msg_welcome">欢迎！</string>
+</resources>

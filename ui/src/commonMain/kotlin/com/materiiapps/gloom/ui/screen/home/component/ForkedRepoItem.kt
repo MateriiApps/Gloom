@@ -37,7 +37,7 @@ fun ForkedRepoItem(
             iconUrl = actor.avatarUrl,
             iconDescription = stringResource(Res.strings.noun_users_avatar, actor.login),
             badgeIcon = Icons.Custom.Fork,
-            badgeIconDescription = stringResource(Res.strings.noun_forked_repo),
+            badgeIconDescription = stringResource(Res.strings.cd_forked_repo),
             text = annotatingStringResource(res = Res.strings.forked_repo, actor.login) {
                 when (it) {
                     "name" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface)

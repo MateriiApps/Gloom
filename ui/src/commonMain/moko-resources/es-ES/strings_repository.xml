@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_star">Dar estrella</string>
+    <string name="action_unstar">Quitar estrella</string>
+    <string name="placeholder_empty_repo">Repositorio vacío</string>
+    <string name="cd_forked_repo">Repositorio bifurcado</string>
+    <string name="label_repo_archived">Archivado por el propietario</string>
+    <string name="repo_tab_details">Detalles</string>
+    <string name="action_show_license_details">Show license details</string>
+    <string name="action_hide_license_details">Hide license details</string>
+    <string name="title_license">Licencia</string>
+    <string name="label_permissions">Permissions</string>
+    <string name="label_limitations">Limitations</string>
+    <string name="label_conditions">Conditions</string>
+    <string name="label_forked_from">Bifurcado de %s</string>
+    <string name="repo_tab_code">Código</string>
+    <string name="repo_tab_issues">Problemas</string>
+    <string name="cd_issue_title_opened">Problema número %1$d con título «%2$s»</string>
+    <string name="cd_issue_title_completed">Problema número %1$d con el título «%2$s» marcado como completado</string>
+    <string name="cd_issue_title_not_planned">Problema número %1$d con título «%2$s» marcado como no planeado</string>
+    <string name="repo_tab_prs">Solicitudes de cambios</string>
+    <string name="cd_pr_title_opened">Se abrió la solicitud de cambios número %1$d con título «%2$s»</string>
+    <string name="cd_pr_title_merged">Se fusionó la solicitud de cambios número %1$d con título «%2$s»</string>
+    <string name="cd_pr_title_closed">Se cerró la solicitud de cambios número %1$d con título «%2$s»</string>
+    <string name="cd_pr_title_draft">Se marcó como borrador la solicitud de cambios número %1$d con título «%2$s»</string>
+    <string name="label_checks_failed">Comprobaciones fallidas</string>
+    <string name="cd_label_comments">%1$d comentarios</string>
+    <string name="msg_issue_or_pr_author">#%1$d por %2$s</string>
+    <string name="repo_tab_releases">Lanzamientos</string>
+    <string name="label_all_releases">Todos los lanzamientos</string>
+</resources>

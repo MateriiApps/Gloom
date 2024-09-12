@@ -52,8 +52,8 @@ import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.NewReleaseItemFragment
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.ThinDivider
-import com.materiiapps.gloom.ui.icon.custom.Commit
 import com.materiiapps.gloom.ui.icon.Custom
+import com.materiiapps.gloom.ui.icon.custom.Commit
 import com.materiiapps.gloom.ui.screen.release.ReleaseScreen
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
@@ -165,7 +165,7 @@ fun ReleaseCard(
 
                 if (release.isLatest) {
                     Text(
-                        text = stringResource(Res.strings.adj_latest),
+                        text = stringResource(Res.strings.label_latest),
                         style = MaterialTheme.typography.labelSmall,
                         fontSize = 10.sp,
                         color = DarkGreen,
@@ -239,7 +239,7 @@ fun ReleaseCard(
                 if (release.tagCommit?.abbreviatedOid?.isNotBlank() == true) {
                     ReleaseDetail(
                         icon = Icons.Custom.Commit,
-                        iconDescription = stringResource(Res.strings.noun_tag),
+                        iconDescription = stringResource(Res.strings.noun_commit),
                         text = release.tagCommit!!.abbreviatedOid
                     )
                 }

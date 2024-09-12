@@ -172,7 +172,7 @@ class ReleaseScreen(
                             if (it.isNotEmpty()) {
                                 item {
                                     Text(
-                                        text = stringResource(Res.strings.noun_contributors),
+                                        text = stringResource(Res.strings.title_contributors),
                                         style = MaterialTheme.typography.labelLarge,
                                         color = MaterialTheme.colors.primary,
                                         modifier = Modifier.padding(horizontal = 16.dp)

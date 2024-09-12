@@ -15,7 +15,7 @@ object EmojiUtil : KoinComponent {
     val emojis: Map<String, String>
         @Composable get() {
             if (_emojis != null) return _emojis!!
-            val text by Res.files.emoji.readTextAsState()
+            val text by Res.files.emoji_json.readTextAsState()
             if (text == null) return emptyMap()
             _emojis = json.decodeFromString<Map<String, String>>(text!!)
             return _emojis!!

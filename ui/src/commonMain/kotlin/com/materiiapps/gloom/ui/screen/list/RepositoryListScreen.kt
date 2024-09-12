@@ -16,7 +16,7 @@ class RepositoryListScreen(
     private val username: String,
 ) : BaseListScreen<ModelRepo, RepoListQuery.Data?, RepositoryListViewModel>() {
 
-    override val titleRes: StringResource get() = Res.strings.noun_repos
+    override val titleRes: StringResource get() = Res.strings.title_repos
 
     override val viewModel: RepositoryListViewModel
         @Composable get() = getScreenModel { parametersOf(username) }

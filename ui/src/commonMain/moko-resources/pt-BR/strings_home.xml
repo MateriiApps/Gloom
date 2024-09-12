@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="created_repo">§name§%1$s§ §text§criou um repositório§</string>
+    <string name="starred_repo">§name§%1$s§ §text§marcou com estrela um repositório§</string>
+    <string name="forked_repo">§name§%1$s§ §text§fez um fork de um repositório§</string>
+    <string name="followed_user">§name§%1$s§ §text§seguiu§ §other§%2$s§</string>
+    <string name="followed_you">§name§%1$s§ §text§seguiu você§</string>
+    <string name="published_release">§name§%1$s§ §text§publicou um lançamento§</string>
+    <string name="recommended">Recomendado para você</string>
+    <string name="cd_followed">Seguido</string>
+    <string name="action_view_details">Detalhes</string>
+</resources>

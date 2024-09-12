@@ -46,7 +46,7 @@ fun FollowedUserItem(
             iconUrl = actor.avatarUrl,
             iconDescription = stringResource(Res.strings.noun_users_avatar, actor.login),
             badgeIcon = Icons.Filled.PersonAddAlt1,
-            badgeIconDescription = stringResource(Res.strings.noun_followed),
+            badgeIconDescription = stringResource(Res.strings.cd_followed),
             text = actorText
         )
 

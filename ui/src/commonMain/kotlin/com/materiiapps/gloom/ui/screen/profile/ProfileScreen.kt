@@ -110,6 +110,7 @@ import com.materiiapps.gloom.ui.screen.repo.component.RepoItem
 import com.materiiapps.gloom.util.Constants
 import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.pluralStringResource
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
@@ -378,8 +379,9 @@ open class ProfileScreen(
                             )
                         }) {
                             Text(
-                                stringResource(
-                                    Res.strings.noun_follower_count,
+                                pluralStringResource(
+                                    Res.plurals.followers,
+                                    (user.followers ?: 0).toInt(),
                                     user.followers ?: 0
                                 )
                             )
@@ -392,8 +394,9 @@ open class ProfileScreen(
                             )
                         }) {
                             Text(
-                                stringResource(
-                                    Res.strings.noun_following_count,
+                                pluralStringResource(
+                                    Res.plurals.following,
+                                    (user.following ?: 0).toInt(),
                                     user.following ?: 0
                                 )
                             )
@@ -412,7 +415,7 @@ open class ProfileScreen(
                 Res.strings.badge_supporter
             )
             else if (user.id == Constants.DEV_USER_ID) painterResource(Res.images.img_badge_dev) to stringResource(
-                Res.strings.badge_dev
+                Res.strings.badge_supporter
             )
             else null to null
 
@@ -527,7 +530,7 @@ open class ProfileScreen(
             ElevatedCard {
                 Column {
                     StatItem(
-                        label = stringResource(Res.strings.noun_repos),
+                        label = stringResource(Res.strings.title_repos),
                         count = repoCount,
                         icon = Icons.Outlined.Book
                     ) {
@@ -535,14 +538,14 @@ open class ProfileScreen(
                     }
                     if (!isOrg) {
                         StatItem(
-                            label = stringResource(Res.strings.noun_orgs),
+                            label = stringResource(Res.strings.title_orgs),
                             count = orgCount,
                             icon = Icons.Outlined.Business
                         ) {
                             username?.let { OrgsListScreen(it) }?.let { nav?.navigate(it) }
                         }
                         StatItem(
-                            label = stringResource(Res.strings.noun_starred),
+                            label = stringResource(Res.strings.title_starred),
                             count = starCount,
                             icon = Icons.Outlined.Star
                         ) {
@@ -551,7 +554,7 @@ open class ProfileScreen(
                     }
                     if (sponsoringCount > 0) {
                         StatItem(
-                            label = stringResource(Res.strings.noun_sponsoring),
+                            label = stringResource(Res.strings.title_sponsoring),
                             count = sponsoringCount,
                             icon = Icons.Outlined.FavoriteBorder
                         ) {
@@ -604,7 +607,7 @@ open class ProfileScreen(
             modifier = Modifier.padding(vertical = 8.dp)
         ) {
             Text(
-                stringResource(Res.strings.title_pinned),
+                stringResource(Res.strings.section_title_pinned),
                 style = MaterialTheme.typography.labelLarge,
                 fontSize = 15.sp,
                 modifier = Modifier.padding(horizontal = 18.dp)

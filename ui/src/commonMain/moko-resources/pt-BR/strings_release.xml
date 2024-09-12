@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="title_install_app">Instalar este app?</string>
+    <string name="msg_release_author">§author§%1$s§ lançou esse %2$s</string>
+    <string name="msg_install_dialog_body">Detectamos que %1$s é um app Android, você gostaria de
+        instalá-lo?
+    </string>
+    <string name="action_install">Instalar</string>
+    <string name="label_latest">Recente</string>
+    <string name="label_prerelease">Pré-lançamento</string>
+</resources>

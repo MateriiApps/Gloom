@@ -44,7 +44,7 @@ fun ContributorsRow(
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                text = stringResource(Res.strings.noun_contributors),
+                text = stringResource(Res.strings.title_contributors),
                 style = MaterialTheme.typography.labelLarge
             )
             Text(

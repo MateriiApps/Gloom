@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_github_sign_in">Sign in with GitHub</string>
+
+    <string name="label_choose_account">Choose an account</string>
+    <string name="label_or">or</string>
+
+    <string name="msg_welcome">Welcome!</string>
+</resources>

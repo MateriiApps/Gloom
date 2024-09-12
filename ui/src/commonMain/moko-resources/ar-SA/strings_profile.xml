@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_follow_user">متابعة %s</string>
+    <string name="action_unfollow_user">إلغاء المتابعة %s</string>
+    <string name="action_follow">متابعة</string>
+    <string name="action_unfollow">إلغاء المتابعة</string>
+    <string name="action_read_more">اقرأ المزيد</string>
+    <string name="badge_dev">مطور Gloom</string>
+    <string name="badge_supporter">داعم Gloom</string>
+    <string name="section_title_contributions">المساهمات: %1$d</string>
+    <string name="section_title_pinned">مُثَبّت</string>
+    <string name="cd_twitter" translatable="false">Twitter</string>
+    <string name="cd_youtube" translatable="false">YouTube</string>
+    <string name="cd_mastodon" translatable="false">Mastodon</string>
+    <string name="cd_hometown" translatable="false">Hometown</string>
+    <string name="cd_facebook" translatable="false">Facebook</string>
+    <string name="cd_instagram" translatable="false">Instagram</string>
+    <string name="cd_linkedin" translatable="false">LinkedIn</string>
+    <string name="cd_reddit" translatable="false">Reddit</string>
+    <string name="cd_twitch" translatable="false">Twitch</string>
+    <string name="cd_link">رابط</string>
+    <string name="label_follows_you">يُتابِعُك</string>
+    <string name="label_more">المزيد</string>
+    <string name="label_less">أقل</string>
+</resources>

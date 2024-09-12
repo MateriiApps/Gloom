@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_reset_zoom">Reimposta zoom</string>
+    <string name="action_view_raw">Visualizza raw</string>
+    <string name="action_view_markdown">Mostra come markdown</string>
+    <string name="msg_file_load_error">Impossibile caricare questo file</string>
+    <string name="msg_raw_markdown_fail">Impossibile caricare markdown grezzo</string>
+</resources>

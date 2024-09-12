@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_reset_zoom">إعادة تعيين التكبير</string>
+    <string name="action_view_raw">مشاهدة الخام</string>
+    <string name="action_view_markdown">عرض كعلامة أسفل</string>
+    <string name="msg_file_load_error">تعذر تحميل هذا الملف</string>
+    <string name="msg_raw_markdown_fail">لا يمكن تحميل العلامات الخام</string>
+</resources>

@@ -86,7 +86,7 @@ fun RepoItem(
         }
         Spacer(Modifier)
         Text(
-            text = repo.name ?: stringResource(Res.strings.noun_empty_repo),
+            text = repo.name ?: stringResource(Res.strings.placeholder_empty_repo),
             style = MaterialTheme.typography.labelLarge.copy(
                 fontSize = 16.sp
             ),
@@ -114,12 +114,12 @@ fun RepoItem(
             ) {
                 Icon(
                     Icons.Custom.Fork,
-                    contentDescription = stringResource(Res.strings.noun_forked_repo),
+                    contentDescription = stringResource(Res.strings.cd_forked_repo),
                     modifier = Modifier.size(15.dp),
                     tint = MaterialTheme.colorScheme.onSurface.copy(0.6f)
                 )
                 Text(
-                    text = stringResource(Res.strings.forked_from, repo.parent!!.fullName!!),
+                    text = stringResource(Res.strings.label_forked_from, repo.parent!!.fullName!!),
                     style = MaterialTheme.typography.labelLarge.copy(
                         color = MaterialTheme.colorScheme.onSurface.copy(0.6f)
                     )

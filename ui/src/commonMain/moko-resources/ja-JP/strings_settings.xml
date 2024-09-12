@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_sign_out">サインアウト</string>
+    <string name="settings_sign_out_header">サインアウトしますか？</string>
+    <string name="settings_sign_out_text">        サインアウトしてもよろしいですか？後でサインインすることができます。
+    </string>
+    <string name="settings_appearance">外観</string>
+    <string name="settings_appearance_description">テーマ、コードスタイル</string>
+    <string name="appearance_theme">テーマ</string>
+    <string name="appearance_monet">ダイナミックテーマ</string>
+    <string name="appearance_monet_description">Android 12 以降で利用可能</string>
+    <string name="theme_system">システム</string>
+    <string name="theme_light">ライト</string>
+    <string name="theme_dark">ダーク</string>
+    <string name="appearance_user_av_shape">User avatar shape</string>
+    <string name="appearance_org_av_shape">Organization avatar shape</string>
+    <string name="appearance_av_radius">Radius:</string>
+    <string name="appearance_av_radius_percent">%1$d%</string>
+    <string name="appearance_av_shape_circle">Circle</string>
+    <string name="appearance_av_shape_roundrect">Rounded square</string>
+    <string name="appearance_av_shape_squircle">Squircle</string>
+    <string name="settings_accounts">アカウント</string>
+    <string name="settings_accounts_description">アカウントの追加または切り替え</string>
+    <string name="action_add_account">アカウントを追加</string>
+    <string name="action_sign_out_all">すべてのアカウントからサインアウト</string>
+    <string name="cd_enterprise_domain">エンタープライズドメイン: %1$s</string>
+    <string name="settings_development">開発</string>
+    <string name="settings_development_description">新機能のデバッグとテスト</string>
+    <string name="dev_alert_testing">アラートのテスト</string>
+    <string name="dev_alert_testing_description">テスト用のカスタムアラートを作成する</string>
+    <string name="dev_alert_title">タイトル</string>
+    <string name="dev_alert_message">メッセージ</string>
+    <string name="dev_alert_show_icon">アイコンを表示</string>
+    <string name="dev_alert_duration">期間</string>
+    <string name="dev_alert_action_show_alert">アラートを表示</string>
+    <string name="dev_alert_action_fill_queue">キューを入力</string>
+    <string name="settings_about">このアプリについて</string>
+    <string name="settings_libraries">ライブラリ</string>
+    <string name="settings_libraries_description">Gloom の制作に使用されたライブラリ</string>
+    <string name="cd_library_author">作者: %1$s</string>
+    <string name="cd_library_license">ライセンス: %1$s</string>
+    <string name="label_open_source">オープンソース</string>
+    <string name="label_closed_source">クローズドソース</string>
+</resources>

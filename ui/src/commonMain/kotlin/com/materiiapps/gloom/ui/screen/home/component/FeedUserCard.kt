@@ -146,7 +146,13 @@ fun FeedUserCard(
                                 contentDescription = null,
                                 modifier = Modifier.size(15.dp)
                             )
-                            Text(stringResource(Res.strings.noun_follower_count, followers))
+                            Text(
+                                pluralStringResource(
+                                    Res.plurals.followers,
+                                    count = followers,
+                                    followers
+                                )
+                            )
                         }
                     }
                 }

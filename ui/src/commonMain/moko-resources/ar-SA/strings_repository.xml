@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="action_star">نجمة</string>
+    <string name="action_unstar">إلغاء النجمة</string>
+    <string name="placeholder_empty_repo">مستودع فارغ</string>
+    <string name="cd_forked_repo">مستودع مشتق</string>
+    <string name="label_repo_archived">أرشفة من قبل المالك</string>
+    <string name="repo_tab_details">التفاصيل</string>
+    <string name="action_show_license_details">عرض تفاصيل الترخيص</string>
+    <string name="action_hide_license_details">إخفاء تفاصيل الترخيص</string>
+    <string name="title_license">الترخيص</string>
+    <string name="label_permissions">الأذونات</string>
+    <string name="label_limitations">القيود</string>
+    <string name="label_conditions">الشروط</string>
+    <string name="label_forked_from">اِشتُقَّ من %s</string>
+    <string name="repo_tab_code">الكود</string>
+    <string name="repo_tab_issues">المشاكل</string>
+    <string name="cd_issue_title_opened">رقم المشكلة %1$d مع العنوان \"%2$s\"</string>
+    <string name="cd_issue_title_completed">رقم المشكلة %1$d مع العنوان \"%2$s\" تم تحديده ك
+        اكتمل
+    </string>
+    <string name="cd_issue_title_not_planned">تم وضع علامة على المشكلة رقم %1$d بعنوان \"%2$s\" على أنها غير مخطط لها    </string>
+    <string name="repo_tab_prs">طلبات السحب</string>
+    <string name="cd_pr_title_opened">تم فتح طلب السحب رقم %1$d بعنوان \"%2$s\"</string>
+    <string name="cd_pr_title_merged">تم دمج طلب السحب رقم %1$d بعنوان \"%2$s\"</string>
+    <string name="cd_pr_title_closed">تم إغلاق طلب السحب رقم %1$d مع العنوان \"%2$s\"</string>
+    <string name="cd_pr_title_draft">مسودة طلب السحب رقم %1$d بعنوان \"%2$s\"</string>
+    <string name="label_checks_failed">فشل التحقق</string>
+    <string name="cd_label_comments">%1$d تعليقات</string>
+    <string name="msg_issue_or_pr_author">#%1$d بواسطة %2$s</string>
+    <string name="repo_tab_releases">الإصدارات</string>
+    <string name="label_all_releases">كل الاصدارات</string>
+</resources>

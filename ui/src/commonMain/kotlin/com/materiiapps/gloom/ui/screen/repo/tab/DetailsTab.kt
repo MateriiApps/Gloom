@@ -131,7 +131,7 @@ class DetailsTab(
                                     )
                                     Text(
                                         text = stringResource(
-                                            Res.strings.forked_from,
+                                            Res.strings.label_forked_from,
                                             nameWithOwner
                                         ),
                                         style = MaterialTheme.typography.bodySmall

@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="title_trending">Trending</string>
+
+    <string name="label_trending_daily">Today</string>
+    <string name="label_trending_weekly">This week</string>
+    <string name="label_trending_monthly">This month</string>
+
+    <string name="label_stars_day">%1$s today</string>
+    <string name="label_stars_week">%1$s this week</string>
+    <string name="label_stars_month">%1$s this month</string>
+
+    <string name="msg_trending_footer_title">You\'ve reached the end!</string>
+    <string name="msg_trending_footer_description">Check back later to find new trending repositories</string>
+</resources>
