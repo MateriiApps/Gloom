@@ -11,6 +11,6 @@
     <string name="section_title_pinned">Sabitlenmiş</string>
     <string name="cd_link">Bağlantı</string>
     <string name="label_follows_you">Sizi Takip Ediyor</string>
-    <string name="label_more">More</string>
-    <string name="label_less">Less</string>
+    <string name="label_more">Daha Fazla</string>
+    <string name="label_less">Daha Az</string>
 </resources>
