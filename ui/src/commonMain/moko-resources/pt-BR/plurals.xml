@@ -17,7 +17,7 @@
         <item quantity="other">%d Forks</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="one">%s Follower</item>
+        <item quantity="one">%s%s</item>
         <item quantity="other">%s Followers</item>
     </plurals>
     <plurals name="following">
