@@ -101,6 +101,7 @@ import com.materiiapps.gloom.ui.screen.list.SponsoringScreen
 import com.materiiapps.gloom.ui.screen.list.StarredReposListScreen
 import com.materiiapps.gloom.ui.screen.settings.SettingsScreen
 import com.materiiapps.gloom.ui.util.EmojiUtil
+import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.screen.profile.viewmodel.ProfileViewModel
 import com.materiiapps.gloom.ui.widget.ReadMeCard
@@ -382,7 +383,7 @@ open class ProfileScreen(
                                 pluralStringResource(
                                     Res.plurals.followers,
                                     (user.followers ?: 0).toInt(),
-                                    user.followers ?: 0
+                                    NumberFormatter.compact((user.followers ?: 0).toInt())
                                 )
                             )
                         }
@@ -397,7 +398,7 @@ open class ProfileScreen(
                                 pluralStringResource(
                                     Res.plurals.following,
                                     (user.following ?: 0).toInt(),
-                                    user.following ?: 0
+                                    NumberFormatter.compact((user.following ?: 0).toInt())
                                 )
                             )
                         }

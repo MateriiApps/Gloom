@@ -45,6 +45,7 @@ import com.materiiapps.gloom.ui.icon.Custom
 import com.materiiapps.gloom.ui.icon.custom.Fork
 import com.materiiapps.gloom.ui.screen.repo.LicenseScreen
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
+import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.pluralStringResource
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoDetailsViewModel
@@ -154,7 +155,7 @@ class DetailsTab(
                                 text = pluralStringResource(
                                     res = Res.plurals.stars,
                                     count = repoDetails.stargazerCount,
-                                    repoDetails.stargazerCount
+                                    NumberFormatter.compact(repoDetails.stargazerCount)
                                 ),
                                 onClick = viewModel::toggleStar,
                                 enabled = !viewModel.isStarLoading
@@ -173,7 +174,7 @@ class DetailsTab(
                                 text = pluralStringResource(
                                     res = Res.plurals.forks,
                                     count = repoDetails.forkCount,
-                                    repoDetails.forkCount
+                                    NumberFormatter.compact(repoDetails.forkCount)
                                 ),
                                 onClick = { /* TODO */ }
                             )

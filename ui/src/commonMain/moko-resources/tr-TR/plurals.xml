@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="noun_contributors">
-        <item quantity="one">%d Destekçi</item>
-        <item quantity="other">%d Destekçiler</item>
+        <item quantity="one">%s Destekçi</item>
+        <item quantity="other">%s Destekçiler</item>
     </plurals>
     <plurals name="repositories">
-        <item quantity="one">%d Depo</item>
-        <item quantity="other">%d Depolar</item>
+        <item quantity="one">%s Depo</item>
+        <item quantity="other">%s Depolar</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="one">%d Yıldız</item>
-        <item quantity="other">%d Yıldızlar</item>
+        <item quantity="one">%s Yıldız</item>
+        <item quantity="other">%s Yıldızlar</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="one">%d çatallanma</item>
-        <item quantity="other">%d çatallanma</item>
+        <item quantity="one">%s çatallanma</item>
+        <item quantity="other">%s çatallanma</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="one">%d Takipçi</item>
-        <item quantity="other">%d Takipçi</item>
+        <item quantity="one">%s Takipçi</item>
+        <item quantity="other">%s Takipçi</item>
     </plurals>
     <plurals name="following">
-        <item quantity="one">%d Takip ediliyor</item>
-        <item quantity="other">%d Takip ediliyor</item>
+        <item quantity="one">%s Takip ediliyor</item>
+        <item quantity="other">%s Takip ediliyor</item>
     </plurals>
     <plurals name="contributions_toast">
         <item quantity="one">%1$s: %2$d Katkı</item>

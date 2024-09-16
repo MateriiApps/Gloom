@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="noun_contributors">
-        <item quantity="other">%d 人のコントリビューター</item>
+        <item quantity="other">%s 人のコントリビューター</item>
     </plurals>
     <plurals name="repositories">
-        <item quantity="other">%d 個のリポジトリ</item>
+        <item quantity="other">%s 個のリポジトリ</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="other">%d スター</item>
+        <item quantity="other">%s スター</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="other">%d フォーク</item>
+        <item quantity="other">%s フォーク</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="other">%d Followers</item>
+        <item quantity="other">%s Followers</item>
     </plurals>
     <plurals name="following">
-        <item quantity="other">%d Following</item>
+        <item quantity="other">%s Following</item>
     </plurals>
     <plurals name="contributions_toast">
         <item quantity="other">%1$s: %2$d 件のコントリビューション</item>

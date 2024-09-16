@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="noun_contributors">
-        <item quantity="zero">%d Contributors</item>
-        <item quantity="one">مساهم %d</item>
-        <item quantity="two">المساهمين %d</item>
-        <item quantity="few">%d Contributors</item>
-        <item quantity="many">المساهمين %d</item>
-        <item quantity="other">مساهم %d</item>
+        <item quantity="zero">%s Contributors</item>
+        <item quantity="one">مساهم %s</item>
+        <item quantity="two">المساهمين %s</item>
+        <item quantity="few">%s Contributors</item>
+        <item quantity="many">المساهمين %s</item>
+        <item quantity="other">مساهم %s</item>
     </plurals>
     <plurals name="repositories">
-        <item quantity="zero">%d Repositories</item>
-        <item quantity="one">%d Repository</item>
-        <item quantity="two">%d Repositories</item>
-        <item quantity="few">%d Repositories</item>
-        <item quantity="many">%d Repositories</item>
-        <item quantity="other">%d Repositories</item>
+        <item quantity="zero">%s Repositories</item>
+        <item quantity="one">%s Repository</item>
+        <item quantity="two">%s Repositories</item>
+        <item quantity="few">%s Repositories</item>
+        <item quantity="many">%s Repositories</item>
+        <item quantity="other">%s Repositories</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="zero">%d Stars</item>
-        <item quantity="one">%d Star</item>
-        <item quantity="two">%d Stars</item>
-        <item quantity="few">%d Stars</item>
-        <item quantity="many">%d Stars</item>
-        <item quantity="other">%d Stars</item>
+        <item quantity="zero">%s Stars</item>
+        <item quantity="one">%s Star</item>
+        <item quantity="two">%s Stars</item>
+        <item quantity="few">%s Stars</item>
+        <item quantity="many">%s Stars</item>
+        <item quantity="other">%s Stars</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="zero">%d Forks</item>
-        <item quantity="one">%d Fork</item>
-        <item quantity="two">%d Forks</item>
-        <item quantity="few">%d Forks</item>
-        <item quantity="many">%d Forks</item>
-        <item quantity="other">%d Forks</item>
+        <item quantity="zero">%s Forks</item>
+        <item quantity="one">%s Fork</item>
+        <item quantity="two">%s Forks</item>
+        <item quantity="few">%s Forks</item>
+        <item quantity="many">%s Forks</item>
+        <item quantity="other">%s Forks</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="zero">%d Followers</item>
-        <item quantity="one">%d Follower</item>
-        <item quantity="two">%d Followers</item>
-        <item quantity="few">%d Followers</item>
-        <item quantity="many">%d Followers</item>
-        <item quantity="other">%d Followers</item>
+        <item quantity="zero">%s Followers</item>
+        <item quantity="one">%s Follower</item>
+        <item quantity="two">%s Followers</item>
+        <item quantity="few">%s Followers</item>
+        <item quantity="many">%s Followers</item>
+        <item quantity="other">%s Followers</item>
     </plurals>
     <plurals name="following">
-        <item quantity="zero">%d Following</item>
-        <item quantity="one">%d Following</item>
-        <item quantity="two">%d Following</item>
-        <item quantity="few">%d Following</item>
-        <item quantity="many">%d Following</item>
-        <item quantity="other">%d Following</item>
+        <item quantity="zero">%s Following</item>
+        <item quantity="one">%s Following</item>
+        <item quantity="two">%s Following</item>
+        <item quantity="few">%s Following</item>
+        <item quantity="many">%s Following</item>
+        <item quantity="other">%s Following</item>
     </plurals>
     <plurals name="contributions_toast">
         <item quantity="zero">%1$s: %2$d Contributions</item>

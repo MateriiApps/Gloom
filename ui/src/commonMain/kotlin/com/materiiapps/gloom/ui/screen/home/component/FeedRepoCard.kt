@@ -41,6 +41,7 @@ import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.FeedRepository
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
+import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.parsedColor
 import com.materiiapps.gloom.ui.util.pluralStringResource
@@ -129,7 +130,7 @@ fun FeedRepoCard(
                             modifier = Modifier.size(18.dp),
                             tint = starColor
                         )
-                        Text(text = starCount.toString())
+                        Text(text = NumberFormatter.compact(starCount))
                     }
 
                     if (repo.primaryLanguage != null) {
@@ -163,8 +164,9 @@ fun FeedRepoCard(
                     text = pluralStringResource(
                         res = Res.plurals.noun_contributors,
                         count = repo.contributorsCount,
-                        repo.contributorsCount
-                    ), style = MaterialTheme.typography.labelLarge
+                        NumberFormatter.compact(repo.contributorsCount)
+                    ),
+                    style = MaterialTheme.typography.labelLarge
                 )
             }
 

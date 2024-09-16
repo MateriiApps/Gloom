@@ -35,6 +35,8 @@ import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.icon.Custom
 import com.materiiapps.gloom.ui.icon.custom.Fork
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
+import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.parsedColor
 import dev.icerock.moko.resources.compose.stringResource
@@ -141,9 +143,9 @@ fun RepoItem(
                         Icons.Outlined.Star,
                         contentDescription = null,
                         modifier = Modifier.size(18.dp),
-                        tint = Color(0xFFF1E05A)
+                        tint = MaterialTheme.colors.statusYellow
                     )
-                    Text(text = repo.stars.toString())
+                    Text(text = NumberFormatter.compact(repo.stars ?: 0))
                 }
 
 

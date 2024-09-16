@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="noun_contributors">
-        <item quantity="one">%d Contribuidor</item>
-        <item quantity="other">%d Contribuidores</item>
+        <item quantity="one">%s Contribuidor</item>
+        <item quantity="other">%s Contribuidores</item>
     </plurals>
     <plurals name="repositories">
-        <item quantity="one">%d Repositório</item>
-        <item quantity="other">%d Repositórios</item>
+        <item quantity="one">%s Repositório</item>
+        <item quantity="other">%s Repositórios</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="one">%d Estrela</item>
-        <item quantity="other">%d Estrelas</item>
+        <item quantity="one">%s Estrela</item>
+        <item quantity="other">%s Estrelas</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="one">%d Fork</item>
-        <item quantity="other">%d Forks</item>
+        <item quantity="one">%s Fork</item>
+        <item quantity="other">%s Forks</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="one">%d Follower</item>
-        <item quantity="other">%d Followers</item>
+        <item quantity="one">%s Follower</item>
+        <item quantity="other">%s Followers</item>
     </plurals>
     <plurals name="following">
-        <item quantity="one">%d Following</item>
-        <item quantity="other">%d Following</item>
+        <item quantity="one">%s Following</item>
+        <item quantity="other">%s Following</item>
     </plurals>
     <plurals name="contributions_toast">
         <item quantity="one">%1$s: %2$d Contribuição</item>

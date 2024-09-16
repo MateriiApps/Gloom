@@ -32,6 +32,7 @@ import com.materiiapps.gloom.gql.fragment.FeedOrg
 import com.materiiapps.gloom.gql.fragment.FeedUser
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
+import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.pluralStringResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -131,7 +132,7 @@ fun FeedUserCard(
                             pluralStringResource(
                                 Res.plurals.repositories,
                                 count = repos ?: 0,
-                                repos ?: 0
+                                NumberFormatter.compact(repos ?: 0)
                             )
                         )
                     }
@@ -150,7 +151,7 @@ fun FeedUserCard(
                                 pluralStringResource(
                                     Res.plurals.followers,
                                     count = followers,
-                                    followers
+                                    NumberFormatter.compact(followers)
                                 )
                             )
                         }
