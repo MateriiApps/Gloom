@@ -20,11 +20,12 @@ enum class RootTab(val tab: Tab) {
 }
 
 fun Navigator.navigate(screen: Screen) {
-    return if (parent == null && items.firstOrNull { it.key == screen.key } == null) try {
-        push(screen)
-    } catch (_: Throwable) {
+    if (items.any { it.key == screen.key }) return
+    if (parent == null) {
+        return push(screen)
+    } else {
+        parent!!.navigate(screen)
     }
-    else parent!!.navigate(screen)
 }
 
 @OptIn(InternalVoyagerApi::class)

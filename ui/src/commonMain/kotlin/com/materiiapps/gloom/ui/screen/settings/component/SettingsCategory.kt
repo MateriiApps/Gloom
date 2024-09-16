@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.ui.util.navigate
 
 @Composable
@@ -19,12 +20,12 @@ fun SettingsCategory(
     destination: (() -> Screen)? = null
 ) {
     val screen = destination?.invoke()
-    val nav = LocalNavigator.current
+    val nav = LocalNavigator.currentOrThrow
 
     Box(
         modifier = Modifier
             .clickable {
-                screen?.let { nav?.navigate(it) }
+                screen?.let { nav.navigate(it) }
             }
     ) {
         SettingItem(
