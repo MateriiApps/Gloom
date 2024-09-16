@@ -13,8 +13,8 @@
         <item quantity="other">%s Estrelas</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="one">%s Fork</item>
-        <item quantity="other">%s Forks</item>
+        <item quantity="one">%d Fork</item>
+        <item quantity="other">%d Forks</item>
     </plurals>
     <plurals name="followers">
         <item quantity="one">%s Follower</item>
