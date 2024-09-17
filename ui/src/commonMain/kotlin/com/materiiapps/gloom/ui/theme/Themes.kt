@@ -1,11 +1,8 @@
 package com.materiiapps.gloom.ui.theme
 
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
-fun darkTheme() = GloomColorScheme(
-    darkColorScheme(),
+fun darkGloomColorScheme() = GloomColorScheme(
     statusGreen = DarkGreen,
     statusPurple = LightPurple,
     statusRed = PinkRed,
@@ -17,8 +14,7 @@ fun darkTheme() = GloomColorScheme(
     onWarningContainer = Shandy
 )
 
-fun lightTheme() = GloomColorScheme(
-    lightColorScheme(),
+fun lightGloomColorScheme() = GloomColorScheme(
     statusGreen = LightGreen,
     statusPurple = DarkPurple,
     statusRed = Red,

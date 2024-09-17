@@ -11,7 +11,7 @@ import com.materiiapps.gloom.ui.icon.Custom
 import com.materiiapps.gloom.ui.icon.custom.DraftPullRequest
 import com.materiiapps.gloom.ui.icon.custom.MergedPullRequest
 import com.materiiapps.gloom.ui.icon.custom.OpenPullRequest
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -21,25 +21,25 @@ fun PullRequestItem(
     val (icon, color, titleCDRes) = when {
         pullRequest.state == PullRequestState.MERGED -> Triple(
             Icons.Custom.MergedPullRequest,
-            MaterialTheme.colors.statusPurple,
+            MaterialTheme.gloomColorScheme.statusPurple,
             Res.strings.cd_pr_title_merged
         )
 
         pullRequest.state == PullRequestState.CLOSED -> Triple(
             Icons.Custom.ClosedPullRequest,
-            MaterialTheme.colors.statusRed,
+            MaterialTheme.gloomColorScheme.statusRed,
             Res.strings.cd_pr_title_closed
         )
 
         pullRequest.state == PullRequestState.OPEN && pullRequest.isDraft -> Triple(
             Icons.Custom.DraftPullRequest,
-            MaterialTheme.colors.statusGrey,
+            MaterialTheme.gloomColorScheme.statusGrey,
             Res.strings.cd_pr_title_draft
         )
 
         else -> Triple(
             Icons.Custom.OpenPullRequest,
-            MaterialTheme.colors.statusGreen,
+            MaterialTheme.gloomColorScheme.statusGreen,
             Res.strings.cd_pr_title_opened
         )
     }

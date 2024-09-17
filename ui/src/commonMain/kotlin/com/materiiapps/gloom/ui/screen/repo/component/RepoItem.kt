@@ -35,7 +35,7 @@ import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.icon.Custom
 import com.materiiapps.gloom.ui.icon.custom.Fork
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.parsedColor
@@ -143,7 +143,7 @@ fun RepoItem(
                         Icons.Outlined.Star,
                         contentDescription = null,
                         modifier = Modifier.size(18.dp),
-                        tint = MaterialTheme.colors.statusYellow
+                        tint = MaterialTheme.gloomColorScheme.statusYellow
                     )
                     Text(text = NumberFormatter.compact(repo.stars ?: 0))
                 }

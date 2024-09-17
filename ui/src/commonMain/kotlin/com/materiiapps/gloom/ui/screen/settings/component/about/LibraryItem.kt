@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.component.Label
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.contentDescription
 import com.materiiapps.gloom.util.LocalLinkHandler
 import com.materiiapps.gloom.util.author
@@ -116,13 +116,13 @@ fun LibraryItem(
                 val (label, color, icon) = if (library.openSource)
                     Triple(
                         Res.strings.label_open_source,
-                        MaterialTheme.colors.statusGreen,
+                        MaterialTheme.gloomColorScheme.statusGreen,
                         Icons.Filled.CheckCircle
                     )
                 else
                     Triple(
                         Res.strings.label_closed_source,
-                        MaterialTheme.colors.statusRed,
+                        MaterialTheme.gloomColorScheme.statusRed,
                         Icons.Filled.Cancel
                     )
 

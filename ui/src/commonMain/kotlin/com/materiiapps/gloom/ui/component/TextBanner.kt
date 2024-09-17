@@ -15,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.materiiapps.gloom.ui.theme.colors
 
 /**
  * A full-width banner that displays text
@@ -32,9 +31,9 @@ fun TextBanner(
     text: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     icon: (@Composable () -> Unit)? = null,
-    backgroundColor: Color = MaterialTheme.colors.secondaryContainer,
-    contentColor: Color = MaterialTheme.colors.onSecondaryContainer,
-    outlineColor: Color = MaterialTheme.colors.secondary
+    backgroundColor: Color = MaterialTheme.colorScheme.secondaryContainer,
+    contentColor: Color = MaterialTheme.colorScheme.onSecondaryContainer,
+    outlineColor: Color = MaterialTheme.colorScheme.secondary
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(ButtonDefaults.IconSpacing, Alignment.CenterHorizontally),

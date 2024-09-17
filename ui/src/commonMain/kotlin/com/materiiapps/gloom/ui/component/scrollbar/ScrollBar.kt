@@ -28,7 +28,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.materiiapps.gloom.ui.theme.colors
 import com.materiiapps.gloom.ui.util.toDp
 import com.materiiapps.gloom.ui.util.toPx
 import kotlinx.coroutines.delay
@@ -40,7 +39,7 @@ fun ScrollBar(
     orientation: Orientation = Orientation.Vertical,
     thickness: Dp = 6.dp,
     safeAreaPadding: Dp = 6.dp,
-    thumbColor: Color = MaterialTheme.colors.tertiary,
+    thumbColor: Color = MaterialTheme.colorScheme.tertiary,
     trackColor: Color = Color.Transparent,
     idleOpacity: Float = 0.07f,
     activeOpacity: Float = 0.65f,

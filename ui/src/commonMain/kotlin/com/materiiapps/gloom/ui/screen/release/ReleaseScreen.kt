@@ -1,9 +1,7 @@
 package com.materiiapps.gloom.ui.screen.release
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -45,7 +43,7 @@ import com.materiiapps.gloom.domain.manager.ShareManager
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.ui.component.BackButton
 import com.materiiapps.gloom.ui.component.ThinDivider
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.screen.release.viewmodel.ReleaseViewModel
 import com.materiiapps.gloom.ui.widget.Markdown
 import com.materiiapps.gloom.ui.widget.alert.LocalAlertController
@@ -174,7 +172,7 @@ class ReleaseScreen(
                                     Text(
                                         text = stringResource(Res.strings.title_contributors),
                                         style = MaterialTheme.typography.labelLarge,
-                                        color = MaterialTheme.colors.primary,
+                                        color = MaterialTheme.colorScheme.primary,
                                         modifier = Modifier.padding(horizontal = 16.dp)
                                     )
                                 }

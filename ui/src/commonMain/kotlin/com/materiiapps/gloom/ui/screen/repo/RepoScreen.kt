@@ -1,7 +1,6 @@
 package com.materiiapps.gloom.ui.screen.repo
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
@@ -34,7 +33,6 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
-import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -62,7 +60,7 @@ import com.materiiapps.gloom.ui.component.BackButton
 import com.materiiapps.gloom.ui.component.Collapsable
 import com.materiiapps.gloom.ui.component.TextBanner
 import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoViewModel
 import dev.icerock.moko.resources.compose.stringResource
@@ -136,9 +134,9 @@ class RepoScreen(
                                         modifier = Modifier.size(18.dp)
                                     )
                                 },
-                                backgroundColor = MaterialTheme.colors.warningContainer,
-                                contentColor = MaterialTheme.colors.onWarningContainer,
-                                outlineColor = MaterialTheme.colors.warning
+                                backgroundColor = MaterialTheme.gloomColorScheme.warningContainer,
+                                contentColor = MaterialTheme.gloomColorScheme.onWarningContainer,
+                                outlineColor = MaterialTheme.gloomColorScheme.warning
                             )
                         }
                     }

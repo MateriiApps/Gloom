@@ -40,7 +40,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.type.PullRequestReviewDecision
 import com.materiiapps.gloom.gql.type.StatusState
 import com.materiiapps.gloom.ui.component.Label
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.TimeUtils.getTimeSince
 import com.materiiapps.gloom.ui.util.parsedColor
 import com.seiko.imageloader.rememberImagePainter
@@ -173,25 +173,25 @@ fun IssueOrPRItem(
                     val (statusIcon, statusColor, statusLabelRes) = when (checksStatus) {
                         StatusState.EXPECTED -> Triple(
                             Icons.Outlined.Circle,
-                            MaterialTheme.colors.surfaceTint,
+                            MaterialTheme.colorScheme.surfaceTint,
                             Res.strings.label_checks
                         )
 
                         StatusState.PENDING -> Triple(
                             Icons.Filled.Circle,
-                            MaterialTheme.colors.statusYellow,
+                            MaterialTheme.gloomColorScheme.statusYellow,
                             Res.strings.label_checks
                         )
 
                         StatusState.SUCCESS -> Triple(
                             Icons.Filled.CheckCircle,
-                            MaterialTheme.colors.statusGreen,
+                            MaterialTheme.gloomColorScheme.statusGreen,
                             Res.strings.label_checks
                         )
 
                         else -> Triple(
                             Icons.Filled.Cancel,
-                            MaterialTheme.colors.error,
+                            MaterialTheme.colorScheme.error,
                             Res.strings.label_checks_failed
                         )
                     }
@@ -208,9 +208,9 @@ fun IssueOrPRItem(
 
                 if (reviewDecision != null) {
                     val (statusIcon, statusColor) = when (reviewDecision) {
-                        PullRequestReviewDecision.CHANGES_REQUESTED -> Icons.Filled.Cancel to MaterialTheme.colors.error
-                        PullRequestReviewDecision.APPROVED -> Icons.Filled.CheckCircle to MaterialTheme.colors.statusGreen
-                        else -> Icons.Filled.Circle to MaterialTheme.colors.surfaceTint
+                        PullRequestReviewDecision.CHANGES_REQUESTED -> Icons.Filled.Cancel to MaterialTheme.colorScheme.error
+                        PullRequestReviewDecision.APPROVED -> Icons.Filled.CheckCircle to MaterialTheme.gloomColorScheme.statusGreen
+                        else -> Icons.Filled.Circle to MaterialTheme.colorScheme.surfaceTint
                     }
 
                     Label(

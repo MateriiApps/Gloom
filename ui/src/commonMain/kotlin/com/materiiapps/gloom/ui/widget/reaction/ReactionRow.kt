@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.api.REACTION_EMOJIS
 import com.materiiapps.gloom.gql.fragment.Reaction
 import com.materiiapps.gloom.gql.type.ReactionContent
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 
 @Composable
 fun ReactionRow(
@@ -123,9 +123,9 @@ fun ReactionRow(
         _reactions.forEach { reaction ->
             val (backgroundColor, textColor) =
                 if (reaction.viewerHasReacted)
-                    MaterialTheme.colors.primaryContainer to MaterialTheme.colors.primary
+                    MaterialTheme.colorScheme.primaryContainer to MaterialTheme.colorScheme.primary
                 else
-                    MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp) to MaterialTheme.colors.onSurface
+                    MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp) to MaterialTheme.colorScheme.onSurface
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,

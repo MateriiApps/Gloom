@@ -34,7 +34,7 @@ import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.domain.manager.TrendingPeriodPreference
 import com.materiiapps.gloom.gql.fragment.TrendingRepository
 import com.materiiapps.gloom.ui.component.Avatar
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.parsedColor
 import com.seiko.imageloader.rememberImagePainter
@@ -110,8 +110,8 @@ fun TrendingRepoItem(
                             if (shouldStar) onStarClick() else onUnstarClick()
                         },
                         colors = IconButtonDefaults.filledTonalIconToggleButtonColors(
-                            checkedContentColor = MaterialTheme.colors.statusYellow,
-                            checkedContainerColor = MaterialTheme.colors.statusYellow.copy(alpha = 0.2f)
+                            checkedContentColor = MaterialTheme.gloomColorScheme.statusYellow,
+                            checkedContainerColor = MaterialTheme.gloomColorScheme.statusYellow.copy(alpha = 0.2f)
                         ),
                         enabled = starToggleEnabled
                     ) {
@@ -132,7 +132,7 @@ fun TrendingRepoItem(
 
                 LabeledIcon(
                     icon = Icons.Filled.Star,
-                    iconTint = MaterialTheme.colors.statusYellow,
+                    iconTint = MaterialTheme.gloomColorScheme.statusYellow,
                     label = stringResource(
                         when (trendingPeriod) {
                             TrendingPeriodPreference.MONTHLY -> Res.strings.label_stars_month

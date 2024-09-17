@@ -24,7 +24,7 @@ import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.Label
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.util.ifNullOrBlank
 import dev.icerock.moko.resources.compose.stringResource
 
@@ -80,14 +80,14 @@ fun ReleaseHeader(
             if (details.isLatest) {
                 Label(
                     text = stringResource(Res.strings.label_latest),
-                    textColor = MaterialTheme.colors.statusGreen
+                    textColor = MaterialTheme.gloomColorScheme.statusGreen
                 )
             }
 
             if (details.isPrerelease) {
                 Label(
                     text = stringResource(Res.strings.label_prerelease),
-                    textColor = MaterialTheme.colors.statusYellow
+                    textColor = MaterialTheme.gloomColorScheme.statusYellow
                 )
             }
         }

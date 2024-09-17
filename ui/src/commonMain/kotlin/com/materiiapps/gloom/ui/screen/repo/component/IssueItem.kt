@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.IssueOverview
 import com.materiiapps.gloom.gql.type.IssueStateReason
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -17,19 +17,19 @@ fun IssueItem(issue: IssueOverview) {
     val (icon, color, titleCDRes) = when (issue.stateReason) {
         IssueStateReason.COMPLETED -> Triple(
             Icons.Outlined.CheckCircle,
-            MaterialTheme.colors.statusPurple,
+            MaterialTheme.gloomColorScheme.statusPurple,
             Res.strings.cd_issue_title_completed
         )
 
         IssueStateReason.NOT_PLANNED -> Triple(
             Icons.Outlined.DoNotDisturb,
-            MaterialTheme.colors.statusGrey,
+            MaterialTheme.gloomColorScheme.statusGrey,
             Res.strings.cd_issue_title_not_planned
         )
 
         else -> Triple(
             Icons.Outlined.ModeStandby,
-            MaterialTheme.colors.statusGreen,
+            MaterialTheme.gloomColorScheme.statusGreen,
             Res.strings.cd_issue_title_opened
         )
     }

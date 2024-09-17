@@ -38,7 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.RepoLicense
-import com.materiiapps.gloom.ui.theme.colors
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -80,7 +80,7 @@ fun LicenseDetails(
                             label = stringResource(Res.strings.label_permissions),
                             conditions = license.permissions.mapNotNull { it?.label },
                             icon = Icons.Outlined.Check,
-                            iconColor = MaterialTheme.colors.statusGreen
+                            iconColor = MaterialTheme.gloomColorScheme.statusGreen
                         )
                     }
 
@@ -89,7 +89,7 @@ fun LicenseDetails(
                             label = stringResource(Res.strings.label_limitations),
                             conditions = license.limitations.mapNotNull { it?.label },
                             icon = Icons.Outlined.Close,
-                            iconColor = MaterialTheme.colors.statusRed
+                            iconColor = MaterialTheme.gloomColorScheme.statusRed
                         )
                     }
 
@@ -98,7 +98,7 @@ fun LicenseDetails(
                             label = stringResource(Res.strings.label_conditions),
                             conditions = license.conditions.mapNotNull { it?.label },
                             icon = Icons.Outlined.Info,
-                            iconColor = MaterialTheme.colors.secondary
+                            iconColor = MaterialTheme.colorScheme.secondary
                         )
                     }
                 }
