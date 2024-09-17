@@ -8,7 +8,7 @@ import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 
 inline fun Modifier.thenIf(predicate: Boolean, block: Modifier.() -> Modifier) =
-    if (predicate) then(block()) else this
+    if (predicate) then(Modifier.block()) else this
 
 @Composable
 fun Modifier.contentDescription(descRes: StringResource, mergeDescendants: Boolean = false) =

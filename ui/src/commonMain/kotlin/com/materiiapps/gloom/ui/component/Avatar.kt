@@ -21,7 +21,7 @@ import org.koin.compose.koinInject
 @Composable
 fun Avatar(
     url: String?,
-    contentDescription: String?,
+    contentDescription: String? = null,
     type: User.Type = User.Type.USER,
     modifier: Modifier = Modifier
 ) {

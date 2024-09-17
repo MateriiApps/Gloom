@@ -17,18 +17,15 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -40,6 +37,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.FeedRepository
 import com.materiiapps.gloom.ui.component.Avatar
+import com.materiiapps.gloom.ui.component.LabeledIcon
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.NumberFormatter
@@ -50,7 +48,6 @@ import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun FeedRepoCard(
     repo: FeedRepository,
     starData: Pair<Boolean, Int>? = null,
@@ -71,7 +68,7 @@ fun FeedRepoCard(
         modifier = Modifier
             .fillMaxWidth()
     ) {
-        if (repo.openGraphImageUrl.startsWith("https://repository-images.githubusercontent.com"))
+        if (repo.openGraphImageUrl.startsWith("https://repository-images.githubusercontent.com")) {
             Image(
                 painter = rememberImagePainter(repo.openGraphImageUrl),
                 null,
@@ -80,6 +77,7 @@ fun FeedRepoCard(
                     .aspectRatio(2f)
                     .fillMaxWidth()
             )
+        }
 
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -94,13 +92,10 @@ fun FeedRepoCard(
             ) {
                 Avatar(
                     url = repo.owner.avatarUrl,
-                    contentDescription = stringResource(
-                        Res.strings.noun_users_avatar,
-                        repo.owner.login
-                    ),
                     type = User.Type.fromTypeName(repo.owner.__typename),
                     modifier = Modifier.size(20.dp)
                 )
+
                 Text(
                     buildAnnotatedString {
                         append(repo.owner.login)
@@ -124,56 +119,29 @@ fun FeedRepoCard(
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                ProvideTextStyle(value = MaterialTheme.typography.labelLarge) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            starIcon,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp),
-                            tint = starColor
-                        )
-                        Text(text = NumberFormatter.compact(starCount))
-                    }
+                LabeledIcon(
+                    icon = starIcon,
+                    label = NumberFormatter.compact(starCount),
+                    iconTint = starColor
+                )
 
-                    if (repo.primaryLanguage != null) {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(6.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Icon(
-                                Icons.Filled.Circle,
-                                contentDescription = repo.primaryLanguage!!.name,
-                                modifier = Modifier.size(15.dp),
-                                tint = repo.primaryLanguage!!.color?.parsedColor
-                                    ?: MaterialTheme.colorScheme.surfaceVariant
-                            )
-                            Text(text = repo.primaryLanguage!!.name)
-                        }
-                    }
+                repo.primaryLanguage?.let { (color, name) ->
+                    LabeledIcon(
+                        icon = Icons.Filled.Circle,
+                        label = name,
+                        iconTint = color?.parsedColor ?: Color.Black
+                    )
                 }
             }
 
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    Icons.Outlined.Person,
-                    contentDescription = null,
-                    modifier = Modifier.size(18.dp)
+            LabeledIcon(
+                icon = Icons.Outlined.Person,
+                label = pluralStringResource(
+                    res = Res.plurals.noun_contributors,
+                    count = repo.contributorsCount,
+                    NumberFormatter.compact(repo.contributorsCount)
                 )
-                Text(
-                    text = pluralStringResource(
-                        res = Res.plurals.noun_contributors,
-                        count = repo.contributorsCount,
-                        NumberFormatter.compact(repo.contributorsCount)
-                    ),
-                    style = MaterialTheme.typography.labelLarge
-                )
-            }
+            )
 
             FilledTonalButton(
                 onClick = {

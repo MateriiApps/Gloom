@@ -26,7 +26,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
@@ -34,6 +33,7 @@ import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.domain.manager.TrendingPeriodPreference
 import com.materiiapps.gloom.gql.fragment.TrendingRepository
 import com.materiiapps.gloom.ui.component.Avatar
+import com.materiiapps.gloom.ui.component.LabeledIcon
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.parsedColor
@@ -162,31 +162,5 @@ fun TrendingRepoItem(
                 }
             }
         }
-    }
-}
-
-// TODO: Use everywhere
-@Composable
-private fun LabeledIcon(
-    icon: ImageVector,
-    iconTint: Color = LocalContentColor.current,
-    label: String
-) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            modifier = Modifier.size(18.dp),
-            tint = iconTint
-        )
-
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelLarge,
-            color = LocalContentColor.current.copy(alpha = 0.6f)
-        )
     }
 }
