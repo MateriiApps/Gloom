@@ -18,7 +18,6 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,6 +30,7 @@ import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.FeedOrg
 import com.materiiapps.gloom.gql.fragment.FeedUser
 import com.materiiapps.gloom.ui.component.Avatar
+import com.materiiapps.gloom.ui.component.LabeledIcon
 import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
 import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
@@ -92,6 +92,7 @@ fun FeedUserCard(
                             style = MaterialTheme.typography.labelLarge,
                             fontSize = 17.sp
                         )
+
                         Text(
                             login ?: "ghost",
                             style = MaterialTheme.typography.labelMedium,
@@ -118,44 +119,24 @@ fun FeedUserCard(
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                ProvideTextStyle(value = MaterialTheme.typography.labelLarge) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            Icons.Outlined.Book,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Text(
-                            pluralStringResource(
-                                Res.plurals.repositories,
-                                count = repos ?: 0,
-                                NumberFormatter.compact(repos ?: 0)
-                            )
-                        )
-                    }
+                LabeledIcon(
+                    icon = Icons.Outlined.Book,
+                    label = pluralStringResource(
+                        Res.plurals.repositories,
+                        count = repos ?: 0,
+                        NumberFormatter.compact(repos ?: 0)
+                    )
+                )
 
-                    if (followers != null) {
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(6.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Icon(
-                                Icons.Outlined.Person,
-                                contentDescription = null,
-                                modifier = Modifier.size(15.dp)
-                            )
-                            Text(
-                                pluralStringResource(
-                                    Res.plurals.followers,
-                                    count = followers,
-                                    NumberFormatter.compact(followers)
-                                )
-                            )
-                        }
-                    }
+                followers?.let { followerCount ->
+                    LabeledIcon(
+                        icon = Icons.Outlined.Person,
+                        label = pluralStringResource(
+                            Res.plurals.followers,
+                            count = followerCount,
+                            NumberFormatter.compact(followerCount)
+                        )
+                    )
                 }
             }
 
@@ -169,7 +150,9 @@ fun FeedUserCard(
                     Icons.Outlined.PersonAddAlt,
                     contentDescription = null
                 )
+
                 Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+
                 Text(
                     if (viewerIsFollowing == true) stringResource(Res.strings.action_unfollow) else stringResource(
                         Res.strings.action_follow
