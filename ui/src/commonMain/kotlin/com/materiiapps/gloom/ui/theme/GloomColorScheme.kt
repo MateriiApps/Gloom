@@ -21,6 +21,7 @@ class GloomColorScheme(
     statusRed: Color,
     statusGrey: Color,
     statusYellow: Color,
+    star: Color,
     warning: Color,
     onWarning: Color,
     warningContainer: Color,
@@ -40,6 +41,9 @@ class GloomColorScheme(
         internal set
 
     var statusYellow by mutableStateOf(statusYellow, structuralEqualityPolicy())
+        internal set
+
+    var star by mutableStateOf(star, structuralEqualityPolicy())
         internal set
 
     var warning by mutableStateOf(warning, structuralEqualityPolicy())

@@ -110,8 +110,8 @@ fun TrendingRepoItem(
                             if (shouldStar) onStarClick() else onUnstarClick()
                         },
                         colors = IconButtonDefaults.filledTonalIconToggleButtonColors(
-                            checkedContentColor = MaterialTheme.gloomColorScheme.statusYellow,
-                            checkedContainerColor = MaterialTheme.gloomColorScheme.statusYellow.copy(alpha = 0.2f)
+                            checkedContentColor = MaterialTheme.gloomColorScheme.star,
+                            checkedContainerColor = MaterialTheme.gloomColorScheme.star.copy(alpha = 0.2f)
                         ),
                         enabled = starToggleEnabled
                     ) {

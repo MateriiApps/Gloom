@@ -41,6 +41,7 @@ import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.FeedRepository
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
+import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.parsedColor
@@ -59,7 +60,11 @@ fun FeedRepoCard(
     val nav = LocalNavigator.currentOrThrow
     val viewerHasStarred = starData?.first ?: repo.viewerHasStarred
     val starCount = starData?.second ?: repo.stargazerCount
-    val (starColor, starIcon) = if (viewerHasStarred) Color(0xFFF1E05A) to Icons.Filled.Star else LocalContentColor.current to Icons.Outlined.StarBorder
+    val (starColor, starIcon) = if (viewerHasStarred) {
+        MaterialTheme.gloomColorScheme.star to Icons.Filled.Star
+    } else {
+        LocalContentColor.current to Icons.Outlined.StarBorder
+    }
 
     ElevatedCard(
         onClick = { nav.navigate(RepoScreen(repo.owner.login, repo.name)) },
