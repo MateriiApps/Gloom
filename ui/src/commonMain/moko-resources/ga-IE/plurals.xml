@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="noun_contributors">
+        <item quantity="one">%s Contributor</item>
+        <item quantity="two">%s Contributors</item>
+        <item quantity="few">%s Contributors</item>
+        <item quantity="many">%s Contributors</item>
+        <item quantity="other">%s Contributors</item>
+    </plurals>
+    <plurals name="repositories">
+        <item quantity="one">%s Repository</item>
+        <item quantity="two">%s Repositories</item>
+        <item quantity="few">%s Repositories</item>
+        <item quantity="many">%s Repositories</item>
+        <item quantity="other">%s Repositories</item>
+    </plurals>
+    <plurals name="stars">
+        <item quantity="one">%s Star</item>
+        <item quantity="two">%s Stars</item>
+        <item quantity="few">%s Stars</item>
+        <item quantity="many">%s Stars</item>
+        <item quantity="other">%s Stars</item>
+    </plurals>
+    <plurals name="forks">
+        <item quantity="one">%s Fork</item>
+        <item quantity="two">%s Forks</item>
+        <item quantity="few">%s Forks</item>
+        <item quantity="many">%s Forks</item>
+        <item quantity="other">%s Forks</item>
+    </plurals>
+    <plurals name="followers">
+        <item quantity="one">%s Follower</item>
+        <item quantity="two">%s Followers</item>
+        <item quantity="few">%s Followers</item>
+        <item quantity="many">%s Followers</item>
+        <item quantity="other">%s Followers</item>
+    </plurals>
+    <plurals name="following">
+        <item quantity="one">%s Following</item>
+        <item quantity="two">%s Following</item>
+        <item quantity="few">%s Following</item>
+        <item quantity="many">%s Following</item>
+        <item quantity="other">%s Following</item>
+    </plurals>
+    <plurals name="contributions_toast">
+        <item quantity="one">%1$s: %2$d Contribution</item>
+        <item quantity="two">%1$s: %2$d Contributions</item>
+        <item quantity="few">%1$s: %2$d Contributions</item>
+        <item quantity="many">%1$s: %2$d Contributions</item>
+        <item quantity="other">%1$s: %2$d Contributions</item>
+    </plurals>
+    <plurals name="plural_language">
+        <item quantity="one">Language</item>
+        <item quantity="two">Languages</item>
+        <item quantity="few">Languages</item>
+        <item quantity="many">Languages</item>
+        <item quantity="other">Languages</item>
+    </plurals>
+    <plurals name="plural_lines_selected">
+        <item quantity="one">Line %1$s</item>
+        <item quantity="two">Lines %1$s-%2$s</item>
+        <item quantity="few">Lines %1$s-%2$s</item>
+        <item quantity="many">Lines %1$s-%2$s</item>
+        <item quantity="other">Lines %1$s-%2$s</item>
+    </plurals>
+</resources>
