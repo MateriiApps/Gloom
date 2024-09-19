@@ -39,6 +39,7 @@ fun FeedActor(
             Icon(
                 badgeIcon,
                 badgeIconDescription,
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .size(12.dp)
                     .padding(0.4.dp)
@@ -65,6 +66,7 @@ fun FeedActor(
                         .padding(7.dp)
                 )
         }
+
         Text(text = text, style = MaterialTheme.typography.labelMedium)
     }
 }
