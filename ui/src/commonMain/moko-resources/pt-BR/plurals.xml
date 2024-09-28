@@ -17,12 +17,12 @@
         <item quantity="other">%s Forks</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="one">%s Follower</item>
-        <item quantity="other">%s Followers</item>
+        <item quantity="one">%s Seguidor</item>
+        <item quantity="other">%s Seguidores</item>
     </plurals>
     <plurals name="following">
-        <item quantity="one">%s Following</item>
-        <item quantity="other">%s Following</item>
+        <item quantity="one">%s Seguindo</item>
+        <item quantity="other">%s Seguindo</item>
     </plurals>
     <plurals name="contributions_toast">
         <item quantity="one">%1$s: %2$d Contribuição</item>
