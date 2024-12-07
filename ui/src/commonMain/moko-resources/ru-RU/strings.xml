@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Root Tabs -->
-    <string name="navigation_explore">Explore</string>
+    <string name="navigation_explore">Обзор</string>
     <string name="navigation_home">Главная</string>
-    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_inbox">Входящие</string>
     <string name="navigation_profile">Профиль</string>
     <string name="navigation_settings">Настройки</string>
     <!--           -->
@@ -11,25 +11,25 @@
     <string name="action_back">Назад</string>
     <string name="action_confirm">Подтвердить</string>
     <string name="action_share">Поделиться</string>
-    <string name="action_expand">View More</string>
-    <string name="action_collapse">View Less</string>
-    <string name="action_edit">Edit</string>
-    <string name="action_stop_edit">Stop editing</string>
-    <string name="action_try_again">Try again</string>
-    <string name="action_copy">Copy</string>
+    <string name="action_expand">Показать больше</string>
+    <string name="action_collapse">Показать меньше</string>
+    <string name="action_edit">Редактировать</string>
+    <string name="action_stop_edit">Закончить редактирование</string>
+    <string name="action_try_again">Попробовать снова</string>
+    <string name="action_copy">Скопировать</string>
     <!--                 -->
     <!-- Dismiss Labels -->
-    <string name="dismiss_nevermind">Nevermind</string>
-    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_nevermind">Не сейчас</string>
+    <string name="dismiss_cancel">Отмена</string>
     <string name="dismiss_no_thanks">Нет, спасибо</string>
     <!--                -->
     <!-- Errors -->
-    <string name="error_release_load">Couldn\'t load release</string>
+    <string name="error_release_load">Не удалось загрузить релиз</string>
     <!--        -->
     <!-- Titles -->
     <string name="title_starred">Starred</string>
     <string name="title_orgs">Organizations</string>
-    <string name="title_repos">Repositories</string>
+    <string name="title_repos">Репозитории</string>
     <string name="title_contributors">Contributors</string>
     <string name="title_sponsoring">Sponsoring</string>
     <string name="title_followers">Followers</string>
