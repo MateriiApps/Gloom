@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_star">Звезда</string>
     <string name="action_unstar">Убрать из избранных</string>
-    <string name="placeholder_empty_repo">Empty Repository</string>
+    <string name="placeholder_empty_repo">Пустой репозиторий</string>
     <string name="cd_forked_repo">Forked Repository</string>
     <string name="label_repo_archived">Archived by owner</string>
     <!-- Details -->
@@ -22,7 +22,7 @@
     <string name="repo_tab_issues">Проблемы</string>
     <string name="cd_issue_title_opened">Issue number %1$d with title \"%2$s\"</string>
     <string name="cd_issue_title_completed">Issue number %1$d with title \"%2$s\" marked as completed</string>
-    <string name="cd_issue_title_not_planned">Issue number %1$d with title \"%2$s\" marked as not planned</string>
+    <string name="cd_issue_title_not_planned">Проблема \"%2$s\" с номером %1$d помечена как не запланированная</string>
     <!--        -->
     <!-- Pull Requests -->
     <string name="repo_tab_prs">Пулл реквесты</string>
