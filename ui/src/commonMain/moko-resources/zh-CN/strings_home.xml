@@ -6,7 +6,9 @@
     <string name="followed_user">§name§%1$s§ §text§关注了§ §other§%2$s§</string>
     <string name="followed_you">§name§%1$s§ §text§关注了您§</string>
     <string name="published_release">§name§%1$s§ §text§发布了一个发行版§</string>
+    <string name="contributed_repo">§name§%1$s§ §text§contributed to§ §repo§%2$s§</string>
     <string name="recommended">为您推荐</string>
     <string name="cd_followed">已关注</string>
     <string name="action_view_details">详情</string>
+    <string name="label_pr_merged">Merged</string>
 </resources>

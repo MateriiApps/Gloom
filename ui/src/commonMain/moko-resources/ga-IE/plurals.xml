@@ -63,4 +63,11 @@
         <item quantity="many">Lines %1$s-%2$s</item>
         <item quantity="other">Lines %1$s-%2$s</item>
     </plurals>
+    <plurals name="plural_pr_merge_details">
+        <item quantity="one">%1$s merged %2$d commit into %3$s</item>
+        <item quantity="two">%1$s merged %2$d commits into %3$s</item>
+        <item quantity="few">%1$s merged %2$d commits into %3$s</item>
+        <item quantity="many">%1$s merged %2$d commits into %3$s</item>
+        <item quantity="other">%1$s merged %2$d commits into %3$s</item>
+    </plurals>
 </resources>

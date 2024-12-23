@@ -6,7 +6,9 @@
     <string name="followed_user">§name§%1$s§ §text§seguiu§ §other§%2$s§</string>
     <string name="followed_you">§name§%1$s§ §text§seguiu você§</string>
     <string name="published_release">§name§%1$s§ §text§publicou um lançamento§</string>
+    <string name="contributed_repo">§name§%1$s§ §text§contributed to§ §repo§%2$s§</string>
     <string name="recommended">Recomendado para você</string>
     <string name="cd_followed">Seguido</string>
     <string name="action_view_details">Detalhes</string>
+    <string name="label_pr_merged">Merged</string>
 </resources>

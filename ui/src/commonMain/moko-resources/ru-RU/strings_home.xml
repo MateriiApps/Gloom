@@ -6,7 +6,9 @@
     <string name="followed_user">§name§%1$s§ §text§подписался§ §other§%2$s§</string>
     <string name="followed_you">§name§%1$s§ §text§подписал(-ась) на вас§</string>
     <string name="published_release">§name§%1$s§text§опубликовал релиз§</string>
+    <string name="contributed_repo">§name§%1$s§ §text§contributed to§ §repo§%2$s§</string>
     <string name="recommended">Рекомендуем для вас</string>
     <string name="cd_followed">Подписался</string>
     <string name="action_view_details">Детали</string>
+    <string name="label_pr_merged">Merged</string>
 </resources>

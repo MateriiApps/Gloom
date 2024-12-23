@@ -6,7 +6,9 @@
     <string name="followed_user">§name§%1$s§ §text§が§ §other§%2$s§ §text§をフォローしました§</string>
     <string name="followed_you">§name§%1$s§ §text§があなたをフォローしました§</string>
     <string name="published_release">§name§%1$s§ §text§がリリースを公開しました§</string>
+    <string name="contributed_repo">§name§%1$s§ §text§contributed to§ §repo§%2$s§</string>
     <string name="recommended">あなたへのおすすめ</string>
     <string name="cd_followed">フォロー中</string>
     <string name="action_view_details">詳細</string>
+    <string name="label_pr_merged">Merged</string>
 </resources>

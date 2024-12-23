@@ -27,4 +27,7 @@
     <plurals name="plural_lines_selected">
         <item quantity="other">第 %1$s-%2$s 行</item>
     </plurals>
+    <plurals name="plural_pr_merge_details">
+        <item quantity="other">%1$s merged %2$d commits into %3$s</item>
+    </plurals>
 </resources>
