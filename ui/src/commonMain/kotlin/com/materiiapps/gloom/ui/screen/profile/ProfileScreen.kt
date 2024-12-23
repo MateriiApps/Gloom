@@ -85,13 +85,15 @@ import com.materiiapps.gloom.gql.type.SocialAccountProvider
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.BackButton
 import com.materiiapps.gloom.ui.component.BadgedItem
+import com.materiiapps.gloom.ui.icon.Social
+import com.materiiapps.gloom.ui.icon.social.Bluesky
 import com.materiiapps.gloom.ui.icon.social.Facebook
 import com.materiiapps.gloom.ui.icon.social.Hometown
 import com.materiiapps.gloom.ui.icon.social.Instagram
 import com.materiiapps.gloom.ui.icon.social.LinkedIn
 import com.materiiapps.gloom.ui.icon.social.Mastodon
+import com.materiiapps.gloom.ui.icon.social.NPM
 import com.materiiapps.gloom.ui.icon.social.Reddit
-import com.materiiapps.gloom.ui.icon.Social
 import com.materiiapps.gloom.ui.icon.social.Twitch
 import com.materiiapps.gloom.ui.icon.social.Twitter
 import com.materiiapps.gloom.ui.icon.social.YouTube
@@ -99,15 +101,15 @@ import com.materiiapps.gloom.ui.screen.list.OrgsListScreen
 import com.materiiapps.gloom.ui.screen.list.RepositoryListScreen
 import com.materiiapps.gloom.ui.screen.list.SponsoringScreen
 import com.materiiapps.gloom.ui.screen.list.StarredReposListScreen
+import com.materiiapps.gloom.ui.screen.profile.component.ContributionGraph
+import com.materiiapps.gloom.ui.screen.profile.viewmodel.ProfileViewModel
+import com.materiiapps.gloom.ui.screen.repo.component.RepoItem
 import com.materiiapps.gloom.ui.screen.settings.SettingsScreen
 import com.materiiapps.gloom.ui.util.EmojiUtil
 import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
-import com.materiiapps.gloom.ui.screen.profile.viewmodel.ProfileViewModel
 import com.materiiapps.gloom.ui.widget.ReadMeCard
 import com.materiiapps.gloom.ui.widget.alert.LocalAlertController
-import com.materiiapps.gloom.ui.screen.profile.component.ContributionGraph
-import com.materiiapps.gloom.ui.screen.repo.component.RepoItem
 import com.materiiapps.gloom.util.Constants
 import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.painterResource
@@ -337,6 +339,8 @@ open class ProfileScreen(
                             SocialAccountProvider.LINKEDIN -> Icons.Social.LinkedIn to Res.strings.cd_linkedin
                             SocialAccountProvider.REDDIT -> Icons.Social.Reddit to Res.strings.cd_reddit
                             SocialAccountProvider.TWITCH -> Icons.Social.Twitch to Res.strings.cd_twitch
+                            SocialAccountProvider.BLUESKY -> Icons.Social.Bluesky to Res.strings.cd_bluesky
+                            SocialAccountProvider.NPM -> Icons.Social.NPM to Res.strings.cd_npm
                             else -> Icons.Outlined.Link to Res.strings.cd_link
                         }
                         val socialName = remember {

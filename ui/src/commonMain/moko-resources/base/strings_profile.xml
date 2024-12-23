@@ -20,6 +20,8 @@
     <string name="cd_linkedin" translatable="false">LinkedIn</string>
     <string name="cd_reddit" translatable="false">Reddit</string>
     <string name="cd_twitch" translatable="false">Twitch</string>
+    <string name="cd_bluesky" translatable="false">Bluesky</string>
+    <string name="cd_npm" translatable="false">NPM</string>
     <string name="cd_link">Link</string>
 
     <string name="label_follows_you">Follows You</string>
