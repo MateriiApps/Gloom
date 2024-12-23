@@ -3,7 +3,6 @@ package com.materiiapps.gloom.ui.screen.home
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -38,14 +37,15 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
-import com.materiiapps.gloom.ui.screen.home.viewmodel.HomeViewModel
 import com.materiiapps.gloom.ui.screen.home.component.CreatedRepoItem
 import com.materiiapps.gloom.ui.screen.home.component.FollowedUserItem
 import com.materiiapps.gloom.ui.screen.home.component.ForkedRepoItem
+import com.materiiapps.gloom.ui.screen.home.component.MergedPullRequestItem
 import com.materiiapps.gloom.ui.screen.home.component.NewReleaseItem
 import com.materiiapps.gloom.ui.screen.home.component.RecommendedFollowUserItem
 import com.materiiapps.gloom.ui.screen.home.component.RecommendedRepoItem
 import com.materiiapps.gloom.ui.screen.home.component.StarredRepoItem
+import com.materiiapps.gloom.ui.screen.home.viewmodel.HomeViewModel
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.launch
 
@@ -183,6 +183,15 @@ class HomeScreen : Tab {
                                         followData = followData,
                                         onFollowPressed = viewModel::followUser,
                                         onUnfollowPressed = viewModel::unfollowUser
+                                    )
+                                }
+
+                                feedItem.mergedPullRequestFeedItemFragment != null -> {
+                                    MergedPullRequestItem(
+                                        item = feedItem.mergedPullRequestFeedItemFragment!!,
+                                        onReactionClick = { reaction, unreact ->
+                                            viewModel.react(feedItem.mergedPullRequestFeedItemFragment!!.pullRequest.id, reaction, unreact)
+                                        }
                                     )
                                 }
                             }

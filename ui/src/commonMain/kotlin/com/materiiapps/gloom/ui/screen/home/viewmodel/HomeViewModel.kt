@@ -7,6 +7,7 @@ import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.util.getOrNull
 import com.materiiapps.gloom.api.util.ifSuccessful
 import com.materiiapps.gloom.gql.FeedQuery
+import com.materiiapps.gloom.gql.type.ReactionContent
 import com.materiiapps.gloom.ui.screen.list.viewmodel.BaseListViewModel
 import kotlinx.coroutines.launch
 
@@ -54,6 +55,16 @@ class HomeViewModel(
     fun unfollowUser(id: String) = screenModelScope.launch {
         repo.unfollowUser(id).ifSuccessful {
             followedUsers[id] = it
+        }
+    }
+
+    fun react(id: String, reaction: ReactionContent, unreact: Boolean) {
+        screenModelScope.launch {
+            if (unreact) {
+                repo.unreact(id, reaction)
+            } else {
+                repo.react(id, reaction)
+            }
         }
     }
 

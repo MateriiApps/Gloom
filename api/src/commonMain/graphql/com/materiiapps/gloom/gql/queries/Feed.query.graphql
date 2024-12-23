@@ -14,6 +14,7 @@ query Feed($after: String) {
                         REPOSITORY_RECOMMENDATION_FEED_ITEM
                         FORKED_REPOSITORY_FEED_ITEM
                         FOLLOW_RECOMMENDATION_FEED_ITEM
+                        MERGED_PULL_REQUEST_FEED_ITEM
                     ]
                 ) {
                     totalCount
@@ -30,6 +31,7 @@ query Feed($after: String) {
                         ...RecommendedRepositoryFeedItemFragment
                         ...ForkedRepositoryFeedItemFragment
                         ...FollowRecommendationFeedItemFragment
+                        ...MergedPullRequestFeedItemFragment
                     }
                 }
             }

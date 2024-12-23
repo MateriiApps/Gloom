@@ -31,20 +31,16 @@ import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.api.REACTION_EMOJIS
 import com.materiiapps.gloom.gql.fragment.Reaction
 import com.materiiapps.gloom.gql.type.ReactionContent
-import com.materiiapps.gloom.ui.theme.gloomColorScheme
 
 @Composable
 fun ReactionRow(
     reactions: List<Reaction>,
     onReactionClick: (reaction: ReactionContent, unreact: Boolean) -> Unit,
+    modifier: Modifier = Modifier,
     forRelease: Boolean = false
 ) {
-    val _reactions = remember {
-        mutableStateListOf<Reaction>()
-    }
-    var opened by remember {
-        mutableStateOf(false)
-    }
+    val _reactions = remember { mutableStateListOf<Reaction>() }
+    var opened by remember { mutableStateOf(false) }
 
     LaunchedEffect(reactions) {
         _reactions.clear()
@@ -104,7 +100,7 @@ fun ReactionRow(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier
+        modifier = modifier
             .horizontalScroll(rememberScrollState())
     ) {
         Spacer(modifier = Modifier.width(8.dp))
