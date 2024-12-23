@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_sign_out">Sign Out</string>
-    <string name="settings_sign_out_header">Sign Out?</string>
-    <string name="settings_sign_out_text">Are you sure you want to sign out? You can always sign back in later.</string>
+    <string name="action_sign_out">Выйти</string>
+    <string name="settings_sign_out_header">Выйти?</string>
+    <string name="settings_sign_out_text">Вы уверены, что хотите выйти? Вы всегда можете войти позже.</string>
     <!-- Appearance -->
-    <string name="settings_appearance">Appearance</string>
-    <string name="settings_appearance_description">Theme, code style</string>
-    <string name="appearance_theme">Theme</string>
-    <string name="appearance_monet">Dynamic Theme</string>
-    <string name="appearance_monet_description">Available on Android 12+</string>
-    <string name="theme_system">System</string>
-    <string name="theme_light">Light</string>
-    <string name="theme_dark">Dark</string>
+    <string name="settings_appearance">Оформление</string>
+    <string name="settings_appearance_description">Тема, стиль кода</string>
+    <string name="appearance_theme">Тема</string>
+    <string name="appearance_monet">Динамическая тема</string>
+    <string name="appearance_monet_description">Доступно на Android 12+</string>
+    <string name="theme_system">Система</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
     <string name="appearance_user_av_shape">User avatar shape</string>
     <string name="appearance_org_av_shape">Organization avatar shape</string>
     <string name="appearance_av_radius">Radius:</string>

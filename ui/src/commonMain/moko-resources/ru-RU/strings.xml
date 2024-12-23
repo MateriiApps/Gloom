@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Root Tabs -->
-    <string name="navigation_explore">Explore</string>
+    <string name="navigation_explore">Обзор</string>
     <string name="navigation_home">Главная</string>
-    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_inbox">Входящие</string>
     <string name="navigation_profile">Профиль</string>
     <string name="navigation_settings">Настройки</string>
     <!--           -->
@@ -11,38 +11,38 @@
     <string name="action_back">Назад</string>
     <string name="action_confirm">Подтвердить</string>
     <string name="action_share">Поделиться</string>
-    <string name="action_expand">View More</string>
-    <string name="action_collapse">View Less</string>
-    <string name="action_edit">Edit</string>
-    <string name="action_stop_edit">Stop editing</string>
-    <string name="action_try_again">Try again</string>
-    <string name="action_copy">Copy</string>
+    <string name="action_expand">Показать больше</string>
+    <string name="action_collapse">Показать меньше</string>
+    <string name="action_edit">Редактировать</string>
+    <string name="action_stop_edit">Закончить редактирование</string>
+    <string name="action_try_again">Попробовать снова</string>
+    <string name="action_copy">Скопировать</string>
     <!--                 -->
     <!-- Dismiss Labels -->
-    <string name="dismiss_nevermind">Nevermind</string>
-    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_nevermind">Не сейчас</string>
+    <string name="dismiss_cancel">Отмена</string>
     <string name="dismiss_no_thanks">Нет, спасибо</string>
     <!--                -->
     <!-- Errors -->
-    <string name="error_release_load">Couldn\'t load release</string>
+    <string name="error_release_load">Не удалось загрузить релиз</string>
     <!--        -->
     <!-- Titles -->
-    <string name="title_starred">Starred</string>
-    <string name="title_orgs">Organizations</string>
-    <string name="title_repos">Repositories</string>
-    <string name="title_contributors">Contributors</string>
-    <string name="title_sponsoring">Sponsoring</string>
-    <string name="title_followers">Followers</string>
-    <string name="title_following">Following</string>
+    <string name="title_starred">Избранное</string>
+    <string name="title_orgs">Организации</string>
+    <string name="title_repos">Репозитории</string>
+    <string name="title_contributors">Участники</string>
+    <string name="title_sponsoring">Спонсорство</string>
+    <string name="title_followers">Подписчики</string>
+    <string name="title_following">Подписки</string>
     <!--        -->
     <!-- Entities -->
-    <string name="noun_repo">Repository</string>
-    <string name="noun_release">Release</string>
-    <string name="noun_tag">Tag</string>
-    <string name="noun_other">Other</string>
-    <string name="noun_commit">Commit</string>
+    <string name="noun_repo">Репозиторий</string>
+    <string name="noun_release">Релиз</string>
+    <string name="noun_tag">Тег</string>
+    <string name="noun_other">Другое</string>
+    <string name="noun_commit">Коммит</string>
     <string name="noun_license">Лицензия</string>
-    <string name="noun_users_avatar">%s\'s avatar</string>
+    <string name="noun_users_avatar">Аватар %s</string>
     <!--          -->
     <!-- Issues and PRs -->
     <string name="msg_issue_untitled">Untitled issue</string>
@@ -50,26 +50,26 @@
     <string name="label_checks">Checks</string>
     <string name="label_reviews">Reviews</string>
     <!--                -->
-    <string name="label_dont_show_again">Don\'t show this again</string>
+    <string name="label_dont_show_again">Больше не показывать</string>
     <!-- Units -->
-    <string name="time_now">Now</string>
-    <string name="time_since_second">%1$ds</string>
-    <string name="time_since_minute">%1$dm</string>
-    <string name="time_since_hour">%1$dh</string>
-    <string name="time_since_day">%1$dd</string>
-    <string name="time_since_month">%1$dmo</string>
-    <string name="time_since_year">%1$dy</string>
-    <string name="file_size_bytes">%1$d B</string>
-    <string name="file_size_kilobytes">%1$d KB</string>
-    <string name="file_size_megabytes">%1$d MB</string>
-    <string name="file_size_gigabytes">%1$d GB</string>
+    <string name="time_now">Только что</string>
+    <string name="time_since_second">%1$d сек</string>
+    <string name="time_since_minute">%1$d мин</string>
+    <string name="time_since_hour">%1$d ч</string>
+    <string name="time_since_day">%1$d д</string>
+    <string name="time_since_month">%1$d мес</string>
+    <string name="time_since_year">%1$d г</string>
+    <string name="file_size_bytes">%1$d Б</string>
+    <string name="file_size_kilobytes">%1$d КБ</string>
+    <string name="file_size_megabytes">%1$d МБ</string>
+    <string name="file_size_gigabytes">%1$d ГБ</string>
     <!--       -->
     <!-- Downloading -->
     <string name="action_download">Скачать</string>
-    <string name="title_download_confirm">Confirm download</string>
-    <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
-    <string name="msg_downloading_file">Downloading %1$s...</string>
-    <string name="msg_download_completed">Download completed</string>
+    <string name="title_download_confirm">Подтвердить загрузку</string>
+    <string name="msg_download_dialog_body">Вы собираетесь загрузить %1$s (%2$s), уверены, что хотите это сделать?</string>
+    <string name="msg_downloading_file">Загрузка %1$s...</string>
+    <string name="msg_download_completed">Загрузка завершена</string>
     <!--             -->
     <!-- Installing -->
     <string name="install_fail_generic">Failed to install: Unknown reason</string>
