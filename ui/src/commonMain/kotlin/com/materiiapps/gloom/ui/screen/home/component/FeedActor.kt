@@ -2,6 +2,7 @@ package com.materiiapps.gloom.ui.screen.home.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +20,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.ui.component.BadgedItem
+import com.materiiapps.gloom.ui.util.thenIf
 import com.seiko.imageloader.rememberImagePainter
 
 @Composable
@@ -28,7 +30,8 @@ fun FeedActor(
     badgeIconDescription: String? = null,
     iconVector: ImageVector? = null,
     iconDescription: String? = null,
-    text: AnnotatedString
+    text: AnnotatedString,
+    onIconClick: (() -> Unit)? = null
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -50,6 +53,7 @@ fun FeedActor(
                     painter = rememberImagePainter(iconUrl),
                     contentDescription = iconDescription,
                     modifier = Modifier
+                        .thenIf(onIconClick != null) { clickable(onClick = onIconClick!!) }
                         .size(33.dp)
                         .clip(CircleShape)
                 )
@@ -60,6 +64,7 @@ fun FeedActor(
                     contentDescription = iconDescription,
                     tint = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier
+                        .thenIf(onIconClick != null) { clickable(onClick = onIconClick!!) }
                         .clip(CircleShape)
                         .background(MaterialTheme.colorScheme.primary)
                         .size(33.dp)

@@ -11,9 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.CreatedRepoItemFragment
+import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
 import com.materiiapps.gloom.ui.util.annotatingStringResource
+import com.materiiapps.gloom.ui.util.navigate
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -23,6 +27,7 @@ fun CreatedRepoItem(
     onStarPressed: (String) -> Unit = {},
     onUnstarPressed: (String) -> Unit = {},
 ) {
+    val navigator = LocalNavigator.currentOrThrow
     val actor = item.actor.actorFragment
     val repo = item.repository.feedRepository
 
@@ -37,6 +42,7 @@ fun CreatedRepoItem(
             iconDescription = stringResource(Res.strings.noun_users_avatar, actor.login),
             badgeIcon = Icons.Filled.Book,
             badgeIconDescription = stringResource(Res.strings.noun_repo),
+            onIconClick = { navigator.navigate(ProfileScreen(actor.login)) },
             text = annotatingStringResource(res = Res.strings.created_repo, actor.login) {
                 when (it) {
                     "name" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface)

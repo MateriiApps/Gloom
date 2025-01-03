@@ -11,9 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.unit.dp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.FollowedUserFeedItemFragment
+import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
 import com.materiiapps.gloom.ui.util.annotatingStringResource
+import com.materiiapps.gloom.ui.util.navigate
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -23,6 +27,7 @@ fun FollowedUserItem(
     onFollowPressed: (String) -> Unit = {},
     onUnfollowPressed: (String) -> Unit = {},
 ) {
+    val navigator = LocalNavigator.currentOrThrow
     val actor = item.follower
     val user = item.followee
     val userLogin = user.feedUser?.login ?: user.feedOrg?.login
@@ -47,6 +52,7 @@ fun FollowedUserItem(
             iconDescription = stringResource(Res.strings.noun_users_avatar, actor.login),
             badgeIcon = Icons.Filled.PersonAddAlt1,
             badgeIconDescription = stringResource(Res.strings.cd_followed),
+            onIconClick = { navigator.navigate(ProfileScreen(actor.login)) },
             text = actorText
         )
 

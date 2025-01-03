@@ -54,6 +54,7 @@ import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.ThinDivider
 import com.materiiapps.gloom.ui.icon.Custom
 import com.materiiapps.gloom.ui.icon.custom.Commit
+import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
 import com.materiiapps.gloom.ui.screen.release.ReleaseScreen
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
@@ -70,6 +71,7 @@ fun NewReleaseItem(
     starData: Pair<Boolean, Int>? = null,
     onVisitPressed: (String) -> Unit = {},
 ) {
+    val navigator = LocalNavigator.currentOrThrow
     val actor = item.actor.actorFragment
     val release = item.release
 
@@ -84,6 +86,7 @@ fun NewReleaseItem(
             iconDescription = stringResource(Res.strings.noun_users_avatar, actor.login),
             badgeIcon = Icons.Filled.LocalOffer,
             badgeIconDescription = stringResource(Res.strings.noun_release),
+            onIconClick = { navigator.navigate(ProfileScreen(actor.login)) },
             text = annotatingStringResource(res = Res.strings.published_release, actor.login) {
                 when (it) {
                     "name" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface)

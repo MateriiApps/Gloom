@@ -32,6 +32,7 @@ import com.materiiapps.gloom.ui.component.Label
 import com.materiiapps.gloom.ui.component.ThinDivider
 import com.materiiapps.gloom.ui.icon.Custom
 import com.materiiapps.gloom.ui.icon.custom.MergedPullRequest
+import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.annotatingStringResource
@@ -46,6 +47,7 @@ fun MergedPullRequestItem(
     item: MergedPullRequestFeedItemFragment,
     onReactionClick: (ReactionContent, Boolean) -> Unit
 ) {
+    val navigator = LocalNavigator.currentOrThrow
     val actor = item.actor.actorFragment
     val pullRequest = item.pullRequest
     val baseRepo = pullRequest.baseRepository
@@ -61,6 +63,7 @@ fun MergedPullRequestItem(
             iconDescription = stringResource(Res.strings.noun_users_avatar, actor.login),
             badgeIcon = Icons.Custom.MergedPullRequest,
             badgeIconDescription = stringResource(Res.strings.cd_forked_repo),
+            onIconClick = { navigator.navigate(ProfileScreen(actor.login)) },
             text = annotatingStringResource(res = Res.strings.contributed_repo, actor.login, "${baseRepo?.owner?.login}/${baseRepo?.name}") {
                 when (it) {
                     "repo",
