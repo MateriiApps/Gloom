@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="ic_launcher_background">#242424</color>
+    <color name="ic_launcher_mocha_background">#1E1E2E</color>
+    <color name="ic_launcher_macchiato_background">#24273A</color>
+    <color name="ic_launcher_frappe_background">#303446</color>
+    <color name="ic_launcher_latte_background">#EFF1F5</color>
+    <color name="white">#FFFFFF</color>
 </resources>

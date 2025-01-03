@@ -4,7 +4,7 @@ import android.app.Application
 import com.materiiapps.gloom.di.httpModule
 import com.materiiapps.gloom.di.module.loggerModule
 import com.materiiapps.gloom.di.module.managerModule
-import com.materiiapps.gloom.di.module.platformViewModelModule
+import com.materiiapps.gloom.di.module.platformModule
 import com.materiiapps.gloom.di.module.settingsModule
 import com.materiiapps.gloom.di.module.viewModelModule
 import com.materiiapps.gloom.di.repositoryModule
@@ -32,7 +32,7 @@ class Gloom : Application() {
                 settingsModule(),
                 managerModule(),
                 viewModelModule(),
-                platformViewModelModule(),
+                platformModule(),
                 module { viewModelOf(::MainViewModel) } // Cant group with the rest
             )
         }

@@ -11,6 +11,6 @@ actual val supportsMonet = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 actual val isDebug = BuildConfig.DEBUG
 
 actual val GloomPath = File(Environment.getExternalStorageDirectory(), "Gloom")
-actual val Features = listOf(Feature.DYNAMIC_COLOR, Feature.INSTALL_APKS)
+actual val Features = listOf(Feature.DYNAMIC_COLOR, Feature.INSTALL_APKS, Feature.CHANGE_ICON)
 
 

@@ -7,6 +7,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Code
+import androidx.compose.material.icons.outlined.DesignServices
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -21,14 +22,16 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.ui.screen.settings.component.SettingsButton
-import com.materiiapps.gloom.ui.screen.settings.component.SettingsCategory
 import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screen.auth.LandingScreen
 import com.materiiapps.gloom.ui.screen.settings.about.AboutScreen
+import com.materiiapps.gloom.ui.screen.settings.component.SettingsButton
+import com.materiiapps.gloom.ui.screen.settings.component.SettingsCategory
+import com.materiiapps.gloom.ui.screen.settings.component.account.SignOutDialog
 import com.materiiapps.gloom.ui.screen.settings.developer.DeveloperSettingsScreen
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.SettingsViewModel
-import com.materiiapps.gloom.ui.screen.settings.component.account.SignOutDialog
+import com.materiiapps.gloom.util.Feature
+import com.materiiapps.gloom.util.Features
 import com.materiiapps.gloom.util.IsDeveloper
 import com.materiiapps.gloom.util.VersionName
 import dev.icerock.moko.resources.compose.stringResource
@@ -73,6 +76,15 @@ class SettingsScreen : Screen {
                     subtext = stringResource(Res.strings.settings_appearance_description),
                     destination = ::AppearanceSettingsScreen
                 )
+
+                if (Features.contains(Feature.CHANGE_ICON)) {
+                    SettingsCategory(
+                        icon = Icons.Outlined.DesignServices,
+                        text = stringResource(Res.strings.settings_app_icon),
+                        subtext = stringResource(Res.strings.settings_app_icon_description),
+                        destination = ::AppIconsSettingsScreen
+                    )
+                }
 
                 SettingsCategory(
                     icon = Icons.Outlined.AccountCircle,

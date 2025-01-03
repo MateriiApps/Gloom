@@ -5,7 +5,7 @@ import androidx.compose.ui.window.application
 import com.materiiapps.gloom.di.httpModule
 import com.materiiapps.gloom.di.module.loggerModule
 import com.materiiapps.gloom.di.module.managerModule
-import com.materiiapps.gloom.di.module.platformViewModelModule
+import com.materiiapps.gloom.di.module.platformModule
 import com.materiiapps.gloom.di.module.settingsModule
 import com.materiiapps.gloom.di.module.viewModelModule
 import com.materiiapps.gloom.di.repositoryModule
@@ -30,7 +30,7 @@ fun main(args: Array<String>) {
                 settingsModule(),
                 managerModule(),
                 viewModelModule(),
-                platformViewModelModule()
+                platformModule()
             )
         }
 

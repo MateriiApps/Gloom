@@ -20,6 +20,7 @@ import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoPullRequestsViewModel
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoReleasesViewModel
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoViewModel
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
+import com.materiiapps.gloom.ui.screen.settings.viewmodel.AppIconsSettingsViewModel
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.AppearanceSettingsViewModel
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.SettingsViewModel
 import org.koin.core.module.dsl.factoryOf
@@ -38,6 +39,7 @@ fun viewModelModule() = module {
     factoryOf(::SettingsViewModel)
     factoryOf(::AppearanceSettingsViewModel)
     factoryOf(::AccountSettingsViewModel)
+    factoryOf(::AppIconsSettingsViewModel)
     factoryOf(::HomeViewModel)
     factoryOf(::ExploreViewModel)
 
