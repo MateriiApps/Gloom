@@ -53,9 +53,9 @@ fun FeedActor(
                     painter = rememberImagePainter(iconUrl),
                     contentDescription = iconDescription,
                     modifier = Modifier
-                        .thenIf(onIconClick != null) { clickable(onClick = onIconClick!!) }
                         .size(33.dp)
                         .clip(CircleShape)
+                        .thenIf(onIconClick != null) { clickable(onClick = onIconClick!!) }
                 )
 
             if (iconVector != null)
@@ -64,8 +64,8 @@ fun FeedActor(
                     contentDescription = iconDescription,
                     tint = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier
-                        .thenIf(onIconClick != null) { clickable(onClick = onIconClick!!) }
                         .clip(CircleShape)
+                        .thenIf(onIconClick != null) { clickable(onClick = onIconClick!!) }
                         .background(MaterialTheme.colorScheme.primary)
                         .size(33.dp)
                         .padding(7.dp)
