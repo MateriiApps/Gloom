@@ -13,7 +13,7 @@ android {
     namespace = "com.materiiapps.gloom.ui"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 21
     }
 
@@ -41,29 +41,32 @@ kotlin {
                 implementation(project(":api"))
                 implementation(project(":shared"))
 
-                api(libs.bundles.kotlinx)
-                api(libs.bundles.voyager)
+                implementation(libs.bundles.kotlinx)
+                implementation(libs.bundles.voyager)
 
                 api(compose.material3)
-                api(compose.materialIconsExtended)
-                api(compose.runtime)
+                implementation(compose.materialIconsExtended)
+                implementation(compose.runtime)
 
-                api(libs.compose.imageloader)
-                api(libs.compose.pdf)
+                implementation(libs.compose.imageloader)
+                implementation(libs.compose.pdf)
                 implementation(libs.compose.webview.multiplatform)
-                api(libs.highlights)
-                api(libs.koin.core)
-                api(libs.koin.compose)
-                api(libs.multiplatform.paging)
-                api(libs.multiplatform.paging.compose)
+                implementation(libs.highlights)
+                implementation(libs.koin.core)
+                implementation(libs.koin.compose)
+                implementation(libs.multiplatform.paging)
+                implementation(libs.multiplatform.paging.compose)
+                implementation(libs.zoomable)
+
+                // Needed for shared module resources to work
+                implementation(libs.moko.resources.compose)
             }
         }
 
         val androidMain by getting {
             dependencies {
-                api(libs.androidx.core.ktx)
-                api(libs.koin.android)
-                api(libs.zoomable)
+                implementation(libs.androidx.core.ktx)
+                implementation(libs.koin.android)
             }
         }
     }

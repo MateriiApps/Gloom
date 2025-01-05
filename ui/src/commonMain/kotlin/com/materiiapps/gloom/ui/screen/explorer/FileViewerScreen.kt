@@ -41,7 +41,7 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.ShareManager
 import com.materiiapps.gloom.gql.fragment.RepoFile
@@ -68,8 +68,7 @@ class FileViewerScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
-        val viewModel: FileViewerViewModel =
-            getScreenModel { parametersOf(FileViewerViewModel.Input(owner, name, branch, path)) }
+        val viewModel: FileViewerViewModel = koinScreenModel { parametersOf(FileViewerViewModel.Input(owner, name, branch, path)) }
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
         val file = viewModel.file?.gitObject?.onCommit?.file
 

@@ -28,7 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.materiiapps.gloom.Res
@@ -55,7 +55,7 @@ class LandingScreen(
     @Composable
     private fun Screen() {
         val linkHandler = LocalLinkHandler.current
-        val viewModel: LandingViewModel = getScreenModel()
+        val viewModel: LandingViewModel = koinScreenModel()
         val nav = LocalNavigator.currentOrThrow
 
         Surface {

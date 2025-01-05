@@ -72,7 +72,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.core.screen.ScreenKey
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
@@ -127,13 +127,9 @@ open class ProfileScreen(
         get() = "${this::class.simpleName}($user)"
 
     @Composable
-    override fun Content() = Screen()
-
-    @Composable
     @OptIn(ExperimentalMaterial3Api::class)
-    private fun Screen(
-        viewModel: ProfileViewModel = getScreenModel { parametersOf(user) }
-    ) {
+    override fun Content() {
+        val viewModel: ProfileViewModel = koinScreenModel { parametersOf(user) }
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
         Scaffold(

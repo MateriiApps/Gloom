@@ -28,7 +28,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.component.BackButton
 import com.materiiapps.gloom.ui.component.NavBarSpacer
@@ -45,7 +45,7 @@ class LicenseScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
-        val viewModel: LicenseViewModel = getScreenModel { parametersOf(owner to name) }
+        val viewModel: LicenseViewModel = koinScreenModel { parametersOf(owner to name) }
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
         Scaffold(

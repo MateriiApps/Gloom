@@ -12,8 +12,8 @@ import com.materiiapps.gloom.di.serviceModule
 import com.materiiapps.gloom.ui.viewmodel.main.MainViewModel
 import com.materiiapps.gloom.util.VersionName
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.context.startKoin
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
 class Gloom : Application() {

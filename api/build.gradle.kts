@@ -14,7 +14,7 @@ android {
     namespace = "com.materiiapps.gloom.api"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 21
     }
 }
@@ -31,9 +31,9 @@ kotlin {
                 implementation(project(":shared"))
 
                 api(libs.bundles.apollo)
-                api(libs.koin.core)
-                api(libs.bundles.kotlinx)
-                api(libs.bundles.ktor)
+                implementation(libs.koin.core)
+                implementation(libs.bundles.kotlinx)
+                implementation(libs.bundles.ktor)
             }
         }
     }

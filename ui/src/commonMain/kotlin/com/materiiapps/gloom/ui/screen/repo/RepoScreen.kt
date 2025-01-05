@@ -49,7 +49,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
@@ -76,13 +76,9 @@ class RepoScreen(
     override val key = "$owner/$name-${uuid4()}"
 
     @Composable
-    override fun Content() = Screen()
-
-    @Composable
     @OptIn(ExperimentalMaterial3Api::class)
-    private fun Screen(
-        viewModel: RepoViewModel = getScreenModel { parametersOf(owner to name) }
-    ) {
+    override fun Content() {
+        val viewModel: RepoViewModel = koinScreenModel { parametersOf(owner to name) }
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
         val coroutineScope = rememberCoroutineScope()
         val pagerState = rememberPagerState(

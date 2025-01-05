@@ -12,20 +12,19 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
-import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.screen.explorer.DirectoryListingScreen
-import com.materiiapps.gloom.ui.transition.SlideTransition
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoCodeViewModel
+import com.materiiapps.gloom.ui.transition.SlideTransition
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.parameter.parametersOf
 
@@ -39,13 +38,10 @@ class CodeTab(
         @Composable get() = TabOptions(1u, stringResource(Res.strings.repo_tab_code))
 
     @Composable
-    override fun Content() = Screen()
-
-    @Composable
     @OptIn(ExperimentalMaterial3Api::class)
-    fun Screen(
-        viewModel: RepoCodeViewModel = getScreenModel { parametersOf(owner to name) }
-    ) {
+    override fun Content() {
+        val viewModel: RepoCodeViewModel = koinScreenModel { parametersOf(owner to name) }
+
         PullToRefreshBox(
             isRefreshing = viewModel.isLoading,
             onRefresh = { viewModel.loadDefaultBranch() },

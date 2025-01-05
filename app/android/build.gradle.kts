@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
     namespace = "com.materiiapps.gloom"
 
     defaultConfig {
@@ -69,6 +69,8 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.koin.android)
+    implementation(libs.voyager.navigator)
 
     implementation(project(":api"))
     implementation(project(":shared"))

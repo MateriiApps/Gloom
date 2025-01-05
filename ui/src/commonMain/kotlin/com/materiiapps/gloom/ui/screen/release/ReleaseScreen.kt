@@ -34,7 +34,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import com.benasher44.uuid.uuid4
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.DialogManager
@@ -43,7 +43,6 @@ import com.materiiapps.gloom.domain.manager.ShareManager
 import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.ui.component.BackButton
 import com.materiiapps.gloom.ui.component.ThinDivider
-import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.screen.release.viewmodel.ReleaseViewModel
 import com.materiiapps.gloom.ui.widget.Markdown
 import com.materiiapps.gloom.ui.widget.alert.LocalAlertController
@@ -71,7 +70,7 @@ class ReleaseScreen(
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
-        val viewModel: ReleaseViewModel = getScreenModel { parametersOf(Triple(owner, name, tag)) }
+        val viewModel: ReleaseViewModel = koinScreenModel { parametersOf(Triple(owner, name, tag)) }
         val alertController = LocalAlertController.current
         val dialogManager: DialogManager = koinInject()
         val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()

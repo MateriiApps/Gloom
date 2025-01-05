@@ -34,7 +34,6 @@ import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.BadgedItem
 import dev.icerock.moko.resources.compose.stringResource
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AccountItem(
     account: Account,

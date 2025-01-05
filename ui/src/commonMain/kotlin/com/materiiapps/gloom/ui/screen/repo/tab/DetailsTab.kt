@@ -30,7 +30,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.Tab
@@ -40,18 +40,18 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.component.LargeSegmentedButton
 import com.materiiapps.gloom.ui.component.LargeSegmentedButtonRow
 import com.materiiapps.gloom.ui.component.ThinDivider
-import com.materiiapps.gloom.ui.icon.custom.Balance
 import com.materiiapps.gloom.ui.icon.Custom
+import com.materiiapps.gloom.ui.icon.custom.Balance
 import com.materiiapps.gloom.ui.icon.custom.Fork
 import com.materiiapps.gloom.ui.screen.repo.LicenseScreen
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
+import com.materiiapps.gloom.ui.screen.repo.component.ContributorsRow
+import com.materiiapps.gloom.ui.screen.repo.component.LanguageMakeup
+import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoDetailsViewModel
 import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.pluralStringResource
-import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoDetailsViewModel
 import com.materiiapps.gloom.ui.widget.Markdown
-import com.materiiapps.gloom.ui.screen.repo.component.ContributorsRow
-import com.materiiapps.gloom.ui.screen.repo.component.LanguageMakeup
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.parameter.parametersOf
 
@@ -65,13 +65,9 @@ class DetailsTab(
         @Composable get() = TabOptions(1u, stringResource(Res.strings.repo_tab_details))
 
     @Composable
-    override fun Content() = Screen()
-
-    @Composable
     @OptIn(ExperimentalMaterial3Api::class)
-    fun Screen(
-        viewModel: RepoDetailsViewModel = getScreenModel { parametersOf(owner to name) }
-    ) {
+    override fun Content() {
+        val viewModel: RepoDetailsViewModel = koinScreenModel { parametersOf(owner to name) }
         val nav = LocalNavigator.currentOrThrow
         val repoDetails = viewModel.details
 

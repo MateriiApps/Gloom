@@ -19,7 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.benasher44.uuid.uuid4
@@ -36,14 +36,8 @@ class DirectoryListingScreen(
     override val key = "$owner/$name{$branchAndPath}-${uuid4()}"
 
     @Composable
-    override fun Content() = Screen()
-
-    @Composable
-    private fun Screen(
-        viewModel: DirectoryListingViewModel = getScreenModel {
-            parametersOf(DirectoryListingViewModel.Details(owner, name, branchAndPath))
-        }
-    ) {
+    override fun Content() {
+        val viewModel: DirectoryListingViewModel = koinScreenModel { parametersOf(DirectoryListingViewModel.Details(owner, name, branchAndPath)) }
         val nav = LocalNavigator.currentOrThrow
 
         Column(
@@ -97,4 +91,5 @@ class DirectoryListingScreen(
             }
         }
     }
+
 }

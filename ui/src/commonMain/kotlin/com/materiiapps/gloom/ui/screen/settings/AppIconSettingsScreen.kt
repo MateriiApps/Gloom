@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.component.NavBarSpacer
 import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
@@ -28,7 +28,7 @@ class AppIconsSettingsScreen : Screen {
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
-        val viewModel: AppIconsSettingsViewModel = getScreenModel()
+        val viewModel: AppIconsSettingsViewModel = koinScreenModel()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
         Scaffold(

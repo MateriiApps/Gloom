@@ -31,7 +31,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
@@ -62,13 +62,9 @@ class HomeScreen : Tab {
         }
 
     @Composable
-    override fun Content() = Screen()
-
-    @Composable
     @OptIn(ExperimentalMaterial3Api::class)
-    private fun Screen(
-        viewModel: HomeViewModel = getScreenModel()
-    ) {
+    override fun Content() {
+        val viewModel: HomeViewModel = koinScreenModel()
         val items = viewModel.items.collectAsLazyPagingItems()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
         val isLoading = items.loadState.refresh == LoadState.Loading
@@ -212,4 +208,5 @@ class HomeScreen : Tab {
             scrollBehavior = scrollBehavior
         )
     }
+
 }

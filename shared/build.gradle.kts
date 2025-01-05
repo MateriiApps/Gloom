@@ -15,7 +15,7 @@ android {
     namespace = "com.materiiapps.gloom.shared"
 
     defaultConfig {
-        compileSdk = 34
+        compileSdk = 35
         minSdk = 21
     }
 
@@ -38,15 +38,16 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(compose.runtime)
-                api(libs.bundles.kotlinx)
+                implementation(compose.runtime)
+                implementation(libs.bundles.kotlinx)
+
+                implementation(libs.apollo.runtime)
+                implementation(libs.apollo.normalized.cache)
+                implementation(libs.koin.core)
+                implementation(libs.moko.resources.compose)
+                implementation(libs.multiplatform.settings)
 
                 api(libs.aboutlibraries.core)
-                api(libs.apollo.runtime)
-                api(libs.apollo.normalized.cache)
-                api(libs.koin.core)
-                api(libs.moko.resources.compose)
-                api(libs.multiplatform.settings)
             }
         }
 

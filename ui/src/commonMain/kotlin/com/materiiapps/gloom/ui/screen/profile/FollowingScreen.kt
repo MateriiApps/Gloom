@@ -2,7 +2,7 @@ package com.materiiapps.gloom.ui.screen.profile
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.ScreenKey
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.model.ModelUser
 import com.materiiapps.gloom.gql.FollowingQuery
@@ -19,7 +19,7 @@ class FollowingScreen(
     override val titleRes: StringResource get() = Res.strings.title_following
 
     override val viewModel: FollowingViewModel
-        @Composable get() = getScreenModel { parametersOf(username) }
+        @Composable get() = koinScreenModel { parametersOf(username) }
 
     @Composable
     override fun Item(item: ModelUser) = UserItem(user = item)

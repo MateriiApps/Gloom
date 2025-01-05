@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.Theme
 import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
@@ -37,7 +37,7 @@ class AppearanceSettingsScreen : Screen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     private fun Screen(
-        viewModel: AppearanceSettingsViewModel = getScreenModel()
+        viewModel: AppearanceSettingsViewModel = koinScreenModel()
     ) {
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 

@@ -2,7 +2,7 @@ package com.materiiapps.gloom.ui.screen.list
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.ScreenKey
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.model.ModelRepo
 import com.materiiapps.gloom.gql.RepoListQuery
@@ -19,7 +19,7 @@ class RepositoryListScreen(
     override val titleRes: StringResource get() = Res.strings.title_repos
 
     override val viewModel: RepositoryListViewModel
-        @Composable get() = getScreenModel { parametersOf(username) }
+        @Composable get() = koinScreenModel { parametersOf(username) }
 
     @Composable
     override fun Item(item: ModelRepo) = RepoItem(repo = item, login = username)
