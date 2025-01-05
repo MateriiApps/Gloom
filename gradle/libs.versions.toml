@@ -8,7 +8,7 @@ androidx-lifecycle-runtime-ktx = "2.8.7"
 
 # Compose
 androidx-activity-compose = "1.9.3"
-compose-multiplatform = "1.7.0-alpha03"
+compose-multiplatform = "1.7.3"
 
 # KotlinX
 kotlinx-coroutines-core = "1.9.0"
@@ -24,6 +24,7 @@ aboutlibraries = "11.4.0"
 apollo = "4.1.0"
 apollo-adapters = "0.0.4"
 buildkonfig = "0.15.2"
+coil = "3.0.4"
 compose-pdf = "1.0.0"
 compose-webview-multiplatform = "1.9.40"
 highlights = "0.7.1"
@@ -48,6 +49,11 @@ androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecyc
 apollo-adapters-datetime = { group = "com.apollographql.adapters", name = "apollo-adapters-kotlinx-datetime", version.ref = "apollo-adapters" }
 apollo-normalized-cache = { group = "com.apollographql.apollo", name = "apollo-normalized-cache", version.ref = "apollo" }
 apollo-runtime = { group = "com.apollographql.apollo", name = "apollo-runtime", version.ref = "apollo" }
+
+# Coil
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-gif = { group = "io.coil-kt.coil3", name = "coil-gif", version.ref = "coil" }
+coil-network-ktor3 = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
 
 # Compose
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity-compose" }
@@ -82,7 +88,6 @@ voyager-transitions = { group = "cafe.adriel.voyager", name = "voyager-transitio
 
 # Misc
 aboutlibraries-core = { group = "com.mikepenz", name = "aboutlibraries-core", version.ref = "aboutlibraries" }
-compose-imageloader = { group = "io.github.qdsfdhvh", name = "image-loader", version = "1.6.4" }
 compose-pdf = { group = "dev.zt64", name = "compose-pdf", version.ref = "compose-pdf" }
 compose-webview-multiplatform = { group = "io.github.kevinnzou", name = "compose-webview-multiplatform", version.ref = "compose-webview-multiplatform" }
 highlights = { group = "dev.snipme", name = "highlights", version.ref = "highlights" }

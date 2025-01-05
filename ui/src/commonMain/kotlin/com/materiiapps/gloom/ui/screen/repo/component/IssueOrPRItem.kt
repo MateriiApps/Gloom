@@ -36,6 +36,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.type.PullRequestReviewDecision
 import com.materiiapps.gloom.gql.type.StatusState
@@ -43,7 +44,6 @@ import com.materiiapps.gloom.ui.component.Label
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.TimeUtils.getTimeSince
 import com.materiiapps.gloom.ui.util.parsedColor
-import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.datetime.Instant
@@ -150,8 +150,8 @@ fun IssueOrPRItem(
                             .clip(CircleShape)
                             .background(MaterialTheme.colorScheme.secondaryContainer)
                     ) {
-                        Image(
-                            painter = rememberImagePainter(avatarUrl),
+                        AsyncImage(
+                            model = avatarUrl,
                             contentDescription = null,
                             modifier = Modifier
                                 .size(23.dp)

@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose)
@@ -30,7 +27,6 @@ kotlin {
 
     jvmToolchain(17)
 
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
     compilerOptions {
         freeCompilerArgs.add("-Xexpect-actual-classes")
     }
@@ -48,12 +44,14 @@ kotlin {
                 implementation(compose.materialIconsExtended)
                 implementation(compose.runtime)
 
-                implementation(libs.compose.imageloader)
+                implementation(libs.coil.compose)
+                implementation(libs.coil.network.ktor3)
                 implementation(libs.compose.pdf)
                 implementation(libs.compose.webview.multiplatform)
                 implementation(libs.highlights)
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
+                implementation(libs.ktor.client.core)
                 implementation(libs.multiplatform.paging)
                 implementation(libs.multiplatform.paging.compose)
                 implementation(libs.zoomable)
@@ -66,6 +64,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(libs.androidx.core.ktx)
+                implementation(libs.coil.gif)
                 implementation(libs.koin.android)
             }
         }

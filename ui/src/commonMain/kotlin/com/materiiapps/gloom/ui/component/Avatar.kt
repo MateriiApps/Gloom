@@ -4,10 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import coil3.compose.AsyncImage
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.domain.manager.PreferenceManager
 import com.materiiapps.gloom.ui.util.getShapeForPref
-import com.seiko.imageloader.rememberImagePainter
 import org.koin.compose.koinInject
 
 /**
@@ -26,14 +26,13 @@ fun Avatar(
     modifier: Modifier = Modifier
 ) {
     val prefs: PreferenceManager = koinInject()
-    val painter = rememberImagePainter(url ?: "")
     val shape = when (type) {
         User.Type.ORG -> getShapeForPref(prefs.orgAvatarShape, prefs.orgAvatarRadius)
         User.Type.USER -> getShapeForPref(prefs.userAvatarShape, prefs.userAvatarRadius)
     }
 
-    Image(
-        painter = painter,
+    AsyncImage(
+        model = url,
         contentDescription = contentDescription,
         modifier = Modifier
             .clip(shape)

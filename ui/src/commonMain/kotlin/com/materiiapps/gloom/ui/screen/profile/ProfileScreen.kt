@@ -74,6 +74,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
+import coil3.compose.AsyncImage
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.api.model.ModelRepo
@@ -111,7 +112,6 @@ import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.widget.ReadMeCard
 import com.materiiapps.gloom.ui.widget.alert.LocalAlertController
 import com.materiiapps.gloom.util.Constants
-import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.painterResource
 import dev.icerock.moko.resources.compose.pluralStringResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -458,13 +458,8 @@ open class ProfileScreen(
                     .padding(5.dp)
             ) {
                 if (status.emoji != null)
-                    Image(
-                        painter = rememberImagePainter(
-                            EmojiUtil.emojis[status.emoji!!.replace(
-                                ":",
-                                ""
-                            )] ?: ""
-                        ),
+                    AsyncImage(
+                        model = EmojiUtil.emojis[status.emoji!!.replace(":", "")],
                         contentDescription = status.emoji,
                         modifier = Modifier
                             .clip(CircleShape)

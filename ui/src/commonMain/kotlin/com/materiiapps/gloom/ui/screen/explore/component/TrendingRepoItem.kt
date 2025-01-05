@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.domain.manager.TrendingPeriodPreference
@@ -37,7 +38,6 @@ import com.materiiapps.gloom.ui.component.LabeledIcon
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
 import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.parsedColor
-import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -60,8 +60,8 @@ fun TrendingRepoItem(
             onClick = onClick
         ) {
             if (trendingRepository.usesCustomOpenGraphImage) {
-                Image(
-                    painter = rememberImagePainter(trendingRepository.openGraphImageUrl),
+                AsyncImage(
+                    model = trendingRepository.openGraphImageUrl,
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier

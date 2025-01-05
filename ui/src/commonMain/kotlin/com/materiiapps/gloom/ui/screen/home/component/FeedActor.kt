@@ -19,9 +19,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import com.materiiapps.gloom.ui.component.BadgedItem
 import com.materiiapps.gloom.ui.util.thenIf
-import com.seiko.imageloader.rememberImagePainter
 
 @Composable
 fun FeedActor(
@@ -49,8 +49,8 @@ fun FeedActor(
             )
         } else null) {
             if (iconUrl != null)
-                Image(
-                    painter = rememberImagePainter(iconUrl),
+                AsyncImage(
+                    model = iconUrl,
                     contentDescription = iconDescription,
                     modifier = Modifier
                         .size(33.dp)

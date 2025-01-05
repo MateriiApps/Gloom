@@ -33,6 +33,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import coil3.compose.AsyncImage
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
 import com.materiiapps.gloom.gql.fragment.FeedRepository
@@ -44,7 +45,6 @@ import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.parsedColor
 import com.materiiapps.gloom.ui.util.pluralStringResource
-import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -69,8 +69,8 @@ fun FeedRepoCard(
             .fillMaxWidth()
     ) {
         if (repo.openGraphImageUrl.startsWith("https://repository-images.githubusercontent.com")) {
-            Image(
-                painter = rememberImagePainter(repo.openGraphImageUrl),
+            AsyncImage(
+                model = repo.openGraphImageUrl,
                 null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

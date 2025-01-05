@@ -1,6 +1,5 @@
 package com.materiiapps.gloom.ui.screen.repo.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,11 +23,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
+import coil3.compose.AsyncImage
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.RepoDetails
 import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
 import com.materiiapps.gloom.ui.util.navigate
-import com.seiko.imageloader.rememberImagePainter
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -70,8 +69,8 @@ fun ContributorsRow(
             contributors.nodes?.let {
                 items(it) { contributor ->
                     if (contributor != null)
-                        Image(
-                            painter = rememberImagePainter(contributor.contributorAvatar.avatarUrl),
+                        AsyncImage(
+                            model = contributor.contributorAvatar.avatarUrl,
                             contentDescription = stringResource(
                                 Res.strings.noun_users_avatar,
                                 contributor.contributorAvatar.login
