@@ -5,16 +5,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'ui/src/commonMain/moko-resources/base/plurals.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings_auth.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings_explore.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings_explorer.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings_home.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings_profile.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings_release.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings_repository.xml'
-      - 'ui/src/commonMain/moko-resources/base/strings_settings.xml'
+      - 'shared/src/commonMain/moko-resources/base/**'
       - '.github/workflows/crowdin.yml'
       - 'crowdin.yml'
   schedule:

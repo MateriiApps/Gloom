@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.aboutlibraries)
+    alias(libs.plugins.moko.resources)
 }
 
 android {
@@ -44,14 +45,21 @@ kotlin {
                 api(libs.apollo.runtime)
                 api(libs.apollo.normalized.cache)
                 api(libs.koin.core)
+                api(libs.moko.resources.compose)
                 api(libs.multiplatform.settings)
             }
         }
-        val androidMain by getting {
+
+        androidMain {
             dependencies {
                 implementation(libs.androidx.browser)
                 implementation(libs.androidx.core.ktx)
             }
         }
     }
+}
+
+multiplatformResources {
+    resourcesPackage = "com.materiiapps.gloom"
+    resourcesClassName = "Res"
 }

@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.moko.resources)
     alias(libs.plugins.aboutlibraries)
 }
 
@@ -55,7 +54,6 @@ kotlin {
                 api(libs.highlights)
                 api(libs.koin.core)
                 api(libs.koin.compose)
-                api(libs.moko.resources.compose)
                 api(libs.multiplatform.paging)
                 api(libs.multiplatform.paging.compose)
             }
@@ -69,9 +67,4 @@ kotlin {
             }
         }
     }
-}
-
-multiplatformResources {
-    resourcesPackage = "com.materiiapps.gloom"
-    resourcesClassName = "Res"
 }
