@@ -1,4 +1,4 @@
-package com.materiiapps.gloom.ui.util
+package com.materiiapps.gloom.util
 
 import androidx.compose.runtime.Immutable
 

@@ -14,13 +14,13 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import com.materiiapps.gloom.Res
+import com.materiiapps.gloom.domain.manager.enums.AppIcon
+import com.materiiapps.gloom.domain.manager.enums.AppIconCollection
 import com.materiiapps.gloom.ui.component.NavBarSpacer
 import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screen.settings.component.SettingsHeader
 import com.materiiapps.gloom.ui.screen.settings.component.appicon.AppIconSetting
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.AppIconsSettingsViewModel
-import com.materiiapps.gloom.ui.util.AppIcon
-import com.materiiapps.gloom.ui.util.AppIconCollection
 import dev.icerock.moko.resources.compose.stringResource
 
 class AppIconsSettingsScreen : Screen {
@@ -50,7 +50,7 @@ class AppIconsSettingsScreen : Screen {
                         item(appIcon) {
                             AppIconSetting(
                                 appIcon = appIcon,
-                                selected = viewModel.appIconSetter.currentIcon == appIcon,
+                                selected = viewModel.preferenceManager.appIcon == appIcon,
                                 onSelected = { viewModel.setIcon(appIcon) }
                             )
                         }

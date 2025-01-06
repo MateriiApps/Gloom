@@ -106,8 +106,8 @@ import com.materiiapps.gloom.ui.screen.profile.component.ContributionGraph
 import com.materiiapps.gloom.ui.screen.profile.viewmodel.ProfileViewModel
 import com.materiiapps.gloom.ui.screen.repo.component.RepoItem
 import com.materiiapps.gloom.ui.screen.settings.SettingsScreen
-import com.materiiapps.gloom.ui.util.EmojiUtil
-import com.materiiapps.gloom.ui.util.NumberFormatter
+import com.materiiapps.gloom.util.EmojiUtil
+import com.materiiapps.gloom.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.widget.ReadMeCard
 import com.materiiapps.gloom.ui.widget.alert.LocalAlertController

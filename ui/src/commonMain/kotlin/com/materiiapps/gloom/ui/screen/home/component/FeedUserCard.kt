@@ -32,9 +32,9 @@ import com.materiiapps.gloom.gql.fragment.FeedUser
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.LabeledIcon
 import com.materiiapps.gloom.ui.screen.profile.ProfileScreen
-import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
-import com.materiiapps.gloom.ui.util.pluralStringResource
+import com.materiiapps.gloom.util.NumberFormatter
+import com.materiiapps.gloom.util.pluralStringResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

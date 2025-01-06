@@ -7,8 +7,8 @@ import androidx.compose.runtime.LaunchedEffect
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.NavigatorDisposeBehavior
+import com.materiiapps.gloom.domain.manager.enums.Theme
 import com.materiiapps.gloom.domain.manager.PreferenceManager
-import com.materiiapps.gloom.domain.manager.Theme
 import com.materiiapps.gloom.ui.theme.GloomTheme
 import com.materiiapps.gloom.ui.transition.SlideTransition
 import com.materiiapps.gloom.ui.widget.alert.AlertController

@@ -1,6 +1,5 @@
 package com.materiiapps.gloom.ui.screen.home.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -41,10 +40,10 @@ import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.LabeledIcon
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
-import com.materiiapps.gloom.ui.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.parsedColor
-import com.materiiapps.gloom.ui.util.pluralStringResource
+import com.materiiapps.gloom.util.NumberFormatter
+import com.materiiapps.gloom.util.pluralStringResource
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable

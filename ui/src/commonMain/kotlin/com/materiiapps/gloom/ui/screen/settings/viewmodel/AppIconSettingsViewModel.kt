@@ -1,13 +1,14 @@
 package com.materiiapps.gloom.ui.screen.settings.viewmodel
 
 import cafe.adriel.voyager.core.model.ScreenModel
-import com.materiiapps.gloom.ui.util.AppIcon
-import com.materiiapps.gloom.ui.util.AppIconSetter
+import com.materiiapps.gloom.domain.manager.PreferenceManager
+import com.materiiapps.gloom.domain.manager.enums.AppIcon
+import com.materiiapps.gloom.ui.util.AppIconUtil
 
 class AppIconsSettingsViewModel(
-    val appIconSetter: AppIconSetter
-) : ScreenModel {
+    val preferenceManager: PreferenceManager
+): ScreenModel {
 
-    fun setIcon(appIcon: AppIcon) = appIconSetter.setIcon(appIcon)
+    fun setIcon(appIcon: AppIcon) = AppIconUtil.setIcon(appIcon)
 
 }

@@ -1,8 +1,6 @@
 package com.materiiapps.gloom.ui.screen.settings
 
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -35,7 +33,7 @@ import com.materiiapps.gloom.ui.component.toolbar.LargeToolbar
 import com.materiiapps.gloom.ui.screen.auth.LandingScreen
 import com.materiiapps.gloom.ui.screen.root.RootScreen
 import com.materiiapps.gloom.ui.util.navigate
-import com.materiiapps.gloom.ui.util.toImmutableList
+import com.materiiapps.gloom.util.toImmutableList
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
 import com.materiiapps.gloom.ui.screen.settings.component.account.AccountItem
 import com.materiiapps.gloom.ui.screen.settings.component.account.SignOutButton

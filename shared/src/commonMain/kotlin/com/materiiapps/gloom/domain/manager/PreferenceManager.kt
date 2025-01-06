@@ -4,6 +4,10 @@ import com.materiiapps.gloom.domain.manager.base.BasePreferenceManager
 import com.materiiapps.gloom.domain.manager.base.booleanPreference
 import com.materiiapps.gloom.domain.manager.base.enumPreference
 import com.materiiapps.gloom.domain.manager.base.intPreference
+import com.materiiapps.gloom.domain.manager.enums.AppIcon
+import com.materiiapps.gloom.domain.manager.enums.AvatarShape
+import com.materiiapps.gloom.domain.manager.enums.Theme
+import com.materiiapps.gloom.domain.manager.enums.TrendingPeriodPreference
 import com.materiiapps.gloom.util.SettingsProvider
 import com.materiiapps.gloom.util.supportsMonet
 
@@ -21,6 +25,8 @@ class PreferenceManager(provider: SettingsProvider) :
 
     var trendingPeriod by enumPreference("trending_period", Defaults.TRENDING_PERIOD)
 
+    var appIcon by enumPreference("app_icon", AppIcon.Main)
+
     init {
         if (userAvatarRadius > 50) userAvatarRadius = 50
         if (userAvatarRadius < 0) userAvatarRadius = 0
@@ -34,22 +40,4 @@ class PreferenceManager(provider: SettingsProvider) :
 
     }
 
-}
-
-enum class Theme {
-    SYSTEM,
-    LIGHT,
-    DARK
-}
-
-enum class AvatarShape {
-    Circle,
-    RoundedCorner,
-    Squircle
-}
-
-enum class TrendingPeriodPreference {
-    DAILY,
-    WEEKLY,
-    MONTHLY
 }

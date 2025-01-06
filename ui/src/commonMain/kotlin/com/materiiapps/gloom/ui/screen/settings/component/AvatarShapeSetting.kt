@@ -36,7 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
-import com.materiiapps.gloom.domain.manager.AvatarShape
+import com.materiiapps.gloom.domain.manager.enums.AvatarShape
 import com.materiiapps.gloom.ui.util.contentDescription
 import com.materiiapps.gloom.ui.util.getShapeForPref
 import dev.icerock.moko.resources.compose.stringResource

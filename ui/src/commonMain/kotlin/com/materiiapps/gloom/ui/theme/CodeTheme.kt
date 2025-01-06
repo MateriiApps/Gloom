@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.domain.manager.PreferenceManager
-import com.materiiapps.gloom.domain.manager.Theme
+import com.materiiapps.gloom.domain.manager.enums.Theme
 import dev.snipme.highlights.model.SyntaxTheme
 import dev.snipme.highlights.model.SyntaxThemes
 import org.koin.compose.koinInject

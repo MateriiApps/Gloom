@@ -1,6 +1,5 @@
 package com.materiiapps.gloom.ui.screen.explore.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,12 +30,12 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.api.dto.user.User
-import com.materiiapps.gloom.domain.manager.TrendingPeriodPreference
+import com.materiiapps.gloom.domain.manager.enums.TrendingPeriodPreference
 import com.materiiapps.gloom.gql.fragment.TrendingRepository
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.component.LabeledIcon
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
-import com.materiiapps.gloom.ui.util.NumberFormatter
+import com.materiiapps.gloom.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.parsedColor
 import dev.icerock.moko.resources.compose.stringResource
 

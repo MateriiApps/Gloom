@@ -7,7 +7,7 @@ import android.os.Build
 import android.os.IBinder
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.ToastManager
-import com.materiiapps.gloom.ui.util.getString
+import com.materiiapps.gloom.util.getString
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

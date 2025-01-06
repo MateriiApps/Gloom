@@ -22,7 +22,7 @@ import com.materiiapps.gloom.ui.screen.settings.component.SettingsButton
 import com.materiiapps.gloom.ui.screen.auth.LandingScreen
 import com.materiiapps.gloom.ui.screen.root.RootScreen
 import com.materiiapps.gloom.ui.util.navigate
-import com.materiiapps.gloom.ui.util.toImmutableList
+import com.materiiapps.gloom.util.toImmutableList
 import com.materiiapps.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject

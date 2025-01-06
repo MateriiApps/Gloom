@@ -41,7 +41,7 @@ import com.materiiapps.gloom.ui.component.ThinDivider
 import com.materiiapps.gloom.ui.screen.release.ReleaseScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.util.annotatingStringResource
-import com.materiiapps.gloom.ui.util.format
+import com.materiiapps.gloom.util.format
 import com.materiiapps.gloom.ui.widget.Markdown
 import com.materiiapps.gloom.util.ifNullOrBlank
 import dev.icerock.moko.resources.compose.stringResource

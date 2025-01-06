@@ -58,7 +58,7 @@ import com.materiiapps.gloom.ui.util.digits
 import com.materiiapps.gloom.ui.util.padLineNumber
 import com.materiiapps.gloom.ui.util.thenIf
 import com.materiiapps.gloom.ui.util.toDp
-import com.materiiapps.gloom.ui.util.toImmutableList
+import com.materiiapps.gloom.util.toImmutableList
 
 @Composable
 fun CodeViewer(

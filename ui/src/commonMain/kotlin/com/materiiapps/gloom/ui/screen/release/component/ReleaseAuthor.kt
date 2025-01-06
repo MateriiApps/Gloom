@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.sp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.ui.component.Avatar
 import com.materiiapps.gloom.ui.util.annotatingStringResource
-import com.materiiapps.gloom.ui.util.format
+import com.materiiapps.gloom.util.format
 import kotlinx.datetime.Instant
 
 @Composable

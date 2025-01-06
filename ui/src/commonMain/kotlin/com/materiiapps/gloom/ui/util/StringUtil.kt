@@ -8,6 +8,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.util.Constants
+import com.materiiapps.gloom.util.getString
 import dev.icerock.moko.resources.PluralsResource
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -82,15 +83,6 @@ fun getFileSizeString(size: Int): String {
         else -> getString(Res.strings.file_size_gigabytes, size / Constants.FILE_SIZES.GIGA)
     }
 }
-
-expect fun getString(res: StringResource): String
-
-expect fun getString(res: StringResource, vararg args: Any): String
-
-expect fun getPluralString(res: PluralsResource, count: Int, vararg args: Any): String
-
-@Composable
-expect fun pluralStringResource(res: PluralsResource, count: Int, vararg args: Any): String
 
 @Composable
 fun generateMdHtml(

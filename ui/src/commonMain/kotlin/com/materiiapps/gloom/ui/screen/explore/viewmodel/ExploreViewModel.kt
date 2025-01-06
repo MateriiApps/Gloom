@@ -10,7 +10,7 @@ import com.materiiapps.gloom.api.repository.GraphQLRepository
 import com.materiiapps.gloom.api.util.fold
 import com.materiiapps.gloom.api.util.ifSuccessful
 import com.materiiapps.gloom.domain.manager.PreferenceManager
-import com.materiiapps.gloom.domain.manager.TrendingPeriodPreference
+import com.materiiapps.gloom.domain.manager.enums.TrendingPeriodPreference
 import com.materiiapps.gloom.gql.fragment.TrendingRepository
 import com.materiiapps.gloom.gql.type.TrendingPeriod
 import kotlinx.coroutines.launch

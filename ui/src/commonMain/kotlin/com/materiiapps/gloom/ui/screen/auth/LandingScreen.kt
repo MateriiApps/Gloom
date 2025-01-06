@@ -38,7 +38,7 @@ import com.materiiapps.gloom.ui.component.LoadingButton
 import com.materiiapps.gloom.ui.icon.social.GitHub
 import com.materiiapps.gloom.ui.icon.Social
 import com.materiiapps.gloom.ui.screen.root.RootScreen
-import com.materiiapps.gloom.ui.util.toImmutableList
+import com.materiiapps.gloom.util.toImmutableList
 import com.materiiapps.gloom.ui.screen.auth.viewmodel.LandingViewModel
 import com.materiiapps.gloom.ui.screen.settings.component.account.AccountItem
 import com.materiiapps.gloom.util.LocalLinkHandler

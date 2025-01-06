@@ -1,8 +1,8 @@
 package com.materiiapps.gloom.ui.util
 
-actual class AppIconSetter {
+import com.materiiapps.gloom.domain.manager.enums.AppIcon
 
-    actual var currentIcon: AppIcon = AppIcon.Main
+actual object AppIconUtil {
 
     actual fun setIcon(appIcon: AppIcon) {
         // NO-OP

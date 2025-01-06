@@ -1,6 +1,5 @@
 package com.materiiapps.gloom.ui.screen.repo.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -42,7 +41,7 @@ import com.materiiapps.gloom.gql.type.PullRequestReviewDecision
 import com.materiiapps.gloom.gql.type.StatusState
 import com.materiiapps.gloom.ui.component.Label
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
-import com.materiiapps.gloom.ui.util.TimeUtils.getTimeSince
+import com.materiiapps.gloom.util.TimeUtils.getTimeSince
 import com.materiiapps.gloom.ui.util.parsedColor
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource

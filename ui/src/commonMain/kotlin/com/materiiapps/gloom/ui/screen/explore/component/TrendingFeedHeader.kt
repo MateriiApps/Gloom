@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.domain.manager.PreferenceManager
-import com.materiiapps.gloom.domain.manager.TrendingPeriodPreference
+import com.materiiapps.gloom.domain.manager.enums.TrendingPeriodPreference
 import com.materiiapps.gloom.ui.component.filter.ChoiceInputChip
 import dev.icerock.moko.resources.compose.stringResource
 

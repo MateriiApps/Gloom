@@ -37,7 +37,7 @@ import com.materiiapps.gloom.ui.icon.Custom
 import com.materiiapps.gloom.ui.icon.custom.Fork
 import com.materiiapps.gloom.ui.screen.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.gloomColorScheme
-import com.materiiapps.gloom.ui.util.NumberFormatter
+import com.materiiapps.gloom.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
 import com.materiiapps.gloom.ui.util.parsedColor
 import com.materiiapps.gloom.ui.util.thenIf

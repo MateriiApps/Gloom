@@ -3,22 +3,21 @@ package com.materiiapps.gloom.ui.util
 import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
-import com.materiiapps.gloom.domain.manager.base.BasePreferenceManager
-import com.materiiapps.gloom.domain.manager.base.enumPreference
-import com.materiiapps.gloom.util.SettingsProvider
+import com.materiiapps.gloom.domain.manager.PreferenceManager
+import com.materiiapps.gloom.domain.manager.enums.AppIcon
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-actual class AppIconSetter(
-    private val context: Context,
-    settingsProvider: SettingsProvider
-): BasePreferenceManager(settingsProvider) {
+actual object AppIconUtil: KoinComponent {
 
-    actual var currentIcon by enumPreference("app_icon", AppIcon.Main)
+    private val context: Context by inject()
+    private val prefs: PreferenceManager by inject()
 
     actual fun setIcon(appIcon: AppIcon) {
         val pm = context.packageManager
 
         pm.setComponentEnabledSetting(
-            ComponentName(context, currentIcon.aliasName),
+            ComponentName(context, prefs.appIcon.aliasName),
             PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
             PackageManager.DONT_KILL_APP
         )
@@ -29,7 +28,7 @@ actual class AppIconSetter(
             PackageManager.DONT_KILL_APP
         )
 
-        currentIcon = appIcon
+        prefs.appIcon = appIcon
     }
 
 }
