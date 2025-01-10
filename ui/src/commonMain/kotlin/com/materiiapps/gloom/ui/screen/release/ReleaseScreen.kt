@@ -44,7 +44,7 @@ import com.materiiapps.gloom.gql.fragment.ReleaseDetails
 import com.materiiapps.gloom.ui.component.BackButton
 import com.materiiapps.gloom.ui.component.ThinDivider
 import com.materiiapps.gloom.ui.screen.release.viewmodel.ReleaseViewModel
-import com.materiiapps.gloom.ui.widget.Markdown
+import com.materiiapps.gloom.ui.widget.markdown.Markdown
 import com.materiiapps.gloom.ui.widget.alert.LocalAlertController
 import com.materiiapps.gloom.ui.widget.reaction.ReactionRow
 import com.materiiapps.gloom.ui.screen.release.component.ReleaseAsset
@@ -142,7 +142,7 @@ class ReleaseScreen(
                         if (description.isNotBlank()) {
                             item {
                                 Markdown(
-                                    text = description,
+                                    html = description,
                                     modifier = Modifier.padding(horizontal = 10.dp)
                                 )
                             }

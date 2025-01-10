@@ -42,7 +42,7 @@ import com.materiiapps.gloom.ui.screen.release.ReleaseScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.util.annotatingStringResource
 import com.materiiapps.gloom.util.format
-import com.materiiapps.gloom.ui.widget.Markdown
+import com.materiiapps.gloom.ui.widget.markdown.Markdown
 import com.materiiapps.gloom.util.ifNullOrBlank
 import dev.icerock.moko.resources.compose.stringResource
 
@@ -129,7 +129,7 @@ fun LatestReleaseItem(
                         .padding(horizontal = 10.dp)
                 ) {
                     Markdown(
-                        text = description,
+                        html = description,
                         modifier = Modifier
                             .heightIn(max = 300.dp)
                             .onGloballyPositioned {

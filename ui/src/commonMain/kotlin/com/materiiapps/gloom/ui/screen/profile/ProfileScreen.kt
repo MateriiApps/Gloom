@@ -109,7 +109,7 @@ import com.materiiapps.gloom.ui.screen.settings.SettingsScreen
 import com.materiiapps.gloom.util.EmojiUtil
 import com.materiiapps.gloom.util.NumberFormatter
 import com.materiiapps.gloom.ui.util.navigate
-import com.materiiapps.gloom.ui.widget.ReadMeCard
+import com.materiiapps.gloom.ui.widget.markdown.ReadMeCard
 import com.materiiapps.gloom.ui.widget.alert.LocalAlertController
 import com.materiiapps.gloom.util.Constants
 import dev.icerock.moko.resources.compose.painterResource

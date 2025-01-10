@@ -1,6 +1,5 @@
 package com.materiiapps.gloom.ui.screen.home.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,8 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -23,21 +20,12 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -60,7 +48,7 @@ import com.materiiapps.gloom.ui.screen.repo.RepoScreen
 import com.materiiapps.gloom.ui.theme.DarkGreen
 import com.materiiapps.gloom.ui.util.annotatingStringResource
 import com.materiiapps.gloom.ui.util.navigate
-import com.materiiapps.gloom.ui.widget.Markdown
+import com.materiiapps.gloom.ui.widget.markdown.TruncatedMarkdown
 import com.materiiapps.gloom.util.ifNullOrBlank
 import dev.icerock.moko.resources.compose.stringResource
 
@@ -181,44 +169,12 @@ fun ReleaseCard(
             }
 
             release.descriptionHTML?.let { description ->
-                val density = LocalDensity.current
-                var height by remember {
-                    mutableStateOf(0.dp)
-                }
-
-                Box(
-                    contentAlignment = Alignment.BottomStart,
+                TruncatedMarkdown(
+                    html = description,
                     modifier = Modifier
+                        .padding(16.dp)
                         .fillMaxWidth()
-                ) {
-                    Markdown(
-                        text = description,
-                        modifier = Modifier
-                            .heightIn(max = 300.dp)
-                            .padding(horizontal = 10.dp)
-                            .onGloballyPositioned {
-                                height = with(density) {
-                                    it.size.height.toDp()
-                                }
-                            }
-                    )
-                    if (height >= 300.dp) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.BottomCenter)
-                                .height(300.dp)
-                                .background(
-                                    Brush.verticalGradient(
-                                        listOf(
-                                            Color.Transparent,
-                                            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
-                                        )
-                                    )
-                                )
-                        )
-                    }
-                }
+                )
             }
         }
 

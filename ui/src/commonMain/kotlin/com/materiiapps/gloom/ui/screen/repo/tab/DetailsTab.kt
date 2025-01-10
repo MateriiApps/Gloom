@@ -49,7 +49,7 @@ import com.materiiapps.gloom.ui.screen.repo.component.ContributorsRow
 import com.materiiapps.gloom.ui.screen.repo.component.LanguageMakeup
 import com.materiiapps.gloom.ui.screen.repo.viewmodel.RepoDetailsViewModel
 import com.materiiapps.gloom.ui.util.navigate
-import com.materiiapps.gloom.ui.widget.Markdown
+import com.materiiapps.gloom.ui.widget.markdown.Markdown
 import com.materiiapps.gloom.util.NumberFormatter
 import com.materiiapps.gloom.util.pluralStringResource
 import dev.icerock.moko.resources.compose.stringResource
@@ -194,7 +194,7 @@ class DetailsTab(
                             modifier = Modifier.padding(16.dp)
                         )
                         Markdown(
-                            text = details.readme!!.contentHTML.toString(),
+                            html = details.readme!!.contentHTML.toString(),
                             Modifier.padding(horizontal = 16.dp)
                         )
                     }

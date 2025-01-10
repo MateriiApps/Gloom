@@ -19,11 +19,19 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.materiiapps.gloom.ui.widget.Markdown
 
+/**
+ * Version of the [Markdown] component that limits
+ * the height and applies a fade effect
+ *
+ * @param html The rendered HTML, returned from the GitHub API
+ * @param modifier The [Modifier] used to style this [TruncatedMarkdown] component
+ * @param truncatedHeight The max height for the markdown, if the markdown exceeds this
+ * then a fade effect will be shown
+ */
 @Composable
 fun TruncatedMarkdown(
-    text: String,
+    html: String,
     modifier: Modifier = Modifier,
     truncatedHeight: Dp = 300.dp
 ) {
@@ -35,7 +43,7 @@ fun TruncatedMarkdown(
         modifier = modifier
     ) {
         Markdown(
-            text = text,
+            html = html,
             modifier = Modifier
                 .heightIn(max = truncatedHeight)
                 .onGloballyPositioned {

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html data-color-mode="$theme$" lang="en">
+    <head>
+        <title>Markdown</title>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
+        <meta name="HandheldFriendly" content="true" />
+        <link rel="stylesheet" type="text/css" href="file:///android_asset/markdown/markdown.css" />
+
+        <style>
+            /* Colors are injected in order to sync with device theming */
+            :root {
+                --primary: $primary$;
+                --onSurface: $onSurface$;
+            }
+        </style>
+    </head>
+    <body>
+        <main id="content" class="markdown-body"></main>
+        <script src="file:///android_asset/markdown/markdown.js"></script>
+    </body>
+</html>

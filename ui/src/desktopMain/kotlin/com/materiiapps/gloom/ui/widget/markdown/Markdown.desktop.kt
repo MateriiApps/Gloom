@@ -1,4 +1,4 @@
-package com.materiiapps.gloom.ui.widget
+package com.materiiapps.gloom.ui.widget.markdown
 
 import com.multiplatform.webview.web.NativeWebView
 

@@ -12,7 +12,7 @@ import com.materiiapps.gloom.Res
 import com.materiiapps.gloom.gql.fragment.RawMarkdownFile
 import com.materiiapps.gloom.gql.fragment.RepoFile
 import com.materiiapps.gloom.ui.component.ErrorMessage
-import com.materiiapps.gloom.ui.widget.Markdown
+import com.materiiapps.gloom.ui.widget.markdown.Markdown
 import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
@@ -53,7 +53,7 @@ fun MarkdownFileViewer(
                         .padding(16.dp)
                 ) {
                     Markdown(
-                        text = it,
+                        html = it,
                         modifier = Modifier.fillMaxSize()
                     )
                 }

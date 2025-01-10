@@ -159,7 +159,7 @@ fun PullRequestCard(
 
             if (pullRequest.bodyHTML.isNotBlank()) {
                 TruncatedMarkdown(
-                    text = pullRequest.bodyHTML,
+                    html = pullRequest.bodyHTML,
                     modifier = Modifier
                         .padding(16.dp)
                         .fillMaxWidth()

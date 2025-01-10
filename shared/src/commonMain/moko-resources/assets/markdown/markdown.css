@@ -1,0 +1,59 @@
+/* Do not hardcode colors here */
+
+* {
+    box-sizing: border-box;
+}
+
+/*
+   Supports the old way of doing theme-specific images
+
+   From the GitHub Android app
+*/
+:root[data-color-mode="dark"] .markdown-body a[href$="#gh-light-mode-only"] {
+    display: none;
+}
+
+:root[data-color-mode="light"] .markdown-body a[href$="#gh-dark-mode-only"] {
+    display: none;
+}
+
+/*
+    Web views hold on to their hover event if the app is backgrounded. We need to disable custom hover effects by setting a
+    class on body and overriding them in CSS when we apply this workaround. When the mouse enters the web view again, we
+    can disable our override.
+
+    From the GitHub Android app
+*/
+body.hover-override a:not([target]) {
+    background-color: transparent;
+    transform: scale(1);
+}
+
+input:disabled {
+    touch-action: none;
+}
+
+/* Our styles start here */
+
+body {
+    color: var(--onSurface);
+}
+
+themed-picture,
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--primary);
+}
+
+a.anchor {
+    display: none;
+}
+
+.highlight pre,
+pre {
+    word-wrap: normal;
+    white-space: pre;
+}

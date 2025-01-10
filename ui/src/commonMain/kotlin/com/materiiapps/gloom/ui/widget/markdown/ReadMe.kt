@@ -1,4 +1,4 @@
-package com.materiiapps.gloom.ui.widget
+package com.materiiapps.gloom.ui.widget.markdown
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -89,12 +89,12 @@ fun ReadMeCard(
             modifier = if (isCollapsed) Modifier.height(160.dp) else Modifier.wrapContentHeight()
         ) {
             Markdown(
-                text,
-                modifier = if (isCollapsed)
-                    Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)
-                else
-                    Modifier.padding(16.dp)
+                html = text,
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp, bottom = if (isCollapsed) 0.dp else 16.dp)
             )
+
             if (isCollapsed) Box(
                 modifier = Modifier
                     .fillMaxWidth()
