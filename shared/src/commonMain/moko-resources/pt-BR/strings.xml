@@ -42,7 +42,7 @@
     <string name="noun_other">Outro</string>
     <string name="noun_commit">Commit</string>
     <string name="noun_license">Licença</string>
-    <string name="noun_users_avatar">%s\'s avatar</string>
+    <string name="noun_users_avatar">Avatar de %s</string>
     <!--          -->
     <!-- Issues and PRs -->
     <string name="msg_issue_untitled">Issue sem título</string>
