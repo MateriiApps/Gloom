@@ -1,1 +1,1 @@
-com.materiiapps.gloom.gql.*
+dev.materii.gloom.gql.*

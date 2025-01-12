@@ -1,19 +1,19 @@
-package com.materiiapps.gloom
+package dev.materii.gloom
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import com.materiiapps.gloom.di.httpModule
-import com.materiiapps.gloom.di.module.loggerModule
-import com.materiiapps.gloom.di.module.managerModule
-import com.materiiapps.gloom.di.module.platformModule
-import com.materiiapps.gloom.di.module.settingsModule
-import com.materiiapps.gloom.di.module.viewModelModule
-import com.materiiapps.gloom.di.repositoryModule
-import com.materiiapps.gloom.di.serviceModule
-import com.materiiapps.gloom.ui.App
-import com.materiiapps.gloom.ui.screen.auth.LandingScreen
-import com.materiiapps.gloom.util.LinkHandler
-import com.materiiapps.gloom.util.VersionName
+import dev.materii.gloom.di.httpModule
+import dev.materii.gloom.di.module.loggerModule
+import dev.materii.gloom.di.module.managerModule
+import dev.materii.gloom.di.module.platformModule
+import dev.materii.gloom.di.module.settingsModule
+import dev.materii.gloom.di.module.viewModelModule
+import dev.materii.gloom.di.repositoryModule
+import dev.materii.gloom.di.serviceModule
+import dev.materii.gloom.ui.App
+import dev.materii.gloom.ui.screen.auth.LandingScreen
+import dev.materii.gloom.util.LinkHandler
+import dev.materii.gloom.util.VersionName
 import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.context.startKoin
 
@@ -40,7 +40,7 @@ fun main(args: Array<String>) {
         ) {
             App(
                 startingScreen = LandingScreen(),
-                linkHandler = LinkHandler()
+                linkHandler = dev.materii.gloom.util.LinkHandler()
             )
         }
     }

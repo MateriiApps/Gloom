@@ -10,14 +10,14 @@ plugins {
 
 android {
     compileSdk = 35
-    namespace = "com.materiiapps.gloom"
+    namespace = "dev.materii.gloom"
 
     defaultConfig {
-        applicationId = "com.materiiapps.gloom"
+        applicationId = "dev.materii.gloom"
         minSdk = 21
         targetSdk = 35
-        versionCode = 10000
-        versionName = "1.0.0"
+        versionCode = 100
+        versionName = "0.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,9 +32,14 @@ android {
                 )
             )
         }
+
         named("debug") {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
+        }
+
+        named("release") {
+            versionNameSuffix = "-alpha" // TODO: Use build flavor
         }
     }
 

@@ -70,7 +70,7 @@ class Gloom {
      * Load the markdown html into our template, this should
      * only be called after content has loaded in the webview
      *
-     * @see com.materiiapps.gloom.ui.widget.markdown.Markdown in the ui module
+     * @see dev.materii.gloom.ui.widget.markdown.Markdown in the ui module
      *
      * @param {string} id Unique UUID for this markdown WebView, generated from the app
      * @param {string} html The rendered markdown HTML

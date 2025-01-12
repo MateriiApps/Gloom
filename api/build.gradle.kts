@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "com.materiiapps.gloom.api"
+    namespace = "dev.materii.gloom.api"
 
     defaultConfig {
         compileSdk = 35
@@ -41,7 +41,7 @@ kotlin {
 
 apollo {
     service("service") {
-        packageName = "com.materiiapps.gloom.gql"
+        packageName = "dev.materii.gloom.gql"
 
         introspection {
             endpointUrl = "https://api.github.com/graphql"
@@ -51,12 +51,12 @@ apollo {
                 "Authorization" to "Bearer ${System.getenv("GLOOM_INTROSPECTION_TOKEN")}",
                 "User-Agent" to "Apollo GQL Introspection"
             )
-            schemaFile = file("src/commonMain/graphql/com/materiiapps/gloom/gql/schemas/github.schema.graphqls")
+            schemaFile = file("src/commonMain/graphql/dev/materii/gloom/gql/schemas/github.schema.graphqls")
         }
 
         mapScalarToKotlinString("URI")
         mapScalarToKotlinString("HTML")
-        mapScalar("Date", "kotlinx.datetime.Instant", "com.materiiapps.gloom.api.util.DateAdapter")
+        mapScalar("Date", "kotlinx.datetime.Instant", "dev.materii.gloom.api.util.DateAdapter")
         mapScalar(
             "DateTime",
             "kotlinx.datetime.Instant",
@@ -66,7 +66,7 @@ apollo {
 }
 
 buildkonfig {
-    packageName = "com.materiiapps.gloom.api"
+    packageName = "dev.materii.gloom.api"
     objectName = "BuildConfig"
 
     defaultConfigs {

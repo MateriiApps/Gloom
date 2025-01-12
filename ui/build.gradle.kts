@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.materiiapps.gloom.ui"
+    namespace = "dev.materii.gloom.ui"
 
     defaultConfig {
         compileSdk = 35

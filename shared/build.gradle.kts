@@ -12,7 +12,7 @@ plugins {
 }
 
 android {
-    namespace = "com.materiiapps.gloom.shared"
+    namespace = "dev.materii.gloom.shared"
 
     defaultConfig {
         compileSdk = 35
@@ -61,6 +61,6 @@ kotlin {
 }
 
 multiplatformResources {
-    resourcesPackage = "com.materiiapps.gloom"
+    resourcesPackage = "dev.materii.gloom"
     resourcesClassName = "Res"
 }

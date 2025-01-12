@@ -28,12 +28,12 @@ kotlin {
 }
 
 compose.desktop.application {
-    mainClass = "com.materiiapps.gloom.GloomKt"
+    mainClass = "dev.materii.gloom.GloomKt"
 
     nativeDistributions {
         packageName = "Gloom"
         description = "GitHub reimagined with Material You"
-        packageVersion = "1.0.0"
+        packageVersion = "0.1.0"
 
         modules("java.base", "java.instrument", "java.management", "java.naming", "java.prefs", "java.sql", "jdk.unsupported", "jdk.xml.dom")
 
@@ -54,7 +54,7 @@ compose.desktop.application {
 }
 
 buildkonfig {
-    packageName = "com.materiiapps.gloom"
+    packageName = "dev.materii.gloom"
     objectName = "BuildConfig"
 
     defaultConfigs {

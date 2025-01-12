@@ -9,3 +9,4 @@ files:
     ignore:
       - shared/src/commonMain/moko-resources/images/
       - shared/src/commonMain/moko-resources/files/
+      - shared/src/commonMain/moko-resources/assets/
