@@ -1,7 +1,7 @@
 
 <div align="center">
 
-  <img src="https://user-images.githubusercontent.com/44992537/197398356-81d33bbf-35bc-43a6-96c1-002f1b1923cf.png" alt="Gloom logo" width="200px" />
+  <img src=".github/images/logo.png" alt="Gloom logo" width="200px" />
   
   # Gloom
 
@@ -16,17 +16,15 @@
   <br>
   
   ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MateriiApps/Gloom?logo=github&logoColor=%23fff&style=for-the-badge)
-  ![Line count](https://img.shields.io/tokei/lines/github/MateriiApps/Gloom?logo=github&logoColor=%23fff&style=for-the-badge)
   ![GitHub top language](https://img.shields.io/github/languages/top/MateriiApps/Gloom?style=for-the-badge)
 </div>
 
 
 ## Screenshots
 
-
-| Profile | Starred | Repositories | Organizations |
-| --------------- | --------------- | --------------- | --------------- |
-| <img src="github/images/Profile.png" width="200px"> | <img src="github/images/Starred.png" width="200px"> | <img src="github/images/Repositories.png" width="200px"> | <img src="github/images/Organizations.png" width="200px"> |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <picture width="200px"><source media="prefers-color-scheme: dark" href=".github/images/Home.png" /><source media="prefers-color-scheme: light" href=".github/images/Home-Light.png" />Picture not supported</picture>         | <picture width="200px"><source media="prefers-color-scheme: dark" href=".github/images/Explore.png" /><source media="prefers-color-scheme: light" href=".github/images/Explore-Light.png" />Picture not supported</picture> |
+| <picture width="200px"><source media="prefers-color-scheme: dark" href=".github/images/Profile.png" /><source media="prefers-color-scheme: light" href=".github/images/Profile-Light.png" />Picture not supported</picture>   |                                                                                                                                                                                                                             |
 
 ## Roadmap
 
