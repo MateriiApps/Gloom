@@ -17,14 +17,12 @@
   
   ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MateriiApps/Gloom?logo=github&logoColor=%23fff&style=for-the-badge)
   ![GitHub top language](https://img.shields.io/github/languages/top/MateriiApps/Gloom?style=for-the-badge)
-</div>
 
-
-## Screenshots
 |                                                                                                                                                                                                                                     |                                                                                                                                                                                                                                     |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <picture width="200px"><source media="(prefers-color-scheme: dark)" srcset=".github/images/Home.png" /><source media="(prefers-color-scheme: light)" srcset=".github/images/Home-Light.png" />Picture not supported</picture>       | <picture width="200px"><source media="(prefers-color-scheme: dark)" srcset=".github/images/Explore.png" /><source media="(prefers-color-scheme: light)" srcset=".github/images/Explore-Light.png" />Picture not supported</picture> |
-| <picture width="200px"><source media="(prefers-color-scheme: dark)" srcset=".github/images/Profile.png" /><source media="(prefers-color-scheme: light)" srcset=".github/images/Profile-Light.png" />Picture not supported</picture> |                                                                                                                                                                                                                                     |
+| <picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/Home.png" /><source media="(prefers-color-scheme: light)" srcset=".github/images/Home-Light.png" /><img src=".github/images/Home.png" width="200px"/></picture>       | <picture width="200px"><source media="(prefers-color-scheme: dark)" srcset=".github/images/Explore.png" /><source media="(prefers-color-scheme: light)" srcset=".github/images/Explore-Light.png" /><img src=".github/images/Explore.png" width="200px"/></picture> |
+| <picture width="200px"><source media="(prefers-color-scheme: dark)" srcset=".github/images/Profile.png" /><source media="(prefers-color-scheme: light)" srcset=".github/images/Profile-Light.png" /><img src=".github/images/Profile.png" width="200px"/></picture> |                                                                                                                                                                                                                                     |
+</div>
 
 ## Roadmap
 
