@@ -39,8 +39,8 @@ body {
     color: var(--onSurface);
 }
 
-themed-picture,
-img {
+img,
+themed-picture {
     max-width: 100%;
 }
 
@@ -52,8 +52,66 @@ a.anchor {
     display: none;
 }
 
-.highlight pre,
-pre {
+pre,
+.highlight pre {
     word-wrap: normal;
     white-space: pre;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body details {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Table */
+/* This is based on the table design featured in https://m3.material.io/ */
+
+.markdown-body table a {
+    word-break: normal;
+}
+
+table, table *, pre {
+    touch-action: pan-x;
+}
+
+.markdown-body table {
+    display: block;
+    overflow: auto;
+
+    width: fit-content; /* Makes sure the table border doesn't extend further than the content */
+    max-width: 100%;
+
+    border-radius: 16px;
+    border: 0.5px solid var(--outline);
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.markdown-body table td,
+.markdown-body table th { /* All table cells */
+    padding: 12px 18px;
+    border-top: 0.5px solid var(--outline);
+    border-right: 0.5px solid var(--outline);
+}
+
+.markdown-body thead:first-child tr:first-child th,
+.markdown-body tbody:first-child tr:first-child td {
+    border-top: 0; /* Prevents cell borders at the top of the table from making the border thicker */
+}
+
+.markdown-body tr :last-child {
+    border-right: 0; /* Prevents cell borders at the end of the table from making the border thicker */
+}
+
+.markdown-body thead th { /* Header table cells */
+    background-color: var(--surfaceContainer);
+    color: var(--onSurfaceVariant);
+    font-weight: 500;
 }

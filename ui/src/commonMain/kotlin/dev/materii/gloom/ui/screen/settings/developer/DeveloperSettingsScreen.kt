@@ -14,10 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import cafe.adriel.voyager.core.screen.Screen
-import dev.materii.gloom.Res
-import dev.materii.gloom.ui.screen.settings.component.SettingsCategory
-import dev.materii.gloom.ui.component.toolbar.LargeToolbar
 import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.Res
+import dev.materii.gloom.ui.component.toolbar.LargeToolbar
+import dev.materii.gloom.ui.screen.settings.component.SettingsCategory
 
 class DeveloperSettingsScreen : Screen {
 

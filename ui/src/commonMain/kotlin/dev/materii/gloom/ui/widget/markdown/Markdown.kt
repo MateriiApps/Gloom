@@ -12,16 +12,16 @@ import androidx.compose.ui.graphics.luminance
 import com.apollographql.apollo.api.http.internal.urlEncode
 import com.benasher44.uuid.uuid4
 import dev.materii.gloom.Res
-import dev.materii.gloom.ui.util.hexCode
 import dev.materii.gloom.ui.util.markdown.MarkdownJSMessageHandler
 import dev.materii.gloom.ui.util.markdown.MarkdownRequestInterceptor
-import dev.materii.gloom.util.LocalLinkHandler
 import com.multiplatform.webview.jsbridge.rememberWebViewJsBridge
 import com.multiplatform.webview.web.NativeWebView
 import com.multiplatform.webview.web.WebView
 import com.multiplatform.webview.web.rememberWebViewNavigator
 import com.multiplatform.webview.web.rememberWebViewStateWithHTMLData
 import dev.icerock.moko.resources.compose.readTextAsState
+import dev.materii.gloom.ui.util.markdown.MarkdownUtil
+import dev.materii.gloom.util.LocalLinkHandler
 
 private var MarkdownTemplate = "" // Cache the loaded markdown html template
 private val PrefersLightRx   = "prefers-color-scheme:\\s*light".toRegex(RegexOption.IGNORE_CASE)
@@ -41,7 +41,7 @@ fun Markdown(
     html: String,
     modifier: Modifier
 ) {
-    val linkHandler = dev.materii.gloom.util.LocalLinkHandler.current
+    val linkHandler = LocalLinkHandler.current
 
     val messageHandler = MarkdownJSMessageHandler()
     val interceptor = MarkdownRequestInterceptor(linkHandler)
@@ -73,16 +73,16 @@ fun Markdown(
         MarkdownTemplate = file ?: ""; MarkdownTemplate
     }
 
-    val state = rememberWebViewStateWithHTMLData(
-        data = template // Insert theme colors
-            .replace("\$primary$", "#" + MaterialTheme.colorScheme.primary.hexCode)
-            .replace("\$onSurface$", "#" + MaterialTheme.colorScheme.onSurface.hexCode)
-            .replace("\$theme$", if (isLight) "light" else "dark") // Support the old way of theming images
-    )
+    val colorScheme = MaterialTheme.colorScheme
+    val state = rememberWebViewStateWithHTMLData(data = MarkdownUtil.injectAppTheme(template, isLight, colorScheme))
 
     LaunchedEffect(state.isLoading) {
         // See shared/src/commonMain/moko-resources/assets/markdown/markdown.js
         if (!state.isLoading) navigator.loadUrl("javascript:gloom.load(\"$id\", \"$markdown\")")
+    }
+
+    LaunchedEffect(markdown) {
+        navigator.loadUrl("javascript:gloom.load(\"$id\", \"$markdown\")")
     }
 
     WebView(
