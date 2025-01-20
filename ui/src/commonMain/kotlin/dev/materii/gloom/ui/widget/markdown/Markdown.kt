@@ -20,6 +20,7 @@ import com.multiplatform.webview.web.WebView
 import com.multiplatform.webview.web.rememberWebViewNavigator
 import com.multiplatform.webview.web.rememberWebViewStateWithHTMLData
 import dev.icerock.moko.resources.compose.readTextAsState
+import dev.materii.gloom.ui.theme.CodeTheme
 import dev.materii.gloom.ui.util.markdown.MarkdownUtil
 import dev.materii.gloom.util.LocalLinkHandler
 
@@ -74,7 +75,7 @@ fun Markdown(
     }
 
     val colorScheme = MaterialTheme.colorScheme
-    val state = rememberWebViewStateWithHTMLData(data = MarkdownUtil.injectAppTheme(template, isLight, colorScheme))
+    val state = rememberWebViewStateWithHTMLData(data = MarkdownUtil.injectAppTheme(template, isLight, colorScheme, CodeTheme.getDefault()))
 
     LaunchedEffect(state.isLoading) {
         // See shared/src/commonMain/moko-resources/assets/markdown/markdown.js

@@ -115,3 +115,39 @@ table, table *, pre {
     color: var(--onSurfaceVariant);
     font-weight: 500;
 }
+
+/* Code */
+
+pre, code, kbd {
+    font-size: 1em;
+    font-family: monospace;
+}
+
+.markdown-body code, /* Inline code blocks */
+.markdown-body tt {
+    padding: .2em .4em;
+    margin: 0;
+    background-color: var(--surfaceContainerHigh);
+    border-radius: 6px;
+}
+
+.markdown-body code br,
+.markdown-body tt br { /* Hide horizontal divider in code blocks */
+    display: none;
+}
+
+.markdown-body .highlight pre, /* Syntax highlighted code blocks */
+.markdown-body pre {
+    padding: 16px;
+    overflow: auto;
+    line-height: 1.45;
+    background-color: var(--surfaceContainer);
+    border-radius: 8px
+}
+
+.markdown-body pre > code { /* Reset styles meant for inline code when inside a syntax highlighted block */
+    padding: 0;
+    margin: 0;
+    background-color: none;
+    border-radius: 0;
+}

@@ -1,6 +1,7 @@
 package dev.materii.gloom.ui.util.markdown
 
 import androidx.compose.material3.ColorScheme
+import dev.materii.gloom.ui.theme.CodeTheme
 import dev.materii.gloom.ui.util.hexCode
 
 object MarkdownUtil {
@@ -17,7 +18,8 @@ object MarkdownUtil {
     fun injectAppTheme(
         markdownTemplate: String,
         isLight: Boolean,
-        colorScheme: ColorScheme
+        colorScheme: ColorScheme,
+        codeTheme: CodeTheme
     ): String {
         return markdownTemplate // Insert theme colors
             .replace("\$primary$", "#" + colorScheme.primary.hexCode)
@@ -63,6 +65,17 @@ object MarkdownUtil {
             .replace("\$surfaceContainerHighest$", "#" + colorScheme.surfaceContainerHighest.hexCode)
             .replace("\$surfaceContainerLow$", "#" + colorScheme.surfaceContainerLow.hexCode)
             .replace("\$surfaceContainerLowest$", "#" + colorScheme.surfaceContainerLowest.hexCode)
+
+            // Code
+            .replace("\$code$", "#" + codeTheme.code.hexCode)
+            .replace("\$keyword$", "#" + codeTheme.keyword.hexCode)
+            .replace("\$string$", "#" + codeTheme.string.hexCode)
+            .replace("\$literal$", "#" + codeTheme.literal.hexCode)
+            .replace("\$comment$", "#" + codeTheme.comment.hexCode)
+            .replace("\$metadata$", "#" + codeTheme.metadata.hexCode)
+            .replace("\$multilineComment$", "#" + codeTheme.multilineComment.hexCode)
+            .replace("\$punctuation$", "#" + codeTheme.punctuation.hexCode)
+            .replace("\$mark$", "#" + codeTheme.mark.hexCode)
 
             .replace("\$theme$", if (isLight) "light" else "dark") // Support the old way of theming images
     }
