@@ -44,20 +44,6 @@ themed-picture {
     max-width: 100%;
 }
 
-a {
-    color: var(--primary);
-}
-
-a.anchor {
-    display: none;
-}
-
-pre,
-.highlight pre {
-    word-wrap: normal;
-    white-space: pre;
-}
-
 .markdown-body p,
 .markdown-body blockquote,
 .markdown-body ul,
@@ -68,7 +54,44 @@ pre,
 .markdown-body details {
     margin-top: 0;
     margin-bottom: 1rem;
+    line-height: 1.45;
 }
+
+
+/* Misc. */
+
+.markdown-body hr { /* Horizontal Divider */
+    background-color: var(--outline);
+    opacity: 0.3;
+    height: 0.18em;
+    border: none;
+    border-radius: 100000px; /* This looks silly but just makes the divider have rounded ends */
+    padding: 0;
+    margin: 24px 0;
+}
+
+
+/* Links */
+
+.markdown-body a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.markdown-body a.user-mention,
+.markdown-body a.issue-link {
+    font-weight: 500;
+    color: var(--onSurface)
+}
+
+.markdown-body a.commit-link {
+    font-size: 0.85em;
+}
+
+.markdown-body a.anchor {
+    display: none;
+}
+
 
 /* Table */
 /* This is based on the table design featured in https://m3.material.io/ */
@@ -116,11 +139,18 @@ table, table *, pre {
     font-weight: 500;
 }
 
+
 /* Code */
 
 pre, code, kbd {
     font-size: 1em;
     font-family: monospace;
+}
+
+pre,
+.highlight pre {
+    word-wrap: normal;
+    white-space: pre;
 }
 
 .markdown-body code, /* Inline code blocks */
@@ -132,7 +162,7 @@ pre, code, kbd {
 }
 
 .markdown-body code br,
-.markdown-body tt br { /* Hide horizontal divider in code blocks */
+.markdown-body tt br { /* Dont break lines in code blocks */
     display: none;
 }
 
