@@ -189,7 +189,7 @@ pre,
 .markdown-body pre > code { /* Reset styles meant for inline code when inside a syntax highlighted block */
     padding: 0;
     margin: 0;
-    background-color: none;
+    background-color: transparent !important;
     border-radius: 0;
 }
 

@@ -89,13 +89,13 @@
 }
 
 .pl-md /* markup.deleted, meta.diff.header.from-file, punctuation.definition.deleted */ {
-    color: #b31d28;
-    background-color: #ffeef0;
+    color: #ffdcd7;
+    background-color: #67060c;
 }
 
 .pl-mi1 /* markup.inserted, meta.diff.header.to-file, punctuation.definition.inserted */ {
-    color: #176f2c;
-    background-color: #f0fff4;
+    color: #aff5b4;
+    background-color: #033a16;
 }
 
 .pl-mc /* markup.changed, punctuation.definition.changed */ {
