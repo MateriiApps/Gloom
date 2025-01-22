@@ -25,7 +25,12 @@ class GloomColorScheme(
     warning: Color,
     onWarning: Color,
     warningContainer: Color,
-    onWarningContainer: Color
+    onWarningContainer: Color,
+    alertNote: Color,
+    alertTip: Color,
+    alertImportant: Color,
+    alertWarning: Color,
+    alertCaution: Color,
 ) {
 
     var statusGreen by mutableStateOf(statusGreen, structuralEqualityPolicy())
@@ -56,6 +61,21 @@ class GloomColorScheme(
         internal set
 
     var onWarningContainer by mutableStateOf(onWarningContainer, structuralEqualityPolicy())
+        internal set
+
+    var alertNote by mutableStateOf(alertNote, structuralEqualityPolicy())
+        internal set
+
+    var alertTip by mutableStateOf(alertTip, structuralEqualityPolicy())
+        internal set
+
+    var alertImportant by mutableStateOf(alertImportant, structuralEqualityPolicy())
+        internal set
+
+    var alertWarning by mutableStateOf(alertWarning, structuralEqualityPolicy())
+        internal set
+
+    var alertCaution by mutableStateOf(alertCaution, structuralEqualityPolicy())
         internal set
 
 }

@@ -70,6 +70,10 @@ themed-picture {
     margin: 24px 0;
 }
 
+.octicon {
+    fill: currentColor;
+}
+
 
 /* Links */
 
@@ -180,4 +184,83 @@ pre,
     margin: 0;
     background-color: none;
     border-radius: 0;
+}
+
+
+/* Alerts */
+
+.markdown-alert {
+    border-left: 8px solid var(--outline);
+    border-radius: 8px;
+    background-color: var(--surfaceContainerLow);
+    box-shadow: 0 0.5px 2px 1px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    padding: 16px;
+    padding-left: 1em;
+    margin-bottom: 1.1rem;
+    font-size: 95%;
+}
+
+.markdown-alert p {
+    margin-bottom: 0;
+}
+
+.markdown-alert-title {
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    line-height: 1;
+    margin-top: 0;
+    margin-bottom: 8px !important;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.markdown-alert-title .octicon {
+    margin-right: 8px;
+}
+
+
+.markdown-alert-note {
+    border-color: var(--alertNote);
+}
+
+.markdown-alert-note .markdown-alert-title {
+    color: var(--alertNote);
+}
+
+
+.markdown-alert-tip {
+    border-color: var(--alertTip);
+}
+
+.markdown-alert-tip .markdown-alert-title {
+    color: var(--alertTip);
+}
+
+
+.markdown-alert-important {
+    border-color: var(--alertImportant);
+}
+
+.markdown-alert-important .markdown-alert-title {
+    color: var(--alertImportant);
+}
+
+
+.markdown-alert-warning {
+    border-color: var(--alertWarning);
+}
+
+.markdown-alert-warning .markdown-alert-title {
+    color: var(--alertWarning);
+}
+
+
+.markdown-alert-caution {
+    border-color: var(--alertCaution);
+}
+
+.markdown-alert-caution .markdown-alert-title {
+    color: var(--alertCaution);
 }

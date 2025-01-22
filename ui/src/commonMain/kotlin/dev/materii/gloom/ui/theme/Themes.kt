@@ -12,7 +12,12 @@ fun darkGloomColorScheme() = GloomColorScheme(
     warning = YellowAlt1,
     onWarning = DarkBrown,
     warningContainer = DarkBronze,
-    onWarningContainer = Shandy
+    onWarningContainer = Shandy,
+    alertNote = AlertNoteDark,
+    alertTip = AlertTipDark,
+    alertImportant = AlertImportantDark,
+    alertWarning = AlertWarningDark,
+    alertCaution = AlertCautionDark
 )
 
 fun lightGloomColorScheme() = GloomColorScheme(
@@ -25,5 +30,10 @@ fun lightGloomColorScheme() = GloomColorScheme(
     warning = BronzeYellow,
     onWarning = Color.White,
     warningContainer = Shandy,
-    onWarningContainer = DarkerBrown
+    onWarningContainer = DarkerBrown,
+    alertNote = AlertNoteLight,
+    alertTip = AlertTipLight,
+    alertImportant = AlertImportantLight,
+    alertWarning = AlertWarningLight,
+    alertCaution = AlertCautionLight
 )

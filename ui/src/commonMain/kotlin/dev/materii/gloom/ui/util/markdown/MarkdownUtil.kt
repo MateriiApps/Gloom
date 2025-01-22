@@ -2,6 +2,7 @@ package dev.materii.gloom.ui.util.markdown
 
 import androidx.compose.material3.ColorScheme
 import dev.materii.gloom.ui.theme.CodeTheme
+import dev.materii.gloom.ui.theme.GloomColorScheme
 import dev.materii.gloom.ui.util.hexCode
 
 object MarkdownUtil {
@@ -19,9 +20,12 @@ object MarkdownUtil {
         markdownTemplate: String,
         isLight: Boolean,
         colorScheme: ColorScheme,
+        gloomColorScheme: GloomColorScheme,
         codeTheme: CodeTheme
     ): String {
-        return markdownTemplate // Insert theme colors
+        return markdownTemplate
+
+            // Material 3 =====================================================================================
             .replace("\$primary$", "#" + colorScheme.primary.hexCode)
             .replace("\$onPrimary$", "#" + colorScheme.onPrimary.hexCode)
             .replace("\$primaryContainer$", "#" + colorScheme.primaryContainer.hexCode)
@@ -65,8 +69,29 @@ object MarkdownUtil {
             .replace("\$surfaceContainerHighest$", "#" + colorScheme.surfaceContainerHighest.hexCode)
             .replace("\$surfaceContainerLow$", "#" + colorScheme.surfaceContainerLow.hexCode)
             .replace("\$surfaceContainerLowest$", "#" + colorScheme.surfaceContainerLowest.hexCode)
+            // ================================================================================================
 
-            // Code
+
+            // Gloom specific colors ==========================================================================
+            .replace("\$statusGreen$", "#" + gloomColorScheme.statusGreen.hexCode)
+            .replace("\$statusPurple$", "#" + gloomColorScheme.statusPurple.hexCode)
+            .replace("\$statusRed$", "#" + gloomColorScheme.statusRed.hexCode)
+            .replace("\$statusGrey$", "#" + gloomColorScheme.statusGrey.hexCode)
+            .replace("\$statusYellow$", "#" + gloomColorScheme.statusYellow.hexCode)
+            .replace("\$star$", "#" + gloomColorScheme.star.hexCode)
+            .replace("\$warning$", "#" + gloomColorScheme.warning.hexCode)
+            .replace("\$onWarning$", "#" + gloomColorScheme.onWarning.hexCode)
+            .replace("\$warningContainer$", "#" + gloomColorScheme.warningContainer.hexCode)
+            .replace("\$onWarningContainer$", "#" + gloomColorScheme.onWarningContainer.hexCode)
+            .replace("\$alertNote$", "#" + gloomColorScheme.alertNote.hexCode)
+            .replace("\$alertTip$", "#" + gloomColorScheme.alertTip.hexCode)
+            .replace("\$alertImportant$", "#" + gloomColorScheme.alertImportant.hexCode)
+            .replace("\$alertWarning$", "#" + gloomColorScheme.alertWarning.hexCode)
+            .replace("\$alertCaution$", "#" + gloomColorScheme.alertCaution.hexCode)
+            // ================================================================================================
+
+
+            // Code ===========================================================================================
             .replace("\$code$", "#" + codeTheme.code.hexCode)
             .replace("\$keyword$", "#" + codeTheme.keyword.hexCode)
             .replace("\$string$", "#" + codeTheme.string.hexCode)
@@ -76,6 +101,7 @@ object MarkdownUtil {
             .replace("\$multilineComment$", "#" + codeTheme.multilineComment.hexCode)
             .replace("\$punctuation$", "#" + codeTheme.punctuation.hexCode)
             .replace("\$mark$", "#" + codeTheme.mark.hexCode)
+            // ================================================================================================
 
             .replace("\$theme$", if (isLight) "light" else "dark") // Support the old way of theming images
     }
