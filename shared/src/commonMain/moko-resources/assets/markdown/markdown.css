@@ -65,9 +65,16 @@ themed-picture {
     opacity: 0.3;
     height: 0.18em;
     border: none;
-    border-radius: 100000px; /* This looks silly but just makes the divider have rounded ends */
+    border-radius: 100px; /* This looks silly but just makes the divider have rounded ends */
     padding: 0;
     margin: 24px 0;
+}
+
+.markdown-body blockquote {
+    padding: 0 1em;
+    margin: 0;
+    border-left: 0.25em solid var(--outlineVariant);
+    color: var(--outline);
 }
 
 .octicon {
