@@ -13,10 +13,10 @@
         <item quantity="other">%s 个分叉</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="other">%s Followers</item>
+        <item quantity="other">%s 粉丝</item>
     </plurals>
     <plurals name="following">
-        <item quantity="other">%s Following</item>
+        <item quantity="other">%s 个关注</item>
     </plurals>
     <plurals name="contributions_toast">
         <item quantity="other">%1$s：%2$d 项贡献</item>
@@ -28,6 +28,6 @@
         <item quantity="other">第 %1$s-%2$s 行</item>
     </plurals>
     <plurals name="plural_pr_merge_details">
-        <item quantity="other">%1$s merged %2$d commits into %3$s</item>
+        <item quantity="other">%1$s 合并了 %2$d 提交到 %3$s</item>
     </plurals>
 </resources>

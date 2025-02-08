@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="noun_contributors">
-        <item quantity="other">%s Contributors</item>
+        <item quantity="other">%s 貢獻者</item>
     </plurals>
     <plurals name="repositories">
-        <item quantity="other">%s Repositories</item>
+        <item quantity="other">%s 儲存庫</item>
     </plurals>
     <plurals name="stars">
         <item quantity="other">%s Stars</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="other">%s Forks</item>
+        <item quantity="other">%s 分支</item>
     </plurals>
     <plurals name="followers">
         <item quantity="other">%s Followers</item>
@@ -19,7 +19,7 @@
         <item quantity="other">%s Following</item>
     </plurals>
     <plurals name="contributions_toast">
-        <item quantity="other">%1$s: %2$d Contributions</item>
+        <item quantity="other">%1$s: %2$d 貢獻者</item>
     </plurals>
     <plurals name="plural_language">
         <item quantity="other">Languages</item>
@@ -28,6 +28,6 @@
         <item quantity="other">Lines %1$s-%2$s</item>
     </plurals>
     <plurals name="plural_pr_merge_details">
-        <item quantity="other">%1$s merged %2$d commits into %3$s</item>
+        <item quantity="other">%1$s 合併了 %2$d 個提交到 %3$s</item>
     </plurals>
 </resources>

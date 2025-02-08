@@ -10,5 +10,5 @@
     <string name="recommended">为您推荐</string>
     <string name="cd_followed">已关注</string>
     <string name="action_view_details">详情</string>
-    <string name="label_pr_merged">Merged</string>
+    <string name="label_pr_merged">合并</string>
 </resources>

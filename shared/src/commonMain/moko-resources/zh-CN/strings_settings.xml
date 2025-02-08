@@ -22,31 +22,31 @@
     <string name="appearance_av_shape_squircle">方圆形</string>
     <!--            -->
     <!-- App Icons -->
-    <string name="settings_app_icon">App Icon</string>
-    <string name="settings_app_icon_description">Pick an icon for Gloom</string>
-    <string name="app_icon_collection_classic">Classic</string>
-    <string name="app_icon_main">Default</string>
-    <string name="app_icon_main_description">The default Gloom icon.</string>
-    <string name="app_icon_sky">Sky</string>
-    <string name="app_icon_sky_description">Huh... That\'s an interesting cloud...</string>
-    <string name="app_icon_light">Light</string>
-    <string name="app_icon_light_description">The original, but light.</string>
-    <string name="app_icon_collection_pride">Pride</string>
+    <string name="settings_app_icon">应用图标</string>
+    <string name="settings_app_icon_description">为 Gloom 选择一个图标</string>
+    <string name="app_icon_collection_classic">经典</string>
+    <string name="app_icon_main">默认</string>
+    <string name="app_icon_main_description">默认的 Gloom 图标。</string>
+    <string name="app_icon_sky">天空</string>
+    <string name="app_icon_sky_description">哈哈……这是一个有趣的云...</string>
+    <string name="app_icon_light">浅色</string>
+    <string name="app_icon_light_description">原始的，但很浅。</string>
+    <string name="app_icon_collection_pride">自豪</string>
     <string name="app_icon_pride">LGBT</string>
     <string name="app_icon_pride_description">🏳️‍🌈</string>
-    <string name="app_icon_trans">Trans</string>
+    <string name="app_icon_trans">跨性别者</string>
     <string name="app_icon_trans_description">🏳️‍⚧️</string>
-    <string name="app_icon_trans_inverted">Trans Inverted</string>
-    <string name="app_icon_trans_inverted_description">🏳️‍⚧️ but swapped</string>
+    <string name="app_icon_trans_inverted">反转</string>
+    <string name="app_icon_trans_inverted_description">🏳️‍⚧️ 但是交换了</string>
     <string name="app_icon_collection_catppuccin">Catppuccin</string>
-    <string name="app_icon_mocha">Mocha</string>
-    <string name="app_icon_mocha_description">Something rich to start your day!</string>
+    <string name="app_icon_mocha">莫卡</string>
+    <string name="app_icon_mocha_description">来点丰盛的开启你的一天！</string>
     <string name="app_icon_macchiato">Macchiato</string>
-    <string name="app_icon_macchiato_description">Prefer something a little lighter?</string>
-    <string name="app_icon_frappe">Frappé</string>
-    <string name="app_icon_frappe_description">Must be hot out, huh?</string>
-    <string name="app_icon_latte">Latte</string>
-    <string name="app_icon_latte_description">Would you prefer almond or soy?</string>
+    <string name="app_icon_macchiato_description">喜欢一些轻松的东西吗？</string>
+    <string name="app_icon_frappe">Frappé</string>
+    <string name="app_icon_frappe_description">难道必须是热点还是点？</string>
+    <string name="app_icon_latte">拿铁</string>
+    <string name="app_icon_latte_description">您更喜欢杏仁还是豆奶呢？</string>
     <!--           -->
     <!-- Accounts -->
     <string name="settings_accounts">帐户</string>

@@ -11,6 +11,6 @@
     <string name="section_title_pinned">已固定</string>
     <string name="cd_link">链接</string>
     <string name="label_follows_you">关注您</string>
-    <string name="label_more">More</string>
-    <string name="label_less">Less</string>
+    <string name="label_more">更多</string>
+    <string name="label_less">更少</string>
 </resources>
