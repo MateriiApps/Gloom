@@ -2,14 +2,12 @@
 <adaptive-icon
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt">
-    <foreground android:drawable="@drawable/ic_launcher_trans_inverted_foreground" />
-    <monochrome android:drawable="@drawable/ic_gloom_monochrome" />
     <background>
         <vector
-            android:height="200dp"
-            android:width="200dp"
-            android:viewportHeight="1024"
-            android:viewportWidth="1024">
+                android:height="200dp"
+                android:width="200dp"
+                android:viewportHeight="1024"
+                android:viewportWidth="1024">
             <path android:pathData="M0,0h1024v1024h-1024z">
                 <aapt:attr name="android:fillColor">
                     <gradient android:endX="874" android:endY="874" android:startX="150" android:startY="150" android:type="linear">
@@ -21,4 +19,6 @@
             </path>
         </vector>
     </background>
+    <foreground android:drawable="@mipmap/ic_launcher_trans_inverted_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_monochrome" />
 </adaptive-icon>
