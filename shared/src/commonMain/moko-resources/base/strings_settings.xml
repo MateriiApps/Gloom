@@ -43,6 +43,12 @@
     <string name="app_icon_light_description">The original, but light.</string>
 
 
+    <string name="app_icon_collection_stylized">Stylized</string>
+
+    <string name="app_icon_blueprint">Blueprint</string>
+    <string name="app_icon_blueprint_description">Building something great!</string>
+
+
     <string name="app_icon_collection_pride">Pride</string>
 
     <string name="app_icon_pride">LGBT</string>

@@ -38,6 +38,16 @@ enum class AppIcon(
         collection = AppIconCollection.Classic
     ),
 
+    // Stylized
+
+    Blueprint(
+        aliasName = "gloom.icons.stylized.Blueprint",
+        iconName = Res.strings.app_icon_blueprint,
+        iconDescription = Res.strings.app_icon_blueprint_description,
+        preview = Res.images.gloom_icon_blueprint,
+        collection = AppIconCollection.Stylized
+    ),
+
     // Pride
 
     Pride(
@@ -104,6 +114,7 @@ enum class AppIconCollection(
     val nameRes: StringResource
 ) {
     Classic(Res.strings.app_icon_collection_classic),
+    Stylized(Res.strings.app_icon_collection_stylized),
     Pride(Res.strings.app_icon_collection_pride),
     Catppuccin(Res.strings.app_icon_collection_catppuccin)
 }

@@ -95,6 +95,19 @@
             </intent-filter>
         </activity-alias>
 
+        <!-- Stylized -->
+        <activity-alias
+            android:name="gloom.icons.stylized.Blueprint"
+            android:targetActivity=".ui.GloomActivity"
+            android:icon="@mipmap/ic_launcher_blueprint"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
         <!-- Pride -->
 
         <activity-alias
