@@ -31,6 +31,9 @@
     <string name="app_icon_sky_description">哈哈……这是一个有趣的云...</string>
     <string name="app_icon_light">浅色</string>
     <string name="app_icon_light_description">原始的，但很浅。</string>
+    <string name="app_icon_collection_stylized">Stylized</string>
+    <string name="app_icon_blueprint">Blueprint</string>
+    <string name="app_icon_blueprint_description">Building something great!</string>
     <string name="app_icon_collection_pride">自豪</string>
     <string name="app_icon_pride">LGBT</string>
     <string name="app_icon_pride_description">🏳️‍🌈</string>

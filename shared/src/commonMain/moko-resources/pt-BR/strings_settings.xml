@@ -31,6 +31,9 @@
     <string name="app_icon_sky_description">Huh... Essa é uma nuvem interessante...</string>
     <string name="app_icon_light">Claro</string>
     <string name="app_icon_light_description">O original, mas a luz.</string>
+    <string name="app_icon_collection_stylized">Stylized</string>
+    <string name="app_icon_blueprint">Blueprint</string>
+    <string name="app_icon_blueprint_description">Building something great!</string>
     <string name="app_icon_collection_pride">Pride</string>
     <string name="app_icon_pride">LGBT</string>
     <string name="app_icon_pride_description">🏳️‍🌈</string>
