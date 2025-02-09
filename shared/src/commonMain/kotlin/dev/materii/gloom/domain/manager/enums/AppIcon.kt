@@ -18,7 +18,7 @@ enum class AppIcon(
         aliasName = "gloom.icons.classic.Main",
         iconName = Res.strings.app_icon_main,
         iconDescription = Res.strings.app_icon_main_description,
-        preview = Res.images.gloom_icon_default,
+        preview = Res.images.gloom_icon_valentines25,
         collection = AppIconCollection.Classic
     ),
 

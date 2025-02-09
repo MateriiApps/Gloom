@@ -62,7 +62,7 @@
         <activity-alias
             android:name="gloom.icons.classic.Main"
             android:targetActivity=".ui.GloomActivity"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/ic_launcher_valentines25"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
