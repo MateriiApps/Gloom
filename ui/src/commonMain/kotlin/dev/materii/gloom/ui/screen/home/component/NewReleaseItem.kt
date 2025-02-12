@@ -81,7 +81,8 @@ fun NewReleaseItem(
                     "text" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface.copy(0.7f))
                     else -> null
                 }
-            }
+            },
+            createdAt = item.createdAt
         )
 
         ReleaseCard(release)

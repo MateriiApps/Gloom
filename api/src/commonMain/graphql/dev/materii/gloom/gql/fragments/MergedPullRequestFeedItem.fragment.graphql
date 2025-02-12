@@ -27,4 +27,5 @@ fragment MergedPullRequestFeedItemFragment on MergedPullRequestFeedItem {
             name
         }
     }
+    createdAt
 }

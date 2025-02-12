@@ -5,4 +5,5 @@ fragment StarredFeedItemFragment on StarredRepositoryFeedItem {
     repository {
         ...FeedRepository
     }
+    createdAt
 }
