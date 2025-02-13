@@ -73,6 +73,7 @@ fun FeedActor(
         }
 
         Column(
+            verticalArrangement = Arrangement.spacedBy(2.dp),
             modifier = Modifier.weight(1f)
         ) {
             Text(
@@ -85,7 +86,7 @@ fun FeedActor(
             createdAt?.let {
                 Text(
                     text = TimeUtils.getTimeSince(it),
-                    style = MaterialTheme.typography.labelSmall,
+                    style = MaterialTheme.typography.labelMedium,
                     color = LocalContentColor.current.copy(alpha = 0.5f),
                     softWrap = false
                 )
