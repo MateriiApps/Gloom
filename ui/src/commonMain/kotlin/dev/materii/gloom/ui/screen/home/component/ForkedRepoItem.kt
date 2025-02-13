@@ -50,7 +50,8 @@ fun ForkedRepoItem(
                     "text" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface.copy(0.7f))
                     else -> null
                 }
-            }
+            },
+            createdAt = item.createdAt
         )
 
         FeedRepoCard(

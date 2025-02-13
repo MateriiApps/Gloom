@@ -53,7 +53,8 @@ fun FollowedUserItem(
             badgeIcon = Icons.Filled.PersonAddAlt1,
             badgeIconDescription = stringResource(Res.strings.cd_followed),
             onIconClick = { navigator.navigate(ProfileScreen(actor.login)) },
-            text = actorText
+            text = actorText,
+            createdAt = item.createdAt
         )
 
         FeedUserCard(

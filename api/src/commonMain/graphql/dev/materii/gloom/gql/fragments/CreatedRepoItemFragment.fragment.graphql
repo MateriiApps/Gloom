@@ -5,4 +5,5 @@ fragment CreatedRepoItemFragment on CreatedRepositoryFeedItem {
     repository {
         ...FeedRepository
     }
+    createdAt
 }
