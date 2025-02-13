@@ -22,7 +22,6 @@ import dev.materii.gloom.ui.util.thenIf
 import dev.materii.gloom.util.TimeUtils
 import kotlinx.datetime.Instant
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun FeedActor(
     iconUrl: String? = null,
@@ -86,7 +85,8 @@ fun FeedActor(
             createdAt?.let {
                 Text(
                     text = TimeUtils.getTimeSince(it),
-                    style = MaterialTheme.typography.labelSmall.copy(color = LocalContentColor.current.copy(alpha = 0.5f)),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = LocalContentColor.current.copy(alpha = 0.5f),
                     softWrap = false
                 )
             }
