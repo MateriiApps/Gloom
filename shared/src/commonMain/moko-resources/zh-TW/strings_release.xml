@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="title_install_app">Install this app?</string>
-    <string name="msg_release_author">§author§%1$s§ released this %2$s</string>
-    <string name="msg_install_dialog_body">We have detected that %1$s is an Android application, would you like to install it?</string>
-    <string name="action_install">Install</string>
-    <string name="label_latest">Latest</string>
-    <string name="label_prerelease">Pre-release</string>
+    <string name="title_install_app">安裝這個應用程式嗎？</string>
+    <string name="msg_release_author">§author§%1$s§ 發佈了這個 %2$s</string>
+    <string name="msg_install_dialog_body">我們已檢測到 %1$s 是一個 Android 應用程式，您想安裝它嗎？</string>
+    <string name="action_install">安裝</string>
+    <string name="label_latest">最新</string>
+    <string name="label_prerelease">預發佈版本</string>
 </resources>

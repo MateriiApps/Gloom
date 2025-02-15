@@ -75,13 +75,11 @@
     <string name="install_fail_generic">安裝失敗：未知原因</string>
     <string name="install_fail_blocked">安裝已被阻止</string>
     <string name="install_fail_invalid">一個或多個 apk 損壞或無效</string>
-    <string name="install_fail_conflict">與現有應用程式衝突，通常是由於簽名不匹配所致
-        簽名
-    </string>
-    <string name="install_fail_storage">Not enough available storage to install</string>
-    <string name="install_fail_incompatible">Application is incompatible with this device</string>
-    <string name="install_fail_timeout">Installation timed out</string>
-    <string name="install_success">App installed successfully!</string>
-    <string name="install_cancelled">Installation cancelled</string>
+    <string name="install_fail_conflict">與現有應用程式衝突，通常是由於簽名不匹配所致</string>
+    <string name="install_fail_storage">您沒有足夠的儲存空間來安裝</string>
+    <string name="install_fail_incompatible">此應用程式與您的裝置不相容</string>
+    <string name="install_fail_timeout">安裝超時</string>
+    <string name="install_success">成功安裝應用程式！</string>
+    <string name="install_cancelled">安裝已取消</string>
     <!--            -->
 </resources>
