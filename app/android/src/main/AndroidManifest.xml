@@ -62,7 +62,7 @@
         <activity-alias
             android:name="gloom.icons.classic.Main"
             android:targetActivity=".ui.GloomActivity"
-            android:icon="@mipmap/ic_launcher_valentines25"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -188,6 +188,20 @@
             android:name="gloom.icons.catppuccin.Latte"
             android:targetActivity=".ui.GloomActivity"
             android:icon="@mipmap/ic_launcher_latte"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- Holiday 2025 -->
+
+        <activity-alias
+            android:name="gloom.icons.holiday25.Valentines"
+            android:targetActivity=".ui.GloomActivity"
+            android:icon="@mipmap/ic_launcher_valentines25"
             android:enabled="false"
             android:exported="true">
             <intent-filter>

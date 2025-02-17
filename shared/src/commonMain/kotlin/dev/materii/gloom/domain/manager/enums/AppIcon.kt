@@ -18,7 +18,7 @@ enum class AppIcon(
         aliasName = "gloom.icons.classic.Main",
         iconName = Res.strings.app_icon_main,
         iconDescription = Res.strings.app_icon_main_description,
-        preview = Res.images.gloom_icon_valentines25,
+        preview = Res.images.gloom_icon_default,
         collection = AppIconCollection.Classic
     ),
 
@@ -106,6 +106,16 @@ enum class AppIcon(
         iconDescription = Res.strings.app_icon_latte_description,
         preview = Res.images.gloom_icon_latte,
         collection = AppIconCollection.Catppuccin
+    ),
+
+    // Holiday 2025
+
+    Valentines25(
+        aliasName = "gloom.icons.holiday25.Valentines",
+        iconName = Res.strings.app_icon_valentines25,
+        iconDescription = Res.strings.app_icon_valentines25_description,
+        preview = Res.images.gloom_icon_valentines25,
+        collection = AppIconCollection.Holiday25
     )
 
 }
@@ -116,5 +126,6 @@ enum class AppIconCollection(
     Classic(Res.strings.app_icon_collection_classic),
     Stylized(Res.strings.app_icon_collection_stylized),
     Pride(Res.strings.app_icon_collection_pride),
-    Catppuccin(Res.strings.app_icon_collection_catppuccin)
+    Catppuccin(Res.strings.app_icon_collection_catppuccin),
+    Holiday25(Res.strings.app_icon_collection_holiday25)
 }
