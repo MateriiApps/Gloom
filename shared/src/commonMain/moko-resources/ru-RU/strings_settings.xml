@@ -49,6 +49,9 @@
     <string name="app_icon_frappe_description">Must be hot out, huh?</string>
     <string name="app_icon_latte">Latte</string>
     <string name="app_icon_latte_description">Would you prefer almond or soy?</string>
+    <string name="app_icon_collection_holiday25">Holidays 2025</string>
+    <string name="app_icon_valentines25">Valentines</string>
+    <string name="app_icon_valentines25_description">Love is in the air?</string>
     <!--           -->
     <!-- Accounts -->
     <string name="settings_accounts">Accounts</string>

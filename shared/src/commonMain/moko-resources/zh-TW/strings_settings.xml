@@ -49,6 +49,9 @@
     <string name="app_icon_frappe_description">天氣一定很熱吧？</string>
     <string name="app_icon_latte">拿鐵</string>
     <string name="app_icon_latte_description">你比較喜歡杏仁奶還是豆漿？</string>
+    <string name="app_icon_collection_holiday25">Holidays 2025</string>
+    <string name="app_icon_valentines25">Valentines</string>
+    <string name="app_icon_valentines25_description">Love is in the air?</string>
     <!--           -->
     <!-- Accounts -->
     <string name="settings_accounts">帳戶</string>
