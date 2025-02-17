@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="title_trending">Trending</string>
-    <string name="label_trending_daily">Today</string>
-    <string name="label_trending_weekly">This week</string>
-    <string name="label_trending_monthly">This month</string>
-    <string name="label_stars_day">%1$s today</string>
-    <string name="label_stars_week">%1$s this week</string>
-    <string name="label_stars_month">%1$s this month</string>
-    <string name="msg_trending_footer_title">You\'ve reached the end!</string>
-    <string name="msg_trending_footer_description">Check back later to find new trending repositories</string>
+    <string name="title_trending">熱門</string>
+    <string name="label_trending_daily">本日</string>
+    <string name="label_trending_weekly">本周</string>
+    <string name="label_trending_monthly">本月</string>
+    <string name="label_stars_day">%1$s 本日</string>
+    <string name="label_stars_week">%1$s 本周</string>
+    <string name="label_stars_month">%1$s 本月</string>
+    <string name="msg_trending_footer_title">到底了！</string>
+    <string name="msg_trending_footer_description">稍后再来查看新的热门仓库</string>
 </resources>

@@ -2,14 +2,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="action_sign_out">登出</string>
     <string name="settings_sign_out_header">登出?</string>
-    <string name="settings_sign_out_text">您确定要登出吗？
-        您可以随时稍后重新登录。</string>
+    <string name="settings_sign_out_text">您确定要登出吗？您可以随时稍后重新登录。</string>
     <!-- Appearance -->
     <string name="settings_appearance">外观</string>
     <string name="settings_appearance_description">主题，代码样式</string>
     <string name="appearance_theme">主题</string>
     <string name="appearance_monet">动态主题</string>
-    <string name="appearance_monet_description">在 Android 12+ 上可用</string>
+    <string name="appearance_monet_description">适用于 Android 12 以上版本</string>
     <string name="theme_system">跟随系统</string>
     <string name="theme_light">浅色</string>
     <string name="theme_dark">深色</string>
@@ -28,26 +27,26 @@
     <string name="app_icon_main">默认</string>
     <string name="app_icon_main_description">默认的 Gloom 图标。</string>
     <string name="app_icon_sky">天空</string>
-    <string name="app_icon_sky_description">哈哈……这是一个有趣的云...</string>
+    <string name="app_icon_sky_description">哈哈…那是一朵有趣的云...</string>
     <string name="app_icon_light">浅色</string>
-    <string name="app_icon_light_description">原始的，但很浅。</string>
-    <string name="app_icon_collection_stylized">Stylized</string>
-    <string name="app_icon_blueprint">Blueprint</string>
-    <string name="app_icon_blueprint_description">Building something great!</string>
+    <string name="app_icon_light_description">原版，但很浅。</string>
+    <string name="app_icon_collection_stylized">风格化</string>
+    <string name="app_icon_blueprint">蓝图</string>
+    <string name="app_icon_blueprint_description">正在构建一些很棒的东西！</string>
     <string name="app_icon_collection_pride">自豪</string>
     <string name="app_icon_pride">LGBT</string>
     <string name="app_icon_pride_description">🏳️‍🌈</string>
-    <string name="app_icon_trans">跨性别者</string>
+    <string name="app_icon_trans">跨性别</string>
     <string name="app_icon_trans_description">🏳️‍⚧️</string>
-    <string name="app_icon_trans_inverted">反转</string>
-    <string name="app_icon_trans_inverted_description">🏳️‍⚧️ 但是交换了</string>
-    <string name="app_icon_collection_catppuccin">Catppuccin</string>
+    <string name="app_icon_trans_inverted">跨性别反转</string>
+    <string name="app_icon_trans_inverted_description">🏳️‍⚧️ 但颜色对调</string>
+    <string name="app_icon_collection_catppuccin">卡布奇诺</string>
     <string name="app_icon_mocha">莫卡</string>
-    <string name="app_icon_mocha_description">来点丰盛的开启你的一天！</string>
-    <string name="app_icon_macchiato">Macchiato</string>
+    <string name="app_icon_mocha_description">一杯美味的饮品，开始你新的一天！</string>
+    <string name="app_icon_macchiato">玛琪雅朵</string>
     <string name="app_icon_macchiato_description">喜欢一些轻松的东西吗？</string>
-    <string name="app_icon_frappe">Frappé</string>
-    <string name="app_icon_frappe_description">难道必须是热点还是点？</string>
+    <string name="app_icon_frappe">法式冰沙</string>
+    <string name="app_icon_frappe_description">天气一定很热吧？</string>
     <string name="app_icon_latte">拿铁</string>
     <string name="app_icon_latte_description">您更喜欢杏仁还是豆奶呢？</string>
     <!--           -->

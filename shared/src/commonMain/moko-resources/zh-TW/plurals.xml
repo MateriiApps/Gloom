@@ -7,25 +7,25 @@
         <item quantity="other">%s 儲存庫</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="other">%s Stars</item>
+        <item quantity="other">%s 星標</item>
     </plurals>
     <plurals name="forks">
         <item quantity="other">%s 分支</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="other">%s Followers</item>
+        <item quantity="other">%s 个關注者</item>
     </plurals>
     <plurals name="following">
-        <item quantity="other">%s Following</item>
+        <item quantity="other">%s 人關注</item>
     </plurals>
     <plurals name="contributions_toast">
         <item quantity="other">%1$s: %2$d 貢獻者</item>
     </plurals>
     <plurals name="plural_language">
-        <item quantity="other">Languages</item>
+        <item quantity="other">語言</item>
     </plurals>
     <plurals name="plural_lines_selected">
-        <item quantity="other">Lines %1$s-%2$s</item>
+        <item quantity="other">第 %1$s-%2$s 行</item>
     </plurals>
     <plurals name="plural_pr_merge_details">
         <item quantity="other">%1$s 合併了 %2$d 個提交到 %3$s</item>
