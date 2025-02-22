@@ -27,7 +27,7 @@
     <string name="error_release_load">无法加载发行版</string>
     <!--        -->
     <!-- Titles -->
-    <string name="title_starred">已加星标</string>
+    <string name="title_starred">已星标</string>
     <string name="title_orgs">组织</string>
     <string name="title_repos">存储库</string>
     <string name="title_contributors">贡献者</string>
