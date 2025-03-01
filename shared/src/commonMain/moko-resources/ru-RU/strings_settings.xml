@@ -12,27 +12,27 @@
     <string name="theme_system">Система</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
-    <string name="appearance_user_av_shape">User avatar shape</string>
-    <string name="appearance_org_av_shape">Organization avatar shape</string>
-    <string name="appearance_av_radius">Radius:</string>
+    <string name="appearance_user_av_shape">Форма аватара пользователя</string>
+    <string name="appearance_org_av_shape">Форма аватара организации</string>
+    <string name="appearance_av_radius">Радиус:</string>
     <string name="appearance_av_radius_percent">%1$d%</string>
-    <string name="appearance_av_shape_circle">Circle</string>
-    <string name="appearance_av_shape_roundrect">Rounded square</string>
-    <string name="appearance_av_shape_squircle">Squircle</string>
+    <string name="appearance_av_shape_circle">Круг</string>
+    <string name="appearance_av_shape_roundrect">Квадрат с закруглениями</string>
+    <string name="appearance_av_shape_squircle">Скругленный квадрат</string>
     <!--            -->
     <!-- App Icons -->
-    <string name="settings_app_icon">App Icon</string>
-    <string name="settings_app_icon_description">Pick an icon for Gloom</string>
-    <string name="app_icon_collection_classic">Classic</string>
-    <string name="app_icon_main">Default</string>
-    <string name="app_icon_main_description">The default Gloom icon.</string>
-    <string name="app_icon_sky">Sky</string>
-    <string name="app_icon_sky_description">Huh... That\'s an interesting cloud...</string>
-    <string name="app_icon_light">Light</string>
-    <string name="app_icon_light_description">The original, but light.</string>
-    <string name="app_icon_collection_stylized">Stylized</string>
-    <string name="app_icon_blueprint">Blueprint</string>
-    <string name="app_icon_blueprint_description">Building something great!</string>
+    <string name="settings_app_icon">Иконка приложения</string>
+    <string name="settings_app_icon_description">Выберите иконку Gloom</string>
+    <string name="app_icon_collection_classic">Классические</string>
+    <string name="app_icon_main">Стандартная</string>
+    <string name="app_icon_main_description">Иконка по умолчанию Gloom.</string>
+    <string name="app_icon_sky">Небо</string>
+    <string name="app_icon_sky_description">Хм... Это интересное небо...</string>
+    <string name="app_icon_light">Светлая</string>
+    <string name="app_icon_light_description">Оригинальная, но светлая.</string>
+    <string name="app_icon_collection_stylized">Стилизованные</string>
+    <string name="app_icon_blueprint">Чертёж</string>
+    <string name="app_icon_blueprint_description">Создаем что-то великое!</string>
     <string name="app_icon_collection_pride">Pride</string>
     <string name="app_icon_pride">LGBT</string>
     <string name="app_icon_pride_description">🏳️‍🌈</string>
@@ -42,43 +42,43 @@
     <string name="app_icon_trans_inverted_description">🏳️‍⚧️ but swapped</string>
     <string name="app_icon_collection_catppuccin">Catppuccin</string>
     <string name="app_icon_mocha">Mocha</string>
-    <string name="app_icon_mocha_description">Something rich to start your day!</string>
+    <string name="app_icon_mocha_description">Что-нибудь вкусное, чтобы начать свой день!</string>
     <string name="app_icon_macchiato">Macchiato</string>
-    <string name="app_icon_macchiato_description">Prefer something a little lighter?</string>
-    <string name="app_icon_frappe">Frappé</string>
-    <string name="app_icon_frappe_description">Must be hot out, huh?</string>
+    <string name="app_icon_macchiato_description">Предпочитаете что-то немного ярче?</string>
+    <string name="app_icon_frappe">Frappé</string>
+    <string name="app_icon_frappe_description">Должно быть жарко, да?</string>
     <string name="app_icon_latte">Latte</string>
-    <string name="app_icon_latte_description">Would you prefer almond or soy?</string>
-    <string name="app_icon_collection_holiday25">Holidays 2025</string>
-    <string name="app_icon_valentines25">Valentines</string>
-    <string name="app_icon_valentines25_description">Love is in the air?</string>
+    <string name="app_icon_latte_description">Вы предпочитаете миндальный или соевый?</string>
+    <string name="app_icon_collection_holiday25">Каникулы 2025</string>
+    <string name="app_icon_valentines25">День влюблённых</string>
+    <string name="app_icon_valentines25_description">Любовь витает в воздухе?</string>
     <!--           -->
     <!-- Accounts -->
-    <string name="settings_accounts">Accounts</string>
-    <string name="settings_accounts_description">Add or switch accounts</string>
-    <string name="action_add_account">Add account</string>
-    <string name="action_sign_out_all">Sign out of all accounts</string>
-    <string name="cd_enterprise_domain">Enterprise domain: %1$s</string>
+    <string name="settings_accounts">Аккаунты</string>
+    <string name="settings_accounts_description">Добавить или сменить аккаунты</string>
+    <string name="action_add_account">Добавить аккаунт</string>
+    <string name="action_sign_out_all">Выйти из всех аккаунтов</string>
+    <string name="cd_enterprise_domain">Домен предприятия: %1$s</string>
     <!--          -->
     <!-- Development -->
-    <string name="settings_development">Development</string>
-    <string name="settings_development_description">Debug and test new features</string>
-    <string name="dev_alert_testing">Alert Testing</string>
-    <string name="dev_alert_testing_description">Create custom alerts to use for testing</string>
-    <string name="dev_alert_title">Title</string>
-    <string name="dev_alert_message">Message</string>
-    <string name="dev_alert_show_icon">Show icon</string>
-    <string name="dev_alert_duration">Duration</string>
-    <string name="dev_alert_action_show_alert">Show alert</string>
-    <string name="dev_alert_action_fill_queue">Fill queue</string>
+    <string name="settings_development">Разработка</string>
+    <string name="settings_development_description">Отладка и проверка новых функций</string>
+    <string name="dev_alert_testing">Тестирование уведомлений</string>
+    <string name="dev_alert_testing_description">Создать пользовательские оповещения, используемые для тестирования</string>
+    <string name="dev_alert_title">Заголовок</string>
+    <string name="dev_alert_message">Сообщение</string>
+    <string name="dev_alert_show_icon">Показать иконку</string>
+    <string name="dev_alert_duration">Длительность</string>
+    <string name="dev_alert_action_show_alert">Показать уведомление</string>
+    <string name="dev_alert_action_fill_queue">Очередь заполнения</string>
     <!--             -->
     <!-- About -->
-    <string name="settings_about">About</string>
-    <string name="settings_libraries">Libraries</string>
-    <string name="settings_libraries_description">The libraries used to make Gloom</string>
-    <string name="cd_library_author">Author: %1$s</string>
-    <string name="cd_library_license">License: %1$s</string>
-    <string name="label_open_source">Open Source</string>
-    <string name="label_closed_source">Closed Source</string>
+    <string name="settings_about">О приложении</string>
+    <string name="settings_libraries">Библиотеки</string>
+    <string name="settings_libraries_description">Библиотеки, которые использовались для создания Gloom</string>
+    <string name="cd_library_author">Автор: %1$s</string>
+    <string name="cd_library_license">Лицензия: %1$s</string>
+    <string name="label_open_source">Открытый код</string>
+    <string name="label_closed_source">Закрытый код</string>
     <!--       -->
 </resources>

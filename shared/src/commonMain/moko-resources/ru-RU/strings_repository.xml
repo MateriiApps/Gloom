@@ -3,8 +3,8 @@
     <string name="action_star">Звезда</string>
     <string name="action_unstar">Убрать из избранных</string>
     <string name="placeholder_empty_repo">Пустой репозиторий</string>
-    <string name="cd_forked_repo">Forked Repository</string>
-    <string name="label_repo_archived">Archived by owner</string>
+    <string name="cd_forked_repo">Клонированный репозиторий</string>
+    <string name="label_repo_archived">Архивирован владельцем</string>
     <!-- Details -->
     <string name="repo_tab_details">Детали</string>
     <string name="action_show_license_details">Показать детали лицензии</string>
