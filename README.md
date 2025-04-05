@@ -48,7 +48,7 @@ Build
 1. Clone the repo
     - `git clone https://github.com/MateriiApps/Gloom.git && cd Gloom`
 2. Build the project
-    - Linux: `chmod +x ./gradlew && gradlew assembleDebug`
+    - Linux: `chmod +x gradlew && ./gradlew assembleDebug`
     - Windows: `./gradlew assembleDebug`
 3. Install on device
     - [Enable usb debugging](https://developer.android.com/studio/debug/dev-options) and plug in your phone
