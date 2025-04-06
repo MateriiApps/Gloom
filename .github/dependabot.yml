@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/" # Adjust this if your gradle files are in a subdirectory
+    schedule:
+      interval: "daily" # Can be "weekly" or "monthly"
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "com.android.tools.build:gradle"
+        versions: ["8.x"] # Example: to avoid big version jumps
+  - package-ecosystem: "github-actions"
+    directory: "/" 
+    schedule:
+      interval: "weekly"
+     
