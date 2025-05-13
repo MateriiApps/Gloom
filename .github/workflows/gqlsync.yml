@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync-crowdin:
+  sync-graphql-schema:
     runs-on: ubuntu-latest
     permissions:
       contents: write
