@@ -36,5 +36,5 @@ jobs:
       - name: Push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit-message: "chore(api/graphql): Sync GraphQL Schema"
+          commit_message: "chore(api/graphql): Sync GraphQL Schema"
 
