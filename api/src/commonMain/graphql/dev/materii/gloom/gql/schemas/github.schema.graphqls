@@ -5810,6 +5810,11 @@ List of snippet format types
 """
 enum CodeSearchSnippetType {
   """
+  Invalid format
+  """
+  SNIPPET_FORMAT_INVALID
+
+  """
   Plain text format
   """
   SNIPPET_FORMAT_PLAIN_TEXT
@@ -5818,11 +5823,6 @@ enum CodeSearchSnippetType {
   Html format
   """
   SNIPPET_FORMAT_HTML
-
-  """
-  Invalid format
-  """
-  SNIPPET_FORMAT_INVALID
 }
 
 """
@@ -8827,7 +8827,7 @@ input CreateGoogleIapSubscriptionInput {
   """
   The product id that the user has bought through the Play Store
   """
-  productId: String!
+  productId: String
 }
 
 """
