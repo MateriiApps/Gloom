@@ -5260,6 +5260,11 @@ type ClosedEvent implements Node & UniformResourceLocatable {
   createdAt: DateTime!
 
   """
+  The issue or pull request that this issue was marked as a duplicate of.
+  """
+  duplicateOf: IssueOrPullRequest
+
+  """
   The Node ID of the ClosedEvent object
   """
   id: ID!
@@ -19589,6 +19594,11 @@ type Issue implements Assignable & Closable & Comment & Deletable & Labelable & 
   Identifies the primary key from the database.
   """
   databaseId: Int
+
+  """
+  A reference to the original issue that this issue has been marked as a duplicate of.
+  """
+  duplicateOf: Issue
 
   """
   The actor who edited the comment.
