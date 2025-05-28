@@ -39,6 +39,8 @@
     <string name="noun_repo">المُستودع</string>
     <string name="noun_release">الإصدار</string>
     <string name="noun_tag">علامة</string>
+    <string name="noun_user">User</string>
+    <string name="noun_org">Organization</string>
     <string name="noun_other">أخرى</string>
     <string name="noun_commit">نفذ</string>
     <string name="noun_license">الترخيص</string>

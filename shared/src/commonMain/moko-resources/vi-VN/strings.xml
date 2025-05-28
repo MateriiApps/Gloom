@@ -39,6 +39,8 @@
     <string name="noun_repo">Repository</string>
     <string name="noun_release">Release</string>
     <string name="noun_tag">Tag</string>
+    <string name="noun_user">User</string>
+    <string name="noun_org">Organization</string>
     <string name="noun_other">Other</string>
     <string name="noun_commit">Commit</string>
     <string name="noun_license">Giấy phép</string>

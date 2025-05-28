@@ -39,6 +39,8 @@
     <string name="noun_repo">リポジトリ</string>
     <string name="noun_release">リリース</string>
     <string name="noun_tag">タグ</string>
+    <string name="noun_user">User</string>
+    <string name="noun_org">Organization</string>
     <string name="noun_other">その他</string>
     <string name="noun_commit">コミット</string>
     <string name="noun_license">ライセンス</string>

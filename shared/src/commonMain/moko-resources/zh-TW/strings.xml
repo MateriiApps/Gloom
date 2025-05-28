@@ -39,6 +39,8 @@
     <string name="noun_repo">儲存庫</string>
     <string name="noun_release">發行版</string>
     <string name="noun_tag">标签</string>
+    <string name="noun_user">User</string>
+    <string name="noun_org">Organization</string>
     <string name="noun_other">其它</string>
     <string name="noun_commit">提交</string>
     <string name="noun_license">許可協議</string>

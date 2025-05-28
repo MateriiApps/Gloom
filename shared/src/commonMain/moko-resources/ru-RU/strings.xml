@@ -39,6 +39,8 @@
     <string name="noun_repo">Репозиторий</string>
     <string name="noun_release">Релиз</string>
     <string name="noun_tag">Тег</string>
+    <string name="noun_user">User</string>
+    <string name="noun_org">Organization</string>
     <string name="noun_other">Другое</string>
     <string name="noun_commit">Коммит</string>
     <string name="noun_license">Лицензия</string>

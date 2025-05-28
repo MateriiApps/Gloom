@@ -39,6 +39,8 @@
     <string name="noun_repo">Depo</string>
     <string name="noun_release">Sürüm</string>
     <string name="noun_tag">Etiket</string>
+    <string name="noun_user">User</string>
+    <string name="noun_org">Organization</string>
     <string name="noun_other">Diğer</string>
     <string name="noun_commit">Commit</string>
     <string name="noun_license">Lisans</string>

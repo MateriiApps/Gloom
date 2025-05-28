@@ -39,6 +39,8 @@
     <string name="noun_repo">Repositorio</string>
     <string name="noun_release">Lanzamiento</string>
     <string name="noun_tag">Etiqueta</string>
+    <string name="noun_user">User</string>
+    <string name="noun_org">Organization</string>
     <string name="noun_other">Otro</string>
     <string name="noun_commit">Commit</string>
     <string name="noun_license">Licencia</string>

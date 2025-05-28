@@ -12,13 +12,14 @@
     <string name="theme_system">النظام</string>
     <string name="theme_light">فاتح</string>
     <string name="theme_dark">داكن</string>
-    <string name="appearance_user_av_shape">شكل صورة المستخدم</string>
-    <string name="appearance_org_av_shape">شكل الصورة الرمزية للمنظمة</string>
+    <string name="appearance_av_shape">Avatar Shape</string>
     <string name="appearance_av_radius">نصف القطر:</string>
     <string name="appearance_av_radius_percent">%1$d%</string>
     <string name="appearance_av_shape_circle">دائري</string>
     <string name="appearance_av_shape_roundrect">مربع دائري</string>
     <string name="appearance_av_shape_squircle">مربع دائري</string>
+    <string name="action_expand_av_shape">View avatar shape options</string>
+    <string name="action_collapse_av_shape">Close avatar shape options</string>
     <!--            -->
     <!-- App Icons -->
     <string name="settings_app_icon">App Icon</string>
