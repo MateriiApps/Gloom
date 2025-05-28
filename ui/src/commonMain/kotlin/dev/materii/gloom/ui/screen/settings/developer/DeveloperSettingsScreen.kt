@@ -13,11 +13,13 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.ui.component.toolbar.LargeToolbar
 import dev.materii.gloom.ui.screen.settings.component.SettingsCategory
+import dev.materii.gloom.ui.screen.settings.component.SettingsGroup
 
 class DeveloperSettingsScreen : Screen {
 
@@ -33,14 +35,17 @@ class DeveloperSettingsScreen : Screen {
             Column(
                 modifier = Modifier
                     .padding(it)
+                    .padding(horizontal = 16.dp)
                     .verticalScroll(rememberScrollState())
             ) {
-                SettingsCategory(
-                    icon = Icons.Outlined.Notifications,
-                    text = stringResource(Res.strings.dev_alert_testing),
-                    subtext = stringResource(Res.strings.dev_alert_testing_description),
-                    destination = ::AlertTestingScreen
-                )
+                SettingsGroup {
+                    SettingsCategory(
+                        icon = Icons.Outlined.Notifications,
+                        text = stringResource(Res.strings.dev_alert_testing),
+                        subtext = stringResource(Res.strings.dev_alert_testing_description),
+                        destination = ::AlertTestingScreen
+                    )
+                }
             }
         }
     }

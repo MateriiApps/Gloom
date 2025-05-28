@@ -20,6 +20,6 @@ fun SettingsHeader(
         text = text,
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(horizontal = 16.dp).padding(top = 16.dp)
+        modifier = Modifier.padding(top = 16.dp, start = 12.dp)
     )
 }

@@ -23,14 +23,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
+import dev.materii.gloom.ui.component.toolbar.LargeToolbar
 import dev.materii.gloom.ui.screen.settings.component.SettingsButton
+import dev.materii.gloom.ui.screen.settings.component.SettingsGroup
 import dev.materii.gloom.ui.screen.settings.component.SettingsItemChoice
 import dev.materii.gloom.ui.screen.settings.component.SettingsSwitch
-import dev.materii.gloom.ui.component.toolbar.LargeToolbar
 import dev.materii.gloom.ui.widget.alert.Alert
 import dev.materii.gloom.ui.widget.alert.LocalAlertController
-import dev.icerock.moko.resources.compose.stringResource
 
 class AlertTestingScreen : Screen {
 
@@ -94,23 +95,27 @@ class AlertTestingScreen : Screen {
                     )
                 }
 
-                SettingsSwitch(
-                    label = stringResource(Res.strings.dev_alert_show_icon),
-                    pref = showIcon,
-                    onPrefChange = { showIcon = it }
-                )
+                SettingsGroup(
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                ) {
+                    SettingsSwitch(
+                        label = stringResource(Res.strings.dev_alert_show_icon),
+                        pref = showIcon,
+                        onPrefChange = { showIcon = it }
+                    )
 
-                SettingsItemChoice(
-                    label = stringResource(Res.strings.dev_alert_duration),
-                    pref = duration,
-                    onPrefChange = { duration = it }
-                )
+                    SettingsItemChoice(
+                        label = stringResource(Res.strings.dev_alert_duration),
+                        pref = duration,
+                        onPrefChange = { duration = it }
+                    )
 
-                SettingsItemChoice(
-                    label = "Position",
-                    pref = position,
-                    onPrefChange = { position = it }
-                )
+                    SettingsItemChoice(
+                        label = "Position",
+                        pref = position,
+                        onPrefChange = { position = it }
+                    )
+                }
 
                 SettingsButton(
                     label = stringResource(Res.strings.dev_alert_action_show_alert),

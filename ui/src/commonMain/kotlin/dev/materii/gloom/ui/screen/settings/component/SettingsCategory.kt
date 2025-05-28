@@ -1,8 +1,5 @@
 package dev.materii.gloom.ui.screen.settings.component
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,21 +14,17 @@ fun SettingsCategory(
     icon: ImageVector,
     text: String,
     subtext: String,
+    modifier: Modifier = Modifier,
     destination: (() -> Screen)? = null
 ) {
     val screen = destination?.invoke()
     val nav = LocalNavigator.currentOrThrow
 
-    Box(
-        modifier = Modifier
-            .clickable {
-                screen?.let { nav.navigate(it) }
-            }
-    ) {
-        SettingItem(
-            icon = { Icon(icon, null) },
-            text = { Text(text) },
-            secondaryText = { Text(subtext) }
-        )
-    }
+    SettingsItem(
+        text = { Text(text) },
+        secondaryText = { Text(subtext) },
+        leading = { SettingsCategoryIcon(icon) },
+        onClick = { if (screen != null) nav.navigate(screen) },
+        modifier = modifier
+    )
 }

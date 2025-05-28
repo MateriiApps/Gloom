@@ -1,46 +1,45 @@
 package dev.materii.gloom.ui.screen.settings.component
 
-import androidx.compose.foundation.clickable
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.setValue
 
+// FIXME: Compose introduced a regression that causes an IllegalAccessException when trying to open the dialog, should either wait for the fix or downgrade at some point
 @Composable
 inline fun <reified E : Enum<E>> SettingsItemChoice(
     label: String,
     title: String = label,
-    disabled: Boolean = false,
     pref: E,
+    enabled: Boolean = true,
     crossinline labelFactory: (E) -> String = { it.toString() },
     crossinline onPrefChange: (E) -> Unit,
 ) {
     val choiceLabel = labelFactory(pref)
-    val opened = remember {
+    var opened by remember {
         mutableStateOf(false)
     }
 
-    SettingItem(
-        modifier = Modifier.clickable { opened.value = true },
+    SettingsItem(
         text = { Text(text = label) },
+        secondaryText = { Text(choiceLabel) },
+        onClick = { opened = true },
+        enabled = enabled
     ) {
         SettingsChoiceDialog(
-            visible = opened.value,
+            visible = opened,
             title = { Text(title) },
             default = pref,
             labelFactory = labelFactory,
             onRequestClose = {
-                opened.value = false
+                opened = false
             },
             onChoice = {
-                opened.value = false
+                opened = false
                 onPrefChange(it)
             }
         )
-        FilledTonalButton(onClick = { opened.value = true }, enabled = !disabled) {
-            Text(choiceLabel)
-        }
     }
 }
