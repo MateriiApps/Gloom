@@ -7936,6 +7936,41 @@ type CopilotWorkFinishedEvent implements Node & UniformResourceLocatable {
 }
 
 """
+Represents a 'copilot_work_finished_failure' event on a given pull request.
+"""
+type CopilotWorkFinishedFailureEvent implements Node & UniformResourceLocatable {
+  """
+  Identifies the actor who performed the event.
+  """
+  actor: Actor
+
+  """
+  Identifies the date and time when the object was created.
+  """
+  createdAt: DateTime!
+
+  """
+  The Node ID of the CopilotWorkFinishedFailureEvent object
+  """
+  id: ID!
+
+  """
+  PullRequest referenced by event.
+  """
+  pullRequest: PullRequest!
+
+  """
+  The HTML path to this resource.
+  """
+  resourcePath: URI!
+
+  """
+  The URL to this resource.
+  """
+  url: URI!
+}
+
+"""
 Represents a 'copilot_work_started' event on a given pull request.
 """
 type CopilotWorkStartedEvent implements Node & UniformResourceLocatable {
@@ -21167,6 +21202,11 @@ enum LabelOrderField {
   Order labels by creation time
   """
   CREATED_AT
+
+  """
+  Order labels by issue count
+  """
+  ISSUE_COUNT
 }
 
 """
@@ -42129,7 +42169,7 @@ type PullRequestTimelineItemEdge {
 """
 An item in a pull request timeline
 """
-union PullRequestTimelineItems = AddedToMergeQueueEvent|AddedToProjectEvent|AssignedEvent|AutoMergeDisabledEvent|AutoMergeEnabledEvent|AutoRebaseEnabledEvent|AutoSquashEnabledEvent|AutomaticBaseChangeFailedEvent|AutomaticBaseChangeSucceededEvent|BaseRefChangedEvent|BaseRefDeletedEvent|BaseRefForcePushedEvent|ClosedEvent|CommentDeletedEvent|ConnectedEvent|ConvertToDraftEvent|ConvertedNoteToIssueEvent|ConvertedToDiscussionEvent|CopilotWorkFinishedEvent|CopilotWorkStartedEvent|CrossReferencedEvent|DemilestonedEvent|DeployedEvent|DeploymentEnvironmentChangedEvent|DisconnectedEvent|HeadRefDeletedEvent|HeadRefForcePushedEvent|HeadRefRestoredEvent|IssueComment|IssueTypeAddedEvent|IssueTypeChangedEvent|IssueTypeRemovedEvent|LabeledEvent|LockedEvent|MarkedAsDuplicateEvent|MentionedEvent|MergedEvent|MilestonedEvent|MovedColumnsInProjectEvent|ParentIssueAddedEvent|ParentIssueRemovedEvent|PinnedEvent|PullRequestCommit|PullRequestCommitCommentThread|PullRequestReview|PullRequestReviewThread|PullRequestRevisionMarker|ReadyForReviewEvent|ReferencedEvent|RemovedFromMergeQueueEvent|RemovedFromProjectEvent|RenamedTitleEvent|ReopenedEvent|ReviewDismissedEvent|ReviewRequestRemovedEvent|ReviewRequestedEvent|SubIssueAddedEvent|SubIssueRemovedEvent|SubscribedEvent|TransferredEvent|UnassignedEvent|UnlabeledEvent|UnlockedEvent|UnmarkedAsDuplicateEvent|UnpinnedEvent|UnsubscribedEvent|UserBlockedEvent
+union PullRequestTimelineItems = AddedToMergeQueueEvent|AddedToProjectEvent|AssignedEvent|AutoMergeDisabledEvent|AutoMergeEnabledEvent|AutoRebaseEnabledEvent|AutoSquashEnabledEvent|AutomaticBaseChangeFailedEvent|AutomaticBaseChangeSucceededEvent|BaseRefChangedEvent|BaseRefDeletedEvent|BaseRefForcePushedEvent|ClosedEvent|CommentDeletedEvent|ConnectedEvent|ConvertToDraftEvent|ConvertedNoteToIssueEvent|ConvertedToDiscussionEvent|CopilotWorkFinishedEvent|CopilotWorkFinishedFailureEvent|CopilotWorkStartedEvent|CrossReferencedEvent|DemilestonedEvent|DeployedEvent|DeploymentEnvironmentChangedEvent|DisconnectedEvent|HeadRefDeletedEvent|HeadRefForcePushedEvent|HeadRefRestoredEvent|IssueComment|IssueTypeAddedEvent|IssueTypeChangedEvent|IssueTypeRemovedEvent|LabeledEvent|LockedEvent|MarkedAsDuplicateEvent|MentionedEvent|MergedEvent|MilestonedEvent|MovedColumnsInProjectEvent|ParentIssueAddedEvent|ParentIssueRemovedEvent|PinnedEvent|PullRequestCommit|PullRequestCommitCommentThread|PullRequestReview|PullRequestReviewThread|PullRequestRevisionMarker|ReadyForReviewEvent|ReferencedEvent|RemovedFromMergeQueueEvent|RemovedFromProjectEvent|RenamedTitleEvent|ReopenedEvent|ReviewDismissedEvent|ReviewRequestRemovedEvent|ReviewRequestedEvent|SubIssueAddedEvent|SubIssueRemovedEvent|SubscribedEvent|TransferredEvent|UnassignedEvent|UnlabeledEvent|UnlockedEvent|UnmarkedAsDuplicateEvent|UnpinnedEvent|UnsubscribedEvent|UserBlockedEvent
 
 """
 The connection type for PullRequestTimelineItems.
@@ -42284,6 +42324,11 @@ enum PullRequestTimelineItemsItemType {
   Represents a 'copilot_work_finished' event on a given pull request.
   """
   COPILOT_WORK_FINISHED_EVENT
+
+  """
+  Represents a 'copilot_work_finished_failure' event on a given pull request.
+  """
+  COPILOT_WORK_FINISHED_FAILURE_EVENT
 
   """
   Represents a 'copilot_work_started' event on a given pull request.
@@ -43902,6 +43947,11 @@ type ReleaseAsset implements Node {
   Identifies the date and time when the object was created.
   """
   createdAt: DateTime!
+
+  """
+  The SHA256 digest of the asset
+  """
+  digest: String
 
   """
   The number of times this asset was downloaded
@@ -64664,11 +64714,6 @@ type User implements Actor & Node & PackageOwner & ProfileOwner & ProjectNextOwn
   Collection of Achievements this user has unlocked, most recently unlocked first.
   """
   achievements("Include your own achievements that you have hidden." includeHidden: Boolean = false, "Returns the elements in the list that come after the specified cursor." after: String, "Returns the elements in the list that come before the specified cursor." before: String, "Returns the first _n_ elements from the list." first: Int, "Returns the last _n_ elements from the list." last: Int): AchievementConnection!
-
-  """
-  The activity feed for this user
-  """
-  activityFeed: Feed
 
   """
   List of all the projects accessible to this user
