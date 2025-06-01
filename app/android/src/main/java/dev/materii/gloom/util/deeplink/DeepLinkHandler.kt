@@ -5,12 +5,64 @@ import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import cafe.adriel.voyager.core.screen.Screen
+import dev.materii.gloom.ui.screen.list.RepositoryListScreen
+import dev.materii.gloom.ui.screen.list.StarredReposListScreen
+import dev.materii.gloom.ui.screen.profile.ProfileScreen
+import dev.materii.gloom.ui.screen.release.ReleaseScreen
+import dev.materii.gloom.ui.screen.repo.RepoScreen
 
-class DeepLinkHandler {
+object DeepLinkHandler {
     private var uri by mutableStateOf<Uri?>(null)
-    private var linkVisitedListeners = mutableMapOf<List<String>, OnLinkVisitedListener>()
+    private val linkVisitedListeners = mutableMapOf<List<String>, OnLinkVisitedListener>()
+    private val paramPattern = "^\\{([A-z0-9_]+)\\}$".toRegex()
 
-    fun addOnLinkVisitedListener(route: String, callback: OnLinkVisitedListener) {
+    init {
+        addOnLinkVisitedListener("/{username}") { params, query ->
+            val username = params["username"]!!
+            when (query["tab"]) {
+                "repositories" -> listOf(
+                    ProfileScreen(username),
+                    RepositoryListScreen(username)
+                )
+
+                "projects" -> emptyList()
+                "packages" -> emptyList()
+                "stars" -> listOf(ProfileScreen(username), StarredReposListScreen(username))
+
+                else -> listOf(ProfileScreen(username))
+            }
+        }
+
+        addOnLinkVisitedListener("/{owner}/{repo}") { params, _ ->
+            val owner = params["owner"]!!
+            val repo = params["repo"]!!
+            listOf(RepoScreen(owner, repo))
+        }
+
+        addOnLinkVisitedListener("/{owner}/{repo}/releases/tag/{tag}") { params, _ ->
+            val owner = params["owner"]!!
+            val repo = params["repo"]!!
+            val tag = params["tag"]!!
+            listOf(ReleaseScreen(owner, repo, tag))
+        }
+
+        addOnLinkVisitedListener("/dashboard") { _, _ ->
+            println("dashboard")
+            emptyList()
+        }
+
+        addOnLinkVisitedListener("/orgs/{org}/dashboard") { params, _ ->
+            val org = params["org"]!!
+            emptyList()
+        }
+
+        addOnLinkVisitedListener("/settings/organizations") { _, _ ->
+            emptyList()
+        }
+    }
+
+    private fun addOnLinkVisitedListener(route: String, callback: OnLinkVisitedListener) {
         val r = route.removePrefix("/")
 
         linkVisitedListeners[r.split("/")] = callback
@@ -61,26 +113,28 @@ class DeepLinkHandler {
         return params
     }
 
-    fun handle(intent: Intent) {
-        val path = intent.data?.pathSegments ?: return
-        val routes = linkVisitedListeners.keys.filter {
-            it.size == path.size
-        }
+    /**
+     * Handles the incoming intent and returns a list of screens based on the deep link.
+     *
+     * @param intent The incoming intent containing the deep link data.
+     * @return A list of screens to be displayed based on the deep link.
+     */
+    fun handle(intent: Intent): List<Screen> {
+        val path = intent.data?.pathSegments ?: return emptyList()
+        val routes = linkVisitedListeners.keys.filter { it.size == path.size }
 
-        if (routes.isEmpty()) return
+        if (routes.isEmpty()) return emptyList()
 
         linkVisitedListeners[path]?.let { listener ->
-            listener(
+            uri = intent.data
+
+            return listener(
                 urlParams = extractParams(path.joinToString("/"), path),
                 queryParams = getQueryParams(intent.dataString!!)
             )
-
-            uri = intent.data
-
-            return
         }
 
-        routes.firstOrNull { route ->
+        return routes.firstOrNull { route ->
             var matched = false
 
             path.forEachIndexed { index, pSeg ->
@@ -91,21 +145,16 @@ class DeepLinkHandler {
 
             matched
         }?.let { segment ->
+            uri = intent.data
+
             linkVisitedListeners[segment]?.invoke(
                 urlParams = extractParams(segment.joinToString("/"), path),
                 queryParams = getQueryParams(intent.dataString!!)
             )
-
-            uri = intent.data
-        }
-
-    }
-
-    private companion object {
-        val paramPattern = "^\\{([A-z0-9_]+)\\}\$".toRegex()
+        }.orEmpty()
     }
 }
 
 fun interface OnLinkVisitedListener {
-    operator fun invoke(urlParams: Map<String, String>, queryParams: Map<String, String>)
+    operator fun invoke(urlParams: Map<String, String>, queryParams: Map<String, String>): List<Screen>
 }
