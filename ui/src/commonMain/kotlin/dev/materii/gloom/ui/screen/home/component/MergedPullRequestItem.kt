@@ -1,17 +1,8 @@
 package dev.materii.gloom.ui.screen.home.component
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,24 +14,22 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.pluralStringResource
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.gql.fragment.MergedPullRequestFeedItemFragment
 import dev.materii.gloom.gql.type.ReactionContent
-import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.component.Label
 import dev.materii.gloom.ui.component.ThinDivider
 import dev.materii.gloom.ui.icon.Custom
 import dev.materii.gloom.ui.icon.custom.MergedPullRequest
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
-import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.theme.gloomColorScheme
 import dev.materii.gloom.ui.util.annotatingStringResource
 import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.ui.widget.markdown.TruncatedMarkdown
 import dev.materii.gloom.ui.widget.reaction.ReactionRow
-import dev.icerock.moko.resources.compose.pluralStringResource
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun MergedPullRequestItem(
@@ -94,30 +83,15 @@ fun PullRequestCard(
             verticalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-                verticalAlignment = Alignment.CenterVertically,
+            Breadcrumb(
                 modifier = Modifier
-                    .padding(horizontal = 16.dp).padding(top = 16.dp)
-                    .clickable { navigator.navigate(RepoScreen(repo.owner.login, repo.name)) }
-            ) {
-                Avatar(
-                    url = repo.owner.avatarUrl,
-                    type = User.Type.fromTypeName(repo.owner.__typename),
-                    modifier = Modifier.size(20.dp)
-                )
-
-                Text(
-                    buildAnnotatedString {
-                        append(repo.owner.login)
-                        withStyle(SpanStyle(MaterialTheme.colorScheme.onSurface.copy(0.5f))) {
-                            append(" / ")
-                        }
-                        append(repo.name)
-                    },
-                    style = MaterialTheme.typography.labelMedium
-                )
-            }
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp),
+                repoName = repo.name,
+                username = repo.owner.login,
+                avatarUrl = repo.owner.avatarUrl,
+                userType = User.Type.fromTypeName(repo.owner.__typename)
+            )
 
             Text(
                 text = buildAnnotatedString {

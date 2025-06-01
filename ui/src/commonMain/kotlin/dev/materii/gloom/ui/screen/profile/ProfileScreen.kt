@@ -3,62 +3,19 @@ package dev.materii.gloom.ui.screen.profile
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.HowToReg
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material.icons.outlined.Book
-import androidx.compose.material.icons.outlined.Business
-import androidx.compose.material.icons.outlined.Email
-import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Link
-import androidx.compose.material.icons.outlined.PersonAddAlt
-import androidx.compose.material.icons.outlined.Place
-import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.outlined.Star
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ProvideTextStyle
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material.icons.outlined.*
+import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
-import androidx.compose.material3.surfaceColorAtElevation
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -75,47 +32,34 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import coil3.compose.AsyncImage
+import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.pluralStringResource
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.api.model.ModelRepo
 import dev.materii.gloom.api.model.ModelStatus
 import dev.materii.gloom.api.model.ModelUser
-import dev.materii.gloom.api.model.Pinnable
 import dev.materii.gloom.domain.manager.ShareManager
 import dev.materii.gloom.gql.type.SocialAccountProvider
 import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.component.BackButton
 import dev.materii.gloom.ui.component.BadgedItem
 import dev.materii.gloom.ui.icon.Social
-import dev.materii.gloom.ui.icon.social.Bluesky
-import dev.materii.gloom.ui.icon.social.Facebook
-import dev.materii.gloom.ui.icon.social.Hometown
-import dev.materii.gloom.ui.icon.social.Instagram
-import dev.materii.gloom.ui.icon.social.LinkedIn
-import dev.materii.gloom.ui.icon.social.Mastodon
-import dev.materii.gloom.ui.icon.social.NPM
-import dev.materii.gloom.ui.icon.social.Reddit
-import dev.materii.gloom.ui.icon.social.Twitch
-import dev.materii.gloom.ui.icon.social.Twitter
-import dev.materii.gloom.ui.icon.social.YouTube
-import dev.materii.gloom.ui.screen.list.OrgsListScreen
-import dev.materii.gloom.ui.screen.list.RepositoryListScreen
-import dev.materii.gloom.ui.screen.list.SponsoringScreen
-import dev.materii.gloom.ui.screen.list.StarredReposListScreen
+import dev.materii.gloom.ui.icon.social.*
+import dev.materii.gloom.ui.screen.list.*
 import dev.materii.gloom.ui.screen.profile.component.ContributionGraph
 import dev.materii.gloom.ui.screen.profile.viewmodel.ProfileViewModel
+import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.screen.repo.component.RepoItem
 import dev.materii.gloom.ui.screen.settings.SettingsScreen
+import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.widget.alert.LocalAlertController
+import dev.materii.gloom.ui.widget.markdown.ReadMeCard
 import dev.materii.gloom.util.EmojiUtil
 import dev.materii.gloom.util.NumberFormatter
-import dev.materii.gloom.ui.util.navigate
-import dev.materii.gloom.ui.widget.markdown.ReadMeCard
-import dev.materii.gloom.ui.widget.alert.LocalAlertController
-import dev.materii.gloom.util.Constants
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.pluralStringResource
-import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 import java.net.URI
@@ -154,7 +98,18 @@ open class ProfileScreen(
 
                         user.readme?.let { readme ->
                             Box(modifier = Modifier.padding(horizontal = 16.dp)) {
-                                ReadMeCard(readme, viewModel.user!!.username ?: "ghost")
+                                val nav = LocalNavigator.currentOrThrow
+                                val repository = viewModel.user!!.username ?: "ghost"
+
+                                ReadMeCard(
+                                    text = readme,
+                                    repository = repository,
+                                    onClickRepository = {
+                                        if (user.type == User.Type.USER) {
+                                            nav.navigate(RepoScreen(user.username!!, repository))
+                                        }
+                                    }
+                                )
                             }
                         }
 

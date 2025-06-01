@@ -1,42 +1,24 @@
 package dev.materii.gloom.ui.screen.home.component
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.StarBorder
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import coil3.compose.AsyncImage
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
-import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.gql.fragment.FeedRepository
-import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.component.LabeledIcon
 import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.theme.gloomColorScheme
@@ -44,7 +26,6 @@ import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.ui.util.parsedColor
 import dev.materii.gloom.util.NumberFormatter
 import dev.materii.gloom.util.pluralStringResource
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun FeedRepoCard(
@@ -84,28 +65,13 @@ fun FeedRepoCard(
                 .padding(16.dp)
                 .fillMaxWidth()
         ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Avatar(
-                    url = repo.owner.avatarUrl,
-                    type = User.Type.fromTypeName(repo.owner.__typename),
-                    modifier = Modifier.size(20.dp)
-                )
-
-                Text(
-                    buildAnnotatedString {
-                        append(repo.owner.login)
-                        withStyle(SpanStyle(color = MaterialTheme.colorScheme.onSurface.copy(0.5f))) {
-                            append(" / ")
-                        }
-                        append(repo.name)
-                    },
-                    style = MaterialTheme.typography.labelMedium
-                )
-            }
+            Breadcrumb(
+                modifier = Modifier.align(Alignment.Start),
+                repoName = repo.name,
+                username = repo.owner.login,
+                avatarUrl = repo.owner.avatarUrl,
+                userTypeName = repo.owner.__typename,
+            )
 
             repo.description?.let {
                 Text(
