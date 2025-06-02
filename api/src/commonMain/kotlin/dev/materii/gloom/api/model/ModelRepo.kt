@@ -1,8 +1,8 @@
 package dev.materii.gloom.api.model
 
-import dev.materii.gloom.api.dto.license.License
 import dev.materii.gloom.api.dto.repo.Repository
 import dev.materii.gloom.api.dto.user.User
+import dev.materii.gloom.gql.RepoForksQuery
 import dev.materii.gloom.gql.RepoListQuery
 import dev.materii.gloom.gql.StarredReposQuery
 import dev.materii.gloom.gql.fragment.PinnedRepo
@@ -119,6 +119,27 @@ data class ModelRepo(
                     avatar = owner.avatarUrl,
                     type = if (owner.__typename == "User") User.Type.USER else User.Type.ORG
                 )
+            )
+        }
+
+        fun fromRepoForksQuery(rfq: RepoForksQuery.Node) = with(rfq.repoListRepoFragment) {
+            val lang = languages?.nodes?.firstOrNull()
+            val modelLang = if (lang != null)
+                ModelLanguage(lang.language.name, lang.language.color)
+            else
+                null
+
+            ModelRepo(
+                name = name,
+                description = description,
+                owner = ModelUser(
+                    username = owner.login,
+                    avatar = owner.avatarUrl.toString(),
+                    type = if (owner.__typename == "User") User.Type.USER else User.Type.ORG
+                ),
+                parent = if (parent != null) ModelRepo(fullName = parent.nameWithOwner) else null,
+                language = modelLang,
+                stars = stargazerCount
             )
         }
 
