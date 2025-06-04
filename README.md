@@ -30,8 +30,8 @@ You can view the project roadmap [here](https://github.com/orgs/MateriiApps/proj
 
 Installation
 ---
- 1. Download the [latest actions build](https://nightly.link/MateriiApps/Gloom/workflows/android/main/artifact.zip), if on PC then transfer the file over to your phone
- 2. Unzip `artifact.zip`
+ 1. Download the [latest actions build](https://nightly.link/MateriiApps/Gloom/workflows/android/main/gloom-release.zip), if on PC then transfer the file over to your phone
+ 2. Unzip `gloom-release.zip`
  3. Make sure to allow install unknown apps
  4. Install the apk
 
