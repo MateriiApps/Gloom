@@ -1,4 +1,4 @@
-query RepoForks($username: String!, $name: String!,  $total: Int = 20, $cursor: String) {
+query RepoForks($username: String!, $name: String!, $total: Int = 20, $cursor: String) {
     repository(owner: $username, name: $name) {
         forks(
             first: $total
