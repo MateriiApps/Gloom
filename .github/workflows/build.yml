@@ -38,20 +38,17 @@ jobs:
       - name: Build debug APK
         run: ./gradlew :app:android:assembleDebug
 
-      - name: Decode keystore
-        if: (github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch') && secrets.KEYSTORE_BASE64 != ''
-        run: |
-          mkdir -p keystore
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > keystore/release.jks
-
       - name: Build release APK
         if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
-        run: ./gradlew :app:android:assembleRelease
         env:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
-          SIGNING_STORE_FILE: ${{ secrets.SIGNING_STORE_FILE }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_STORE_FILE: ${{ github.workspace }}/release.jks
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > release.jks
+          ./gradlew :app:android:assembleRelease
+          rm release.jks
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
