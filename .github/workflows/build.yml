@@ -46,7 +46,7 @@ jobs:
           SIGNING_STORE_FILE: ${{ github.workspace }}/release.jks
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > release.jks
-          ./gradlew :app:android:assembleRelease
+          ./gradlew :app:android:packageRelease
           rm release.jks
 
       - name: Upload debug APK
