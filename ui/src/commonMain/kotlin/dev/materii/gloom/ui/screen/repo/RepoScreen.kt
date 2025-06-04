@@ -220,7 +220,7 @@ class RepoScreen(
                                     modifier = Modifier
                                         .basicMarquee(Int.MAX_VALUE)
                                         .clickable {
-                                            nav?.navigate(ProfileScreen(it.owner.login))
+                                            nav.navigate(ProfileScreen(it.owner.login))
                                         }
                                 )
                                 Text(

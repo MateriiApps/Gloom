@@ -84,13 +84,13 @@ fun PullRequestCard(
             modifier = Modifier.fillMaxWidth()
         ) {
             Breadcrumb(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp),
                 repoName = repo.name,
                 username = repo.owner.login,
                 avatarUrl = repo.owner.avatarUrl,
-                userType = User.Type.fromTypeName(repo.owner.__typename)
+                userType = User.Type.fromTypeName(repo.owner.__typename),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp),
             )
 
             Text(

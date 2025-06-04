@@ -97,11 +97,11 @@ fun ReleaseCard(
                     .padding(top = 16.dp, start = 16.dp, end = 16.dp)
             ) {
                 Breadcrumb(
-                    modifier = Modifier.align(Alignment.CenterStart),
                     repoName = repo.name,
                     username = repo.owner.login,
                     avatarUrl = repo.owner.avatarUrl,
-                    userTypeName = repo.owner.__typename
+                    userTypeName = repo.owner.__typename,
+                    modifier = Modifier.align(Alignment.CenterStart)
                 )
             }
 

@@ -66,11 +66,11 @@ fun FeedRepoCard(
                 .fillMaxWidth()
         ) {
             Breadcrumb(
-                modifier = Modifier.align(Alignment.Start),
                 repoName = repo.name,
                 username = repo.owner.login,
                 avatarUrl = repo.owner.avatarUrl,
                 userTypeName = repo.owner.__typename,
+                modifier = Modifier.align(Alignment.Start)
             )
 
             repo.description?.let {
