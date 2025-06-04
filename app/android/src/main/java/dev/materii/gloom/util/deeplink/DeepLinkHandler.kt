@@ -18,9 +18,8 @@ object DeepLinkHandler {
     private val paramPattern = "^\\{([A-z0-9_]+)\\}$".toRegex()
 
     init {
-        addOnLinkVisitedListener("/{username}") { params, query ->
-            val username = params["username"]!!
-            when (query["tab"]) {
+        addOnLinkVisitedListener("/{username}") { (username), (tab) ->
+            when (tab) {
                 "repositories" -> listOf(
                     ProfileScreen(username),
                     RepositoryListScreen(username)
@@ -34,16 +33,11 @@ object DeepLinkHandler {
             }
         }
 
-        addOnLinkVisitedListener("/{owner}/{repo}") { params, _ ->
-            val owner = params["owner"]!!
-            val repo = params["repo"]!!
+        addOnLinkVisitedListener("/{owner}/{repo}") { (owner, repo), _ ->
             listOf(RepoScreen(owner, repo))
         }
 
-        addOnLinkVisitedListener("/{owner}/{repo}/releases/tag/{tag}") { params, _ ->
-            val owner = params["owner"]!!
-            val repo = params["repo"]!!
-            val tag = params["tag"]!!
+        addOnLinkVisitedListener("/{owner}/{repo}/releases/tag/{tag}") { (owner, repo, tag), _ ->
             listOf(ReleaseScreen(owner, repo, tag))
         }
 
@@ -52,8 +46,7 @@ object DeepLinkHandler {
             emptyList()
         }
 
-        addOnLinkVisitedListener("/orgs/{org}/dashboard") { params, _ ->
-            val org = params["org"]!!
+        addOnLinkVisitedListener("/orgs/{org}/dashboard") { (org), _ ->
             emptyList()
         }
 
@@ -74,43 +67,23 @@ object DeepLinkHandler {
         linkVisitedListeners.remove(r)
     }
 
-    private fun getQueryParams(path: String): Map<String, String> {
+    private fun extractQueryParams(path: String): List<String> {
         val parts = path.split("?")
 
-        if (parts.size == 1) return emptyMap()
+        if (parts.size <= 1) return emptyList()
 
-        val parsed = mutableMapOf<String, String>()
-        val queries = parts[1].split("&")
-
-        queries.forEach {
-            val query = it.split("=")
-
-            if (query.size == 2) parsed[query[0]] = query[1]
+        return parts[1].split("&").mapNotNull { param ->
+            val query = param.substringAfter("=", "")
+            query.ifBlank { null }
         }
-
-        return parsed
     }
 
-    private fun extractParams(route: String, path: List<String>): Map<String, String> {
-        val paramIndexes = mutableMapOf<Int, String>()
-        val params = mutableMapOf<String, String>()
-        val routePath = route.split("?").firstOrNull()?.split("/") ?: return emptyMap()
+    private fun extractUrlParams(route: String, path: List<String>): List<String> {
+        val routePath = route.split("?").firstOrNull()?.split("/").orEmpty()
 
-        routePath.forEachIndexed { i, segment ->
-            if (segment matches paramPattern) {
-                val groups = paramPattern.find(segment)!!.groups
-
-                paramIndexes[i] = groups[1]!!.value
-            }
-        }
-
-        path.forEachIndexed { i, segment ->
-            val param = paramIndexes[i]
-
-            if (param != null) params[param] = segment
-        }
-
-        return params
+        return routePath.indices
+            .filter { i -> i < path.size && routePath[i] matches paramPattern }
+            .map { i -> path[i] }
     }
 
     /**
@@ -129,8 +102,8 @@ object DeepLinkHandler {
             uri = intent.data
 
             return listener(
-                urlParams = extractParams(path.joinToString("/"), path),
-                queryParams = getQueryParams(intent.dataString!!)
+                urlParams = extractUrlParams(path.joinToString("/"), path),
+                queryParams = extractQueryParams(intent.dataString!!)
             )
         }
 
@@ -148,13 +121,16 @@ object DeepLinkHandler {
             uri = intent.data
 
             linkVisitedListeners[segment]?.invoke(
-                urlParams = extractParams(segment.joinToString("/"), path),
-                queryParams = getQueryParams(intent.dataString!!)
+                urlParams = extractUrlParams(segment.joinToString("/"), path),
+                queryParams = extractQueryParams(intent.dataString!!)
             )
         }.orEmpty()
     }
 }
 
 fun interface OnLinkVisitedListener {
-    operator fun invoke(urlParams: Map<String, String>, queryParams: Map<String, String>): List<Screen>
+    /**
+     * @param urlParams List of URL parameters extracted from the deep link in the order they appear in the route.
+     */
+    operator fun invoke(urlParams: List<String>, queryParams: List<String>): List<Screen>
 }
