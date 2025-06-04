@@ -52,7 +52,7 @@ Build
     - Windows: `./gradlew assembleDebug`
 3. Install on device
     - [Enable usb debugging](https://developer.android.com/studio/debug/dev-options) and plug in your phone
-    - Run `adb install app/build/outputs/apk/debug/app-debug.apk`
+    - Run `adb install app/build/outputs/apk/debug/gloom-debug.apk`
 
 ## Contributing
 
