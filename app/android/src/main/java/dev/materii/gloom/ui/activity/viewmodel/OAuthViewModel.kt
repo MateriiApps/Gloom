@@ -1,4 +1,4 @@
-package dev.materii.gloom.ui.viewmodel.oauth
+package dev.materii.gloom.ui.activity.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

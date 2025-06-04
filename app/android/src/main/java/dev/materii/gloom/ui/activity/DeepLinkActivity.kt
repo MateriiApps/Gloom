@@ -1,4 +1,4 @@
-package dev.materii.gloom.activity
+package dev.materii.gloom.ui.activity
 
 import android.widget.Toast
 import dev.materii.gloom.util.deeplink.DeepLinkHandler

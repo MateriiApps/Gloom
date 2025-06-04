@@ -5,7 +5,7 @@ import dev.materii.gloom.di.httpModule
 import dev.materii.gloom.di.module.*
 import dev.materii.gloom.di.repositoryModule
 import dev.materii.gloom.di.serviceModule
-import dev.materii.gloom.ui.viewmodel.oauth.OAuthViewModel
+import dev.materii.gloom.ui.activity.viewmodel.OAuthViewModel
 import dev.materii.gloom.util.VersionName
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

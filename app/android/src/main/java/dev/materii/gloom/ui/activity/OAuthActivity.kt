@@ -1,4 +1,4 @@
-package dev.materii.gloom.activity
+package dev.materii.gloom.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,13 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.CompositionLocalProvider
 import dev.materii.gloom.domain.manager.PreferenceManager
 import dev.materii.gloom.domain.manager.enums.Theme
+import dev.materii.gloom.ui.activity.viewmodel.OAuthViewModel
 import dev.materii.gloom.ui.screen.auth.LandingScreen
 import dev.materii.gloom.ui.theme.GloomTheme
-import dev.materii.gloom.ui.viewmodel.oauth.OAuthViewModel
-import dev.materii.gloom.util.*
+import dev.materii.gloom.util.LinkHandler
+import dev.materii.gloom.util.LocalLinkHandler
+import dev.materii.gloom.util.getOAuthCode
+import dev.materii.gloom.util.isOAuthUri
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
