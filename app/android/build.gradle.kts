@@ -22,25 +22,41 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+            storeFile = System.getenv("SIGNING_STORE_FILE")?.let(::File)
+            storePassword = System.getenv("SIGNING_STORE_PASSWORD")
+        }
+    }
+
     buildTypes {
-        named("release") {
+        release {
+            val hasReleaseSigning = System.getenv("SIGNING_STORE_PASSWORD")?.isNotEmpty() == true
+
+            // versionNameSuffix = "-alpha" // TODO: Use build flavor
             isMinifyEnabled = true
-            setProguardFiles(
-                listOf(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "../proguard-rules.pro"
-                )
-            )
+            isShrinkResources = true
+            isCrunchPngs = true
+            signingConfig = signingConfigs.getByName(if (hasReleaseSigning) "release" else "debug")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "../proguard-rules.pro")
         }
 
-        named("debug") {
+        debug {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
         }
+    }
 
-        named("release") {
-            versionNameSuffix = "-alpha" // TODO: Use build flavor
-        }
+    applicationVariants.all {
+        val variant = this
+        outputs
+            .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
+            .forEach { output ->
+                val outputFileName = "gloom-${variant.buildType.name}.apk"
+                output.outputFileName = outputFileName
+            }
     }
 
     androidResources {
