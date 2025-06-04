@@ -37,7 +37,6 @@ class LandingScreen(
     private fun Screen() {
         val linkHandler = dev.materii.gloom.util.LocalLinkHandler.current
         val viewModel: LandingViewModel = koinScreenModel()
-        // val nav = LocalNavigator.currentOrThrow
 
         Surface {
             Column(
@@ -92,7 +91,6 @@ class LandingScreen(
                                         isCurrent = false,
                                         onClick = {
                                             viewModel.switchToAccount(account.id)
-                                            // nav.replaceAll(RootScreen())
                                         }
                                     )
                                 }

@@ -33,9 +33,6 @@ open class GloomActivity : ComponentActivity() {
         if (!auth.isSignedIn) {
             val activityIntent = Intent(this, OAuthActivity::class.java)
             startActivity(activityIntent)
-            // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            //     overrideActivityTransition(Activity.OVERRIDE_TRANSITION_OPEN, android.R.anim.fade_in, android.R.anim.fade_out)
-            // }
             return
         }
 
