@@ -1,11 +1,17 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.aboutlibraries)
+}
+
+kotlin {
+    jvmToolchain(17)
+
+    compilerOptions {
+        freeCompilerArgs.addAll("-Xcontext-parameters", "-Xexpect-actual-classes")
+    }
 }
 
 android {
@@ -47,26 +53,14 @@ android {
         generateLocaleConfig = true
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-        freeCompilerArgs += "-Xcontext-receivers"
-        freeCompilerArgs += "-Xexpect-actual-classes"
-        freeCompilerArgs += listOf(
-            "-P",
-            "plugin:androidx.compose.compiler.plugins.kotlin:stabilityConfigurationPath=${file("../stability.txt").absolutePath}"
-        )
-    }
-
     buildFeatures {
         compose = true
         buildConfig = true
     }
+}
+
+composeCompiler {
+    stabilityConfigurationFiles.add(project.layout.projectDirectory.file("../stability.txt"))
 }
 
 dependencies {
