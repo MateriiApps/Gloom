@@ -23,6 +23,7 @@ import dev.materii.gloom.util.deeplink.DeepLinkHandler
 import org.koin.android.ext.android.inject
 
 open class GloomActivity : ComponentActivity() {
+
     protected val auth: AuthManager by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,4 +77,5 @@ open class GloomActivity : ComponentActivity() {
             )
         }
     }
+
 }

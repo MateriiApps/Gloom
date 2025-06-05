@@ -4,6 +4,7 @@ import android.widget.Toast
 import dev.materii.gloom.util.deeplink.DeepLinkHandler
 
 class DeepLinkActivity : GloomActivity() {
+
     override fun setupDefaultContent() {
         val backstack = DeepLinkHandler.handle(intent).ifEmpty {
             finish()
@@ -12,4 +13,5 @@ class DeepLinkActivity : GloomActivity() {
         }
         setupContent(backstack)
     }
+
 }

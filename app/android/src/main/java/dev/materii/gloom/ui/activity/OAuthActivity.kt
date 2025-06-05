@@ -20,6 +20,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OAuthActivity : ComponentActivity() {
+
     private val viewModel: OAuthViewModel by viewModel()
     private val prefs: PreferenceManager by inject()
 
@@ -65,4 +66,5 @@ class OAuthActivity : ComponentActivity() {
 
         return super.onKeyDown(keyCode, event)
     }
+
 }
