@@ -2,24 +2,13 @@ package dev.materii.gloom.ui.screen.home.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.LocalOffer
 import androidx.compose.material.icons.outlined.LocalOffer
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,30 +16,25 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
-import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.gql.fragment.NewReleaseItemFragment
-import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.component.ThinDivider
 import dev.materii.gloom.ui.icon.Custom
 import dev.materii.gloom.ui.icon.custom.Commit
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.screen.release.ReleaseScreen
-import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.theme.DarkGreen
 import dev.materii.gloom.ui.util.annotatingStringResource
 import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.ui.widget.markdown.TruncatedMarkdown
 import dev.materii.gloom.util.ifNullOrBlank
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 @Suppress("UNUSED_PARAMETER")
@@ -58,6 +42,7 @@ fun NewReleaseItem(
     item: NewReleaseItemFragment,
     starData: Pair<Boolean, Int>? = null,
     onVisitPressed: (String) -> Unit = {},
+    onClickCard: () -> Unit = {}
 ) {
     val navigator = LocalNavigator.currentOrThrow
     val actor = item.actor.actorFragment
@@ -97,7 +82,9 @@ fun ReleaseCard(
     val nav = LocalNavigator.currentOrThrow
 
     ElevatedCard(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { nav.navigate(ReleaseScreen(repo.owner.login, repo.name, release.tagName)) }
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -109,40 +96,14 @@ fun ReleaseCard(
                     .fillMaxWidth()
                     .padding(top = 16.dp, start = 16.dp, end = 16.dp)
             ) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .clickable { nav.navigate(RepoScreen(repo.owner.login, repo.name)) }
-                ) {
-                    Avatar(
-                        url = repo.owner.avatarUrl,
-                        contentDescription = stringResource(
-                            Res.strings.noun_users_avatar,
-                            repo.owner.login
-                        ),
-                        type = User.Type.fromTypeName(repo.owner.__typename),
-                        modifier = Modifier.size(20.dp)
-                    )
-                    Text(
-                        buildAnnotatedString {
-                            append(repo.owner.login)
-                            withStyle(
-                                SpanStyle(
-                                    color = MaterialTheme.colorScheme.onSurface.copy(
-                                        0.5f
-                                    )
-                                )
-                            ) {
-                                append(" / ")
-                            }
-                            append(repo.name)
-                        },
-                        style = MaterialTheme.typography.labelMedium
-                    )
-                }
+                Breadcrumb(
+                    repoName = repo.name,
+                    username = repo.owner.login,
+                    avatarUrl = repo.owner.avatarUrl,
+                    userTypeName = repo.owner.__typename,
+                    modifier = Modifier.align(Alignment.CenterStart)
+                )
             }
-
 
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),

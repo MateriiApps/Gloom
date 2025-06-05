@@ -4,40 +4,15 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.Inventory2
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.LargeTopAppBar
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.ScrollableTabRow
-import androidx.compose.material3.Tab
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -51,19 +26,17 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.benasher44.uuid.uuid4
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.domain.manager.ShareManager
-import dev.materii.gloom.ui.component.Avatar
-import dev.materii.gloom.ui.component.BackButton
-import dev.materii.gloom.ui.component.Collapsable
-import dev.materii.gloom.ui.component.TextBanner
+import dev.materii.gloom.ui.component.*
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
+import dev.materii.gloom.ui.screen.repo.viewmodel.RepoViewModel
 import dev.materii.gloom.ui.theme.gloomColorScheme
 import dev.materii.gloom.ui.util.navigate
-import dev.materii.gloom.ui.screen.repo.viewmodel.RepoViewModel
-import dev.icerock.moko.resources.compose.stringResource
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
@@ -209,7 +182,7 @@ class RepoScreen(
     ) {
         val shareManager: ShareManager = koinInject()
         val avSize = Dp(55 - scrollBehavior.state.collapsedFraction * 55)
-        val nav = LocalNavigator.current
+        val nav = LocalNavigator.currentOrThrow
         val loading by remember {
             derivedStateOf {
                 viewModel.repoOverviewLoading
@@ -235,7 +208,7 @@ class RepoScreen(
                                     type = User.Type.fromTypeName(it.owner.__typename),
                                     modifier = Modifier
                                         .size(avSize)
-                                        .clickable { nav?.navigate(ProfileScreen(it.owner.login)) }
+                                        .clickable { nav.navigate(ProfileScreen(it.owner.login)) }
                                 )
                             }
 
@@ -244,7 +217,11 @@ class RepoScreen(
                                     text = it.owner.login,
                                     style = MaterialTheme.typography.labelLarge,
                                     maxLines = 1,
-                                    modifier = Modifier.basicMarquee(Int.MAX_VALUE)
+                                    modifier = Modifier
+                                        .basicMarquee(Int.MAX_VALUE)
+                                        .clickable {
+                                            nav.navigate(ProfileScreen(it.owner.login))
+                                        }
                                 )
                                 Text(
                                     text = it.name,
