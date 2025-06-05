@@ -6,56 +6,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.screen.Screen
-import dev.materii.gloom.ui.screen.list.RepositoryListScreen
-import dev.materii.gloom.ui.screen.list.StarredReposListScreen
-import dev.materii.gloom.ui.screen.profile.ProfileScreen
-import dev.materii.gloom.ui.screen.release.ReleaseScreen
-import dev.materii.gloom.ui.screen.repo.RepoScreen
 
 object DeepLinkHandler {
+
     private var uri by mutableStateOf<Uri?>(null)
     private val linkVisitedListeners = mutableMapOf<List<String>, OnLinkVisitedListener>()
     private val paramPattern = "^\\{([A-z0-9_]+)\\}$".toRegex()
 
-    init {
-        addOnLinkVisitedListener("/{username}") { (username), (tab) ->
-            when (tab) {
-                "repositories" -> listOf(
-                    ProfileScreen(username),
-                    RepositoryListScreen(username)
-                )
+    init { addAllRoutes() }
 
-                "projects" -> emptyList()
-                "packages" -> emptyList()
-                "stars" -> listOf(ProfileScreen(username), StarredReposListScreen(username))
-
-                else -> listOf(ProfileScreen(username))
-            }
-        }
-
-        addOnLinkVisitedListener("/{owner}/{repo}") { (owner, repo), _ ->
-            listOf(RepoScreen(owner, repo))
-        }
-
-        addOnLinkVisitedListener("/{owner}/{repo}/releases/tag/{tag}") { (owner, repo, tag), _ ->
-            listOf(ReleaseScreen(owner, repo, tag))
-        }
-
-        addOnLinkVisitedListener("/dashboard") { _, _ ->
-            println("dashboard")
-            emptyList()
-        }
-
-        addOnLinkVisitedListener("/orgs/{org}/dashboard") { (org), _ ->
-            emptyList()
-        }
-
-        addOnLinkVisitedListener("/settings/organizations") { _, _ ->
-            emptyList()
-        }
-    }
-
-    private fun addOnLinkVisitedListener(route: String, callback: OnLinkVisitedListener) {
+    fun addOnLinkVisitedListener(route: String, callback: OnLinkVisitedListener) {
         val r = route.removePrefix("/")
 
         linkVisitedListeners[r.split("/")] = callback
@@ -67,15 +27,21 @@ object DeepLinkHandler {
         linkVisitedListeners.remove(r)
     }
 
-    private fun extractQueryParams(path: String): List<String> {
+    private fun extractQueryParams(path: String): Map<String, String> {
         val parts = path.split("?")
 
-        if (parts.size <= 1) return emptyList()
+        if (parts.size <= 1) return emptyMap()
 
-        return parts[1].split("&").mapNotNull { param ->
-            val query = param.substringAfter("=", "")
-            query.ifBlank { null }
+        val parsed = mutableMapOf<String, String>()
+        val queries = parts[1].split("&")
+
+        queries.forEach {
+            val query = it.split("=")
+
+            if (query.size == 2) parsed[query[0]] = query[1]
         }
+
+        return parsed
     }
 
     private fun extractUrlParams(route: String, path: List<String>): List<String> {
@@ -126,11 +92,12 @@ object DeepLinkHandler {
             )
         }.orEmpty()
     }
+
 }
 
 fun interface OnLinkVisitedListener {
     /**
      * @param urlParams List of URL parameters extracted from the deep link in the order they appear in the route.
      */
-    operator fun invoke(urlParams: List<String>, queryParams: List<String>): List<Screen>
+    operator fun invoke(urlParams: List<String>, queryParams: Map<String, String>): List<Screen>
 }
