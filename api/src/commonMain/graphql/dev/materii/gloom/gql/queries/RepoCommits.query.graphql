@@ -1,0 +1,41 @@
+query RepoCommits($id: ID!, $branch: String, $after: String) {
+    node(id: $id) {
+        __typename
+        ... on PullRequest {
+            commits(first: 25, after: $after) {
+                pageInfo {
+                    hasNextPage
+                    endCursor
+                }
+                nodes {
+                    id
+                    commit {
+                        ...CommitDetails
+                    }
+                    __typename
+                }
+            }
+        }
+        ... on Repository {
+            gitObject: object(expression: $branch) {
+                __typename
+                ... on Commit {
+                    history(first: 25, after: $after) {
+                        pageInfo {
+                            hasNextPage
+                            endCursor
+                        }
+                        nodes {
+                            ...CommitDetails
+                        }
+                    }
+                    id
+                }
+                id
+            }
+        }
+        id
+    }
+    id
+    __typename
+}

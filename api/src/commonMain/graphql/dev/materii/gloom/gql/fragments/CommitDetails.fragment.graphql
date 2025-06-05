@@ -1,0 +1,17 @@
+fragment CommitDetails on Commit {
+    id
+    committedDate
+    messageHeadline
+    committedViaWeb
+    authoredByCommitter
+    abbreviatedOid
+    committer {
+        ...GitActorDetails
+    }
+    author {
+        ...GitActorDetails
+    }
+    statusCheckRollup {
+        state
+    }
+}

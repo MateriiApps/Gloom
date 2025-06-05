@@ -291,6 +291,16 @@ class GraphQLService(
             .response()
     }
 
+    suspend fun getRepoCommits(
+        id: String,
+        branch: String,
+        after: String? = null,
+    ) = withContext(Dispatchers.IO) {
+        client.query(RepoCommitsQuery(id, branch.toOptional(), after.toOptional()))
+            .addToken()
+            .response()
+    }
+
     suspend fun react(id: String, reaction: ReactionContent) = withContext(Dispatchers.IO) {
         client.mutation(ReactMutation(id, reaction))
             .addToken()
@@ -302,4 +312,5 @@ class GraphQLService(
             .addToken()
             .response()
     }
+
 }
