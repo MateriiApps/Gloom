@@ -61,7 +61,7 @@ kotlin {
             }
         }
 
-        val androidMain by getting {
+        androidMain {
             dependencies {
                 implementation(libs.androidx.core.ktx)
                 implementation(libs.coil.gif)
