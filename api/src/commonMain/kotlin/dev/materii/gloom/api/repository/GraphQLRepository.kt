@@ -3,10 +3,7 @@ package dev.materii.gloom.api.repository
 import dev.materii.gloom.api.model.ModelUser
 import dev.materii.gloom.api.service.GraphQLService
 import dev.materii.gloom.api.util.transform
-import dev.materii.gloom.gql.type.IssueState
-import dev.materii.gloom.gql.type.PullRequestState
-import dev.materii.gloom.gql.type.ReactionContent
-import dev.materii.gloom.gql.type.TrendingPeriod
+import dev.materii.gloom.gql.type.*
 
 class GraphQLRepository(
     private val service: GraphQLService
@@ -134,6 +131,13 @@ class GraphQLRepository(
         name: String,
         after: String? = null
     ) = service.getRepoReleases(owner, name, after)
+
+    suspend fun getRepoForks(
+        owner: String,
+        name: String,
+        after: String? = null,
+        count: Int? = null
+    ) = service.getRepoForks(owner, name, after, count)
 
     suspend fun getReleaseDetails(
         owner: String,

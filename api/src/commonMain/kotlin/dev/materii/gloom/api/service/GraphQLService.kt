@@ -8,39 +8,8 @@ import com.apollographql.apollo.cache.normalized.doNotStore
 import dev.materii.gloom.api.util.response
 import dev.materii.gloom.api.util.toOptional
 import dev.materii.gloom.domain.manager.AuthManager
-import dev.materii.gloom.gql.AccountInfoQuery
-import dev.materii.gloom.gql.DefaultBranchQuery
-import dev.materii.gloom.gql.FeedQuery
-import dev.materii.gloom.gql.FollowUserMutation
-import dev.materii.gloom.gql.FollowersQuery
-import dev.materii.gloom.gql.FollowingQuery
-import dev.materii.gloom.gql.IdentifyQuery
-import dev.materii.gloom.gql.JoinedOrgsQuery
-import dev.materii.gloom.gql.ProfileQuery
-import dev.materii.gloom.gql.RawMarkdownQuery
-import dev.materii.gloom.gql.ReactMutation
-import dev.materii.gloom.gql.ReleaseDetailsQuery
-import dev.materii.gloom.gql.RepoDetailsQuery
-import dev.materii.gloom.gql.RepoFileQuery
-import dev.materii.gloom.gql.RepoFilesQuery
-import dev.materii.gloom.gql.RepoIssuesQuery
-import dev.materii.gloom.gql.RepoLicenseQuery
-import dev.materii.gloom.gql.RepoListQuery
-import dev.materii.gloom.gql.RepoNameQuery
-import dev.materii.gloom.gql.RepoPullRequestsQuery
-import dev.materii.gloom.gql.RepoReleasesQuery
-import dev.materii.gloom.gql.SponsoringQuery
-import dev.materii.gloom.gql.StarRepoMutation
-import dev.materii.gloom.gql.StarredReposQuery
-import dev.materii.gloom.gql.TrendingQuery
-import dev.materii.gloom.gql.UnfollowUserMutation
-import dev.materii.gloom.gql.UnreactMutation
-import dev.materii.gloom.gql.UnstarRepoMutation
-import dev.materii.gloom.gql.UserProfileQuery
-import dev.materii.gloom.gql.type.IssueState
-import dev.materii.gloom.gql.type.PullRequestState
-import dev.materii.gloom.gql.type.ReactionContent
-import dev.materii.gloom.gql.type.TrendingPeriod
+import dev.materii.gloom.gql.*
+import dev.materii.gloom.gql.type.*
 import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -292,6 +261,25 @@ class GraphQLService(
             .response()
     }
 
+    suspend fun getRepoForks(
+        owner: String,
+        name: String,
+        after: String? = null,
+        count: Int? = null
+    ) = withContext(Dispatchers.IO) {
+        client
+            .query(
+                RepoForksQuery(
+                    username = owner,
+                    name = name,
+                    cursor = after.toOptional(),
+                    total = count.toOptional()
+                )
+            )
+            .addToken()
+            .response()
+    }
+
     suspend fun getReleaseDetails(
         owner: String,
         name: String,
@@ -314,5 +302,4 @@ class GraphQLService(
             .addToken()
             .response()
     }
-
 }

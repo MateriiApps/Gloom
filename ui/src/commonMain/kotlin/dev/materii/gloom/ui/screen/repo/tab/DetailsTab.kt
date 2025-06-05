@@ -1,24 +1,13 @@
 package dev.materii.gloom.ui.screen.repo.tab
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarBorder
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -36,6 +25,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.benasher44.uuid.uuid4
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.ui.component.LargeSegmentedButton
 import dev.materii.gloom.ui.component.LargeSegmentedButtonRow
@@ -43,6 +33,7 @@ import dev.materii.gloom.ui.component.ThinDivider
 import dev.materii.gloom.ui.icon.Custom
 import dev.materii.gloom.ui.icon.custom.Balance
 import dev.materii.gloom.ui.icon.custom.Fork
+import dev.materii.gloom.ui.screen.list.ForksScreen
 import dev.materii.gloom.ui.screen.repo.LicenseScreen
 import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.screen.repo.component.ContributorsRow
@@ -52,7 +43,6 @@ import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.ui.widget.markdown.Markdown
 import dev.materii.gloom.util.NumberFormatter
 import dev.materii.gloom.util.pluralStringResource
-import dev.icerock.moko.resources.compose.stringResource
 import org.koin.core.parameter.parametersOf
 
 class DetailsTab(
@@ -172,7 +162,7 @@ class DetailsTab(
                                     count = repoDetails.forkCount,
                                     NumberFormatter.compact(repoDetails.forkCount)
                                 ),
-                                onClick = { /* TODO */ }
+                                onClick = { nav.navigate(ForksScreen(owner, name)) }
                             )
                         }
                     }
