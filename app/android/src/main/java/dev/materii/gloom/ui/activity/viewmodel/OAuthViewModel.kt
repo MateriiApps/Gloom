@@ -1,4 +1,4 @@
-package dev.materii.gloom.ui.viewmodel.main
+package dev.materii.gloom.ui.activity.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,7 @@ import dev.materii.gloom.domain.manager.AuthManager
 import dev.materii.gloom.ui.util.clearRootNavigation
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+class OAuthViewModel(
     private val gqlRepository: GraphQLRepository,
     private val authRepository: GithubAuthRepository,
     val authManager: AuthManager

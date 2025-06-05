@@ -1,27 +1,12 @@
 package dev.materii.gloom.ui.screen.auth
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -29,21 +14,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.painterResource
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.domain.manager.Account
 import dev.materii.gloom.ui.component.DividerWithLabel
 import dev.materii.gloom.ui.component.LoadingButton
-import dev.materii.gloom.ui.icon.social.GitHub
 import dev.materii.gloom.ui.icon.Social
-import dev.materii.gloom.ui.screen.root.RootScreen
-import dev.materii.gloom.util.toImmutableList
+import dev.materii.gloom.ui.icon.social.GitHub
 import dev.materii.gloom.ui.screen.auth.viewmodel.LandingViewModel
 import dev.materii.gloom.ui.screen.settings.component.account.AccountItem
-import dev.materii.gloom.util.LocalLinkHandler
-import dev.icerock.moko.resources.compose.painterResource
-import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.util.toImmutableList
 
 class LandingScreen(
     private val showAccountCard: Boolean = true
@@ -56,7 +37,6 @@ class LandingScreen(
     private fun Screen() {
         val linkHandler = dev.materii.gloom.util.LocalLinkHandler.current
         val viewModel: LandingViewModel = koinScreenModel()
-        val nav = LocalNavigator.currentOrThrow
 
         Surface {
             Column(
@@ -111,7 +91,6 @@ class LandingScreen(
                                         isCurrent = false,
                                         onClick = {
                                             viewModel.switchToAccount(account.id)
-                                            nav.replaceAll(RootScreen())
                                         }
                                     )
                                 }
