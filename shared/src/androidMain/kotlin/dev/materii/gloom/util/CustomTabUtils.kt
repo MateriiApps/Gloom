@@ -17,14 +17,14 @@ private val Context.defaultBrowserPackage: String?
                     0
                 )
                 .firstOrNull()
-                ?.activityInfo?.packageName
+                ?.resolvePackageName
 
             mDefaultBrowserPackage
         } else mDefaultBrowserPackage
     }
 
 fun Context.openCustomTab(url: String, force: Boolean) = CustomTabsIntent.Builder().build().run {
-    if (force) intent.setPackage(defaultBrowserPackage)
+    if (force && defaultBrowserPackage != null) intent.setPackage(defaultBrowserPackage)
     if (this@openCustomTab !is Activity) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     launchUrl(this@openCustomTab, Uri.parse(url))
 }
