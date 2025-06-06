@@ -1,0 +1,19 @@
+query RepoContributors($owner: String!, $name: String!, $after: String) {
+    repository(name: $name, owner: $owner) {
+        contributors(first: 30, after: $after) {
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+            nodes {
+                login
+                name
+                avatarUrl
+                bio
+                contributionsCollection {
+                    totalCommitContributions
+                }
+            }
+        }
+    }
+}
