@@ -2,10 +2,7 @@ package dev.materii.gloom.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -18,6 +15,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.gql.type.StatusState
+
+@Composable
+fun Label(
+    status: StatusState,
+    textColor: Color,
+    borderColor: Color = textColor,
+    fillColor: Color = Color.Transparent,
+    modifier: Modifier = Modifier
+) {
+    val (statusIcon, statusColor, statusLabelRes) = status.components()
+
+    Label(
+        text = stringResource(statusLabelRes),
+        icon = statusIcon,
+        textColor = textColor,
+        borderColor = borderColor,
+        fillColor = fillColor,
+        iconColor = statusColor,
+        modifier = modifier
+    )
+}
 
 @Composable
 fun Label(

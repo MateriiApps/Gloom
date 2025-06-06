@@ -1,45 +1,53 @@
 package dev.materii.gloom.ui.screen.repo.viewmodel
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import dev.materii.gloom.api.repository.GraphQLRepository
-import dev.materii.gloom.api.util.fold
+import dev.materii.gloom.api.util.GraphQLResponse
+import dev.materii.gloom.gql.fragment.CommitDetails
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class RepoCodeViewModel(
     private val gql: GraphQLRepository,
-    nameWithOwner: Pair<String, String>
+    private val owner: String,
+    private val name: String
 ) : ScreenModel {
 
-    val owner = nameWithOwner.first
-    val name = nameWithOwner.second
-
-    var hasError by mutableStateOf(false)
-    var isLoading by mutableStateOf(false)
-
-    var defaultBranch by mutableStateOf(null as String?)
-
-    init {
-        loadDefaultBranch()
+    sealed interface UiState {
+        data class Loaded(
+            val id: String,
+            val defaultBranch: String,
+            val latestCommit: CommitDetails?
+        ) : UiState
+        object Loading : UiState
+        object Error : UiState
     }
 
-    fun loadDefaultBranch() {
+    private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
+    val uiState = _uiState.asStateFlow()
+
+    init {
+        load()
+    }
+
+    fun load() {
         screenModelScope.launch {
-            isLoading = true
-            gql.getDefaultBranch(owner, name).fold(
-                onSuccess = {
-                    defaultBranch = it
-                    hasError = false
-                    isLoading = false
-                },
-                onError = {
-                    hasError = true
-                    isLoading = false
-                }
-            )
+            _uiState.emit(UiState.Loading)
+            val repoDefaultsRes = gql.getRepoDefaults(owner, name)
+
+            if (repoDefaultsRes is GraphQLResponse.Success) {
+                _uiState.emit(
+                    UiState.Loaded(
+                        id = repoDefaultsRes.data!!.id,
+                        defaultBranch = repoDefaultsRes.data!!.defaultBranchRef!!.name,
+                        latestCommit = null
+                    )
+                )
+            } else {
+                _uiState.emit(UiState.Error)
+            }
         }
     }
 

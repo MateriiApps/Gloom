@@ -1,0 +1,8 @@
+fragment GitActorDetails on GitActor {
+    avatarUrl
+    name
+    user {
+        login
+        id
+    }
+}

@@ -1,28 +1,14 @@
 package dev.materii.gloom.ui.screen.repo.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Circle
-import androidx.compose.material.icons.outlined.Circle
 import androidx.compose.material.icons.outlined.ModeComment
-import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.VerticalDivider
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,15 +22,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import dev.icerock.moko.resources.StringResource
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.type.PullRequestReviewDecision
 import dev.materii.gloom.gql.type.StatusState
 import dev.materii.gloom.ui.component.Label
 import dev.materii.gloom.ui.theme.gloomColorScheme
-import dev.materii.gloom.util.TimeUtils.getTimeSince
 import dev.materii.gloom.ui.util.parsedColor
-import dev.icerock.moko.resources.StringResource
-import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.util.TimeUtils.getTimeSince
 import kotlinx.datetime.Instant
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -169,39 +155,11 @@ fun IssueOrPRItem(
                 }
 
                 if (checksStatus != null) {
-                    val (statusIcon, statusColor, statusLabelRes) = when (checksStatus) {
-                        StatusState.EXPECTED -> Triple(
-                            Icons.Outlined.Circle,
-                            MaterialTheme.colorScheme.surfaceTint,
-                            Res.strings.label_checks
-                        )
-
-                        StatusState.PENDING -> Triple(
-                            Icons.Filled.Circle,
-                            MaterialTheme.gloomColorScheme.statusYellow,
-                            Res.strings.label_checks
-                        )
-
-                        StatusState.SUCCESS -> Triple(
-                            Icons.Filled.CheckCircle,
-                            MaterialTheme.gloomColorScheme.statusGreen,
-                            Res.strings.label_checks
-                        )
-
-                        else -> Triple(
-                            Icons.Filled.Cancel,
-                            MaterialTheme.colorScheme.error,
-                            Res.strings.label_checks_failed
-                        )
-                    }
-
                     Label(
-                        text = stringResource(statusLabelRes),
-                        icon = statusIcon,
+                        status = checksStatus,
                         textColor = MaterialTheme.colorScheme.onSecondaryContainer,
                         fillColor = MaterialTheme.colorScheme.secondaryContainer,
-                        borderColor = MaterialTheme.colorScheme.secondaryContainer,
-                        iconColor = statusColor
+                        borderColor = MaterialTheme.colorScheme.secondaryContainer
                     )
                 }
 
