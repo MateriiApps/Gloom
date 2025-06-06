@@ -40,6 +40,7 @@ fun viewModelModule() = module {
     factoryOf(::RepoIssuesViewModel)
     factoryOf(::RepoPullRequestsViewModel)
     factoryOf(::RepoReleasesViewModel)
+    factoryOf(::RepoContributorsViewModel)
     factoryOf(::LicenseViewModel)
 
 }

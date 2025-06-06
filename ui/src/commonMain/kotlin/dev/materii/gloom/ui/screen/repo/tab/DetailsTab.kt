@@ -34,6 +34,7 @@ import dev.materii.gloom.ui.icon.Custom
 import dev.materii.gloom.ui.icon.custom.Balance
 import dev.materii.gloom.ui.icon.custom.Fork
 import dev.materii.gloom.ui.screen.list.ForksScreen
+import dev.materii.gloom.ui.screen.repo.ContributorsScreen
 import dev.materii.gloom.ui.screen.repo.LicenseScreen
 import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.screen.repo.component.ContributorsRow
@@ -192,7 +193,10 @@ class DetailsTab(
                     repoDetails.contributors.let {
                         if (it.nodes?.isNotEmpty() == true) ThinDivider()
 
-                        ContributorsRow(contributors = it)
+                        ContributorsRow(
+                            contributors = it,
+                            modifier = Modifier.clickable { nav.navigate(ContributorsScreen(owner, name)) }
+                        )
                     }
 
                     repoDetails.languages?.languages?.let {
