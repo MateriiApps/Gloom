@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="created_repo">§name§%1$s§ §text§創建了一個儲存庫§</string>
-    <string name="starred_repo">§name§%1$s§ §text§星標了一個儲存庫§</string>
-    <string name="forked_repo">§name§%1$s§ §text§派生了一個儲存庫§</string>
-    <string name="followed_user">§name§%1$s§ §text§關注了§ §other§%2$s§</string>
-    <string name="followed_you">§name§%1$s§ §text§關注了你§</string>
-    <string name="published_release">§name§%1$s§ §text§發佈了發行版本§</string>
-    <string name="contributed_repo">§name§%1$s§ §text§貢獻於§ §repo§%2$s§</string>
-    <string name="recommended">為你推薦</string>
-    <string name="cd_followed">已關注</string>
-    <string name="action_view_details">详情</string>
-    <string name="label_pr_merged">已合併</string>
+    <string name="created_repo">§name§%1$s§ §text§created a repository§</string>
+    <string name="starred_repo">§name§%1$s§ §text§starred a repository§</string>
+    <string name="forked_repo">§name§%1$s§ §text§forked a repository§</string>
+    <string name="followed_user">§name§%1$s§ §text§followed§ §other§%2$s§</string>
+    <string name="followed_you">§name§%1$s§ §text§followed you§</string>
+    <string name="published_release">§name§%1$s§ §text§published a release§</string>
+    <string name="contributed_repo">§name§%1$s§ §text§contributed to§ §repo§%2$s§</string>
+    <string name="recommended">Recommended for you</string>
+    <string name="cd_followed">Followed</string>
+    <string name="action_view_details">Details</string>
+    <string name="label_pr_merged">Merged</string>
 </resources>

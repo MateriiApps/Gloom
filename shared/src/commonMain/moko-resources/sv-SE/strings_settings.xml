@@ -68,17 +68,17 @@
     <string name="dev_alert_testing_description">Create custom alerts to use for testing</string>
     <string name="dev_alert_title">Title</string>
     <string name="dev_alert_message">Message</string>
-    <string name="dev_alert_show_icon">Visa ikon</string>
+    <string name="dev_alert_show_icon">Show icon</string>
     <string name="dev_alert_duration">Duration</string>
     <string name="dev_alert_action_show_alert">Show alert</string>
     <string name="dev_alert_action_fill_queue">Fill queue</string>
     <!--             -->
     <!-- About -->
-    <string name="settings_about">Om</string>
+    <string name="settings_about">About</string>
     <string name="settings_libraries">Libraries</string>
     <string name="settings_libraries_description">The libraries used to make Gloom</string>
     <string name="cd_library_author">Author: %1$s</string>
-    <string name="cd_library_license">Licens: %1$s</string>
+    <string name="cd_library_license">License: %1$s</string>
     <string name="label_open_source">Open Source</string>
     <string name="label_closed_source">Closed Source</string>
     <!--       -->

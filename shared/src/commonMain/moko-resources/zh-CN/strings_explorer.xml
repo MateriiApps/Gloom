@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_reset_zoom">重置缩放</string>
-    <string name="action_view_raw">查看原始文件</string>
-    <string name="action_view_markdown">以 Markdown 形式查看</string>
-    <string name="msg_file_load_error">无法加载此文件</string>
-    <string name="msg_raw_markdown_fail">无法加载原始 Markdown</string>
+    <string name="action_reset_zoom">Reset zoom</string>
+    <string name="action_view_raw">View raw</string>
+    <string name="action_view_markdown">View as markdown</string>
+    <string name="msg_file_load_error">Could not load this file</string>
+    <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
 </resources>

@@ -9,6 +9,6 @@
     <string name="contributed_repo">§name§%1$s§ §text§contributed to§ §repo§%2$s§</string>
     <string name="recommended">Recommended for you</string>
     <string name="cd_followed">Followed</string>
-    <string name="action_view_details">Dettagli</string>
+    <string name="action_view_details">Details</string>
     <string name="label_pr_merged">Merged</string>
 </resources>

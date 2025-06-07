@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Root Tabs -->
-    <string name="navigation_explore">Esplora</string>
+    <string name="navigation_explore">Explore</string>
     <string name="navigation_home">Home</string>
-    <string name="navigation_inbox">In arrivo</string>
-    <string name="navigation_profile">Profilo</string>
-    <string name="navigation_settings">Impostazioni</string>
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
     <!--           -->
     <!-- Generic Actions -->
-    <string name="action_back">Indietro</string>
-    <string name="action_confirm">Conferma</string>
-    <string name="action_share">Condividi</string>
-    <string name="action_expand">Vedi di più</string>
-    <string name="action_collapse">Vedi Meno</string>
-    <string name="action_edit">Modifica</string>
-    <string name="action_stop_edit">Termina modifica</string>
-    <string name="action_try_again">Riprova</string>
-    <string name="action_copy">Copia</string>
+    <string name="action_back">Back</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_stop_edit">Stop editing</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_copy">Copy</string>
     <!--                 -->
     <!-- Dismiss Labels -->
-    <string name="dismiss_nevermind">Lascia stare</string>
-    <string name="dismiss_cancel">Cancella</string>
-    <string name="dismiss_no_thanks">No, grazie</string>
+    <string name="dismiss_nevermind">Nevermind</string>
+    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
     <!--                -->
     <!-- Errors -->
     <string name="error_release_load">Couldn\'t load release</string>
     <!--        -->
     <!-- Titles -->
-    <string name="title_starred">Preferiti</string>
-    <string name="title_orgs">Organizzazioni</string>
-    <string name="title_repos">Repository</string>
-    <string name="title_contributors">Contributori</string>
-    <string name="title_sponsoring">Sponsorizzazione</string>
+    <string name="title_starred">Starred</string>
+    <string name="title_orgs">Organizations</string>
+    <string name="title_repos">Repositories</string>
+    <string name="title_contributors">Contributors</string>
+    <string name="title_sponsoring">Sponsoring</string>
     <string name="title_followers">Followers</string>
     <string name="title_following">Following</string>
+    <string name="title_forks">Forks</string>
     <!--        -->
     <!-- Entities -->
     <string name="noun_repo">Repository</string>
@@ -43,16 +44,16 @@
     <string name="noun_org">Organization</string>
     <string name="noun_other">Other</string>
     <string name="noun_commit">Commit</string>
-    <string name="noun_license">Licenza</string>
+    <string name="noun_license">License</string>
     <string name="noun_users_avatar">%s\'s avatar</string>
     <!--          -->
     <!-- Issues and PRs -->
-    <string name="msg_issue_untitled">Problema senza titolo</string>
-    <string name="msg_pr_untitled">Richiesta pull senza titolo</string>
-    <string name="label_checks">Controlli</string>
-    <string name="label_reviews">Valutazioni</string>
+    <string name="msg_issue_untitled">Untitled issue</string>
+    <string name="msg_pr_untitled">Untitled pull request</string>
+    <string name="label_checks">Checks</string>
+    <string name="label_reviews">Reviews</string>
     <!--                -->
-    <string name="label_dont_show_again">Non visualizzare più</string>
+    <string name="label_dont_show_again">Don\'t show this again</string>
     <!-- Units -->
     <string name="time_now">Now</string>
     <string name="time_since_second">%1$ds</string>
@@ -67,11 +68,11 @@
     <string name="file_size_gigabytes">%1$d GB</string>
     <!--       -->
     <!-- Downloading -->
-    <string name="action_download">Scarica</string>
-    <string name="title_download_confirm">Confermare il download</string>
-    <string name="msg_download_dialog_body">Stai per scaricare %1$s (%2$s), sei sicuro di volerlo fare?    </string>
-    <string name="msg_downloading_file">Download in corso %1$s...</string>
-    <string name="msg_download_completed">Download completato</string>
+    <string name="action_download">Download</string>
+    <string name="title_download_confirm">Confirm download</string>
+    <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
     <!--             -->
     <!-- Installing -->
     <string name="install_fail_generic">Failed to install: Unknown reason</string>

@@ -1,87 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Root Tabs -->
-    <string name="navigation_explore">Explorar</string>
-    <string name="navigation_home">Inicio</string>
-    <string name="navigation_inbox">Buzón</string>
-    <string name="navigation_profile">Perfil</string>
-    <string name="navigation_settings">Ajustes</string>
+    <string name="navigation_explore">Explore</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
     <!--           -->
     <!-- Generic Actions -->
-    <string name="action_back">Volver</string>
-    <string name="action_confirm">Confirmar</string>
-    <string name="action_share">Compartir</string>
-    <string name="action_expand">Ver más</string>
-    <string name="action_collapse">Ver menos</string>
-    <string name="action_edit">Editar</string>
-    <string name="action_stop_edit">Dejar de editar</string>
-    <string name="action_try_again">Inténtalo de nuevo</string>
-    <string name="action_copy">Copiar</string>
+    <string name="action_back">Back</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_stop_edit">Stop editing</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_copy">Copy</string>
     <!--                 -->
     <!-- Dismiss Labels -->
-    <string name="dismiss_nevermind">No importa</string>
-    <string name="dismiss_cancel">Cancelar</string>
-    <string name="dismiss_no_thanks">No, gracias</string>
+    <string name="dismiss_nevermind">Nevermind</string>
+    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
     <!--                -->
     <!-- Errors -->
-    <string name="error_release_load">No se pudo cargar el lanzamiento</string>
+    <string name="error_release_load">Couldn\'t load release</string>
     <!--        -->
     <!-- Titles -->
-    <string name="title_starred">Estrellas</string>
-    <string name="title_orgs">Organizaciones</string>
-    <string name="title_repos">Repositorios</string>
-    <string name="title_contributors">Colaboradores</string>
-    <string name="title_sponsoring">Patrocinando</string>
-    <string name="title_followers">Seguidores</string>
-    <string name="title_following">Siguiendo</string>
+    <string name="title_starred">Starred</string>
+    <string name="title_orgs">Organizations</string>
+    <string name="title_repos">Repositories</string>
+    <string name="title_contributors">Contributors</string>
+    <string name="title_sponsoring">Sponsoring</string>
+    <string name="title_followers">Followers</string>
+    <string name="title_following">Following</string>
+    <string name="title_forks">Forks</string>
     <!--        -->
     <!-- Entities -->
-    <string name="noun_repo">Repositorio</string>
-    <string name="noun_release">Lanzamiento</string>
-    <string name="noun_tag">Etiqueta</string>
+    <string name="noun_repo">Repository</string>
+    <string name="noun_release">Release</string>
+    <string name="noun_tag">Tag</string>
     <string name="noun_user">User</string>
     <string name="noun_org">Organization</string>
-    <string name="noun_other">Otro</string>
+    <string name="noun_other">Other</string>
     <string name="noun_commit">Commit</string>
-    <string name="noun_license">Licencia</string>
-    <string name="noun_users_avatar">Avatar de %s</string>
+    <string name="noun_license">License</string>
+    <string name="noun_users_avatar">%s\'s avatar</string>
     <!--          -->
     <!-- Issues and PRs -->
-    <string name="msg_issue_untitled">Problema sin título</string>
-    <string name="msg_pr_untitled">Solicitud de cambios sin título</string>
-    <string name="label_checks">Comprobaciones</string>
-    <string name="label_reviews">Revisiones</string>
+    <string name="msg_issue_untitled">Untitled issue</string>
+    <string name="msg_pr_untitled">Untitled pull request</string>
+    <string name="label_checks">Checks</string>
+    <string name="label_reviews">Reviews</string>
     <!--                -->
-    <string name="label_dont_show_again">No volver a mostrar</string>
+    <string name="label_dont_show_again">Don\'t show this again</string>
     <!-- Units -->
-    <string name="time_now">Ahora</string>
-    <string name="time_since_second">%1$d s</string>
-    <string name="time_since_minute">%1$d min</string>
-    <string name="time_since_hour">%1$d h</string>
-    <string name="time_since_day">%1$d d</string>
-    <string name="time_since_month">%1$d m</string>
-    <string name="time_since_year">%1$d a</string>
+    <string name="time_now">Now</string>
+    <string name="time_since_second">%1$ds</string>
+    <string name="time_since_minute">%1$dm</string>
+    <string name="time_since_hour">%1$dh</string>
+    <string name="time_since_day">%1$dd</string>
+    <string name="time_since_month">%1$dmo</string>
+    <string name="time_since_year">%1$dy</string>
     <string name="file_size_bytes">%1$d B</string>
-    <string name="file_size_kilobytes">%1$d kB</string>
+    <string name="file_size_kilobytes">%1$d KB</string>
     <string name="file_size_megabytes">%1$d MB</string>
     <string name="file_size_gigabytes">%1$d GB</string>
     <!--       -->
     <!-- Downloading -->
-    <string name="action_download">Descargar</string>
-    <string name="title_download_confirm">Confirmar descarga</string>
-    <string name="msg_download_dialog_body">Estás a punto de descargar %1$s (%2$s), ¿estás seguro de que quieres hacer eso?</string>
-    <string name="msg_downloading_file">Descargando %1$s...</string>
-    <string name="msg_download_completed">Descarga completada</string>
+    <string name="action_download">Download</string>
+    <string name="title_download_confirm">Confirm download</string>
+    <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
     <!--             -->
     <!-- Installing -->
-    <string name="install_fail_generic">Error al instalar: Razón desconocida</string>
-    <string name="install_fail_blocked">La instalación ha sido bloqueada</string>
-    <string name="install_fail_invalid">Uno o más apks no son válidos o están corruptos</string>
-    <string name="install_fail_conflict">Entra en conflicto con una aplicación existente, generalmente debido a firmas no coincidentes</string>
-    <string name="install_fail_storage">No hay suficiente almacenamiento disponible para instalar</string>
-    <string name="install_fail_incompatible">La aplicación es incompatible con este dispositivo</string>
-    <string name="install_fail_timeout">Tiempo de instalación agotado</string>
-    <string name="install_success">¡Aplicación instalada con éxito!</string>
-    <string name="install_cancelled">Instalación cancelada</string>
+    <string name="install_fail_generic">Failed to install: Unknown reason</string>
+    <string name="install_fail_blocked">Installation was blocked</string>
+    <string name="install_fail_invalid">One or more apks were invalid or corrupt</string>
+    <string name="install_fail_conflict">Conflicts with an existing app, usually due to mismatched
+        signatures
+    </string>
+    <string name="install_fail_storage">Not enough available storage to install</string>
+    <string name="install_fail_incompatible">Application is incompatible with this device</string>
+    <string name="install_fail_timeout">Installation timed out</string>
+    <string name="install_success">App installed successfully!</string>
+    <string name="install_cancelled">Installation cancelled</string>
     <!--            -->
 </resources>

@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="noun_contributors">
-        <item quantity="one">%s Destekçi</item>
-        <item quantity="other">%s Destekçiler</item>
+        <item quantity="one">%s Contributor</item>
+        <item quantity="other">%s Contributors</item>
     </plurals>
     <plurals name="repositories">
-        <item quantity="one">%s Depo</item>
-        <item quantity="other">%s Depolar</item>
+        <item quantity="one">%s Repository</item>
+        <item quantity="other">%s Repositories</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="one">%s Yıldız</item>
-        <item quantity="other">%s Yıldızlar</item>
+        <item quantity="one">%s Star</item>
+        <item quantity="other">%s Stars</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="one">%s çatallanma</item>
-        <item quantity="other">%s çatallanma</item>
+        <item quantity="one">%s Fork</item>
+        <item quantity="other">%s Forks</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="one">%s Takipçi</item>
-        <item quantity="other">%s Takipçi</item>
+        <item quantity="one">%s Follower</item>
+        <item quantity="other">%s Followers</item>
     </plurals>
     <plurals name="following">
-        <item quantity="one">%s Takip ediliyor</item>
-        <item quantity="other">%s Takip ediliyor</item>
+        <item quantity="one">%s Following</item>
+        <item quantity="other">%s Following</item>
     </plurals>
     <plurals name="contributions_toast">
-        <item quantity="one">%1$s: %2$d Katkı</item>
-        <item quantity="other">%1$s: %2$d Katkılar</item>
+        <item quantity="one">%1$s: %2$d Contribution</item>
+        <item quantity="other">%1$s: %2$d Contributions</item>
     </plurals>
     <plurals name="plural_language">
-        <item quantity="one">Dil</item>
-        <item quantity="other">Diller</item>
+        <item quantity="one">Language</item>
+        <item quantity="other">Languages</item>
     </plurals>
     <plurals name="plural_lines_selected">
-        <item quantity="one">Çizgi %1$s</item>
-        <item quantity="other">Çizgiler %1$s-%2$s</item>
+        <item quantity="one">Line %1$s</item>
+        <item quantity="other">Lines %1$s-%2$s</item>
     </plurals>
     <plurals name="plural_pr_merge_details">
         <item quantity="one">%1$s merged %2$d commit into %3$s</item>

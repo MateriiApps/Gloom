@@ -34,6 +34,7 @@
     <string name="title_sponsoring">Sponsoring</string>
     <string name="title_followers">Followers</string>
     <string name="title_following">Following</string>
+    <string name="title_forks">Forks</string>
     <!--        -->
     <!-- Entities -->
     <string name="noun_repo">Repository</string>

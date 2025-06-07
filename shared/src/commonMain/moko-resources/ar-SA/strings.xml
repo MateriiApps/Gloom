@@ -1,87 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Root Tabs -->
-    <string name="navigation_explore">استكشف</string>
-    <string name="navigation_home">الرئيسية</string>
-    <string name="navigation_inbox">الإشعارات</string>
-    <string name="navigation_profile">الملف الشخصي</string>
-    <string name="navigation_settings">الإعدادات</string>
+    <string name="navigation_explore">Explore</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
     <!--           -->
     <!-- Generic Actions -->
-    <string name="action_back">رجوع</string>
-    <string name="action_confirm">تأكيد</string>
-    <string name="action_share">مشاركة</string>
-    <string name="action_expand">عرض المزيد</string>
-    <string name="action_collapse">عرض أقل</string>
-    <string name="action_edit">تعديل</string>
-    <string name="action_stop_edit">إيقاف التعديل</string>
-    <string name="action_try_again">حاول مجددا</string>
-    <string name="action_copy">نسخ</string>
+    <string name="action_back">Back</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_stop_edit">Stop editing</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_copy">Copy</string>
     <!--                 -->
     <!-- Dismiss Labels -->
-    <string name="dismiss_nevermind">لا يهم</string>
-    <string name="dismiss_cancel">إلغاء</string>
-    <string name="dismiss_no_thanks">لا، شكراً</string>
+    <string name="dismiss_nevermind">Nevermind</string>
+    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
     <!--                -->
     <!-- Errors -->
-    <string name="error_release_load">تعذر تحميل الإصدار</string>
+    <string name="error_release_load">Couldn\'t load release</string>
     <!--        -->
     <!-- Titles -->
-    <string name="title_starred">مميّزة بنجمة</string>
-    <string name="title_orgs">المنظمات</string>
-    <string name="title_repos">المستودعات</string>
-    <string name="title_contributors">المُساهمون</string>
-    <string name="title_sponsoring">الرعاية</string>
-    <string name="title_followers">المتابِعون</string>
-    <string name="title_following">يتابِع</string>
+    <string name="title_starred">Starred</string>
+    <string name="title_orgs">Organizations</string>
+    <string name="title_repos">Repositories</string>
+    <string name="title_contributors">Contributors</string>
+    <string name="title_sponsoring">Sponsoring</string>
+    <string name="title_followers">Followers</string>
+    <string name="title_following">Following</string>
+    <string name="title_forks">Forks</string>
     <!--        -->
     <!-- Entities -->
-    <string name="noun_repo">المُستودع</string>
-    <string name="noun_release">الإصدار</string>
-    <string name="noun_tag">علامة</string>
+    <string name="noun_repo">Repository</string>
+    <string name="noun_release">Release</string>
+    <string name="noun_tag">Tag</string>
     <string name="noun_user">User</string>
     <string name="noun_org">Organization</string>
-    <string name="noun_other">أخرى</string>
-    <string name="noun_commit">نفذ</string>
-    <string name="noun_license">الترخيص</string>
-    <string name="noun_users_avatar">الأفاتار الخاص بـ %s</string>
+    <string name="noun_other">Other</string>
+    <string name="noun_commit">Commit</string>
+    <string name="noun_license">License</string>
+    <string name="noun_users_avatar">%s\'s avatar</string>
     <!--          -->
     <!-- Issues and PRs -->
-    <string name="msg_issue_untitled">مشكلة بلا عنوان</string>
-    <string name="msg_pr_untitled">طلب السحب بدون عنوان</string>
-    <string name="label_checks">تحقق</string>
-    <string name="label_reviews">المراجعات</string>
+    <string name="msg_issue_untitled">Untitled issue</string>
+    <string name="msg_pr_untitled">Untitled pull request</string>
+    <string name="label_checks">Checks</string>
+    <string name="label_reviews">Reviews</string>
     <!--                -->
-    <string name="label_dont_show_again">لا تظهر هذه مجددًا</string>
+    <string name="label_dont_show_again">Don\'t show this again</string>
     <!-- Units -->
-    <string name="time_now">الآن</string>
-    <string name="time_since_second">%1$d ثانية</string>
-    <string name="time_since_minute">%1$d دقيقة</string>
-    <string name="time_since_hour">%1$d ساعة</string>
-    <string name="time_since_day">%1$dيوم</string>
-    <string name="time_since_month">%1$dشهر</string>
-    <string name="time_since_year">%1$dعام</string>
-    <string name="file_size_bytes">%1$d بايت</string>
-    <string name="file_size_kilobytes">%1$d‏ كيلوبايت</string>
-    <string name="file_size_megabytes">%1$d‏ ميغابايت</string>
-    <string name="file_size_gigabytes">%1$d جيجابايت</string>
+    <string name="time_now">Now</string>
+    <string name="time_since_second">%1$ds</string>
+    <string name="time_since_minute">%1$dm</string>
+    <string name="time_since_hour">%1$dh</string>
+    <string name="time_since_day">%1$dd</string>
+    <string name="time_since_month">%1$dmo</string>
+    <string name="time_since_year">%1$dy</string>
+    <string name="file_size_bytes">%1$d B</string>
+    <string name="file_size_kilobytes">%1$d KB</string>
+    <string name="file_size_megabytes">%1$d MB</string>
+    <string name="file_size_gigabytes">%1$d GB</string>
     <!--       -->
     <!-- Downloading -->
-    <string name="action_download">تنزيل</string>
-    <string name="title_download_confirm">تأكيد التنزيل</string>
-    <string name="msg_download_dialog_body">أنت على وشك تنزيل %1$s (%2$s)، هل أنت متأكد أنك تريد متابعة ذلك؟    </string>
-    <string name="msg_downloading_file">جارٍ تنزيل %1$s...</string>
-    <string name="msg_download_completed">اكتمل التنزيل</string>
+    <string name="action_download">Download</string>
+    <string name="title_download_confirm">Confirm download</string>
+    <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
+    <string name="msg_downloading_file">Downloading %1$s...</string>
+    <string name="msg_download_completed">Download completed</string>
     <!--             -->
     <!-- Installing -->
-    <string name="install_fail_generic">فشل التثبيت: سبب غير معروف</string>
-    <string name="install_fail_blocked">تم حظر التثبيت</string>
-    <string name="install_fail_invalid">واحدة أو أكثر من ملفات Apk كانت غير صالحة أو تالفة</string>
-    <string name="install_fail_conflict">التعارض مع تطبيق مثبت، عادة ما يكون ذلك بسبب عدم تطابق التوقيعات    </string>
-    <string name="install_fail_storage">لا توجد مساحة تخزين كافية للتثبيت</string>
-    <string name="install_fail_incompatible">التطبيق لا يتوافق مع هذا الجهاز</string>
-    <string name="install_fail_timeout">انتهت مهلة التثبيت</string>
-    <string name="install_success">تم تثبيت التطبيق بنجاح!</string>
-    <string name="install_cancelled">تم إلغاء التثبيت</string>
+    <string name="install_fail_generic">Failed to install: Unknown reason</string>
+    <string name="install_fail_blocked">Installation was blocked</string>
+    <string name="install_fail_invalid">One or more apks were invalid or corrupt</string>
+    <string name="install_fail_conflict">Conflicts with an existing app, usually due to mismatched
+        signatures
+    </string>
+    <string name="install_fail_storage">Not enough available storage to install</string>
+    <string name="install_fail_incompatible">Application is incompatible with this device</string>
+    <string name="install_fail_timeout">Installation timed out</string>
+    <string name="install_success">App installed successfully!</string>
+    <string name="install_cancelled">Installation cancelled</string>
     <!--            -->
 </resources>

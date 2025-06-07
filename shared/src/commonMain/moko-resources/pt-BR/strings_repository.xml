@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_star">Estrela</string>
-    <string name="action_unstar">Remover estrela</string>
-    <string name="placeholder_empty_repo">Repositório vazio</string>
-    <string name="cd_forked_repo">Repositório Fork</string>
-    <string name="label_repo_archived">Arquivado pelo proprietário</string>
+    <string name="action_star">Star</string>
+    <string name="action_unstar">Unstar</string>
+    <string name="placeholder_empty_repo">Empty Repository</string>
+    <string name="cd_forked_repo">Forked Repository</string>
+    <string name="label_repo_archived">Archived by owner</string>
     <!-- Details -->
-    <string name="repo_tab_details">Detalhes</string>
-    <string name="action_show_license_details">Mostrar detalhes da licença</string>
-    <string name="action_hide_license_details">Ocultar detalhes da licença</string>
-    <string name="title_license">Licença</string>
-    <string name="label_permissions">Permissões</string>
-    <string name="label_limitations">Limitações</string>
-    <string name="label_conditions">Condições</string>
-    <string name="label_forked_from">Fork de %s</string>
+    <string name="repo_tab_details">Details</string>
+    <string name="action_show_license_details">Show license details</string>
+    <string name="action_hide_license_details">Hide license details</string>
+    <string name="title_license">License</string>
+    <string name="label_permissions">Permissions</string>
+    <string name="label_limitations">Limitations</string>
+    <string name="label_conditions">Conditions</string>
+    <string name="label_forked_from">Forked from %s</string>
     <!--         -->
     <!-- Code -->
-    <string name="repo_tab_code">Código</string>
+    <string name="repo_tab_code">Code</string>
     <!--      -->
     <!-- Issues -->
     <string name="repo_tab_issues">Issues</string>
-    <string name="cd_issue_title_opened">Issue número %1$d com título \"%2$s\"</string>
-    <string name="cd_issue_title_completed">Issue número %1$d com título \"%2$s\" marcada como
-        concluída
-    </string>
-    <string name="cd_issue_title_not_planned">Issue número %1$d com título \"%2$s\" marcada como não
-        planejada
-    </string>
+    <string name="cd_issue_title_opened">Issue number %1$d with title \"%2$s\"</string>
+    <string name="cd_issue_title_completed">Issue number %1$d with title \"%2$s\" marked as completed</string>
+    <string name="cd_issue_title_not_planned">Issue number %1$d with title \"%2$s\" marked as not planned</string>
     <!--        -->
     <!-- Pull Requests -->
     <string name="repo_tab_prs">Pull Requests</string>
-    <string name="cd_pr_title_opened">Pull request aberta com o número %1$d com título \"%2$s\"
-    </string>
-    <string name="cd_pr_title_merged">Pull request %1$d com título \"%2$s\" mesclada</string>
-    <string name="cd_pr_title_closed">Pull request %1$d com título \"%2$s\" fechada</string>
-    <string name="cd_pr_title_draft">Pull request %1$d com título \"%2$s\" é um rascunho</string>
-    <string name="label_checks_failed">Falha nas verificações</string>
+    <string name="cd_pr_title_opened">Opened pull request number %1$d with title \"%2$s\"</string>
+    <string name="cd_pr_title_merged">Merged pull request number %1$d with title \"%2$s\"</string>
+    <string name="cd_pr_title_closed">Closed pull request number %1$d with title \"%2$s\"</string>
+    <string name="cd_pr_title_draft">Draft pull request number %1$d with title \"%2$s\"</string>
+    <string name="label_checks_failed">Checks failed</string>
     <!--               -->
     <!-- Issue or PR -->
-    <string name="cd_label_comments">%1$d comentários</string>
-    <string name="msg_issue_or_pr_author">#%1$d por %2$s</string>
+    <string name="cd_label_comments">%1$d comments</string>
+    <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
     <!--             -->
     <!-- Releases -->
-    <string name="repo_tab_releases">Lançamentos</string>
-    <string name="label_all_releases">Todas as versões</string>
+    <string name="repo_tab_releases">Releases</string>
+    <string name="label_all_releases">All releases</string>
     <!--          -->
 </resources>

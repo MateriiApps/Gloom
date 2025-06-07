@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="noun_contributors">
-        <item quantity="one">%s Contribuidor</item>
-        <item quantity="other">%s Contribuidores</item>
+        <item quantity="one">%s Contributor</item>
+        <item quantity="other">%s Contributors</item>
     </plurals>
     <plurals name="repositories">
-        <item quantity="one">%s Repositório</item>
-        <item quantity="other">%s Repositórios</item>
+        <item quantity="one">%s Repository</item>
+        <item quantity="other">%s Repositories</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="one">%s Estrela</item>
-        <item quantity="other">%s Estrelas</item>
+        <item quantity="one">%s Star</item>
+        <item quantity="other">%s Stars</item>
     </plurals>
     <plurals name="forks">
         <item quantity="one">%s Fork</item>
         <item quantity="other">%s Forks</item>
     </plurals>
     <plurals name="followers">
-        <item quantity="one">%s Seguidor</item>
-        <item quantity="other">%s Seguidores</item>
+        <item quantity="one">%s Follower</item>
+        <item quantity="other">%s Followers</item>
     </plurals>
     <plurals name="following">
-        <item quantity="one">%s Seguindo</item>
-        <item quantity="other">%s Seguindo</item>
+        <item quantity="one">%s Following</item>
+        <item quantity="other">%s Following</item>
     </plurals>
     <plurals name="contributions_toast">
-        <item quantity="one">%1$s: %2$d Contribuição</item>
-        <item quantity="other">%1$s: %2$d Contribuições</item>
+        <item quantity="one">%1$s: %2$d Contribution</item>
+        <item quantity="other">%1$s: %2$d Contributions</item>
     </plurals>
     <plurals name="plural_language">
-        <item quantity="one">Idioma</item>
-        <item quantity="other">Idiomas</item>
+        <item quantity="one">Language</item>
+        <item quantity="other">Languages</item>
     </plurals>
     <plurals name="plural_lines_selected">
-        <item quantity="one">Linha %1$s</item>
-        <item quantity="other">Linhas %1$s-%2$s</item>
+        <item quantity="one">Line %1$s</item>
+        <item quantity="other">Lines %1$s-%2$s</item>
     </plurals>
     <plurals name="plural_pr_merge_details">
-        <item quantity="one">%1$s mesclou o commit %2$d em %3$s</item>
-        <item quantity="other">%1$s mesclou os commits %2$d em %3$s</item>
+        <item quantity="one">%1$s merged %2$d commit into %3$s</item>
+        <item quantity="other">%1$s merged %2$d commits into %3$s</item>
     </plurals>
 </resources>

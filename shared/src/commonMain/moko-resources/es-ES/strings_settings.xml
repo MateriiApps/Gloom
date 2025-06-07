@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_sign_out">Cerrar sesión</string>
-    <string name="settings_sign_out_header">¿Cerrar sesión?</string>
-    <string name="settings_sign_out_text">¿Estás seguro de que quieres cerrar sesión? Siempre podrás volver a iniciar sesión más tarde.</string>
+    <string name="action_sign_out">Sign Out</string>
+    <string name="settings_sign_out_header">Sign Out?</string>
+    <string name="settings_sign_out_text">Are you sure you want to sign out? You can always sign back in later.</string>
     <!-- Appearance -->
-    <string name="settings_appearance">Apariencia</string>
-    <string name="settings_appearance_description">Tema, estilo de código</string>
-    <string name="appearance_theme">Tema</string>
-    <string name="appearance_monet">Tema dinámico</string>
-    <string name="appearance_monet_description">Disponible en Android 12+</string>
-    <string name="theme_system">Sistema</string>
-    <string name="theme_light">Claro</string>
-    <string name="theme_dark">Oscuro</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_description">Theme, code style</string>
+    <string name="appearance_theme">Theme</string>
+    <string name="appearance_monet">Dynamic Theme</string>
+    <string name="appearance_monet_description">Available on Android 12+</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
     <string name="appearance_av_shape">Avatar Shape</string>
-    <string name="appearance_av_radius">Radio:</string>
-    <string name="appearance_av_radius_percent">%1$d %</string>
-    <string name="appearance_av_shape_circle">Círculo</string>
-    <string name="appearance_av_shape_roundrect">Cuadrado redondeado</string>
+    <string name="appearance_av_radius">Radius:</string>
+    <string name="appearance_av_radius_percent">%1$d%</string>
+    <string name="appearance_av_shape_circle">Circle</string>
+    <string name="appearance_av_shape_roundrect">Rounded square</string>
     <string name="appearance_av_shape_squircle">Squircle</string>
     <string name="action_expand_av_shape">View avatar shape options</string>
     <string name="action_collapse_av_shape">Close avatar shape options</string>
@@ -55,31 +55,31 @@
     <string name="app_icon_valentines25_description">Love is in the air?</string>
     <!--           -->
     <!-- Accounts -->
-    <string name="settings_accounts">Cuentas</string>
-    <string name="settings_accounts_description">Añadir o cambiar cuentas</string>
-    <string name="action_add_account">Añadir cuenta</string>
-    <string name="action_sign_out_all">Cerrar sesión de todas las cuentas</string>
-    <string name="cd_enterprise_domain">Dominio de empresa: %1$s</string>
+    <string name="settings_accounts">Accounts</string>
+    <string name="settings_accounts_description">Add or switch accounts</string>
+    <string name="action_add_account">Add account</string>
+    <string name="action_sign_out_all">Sign out of all accounts</string>
+    <string name="cd_enterprise_domain">Enterprise domain: %1$s</string>
     <!--          -->
     <!-- Development -->
-    <string name="settings_development">Desarrollo</string>
-    <string name="settings_development_description">Depurar y probar nuevas características</string>
-    <string name="dev_alert_testing">Pruebas de alerta</string>
-    <string name="dev_alert_testing_description">Crear alertas personalizadas para probar</string>
-    <string name="dev_alert_title">Título</string>
-    <string name="dev_alert_message">Mensaje</string>
-    <string name="dev_alert_show_icon">Mostrar icono</string>
-    <string name="dev_alert_duration">Duración</string>
-    <string name="dev_alert_action_show_alert">Mostrar alerta</string>
-    <string name="dev_alert_action_fill_queue">Rellenar cola</string>
+    <string name="settings_development">Development</string>
+    <string name="settings_development_description">Debug and test new features</string>
+    <string name="dev_alert_testing">Alert Testing</string>
+    <string name="dev_alert_testing_description">Create custom alerts to use for testing</string>
+    <string name="dev_alert_title">Title</string>
+    <string name="dev_alert_message">Message</string>
+    <string name="dev_alert_show_icon">Show icon</string>
+    <string name="dev_alert_duration">Duration</string>
+    <string name="dev_alert_action_show_alert">Show alert</string>
+    <string name="dev_alert_action_fill_queue">Fill queue</string>
     <!--             -->
     <!-- About -->
-    <string name="settings_about">Acerca de</string>
-    <string name="settings_libraries">Librerías</string>
-    <string name="settings_libraries_description">Las librerías usadas para crear Gloom</string>
-    <string name="cd_library_author">Autor: %1$s</string>
-    <string name="cd_library_license">Licencia: %1$s</string>
-    <string name="label_open_source">Código abierto</string>
-    <string name="label_closed_source">Código cerrado</string>
+    <string name="settings_about">About</string>
+    <string name="settings_libraries">Libraries</string>
+    <string name="settings_libraries_description">The libraries used to make Gloom</string>
+    <string name="cd_library_author">Author: %1$s</string>
+    <string name="cd_library_license">License: %1$s</string>
+    <string name="label_open_source">Open Source</string>
+    <string name="label_closed_source">Closed Source</string>
     <!--       -->
 </resources>
