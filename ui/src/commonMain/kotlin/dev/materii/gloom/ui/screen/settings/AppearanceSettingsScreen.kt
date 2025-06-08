@@ -2,7 +2,6 @@ package dev.materii.gloom.ui.screen.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -84,10 +83,7 @@ class AppearanceSettingsScreen : Screen {
                         currentShape = viewModel.prefs.userAvatarShape,
                         onShapeUpdate = { viewModel.prefs.userAvatarShape = it },
                         cornerRadius = viewModel.prefs.userAvatarRadius,
-                        onCornerRadiusUpdate = { viewModel.prefs.userAvatarRadius = it },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
+                        onCornerRadiusUpdate = { viewModel.prefs.userAvatarRadius = it }
                     )
 
                     AvatarShapeSetting(
@@ -95,10 +91,7 @@ class AppearanceSettingsScreen : Screen {
                         currentShape = viewModel.prefs.orgAvatarShape,
                         onShapeUpdate = { viewModel.prefs.orgAvatarShape = it },
                         cornerRadius = viewModel.prefs.orgAvatarRadius,
-                        onCornerRadiusUpdate = { viewModel.prefs.orgAvatarRadius = it },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
+                        onCornerRadiusUpdate = { viewModel.prefs.orgAvatarRadius = it }
                     )
                 }
             }
