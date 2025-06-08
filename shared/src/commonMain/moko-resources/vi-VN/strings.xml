@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Root Tabs -->
-    <string name="navigation_explore">Mở rộng</string>
-    <string name="navigation_home">Trang chủ</string>
-    <string name="navigation_inbox">Hộp thư đến</string>
-    <string name="navigation_profile">Trang cá nhân</string>
-    <string name="navigation_settings">Cài đặt</string>
+    <string name="navigation_explore">Explore</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
     <!--           -->
     <!-- Generic Actions -->
-    <string name="action_back">Quay lại</string>
-    <string name="action_confirm">Xác nhận</string>
-    <string name="action_share">Chia sẻ</string>
-    <string name="action_expand">Xem thêm</string>
-    <string name="action_collapse">Ẩn bớt</string>
-    <string name="action_edit">Chỉnh sửa</string>
-    <string name="action_stop_edit">Ngưng chỉnh sửa</string>
-    <string name="action_try_again">Thử lại</string>
-    <string name="action_copy">Sao chép</string>
+    <string name="action_back">Back</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_stop_edit">Stop editing</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_copy">Copy</string>
     <!--                 -->
     <!-- Dismiss Labels -->
-    <string name="dismiss_nevermind">Không có gì</string>
-    <string name="dismiss_cancel">Hủy bỏ</string>
-    <string name="dismiss_no_thanks">Không, cảm ơn</string>
+    <string name="dismiss_nevermind">Nevermind</string>
+    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
     <!--                -->
     <!-- Errors -->
     <string name="error_release_load">Couldn\'t load release</string>
@@ -34,6 +34,7 @@
     <string name="title_sponsoring">Sponsoring</string>
     <string name="title_followers">Followers</string>
     <string name="title_following">Following</string>
+    <string name="title_forks">Forks</string>
     <!--        -->
     <!-- Entities -->
     <string name="noun_repo">Repository</string>
@@ -43,7 +44,7 @@
     <string name="noun_org">Organization</string>
     <string name="noun_other">Other</string>
     <string name="noun_commit">Commit</string>
-    <string name="noun_license">Giấy phép</string>
+    <string name="noun_license">License</string>
     <string name="noun_users_avatar">%s\'s avatar</string>
     <!--          -->
     <!-- Issues and PRs -->
@@ -67,8 +68,8 @@
     <string name="file_size_gigabytes">%1$d GB</string>
     <!--       -->
     <!-- Downloading -->
-    <string name="action_download">Tải xuống</string>
-    <string name="title_download_confirm">Xác nhận tải xuống</string>
+    <string name="action_download">Download</string>
+    <string name="title_download_confirm">Confirm download</string>
     <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
     <string name="msg_downloading_file">Downloading %1$s...</string>
     <string name="msg_download_completed">Download completed</string>

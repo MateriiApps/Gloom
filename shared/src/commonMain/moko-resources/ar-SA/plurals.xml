@@ -2,11 +2,11 @@
 <resources>
     <plurals name="noun_contributors">
         <item quantity="zero">%s Contributors</item>
-        <item quantity="one">مساهم %s</item>
-        <item quantity="two">المساهمين %s</item>
+        <item quantity="one">%s Contributor</item>
+        <item quantity="two">%s Contributors</item>
         <item quantity="few">%s Contributors</item>
-        <item quantity="many">المساهمين %s</item>
-        <item quantity="other">مساهم %s</item>
+        <item quantity="many">%s Contributors</item>
+        <item quantity="other">%s Contributors</item>
     </plurals>
     <plurals name="repositories">
         <item quantity="zero">%s Repositories</item>

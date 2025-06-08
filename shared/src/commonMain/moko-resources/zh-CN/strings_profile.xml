@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_follow_user">关注 %s</string>
-    <string name="action_unfollow_user">取消关注 %s</string>
-    <string name="action_follow">关注</string>
-    <string name="action_unfollow">取消关注</string>
-    <string name="action_read_more">阅读更多</string>
-    <string name="badge_dev">Gloom 开发者</string>
-    <string name="badge_supporter">Gloom 支持者</string>
-    <string name="section_title_contributions">贡献：%1$d</string>
-    <string name="section_title_pinned">已固定</string>
-    <string name="cd_link">链接</string>
-    <string name="label_follows_you">关注您</string>
-    <string name="label_more">更多</string>
-    <string name="label_less">更少</string>
+    <string name="action_follow_user">Follow %s</string>
+    <string name="action_unfollow_user">Unfollow %s</string>
+    <string name="action_follow">Follow</string>
+    <string name="action_unfollow">Unfollow</string>
+    <string name="action_read_more">Read More</string>
+    <string name="badge_dev">Gloom Developer</string>
+    <string name="badge_supporter">Gloom Supporter</string>
+    <string name="section_title_contributions">Contributions: %1$d</string>
+    <string name="section_title_pinned">Pinned</string>
+    <string name="cd_link">Link</string>
+    <string name="label_follows_you">Follows You</string>
+    <string name="label_more">More</string>
+    <string name="label_less">Less</string>
 </resources>

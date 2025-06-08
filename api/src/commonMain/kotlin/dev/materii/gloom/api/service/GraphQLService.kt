@@ -280,6 +280,16 @@ class GraphQLService(
             .response()
     }
 
+    suspend fun getRepoContributors(
+        owner: String,
+        name: String,
+        after: String? = null
+    ) = withContext(Dispatchers.IO) {
+        client.query(RepoContributorsQuery(owner, name, after.toOptional()))
+            .addToken()
+            .response()
+    }
+
     suspend fun getReleaseDetails(
         owner: String,
         name: String,

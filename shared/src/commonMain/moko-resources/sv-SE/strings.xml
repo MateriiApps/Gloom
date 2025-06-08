@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Root Tabs -->
-    <string name="navigation_explore">Utforska</string>
+    <string name="navigation_explore">Explore</string>
     <string name="navigation_home">Home</string>
-    <string name="navigation_inbox">Inkorg</string>
-    <string name="navigation_profile">Profil</string>
-    <string name="navigation_settings">Inställningar</string>
+    <string name="navigation_inbox">Inbox</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
     <!--           -->
     <!-- Generic Actions -->
-    <string name="action_back">Tillbaka</string>
-    <string name="action_confirm">Bekräfta</string>
-    <string name="action_share">Dela</string>
-    <string name="action_expand">Visa mer</string>
-    <string name="action_collapse">Visa mindre</string>
-    <string name="action_edit">Redigera</string>
+    <string name="action_back">Back</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
+    <string name="action_edit">Edit</string>
     <string name="action_stop_edit">Stop editing</string>
-    <string name="action_try_again">Försök igen</string>
-    <string name="action_copy">Kopiera</string>
+    <string name="action_try_again">Try again</string>
+    <string name="action_copy">Copy</string>
     <!--                 -->
     <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">Nevermind</string>
-    <string name="dismiss_cancel">Avbryt</string>
-    <string name="dismiss_no_thanks">Nej tack</string>
+    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
     <!--                -->
     <!-- Errors -->
     <string name="error_release_load">Couldn\'t load release</string>
@@ -34,6 +34,7 @@
     <string name="title_sponsoring">Sponsoring</string>
     <string name="title_followers">Followers</string>
     <string name="title_following">Following</string>
+    <string name="title_forks">Forks</string>
     <!--        -->
     <!-- Entities -->
     <string name="noun_repo">Repository</string>
@@ -43,7 +44,7 @@
     <string name="noun_org">Organization</string>
     <string name="noun_other">Other</string>
     <string name="noun_commit">Commit</string>
-    <string name="noun_license">Licens</string>
+    <string name="noun_license">License</string>
     <string name="noun_users_avatar">%s\'s avatar</string>
     <!--          -->
     <!-- Issues and PRs -->
@@ -52,9 +53,9 @@
     <string name="label_checks">Checks</string>
     <string name="label_reviews">Reviews</string>
     <!--                -->
-    <string name="label_dont_show_again">Visa inte detta igen</string>
+    <string name="label_dont_show_again">Don\'t show this again</string>
     <!-- Units -->
-    <string name="time_now">Nu</string>
+    <string name="time_now">Now</string>
     <string name="time_since_second">%1$ds</string>
     <string name="time_since_minute">%1$dm</string>
     <string name="time_since_hour">%1$dh</string>

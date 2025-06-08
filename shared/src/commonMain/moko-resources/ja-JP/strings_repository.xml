@@ -1,48 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_star">スター</string>
-    <string name="action_unstar">スターを外す</string>
-    <string name="placeholder_empty_repo">空のリポジトリ</string>
-    <string name="cd_forked_repo">フォークされたリポジトリ</string>
+    <string name="action_star">Star</string>
+    <string name="action_unstar">Unstar</string>
+    <string name="placeholder_empty_repo">Empty Repository</string>
+    <string name="cd_forked_repo">Forked Repository</string>
     <string name="label_repo_archived">Archived by owner</string>
     <!-- Details -->
-    <string name="repo_tab_details">詳細</string>
+    <string name="repo_tab_details">Details</string>
     <string name="action_show_license_details">Show license details</string>
     <string name="action_hide_license_details">Hide license details</string>
-    <string name="title_license">ライセンス</string>
+    <string name="title_license">License</string>
     <string name="label_permissions">Permissions</string>
     <string name="label_limitations">Limitations</string>
     <string name="label_conditions">Conditions</string>
-    <string name="label_forked_from">%s からのフォーク</string>
+    <string name="label_forked_from">Forked from %s</string>
     <!--         -->
     <!-- Code -->
-    <string name="repo_tab_code">コード</string>
+    <string name="repo_tab_code">Code</string>
     <!--      -->
     <!-- Issues -->
-    <string name="repo_tab_issues">課題</string>
-    <string name="cd_issue_title_opened">タイトル「%2$s」の課題 %1$d</string>
-    <string name="cd_issue_title_completed">タイトル「%2$s」の課題 %1$d が完了としてマークされました
-    </string>
-    <string name="cd_issue_title_not_planned">タイトル「%2$s」の課題 %1$d
-        が計画外としてマークされました
-    </string>
+    <string name="repo_tab_issues">Issues</string>
+    <string name="cd_issue_title_opened">Issue number %1$d with title \"%2$s\"</string>
+    <string name="cd_issue_title_completed">Issue number %1$d with title \"%2$s\" marked as completed</string>
+    <string name="cd_issue_title_not_planned">Issue number %1$d with title \"%2$s\" marked as not planned</string>
     <!--        -->
     <!-- Pull Requests -->
-    <string name="repo_tab_prs">プルリクエスト</string>
-    <string name="cd_pr_title_opened">タイトル「%2$s」のプルリクエスト %1$d をオープンしました
-    </string>
-    <string name="cd_pr_title_merged">タイトル「%2$s」のプルリクエスト %1$d をマージしました</string>
-    <string name="cd_pr_title_closed">タイトル「%2$s」のプルリクエスト %1$d をクローズしました
-    </string>
-    <string name="cd_pr_title_draft">タイトル「%2$s」のプルリクエスト %1$d をドラフトしました</string>
-    <string name="label_checks_failed">チェック失敗</string>
+    <string name="repo_tab_prs">Pull Requests</string>
+    <string name="cd_pr_title_opened">Opened pull request number %1$d with title \"%2$s\"</string>
+    <string name="cd_pr_title_merged">Merged pull request number %1$d with title \"%2$s\"</string>
+    <string name="cd_pr_title_closed">Closed pull request number %1$d with title \"%2$s\"</string>
+    <string name="cd_pr_title_draft">Draft pull request number %1$d with title \"%2$s\"</string>
+    <string name="label_checks_failed">Checks failed</string>
     <!--               -->
     <!-- Issue or PR -->
-    <string name="cd_label_comments">%1$d 件のコメント</string>
+    <string name="cd_label_comments">%1$d comments</string>
     <string name="msg_issue_or_pr_author">#%1$d by %2$s</string>
     <!--             -->
     <!-- Releases -->
-    <string name="repo_tab_releases">リリース</string>
-    <string name="label_all_releases">すべてのリリース</string>
+    <string name="repo_tab_releases">Releases</string>
+    <string name="label_all_releases">All releases</string>
     <!--          -->
 </resources>

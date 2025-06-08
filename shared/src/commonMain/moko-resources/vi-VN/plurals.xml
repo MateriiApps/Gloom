@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="noun_contributors">
-        <item quantity="other">%s Người đóng góp</item>
+        <item quantity="other">%s Contributors</item>
     </plurals>
     <plurals name="repositories">
-        <item quantity="other">%s Kho lưu trữ</item>
+        <item quantity="other">%s Repositories</item>
     </plurals>
     <plurals name="stars">
-        <item quantity="other">%s Yêu thích</item>
+        <item quantity="other">%s Stars</item>
     </plurals>
     <plurals name="forks">
-        <item quantity="other">%s Nhân bản</item>
+        <item quantity="other">%s Forks</item>
     </plurals>
     <plurals name="followers">
         <item quantity="other">%s Followers</item>
@@ -19,13 +19,13 @@
         <item quantity="other">%s Following</item>
     </plurals>
     <plurals name="contributions_toast">
-        <item quantity="other">%1$s: %2$d Đóng góp</item>
+        <item quantity="other">%1$s: %2$d Contributions</item>
     </plurals>
     <plurals name="plural_language">
-        <item quantity="other">Ngôn ngữ</item>
+        <item quantity="other">Languages</item>
     </plurals>
     <plurals name="plural_lines_selected">
-        <item quantity="other">Từ dòng %1$s-%2$s</item>
+        <item quantity="other">Lines %1$s-%2$s</item>
     </plurals>
     <plurals name="plural_pr_merge_details">
         <item quantity="other">%1$s merged %2$d commits into %3$s</item>

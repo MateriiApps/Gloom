@@ -139,6 +139,12 @@ class GraphQLRepository(
         count: Int? = null
     ) = service.getRepoForks(owner, name, after, count)
 
+    suspend fun getRepoContributors(
+        owner: String,
+        name: String,
+        after: String? = null,
+    ) = service.getRepoContributors(owner, name, after)
+
     suspend fun getReleaseDetails(
         owner: String,
         name: String,

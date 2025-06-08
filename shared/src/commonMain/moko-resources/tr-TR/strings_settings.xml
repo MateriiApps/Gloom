@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_sign_out">Çıkış Yap</string>
-    <string name="settings_sign_out_header">Çıkış Yap?</string>
-    <string name="settings_sign_out_text">Çıkış yapmak istediğinizden emin misiniz? Daha sonra
-        yeniden giriş yapabilirsiniz.
-    </string>
+    <string name="action_sign_out">Sign Out</string>
+    <string name="settings_sign_out_header">Sign Out?</string>
+    <string name="settings_sign_out_text">Are you sure you want to sign out? You can always sign back in later.</string>
     <!-- Appearance -->
-    <string name="settings_appearance">Görünüm</string>
-    <string name="settings_appearance_description">Tema, kod stili</string>
-    <string name="appearance_theme">Tema</string>
-    <string name="appearance_monet">Dinamik Tema</string>
-    <string name="appearance_monet_description">Android 12+ için kullanılabilir</string>
-    <string name="theme_system">Sistem</string>
-    <string name="theme_light">Açık</string>
-    <string name="theme_dark">Koyu</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_description">Theme, code style</string>
+    <string name="appearance_theme">Theme</string>
+    <string name="appearance_monet">Dynamic Theme</string>
+    <string name="appearance_monet_description">Available on Android 12+</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
     <string name="appearance_av_shape">Avatar Shape</string>
-    <string name="appearance_av_radius">Yarıçap:</string>
+    <string name="appearance_av_radius">Radius:</string>
     <string name="appearance_av_radius_percent">%1$d%</string>
-    <string name="appearance_av_shape_circle">Daire</string>
-    <string name="appearance_av_shape_roundrect">Yuvarlatılmış kare</string>
-    <string name="appearance_av_shape_squircle">Kare-Daire</string>
+    <string name="appearance_av_shape_circle">Circle</string>
+    <string name="appearance_av_shape_roundrect">Rounded square</string>
+    <string name="appearance_av_shape_squircle">Squircle</string>
     <string name="action_expand_av_shape">View avatar shape options</string>
     <string name="action_collapse_av_shape">Close avatar shape options</string>
     <!--            -->
@@ -57,31 +55,31 @@
     <string name="app_icon_valentines25_description">Love is in the air?</string>
     <!--           -->
     <!-- Accounts -->
-    <string name="settings_accounts">Hesaplar</string>
-    <string name="settings_accounts_description">Hesap ekle veya değiştir</string>
-    <string name="action_add_account">Hesap Ekle</string>
-    <string name="action_sign_out_all">Tüm Hesaplardan Çıkış Yap</string>
-    <string name="cd_enterprise_domain">Kurumsal alan adı: %1$s</string>
+    <string name="settings_accounts">Accounts</string>
+    <string name="settings_accounts_description">Add or switch accounts</string>
+    <string name="action_add_account">Add account</string>
+    <string name="action_sign_out_all">Sign out of all accounts</string>
+    <string name="cd_enterprise_domain">Enterprise domain: %1$s</string>
     <!--          -->
     <!-- Development -->
-    <string name="settings_development">Geliştirme</string>
-    <string name="settings_development_description">Yeni özellikleri hata ayıklayın ve test edin</string>
-    <string name="dev_alert_testing">Uyarı Testi</string>
-    <string name="dev_alert_testing_description">Test için özel uyarılar oluşturun</string>
-    <string name="dev_alert_title">Başlık</string>
-    <string name="dev_alert_message">Mesaj</string>
-    <string name="dev_alert_show_icon">Simgeyi Göster</string>
-    <string name="dev_alert_duration">Süre</string>
-    <string name="dev_alert_action_show_alert">Uyarıyı Göster</string>
-    <string name="dev_alert_action_fill_queue">Kuyruğu Doldur</string>
+    <string name="settings_development">Development</string>
+    <string name="settings_development_description">Debug and test new features</string>
+    <string name="dev_alert_testing">Alert Testing</string>
+    <string name="dev_alert_testing_description">Create custom alerts to use for testing</string>
+    <string name="dev_alert_title">Title</string>
+    <string name="dev_alert_message">Message</string>
+    <string name="dev_alert_show_icon">Show icon</string>
+    <string name="dev_alert_duration">Duration</string>
+    <string name="dev_alert_action_show_alert">Show alert</string>
+    <string name="dev_alert_action_fill_queue">Fill queue</string>
     <!--             -->
     <!-- About -->
-    <string name="settings_about">Hakkında</string>
-    <string name="settings_libraries">Kütüphaneler</string>
-    <string name="settings_libraries_description">Gloom\'u oluşturmak için kullanılan kütüphaneler</string>
-    <string name="cd_library_author">Yazar: %1$s</string>
-    <string name="cd_library_license">Lisans: %1$s</string>
-    <string name="label_open_source">Açık Kaynak</string>
-    <string name="label_closed_source">Kapalı Kaynak</string>
+    <string name="settings_about">About</string>
+    <string name="settings_libraries">Libraries</string>
+    <string name="settings_libraries_description">The libraries used to make Gloom</string>
+    <string name="cd_library_author">Author: %1$s</string>
+    <string name="cd_library_license">License: %1$s</string>
+    <string name="label_open_source">Open Source</string>
+    <string name="label_closed_source">Closed Source</string>
     <!--       -->
 </resources>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_follow_user">متابعة %s</string>
-    <string name="action_unfollow_user">إلغاء المتابعة %s</string>
-    <string name="action_follow">متابعة</string>
-    <string name="action_unfollow">إلغاء المتابعة</string>
-    <string name="action_read_more">اقرأ المزيد</string>
-    <string name="badge_dev">مطور Gloom</string>
-    <string name="badge_supporter">داعم Gloom</string>
-    <string name="section_title_contributions">المساهمات: %1$d</string>
-    <string name="section_title_pinned">مُثَبّت</string>
-    <string name="cd_link">رابط</string>
-    <string name="label_follows_you">يُتابِعُك</string>
-    <string name="label_more">المزيد</string>
-    <string name="label_less">أقل</string>
+    <string name="action_follow_user">Follow %s</string>
+    <string name="action_unfollow_user">Unfollow %s</string>
+    <string name="action_follow">Follow</string>
+    <string name="action_unfollow">Unfollow</string>
+    <string name="action_read_more">Read More</string>
+    <string name="badge_dev">Gloom Developer</string>
+    <string name="badge_supporter">Gloom Supporter</string>
+    <string name="section_title_contributions">Contributions: %1$d</string>
+    <string name="section_title_pinned">Pinned</string>
+    <string name="cd_link">Link</string>
+    <string name="label_follows_you">Follows You</string>
+    <string name="label_more">More</string>
+    <string name="label_less">Less</string>
 </resources>

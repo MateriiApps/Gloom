@@ -4,15 +4,15 @@
     <string name="navigation_explore">Explore</string>
     <string name="navigation_home">Home</string>
     <string name="navigation_inbox">Inbox</string>
-    <string name="navigation_profile">Profil</string>
-    <string name="navigation_settings">Nastavení</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
     <!--           -->
     <!-- Generic Actions -->
-    <string name="action_back">Zpět</string>
-    <string name="action_confirm">Potvrdit</string>
-    <string name="action_share">Sdílet</string>
-    <string name="action_expand">Zobrazit více</string>
-    <string name="action_collapse">Zobrazit méně</string>
+    <string name="action_back">Back</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_share">Share</string>
+    <string name="action_expand">View More</string>
+    <string name="action_collapse">View Less</string>
     <string name="action_edit">Edit</string>
     <string name="action_stop_edit">Stop editing</string>
     <string name="action_try_again">Try again</string>
@@ -20,8 +20,8 @@
     <!--                 -->
     <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">Nevermind</string>
-    <string name="dismiss_cancel">Zrušit</string>
-    <string name="dismiss_no_thanks">Ne, děkuji</string>
+    <string name="dismiss_cancel">Cancel</string>
+    <string name="dismiss_no_thanks">No thanks</string>
     <!--                -->
     <!-- Errors -->
     <string name="error_release_load">Couldn\'t load release</string>
@@ -34,6 +34,7 @@
     <string name="title_sponsoring">Sponsoring</string>
     <string name="title_followers">Followers</string>
     <string name="title_following">Following</string>
+    <string name="title_forks">Forks</string>
     <!--        -->
     <!-- Entities -->
     <string name="noun_repo">Repository</string>
@@ -67,8 +68,8 @@
     <string name="file_size_gigabytes">%1$d GB</string>
     <!--       -->
     <!-- Downloading -->
-    <string name="action_download">Stáhnout</string>
-    <string name="title_download_confirm">Potvrdit stažení</string>
+    <string name="action_download">Download</string>
+    <string name="title_download_confirm">Confirm download</string>
     <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
     <string name="msg_downloading_file">Downloading %1$s...</string>
     <string name="msg_download_completed">Download completed</string>

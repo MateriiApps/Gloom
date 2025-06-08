@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_github_sign_in">Войти с помощью GitHub</string>
-    <string name="label_choose_account">Выбрать аккаунт</string>
-    <string name="label_or">или</string>
-    <string name="msg_welcome">Добро пожаловать!</string>
+    <string name="action_github_sign_in">Sign in with GitHub</string>
+    <string name="label_choose_account">Choose an account</string>
+    <string name="label_or">or</string>
+    <string name="msg_welcome">Welcome!</string>
 </resources>

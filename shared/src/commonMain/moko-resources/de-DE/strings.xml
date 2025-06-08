@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Root Tabs -->
-    <string name="navigation_explore">Erkunden</string>
+    <string name="navigation_explore">Explore</string>
     <string name="navigation_home">Home</string>
     <string name="navigation_inbox">Inbox</string>
-    <string name="navigation_profile">Profil</string>
-    <string name="navigation_settings">Einstellungen</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_settings">Settings</string>
     <!--           -->
     <!-- Generic Actions -->
-    <string name="action_back">Zurück</string>
+    <string name="action_back">Back</string>
     <string name="action_confirm">Confirm</string>
     <string name="action_share">Share</string>
     <string name="action_expand">View More</string>
     <string name="action_collapse">View Less</string>
-    <string name="action_edit">Bearbeiten</string>
+    <string name="action_edit">Edit</string>
     <string name="action_stop_edit">Stop editing</string>
     <string name="action_try_again">Try again</string>
-    <string name="action_copy">Kopieren</string>
+    <string name="action_copy">Copy</string>
     <!--                 -->
     <!-- Dismiss Labels -->
     <string name="dismiss_nevermind">Nevermind</string>
@@ -34,6 +34,7 @@
     <string name="title_sponsoring">Sponsoring</string>
     <string name="title_followers">Followers</string>
     <string name="title_following">Following</string>
+    <string name="title_forks">Forks</string>
     <!--        -->
     <!-- Entities -->
     <string name="noun_repo">Repository</string>
@@ -67,7 +68,7 @@
     <string name="file_size_gigabytes">%1$d GB</string>
     <!--       -->
     <!-- Downloading -->
-    <string name="action_download">Herunterladen</string>
+    <string name="action_download">Download</string>
     <string name="title_download_confirm">Confirm download</string>
     <string name="msg_download_dialog_body">You are about to download %1$s (%2$s), are you sure you want to do that?</string>
     <string name="msg_downloading_file">Downloading %1$s...</string>

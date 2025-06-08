@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-    <string name="action_reset_zoom">rset zooom</string>
-    <string name="action_view_raw">vie raww</string>
-    <string name="action_view_markdown">vie as mrkdawn</string>
-    <string name="msg_file_load_error">cud not load dis file</string>
-    <string name="msg_raw_markdown_fail">cldnt load rawww mrkdawn</string>
+    <string name="action_reset_zoom">Reset zoom</string>
+    <string name="action_view_raw">View raw</string>
+    <string name="action_view_markdown">View as markdown</string>
+    <string name="msg_file_load_error">Could not load this file</string>
+    <string name="msg_raw_markdown_fail">Could not load raw markdown</string>
 </resources>
