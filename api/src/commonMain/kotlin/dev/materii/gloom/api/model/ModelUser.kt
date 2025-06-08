@@ -1,15 +1,8 @@
 package dev.materii.gloom.api.model
 
 import dev.materii.gloom.api.dto.user.User
-import dev.materii.gloom.gql.FollowersQuery
-import dev.materii.gloom.gql.FollowingQuery
-import dev.materii.gloom.gql.JoinedOrgsQuery
-import dev.materii.gloom.gql.ProfileQuery
-import dev.materii.gloom.gql.UserProfileQuery
-import dev.materii.gloom.gql.fragment.Contributions
-import dev.materii.gloom.gql.fragment.OrgSponsoringFragment
-import dev.materii.gloom.gql.fragment.Social
-import dev.materii.gloom.gql.fragment.UserSponsoringFragment
+import dev.materii.gloom.gql.*
+import dev.materii.gloom.gql.fragment.*
 import dev.materii.gloom.gql.type.SocialAccountProvider
 import kotlinx.datetime.LocalDateTime
 
@@ -279,6 +272,17 @@ data class ModelUser(
                 }
             }
 
+        fun fromContributorsQuery(contributorsQuery: RepoContributorsQuery.Node): ModelUser {
+            return with(contributorsQuery) {
+                ModelUser(
+                    username = login,
+                    displayName = name,
+                    bio = bio,
+                    avatar = avatarUrl,
+                    type = User.Type.USER
+                )
+            }
+        }
     }
 
 }
