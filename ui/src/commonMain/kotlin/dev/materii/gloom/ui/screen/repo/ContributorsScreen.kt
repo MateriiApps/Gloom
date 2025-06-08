@@ -18,8 +18,10 @@ class ContributorsScreen(
 ) : BaseListScreen<ModelUser, RepoContributorsQuery.Data?, RepoContributorsViewModel>() {
 
     override val titleRes: StringResource get() = Res.strings.title_contributors
+
     override val key: ScreenKey
         get() = "${this::class.simpleName}($owner, $repository)"
+
     override val viewModel: RepoContributorsViewModel
         @Composable
         get() = koinScreenModel { parametersOf(owner, repository) }

@@ -24,7 +24,6 @@ class RepoContributorsViewModel(
         return data?.repository?.contributors?.nodes
             ?.filterNotNull()
             .orEmpty()
-            .sortedByDescending { it.contributionsCollection.totalCommitContributions }
             .map {
                 ModelUser.fromContributorsQuery(it)
             }
