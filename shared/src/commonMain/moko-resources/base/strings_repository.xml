@@ -28,8 +28,11 @@
     <!--      -->
 
     <!-- Commits -->
+    <string name="label_verified">Verified</string>
+
     <string name="commit_authored_by_committer">§author§%1$s§ authored</string>
     <string name="commit_authored_by_different">§author§%1$s§ authored and §committer§%2$s§ committed</string>
+    <!--         -->
 
     <!-- Issues -->
     <string name="repo_tab_issues">Issues</string>

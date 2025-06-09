@@ -5,6 +5,7 @@ fragment CommitDetails on Commit {
     committedViaWeb
     authoredByCommitter
     abbreviatedOid
+    oid
     committer {
         ...GitActorDetails
     }
@@ -13,5 +14,13 @@ fragment CommitDetails on Commit {
     }
     statusCheckRollup {
         state
+    }
+    signature {
+        isValid
+        wasSignedByGitHub
+        payload
+        ... on GpgSignature {
+            keyId
+        }
     }
 }
