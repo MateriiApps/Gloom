@@ -29,9 +29,17 @@
 
     <!-- Commits -->
     <string name="label_verified">Verified</string>
+    <string name="label_verified_on">Verified on %1$s</string>
+    <string name="label_gpg_key_id">GPG Key ID: %1$s</string>
+    <string name="label_ssh_fingerprint">SSH Fingerprint: %1$s</string>
 
     <string name="commit_authored_by_committer">§author§%1$s§ authored</string>
     <string name="commit_authored_by_different">§author§%1$s§ authored and §committer§%2$s§ committed</string>
+
+    <string name="title_commit_verified">This Commit is Verified</string>
+
+    <string name="commit_signature_reason_github">This commit was created on GitHub.com and signed with GitHub's verified signature.</string>
+    <string name="commit_signature_reason_user">This commit was signed with the committer's verified signature.</string>
     <!--         -->
 
     <!-- Issues -->

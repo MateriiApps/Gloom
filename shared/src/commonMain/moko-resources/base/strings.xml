@@ -25,6 +25,7 @@
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">Cancel</string>
     <string name="dismiss_no_thanks">No thanks</string>
+    <string name="dismiss_okay">Okay</string>
     <!--                -->
 
     <!-- Errors -->

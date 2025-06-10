@@ -16,11 +16,6 @@ fragment CommitDetails on Commit {
         state
     }
     signature {
-        isValid
-        wasSignedByGitHub
-        payload
-        ... on GpgSignature {
-            keyId
-        }
+        ...CommitSignatureDetails
     }
 }

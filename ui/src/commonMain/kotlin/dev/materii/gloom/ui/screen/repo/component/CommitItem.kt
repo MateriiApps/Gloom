@@ -11,6 +11,10 @@ import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
@@ -28,6 +32,7 @@ import dev.materii.gloom.gql.fragment.CommitDetails
 import dev.materii.gloom.ui.component.AvatarPile
 import dev.materii.gloom.ui.component.Label
 import dev.materii.gloom.ui.component.StatusIcon
+import dev.materii.gloom.ui.screen.repo.dialog.CommitSignatureDialog
 import dev.materii.gloom.ui.theme.gloomColorScheme
 import dev.materii.gloom.ui.util.annotatingStringResource
 import dev.materii.gloom.ui.widget.alert.LocalAlertController
@@ -147,14 +152,23 @@ fun CommitItem(
                     .padding(vertical = 5.dp)
             )
 
-            if (commit.signature?.isValid == true) {
+            if (commit.signature?.commitSignatureDetails?.isValid == true) {
+                var signatureDetailsOpened by remember { mutableStateOf(false) }
+
                 Label(
                     text = stringResource(Res.strings.label_verified),
                     textColor = MaterialTheme.gloomColorScheme.statusGreen,
                     modifier = Modifier.clickable {
-                        alertController.showText(commit.signature!!.onGpgSignature?.keyId ?: "") // TODO: Signing key info dialog
+                        signatureDetailsOpened = true
                     }
                 )
+
+                if (signatureDetailsOpened) {
+                    CommitSignatureDialog(
+                        signature = commit.signature!!.commitSignatureDetails,
+                        onDismiss = { signatureDetailsOpened = false }
+                    )
+                }
             }
         }
     }
