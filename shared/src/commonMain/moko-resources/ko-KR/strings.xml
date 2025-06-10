@@ -22,6 +22,7 @@
     <string name="dismiss_nevermind">Nevermind</string>
     <string name="dismiss_cancel">Cancel</string>
     <string name="dismiss_no_thanks">No thanks</string>
+    <string name="dismiss_okay">Okay</string>
     <!--                -->
     <!-- Errors -->
     <string name="error_release_load">Couldn\'t load release</string>
@@ -35,6 +36,7 @@
     <string name="title_followers">Followers</string>
     <string name="title_following">Following</string>
     <string name="title_forks">Forks</string>
+    <string name="title_commits">Commits</string>
     <!--        -->
     <!-- Entities -->
     <string name="noun_repo">Repository</string>
