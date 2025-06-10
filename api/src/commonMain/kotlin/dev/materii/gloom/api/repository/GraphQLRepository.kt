@@ -107,9 +107,9 @@ class GraphQLRepository(
         service.getRawMarkdown(owner, name, branch, path)
             .transform { it.repository?.gitObject?.onCommit?.file?.fileType?.rawMarkdownFile }
 
-    suspend fun getDefaultBranch(owner: String, name: String) =
+    suspend fun getRepoDefaults(owner: String, name: String) =
         service.getDefaultBranch(owner, name).transform {
-            it.repository?.defaultBranchRef?.name
+            it.repository
         }
 
     suspend fun getRepoIssues(
@@ -151,6 +151,12 @@ class GraphQLRepository(
         tag: String,
         after: String? = null
     ) = service.getReleaseDetails(owner, name, tag, after)
+
+    suspend fun getRepoCommits(
+        id: String,
+        branch: String,
+        after: String? = null
+    ) = service.getRepoCommits(id, branch, after)
 
     suspend fun react(id: String, reaction: ReactionContent) = service.react(id, reaction)
 
