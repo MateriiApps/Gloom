@@ -13,12 +13,12 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.FollowedUserFeedItemFragment
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.util.annotatingStringResource
 import dev.materii.gloom.ui.util.navigate
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun FollowedUserItem(

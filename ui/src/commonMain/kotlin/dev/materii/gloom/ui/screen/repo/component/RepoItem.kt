@@ -2,14 +2,7 @@ package dev.materii.gloom.ui.screen.repo.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Circle
@@ -29,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.api.model.ModelRepo
 import dev.materii.gloom.ui.component.Avatar
@@ -37,11 +31,10 @@ import dev.materii.gloom.ui.icon.Custom
 import dev.materii.gloom.ui.icon.custom.Fork
 import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.theme.gloomColorScheme
-import dev.materii.gloom.util.NumberFormatter
 import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.ui.util.parsedColor
 import dev.materii.gloom.ui.util.thenIf
-import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.util.NumberFormatter
 
 @Composable
 fun RepoItem(

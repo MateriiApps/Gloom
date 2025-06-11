@@ -15,7 +15,7 @@ import org.koin.core.parameter.parametersOf
 class ForksScreen(
     private val username: String,
     private val repository: String
-) : BaseListScreen<ModelRepo, RepoForksQuery.Data?, ForksViewModel>() {
+): BaseListScreen<ModelRepo, RepoForksQuery.Data?, ForksViewModel>() {
 
     override val titleRes: StringResource get() = Res.strings.title_forks
 

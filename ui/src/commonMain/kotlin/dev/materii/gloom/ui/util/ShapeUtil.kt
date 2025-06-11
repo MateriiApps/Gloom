@@ -18,8 +18,8 @@ import dev.materii.gloom.domain.manager.enums.AvatarShape
  */
 fun getShapeForPref(shapePref: AvatarShape, radiusPercent: Int) = when (shapePref) {
     AvatarShape.RoundedCorner -> RoundedCornerShape(radiusPercent)
-    AvatarShape.Circle -> CircleShape
-    AvatarShape.Squircle -> Squircle
+    AvatarShape.Circle        -> CircleShape
+    AvatarShape.Squircle      -> Squircle
 }
 
 /**
@@ -29,7 +29,7 @@ fun getShapeForPref(shapePref: AvatarShape, radiusPercent: Int) = when (shapePre
  * @param scaleY Scales the vertical axis
  */
 @Suppress("FunctionName")
-fun ScaledRectShape(scaleX: Float = 1f, scaleY: Float = 1f) = object : Shape {
+fun ScaledRectShape(scaleX: Float = 1f, scaleY: Float = 1f) = object: Shape {
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density) =
         Outline.Rectangle(Size(size.width * scaleX, size.height * scaleY).toRect())
 

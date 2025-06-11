@@ -1,6 +1,5 @@
 package dev.materii.gloom.api.dto.repo
 
-import dev.materii.gloom.api.dto.license.License
 import dev.materii.gloom.api.dto.user.User
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.SerialName
@@ -59,6 +58,7 @@ data class Repository(
 
     @Serializable
     enum class Visibility {
+
         @SerialName("public")
         PUBLIC,
 

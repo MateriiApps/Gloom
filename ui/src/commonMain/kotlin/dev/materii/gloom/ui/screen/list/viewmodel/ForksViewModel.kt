@@ -9,7 +9,7 @@ class ForksViewModel(
     private val repo: GraphQLRepository,
     private val username: String,
     private val repoName: String
-) : BaseListViewModel<ModelRepo, RepoForksQuery.Data?>() {
+): BaseListViewModel<ModelRepo, RepoForksQuery.Data?>() {
 
     override suspend fun loadPage(cursor: String?): RepoForksQuery.Data? {
         return repo.getRepoForks(username, repoName, cursor).getOrNull()

@@ -8,7 +8,7 @@ import dev.materii.gloom.gql.RepoListQuery
 class RepositoryListViewModel(
     private val repo: GraphQLRepository,
     private val username: String
-) : BaseListViewModel<ModelRepo, RepoListQuery.Data?>() {
+): BaseListViewModel<ModelRepo, RepoListQuery.Data?>() {
 
     override suspend fun loadPage(cursor: String?) =
         repo.getRepositoriesForUser(username, cursor).getOrNull()

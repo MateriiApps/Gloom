@@ -1,15 +1,11 @@
 package dev.materii.gloom.ui.screen.settings.component
 
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 
 // FIXME: Compose introduced a regression that causes an IllegalAccessException when trying to open the dialog, should either wait for the fix or downgrade at some point
 @Composable
-inline fun <reified E : Enum<E>> SettingsItemChoice(
+inline fun <reified E: Enum<E>> SettingsItemChoice(
     label: String,
     title: String = label,
     pref: E,

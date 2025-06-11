@@ -6,11 +6,11 @@ import androidx.compose.material.icons.outlined.DoNotDisturb
 import androidx.compose.material.icons.outlined.ModeStandby
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.IssueOverview
 import dev.materii.gloom.gql.type.IssueStateReason
 import dev.materii.gloom.ui.theme.gloomColorScheme
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun IssueItem(issue: IssueOverview) {

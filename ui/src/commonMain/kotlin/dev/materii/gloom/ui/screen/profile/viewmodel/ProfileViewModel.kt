@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 class ProfileViewModel(
     private val gqlRepo: GraphQLRepository,
     private val username: String
-) : ScreenModel {
+): ScreenModel {
 
     var user: ModelUser? by mutableStateOf(null)
     private var hasErrors by mutableStateOf(false)

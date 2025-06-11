@@ -15,16 +15,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.ui.component.bottomsheet.BottomSheet
 import dev.materii.gloom.ui.component.bottomsheet.BottomSheetLayout
-import dev.materii.gloom.ui.screen.settings.component.SettingsButton
 import dev.materii.gloom.ui.screen.auth.LandingScreen
 import dev.materii.gloom.ui.screen.root.RootScreen
+import dev.materii.gloom.ui.screen.settings.component.SettingsButton
+import dev.materii.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
 import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.util.toImmutableList
-import dev.materii.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
-import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 
 @Composable

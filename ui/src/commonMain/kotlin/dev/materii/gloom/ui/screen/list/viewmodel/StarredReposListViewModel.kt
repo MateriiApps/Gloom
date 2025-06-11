@@ -8,7 +8,7 @@ import dev.materii.gloom.gql.StarredReposQuery
 class StarredReposListViewModel(
     private val repo: GraphQLRepository,
     private val username: String
-) : BaseListViewModel<ModelRepo, StarredReposQuery.Data?>() {
+): BaseListViewModel<ModelRepo, StarredReposQuery.Data?>() {
 
     override suspend fun loadPage(cursor: String?) =
         repo.getStarredRepositories(username, cursor).getOrNull()

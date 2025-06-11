@@ -166,8 +166,8 @@ fun IssueOrPRItem(
                 if (reviewDecision != null) {
                     val (statusIcon, statusColor) = when (reviewDecision) {
                         PullRequestReviewDecision.CHANGES_REQUESTED -> Icons.Filled.Cancel to MaterialTheme.colorScheme.error
-                        PullRequestReviewDecision.APPROVED -> Icons.Filled.CheckCircle to MaterialTheme.gloomColorScheme.statusGreen
-                        else -> Icons.Filled.Circle to MaterialTheme.colorScheme.surfaceTint
+                        PullRequestReviewDecision.APPROVED          -> Icons.Filled.CheckCircle to MaterialTheme.gloomColorScheme.statusGreen
+                        else                                        -> Icons.Filled.Circle to MaterialTheme.colorScheme.surfaceTint
                     }
 
                     Label(

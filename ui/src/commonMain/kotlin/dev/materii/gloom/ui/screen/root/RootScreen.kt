@@ -8,11 +8,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
@@ -24,12 +20,12 @@ import com.benasher44.uuid.uuid4
 import dev.materii.gloom.domain.manager.AuthManager
 import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.component.navbar.LongClickableNavBarItem
+import dev.materii.gloom.ui.screen.settings.component.account.AccountSwitcherSheet
 import dev.materii.gloom.ui.util.DimenUtils
 import dev.materii.gloom.ui.util.RootTab
-import dev.materii.gloom.ui.screen.settings.component.account.AccountSwitcherSheet
 import org.koin.compose.koinInject
 
-class RootScreen : Screen {
+class RootScreen: Screen {
 
     @Composable
     override fun Content() = Screen()

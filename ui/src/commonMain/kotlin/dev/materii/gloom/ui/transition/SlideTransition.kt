@@ -1,14 +1,10 @@
 package dev.materii.gloom.ui.transition
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.AnimatedVisibilityScope
+import androidx.compose.animation.*
 import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.togetherWith
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.IntOffset
@@ -33,7 +29,7 @@ fun SlideTransition(
         transitionSpec = {
             val (initialOffset, targetOffset) = when (navigator.lastEvent) {
                 StackEvent.Pop -> ({ size: Int -> -size }) to ({ size: Int -> size })
-                else -> ({ size: Int -> size }) to ({ size: Int -> -size })
+                else           -> ({ size: Int -> size }) to ({ size: Int -> -size })
             }
 
             slideInHorizontally(animationSpec, initialOffset) togetherWith

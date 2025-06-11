@@ -49,7 +49,7 @@ import org.koin.core.parameter.parametersOf
 class DetailsTab(
     private val owner: String,
     private val name: String
-) : Tab {
+): Tab {
 
     override val key = "$owner/$name-${uuid4()}"
     override val options: TabOptions

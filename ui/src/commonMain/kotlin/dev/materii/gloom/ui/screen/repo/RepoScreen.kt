@@ -32,7 +32,10 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.domain.manager.ShareManager
-import dev.materii.gloom.ui.component.*
+import dev.materii.gloom.ui.component.Avatar
+import dev.materii.gloom.ui.component.BackButton
+import dev.materii.gloom.ui.component.Collapsable
+import dev.materii.gloom.ui.component.TextBanner
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.screen.repo.viewmodel.RepoViewModel
 import dev.materii.gloom.ui.theme.gloomColorScheme
@@ -44,7 +47,7 @@ import org.koin.core.parameter.parametersOf
 class RepoScreen(
     private val owner: String,
     private val name: String
-) : Screen {
+): Screen {
 
     override val key = "$owner/$name-${uuid4()}"
 

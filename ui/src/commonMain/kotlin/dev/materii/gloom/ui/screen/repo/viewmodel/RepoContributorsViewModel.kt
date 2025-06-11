@@ -10,7 +10,7 @@ class RepoContributorsViewModel(
     private val repo: GraphQLRepository,
     private val owner: String,
     private val repository: String
-) : BaseListViewModel<ModelUser, RepoContributorsQuery.Data?>() {
+): BaseListViewModel<ModelUser, RepoContributorsQuery.Data?>() {
 
     override suspend fun loadPage(cursor: String?): RepoContributorsQuery.Data? {
         return repo.getRepoContributors(owner, repository, cursor).getOrNull()

@@ -9,9 +9,8 @@ import dev.materii.gloom.domain.manager.enums.AvatarShape
 import dev.materii.gloom.domain.manager.enums.Theme
 import dev.materii.gloom.domain.manager.enums.TrendingPeriodPreference
 import dev.materii.gloom.util.SettingsProvider
-import dev.materii.gloom.util.supportsMonet
 
-class PreferenceManager(provider: SettingsProvider) :
+class PreferenceManager(provider: SettingsProvider):
     BasePreferenceManager(provider) {
 
     var theme by enumPreference("theme", Theme.SYSTEM)

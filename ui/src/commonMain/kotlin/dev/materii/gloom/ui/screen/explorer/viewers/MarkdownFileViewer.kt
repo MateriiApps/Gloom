@@ -8,12 +8,12 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.RawMarkdownFile
 import dev.materii.gloom.gql.fragment.RepoFile
 import dev.materii.gloom.ui.component.ErrorMessage
 import dev.materii.gloom.ui.widget.markdown.Markdown
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun MarkdownFileViewer(
@@ -44,7 +44,7 @@ fun MarkdownFileViewer(
             }
         }
 
-        else -> {
+        else    -> {
             markdownFile.contentHTML?.let {
                 Box(
                     modifier = Modifier

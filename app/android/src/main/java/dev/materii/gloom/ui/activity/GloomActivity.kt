@@ -22,7 +22,7 @@ import dev.materii.gloom.util.LinkHandler
 import dev.materii.gloom.util.deeplink.DeepLinkHandler
 import org.koin.android.ext.android.inject
 
-open class GloomActivity : ComponentActivity() {
+open class GloomActivity: ComponentActivity() {
 
     protected val auth: AuthManager by inject()
 
@@ -32,7 +32,10 @@ open class GloomActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         if (!auth.isSignedIn) {
-            val activityIntent = Intent(this, OAuthActivity::class.java)
+            val activityIntent = Intent(
+                this,
+                OAuthActivity::class.java
+            )
             startActivity(activityIntent)
             return
         }
@@ -54,7 +57,10 @@ open class GloomActivity : ComponentActivity() {
                 onScreenChange = { screen, alertController ->
                     // Displace bottom alerts when a navbar is present, only temporary
                     if (screen is RootScreen) {
-                        alertController.currentOffset = IntOffset(0, navBarOffset)
+                        alertController.currentOffset = IntOffset(
+                            0,
+                            navBarOffset
+                        )
                     } else {
                         alertController.currentOffset = IntOffset.Companion.Zero
                     }
@@ -73,8 +79,7 @@ open class GloomActivity : ComponentActivity() {
                     addOnNewIntentListener {
                         nav.push(DeepLinkHandler.handle(it))
                     }
-                }
-            )
+                })
         }
     }
 

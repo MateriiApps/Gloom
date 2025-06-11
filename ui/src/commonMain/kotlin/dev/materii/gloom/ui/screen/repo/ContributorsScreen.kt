@@ -15,7 +15,7 @@ import org.koin.core.parameter.parametersOf
 class ContributorsScreen(
     private val owner: String,
     private val repository: String
-) : BaseListScreen<ModelUser, RepoContributorsQuery.Data?, RepoContributorsViewModel>() {
+): BaseListScreen<ModelUser, RepoContributorsQuery.Data?, RepoContributorsViewModel>() {
 
     override val titleRes: StringResource get() = Res.strings.title_contributors
 

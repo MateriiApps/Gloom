@@ -30,16 +30,16 @@ import org.koin.compose.koinInject
 fun App(
     screens: List<Screen>,
     linkHandler: dev.materii.gloom.util.LinkHandler,
-    onScreenChange: (Screen, AlertController) -> Unit = { _, _, -> },
+    onScreenChange: (Screen, AlertController) -> Unit = { _, _ -> },
     onContentChange: @Composable () -> Unit = {},
-    onAttach: (Navigator, AlertController) -> Unit = { _, _, -> },
+    onAttach: (Navigator, AlertController) -> Unit = { _, _ -> },
 ) {
     val prefs: PreferenceManager = koinInject()
 
     val isDark = when (prefs.theme) {
         Theme.SYSTEM -> isSystemInDarkTheme()
-        Theme.LIGHT -> false
-        Theme.DARK -> true
+        Theme.LIGHT  -> false
+        Theme.DARK   -> true
     }
 
     GloomTheme(isDark, prefs.monet) {

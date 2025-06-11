@@ -27,7 +27,7 @@ import dev.materii.gloom.ui.screen.settings.component.SettingsHeader
 import dev.materii.gloom.ui.screen.settings.component.appicon.AppIconSetting
 import dev.materii.gloom.ui.screen.settings.viewmodel.AppIconsSettingsViewModel
 
-class AppIconsSettingsScreen : Screen {
+class AppIconsSettingsScreen: Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)

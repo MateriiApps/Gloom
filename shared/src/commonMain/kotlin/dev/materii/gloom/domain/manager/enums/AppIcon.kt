@@ -1,8 +1,8 @@
 package dev.materii.gloom.domain.manager.enums
 
-import dev.materii.gloom.Res
 import dev.icerock.moko.resources.ImageResource
 import dev.icerock.moko.resources.StringResource
+import dev.materii.gloom.Res
 
 enum class AppIcon(
     val aliasName: String,
@@ -123,6 +123,7 @@ enum class AppIcon(
 enum class AppIconCollection(
     val nameRes: StringResource
 ) {
+
     Classic(Res.strings.app_icon_collection_classic),
     Stylized(Res.strings.app_icon_collection_stylized),
     Pride(Res.strings.app_icon_collection_pride),

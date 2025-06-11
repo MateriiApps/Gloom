@@ -14,9 +14,9 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.FollowRecommendationFeedItemFragment
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun RecommendedFollowUserItem(

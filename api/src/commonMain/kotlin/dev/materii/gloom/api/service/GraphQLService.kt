@@ -9,7 +9,10 @@ import dev.materii.gloom.api.util.response
 import dev.materii.gloom.api.util.toOptional
 import dev.materii.gloom.domain.manager.AuthManager
 import dev.materii.gloom.gql.*
-import dev.materii.gloom.gql.type.*
+import dev.materii.gloom.gql.type.IssueState
+import dev.materii.gloom.gql.type.PullRequestState
+import dev.materii.gloom.gql.type.ReactionContent
+import dev.materii.gloom.gql.type.TrendingPeriod
 import io.ktor.http.HttpHeaders
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,7 +22,7 @@ class GraphQLService(
     private val authManager: AuthManager,
 ) {
 
-    private fun <D : Operation.Data> ApolloCall<D>.addToken() =
+    private fun <D: Operation.Data> ApolloCall<D>.addToken() =
         addHttpHeader(HttpHeaders.Authorization, "Bearer ${authManager.authToken}")
 
     suspend fun getAccountInfo(token: String) = withContext(Dispatchers.IO) {

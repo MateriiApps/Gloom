@@ -26,7 +26,7 @@ actual object NumberFormatter {
                     .format(count)
             }
 
-            else -> DecimalFormat().format(count)
+            else                                           -> DecimalFormat().format(count)
         }
     }
 

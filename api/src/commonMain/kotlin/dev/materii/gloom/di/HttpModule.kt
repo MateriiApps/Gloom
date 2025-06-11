@@ -1,7 +1,7 @@
 package dev.materii.gloom.di
 
-import dev.materii.gloom.util.Logger
 import dev.materii.gloom.api.util.installLogging
+import dev.materii.gloom.util.Logger
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.HttpRequestRetry

@@ -2,23 +2,11 @@ package dev.materii.gloom.ui.screen.repo.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -33,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.ReleaseItem
 import dev.materii.gloom.ui.component.Avatar
@@ -41,10 +30,9 @@ import dev.materii.gloom.ui.component.ThinDivider
 import dev.materii.gloom.ui.screen.release.ReleaseScreen
 import dev.materii.gloom.ui.theme.DarkGreen
 import dev.materii.gloom.ui.util.annotatingStringResource
-import dev.materii.gloom.util.format
 import dev.materii.gloom.ui.widget.markdown.Markdown
+import dev.materii.gloom.util.format
 import dev.materii.gloom.util.ifNullOrBlank
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun LatestReleaseItem(
@@ -105,7 +93,7 @@ fun LatestReleaseItem(
                                     fontWeight = FontWeight.SemiBold
                                 )
 
-                                else -> null
+                                else     -> null
                             }
                         },
                         fontSize = 14.sp,

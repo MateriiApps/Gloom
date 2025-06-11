@@ -1,17 +1,12 @@
 package dev.materii.gloom.domain.manager
 
-import androidx.compose.runtime.Stable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.cache.normalized.apolloStore
 import dev.materii.gloom.util.Logger
 import dev.materii.gloom.util.SettingsProvider
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 class AuthManager(
@@ -33,7 +28,7 @@ class AuthManager(
                 val acct = json.decodeFromString<Account>(settings.getString(key, ""))
                 accounts[key] = acct
             } catch (e: SerializationException) {
-                if(key != "logged_in_id") logger.error("AuthManager", "Error serializing account", e)
+                if (key != "logged_in_id") logger.error("AuthManager", "Error serializing account", e)
             }
         }
     }
@@ -44,7 +39,7 @@ class AuthManager(
 
     val currentAccount: Account?
         get() {
-            if(!isSignedIn) return null
+            if (!isSignedIn) return null
             return accounts[currentAccountId]
         }
 
@@ -125,7 +120,7 @@ class AuthManager(
     }
 
     fun removeAccount(id: String) {
-        if(id == currentAccountId) currentAccountId = ""
+        if (id == currentAccountId) currentAccountId = ""
         accounts.remove(id)
         settings.remove(id)
     }
@@ -156,6 +151,7 @@ data class Account(
 
     @Serializable
     enum class Type {
+
         REGULAR,
         ENTERPRISE
     }

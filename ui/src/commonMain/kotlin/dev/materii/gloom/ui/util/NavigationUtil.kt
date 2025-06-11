@@ -13,10 +13,12 @@ import dev.materii.gloom.ui.screen.profile.ProfileTab
 
 @Suppress("unused")
 enum class RootTab(val tab: Tab) {
+
     HOME(HomeScreen()),
     EXPLORE(ExploreScreen()),
     NOTIFICATIONS(NotificationsScreen()),
     PROFILE(ProfileTab())
+    
 }
 
 fun Navigator.navigate(screen: Screen) {

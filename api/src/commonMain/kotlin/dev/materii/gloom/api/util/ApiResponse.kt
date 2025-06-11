@@ -3,15 +3,15 @@ package dev.materii.gloom.api.util
 import io.ktor.http.HttpStatusCode
 
 sealed interface ApiResponse<out T> {
-    data class Success<T>(val data: T) : ApiResponse<T>
-    class Empty<T> : ApiResponse<T>
-    data class Error<T>(val error: ApiError) : ApiResponse<T>
-    data class Failure<T>(val error: ApiFailure) : ApiResponse<T>
+    data class Success<T>(val data: T): ApiResponse<T>
+    class Empty<T>: ApiResponse<T>
+    data class Error<T>(val error: ApiError): ApiResponse<T>
+    data class Failure<T>(val error: ApiFailure): ApiResponse<T>
 }
 
-class ApiError(code: HttpStatusCode, body: String?) : Error("HTTP Code $code, Body: $body")
+class ApiError(code: HttpStatusCode, body: String?): Error("HTTP Code $code, Body: $body")
 
-class ApiFailure(error: Throwable, body: String?) : Error(body, error)
+class ApiFailure(error: Throwable, body: String?): Error(body, error)
 
 inline fun <T> ApiResponse<T>.fold(
     success: (T) -> Unit,
@@ -20,8 +20,8 @@ inline fun <T> ApiResponse<T>.fold(
     failure: (ApiFailure) -> Unit
 ) = when (this) {
     is ApiResponse.Success -> success(data)
-    is ApiResponse.Empty -> empty()
-    is ApiResponse.Error -> error(this.error)
+    is ApiResponse.Empty   -> empty()
+    is ApiResponse.Error   -> error(this.error)
     is ApiResponse.Failure -> failure(this.error)
 }
 
@@ -32,8 +32,8 @@ inline fun <T> ApiResponse<T>.fold(
     empty: () -> Unit
 ) = when (this) {
     is ApiResponse.Success -> success(data)
-    is ApiResponse.Empty -> empty()
-    is ApiResponse.Error -> fail(error)
+    is ApiResponse.Empty   -> empty()
+    is ApiResponse.Error   -> fail(error)
     is ApiResponse.Failure -> fail(error)
 }
 

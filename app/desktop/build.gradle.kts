@@ -35,7 +35,16 @@ compose.desktop.application {
         description = "GitHub reimagined with Material You"
         packageVersion = "0.1.0"
 
-        modules("java.base", "java.instrument", "java.management", "java.naming", "java.prefs", "java.sql", "jdk.unsupported", "jdk.xml.dom")
+        modules(
+            "java.base",
+            "java.instrument",
+            "java.management",
+            "java.naming",
+            "java.prefs",
+            "java.sql",
+            "jdk.unsupported",
+            "jdk.xml.dom"
+        )
 
         targetFormats(TargetFormat.Msi)
 

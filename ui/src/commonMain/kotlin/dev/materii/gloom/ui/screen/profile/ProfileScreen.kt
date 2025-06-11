@@ -15,7 +15,10 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -49,7 +52,10 @@ import dev.materii.gloom.ui.component.BackButton
 import dev.materii.gloom.ui.component.BadgedItem
 import dev.materii.gloom.ui.icon.Social
 import dev.materii.gloom.ui.icon.social.*
-import dev.materii.gloom.ui.screen.list.*
+import dev.materii.gloom.ui.screen.list.OrgsListScreen
+import dev.materii.gloom.ui.screen.list.RepositoryListScreen
+import dev.materii.gloom.ui.screen.list.SponsoringScreen
+import dev.materii.gloom.ui.screen.list.StarredReposListScreen
 import dev.materii.gloom.ui.screen.profile.component.ContributionGraph
 import dev.materii.gloom.ui.screen.profile.viewmodel.ProfileViewModel
 import dev.materii.gloom.ui.screen.repo.RepoScreen
@@ -66,7 +72,7 @@ import java.net.URI
 
 open class ProfileScreen(
     val user: String = ""
-) : Screen {
+): Screen {
 
     override val key: ScreenKey
         get() = "${this::class.simpleName}($user)"
@@ -282,18 +288,18 @@ open class ProfileScreen(
 
                     user.socials.forEach { social ->
                         val (icon, cdRes) = when (social.provider) {
-                            SocialAccountProvider.TWITTER -> Icons.Social.Twitter to Res.strings.cd_twitter
-                            SocialAccountProvider.YOUTUBE -> Icons.Social.YouTube to Res.strings.cd_youtube
-                            SocialAccountProvider.MASTODON -> Icons.Social.Mastodon to Res.strings.cd_mastodon
-                            SocialAccountProvider.HOMETOWN -> Icons.Social.Hometown to Res.strings.cd_hometown
-                            SocialAccountProvider.FACEBOOK -> Icons.Social.Facebook to Res.strings.cd_facebook
+                            SocialAccountProvider.TWITTER   -> Icons.Social.Twitter to Res.strings.cd_twitter
+                            SocialAccountProvider.YOUTUBE   -> Icons.Social.YouTube to Res.strings.cd_youtube
+                            SocialAccountProvider.MASTODON  -> Icons.Social.Mastodon to Res.strings.cd_mastodon
+                            SocialAccountProvider.HOMETOWN  -> Icons.Social.Hometown to Res.strings.cd_hometown
+                            SocialAccountProvider.FACEBOOK  -> Icons.Social.Facebook to Res.strings.cd_facebook
                             SocialAccountProvider.INSTAGRAM -> Icons.Social.Instagram to Res.strings.cd_instagram
-                            SocialAccountProvider.LINKEDIN -> Icons.Social.LinkedIn to Res.strings.cd_linkedin
-                            SocialAccountProvider.REDDIT -> Icons.Social.Reddit to Res.strings.cd_reddit
-                            SocialAccountProvider.TWITCH -> Icons.Social.Twitch to Res.strings.cd_twitch
-                            SocialAccountProvider.BLUESKY -> Icons.Social.Bluesky to Res.strings.cd_bluesky
-                            SocialAccountProvider.NPM -> Icons.Social.NPM to Res.strings.cd_npm
-                            else -> Icons.Outlined.Link to Res.strings.cd_link
+                            SocialAccountProvider.LINKEDIN  -> Icons.Social.LinkedIn to Res.strings.cd_linkedin
+                            SocialAccountProvider.REDDIT    -> Icons.Social.Reddit to Res.strings.cd_reddit
+                            SocialAccountProvider.TWITCH    -> Icons.Social.Twitch to Res.strings.cd_twitch
+                            SocialAccountProvider.BLUESKY   -> Icons.Social.Bluesky to Res.strings.cd_bluesky
+                            SocialAccountProvider.NPM       -> Icons.Social.NPM to Res.strings.cd_npm
+                            else                            -> Icons.Outlined.Link to Res.strings.cd_link
                         }
                         val socialName = remember {
                             if (social.provider == SocialAccountProvider.GENERIC) {
@@ -378,15 +384,15 @@ open class ProfileScreen(
 
         BadgedItem(
             badge =
-            if (badge != null && msg != null) { ->
-                Image(
-                    painter = badge,
-                    contentDescription = msg,
-                    modifier = Modifier
-                        .size(24.dp)
-                        .clickable { alertController.showText(msg) }
-                )
-            } else null
+                if (badge != null && msg != null) { ->
+                    Image(
+                        painter = badge,
+                        contentDescription = msg,
+                        modifier = Modifier
+                            .size(24.dp)
+                            .clickable { alertController.showText(msg) }
+                    )
+                } else null
         ) {
             Avatar(
                 url = user.avatar,

@@ -38,7 +38,8 @@
 
     <string name="title_commit_verified">This Commit is Verified</string>
 
-    <string name="commit_signature_reason_github">This commit was created on GitHub.com and signed with GitHub's verified signature.</string>
+    <string name="commit_signature_reason_github">This commit was created on GitHub.com and signed with GitHub's verified signature.
+    </string>
     <string name="commit_signature_reason_user">This commit was signed with the committer's verified signature.</string>
     <!--         -->
 

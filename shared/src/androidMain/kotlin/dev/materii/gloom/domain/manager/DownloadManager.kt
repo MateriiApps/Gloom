@@ -12,7 +12,6 @@ import android.os.Looper
 import androidx.core.content.getSystemService
 import androidx.core.net.toUri
 import com.benasher44.uuid.uuid4
-import dev.materii.gloom.domain.manager.AuthManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,6 +25,7 @@ actual class DownloadManager(
     private val context: Context,
     private val authManager: AuthManager
 ) {
+
     private val downloadManager = context.getSystemService<AndroidDownloadManager>()!!
     private val downloadScope = CoroutineScope(Dispatchers.IO)
     private val gloomDownloadFolder = File(
@@ -51,7 +51,7 @@ actual class DownloadManager(
         out.parentFile?.mkdirs()
 
         return suspendCoroutine { continuation ->
-            val receiver = object : BroadcastReceiver() {
+            val receiver = object: BroadcastReceiver() {
                 var dlId = 0L
 
                 @SuppressLint("Range")
@@ -79,7 +79,7 @@ actual class DownloadManager(
                     }
 
                     when (status) {
-                        -1 -> {
+                        -1                                       -> {
                             context.unregisterReceiver(this)
                             continuation.resumeWithException(Error("Download canceled"))
                         }
@@ -89,20 +89,20 @@ actual class DownloadManager(
                             continuation.resume(out)
                         }
 
-                        AndroidDownloadManager.STATUS_FAILED -> {
+                        AndroidDownloadManager.STATUS_FAILED     -> {
                             context.unregisterReceiver(this)
                             continuation.resumeWithException(
                                 Error("Failed to download $url")
                             )
                         }
 
-                        else -> {}
+                        else                                     -> {}
                     }
                 }
             }
 
             @SuppressLint("UnspecifiedRegisterReceiverFlag")
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 context.registerReceiver(
                     receiver,
                     IntentFilter(AndroidDownloadManager.ACTION_DOWNLOAD_COMPLETE),

@@ -9,17 +9,13 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import dev.materii.gloom.api.repository.GraphQLRepository
 import dev.materii.gloom.api.util.fold
 import dev.materii.gloom.gql.fragment.RepoOverview
-import dev.materii.gloom.ui.screen.repo.tab.CodeTab
-import dev.materii.gloom.ui.screen.repo.tab.DetailsTab
-import dev.materii.gloom.ui.screen.repo.tab.IssuesTab
-import dev.materii.gloom.ui.screen.repo.tab.PullRequestTab
-import dev.materii.gloom.ui.screen.repo.tab.ReleasesTab
+import dev.materii.gloom.ui.screen.repo.tab.*
 import kotlinx.coroutines.launch
 
 class RepoViewModel(
     private val gql: GraphQLRepository,
     private val nameWithOwner: Pair<String, String>
-) : ScreenModel {
+): ScreenModel {
 
     val owner = nameWithOwner.first
     val name = nameWithOwner.second

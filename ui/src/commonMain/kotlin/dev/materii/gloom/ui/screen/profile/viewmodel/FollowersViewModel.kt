@@ -9,7 +9,7 @@ import dev.materii.gloom.ui.screen.list.viewmodel.BaseListViewModel
 class FollowersViewModel(
     private val repo: GraphQLRepository,
     private val username: String
-) : BaseListViewModel<ModelUser, FollowersQuery.Data?>() {
+): BaseListViewModel<ModelUser, FollowersQuery.Data?>() {
 
     override suspend fun loadPage(cursor: String?) = repo.getFollowers(username, cursor).getOrNull()
 

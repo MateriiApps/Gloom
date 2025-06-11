@@ -9,6 +9,6 @@ import androidx.compose.runtime.Composable
 actual fun getColorSchemes(darkTheme: Boolean, dynamicColor: Boolean): Pair<ColorScheme, GloomColorScheme> {
     return when {
         darkTheme -> darkColorScheme() to darkGloomColorScheme()
-        else -> lightColorScheme() to lightGloomColorScheme()
+        else      -> lightColorScheme() to lightGloomColorScheme()
     }
 }

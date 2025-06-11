@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class SettingsViewModel(
     private val repo: GithubAuthRepository,
     private val auth: AuthManager
-) : ScreenModel {
+): ScreenModel {
 
     var signOutDialogOpened by mutableStateOf(false)
         private set

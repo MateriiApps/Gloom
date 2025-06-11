@@ -4,35 +4,16 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.ContentCopy
 import androidx.compose.material.icons.outlined.Description
 import androidx.compose.material.icons.outlined.FormatColorText
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
-import androidx.compose.material3.surfaceColorAtElevation
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -42,6 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.domain.manager.ShareManager
 import dev.materii.gloom.gql.fragment.RepoFile
@@ -52,9 +34,8 @@ import dev.materii.gloom.ui.screen.explorer.viewers.ImageFileViewer
 import dev.materii.gloom.ui.screen.explorer.viewers.MarkdownFileViewer
 import dev.materii.gloom.ui.screen.explorer.viewers.PdfFileViewer
 import dev.materii.gloom.ui.screen.explorer.viewers.TextFileViewer
-import dev.materii.gloom.ui.util.thenIf
 import dev.materii.gloom.ui.screen.explorer.viewmodel.FileViewerViewModel
-import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.ui.util.thenIf
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
@@ -63,7 +44,7 @@ class FileViewerScreen(
     private val name: String,
     private val branch: String,
     private val path: String
-) : Screen {
+): Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
@@ -131,9 +112,10 @@ class FileViewerScreen(
                 )
             }
 
-            "ImageFileType" -> ImageFileViewer(file.fileType?.onImageFileType!!)
-            "PdfFileType" -> PdfFileViewer(file.fileType?.onPdfFileType!!)
-            "TextFileType" -> {
+            "ImageFileType"    -> ImageFileViewer(file.fileType?.onImageFileType!!)
+            "PdfFileType"      -> PdfFileViewer(file.fileType?.onPdfFileType!!)
+
+            "TextFileType"     -> {
                 file.fileType?.onTextFileType?.contentRaw?.let { content ->
                     TextFileViewer(
                         content = content,
@@ -148,7 +130,7 @@ class FileViewerScreen(
                 }
             }
 
-            else -> {}
+            else               -> {}
         }
     }
 
@@ -220,7 +202,7 @@ class FileViewerScreen(
     ) {
         val text = when {
             viewModel.selectedLines == null -> path.split("/").lastOrNull() ?: "File"
-            else -> stringResource(
+            else                            -> stringResource(
                 Res.plurals.plural_lines_selected,
                 viewModel.selectedLines!!.count(),
                 viewModel.selectedLines!!.first,

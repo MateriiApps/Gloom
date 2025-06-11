@@ -10,15 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.CheckCircleOutline
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -36,6 +28,7 @@ import androidx.paging.compose.itemKey
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import com.benasher44.uuid.uuid4
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.domain.manager.DialogManager
 import dev.materii.gloom.domain.manager.DialogState
@@ -43,19 +36,13 @@ import dev.materii.gloom.domain.manager.ShareManager
 import dev.materii.gloom.gql.fragment.ReleaseDetails
 import dev.materii.gloom.ui.component.BackButton
 import dev.materii.gloom.ui.component.ThinDivider
-import dev.materii.gloom.ui.screen.release.viewmodel.ReleaseViewModel
-import dev.materii.gloom.ui.widget.markdown.Markdown
-import dev.materii.gloom.ui.widget.alert.LocalAlertController
-import dev.materii.gloom.ui.widget.reaction.ReactionRow
-import dev.materii.gloom.ui.screen.release.component.ReleaseAsset
-import dev.materii.gloom.ui.screen.release.component.ReleaseAuthor
-import dev.materii.gloom.ui.screen.release.component.ReleaseContributors
-import dev.materii.gloom.ui.screen.release.component.ReleaseHeader
-import dev.materii.gloom.ui.screen.release.component.ReleaseInfo
+import dev.materii.gloom.ui.screen.release.component.*
 import dev.materii.gloom.ui.screen.release.dialog.ReleaseAssetInstallDialog
+import dev.materii.gloom.ui.screen.release.viewmodel.ReleaseViewModel
+import dev.materii.gloom.ui.widget.alert.LocalAlertController
+import dev.materii.gloom.ui.widget.markdown.Markdown
+import dev.materii.gloom.ui.widget.reaction.ReactionRow
 import dev.materii.gloom.util.Feature
-import dev.materii.gloom.util.Features
-import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
@@ -63,7 +50,7 @@ class ReleaseScreen(
     val owner: String,
     val name: String,
     val tag: String
-) : Screen {
+): Screen {
 
     override val key = "$owner/$name-$tag-${uuid4()}"
 
@@ -116,6 +103,7 @@ class ReleaseScreen(
                         }
 
                         DialogState.CONFIRMED -> viewModel.installApk()
+
                         else -> {}
                     }
                 }

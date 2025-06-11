@@ -1,13 +1,7 @@
 package dev.materii.gloom.ui.screen.explorer
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.outlined.Description
@@ -23,21 +17,22 @@ import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.benasher44.uuid.uuid4
-import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.ui.screen.explorer.viewmodel.DirectoryListingViewModel
+import dev.materii.gloom.ui.util.navigate
 import org.koin.core.parameter.parametersOf
 
 class DirectoryListingScreen(
     private val owner: String,
     private val name: String,
     private val branchAndPath: String
-) : Screen {
+): Screen {
 
     override val key = "$owner/$name{$branchAndPath}-${uuid4()}"
 
     @Composable
     override fun Content() {
-        val viewModel: DirectoryListingViewModel = koinScreenModel { parametersOf(DirectoryListingViewModel.Details(owner, name, branchAndPath)) }
+        val viewModel: DirectoryListingViewModel =
+            koinScreenModel { parametersOf(DirectoryListingViewModel.Details(owner, name, branchAndPath)) }
         val nav = LocalNavigator.currentOrThrow
 
         Column(

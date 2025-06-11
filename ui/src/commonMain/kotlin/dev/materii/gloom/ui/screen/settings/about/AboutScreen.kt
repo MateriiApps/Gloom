@@ -19,7 +19,7 @@ import dev.materii.gloom.ui.component.toolbar.LargeToolbar
 import dev.materii.gloom.ui.screen.settings.component.SettingsCategory
 import dev.materii.gloom.ui.screen.settings.component.SettingsGroup
 
-class AboutScreen : Screen {
+class AboutScreen: Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)

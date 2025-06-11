@@ -19,8 +19,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gloom"
         tools:targetApi="31">
@@ -29,26 +29,28 @@
             android:name=".ui.activity.GloomActivity"
             android:exported="true"
             android:launchMode="standard"
-            android:theme="@style/Theme.Gloom.Splash">
-        </activity>
+            android:theme="@style/Theme.Gloom.Splash" />
 
-        <activity android:name=".ui.activity.OAuthActivity"
+        <activity
+            android:name=".ui.activity.OAuthActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Gloom">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="github"
                     android:host="com.github.android"
-                    android:path="/oauth" />
+                    android:path="/oauth"
+                    android:scheme="github" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.DeepLinkActivity"
+        <activity
+            android:name=".ui.activity.DeepLinkActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:taskAffinity=".deeplink"
@@ -78,10 +80,10 @@
 
         <activity-alias
             android:name="gloom.icons.classic.Main"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -90,10 +92,10 @@
 
         <activity-alias
             android:name="gloom.icons.classic.Sky"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_sky"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_sky"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -102,10 +104,10 @@
 
         <activity-alias
             android:name="gloom.icons.classic.Light"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_light"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_light"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -115,10 +117,10 @@
         <!-- Stylized -->
         <activity-alias
             android:name="gloom.icons.stylized.Blueprint"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_blueprint"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_blueprint"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -129,10 +131,10 @@
 
         <activity-alias
             android:name="gloom.icons.pride.LGBT"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_pride"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_pride"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -141,10 +143,10 @@
 
         <activity-alias
             android:name="gloom.icons.pride.Trans"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_trans"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_trans"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -153,10 +155,10 @@
 
         <activity-alias
             android:name="gloom.icons.pride.TransInverted"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_trans_inverted"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_trans_inverted"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -167,10 +169,10 @@
 
         <activity-alias
             android:name="gloom.icons.catppuccin.Mocha"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_mocha"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_mocha"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -179,10 +181,10 @@
 
         <activity-alias
             android:name="gloom.icons.catppuccin.Macchiato"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_macchiato"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_macchiato"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -191,10 +193,10 @@
 
         <activity-alias
             android:name="gloom.icons.catppuccin.Frappe"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_frappe"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_frappe"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -203,10 +205,10 @@
 
         <activity-alias
             android:name="gloom.icons.catppuccin.Latte"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_latte"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_latte"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -217,10 +219,10 @@
 
         <activity-alias
             android:name="gloom.icons.holiday25.Valentines"
-            android:targetActivity=".ui.activity.GloomActivity"
-            android:icon="@mipmap/ic_launcher_valentines25"
             android:enabled="false"
-            android:exported="true">
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_valentines25"
+            android:targetActivity=".ui.activity.GloomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

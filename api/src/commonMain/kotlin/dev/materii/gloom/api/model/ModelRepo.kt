@@ -42,7 +42,7 @@ data class ModelRepo(
     val topics: List<String>? = null,
     val visibility: Repository.Visibility? = null,
     val defaultBranch: String? = null
-) : dev.materii.gloom.api.model.Pinnable {
+): Pinnable {
 
     companion object {
 

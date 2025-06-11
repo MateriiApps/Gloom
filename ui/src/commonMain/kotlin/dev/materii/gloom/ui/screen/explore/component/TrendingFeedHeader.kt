@@ -8,11 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.domain.manager.PreferenceManager
 import dev.materii.gloom.domain.manager.enums.TrendingPeriodPreference
 import dev.materii.gloom.ui.component.filter.ChoiceInputChip
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun TrendingFeedHeader(
@@ -39,8 +39,8 @@ fun TrendingFeedHeader(
                     stringResource(
                         when (period) {
                             TrendingPeriodPreference.MONTHLY -> Res.strings.label_trending_monthly
-                            TrendingPeriodPreference.WEEKLY -> Res.strings.label_trending_weekly
-                            TrendingPeriodPreference.DAILY -> Res.strings.label_trending_daily
+                            TrendingPeriodPreference.WEEKLY  -> Res.strings.label_trending_weekly
+                            TrendingPeriodPreference.DAILY   -> Res.strings.label_trending_daily
                         }
                     )
                 )

@@ -57,14 +57,14 @@ class ExploreViewModel(
     fun starRepo(id: String) {
         screenModelScope.launch {
             repoStarsPending.add(id)
-            editRepo(id) { it.copy(viewerHasStarred = true)}
+            editRepo(id) { it.copy(viewerHasStarred = true) }
             graphQLRepository.starRepo(id).fold(
                 onSuccess = { _, _ -> },
                 onError = {
-                    editRepo(id) { it.copy(viewerHasStarred = false)}
+                    editRepo(id) { it.copy(viewerHasStarred = false) }
                 },
                 onFailure = {
-                    editRepo(id) { it.copy(viewerHasStarred = false)}
+                    editRepo(id) { it.copy(viewerHasStarred = false) }
                 }
             )
             repoStarsPending.remove(id)
@@ -74,14 +74,14 @@ class ExploreViewModel(
     fun unstarRepo(id: String) {
         screenModelScope.launch {
             repoStarsPending.add(id)
-            editRepo(id) { it.copy(viewerHasStarred = false)}
+            editRepo(id) { it.copy(viewerHasStarred = false) }
             graphQLRepository.unstarRepo(id).fold(
                 onSuccess = { _, _ -> },
                 onError = {
-                    editRepo(id) { it.copy(viewerHasStarred = true)}
+                    editRepo(id) { it.copy(viewerHasStarred = true) }
                 },
                 onFailure = {
-                    editRepo(id) { it.copy(viewerHasStarred = true)}
+                    editRepo(id) { it.copy(viewerHasStarred = true) }
                 }
             )
             repoStarsPending.remove(id)
@@ -99,8 +99,8 @@ class ExploreViewModel(
     private fun TrendingPeriodPreference.toApi(): TrendingPeriod {
         return when (this) {
             TrendingPeriodPreference.MONTHLY -> TrendingPeriod.MONTHLY
-            TrendingPeriodPreference.WEEKLY -> TrendingPeriod.WEEKLY
-            TrendingPeriodPreference.DAILY -> TrendingPeriod.DAILY
+            TrendingPeriodPreference.WEEKLY  -> TrendingPeriod.WEEKLY
+            TrendingPeriodPreference.DAILY   -> TrendingPeriod.DAILY
         }
     }
 

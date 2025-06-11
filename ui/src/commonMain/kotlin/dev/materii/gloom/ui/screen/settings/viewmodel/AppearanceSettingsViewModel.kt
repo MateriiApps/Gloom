@@ -5,4 +5,4 @@ import dev.materii.gloom.domain.manager.PreferenceManager
 
 class AppearanceSettingsViewModel(
     val prefs: PreferenceManager
-) : ScreenModel
+): ScreenModel

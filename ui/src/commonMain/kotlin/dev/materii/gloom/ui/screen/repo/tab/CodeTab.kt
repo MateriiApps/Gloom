@@ -33,7 +33,7 @@ import org.koin.core.parameter.parametersOf
 class CodeTab(
     private val owner: String,
     private val name: String
-) : Tab {
+): Tab {
 
     override val key = "$owner/$name-${uuid4()}"
     override val options: TabOptions
@@ -53,7 +53,7 @@ class CodeTab(
                 .clipToBounds()
         ) {
             when (val state = uiState) {
-                is RepoCodeViewModel.UiState.Loaded ->
+                is RepoCodeViewModel.UiState.Loaded  ->
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -99,7 +99,8 @@ class CodeTab(
                     }
 
                 is RepoCodeViewModel.UiState.Loading -> {}
-                is RepoCodeViewModel.UiState.Error -> {
+
+                is RepoCodeViewModel.UiState.Error   -> {
                     // TODO: Show error state
                 }
             }

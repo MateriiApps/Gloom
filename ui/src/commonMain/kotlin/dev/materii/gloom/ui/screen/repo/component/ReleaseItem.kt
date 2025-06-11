@@ -1,11 +1,7 @@
 package dev.materii.gloom.ui.screen.repo.component
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.ReleaseItem
 import dev.materii.gloom.ui.component.Label
@@ -26,7 +23,6 @@ import dev.materii.gloom.ui.screen.release.ReleaseScreen
 import dev.materii.gloom.ui.theme.DarkGreen
 import dev.materii.gloom.util.TimeUtils.getTimeSince
 import dev.materii.gloom.util.ifNullOrBlank
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun ReleaseItem(

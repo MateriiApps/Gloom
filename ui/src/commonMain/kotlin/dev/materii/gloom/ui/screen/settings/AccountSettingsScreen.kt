@@ -8,14 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.outlined.Edit
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.IconToggleButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
@@ -27,20 +20,20 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
-import dev.materii.gloom.ui.screen.settings.component.SettingsButton
 import dev.materii.gloom.ui.component.toolbar.LargeToolbar
 import dev.materii.gloom.ui.screen.auth.LandingScreen
 import dev.materii.gloom.ui.screen.root.RootScreen
-import dev.materii.gloom.ui.util.navigate
-import dev.materii.gloom.util.toImmutableList
-import dev.materii.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
+import dev.materii.gloom.ui.screen.settings.component.SettingsButton
 import dev.materii.gloom.ui.screen.settings.component.account.AccountItem
 import dev.materii.gloom.ui.screen.settings.component.account.SignOutButton
 import dev.materii.gloom.ui.screen.settings.component.account.SignOutDialog
-import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
+import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.util.toImmutableList
 
-class AccountSettingsScreen : Screen {
+class AccountSettingsScreen: Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)

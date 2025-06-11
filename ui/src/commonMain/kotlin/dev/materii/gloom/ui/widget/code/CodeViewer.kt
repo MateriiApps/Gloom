@@ -1,35 +1,19 @@
 package dev.materii.gloom.ui.widget.code
 
 import androidx.compose.animation.core.animateIntAsState
-import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.calculateEndPadding
-import androidx.compose.foundation.layout.calculateStartPadding
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material3.Text
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
@@ -44,20 +28,12 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.*
 import dev.materii.gloom.ui.component.CodeText
 import dev.materii.gloom.ui.component.scrollbar.ScrollBar
 import dev.materii.gloom.ui.theme.CodeTheme
-import dev.materii.gloom.ui.util.DimenUtils
+import dev.materii.gloom.ui.util.*
 import dev.materii.gloom.ui.util.LazyUtil.getItemAtOffset
-import dev.materii.gloom.ui.util.digits
-import dev.materii.gloom.ui.util.padLineNumber
-import dev.materii.gloom.ui.util.thenIf
-import dev.materii.gloom.ui.util.toDp
 import dev.materii.gloom.util.toImmutableList
 
 @Composable
@@ -138,11 +114,11 @@ fun CodeViewer(
                                     val lineNumber = itemPressed?.index?.plus(1)
                                     lineNumber?.let {
                                         val newRange = when {
-                                            lineNumber > linesSelected.last -> linesSelected.first..lineNumber
-                                            lineNumber < linesSelected.first -> lineNumber..linesSelected.last
-                                            lineNumber == linesSelected.last -> linesSelected.first until linesSelected.last
+                                            lineNumber > linesSelected.last   -> linesSelected.first..lineNumber
+                                            lineNumber < linesSelected.first  -> lineNumber..linesSelected.last
+                                            lineNumber == linesSelected.last  -> linesSelected.first until linesSelected.last
                                             lineNumber == linesSelected.first -> linesSelected.first + 1..linesSelected.last
-                                            else -> linesSelected
+                                            else                              -> linesSelected
                                         }
 
                                         onLinesSelected!!(

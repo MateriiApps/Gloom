@@ -17,7 +17,7 @@ actual class ReleaseViewModel(
     private val repo: GraphQLRepository,
     private val downloadManager: DownloadManager,
     nameAndTag: Triple<String, String, String>
-) : BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?>() {
+): BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?>() {
 
     actual val owner = nameAndTag.first
     actual val name = nameAndTag.second

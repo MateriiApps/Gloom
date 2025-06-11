@@ -5,8 +5,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import dev.materii.gloom.Res
 import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.Res
 
 @Composable
 fun SignOutDialog(

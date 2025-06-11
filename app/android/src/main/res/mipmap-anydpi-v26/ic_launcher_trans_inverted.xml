@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<adaptive-icon
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt">
     <background>
         <vector
-                android:height="200dp"
-                android:width="200dp"
-                android:viewportHeight="1024"
-                android:viewportWidth="1024">
+            android:width="200dp"
+            android:height="200dp"
+            android:viewportWidth="1024"
+            android:viewportHeight="1024">
             <path android:pathData="M0,0h1024v1024h-1024z">
                 <aapt:attr name="android:fillColor">
-                    <gradient android:endX="874" android:endY="874" android:startX="150" android:startY="150" android:type="linear">
-                        <item android:color="#FF5BCEFA" android:offset="0"/>
-                        <item android:color="#FFF5A9B8" android:offset="0.5"/>
-                        <item android:color="#FFFFFFFF" android:offset="1"/>
+                    <gradient
+                        android:endX="874"
+                        android:endY="874"
+                        android:startX="150"
+                        android:startY="150"
+                        android:type="linear">
+                        <item
+                            android:color="#FF5BCEFA"
+                            android:offset="0" />
+                        <item
+                            android:color="#FFF5A9B8"
+                            android:offset="0.5" />
+                        <item
+                            android:color="#FFFFFFFF"
+                            android:offset="1" />
                     </gradient>
                 </aapt:attr>
             </path>

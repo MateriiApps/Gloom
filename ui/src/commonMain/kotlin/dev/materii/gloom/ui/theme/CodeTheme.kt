@@ -36,7 +36,7 @@ data class CodeTheme(
         linesContent: Color,
         selectedHighlight: Color,
         syntaxTheme: SyntaxTheme
-    ) : this(
+    ): this(
         background = background,
         linesBackground = linesBackground,
         linesContent = linesContent,

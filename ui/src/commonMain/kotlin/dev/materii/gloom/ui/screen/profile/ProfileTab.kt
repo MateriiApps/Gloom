@@ -8,10 +8,11 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
-import dev.materii.gloom.Res
 import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.Res
 
-class ProfileTab : Tab, ProfileScreen() {
+class ProfileTab: Tab, ProfileScreen() {
+
     override val options: TabOptions
         @Composable get() {
             val navigator = LocalTabNavigator.current
