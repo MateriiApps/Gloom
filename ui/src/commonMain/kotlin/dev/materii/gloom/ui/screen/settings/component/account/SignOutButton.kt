@@ -12,8 +12,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import dev.materii.gloom.Res
 import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.Res
 
 @Composable
 fun SignOutButton(

@@ -2,7 +2,10 @@ package dev.materii.gloom.ui.screen.home.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material3.*
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,12 +56,17 @@ fun MergedPullRequestItem(
             badgeIcon = Icons.Custom.MergedPullRequest,
             badgeIconDescription = stringResource(Res.strings.cd_forked_repo),
             onIconClick = { navigator.navigate(ProfileScreen(actor.login)) },
-            text = annotatingStringResource(res = Res.strings.contributed_repo, actor.login, "${baseRepo?.owner?.login}/${baseRepo?.name}") {
+            text = annotatingStringResource(
+                res = Res.strings.contributed_repo,
+                actor.login,
+                "${baseRepo?.owner?.login}/${baseRepo?.name}"
+            ) {
                 when (it) {
                     "repo",
                     "name" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface)
+
                     "text" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface.copy(0.7f))
-                    else -> null
+                    else   -> null
                 }
             },
             createdAt = item.createdAt

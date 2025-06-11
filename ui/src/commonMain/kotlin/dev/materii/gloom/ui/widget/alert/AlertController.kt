@@ -2,11 +2,7 @@ package dev.materii.gloom.ui.widget.alert
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.runtime.Stable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.IntOffset
 import com.benasher44.uuid.Uuid
@@ -16,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class AlertController(coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)) :
+class AlertController(coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)):
     CoroutineScope by coroutineScope {
 
     private val queueLimit = 9
@@ -93,6 +89,7 @@ data class Alert(
 
     @Stable
     enum class Duration(val millis: Long) {
+
         SHORT(millis = 4000),
         MEDIUM(millis = 7000),
         LONG(millis = 10_000)
@@ -100,6 +97,7 @@ data class Alert(
 
     @Stable
     enum class Position {
+
         TOP,
         BOTTOM
     }

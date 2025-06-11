@@ -5,11 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -20,16 +16,12 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.domain.manager.enums.Theme
 import dev.materii.gloom.ui.component.toolbar.LargeToolbar
-import dev.materii.gloom.ui.screen.settings.component.AvatarShapeSetting
-import dev.materii.gloom.ui.screen.settings.component.SettingsGroup
-import dev.materii.gloom.ui.screen.settings.component.SettingsHeader
-import dev.materii.gloom.ui.screen.settings.component.SettingsItemChoice
-import dev.materii.gloom.ui.screen.settings.component.SettingsSwitch
+import dev.materii.gloom.ui.screen.settings.component.*
 import dev.materii.gloom.ui.screen.settings.viewmodel.AppearanceSettingsViewModel
 import dev.materii.gloom.util.Feature
 import dev.materii.gloom.util.getString
 
-class AppearanceSettingsScreen : Screen {
+class AppearanceSettingsScreen: Screen {
 
     @Composable
     override fun Content() = Screen()
@@ -69,8 +61,8 @@ class AppearanceSettingsScreen : Screen {
                         labelFactory = {
                             when (it) {
                                 Theme.SYSTEM -> getString(Res.strings.theme_system)
-                                Theme.LIGHT -> getString(Res.strings.theme_light)
-                                Theme.DARK -> getString(Res.strings.theme_dark)
+                                Theme.LIGHT  -> getString(Res.strings.theme_light)
+                                Theme.DARK   -> getString(Res.strings.theme_dark)
                             }
                         }
                     ) { viewModel.prefs.theme = it }

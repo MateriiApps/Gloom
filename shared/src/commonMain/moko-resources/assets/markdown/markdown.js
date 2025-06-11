@@ -56,9 +56,9 @@ class Gloom {
             ["srcset", "src"].forEach((attrName) => {
                 const attr = node.getAttribute(attrName);
                 if (
-                    attr !== null &&
-                    attr.startsWith("https://github.com") &&
-                    attr.indexOf("/blob/") !== -1
+                attr !== null &&
+                attr.startsWith("https://github.com") &&
+                attr.indexOf("/blob/") !== -1
                 ) {
                     node.setAttribute(attrName, attr.replace("/blob/", "/raw/"));
                 }

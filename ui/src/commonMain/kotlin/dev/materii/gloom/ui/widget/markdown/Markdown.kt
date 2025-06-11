@@ -11,23 +11,23 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import com.apollographql.apollo.api.http.internal.urlEncode
 import com.benasher44.uuid.uuid4
-import dev.materii.gloom.Res
-import dev.materii.gloom.ui.util.markdown.MarkdownJSMessageHandler
-import dev.materii.gloom.ui.util.markdown.MarkdownRequestInterceptor
 import com.multiplatform.webview.jsbridge.rememberWebViewJsBridge
 import com.multiplatform.webview.web.NativeWebView
 import com.multiplatform.webview.web.WebView
 import com.multiplatform.webview.web.rememberWebViewNavigator
 import com.multiplatform.webview.web.rememberWebViewStateWithHTMLData
 import dev.icerock.moko.resources.compose.readTextAsState
+import dev.materii.gloom.Res
 import dev.materii.gloom.ui.theme.CodeTheme
 import dev.materii.gloom.ui.theme.gloomColorScheme
+import dev.materii.gloom.ui.util.markdown.MarkdownJSMessageHandler
+import dev.materii.gloom.ui.util.markdown.MarkdownRequestInterceptor
 import dev.materii.gloom.ui.util.markdown.MarkdownUtil
 import dev.materii.gloom.util.LocalLinkHandler
 
 private var MarkdownTemplate = "" // Cache the loaded markdown html template
-private val PrefersLightRx   = "prefers-color-scheme:\\s*light".toRegex(RegexOption.IGNORE_CASE)
-private val PrefersDarkRx    = "prefers-color-scheme:\\s*dark".toRegex(RegexOption.IGNORE_CASE)
+private val PrefersLightRx = "prefers-color-scheme:\\s*light".toRegex(RegexOption.IGNORE_CASE)
+private val PrefersDarkRx = "prefers-color-scheme:\\s*dark".toRegex(RegexOption.IGNORE_CASE)
 
 /**
  * Wrapper around a WebView to automatically add styling
@@ -77,7 +77,15 @@ fun Markdown(
 
     val colorScheme = MaterialTheme.colorScheme
     val gloomColorScheme = MaterialTheme.gloomColorScheme
-    val state = rememberWebViewStateWithHTMLData(data = MarkdownUtil.injectAppTheme(template, isLight, colorScheme, gloomColorScheme, CodeTheme.getDefault()))
+    val state = rememberWebViewStateWithHTMLData(
+        data = MarkdownUtil.injectAppTheme(
+            template,
+            isLight,
+            colorScheme,
+            gloomColorScheme,
+            CodeTheme.getDefault()
+        )
+    )
 
     LaunchedEffect(state.isLoading) {
         // See shared/src/commonMain/moko-resources/assets/markdown/markdown.js

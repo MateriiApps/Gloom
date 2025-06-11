@@ -1,13 +1,7 @@
 package dev.materii.gloom.di.module
 
 import com.apollographql.apollo.ApolloClient
-import dev.materii.gloom.domain.manager.AuthManager
-import dev.materii.gloom.domain.manager.DialogManager
-import dev.materii.gloom.domain.manager.DownloadManager
-import dev.materii.gloom.domain.manager.LibraryManager
-import dev.materii.gloom.domain.manager.PreferenceManager
-import dev.materii.gloom.domain.manager.ShareManager
-import dev.materii.gloom.domain.manager.ToastManager
+import dev.materii.gloom.domain.manager.*
 import dev.materii.gloom.util.Logger
 import dev.materii.gloom.util.SettingsProvider
 import kotlinx.serialization.json.Json
@@ -24,7 +18,8 @@ actual fun managerModule() = module {
 
     fun providePreferenceManager(settings: SettingsProvider) = PreferenceManager(settings)
     fun provideDialogManager(settings: SettingsProvider) = DialogManager(settings)
-    fun provideAuthManager(settings: SettingsProvider, apollo: ApolloClient, json: Json, logger: Logger) = AuthManager(settings, apollo, json, logger)
+    fun provideAuthManager(settings: SettingsProvider, apollo: ApolloClient, json: Json, logger: Logger) =
+        AuthManager(settings, apollo, json, logger)
 
     single { providePreferenceManager(get(named("prefs"))) }
     single { provideDialogManager(get(named("dialogs"))) }

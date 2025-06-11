@@ -14,12 +14,10 @@ fun addAllRoutes() {
                     ProfileScreen(username),
                     RepositoryListScreen(username)
                 )
-
                 "projects" -> emptyList()
                 "packages" -> emptyList()
-                "stars" -> listOf(ProfileScreen(username), StarredReposListScreen(username))
-
-                else -> listOf(ProfileScreen(username))
+                "stars"    -> listOf(ProfileScreen(username), StarredReposListScreen(username))
+                else       -> listOf(ProfileScreen(username))
             }
         }
 

@@ -10,7 +10,7 @@ class RepoCommitsViewModel(
     private val gql: GraphQLRepository,
     private val id: String,
     private val branch: String
-) : BaseListViewModel<CommitDetails, RepoCommitsQuery.Data?>() {
+): BaseListViewModel<CommitDetails, RepoCommitsQuery.Data?>() {
 
     override suspend fun loadPage(cursor: String?): RepoCommitsQuery.Data? {
         return gql.getRepoCommits(id, branch, cursor).getOrNull()

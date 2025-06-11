@@ -8,10 +8,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.benasher44.uuid.uuid4
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.domain.manager.DownloadManager
 import dev.materii.gloom.ui.widget.alert.LocalAlertController
-import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 
 @Composable

@@ -19,7 +19,7 @@ import dev.materii.gloom.util.isOAuthUri
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class OAuthActivity : ComponentActivity() {
+class OAuthActivity: ComponentActivity() {
 
     private val viewModel: OAuthViewModel by viewModel()
     private val prefs: PreferenceManager by inject()
@@ -32,8 +32,8 @@ class OAuthActivity : ComponentActivity() {
         setContent {
             val isDark = when (prefs.theme) {
                 Theme.SYSTEM -> isSystemInDarkTheme()
-                Theme.LIGHT -> false
-                Theme.DARK -> true
+                Theme.LIGHT  -> false
+                Theme.DARK   -> true
             }
 
             GloomTheme(isDark, prefs.monet) {

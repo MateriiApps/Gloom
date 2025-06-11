@@ -40,7 +40,7 @@ fun BasePreferenceManager.floatPreference(
     setter = ::putFloat
 )
 
-inline fun <reified E : Enum<E>> BasePreferenceManager.enumPreference(
+inline fun <reified E: Enum<E>> BasePreferenceManager.enumPreference(
     key: String,
     defaultValue: E
 ) = Preference(

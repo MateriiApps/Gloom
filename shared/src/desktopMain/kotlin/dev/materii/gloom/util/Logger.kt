@@ -6,7 +6,7 @@ actual class Logger {
         System.err.println(
             buildString {
                 append("[$tag] [E] ")
-                if(message != null) {
+                if (message != null) {
                     append(message)
                     throwable?.let {
                         appendLine(it.stackTraceToString())

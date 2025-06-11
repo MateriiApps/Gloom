@@ -1,6 +1,5 @@
 package dev.materii.gloom.util
 
-import dev.materii.gloom.Res
 import com.mikepenz.aboutlibraries.entity.Library
 import java.io.File
 

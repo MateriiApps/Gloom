@@ -7,7 +7,7 @@ import dev.materii.gloom.gql.type.ReactionContent
 import dev.materii.gloom.ui.screen.list.viewmodel.BaseListViewModel
 import java.io.File
 
-expect class ReleaseViewModel : BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?> {
+expect class ReleaseViewModel: BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?> {
 
     val owner: String
     val name: String

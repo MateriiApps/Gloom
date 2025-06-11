@@ -29,19 +29,19 @@ fun StatusState.components(): Triple<ImageVector, Color, StringResource> = when 
         Res.strings.label_checks
     )
 
-    StatusState.PENDING -> Triple(
+    StatusState.PENDING  -> Triple(
         Icons.Filled.Circle,
         MaterialTheme.gloomColorScheme.statusYellow,
         Res.strings.label_checks
     )
 
-    StatusState.SUCCESS -> Triple(
+    StatusState.SUCCESS  -> Triple(
         Icons.Filled.CheckCircle,
         MaterialTheme.gloomColorScheme.statusGreen,
         Res.strings.label_checks
     )
 
-    else -> Triple(
+    else                 -> Triple(
         Icons.Filled.Cancel,
         MaterialTheme.colorScheme.error,
         Res.strings.label_checks_failed

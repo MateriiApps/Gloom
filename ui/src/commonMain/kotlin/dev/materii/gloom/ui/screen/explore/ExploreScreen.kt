@@ -7,12 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.outlined.Explore
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.LargeTopAppBar
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,6 +19,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.ui.screen.explore.component.TrendingFeedFooter
 import dev.materii.gloom.ui.screen.explore.component.TrendingFeedHeader
@@ -32,9 +28,8 @@ import dev.materii.gloom.ui.screen.explore.viewmodel.ExploreViewModel
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.util.navigate
-import dev.icerock.moko.resources.compose.stringResource
 
-class ExploreScreen : Tab {
+class ExploreScreen: Tab {
 
     override val options: TabOptions
         @Composable get() {

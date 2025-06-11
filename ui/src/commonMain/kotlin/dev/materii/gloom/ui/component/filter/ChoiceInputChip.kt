@@ -3,16 +3,8 @@ package dev.materii.gloom.ui.component.filter
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ExpandMore
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.InputChip
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
@@ -34,7 +26,7 @@ import kotlin.enums.enumEntries
  * @param onChoiceSelected Called when the user makes their choice
  * @param modifier The [Modifier] for this chip
  * @param label Factory function used to get a localized label for the enum entry, defaults to the enum entries name.
- * It is not reccommended to override the text style or add anything more than a [Text] component.
+ * It is not recommended to override the text style or add anything more than a [Text] component.
  */
 @Composable
 inline fun <reified E: Enum<E>> ChoiceInputChip(

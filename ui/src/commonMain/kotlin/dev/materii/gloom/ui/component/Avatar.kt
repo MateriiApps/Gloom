@@ -1,6 +1,5 @@
 package dev.materii.gloom.ui.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,7 +26,7 @@ fun Avatar(
 ) {
     val prefs: PreferenceManager = koinInject()
     val shape = when (type) {
-        User.Type.ORG -> getShapeForPref(prefs.orgAvatarShape, prefs.orgAvatarRadius)
+        User.Type.ORG  -> getShapeForPref(prefs.orgAvatarShape, prefs.orgAvatarRadius)
         User.Type.USER -> getShapeForPref(prefs.userAvatarShape, prefs.userAvatarRadius)
     }
 

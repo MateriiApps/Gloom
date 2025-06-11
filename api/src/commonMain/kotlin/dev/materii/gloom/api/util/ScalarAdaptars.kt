@@ -5,13 +5,9 @@ import com.apollographql.apollo.api.CustomScalarAdapters
 import com.apollographql.apollo.api.StringAdapter
 import com.apollographql.apollo.api.json.JsonReader
 import com.apollographql.apollo.api.json.JsonWriter
-import kotlinx.datetime.Instant
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.*
 
-val DateAdapter = object : Adapter<Instant> {
+val DateAdapter = object: Adapter<Instant> {
     override fun fromJson(reader: JsonReader, customScalarAdapters: CustomScalarAdapters): Instant {
         val dateString = StringAdapter.fromJson(reader, customScalarAdapters)
         val (year, month, day) = dateString.split("-")

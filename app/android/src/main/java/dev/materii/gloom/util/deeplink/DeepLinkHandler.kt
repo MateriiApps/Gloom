@@ -13,7 +13,9 @@ object DeepLinkHandler {
     private val linkVisitedListeners = mutableMapOf<List<String>, OnLinkVisitedListener>()
     private val paramPattern = "^\\{([A-z0-9_]+)\\}$".toRegex()
 
-    init { addAllRoutes() }
+    init {
+        addAllRoutes()
+    }
 
     fun addOnLinkVisitedListener(route: String, callback: OnLinkVisitedListener) {
         val r = route.removePrefix("/")
@@ -96,8 +98,10 @@ object DeepLinkHandler {
 }
 
 fun interface OnLinkVisitedListener {
+
     /**
      * @param urlParams List of URL parameters extracted from the deep link in the order they appear in the route.
      */
     operator fun invoke(urlParams: List<String>, queryParams: Map<String, String>): List<Screen>
+    
 }

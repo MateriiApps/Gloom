@@ -13,16 +13,17 @@ class RepoCodeViewModel(
     private val gql: GraphQLRepository,
     private val owner: String,
     private val name: String
-) : ScreenModel {
+): ScreenModel {
 
     sealed interface UiState {
         data class Loaded(
             val id: String,
             val defaultBranch: String,
             val latestCommit: CommitDetails?
-        ) : UiState
-        object Loading : UiState
-        object Error : UiState
+        ): UiState
+
+        object Loading: UiState
+        object Error: UiState
     }
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)

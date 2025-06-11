@@ -6,17 +6,13 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.ui.component.EnumRadioController
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
-inline fun <reified E : Enum<E>> SettingsChoiceDialog(
+inline fun <reified E: Enum<E>> SettingsChoiceDialog(
     visible: Boolean = false,
     default: E,
     noinline title: @Composable () -> Unit,

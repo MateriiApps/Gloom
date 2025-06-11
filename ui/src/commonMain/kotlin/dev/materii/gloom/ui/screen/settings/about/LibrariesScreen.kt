@@ -11,15 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import cafe.adriel.voyager.core.screen.Screen
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.domain.manager.LibraryManager
 import dev.materii.gloom.ui.component.ThinDivider
 import dev.materii.gloom.ui.component.toolbar.LargeToolbar
 import dev.materii.gloom.ui.screen.settings.component.about.LibraryItem
-import dev.icerock.moko.resources.compose.stringResource
 import org.koin.compose.koinInject
 
-class LibrariesScreen : Screen {
+class LibrariesScreen: Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)

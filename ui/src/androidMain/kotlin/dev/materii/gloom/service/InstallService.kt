@@ -11,7 +11,7 @@ import dev.materii.gloom.util.getString
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class InstallService : Service(), KoinComponent {
+class InstallService: Service(), KoinComponent {
 
     private val toastManager: ToastManager by inject()
     private val messages = mapOf(
@@ -31,17 +31,17 @@ class InstallService : Service(), KoinComponent {
                 @Suppress("DEPRECATION")
                 val confirmationIntent = when {
                     Build.VERSION.SDK_INT < 34 -> intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT)!!
-                    else -> intent.getParcelableExtra(Intent.EXTRA_INTENT, Intent::class.java)!!
+                    else                       -> intent.getParcelableExtra(Intent.EXTRA_INTENT, Intent::class.java)!!
                 }.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
                 startActivity(confirmationIntent)
             }
 
-            PackageInstaller.STATUS_SUCCESS -> toastManager.showToast(getString(Res.strings.install_success))
+            PackageInstaller.STATUS_SUCCESS             -> toastManager.showToast(getString(Res.strings.install_success))
 
-            PackageInstaller.STATUS_FAILURE_ABORTED -> toastManager.showToast(getString(Res.strings.install_cancelled))
+            PackageInstaller.STATUS_FAILURE_ABORTED     -> toastManager.showToast(getString(Res.strings.install_cancelled))
 
-            else -> messages[statusCode]?.let { toastManager.showToast(getString(it)) }
+            else                                        -> messages[statusCode]?.let { toastManager.showToast(getString(it)) }
         }
 
         stopSelf()

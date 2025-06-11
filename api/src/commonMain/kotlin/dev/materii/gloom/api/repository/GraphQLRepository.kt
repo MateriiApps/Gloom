@@ -3,7 +3,10 @@ package dev.materii.gloom.api.repository
 import dev.materii.gloom.api.model.ModelUser
 import dev.materii.gloom.api.service.GraphQLService
 import dev.materii.gloom.api.util.transform
-import dev.materii.gloom.gql.type.*
+import dev.materii.gloom.gql.type.IssueState
+import dev.materii.gloom.gql.type.PullRequestState
+import dev.materii.gloom.gql.type.ReactionContent
+import dev.materii.gloom.gql.type.TrendingPeriod
 
 class GraphQLRepository(
     private val service: GraphQLService

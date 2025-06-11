@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class DirectoryListingViewModel(
     private val gql: GraphQLRepository,
     private val details: Details
-) : ScreenModel {
+): ScreenModel {
 
     val entries = mutableStateListOf<FileEntryFragment>()
     var isLoading by mutableStateOf(false)

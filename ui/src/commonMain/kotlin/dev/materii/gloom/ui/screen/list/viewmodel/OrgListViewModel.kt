@@ -8,7 +8,7 @@ import dev.materii.gloom.gql.JoinedOrgsQuery
 class OrgListViewModel(
     private val repo: GraphQLRepository,
     private val username: String
-) : BaseListViewModel<ModelUser, JoinedOrgsQuery.Data?>() {
+): BaseListViewModel<ModelUser, JoinedOrgsQuery.Data?>() {
 
     override suspend fun loadPage(cursor: String?) =
         repo.getJoinedOrgs(username, cursor).getOrNull()

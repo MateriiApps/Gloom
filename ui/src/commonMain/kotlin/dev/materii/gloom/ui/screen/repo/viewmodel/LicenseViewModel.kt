@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class LicenseViewModel(
     private val graphQLRepository: GraphQLRepository,
     nameWithOwner: Pair<String, String>
-) : ScreenModel {
+): ScreenModel {
 
     private val owner = nameWithOwner.first
     private val name = nameWithOwner.second

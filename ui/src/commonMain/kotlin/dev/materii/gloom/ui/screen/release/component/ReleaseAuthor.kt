@@ -47,7 +47,7 @@ fun ReleaseAuthor(
                         fontWeight = FontWeight.SemiBold
                     )
 
-                    else -> null
+                    else     -> null
                 }
             },
             fontSize = 14.sp,

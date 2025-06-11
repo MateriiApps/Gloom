@@ -2,24 +2,11 @@ package dev.materii.gloom.ui.screen.profile.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.surfaceColorAtElevation
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,13 +15,13 @@ import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.Contributions
 import dev.materii.gloom.gql.type.ContributionLevel
 import dev.materii.gloom.ui.widget.alert.LocalAlertController
 import dev.materii.gloom.util.format
 import dev.materii.gloom.util.getPluralString
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun ContributionGraph(
@@ -131,20 +118,20 @@ private fun DayTile(
 ) {
     val noneColor = MaterialTheme.colorScheme.surfaceColorAtElevation(10.dp)
     val color = when (level) {
-        ContributionLevel.NONE -> noneColor
-        ContributionLevel.FIRST_QUARTILE -> MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
+        ContributionLevel.NONE            -> noneColor
+        ContributionLevel.FIRST_QUARTILE  -> MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
             .compositeOver(noneColor)
 
         ContributionLevel.SECOND_QUARTILE -> MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
             .compositeOver(noneColor)
 
-        ContributionLevel.THIRD_QUARTILE -> MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
+        ContributionLevel.THIRD_QUARTILE  -> MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
             .compositeOver(noneColor)
 
         ContributionLevel.FOURTH_QUARTILE -> MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
             .compositeOver(noneColor)
 
-        else -> MaterialTheme.colorScheme.error
+        else                              -> MaterialTheme.colorScheme.error
     }
 
     Box(

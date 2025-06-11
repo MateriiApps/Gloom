@@ -22,7 +22,7 @@ abstract class BasePreferenceManager(
     fun getFloat(key: String, defaultValue: Float) =
         prefs.getFloat(key, defaultValue)
 
-    inline fun <reified E : Enum<E>> getEnum(key: String, defaultValue: E) =
+    inline fun <reified E: Enum<E>> getEnum(key: String, defaultValue: E) =
         enumValueOf<E>(getString(key, defaultValue.name))
 
     fun putString(key: String, value: String) = prefs.putString(key, value)
@@ -30,7 +30,7 @@ abstract class BasePreferenceManager(
     fun putInt(key: String, value: Int) = prefs.putInt(key, value)
     fun putFloat(key: String, value: Float) = prefs.putFloat(key, value)
 
-    inline fun <reified E : Enum<E>> putEnum(key: String, value: E) =
+    inline fun <reified E: Enum<E>> putEnum(key: String, value: E) =
         putString(key, value.name)
 
 }
@@ -41,6 +41,7 @@ class Preference<T>(
     getter: (key: String, defaultValue: T) -> T,
     private val setter: (key: String, newValue: T) -> Unit
 ) {
+
     var value by mutableStateOf(getter(key, defaultValue))
         private set
 

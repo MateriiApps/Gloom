@@ -1,6 +1,5 @@
 package dev.materii.gloom.ui.util.markdown
 
-import dev.materii.gloom.util.LinkHandler
 import com.multiplatform.webview.request.RequestInterceptor
 import com.multiplatform.webview.request.WebRequest
 import com.multiplatform.webview.request.WebRequestInterceptResult

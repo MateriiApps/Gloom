@@ -1,16 +1,13 @@
 package dev.materii.gloom.ui.util
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import dev.materii.gloom.Res
-import dev.materii.gloom.util.Constants
-import dev.materii.gloom.util.getString
 import dev.icerock.moko.resources.StringResource
 import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.Res
+import dev.materii.gloom.util.getString
 
 // Credit to rushii (github.com/rushiiMachine)
 
@@ -79,6 +76,9 @@ fun getFileSizeString(size: Int): String {
             size / dev.materii.gloom.util.Constants.FILE_SIZES.MEGA
         )
 
-        else -> getString(Res.strings.file_size_gigabytes, size / dev.materii.gloom.util.Constants.FILE_SIZES.GIGA)
+        else                                                    -> getString(
+            Res.strings.file_size_gigabytes,
+            size / dev.materii.gloom.util.Constants.FILE_SIZES.GIGA
+        )
     }
 }

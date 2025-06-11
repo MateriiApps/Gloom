@@ -51,10 +51,10 @@ fun PdfFileViewer(
                 state = pdfState,
                 pagerState = pagerState,
                 page = { page ->
-                   PdfPage(
-                       pdfState = pdfState,
-                       page = page
-                   )
+                    PdfPage(
+                        pdfState = pdfState,
+                        page = page
+                    )
                 },
                 modifier = Modifier.fillMaxSize()
             )

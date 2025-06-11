@@ -12,7 +12,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
-class Gloom : Application() {
+class Gloom: Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -33,5 +33,4 @@ class Gloom : Application() {
             )
         }
     }
-
 }

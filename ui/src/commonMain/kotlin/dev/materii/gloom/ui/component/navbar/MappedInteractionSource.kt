@@ -24,13 +24,14 @@ import kotlinx.coroutines.flow.map
 class MappedInteractionSource(
     underlyingInteractionSource: InteractionSource,
     private val delta: Offset
-) : InteractionSource {
+): InteractionSource {
+
     private val mappedPresses =
         mutableMapOf<PressInteraction.Press, PressInteraction.Press>()
 
     override val interactions = underlyingInteractionSource.interactions.map { interaction ->
         when (interaction) {
-            is PressInteraction.Press -> {
+            is PressInteraction.Press  -> {
                 val mappedPress = mapPress(interaction)
                 mappedPresses[interaction] = mappedPress
                 mappedPress
@@ -54,10 +55,11 @@ class MappedInteractionSource(
                 }
             }
 
-            else -> interaction
+            else                       -> interaction
         }
     }
 
     private fun mapPress(press: PressInteraction.Press): PressInteraction.Press =
         PressInteraction.Press(press.pressPosition - delta)
+
 }

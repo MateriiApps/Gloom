@@ -8,7 +8,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.LocalOffer
 import androidx.compose.material.icons.outlined.LocalOffer
-import androidx.compose.material3.*
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -64,7 +67,7 @@ fun NewReleaseItem(
                 when (it) {
                     "name" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface)
                     "text" -> SpanStyle(color = MaterialTheme.colorScheme.onSurface.copy(0.7f))
-                    else -> null
+                    else   -> null
                 }
             },
             createdAt = item.createdAt
@@ -211,13 +214,13 @@ fun ReleaseDetail(
                 modifier = Modifier.size(15.dp)
             )
 
-            is Painter -> Icon(
+            is Painter     -> Icon(
                 painter = icon,
                 contentDescription = iconDescription,
                 modifier = Modifier.size(15.dp)
             )
 
-            else -> throw IllegalArgumentException("Icon must be either ImageVector or Painter")
+            else           -> throw IllegalArgumentException("Icon must be either ImageVector or Painter")
         }
         Text(
             text = text,

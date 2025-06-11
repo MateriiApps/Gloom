@@ -14,7 +14,7 @@ class OAuthViewModel(
     private val gqlRepository: GraphQLRepository,
     private val authRepository: GithubAuthRepository,
     val authManager: AuthManager
-) : ViewModel() {
+): ViewModel() {
 
     fun loginWithOAuthCode(code: String, onLoggedIn: () -> Unit) {
         viewModelScope.launch {

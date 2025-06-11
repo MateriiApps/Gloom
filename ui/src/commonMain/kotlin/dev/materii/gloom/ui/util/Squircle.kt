@@ -58,7 +58,13 @@ fun Squircle(
     cornerSmoothing: Float = 0.70f
 ) = GenericShape(
     builder = { size: Size, _: LayoutDirection ->
-        if (listOf(topLeft, topRight, bottomLeft, bottomRight).any { it > 0.5f }) throw IllegalArgumentException("No corner radius should exceed 50% (0.5f)")
+        if (listOf(
+                topLeft,
+                topRight,
+                bottomLeft,
+                bottomRight
+            ).any { it > 0.5f }
+        ) throw IllegalArgumentException("No corner radius should exceed 50% (0.5f)")
 
         val width = size.width
         val height = size.height

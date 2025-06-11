@@ -10,7 +10,7 @@ import dev.materii.gloom.ui.screen.list.viewmodel.BaseListViewModel
 class RepoPullRequestsViewModel(
     private val gql: GraphQLRepository,
     nameWithOwner: Pair<String, String>
-) : BaseListViewModel<PullRequestOverview, RepoPullRequestsQuery.Data?>() {
+): BaseListViewModel<PullRequestOverview, RepoPullRequestsQuery.Data?>() {
 
     val owner = nameWithOwner.first
     val name = nameWithOwner.second

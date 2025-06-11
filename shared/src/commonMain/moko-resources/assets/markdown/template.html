@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html data-color-mode="$theme$" lang="en">
-    <head>
-        <title>Markdown</title>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
+<head>
+    <title>Markdown</title>
+    <meta charset="UTF-8"/>
+    <meta
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-        />
-        <meta name="HandheldFriendly" content="true" />
-        <link rel="stylesheet" type="text/css" href="file:///android_asset/markdown/markdown.css" />
-        <link rel="stylesheet" type="text/css" href="file:///android_asset/markdown/syntax.css" />
+            name="viewport"
+    />
+    <meta content="true" name="HandheldFriendly"/>
+    <link href="file:///android_asset/markdown/markdown.css" rel="stylesheet" type="text/css"/>
+    <link href="file:///android_asset/markdown/syntax.css" rel="stylesheet" type="text/css"/>
 
-        <style>
-            /* Colors are injected in order to sync with device theming */
-            * {
-                --primary: $primary$;
-                --onPrimary: $onPrimary$;
-                --primaryContainer: $primaryContainer$;
-                --onPrimaryContainer: $onPrimaryContainer$;
-                --inversePrimary: $inversePrimary$;
+    <style>
+        /* Colors are injected in order to sync with device theming */
+        * {
+            --primary: $primary$;
+            --onPrimary: $onPrimary$;
+            --primaryContainer: $primaryContainer$;
+            --onPrimaryContainer: $onPrimaryContainer$;
+            --inversePrimary: $inversePrimary$;
 
-                --secondary: $secondary$;
-                --onSecondary: $onSecondary$;
-                --secondaryContainer: $secondaryContainer$;
-                --onSecondaryContainer: $onSecondaryContainer$;
+            --secondary: $secondary$;
+            --onSecondary: $onSecondary$;
+            --secondaryContainer: $secondaryContainer$;
+            --onSecondaryContainer: $onSecondaryContainer$;
 
-                --tertiary: $tertiary$;
-                --onTertiary: $onTertiary$;
-                --tertiaryContainer: $tertiaryContainer$;
-                --onTertiaryContainer: $onTertiaryContainer$;
+            --tertiary: $tertiary$;
+            --onTertiary: $onTertiary$;
+            --tertiaryContainer: $tertiaryContainer$;
+            --onTertiaryContainer: $onTertiaryContainer$;
 
-                --background: $background$;
-                --onBackground: $onBackground$;
+            --background: $background$;
+            --onBackground: $onBackground$;
 
-                --surface: $surface$;
-                --onSurface: $onSurface$;
-                --surfaceVariant: $surfaceVariant$;
-                --onSurfaceVariant: $onSurfaceVariant$;
-                --surfaceTint: $surfaceTint$;
-                --inverseSurface: $inverseSurface$;
-                --inverseOnSurface: $inverseOnSurface$;
+            --surface: $surface$;
+            --onSurface: $onSurface$;
+            --surfaceVariant: $surfaceVariant$;
+            --onSurfaceVariant: $onSurfaceVariant$;
+            --surfaceTint: $surfaceTint$;
+            --inverseSurface: $inverseSurface$;
+            --inverseOnSurface: $inverseOnSurface$;
 
-                --error: $error$;
-                --onError: $onError$;
-                --errorContainer: $errorContainer$;
-                --onErrorContainer: $onErrorContainer$;
+            --error: $error$;
+            --onError: $onError$;
+            --errorContainer: $errorContainer$;
+            --onErrorContainer: $onErrorContainer$;
 
-                --outline: $outline$;
-                --outlineVariant: $outlineVariant$;
-                --scrim: $scrim$;
+            --outline: $outline$;
+            --outlineVariant: $outlineVariant$;
+            --scrim: $scrim$;
 
-                --surfaceBright: $surfaceBright$;
-                --surfaceDim: $surfaceDim$;
-                --surfaceContainer: $surfaceContainer$;
-                --surfaceContainerHigh: $surfaceContainerHigh$;
-                --surfaceContainerHighest: $surfaceContainerHighest$;
-                --surfaceContainerLow: $surfaceContainerLow$;
-                --surfaceContainerLowest: $surfaceContainerLowest$;
-                    
-                /* Gloom specific colors */
-                --statusGreen: $statusGreen$;
-                --statusPurple: $statusPurple$;
-                --statusRed: $statusRed$;
-                --statusGrey: $statusGrey$;
-                --statusYellow: $statusYellow$;
-                --star: $star$;
-                --warning: $warning$;
-                --onWarning: $onWarning$;
-                --warningContainer: $warningContainer$;
-                --onWarningContainer: $onWarningContainer$;
-                --alertNote: $alertNote$;
-                --alertTip: $alertTip$;
-                --alertImportant: $alertImportant$;
-                --alertWarning: $alertWarning$;
-                --alertCaution: $alertCaution$;
+            --surfaceBright: $surfaceBright$;
+            --surfaceDim: $surfaceDim$;
+            --surfaceContainer: $surfaceContainer$;
+            --surfaceContainerHigh: $surfaceContainerHigh$;
+            --surfaceContainerHighest: $surfaceContainerHighest$;
+            --surfaceContainerLow: $surfaceContainerLow$;
+            --surfaceContainerLowest: $surfaceContainerLowest$;
 
-                /* Syntax Highlighting */
-                --code: $code$;
-                --keyword: $keyword$;
-                --string: $string$;
-                --literal: $literal$;
-                --comment: $comment$;
-                --metadata: $metadata$;
-                --multilineComment: $multilineComment$;
-                --punctuation: $punctuation$;
-                --mark: $mark$;
-            }
-        </style>
-    </head>
-    <body>
-        <main id="content" class="markdown-body"></main>
-        <script src="file:///android_asset/markdown/markdown.js"></script>
-    </body>
+        /* Gloom specific colors */
+            --statusGreen: $statusGreen$;
+            --statusPurple: $statusPurple$;
+            --statusRed: $statusRed$;
+            --statusGrey: $statusGrey$;
+            --statusYellow: $statusYellow$;
+            --star: $star$;
+            --warning: $warning$;
+            --onWarning: $onWarning$;
+            --warningContainer: $warningContainer$;
+            --onWarningContainer: $onWarningContainer$;
+            --alertNote: $alertNote$;
+            --alertTip: $alertTip$;
+            --alertImportant: $alertImportant$;
+            --alertWarning: $alertWarning$;
+            --alertCaution: $alertCaution$;
+
+        /* Syntax Highlighting */
+            --code: $code$;
+            --keyword: $keyword$;
+            --string: $string$;
+            --literal: $literal$;
+            --comment: $comment$;
+            --metadata: $metadata$;
+            --multilineComment: $multilineComment$;
+            --punctuation: $punctuation$;
+            --mark: $mark$;
+        }
+    </style>
+</head>
+<body>
+<main class="markdown-body" id="content"></main>
+<script src="file:///android_asset/markdown/markdown.js"></script>
+</body>
 </html>

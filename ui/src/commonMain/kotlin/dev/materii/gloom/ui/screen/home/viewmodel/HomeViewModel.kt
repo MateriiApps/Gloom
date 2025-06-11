@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val repo: GraphQLRepository
-) : BaseListViewModel<FeedQuery.Node, FeedQuery.Data?>() {
+): BaseListViewModel<FeedQuery.Node, FeedQuery.Data?>() {
 
     val starredRepos = mutableStateMapOf<String, Pair<Boolean, Int>>()
     val followedUsers = mutableStateMapOf<String, Pair<Boolean, Int>>()

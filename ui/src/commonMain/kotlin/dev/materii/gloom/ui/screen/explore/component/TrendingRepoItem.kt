@@ -1,26 +1,13 @@
 package dev.materii.gloom.ui.screen.explore.component
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material.icons.outlined.StarOutline
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.FilledTonalIconToggleButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.domain.manager.enums.TrendingPeriodPreference
@@ -35,9 +23,8 @@ import dev.materii.gloom.gql.fragment.TrendingRepository
 import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.component.LabeledIcon
 import dev.materii.gloom.ui.theme.gloomColorScheme
-import dev.materii.gloom.util.NumberFormatter
 import dev.materii.gloom.ui.util.parsedColor
-import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.util.NumberFormatter
 
 @Composable
 fun TrendingRepoItem(
@@ -135,8 +122,8 @@ fun TrendingRepoItem(
                     label = stringResource(
                         when (trendingPeriod) {
                             TrendingPeriodPreference.MONTHLY -> Res.strings.label_stars_month
-                            TrendingPeriodPreference.WEEKLY -> Res.strings.label_stars_week
-                            TrendingPeriodPreference.DAILY -> Res.strings.label_stars_day
+                            TrendingPeriodPreference.WEEKLY  -> Res.strings.label_stars_week
+                            TrendingPeriodPreference.DAILY   -> Res.strings.label_stars_day
                         },
                         NumberFormatter.compact(trendingRepository.starsSince)
                     )

@@ -9,7 +9,7 @@ import io.ktor.http.URLBuilder
 
 class LandingViewModel(
     val authManager: AuthManager
-) : ScreenModel {
+): ScreenModel {
 
     val url = URLBuilder(URLs.AUTH.LOGIN).also {
         it.parameters.apply {

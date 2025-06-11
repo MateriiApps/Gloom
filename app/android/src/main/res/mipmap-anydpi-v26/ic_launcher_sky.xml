@@ -3,9 +3,9 @@
     <background>
         <shape android:shape="rectangle">
             <gradient
-                    android:type="linear"
-                    android:startColor="#FF8080FF"
-                    android:endColor="#FF6E6EFF" />
+                android:endColor="#FF6E6EFF"
+                android:startColor="#FF8080FF"
+                android:type="linear" />
         </shape>
     </background>
     <foreground android:drawable="@drawable/ic_launcher_monochrome" />

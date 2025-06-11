@@ -15,7 +15,7 @@ import org.koin.core.parameter.parametersOf
 class CommitsScreen(
     private val id: String,
     private val branch: String
-) : BaseListScreen<CommitDetails, RepoCommitsQuery.Data?, RepoCommitsViewModel>() {
+): BaseListScreen<CommitDetails, RepoCommitsQuery.Data?, RepoCommitsViewModel>() {
 
     override val titleRes: StringResource get() = Res.strings.title_commits
 

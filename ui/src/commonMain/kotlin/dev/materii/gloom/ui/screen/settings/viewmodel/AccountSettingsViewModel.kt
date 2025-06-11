@@ -16,7 +16,7 @@ class AccountSettingsViewModel(
     val authManager: AuthManager,
     private val gqlRepo: GraphQLRepository,
     private val authRepo: GithubAuthRepository
-) : ScreenModel {
+): ScreenModel {
 
     var isLoading by mutableStateOf(false)
 

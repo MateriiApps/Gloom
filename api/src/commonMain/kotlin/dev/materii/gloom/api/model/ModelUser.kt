@@ -2,7 +2,10 @@ package dev.materii.gloom.api.model
 
 import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.gql.*
-import dev.materii.gloom.gql.fragment.*
+import dev.materii.gloom.gql.fragment.Contributions
+import dev.materii.gloom.gql.fragment.OrgSponsoringFragment
+import dev.materii.gloom.gql.fragment.Social
+import dev.materii.gloom.gql.fragment.UserSponsoringFragment
 import dev.materii.gloom.gql.type.SocialAccountProvider
 import kotlinx.datetime.LocalDateTime
 

@@ -22,7 +22,7 @@ actual class ReleaseViewModel(
     private val downloadManager: DownloadManager,
     private val context: Context,
     nameAndTag: Triple<String, String, String>
-) : BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?>() {
+): BaseListViewModel<ReleaseAssetFragment, ReleaseDetailsQuery.Data?>() {
 
     actual val owner = nameAndTag.first
     actual val name = nameAndTag.second

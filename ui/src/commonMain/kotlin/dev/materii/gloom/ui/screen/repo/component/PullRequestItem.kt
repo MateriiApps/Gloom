@@ -3,16 +3,16 @@ package dev.materii.gloom.ui.screen.repo.component
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.PullRequestOverview
 import dev.materii.gloom.gql.type.PullRequestState
-import dev.materii.gloom.ui.icon.custom.ClosedPullRequest
 import dev.materii.gloom.ui.icon.Custom
+import dev.materii.gloom.ui.icon.custom.ClosedPullRequest
 import dev.materii.gloom.ui.icon.custom.DraftPullRequest
 import dev.materii.gloom.ui.icon.custom.MergedPullRequest
 import dev.materii.gloom.ui.icon.custom.OpenPullRequest
 import dev.materii.gloom.ui.theme.gloomColorScheme
-import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun PullRequestItem(

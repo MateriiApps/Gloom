@@ -43,6 +43,7 @@ data class User(
 
     @Serializable
     enum class Type {
+
         @SerialName("User")
         USER,
 
@@ -50,8 +51,11 @@ data class User(
         ORG;
 
         companion object {
+
             fun fromTypeName(name: String) = if (name == "User") USER else ORG
+
         }
+
     }
 
 }

@@ -8,7 +8,7 @@ import dev.materii.gloom.gql.SponsoringQuery
 class SponsoringViewModel(
     private val repo: GraphQLRepository,
     private val username: String
-) : BaseListViewModel<ModelUser, SponsoringQuery.Data?>() {
+): BaseListViewModel<ModelUser, SponsoringQuery.Data?>() {
 
     override suspend fun loadPage(cursor: String?) =
         repo.getSponsoring(username, cursor).getOrNull()

@@ -1,11 +1,7 @@
 package dev.materii.gloom.ui.screen.release.component
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.LocalOffer
@@ -19,10 +15,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.materii.gloom.Res
-import dev.materii.gloom.ui.icon.custom.Commit
-import dev.materii.gloom.ui.icon.Custom
 import dev.icerock.moko.resources.compose.stringResource
+import dev.materii.gloom.Res
+import dev.materii.gloom.ui.icon.Custom
+import dev.materii.gloom.ui.icon.custom.Commit
 
 @Composable
 fun ReleaseInfo(

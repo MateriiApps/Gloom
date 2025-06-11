@@ -40,9 +40,9 @@ enum class OS(vararg keys: String) {
 
 val OSBaseDir = when (OS.Current) {
     OS.Windows -> File(System.getenv("APPDATA"))
-    OS.MacOS -> File(System.getProperty("user.home"), "Library/Application Support")
-    OS.Linux -> File(System.getenv("XDG_CONFIG_DIR") ?: "${System.getProperty("user.home")}/.config")
-    else -> File(System.getProperty("user.home"), ".config")
+    OS.MacOS   -> File(System.getProperty("user.home"), "Library/Application Support")
+    OS.Linux   -> File(System.getenv("XDG_CONFIG_DIR") ?: "${System.getProperty("user.home")}/.config")
+    else       -> File(System.getProperty("user.home"), ".config")
 }
 
 actual val supportsMonet = false
