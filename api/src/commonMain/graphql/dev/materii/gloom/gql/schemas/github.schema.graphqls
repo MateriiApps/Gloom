@@ -3197,11 +3197,6 @@ type Bot implements Actor & Node & UniformResourceLocatable {
 }
 
 """
-Used when either Bot or User are accepted.
-"""
-union BotOrUser = Bot|User
-
-"""
 Types which can be actors for `BranchActorAllowance` objects.
 """
 union BranchActorAllowanceActor = App|Team|User
@@ -7249,7 +7244,8 @@ input ContributionOrder {
 }
 
 """
-A contributions collection aggregates contributions such as opened issues and commits created by a user.
+A collection of contributions made by a user, including opened issues, commits, and pull requests.
+Contributions in private and internal repositories are only included with the optional read:user scope.
 """
 type ContributionsCollection {
   """
@@ -51152,6 +51148,11 @@ input RequestReviewsInput {
   userIds: [ID!]
 
   """
+  The Node IDs of the bot to request.
+  """
+  botIds: [ID!]
+
+  """
   The Node IDs of the team to request.
   """
   teamIds: [ID!]
@@ -52733,6 +52734,11 @@ enum SearchShortcutIcon {
   Mention search shortcut icon
   """
   MENTION
+
+  """
+  Person search shortcut icon
+  """
+  PERSON
 }
 
 """
