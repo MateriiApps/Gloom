@@ -36,8 +36,6 @@ subprojects {
         disableDefaultRuleSets = true
         config.from(rootDir.resolve("config/detekt.yml"))
 
-        ignoreFailures = true
-
         source.from(
             "src/androidMain/kotlin",
             "src/commonMain/kotlin",
