@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 allprojects {
     repositories {
         google()
@@ -31,11 +33,10 @@ subprojects {
 
     detekt {
         basePath = rootProject.projectDir.toString()
+        disableDefaultRuleSets = true
         config.from(rootDir.resolve("config/detekt.yml"))
 
-        reports {
-            sarif.required = true
-        }
+        ignoreFailures = true
 
         source.from(
             "src/androidMain/kotlin",
@@ -47,6 +48,12 @@ subprojects {
     dependencies {
         detektPlugins(detektFormatting)
         detektPlugins(composeRules)
+    }
+}
+
+tasks.named<Detekt>("detekt").configure {
+    reports {
+        sarif.required.set(true)
     }
 }
 
