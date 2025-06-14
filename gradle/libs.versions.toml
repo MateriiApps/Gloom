@@ -17,6 +17,7 @@ kotlinx-serialization = "1.8.1"
 
 # Plugins
 agp = "8.10.1"
+detekt = "1.23.8"
 kotlin = "2.2.0-RC2"
 
 # Misc
@@ -75,6 +76,10 @@ ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref =
 ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
+# Linting
+detekt-compose-rules = { group = "io.nlopez.compose.rules", name = "detekt", version = "0.4.16" }
+detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+
 # Paging
 multiplatform-paging = { group = "app.cash.paging", name = "paging-common", version.ref = "multiplatform-paging" }
 multiplatform-paging-compose = { group = "app.cash.paging", name = "paging-compose-common", version.ref = "multiplatform-paging" }
@@ -111,6 +116,9 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+# Linting
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 # Misc
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries"}

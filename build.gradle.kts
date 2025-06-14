@@ -18,6 +18,36 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.moko.resources) apply false
     alias(libs.plugins.aboutlibraries) apply false
+    alias(libs.plugins.detekt)
+}
+
+val detektFormatting = libs.detekt.formatting
+val composeRules = libs.detekt.compose.rules
+
+subprojects {
+    apply {
+        plugin("io.gitlab.arturbosch.detekt")
+    }
+
+    detekt {
+        basePath = rootProject.projectDir.toString()
+        config.from(rootDir.resolve("config/detekt.yml"))
+
+        reports {
+            sarif.required = true
+        }
+
+        source.from(
+            "src/androidMain/kotlin",
+            "src/commonMain/kotlin",
+            "src/desktopMain/kotlin"
+        )
+    }
+
+    dependencies {
+        detektPlugins(detektFormatting)
+        detektPlugins(composeRules)
+    }
 }
 
 tasks.register<Delete>("clean").configure {
