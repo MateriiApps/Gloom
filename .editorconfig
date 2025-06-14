@@ -14,7 +14,6 @@ ij_visual_guides = 140
 ij_wrap_on_typing = false
 
 [{*.kt,*.kts}]
-ij_kotlin_align_in_columns_case_branch = true
 ij_kotlin_allow_trailing_comma = false
 ij_kotlin_allow_trailing_comma_on_call_site = false
 ij_kotlin_blank_lines_after_class_header = 1
