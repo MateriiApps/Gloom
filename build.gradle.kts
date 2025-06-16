@@ -1,12 +1,5 @@
 import io.gitlab.arturbosch.detekt.Detekt
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://jitpack.io")
-    }
-}
+import io.gitlab.arturbosch.detekt.report.ReportMergeTask
 
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -26,11 +19,19 @@ plugins {
 
 val detektFormatting = libs.detekt.formatting
 val composeRules = libs.detekt.compose.rules
+val detektReportMergeSarif by tasks.registering(ReportMergeTask::class) {
+    output.set(layout.buildDirectory.file("reports/detekt/merged.sarif"))
+}
 
-subprojects {
-    apply {
-        plugin("io.gitlab.arturbosch.detekt")
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
     }
+
+    // Detekt
+    apply(plugin = "io.gitlab.arturbosch.detekt")
 
     detekt {
         basePath = rootProject.projectDir.toString()
@@ -49,11 +50,15 @@ subprojects {
         detektPlugins(composeRules)
         detektPlugins(project(":lint:rules"))
     }
-}
 
-tasks.named<Detekt>("detekt").configure {
-    reports {
-        sarif.required.set(true)
+    detektReportMergeSarif {
+        input.from(tasks.withType<Detekt>().map { it.sarifReportFile })
+    }
+
+    tasks.named<Detekt>("detekt").configure {
+        reports {
+            sarif.required.set(true)
+        }
     }
 }
 

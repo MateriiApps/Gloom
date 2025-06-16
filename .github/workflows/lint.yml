@@ -1,17 +1,16 @@
-name: Lint Project Source
+name: Lint
 
 on:
   push:
-    branches:
-      - '*'
   pull_request:
-    branches:
-      - '*'
   workflow_dispatch:
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - uses: actions/checkout@v4
 
@@ -26,10 +25,10 @@ jobs:
 
       - name: Lint with Detekt
         run:
-          ./gradlew detekt --continue
+          ./gradlew detekt detektReportMergeSarif --continue
 
-      - uses: github/codeql-action/upload-sarif@v3
+      - name: Upload results
+        uses: github/codeql-action/upload-sarif@v3
         if: success() || failure()
         with:
-          sarif_file: ui/build/reports/detekt/detekt.sarif
-          category: ui
+          sarif_file: build/reports/detekt/merged.sarif
