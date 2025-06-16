@@ -29,6 +29,7 @@ jobs:
           ./gradlew detekt --continue
 
       - name: Merge reports
+        if: success() || failure()
         run:
           ./gradlew detektReportMergeSarif
 
