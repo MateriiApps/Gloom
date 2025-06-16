@@ -1,0 +1,40 @@
+name: Lint
+
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 17 * * 6" # "At 17:00 on Saturday."
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Lint with Detekt
+        run:
+          ./gradlew detekt --continue
+
+      - name: Merge reports
+        if: success() || failure()
+        run:
+          ./gradlew detektReportMergeSarif
+
+      - name: Upload results
+        uses: github/codeql-action/upload-sarif@v3
+        if: success() || failure()
+        with:
+          sarif_file: build/reports/detekt/merged.sarif
