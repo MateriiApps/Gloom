@@ -16,6 +16,7 @@ plugins {
     alias(libs.plugins.compose) apply false
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.moko.resources) apply false
@@ -34,7 +35,7 @@ subprojects {
     detekt {
         basePath = rootProject.projectDir.toString()
         disableDefaultRuleSets = true
-        config.from(rootDir.resolve("config/detekt.yml"))
+        config.from(rootDir.resolve("lint/detekt.yml"))
 
         source.from(
             "src/androidMain/kotlin",
@@ -46,6 +47,7 @@ subprojects {
     dependencies {
         detektPlugins(detektFormatting)
         detektPlugins(composeRules)
+        detektPlugins(project(":lint:rules"))
     }
 }
 
