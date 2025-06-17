@@ -1,217 +1,287 @@
+### External rulesets
+
+# Custom
 Gloom:
   active: true
   ModifierLastAtCallSite:
     active: true
 
-
+# https://mrmans0n.github.io/compose-rules/rules/
 Compose:
   active: true
-
   ComposableNaming:
-    # Composables that return Unit should follow the same naming rules as classes, others should
-    # follow standard Kotlin variable and function naming conventions.
-    # https://mrmans0n.github.io/compose-rules/rules/#naming-composable-functions-properly
     active: true
     allowedComposableFunctionNames: TabOptions
-
   ComposableParamOrder:
-    # Composable function parameters must follow a specific order:
-    # Required Params -> Modifier -> Optional Params -> Content Lambda (Optional)
-    # https://mrmans0n.github.io/compose-rules/rules/#ordering-composable-parameters-properly
     active: true
-
   CompositionLocalAllowlist:
-    # Composition locals may serve as implicit dependencies, making them harder to track.
-    # https://mrmans0n.github.io/compose-rules/rules/#compositionlocals
     active: true
-    allowedCompositionLocals: LocalAlertController
-
+    allowedCompositionLocals: [ 'LocalAlertController', 'LocalLinkHandler' ]
   CompositionLocalNaming:
-    # Composition locals must use a name prefixed with Local.
-    # https://mrmans0n.github.io/compose-rules/rules/#naming-compositionlocals-properly
     active: true
-
   ContentEmitterReturningValues:
-    # Composable functions should either return a value or emit UI, never both.
-    # https://mrmans0n.github.io/compose-rules/rules/#do-not-emit-content-and-return-a-result
     active: true
-
   ContentTrailingLambda:
-    # The lambda used to display the primary content for a composable must be the last parameter.
-    # https://mrmans0n.github.io/compose-rules/rules/#slots-for-main-content-should-be-the-trailing-lambda
     active: true
-    treatAsLambda: OnLinkVisitedListener
-    # treatAsComposableLambda: MyComposableLambdaType
-
+    treatAsLambda: [ 'OnLinkVisitedListener' ]
   ContentSlotReused:
-    # Content slots should either only be used once or be wrapped with `remember { movableContentOf { ... } }`.
-    # https://mrmans0n.github.io/compose-rules/rules/#content-slots-should-not-be-reused-in-branching-code
     active: true
-    # treatAsComposableLambda: MyComposableLambdaType
-
   LambdaParameterEventTrailing:
-    # The trailing lambda for a composable function must never be an event callback.
-    # https://mrmans0n.github.io/compose-rules/rules/#avoid-using-the-trailing-lambda-for-event-lambdas-in-ui-composables
     active: true
-
   LambdaParameterInRestartableEffect:
-    # Require lambdas used in side effects to be set as one of the effect's keys
-    # or updated via rememberUpdatedState.
-    # https://mrmans0n.github.io/compose-rules/rules/#be-mindful-of-the-arguments-you-use-inside-of-a-restarting-effect
     active: true
-    treatAsLambda: OnLinkVisitedListener
-
+    treatAsLambda: [ 'OnLinkVisitedListener' ]
   Material2:
-    # Avoid using Material 2 components
-    # https://mrmans0n.github.io/compose-rules/rules/#dont-use-material-2
     active: true
-    allowedFromM2: icons.Icons,ripple.rememberRipple
-
+    allowedFromM2: [ 'icons.Icons', 'ripple.rememberRipple' ]
   ModifierClickableOrder:
-    # Makes sure that `clickable` modifiers are placed in the most optimal position.
-    # https://mrmans0n.github.io/compose-rules/rules/#modifier-order-matters
     active: true
-
   ModifierComposed:
-    # Modifier.composed is no longer recommended due to performance issues, Modifier.Node should be used instead.
-    # https://mrmans0n.github.io/compose-rules/rules/#avoid-modifier-extension-factory-functions
     active: true
-
   ModifierMissing:
-    # Composables should have a Modifier parameter.
-    # https://mrmans0n.github.io/compose-rules/rules/#when-should-i-expose-modifier-parameters
     active: true
     checkModifiersForVisibility: only_public
-
   ModifierNaming:
-    # Modifier parameters should always be named `modifier`.
-    # https://mrmans0n.github.io/compose-rules/rules/#naming-modifiers-properly
     active: true
-
   ModifierNotUsedAtRoot:
-    # Modifier parameter should be used in the topmost layout of a composable.
-    # https://mrmans0n.github.io/compose-rules/rules/#modifiers-should-be-used-at-the-top-most-layout-of-the-component
     active: true
-
   ModifierReused:
-    # Modifier parameters should only be used once, by the topmost layout.
-    # https://mrmans0n.github.io/compose-rules/rules/#dont-re-use-modifiers
     active: true
-
   ModifierWithoutDefault:
-    # Modifier parameters should always be given a default value.
-    # https://mrmans0n.github.io/compose-rules/rules/#modifiers-should-have-default-parameters
     active: true
-
   MultipleEmitters:
-    # Composable functions should emit at most 1 piece of layout.
-    # https://mrmans0n.github.io/compose-rules/rules/#do-not-emit-multiple-pieces-of-content
     active: true
-
   MutableParams:
-    # Avoid using mutable types as parameters, state should only flow down.
-    # https://mrmans0n.github.io/compose-rules/rules/#do-not-use-inherently-mutable-types-as-parameters
     active: true
-
   MutableStateAutoboxing:
-    # Use primitive mutableStateOf variants when possible to prevent boxing.
-    # https://mrmans0n.github.io/compose-rules/rules/#use-mutablestateof-type-specific-variants-when-possible
     active: true
-
   MutableStateParam:
-    # Never use MutableState<T> as a parameter, joint ownership over state can cause
-    # confusion and make debugging more difficult.
-    # https://mrmans0n.github.io/compose-rules/rules/#do-not-use-mutablestate-as-a-parameter
     active: true
-
   ParameterNaming:
-    # Event callback parameters must follow the naming scheme of `on` + present-tense verb. (ex. onClick instead of onClicked)
-    # https://mrmans0n.github.io/compose-rules/rules/#naming-parameters-properly
     active: true
-    allowedLambdaParameterNames: onSizeChanged, onGloballyPositioned
-
+    allowedLambdaParameterNames: [ 'onSizeChanged', 'onGloballyPositioned' ]
   PreviewAnnotationNaming:
-    # Multipreview annotations should be named by using Previews as a prefix.
-    # https://mrmans0n.github.io/compose-rules/rules/#naming-multipreview-annotations-properly
     active: true
-
   PreviewNaming:
-    # Describes how preview composables should be named.
-    # https://mrmans0n.github.io/compose-rules/rules/#use-mutablestateof-type-specific-variants-when-possible
-    active: false # Opt-in, disabled by default.
+    active: false
     previewNamingStrategy: suffix
-
   PreviewPublic:
-    # Preview composables should always be private.
-    # https://mrmans0n.github.io/compose-rules/rules/#preview-composables-should-not-be-public
     active: true
-
   RememberMissing:
-    # State should always be remembered in a composable.
-    # https://mrmans0n.github.io/compose-rules/rules/#state-should-be-remembered-in-composables
     active: true
-
   RememberContentMissing:
-    # movableContentOf needs to be remembered.
-    # https://mrmans0n.github.io/compose-rules/rules/#movable-content-should-be-remembered
     active: true
-
   UnstableCollections:
-    # Use collections that are guaranteed to be immutable
-    # https://mrmans0n.github.io/compose-rules/rules/#avoid-using-unstable-collections
     active: true
-
   ViewModelInjection:
-    # ViewModels should be injected in the parameters of a composable and not the body.
-    # https://mrmans0n.github.io/compose-rules/rules/#make-dependencies-explicit
-    active: false # Voyager makes this annoying so don't enable this for now
-    viewModelFactories: koinScreenModel,koinViewModel
+    active: false
+    viewModelFactories: [ 'koinScreenModel', 'koinViewModel' ]
 
 
-style:
+### Built-in rulesets
+
+# https://detekt.dev/docs/rules/complexity
+complexity:
   active: true
+  CognitiveComplexMethod:
+    active: true
+    threshold: 15
+  LargeClass:
+    active: true
+    threshold: 600 # lines
+  NamedArguments:
+    active: true
+    threshold: 3
+    ignoreArgumentsMatchingNames: true
+  NestedBlockDepth:
+    active: true
+    threshold: 5
+  StringLiteralDuplication:
+    active: true
+    threshold: 3
 
-  AlsoCouldBeApply:
-    # Detects when an `also` block contains only `it`-started expressions.
+# https://detekt.dev/docs/rules/coroutines
+coroutines:
+  GlobalCoroutineUsage:
+    active: true
+  SleepInsteadOfDelay:
     active: true
 
-  CanBeNonNullable:
-    # This rule inspects variables marked as nullable and reports which could be declared as non-nullable instead.
+# https://detekt.dev/docs/rules/empty-blocks
+empty-blocks:
+  active: true
+  EmptyCatchBlock:
+    active: true
+  EmptyClassBlock:
+    active: true
+  EmptyDefaultConstructor:
+    active: true
+  EmptyDoWhileBlock:
+    active: true
+  EmptyElseBlock:
+    active: true
+  EmptyFinallyBlock:
+    active: true
+  EmptyForBlock:
+    active: true
+  EmptyFunctionBlock:
+    active: true
+  EmptyIfBlock:
+    active: true
+  EmptyInitBlock:
+    active: true
+  EmptyKtFile:
+    active: true
+  EmptySecondaryConstructor:
+    active: true
+  EmptyTryBlock:
+    active: true
+  EmptyWhenBlock:
+    active: true
+  EmptyWhileBlock:
     active: true
 
-  CascadingCallWrapping:
-    # Requires that all chained calls are placed on a new line if a preceding one is.
+# https://detekt.dev/docs/rules/exceptions
+exceptions:
+  active: true
+  ExceptionRaisedInUnexpectedLocation:
+    active: true
+    methodNames: [ 'equals', 'finalize', 'hashCode', 'toString' ]
+  NotImplementedDeclaration:
+    active: true
+  PrintStackTrace:
+    active: true
+  RethrowCaughtException:
+    active: true
+  SwallowedException:
+    active: true
+  ThrowingExceptionFromFinally:
+    active: true
+  ThrowingExceptionsWithoutMessageOrCause:
+    active: true
+  ThrowingNewInstanceOfSameException:
+    active: true
+  TooGenericExceptionCaught:
+    active: true
+  TooGenericExceptionThrown:
     active: true
 
-  ClassOrdering:
-    # This rule ensures class contents are ordered as follows as recommended by the Kotlin Coding Conventions:
-    # Variables -> Constructors -> Functions -> Companion object
-    active: true
-
-  DataClassShouldBeImmutable:
-    # Data class properties should all be `val`.
-    active: true
-
-  DoubleNegativeLambda:
-    # Detects negation in lambda blocks where the function name is also in the negative.
-    active: true
-
-  EqualsOnSignatureLine:
-    # Requires that the equals sign, when used for an expression style function, is on the same line as the rest
-    # of the function signature.
-    active: true
-
-  MaxLineLength:
-    # Maximum number of characters allowed in a line.
-    active: true
-    maxLineLength: 140
-
-  ModifierOrder:
-    active: true
-
-
+# https://detekt.dev/docs/rules/formatting
+# https://pinterest.github.io/ktlint/latest/rules/standard/
 formatting:
   active: true
-
+  autoCorrect: true
+  android: true
+  AnnotationOnSeparateLine:
+    active: true
+    autoCorrect: true
+    indentSize: 4
   FinalNewline:
     active: false
+    autoCorrect: true
+
+# https://detekt.dev/docs/rules/naming
+naming:
+  active: true
+  BooleanPropertyNaming:
+    active: true
+  ClassNaming:
+    active: true
+  ConstructorParameterNaming:
+    active: true
+  EnumNaming:
+    active: true
+  FunctionMaxLength:
+    active: true
+    maximumFunctionNameLength: 30
+  FunctionNaming:
+    active: true
+    ignoreAnnotated: [ 'Composable' ]
+  FunctionParameterNaming:
+    active: true
+  MatchingDeclarationName:
+    active: true
+  NoNameShadowing:
+    active: true
+  NonBooleanPropertyPrefixedWithIs:
+    active: true
+  ObjectPropertyNaming:
+    active: true
+    constantPattern: '[A-Z][A-Za-z0-9]*'
+  TopLevelPropertyNaming:
+    active: true
+    constantPattern: '[A-Z][A-Za-z0-9]*'
+  VariableNaming:
+    active: true
+
+# https://detekt.dev/docs/rules/performance
+performance:
+  active: true
+  ArrayPrimitive:
+    active: true
+  CouldBeSequence:
+    active: true
+  ForEachOnRange:
+    active: true
+  SpreadOperator:
+    active: true
+  UnnecessaryPartOfBinaryExpression:
+    active: true
+  UnnecessaryTemporaryInstantiation:
+    active: true
+
+# https://detekt.dev/docs/rules/potential-bugs
+potential-bugs:
+  active: true
+  CastNullableToNonNullableType:
+    active: true
+  CastToNullableType:
+    active: true
+  Deprecation:
+    active: true
+  EqualsAlwaysReturnsTrueOrFalse:
+    active: true
+  EqualsWithHashCodeExist:
+    active: true
+  InvalidRange:
+    active: true
+
+# https://detekt.dev/docs/rules/style
+style:
+  active: true
+  AlsoCouldBeApply:
+    active: true
+  CanBeNonNullable:
+    active: true
+  CascadingCallWrapping:
+    active: true
+  ClassOrdering:
+    active: true
+  DataClassShouldBeImmutable:
+    active: true
+  DoubleNegativeLambda:
+    active: true
+  EqualsOnSignatureLine:
+    active: true
+  MaxLineLength:
+    active: true
+    maxLineLength: 140
+  ModifierOrder:
+    active: true
+  MultilineLambdaItParameter:
+    active: true
+  MultilineRawStringIndentation:
+    active: true
+  NewLineAtEndOfFile:
+    active: false
+  NoTabs:
+    active: true
+  NullableBooleanCheck:
+    active: true
+  PreferToOverPairSyntax:
+    active: true
+  RedundantExplicitType:
+    active: true
+  UnusedPrivateMember:
+    active: true
+    ignoreAnnotated: [ 'Preview' ]
