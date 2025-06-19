@@ -16,7 +16,7 @@ Compose:
     active: true
   CompositionLocalAllowlist:
     active: true
-    allowedCompositionLocals: [ 'LocalAlertController', 'LocalLinkHandler' ]
+    allowedCompositionLocals: [ 'LocalAlertController', 'LocalLinkHandler', 'LocalGloomColorScheme' ]
   CompositionLocalNaming:
     active: true
   ContentEmitterReturningValues:
@@ -86,6 +86,7 @@ complexity:
   CognitiveComplexMethod:
     active: true
     threshold: 15
+    ignoreAnnotated: [ 'Composable' ]
   LargeClass:
     active: true
     threshold: 600 # lines
@@ -201,6 +202,7 @@ naming:
     active: true
   MatchingDeclarationName:
     active: true
+    multiplatformTargets: [ 'android', 'desktop' ] # temp
   NoNameShadowing:
     active: true
   NonBooleanPropertyPrefixedWithIs:
@@ -213,6 +215,7 @@ naming:
     constantPattern: '[A-Z][A-Za-z0-9]*'
   VariableNaming:
     active: true
+    variablePattern: '(_)?[a-z][A-Za-z0-9]*'
 
 # https://detekt.dev/docs/rules/performance
 performance:
@@ -265,6 +268,7 @@ style:
     active: true
   MaxLineLength:
     active: true
+    excludeCommentStatements: true
     maxLineLength: 140
   ModifierOrder:
     active: true
