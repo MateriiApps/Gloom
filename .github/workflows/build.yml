@@ -35,7 +35,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build debug APK
-        run: ./gradlew :app:android:assembleDebug
+        run: ./gradlew :app:assembleDebug
 
       - name: Build release APK
         if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch' || github.base_ref == 'main'
@@ -46,18 +46,18 @@ jobs:
           SIGNING_STORE_FILE: ${{ github.workspace }}/release.jks
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > release.jks
-          ./gradlew :app:android:packageRelease
+          ./gradlew :app:packageRelease
           rm release.jks
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
           name: gloom-debug
-          path: app/android/build/outputs/apk/debug/gloom-debug.apk
+          path: app/build/outputs/apk/debug/gloom-debug.apk
 
       - name: Upload release APK
         uses: actions/upload-artifact@v4
         if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch' || github.base_ref == 'main'
         with:
           name: gloom-release
-          path: app/android/build/outputs/apk/release/gloom-release.apk
+          path: app/build/outputs/apk/release/gloom-release.apk
