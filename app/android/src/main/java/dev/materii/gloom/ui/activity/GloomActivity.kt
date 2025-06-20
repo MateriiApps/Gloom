@@ -66,7 +66,7 @@ open class GloomActivity: ComponentActivity() {
                         alertController.currentOffset = IntOffset.Companion.Zero
                     }
                 },
-                onContentChange = {
+                onContentChanged = {
                     val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
                     enableEdgeToEdge(
                         statusBarStyle = SystemBarStyle.Companion.auto(

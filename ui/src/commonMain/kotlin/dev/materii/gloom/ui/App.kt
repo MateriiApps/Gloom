@@ -25,7 +25,7 @@ import org.koin.compose.koinInject
  * @param screens The screens to start with.
  * @param linkHandler Handles opening links.
  * @param onScreenChange Callback for when a new screen is navigated to.
- * @param onContentChange Called when content is going through a transition
+ * @param onContentChanged Called when content is going through a transition
  * @param onAttach Called after the navigator is set up, used to initialize any platform-specific functionality
  */
 @OptIn(InternalVoyagerApi::class)
@@ -34,7 +34,7 @@ fun App(
     screens: ImmutableList<Screen>,
     linkHandler: LinkHandler,
     onScreenChange: (Screen, AlertController) -> Unit = { _, _ -> },
-    onContentChange: @Composable () -> Unit = {},
+    onContentChanged: @Composable () -> Unit = {},
     onAttach: (Navigator, AlertController) -> Unit = { _, _ -> },
 ) {
     val prefs: PreferenceManager = koinInject()
@@ -67,7 +67,7 @@ fun App(
                 ) {
                     SlideTransition(navigator) { screen ->
                         screen.Content()
-                        onContentChange()
+                        onContentChanged()
                     }
                 }
             }
