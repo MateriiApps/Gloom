@@ -1,0 +1,291 @@
+### External rulesets
+
+# Custom
+Gloom:
+  active: true
+  ModifierLastAtCallSite:
+    active: true
+
+# https://mrmans0n.github.io/compose-rules/rules/
+Compose:
+  active: true
+  ComposableNaming:
+    active: true
+    allowedComposableFunctionNames: TabOptions
+  ComposableParamOrder:
+    active: true
+  CompositionLocalAllowlist:
+    active: true
+    allowedCompositionLocals: [ 'LocalAlertController', 'LocalLinkHandler', 'LocalGloomColorScheme' ]
+  CompositionLocalNaming:
+    active: true
+  ContentEmitterReturningValues:
+    active: true
+  ContentTrailingLambda:
+    active: true
+    treatAsLambda: [ 'OnLinkVisitedListener' ]
+  ContentSlotReused:
+    active: true
+  LambdaParameterEventTrailing:
+    active: true
+  LambdaParameterInRestartableEffect:
+    active: true
+    treatAsLambda: [ 'OnLinkVisitedListener' ]
+  Material2:
+    active: true
+    allowedFromM2: [ 'icons.Icons', 'ripple.rememberRipple' ]
+  ModifierClickableOrder:
+    active: true
+  ModifierComposed:
+    active: true
+  ModifierMissing:
+    active: true
+    checkModifiersForVisibility: only_public
+  ModifierNaming:
+    active: true
+  ModifierNotUsedAtRoot:
+    active: true
+  ModifierReused:
+    active: true
+  ModifierWithoutDefault:
+    active: true
+  MultipleEmitters:
+    active: true
+  MutableParams:
+    active: true
+  MutableStateAutoboxing:
+    active: true
+  MutableStateParam:
+    active: true
+  ParameterNaming:
+    active: true
+    allowedLambdaParameterNames: [ 'onSizeChanged', 'onGloballyPositioned' ]
+  PreviewAnnotationNaming:
+    active: true
+  PreviewNaming:
+    active: false
+    previewNamingStrategy: suffix
+  PreviewPublic:
+    active: true
+  RememberMissing:
+    active: true
+  RememberContentMissing:
+    active: true
+  UnstableCollections:
+    active: true
+  ViewModelInjection:
+    active: false
+    viewModelFactories: [ 'koinScreenModel', 'koinViewModel' ]
+
+
+### Built-in rulesets
+
+# https://detekt.dev/docs/rules/complexity
+complexity:
+  active: true
+  CognitiveComplexMethod:
+    active: true
+    threshold: 15
+    ignoreAnnotated: [ 'Composable' ]
+  LargeClass:
+    active: true
+    threshold: 600 # lines
+  NamedArguments:
+    active: true
+    threshold: 3
+    ignoreArgumentsMatchingNames: true
+  NestedBlockDepth:
+    active: true
+    threshold: 5
+  StringLiteralDuplication:
+    active: true
+    threshold: 3
+
+# https://detekt.dev/docs/rules/coroutines
+coroutines:
+  GlobalCoroutineUsage:
+    active: true
+  SleepInsteadOfDelay:
+    active: true
+
+# https://detekt.dev/docs/rules/empty-blocks
+empty-blocks:
+  active: true
+  EmptyCatchBlock:
+    active: true
+  EmptyClassBlock:
+    active: true
+  EmptyDefaultConstructor:
+    active: true
+  EmptyDoWhileBlock:
+    active: true
+  EmptyElseBlock:
+    active: true
+  EmptyFinallyBlock:
+    active: true
+  EmptyForBlock:
+    active: true
+  EmptyFunctionBlock:
+    active: true
+  EmptyIfBlock:
+    active: true
+  EmptyInitBlock:
+    active: true
+  EmptyKtFile:
+    active: true
+  EmptySecondaryConstructor:
+    active: true
+  EmptyTryBlock:
+    active: true
+  EmptyWhenBlock:
+    active: true
+  EmptyWhileBlock:
+    active: true
+
+# https://detekt.dev/docs/rules/exceptions
+exceptions:
+  active: true
+  ExceptionRaisedInUnexpectedLocation:
+    active: true
+    methodNames: [ 'equals', 'finalize', 'hashCode', 'toString' ]
+  NotImplementedDeclaration:
+    active: true
+  PrintStackTrace:
+    active: true
+  RethrowCaughtException:
+    active: true
+  SwallowedException:
+    active: true
+  ThrowingExceptionFromFinally:
+    active: true
+  ThrowingExceptionsWithoutMessageOrCause:
+    active: true
+  ThrowingNewInstanceOfSameException:
+    active: true
+  TooGenericExceptionCaught:
+    active: true
+  TooGenericExceptionThrown:
+    active: true
+
+# https://detekt.dev/docs/rules/formatting
+# https://pinterest.github.io/ktlint/latest/rules/standard/
+formatting:
+  active: true
+  autoCorrect: true
+  android: true
+  AnnotationOnSeparateLine:
+    active: true
+    autoCorrect: true
+    indentSize: 4
+  FinalNewline:
+    active: false
+    autoCorrect: true
+
+# https://detekt.dev/docs/rules/naming
+naming:
+  active: true
+  BooleanPropertyNaming:
+    active: true
+  ClassNaming:
+    active: true
+  ConstructorParameterNaming:
+    active: true
+  EnumNaming:
+    active: true
+  FunctionMaxLength:
+    active: true
+    maximumFunctionNameLength: 30
+  FunctionNaming:
+    active: true
+    ignoreAnnotated: [ 'Composable' ]
+  FunctionParameterNaming:
+    active: true
+  MatchingDeclarationName:
+    active: true
+    multiplatformTargets: [ 'android', 'desktop' ] # temp
+  NoNameShadowing:
+    active: true
+  NonBooleanPropertyPrefixedWithIs:
+    active: true
+  ObjectPropertyNaming:
+    active: true
+    constantPattern: '[A-Z][A-Za-z0-9]*'
+  TopLevelPropertyNaming:
+    active: true
+    constantPattern: '[A-Z][A-Za-z0-9]*'
+  VariableNaming:
+    active: true
+    variablePattern: '(_)?[a-z][A-Za-z0-9]*'
+
+# https://detekt.dev/docs/rules/performance
+performance:
+  active: true
+  ArrayPrimitive:
+    active: true
+  CouldBeSequence:
+    active: true
+  ForEachOnRange:
+    active: true
+  SpreadOperator:
+    active: true
+  UnnecessaryPartOfBinaryExpression:
+    active: true
+  UnnecessaryTemporaryInstantiation:
+    active: true
+
+# https://detekt.dev/docs/rules/potential-bugs
+potential-bugs:
+  active: true
+  CastNullableToNonNullableType:
+    active: true
+  CastToNullableType:
+    active: true
+  Deprecation:
+    active: true
+  EqualsAlwaysReturnsTrueOrFalse:
+    active: true
+  EqualsWithHashCodeExist:
+    active: true
+  InvalidRange:
+    active: true
+
+# https://detekt.dev/docs/rules/style
+style:
+  active: true
+  AlsoCouldBeApply:
+    active: true
+  CanBeNonNullable:
+    active: true
+  CascadingCallWrapping:
+    active: true
+  ClassOrdering:
+    active: true
+  DataClassShouldBeImmutable:
+    active: true
+  DoubleNegativeLambda:
+    active: true
+  EqualsOnSignatureLine:
+    active: true
+  MaxLineLength:
+    active: true
+    excludeCommentStatements: true
+    maxLineLength: 140
+  ModifierOrder:
+    active: true
+  MultilineLambdaItParameter:
+    active: true
+  MultilineRawStringIndentation:
+    active: true
+  NewLineAtEndOfFile:
+    active: false
+  NoTabs:
+    active: true
+  NullableBooleanCheck:
+    active: true
+  PreferToOverPairSyntax:
+    active: true
+  RedundantExplicitType:
+    active: true
+  UnusedPrivateMember:
+    active: true
+    ignoreAnnotated: [ 'Preview' ]

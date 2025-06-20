@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import kotlinx.coroutines.delay
 
 @Composable
+@Suppress("ModifierMissing")
 fun AlertHost(
     content: @Composable (AlertController) -> Unit
 ) {
@@ -44,7 +45,7 @@ fun AlertHost(
             onClick = currentAlert?.onClick,
             key = id,
             offset = controller.currentOffset,
-            onDismissed = {
+            onDismiss = {
                 controller.processQueue()
             }
         )

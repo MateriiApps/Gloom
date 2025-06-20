@@ -51,13 +51,15 @@ class AppearanceSettingsScreen: Screen {
                             label = stringResource(Res.strings.appearance_monet),
                             secondaryLabel = stringResource(Res.strings.appearance_monet_description),
                             pref = viewModel.prefs.monet,
+                            onPrefChange = { viewModel.prefs.monet = it },
                             enabled = dev.materii.gloom.util.supportsMonet
-                        ) { viewModel.prefs.monet = it }
+                        )
                     }
 
                     SettingsItemChoice(
                         label = stringResource(Res.strings.appearance_theme),
                         pref = viewModel.prefs.theme,
+                        onPrefChange = { viewModel.prefs.theme = it },
                         labelFactory = {
                             when (it) {
                                 Theme.SYSTEM -> getString(Res.strings.theme_system)
@@ -65,7 +67,7 @@ class AppearanceSettingsScreen: Screen {
                                 Theme.DARK   -> getString(Res.strings.theme_dark)
                             }
                         }
-                    ) { viewModel.prefs.theme = it }
+                    )
                 }
 
                 SettingsHeader(stringResource(Res.strings.appearance_av_shape))

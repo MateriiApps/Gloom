@@ -13,6 +13,8 @@ import dev.materii.gloom.ui.icon.custom.DraftPullRequest
 import dev.materii.gloom.ui.icon.custom.MergedPullRequest
 import dev.materii.gloom.ui.icon.custom.OpenPullRequest
 import dev.materii.gloom.ui.theme.gloomColorScheme
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun PullRequestItem(
@@ -52,11 +54,21 @@ fun PullRequestItem(
         number = pullRequest.number,
         title = if (pullRequest.title == "\u200E") stringResource(Res.strings.msg_issue_untitled) else pullRequest.title,
         authorUsername = pullRequest.author?.login,
-        labels = pullRequest.labels?.nodes?.filterNotNull()?.map { it.name to it.color }
-            ?: emptyList(),
+        labels = pullRequest
+            .labels
+            ?.nodes
+            ?.filterNotNull()
+            ?.map { it.name to it.color }
+            ?.toImmutableList()
+            ?: persistentListOf(),
         totalAssigned = pullRequest.assignees.totalCount,
-        assignedUsers = pullRequest.assignees.nodes?.filterNotNull()
-            ?.map { it.login to it.avatarUrl } ?: emptyList(),
+        assignedUsers = pullRequest
+            .assignees
+            .nodes
+            ?.filterNotNull()
+            ?.map { it.login to it.avatarUrl }
+            ?.toImmutableList()
+            ?: persistentListOf(),
         totalComments = pullRequest.comments.totalCount,
         checksStatus = pullRequest.commits.nodes?.firstOrNull()?.commit?.statusCheckRollup?.state,
         reviewDecision = pullRequest.reviewDecision

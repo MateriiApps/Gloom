@@ -32,8 +32,8 @@ fun AccountItem(
     account: Account,
     isCurrent: Boolean,
     onClick: () -> Unit,
-    signOutButton: @Composable () -> Unit = {},
     modifier: Modifier = Modifier,
+    signOutButton: @Composable () -> Unit = {},
     isEditMode: Boolean = false
 ) {
     Row(

@@ -26,13 +26,14 @@ import dev.materii.gloom.util.ifNullOrBlank
 
 @Composable
 fun ReleaseHeader(
-    details: ReleaseDetails
+    details: ReleaseDetails,
+    modifier: Modifier = Modifier
 ) {
     val nav = LocalNavigator.currentOrThrow
 
     Column(
         verticalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = Modifier
+        modifier = modifier
             .padding(start = 16.dp, end = 16.dp, top = 16.dp)
     ) {
         Row(
@@ -44,7 +45,6 @@ fun ReleaseHeader(
         ) {
             Avatar(
                 url = details.repository.owner.avatarUrl,
-                contentDescription = null,
                 type = User.Type.fromTypeName(details.repository.owner.__typename),
                 modifier = Modifier.size(22.dp)
             )

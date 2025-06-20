@@ -5,7 +5,7 @@ import dev.materii.gloom.domain.manager.PreferenceManager
 import dev.materii.gloom.domain.manager.enums.AppIcon
 import dev.materii.gloom.ui.util.AppIconUtil
 
-class AppIconsSettingsViewModel(
+class AppIconSettingsViewModel(
     val preferenceManager: PreferenceManager
 ): ScreenModel {
 

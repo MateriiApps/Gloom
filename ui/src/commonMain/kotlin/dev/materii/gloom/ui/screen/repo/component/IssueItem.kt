@@ -11,6 +11,8 @@ import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.IssueOverview
 import dev.materii.gloom.gql.type.IssueStateReason
 import dev.materii.gloom.ui.theme.gloomColorScheme
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun IssueItem(issue: IssueOverview) {
@@ -42,10 +44,21 @@ fun IssueItem(issue: IssueOverview) {
         number = issue.number,
         title = if (issue.title == "\u200E") stringResource(Res.strings.msg_issue_untitled) else issue.title,
         authorUsername = issue.author?.login,
-        labels = issue.labels?.nodes?.filterNotNull()?.map { it.name to it.color } ?: emptyList(),
+        totalComments = issue.comments.totalCount,
         totalAssigned = issue.assignees.totalCount,
-        assignedUsers = issue.assignees.nodes?.filterNotNull()?.map { it.login to it.avatarUrl }
-            ?: emptyList(),
-        totalComments = issue.comments.totalCount
+        labels = issue
+            .labels
+            ?.nodes
+            ?.filterNotNull()
+            ?.map { it.name to it.color }
+            ?.toImmutableList()
+            ?: persistentListOf(),
+        assignedUsers = issue
+            .assignees
+            .nodes
+            ?.filterNotNull()
+            ?.map { it.login to it.avatarUrl }
+            ?.toImmutableList()
+            ?: persistentListOf()
     )
 }

@@ -19,7 +19,7 @@ import dev.materii.gloom.api.dto.user.User
 import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.screen.repo.RepoScreen
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 
 /**
  * Displays the repository and username separated by a slash
@@ -35,9 +35,9 @@ fun Breadcrumb(
     Breadcrumb(
         repoName = repoName,
         username = username,
-        modifier = modifier,
         avatarUrl = avatarUrl,
-        userType = User.Type.fromTypeName(userTypeName)
+        userType = User.Type.fromTypeName(userTypeName),
+        modifier = modifier
     )
 }
 
@@ -55,9 +55,9 @@ fun Breadcrumb(
     val nav = LocalNavigator.currentOrThrow
 
     Row(
-        modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(10.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
     ) {
         if (avatarUrl != null) {
             Avatar(

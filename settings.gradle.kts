@@ -13,3 +13,5 @@ include(":app:desktop")
 include(":api")
 include(":shared")
 include(":ui")
+
+include(":lint:rules")

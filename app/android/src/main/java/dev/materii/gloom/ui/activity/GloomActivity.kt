@@ -20,6 +20,7 @@ import dev.materii.gloom.ui.screen.root.RootScreen
 import dev.materii.gloom.ui.util.toPx
 import dev.materii.gloom.util.LinkHandler
 import dev.materii.gloom.util.deeplink.DeepLinkHandler
+import kotlinx.collections.immutable.toImmutableList
 import org.koin.android.ext.android.inject
 
 open class GloomActivity: ComponentActivity() {
@@ -52,7 +53,7 @@ open class GloomActivity: ComponentActivity() {
             val navBarOffset = -((80 + 24).dp.toPx()) // Roughly the height of a navbar
 
             App(
-                screens = screens,
+                screens = screens.toImmutableList(),
                 linkHandler = LinkHandler(LocalContext.current),
                 onScreenChange = { screen, alertController ->
                     // Displace bottom alerts when a navbar is present, only temporary

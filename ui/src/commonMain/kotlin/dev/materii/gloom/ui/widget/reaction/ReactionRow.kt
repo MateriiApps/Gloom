@@ -20,10 +20,11 @@ import androidx.compose.ui.unit.dp
 import dev.materii.gloom.api.REACTION_EMOJIS
 import dev.materii.gloom.gql.fragment.Reaction
 import dev.materii.gloom.gql.type.ReactionContent
+import kotlinx.collections.immutable.ImmutableList
 
 @Composable
 fun ReactionRow(
-    reactions: List<Reaction>,
+    reactions: ImmutableList<Reaction>,
     onReactionClick: (reaction: ReactionContent, unreact: Boolean) -> Unit,
     modifier: Modifier = Modifier,
     forRelease: Boolean = false

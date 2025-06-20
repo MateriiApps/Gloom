@@ -56,113 +56,119 @@ fun AvatarShapeSetting(
     val _currentShape = getShapeForPref(currentShape, cornerRadius)
     var isChoosing by remember { mutableStateOf(false) }
 
-    SettingsItem(
-        text = text,
-        onClick = { isChoosing = !isChoosing },
+    Column(
+        verticalArrangement = Arrangement.spacedBy(4.dp),
         modifier = modifier
     ) {
-        SelectableShape(
-            shape = _currentShape,
-            selected = false,
-            onSelected = { isChoosing = !isChoosing },
-            modifier = Modifier
-                .size(40.dp)
-                .contentDescription(getShapeLabel(currentShape))
-        )
-
-        IconButton(onClick = { isChoosing = !isChoosing }) {
-            Icon(
-                imageVector = if (!isChoosing) Icons.Outlined.KeyboardArrowDown else Icons.Outlined.KeyboardArrowUp,
-                contentDescription = stringResource(if (isChoosing) Res.strings.action_expand_av_shape else Res.strings.action_collapse_av_shape)
-            )
-        }
-    }
-
-    AnimatedVisibility(
-        visible = isChoosing,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(bottom = 10.dp)
-                .clip(RoundedCornerShape(10.dp, 10.dp, 24.dp, 24.dp))
-                .background(MaterialTheme.colorScheme.surfaceContainerLow)
-                .padding(vertical = 16.dp)
+        SettingsItem(
+            text = text,
+            onClick = { isChoosing = !isChoosing }
         ) {
-            LazyRow(
-                horizontalArrangement = Arrangement.spacedBy(24.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp),
+            SelectableShape(
+                shape = _currentShape,
+                selected = false,
+                onSelect = { isChoosing = !isChoosing },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .selectableGroup()
-            ) {
-                items(AvatarShape.entries) { shapePref ->
-                    val shape = remember(cornerRadius) { getShapeForPref(shapePref, cornerRadius) }
+                    .size(40.dp)
+                    .contentDescription(getShapeLabel(currentShape))
+            )
 
-                    SelectableShape(
-                        shape = shape,
-                        selected = currentShape == shapePref,
-                        onSelected = {
-                            onShapeUpdate(shapePref)
-                        },
-                        modifier = Modifier
-                            .size(55.dp)
-                            .contentDescription(stringResource(getShapeLabel(shapePref)))
+            IconButton(onClick = { isChoosing = !isChoosing }) {
+                Icon(
+                    imageVector = if (!isChoosing) Icons.Outlined.KeyboardArrowDown else Icons.Outlined.KeyboardArrowUp,
+                    contentDescription = stringResource(
+                        if (isChoosing) Res.strings.action_expand_av_shape else Res.strings.action_collapse_av_shape
                     )
-                }
+                )
             }
+        }
 
-            AnimatedVisibility(
-                visible = currentShape == AvatarShape.RoundedCorner,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+        AnimatedVisibility(
+            visible = isChoosing,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(bottom = 10.dp)
+                    .clip(RoundedCornerShape(10.dp, 10.dp, 24.dp, 24.dp))
+                    .background(MaterialTheme.colorScheme.surfaceContainerLow)
+                    .padding(vertical = 16.dp)
             ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(0.dp),
-                    modifier = Modifier.padding(top = 16.dp)
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(24.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .selectableGroup()
                 ) {
-                    val sliderInteractionSource = remember { MutableInteractionSource() }
+                    items(AvatarShape.entries) { shapePref ->
+                        val shape = remember(cornerRadius) { getShapeForPref(shapePref, cornerRadius) }
 
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = stringResource(Res.strings.appearance_av_radius),
-                            style = MaterialTheme.typography.labelMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.weight(1f)
-                        )
-
-                        Text(
-                            text = DecimalFormat("#%").format(cornerRadius / 100f),
-                            color = MaterialTheme.colorScheme.primary,
-                            style = MaterialTheme.typography.labelMedium
+                        SelectableShape(
+                            shape = shape,
+                            selected = currentShape == shapePref,
+                            onSelect = {
+                                onShapeUpdate(shapePref)
+                            },
+                            modifier = Modifier
+                                .size(55.dp)
+                                .contentDescription(stringResource(getShapeLabel(shapePref)))
                         )
                     }
+                }
 
-                    Slider(
-                        value = cornerRadius.toFloat(),
-                        onValueChange = { onCornerRadiusUpdate(it.roundToInt()) },
-                        valueRange = 0f..50f,
-                        interactionSource = sliderInteractionSource,
-                        thumb = {
-                            Label(
-                                label = {
-                                    PlainTooltip {
-                                        Text(
-                                            text = DecimalFormat("#%").format(cornerRadius / 100f)
-                                        )
-                                    }
-                                },
-                                interactionSource = sliderInteractionSource
-                            ) {
-                                SliderDefaults.Thumb(
-                                    interactionSource = sliderInteractionSource,
-                                    thumbSize = DpSize(width = 4.dp, height = 32.dp)
-                                )
-                            }
+                AnimatedVisibility(
+                    visible = currentShape == AvatarShape.RoundedCorner,
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(0.dp),
+                        modifier = Modifier.padding(top = 16.dp)
+                    ) {
+                        val sliderInteractionSource = remember { MutableInteractionSource() }
+
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(Res.strings.appearance_av_radius),
+                                style = MaterialTheme.typography.labelMedium,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.weight(1f)
+                            )
+
+                            Text(
+                                text = DecimalFormat("#%").format(cornerRadius / 100f),
+                                color = MaterialTheme.colorScheme.primary,
+                                style = MaterialTheme.typography.labelMedium
+                            )
                         }
-                    )
+
+                        Slider(
+                            value = cornerRadius.toFloat(),
+                            onValueChange = { onCornerRadiusUpdate(it.roundToInt()) },
+                            valueRange = 0f..50f,
+                            interactionSource = sliderInteractionSource,
+                            thumb = {
+                                Label(
+                                    label = {
+                                        PlainTooltip {
+                                            Text(
+                                                text = DecimalFormat("#%").format(cornerRadius / 100f)
+                                            )
+                                        }
+                                    },
+                                    interactionSource = sliderInteractionSource
+                                ) {
+                                    SliderDefaults.Thumb(
+                                        interactionSource = sliderInteractionSource,
+                                        thumbSize = DpSize(width = 4.dp, height = 32.dp)
+                                    )
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -173,7 +179,7 @@ fun AvatarShapeSetting(
 private fun SelectableShape(
     shape: Shape,
     selected: Boolean,
-    onSelected: () -> Unit,
+    onSelect: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -186,7 +192,7 @@ private fun SelectableShape(
                 selected = selected,
                 role = Role.RadioButton,
                 onClick = {
-                    onSelected()
+                    onSelect()
                 }
             )
     ) {

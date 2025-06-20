@@ -12,21 +12,25 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
+@Suppress("LambdaParameterEventTrailing")
 inline fun <reified E: Enum<E>> EnumRadioController(
     default: E,
+    modifier: Modifier = Modifier,
     labelFactory: (E) -> String = { it.toString() },
-    crossinline onChoiceSelected: (E) -> Unit
+    crossinline onChoiceSelect: (E) -> Unit
 ) {
     var choice by remember { mutableStateOf(default) }
 
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         enumValues<E>().forEach {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
                         choice = it
-                        onChoiceSelected(it)
+                        onChoiceSelect(it)
                     },
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -36,7 +40,7 @@ inline fun <reified E: Enum<E>> EnumRadioController(
                     selected = it == choice,
                     onClick = {
                         choice = it
-                        onChoiceSelected(it)
+                        onChoiceSelect(it)
                     })
             }
         }

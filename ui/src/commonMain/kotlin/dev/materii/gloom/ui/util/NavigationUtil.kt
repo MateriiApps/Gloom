@@ -11,30 +11,33 @@ import dev.materii.gloom.ui.screen.notifications.NotificationsScreen
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.screen.profile.ProfileTab
 
-@Suppress("unused")
+object NavigationUtil {
+
+    fun Navigator.navigate(screen: Screen) {
+        if (items.any { it.key == screen.key }) return
+        if (parent == null) {
+            return push(screen)
+        } else {
+            parent!!.navigate(screen)
+        }
+    }
+
+    @OptIn(InternalVoyagerApi::class)
+    fun clearRootNavigation() {
+        ScreenModelStore.onDisposeNavigator(HomeScreen().key)
+        ScreenModelStore.onDisposeNavigator(ExploreScreen().key)
+        ScreenModelStore.onDisposeNavigator(NotificationsScreen().key)
+        ScreenModelStore.onDisposeNavigator(ProfileScreen().key)
+        ScreenModelStore.onDisposeNavigator(ProfileTab().key)
+    }
+
+}
+
 enum class RootTab(val tab: Tab) {
 
     HOME(HomeScreen()),
     EXPLORE(ExploreScreen()),
     NOTIFICATIONS(NotificationsScreen()),
     PROFILE(ProfileTab())
-    
-}
 
-fun Navigator.navigate(screen: Screen) {
-    if (items.any { it.key == screen.key }) return
-    if (parent == null) {
-        return push(screen)
-    } else {
-        parent!!.navigate(screen)
-    }
-}
-
-@OptIn(InternalVoyagerApi::class)
-fun clearRootNavigation() {
-    ScreenModelStore.onDisposeNavigator(HomeScreen().key)
-    ScreenModelStore.onDisposeNavigator(ExploreScreen().key)
-    ScreenModelStore.onDisposeNavigator(NotificationsScreen().key)
-    ScreenModelStore.onDisposeNavigator(ProfileScreen().key)
-    ScreenModelStore.onDisposeNavigator(ProfileTab().key)
 }

@@ -44,7 +44,7 @@ fun ScrollBar(
     }
 
     var opacity by remember(idleOpacity) {
-        mutableStateOf(idleOpacity)
+        mutableFloatStateOf(idleOpacity)
     }
 
     // Use a smooth transition for opacity changes

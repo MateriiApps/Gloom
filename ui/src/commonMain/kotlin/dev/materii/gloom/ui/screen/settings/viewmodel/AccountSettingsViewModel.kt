@@ -9,7 +9,7 @@ import dev.materii.gloom.api.repository.GithubAuthRepository
 import dev.materii.gloom.api.repository.GraphQLRepository
 import dev.materii.gloom.api.util.ifSuccessful
 import dev.materii.gloom.domain.manager.AuthManager
-import dev.materii.gloom.ui.util.clearRootNavigation
+import dev.materii.gloom.ui.util.NavigationUtil
 import kotlinx.coroutines.launch
 
 class AccountSettingsViewModel(
@@ -58,7 +58,7 @@ class AccountSettingsViewModel(
                 wasCurrent = authManager.currentAccount?.id == id
                 authManager.removeAccount(account.id)
                 authManager.clearApolloCache()
-                clearRootNavigation()
+                NavigationUtil.clearRootNavigation()
                 signedOut = true
             }
         }
@@ -84,7 +84,7 @@ class AccountSettingsViewModel(
 
     fun switchToAccount(id: String) {
         authManager.switchToAccount(id)
-        clearRootNavigation()
+        NavigationUtil.clearRootNavigation()
     }
 
     fun signOutAll() {

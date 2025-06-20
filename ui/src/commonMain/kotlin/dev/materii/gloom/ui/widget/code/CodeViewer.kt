@@ -42,7 +42,7 @@ fun CodeViewer(
     extension: String,
     modifier: Modifier = Modifier,
     linesSelected: IntRange? = null,
-    onLinesSelected: ((lineNumbers: IntRange?, snippet: String) -> Unit)? = null,
+    onSelectLines: ((lineNumbers: IntRange?, snippet: String) -> Unit)? = null,
     onDoubleClick: (() -> Unit)? = null,
     verticalScrollState: LazyListState = rememberLazyListState(),
     horizontalScrollState: ScrollState = rememberScrollState(),
@@ -83,14 +83,14 @@ fun CodeViewer(
     ) {
         LazyColumn(
             state = verticalScrollState,
-            contentPadding = PaddingValues(bottom = if (canScroll) DimenUtils.navBarPadding else 0.dp),
+            contentPadding = PaddingValues(bottom = if (canScroll) DimenUtil.navBarPadding else 0.dp),
             modifier = Modifier
                 .fillMaxSize()
                 .then(modifier)
-                .thenIf(onLinesSelected != null) {
+                .thenIf(onSelectLines != null) {
                     pointerInput(
                         verticalScrollState,
-                        onLinesSelected,
+                        onSelectLines,
                         linesSelected
                     ) {
                         detectTapGestures(
@@ -100,7 +100,7 @@ fun CodeViewer(
                                     val itemPressed = verticalScrollState.getItemAtOffset(offset)
                                     val lineNumber = itemPressed?.index?.plus(1)
                                     lineNumber?.let {
-                                        onLinesSelected!!(
+                                        onSelectLines!!(
                                             lineNumber..lineNumber,
                                             lines[lineNumber - 1].trimIndent()
                                         )
@@ -121,7 +121,7 @@ fun CodeViewer(
                                             else                              -> linesSelected
                                         }
 
-                                        onLinesSelected!!(
+                                        onSelectLines!!(
                                             if (newRange.isEmpty()) null else newRange,
                                             lines
                                                 .subList(newRange.first - 1, newRange.last)
@@ -136,7 +136,7 @@ fun CodeViewer(
                             },
                             onPress = { offset ->
                                 // Check if any press related listeners are present
-                                if (onLinesSelected != null && onDoubleClick != null) {
+                                if (onSelectLines != null && onDoubleClick != null) {
                                     verticalScrollState
                                         .getItemAtOffset(offset)
                                         ?.let { itemPressed ->
@@ -144,7 +144,7 @@ fun CodeViewer(
                                             interactionMap[itemPressed.index]?.let { interactionSource ->
                                                 val press = PressInteraction.Press(
                                                     Offset(
-                                                        x = offset.x, // Since both the lazy column and line are the same width we don't have to change this
+                                                        x = offset.x, // Doesn't have to be changed
                                                         y = itemPressed.size / 2f // Center the interaction
                                                     )
                                                 )
@@ -184,7 +184,7 @@ fun CodeViewer(
                     modifier = Modifier
                         .background(theme.background)
                         .indication(interactionSource, rememberRipple())
-                        .thenIf(onLinesSelected != null) {
+                        .thenIf(onSelectLines != null) {
                             semantics {
                                 role = Role.Checkbox
                                 if (linesSelected != null) {
@@ -248,7 +248,7 @@ fun CodeViewer(
             orientation = Orientation.Horizontal,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = if (canScroll) DimenUtils.navBarPadding else 0.dp)
+                .padding(bottom = if (canScroll) DimenUtil.navBarPadding else 0.dp)
         )
     }
 }

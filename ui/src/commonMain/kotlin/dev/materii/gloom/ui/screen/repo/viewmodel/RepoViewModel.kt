@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class RepoViewModel(
     private val gql: GraphQLRepository,
-    private val nameWithOwner: Pair<String, String>
+    nameWithOwner: Pair<String, String>
 ): ScreenModel {
 
     val owner = nameWithOwner.first

@@ -22,17 +22,18 @@ import dev.materii.gloom.Res
 import dev.materii.gloom.api.model.ModelUser
 import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 
 @Composable
 fun UserItem(
     user: ModelUser,
+    modifier: Modifier = Modifier,
     card: Boolean = false
 ) {
     val nav = LocalNavigator.current
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier
+        modifier = modifier
             .run {
                 if (card) clip(RoundedCornerShape(16.dp)) else this
             }

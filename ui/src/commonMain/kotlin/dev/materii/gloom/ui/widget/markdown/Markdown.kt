@@ -41,7 +41,7 @@ private val PrefersDarkRx = "prefers-color-scheme:\\s*dark".toRegex(RegexOption.
 @Composable
 fun Markdown(
     html: String,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     val linkHandler = LocalLinkHandler.current
 

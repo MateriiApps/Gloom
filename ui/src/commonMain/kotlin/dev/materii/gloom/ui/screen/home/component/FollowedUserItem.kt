@@ -17,15 +17,16 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.FollowedUserFeedItemFragment
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.util.annotatingStringResource
-import dev.materii.gloom.ui.util.navigate
 
 @Composable
 fun FollowedUserItem(
     item: FollowedUserFeedItemFragment,
+    modifier: Modifier = Modifier,
     followData: Pair<Boolean, Int>? = null,
-    onFollowPressed: (String) -> Unit = {},
-    onUnfollowPressed: (String) -> Unit = {},
+    onFollowClick: (String) -> Unit = {},
+    onUnfollowClick: (String) -> Unit = {},
 ) {
     val navigator = LocalNavigator.currentOrThrow
     val actor = item.follower
@@ -43,7 +44,7 @@ fun FollowedUserItem(
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
@@ -60,8 +61,8 @@ fun FollowedUserItem(
         FeedUserCard(
             user.feedUser to user.feedOrg,
             followData = followData,
-            onFollowPressed = { onFollowPressed(userId) },
-            onUnfollowPressed = { onUnfollowPressed(userId) }
+            onFollowClick = { onFollowClick(userId) },
+            onUnfollowClick = { onUnfollowClick(userId) }
         )
     }
 }

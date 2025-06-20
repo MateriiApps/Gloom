@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
-import dev.materii.gloom.ui.util.DimenUtils.multiply
+import dev.materii.gloom.ui.util.DimenUtil.multiply
 import dev.materii.gloom.ui.widget.code.CodeViewer
 
 @Composable
@@ -29,8 +29,9 @@ fun TextFileViewer(
     content: String,
     extension: String,
     linesSelected: IntRange?,
-    onHideToggled: () -> Unit,
-    onLinesSelected: (lineNumbers: IntRange?, snippet: String) -> Unit
+    onHideToggle: () -> Unit,
+    onSelectLines: (lineNumbers: IntRange?, snippet: String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val lazyListState = rememberLazyListState()
     val scrollState = rememberScrollState()
@@ -42,7 +43,7 @@ fun TextFileViewer(
     var hideFAB by remember { mutableStateOf(false) }
 
     Box(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         CodeViewer(
             code = content,
@@ -50,12 +51,12 @@ fun TextFileViewer(
             fontSize = 13.sp * scale,
             codePadding = 16.dp * scale,
             lineNumberPadding = lineNumberPadding,
-            linesSelected = linesSelected,
-            onLinesSelected = onLinesSelected,
             onDoubleClick = { // Double tap to hide the ui
-                onHideToggled()
+                onHideToggle()
                 hideFAB = !hideFAB
             },
+            onSelectLines = onSelectLines,
+            linesSelected = linesSelected,
             modifier = Modifier
                 .pointerInput(Unit) {
                     // Pinch to zoom
@@ -67,7 +68,7 @@ fun TextFileViewer(
                         scrollState.dispatchRawDelta(-(pan.x.toDp().toPx()))
                         lazyListState.dispatchRawDelta(-(pan.y.toDp().toPx()))
                     }
-                }
+                },
         )
 
         AnimatedVisibility(

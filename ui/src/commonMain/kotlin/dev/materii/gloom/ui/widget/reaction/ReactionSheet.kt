@@ -20,6 +20,7 @@ import dev.materii.gloom.ui.component.bottomsheet.BottomSheet
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
+@Suppress("ModifierMissing")
 fun ReactionSheet(
     forRelease: Boolean,
     onReactionClick: (ReactionContent) -> Unit,

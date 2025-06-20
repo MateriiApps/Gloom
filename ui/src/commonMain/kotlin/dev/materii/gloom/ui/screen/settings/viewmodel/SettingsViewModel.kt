@@ -8,7 +8,7 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import dev.materii.gloom.api.repository.GithubAuthRepository
 import dev.materii.gloom.api.util.ifSuccessful
 import dev.materii.gloom.domain.manager.AuthManager
-import dev.materii.gloom.ui.util.clearRootNavigation
+import dev.materii.gloom.ui.util.NavigationUtil
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
@@ -36,7 +36,7 @@ class SettingsViewModel(
             repo.deleteAccessToken(token).ifSuccessful { ->
                 auth.removeAccount(auth.currentAccount!!.id)
                 auth.clearApolloCache()
-                clearRootNavigation()
+                NavigationUtil.clearRootNavigation()
                 signedOut = true
             }
         }

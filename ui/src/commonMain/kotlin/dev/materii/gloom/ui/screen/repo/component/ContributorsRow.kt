@@ -22,7 +22,7 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.RepoDetails
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 
 @Composable
 fun ContributorsRow(

@@ -23,13 +23,14 @@ fun RowScope.LargeSegmentedButton(
     icon: Any,
     text: String,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
     iconDescription: String? = null,
     enabled: Boolean = true
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
-        modifier = Modifier
+        modifier = modifier
             .clickable(enabled = enabled, role = Role.Button) { onClick() }
             .background(MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp))
             .weight(1f)

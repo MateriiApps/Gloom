@@ -21,17 +21,17 @@ import dev.materii.gloom.gql.fragment.FeedUser
 import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.component.LabeledIcon
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.util.NumberFormatter
 import dev.materii.gloom.util.pluralStringResource
 
 @Composable
-@Suppress("LocalVariableName")
 fun FeedUserCard(
     user: Pair<FeedUser?, FeedOrg?>,
+    modifier: Modifier = Modifier,
     followData: Pair<Boolean, Int>? = null,
-    onFollowPressed: () -> Unit = {},
-    onUnfollowPressed: () -> Unit = {},
+    onFollowClick: () -> Unit = {},
+    onUnfollowClick: () -> Unit = {},
 ) {
     val (_user, org) = user
     val viewerIsFollowing = followData?.first ?: _user?.viewerIsFollowing
@@ -46,8 +46,7 @@ fun FeedUserCard(
     val followers = followData?.second ?: _user?.followers?.totalCount
 
     ElevatedCard(
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -130,7 +129,7 @@ fun FeedUserCard(
 
             if (_user?.isViewer != true) FilledTonalButton(
                 onClick = {
-                    if (viewerIsFollowing != true) onFollowPressed() else onUnfollowPressed()
+                    if (viewerIsFollowing != true) onFollowClick() else onUnfollowClick()
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {

@@ -16,20 +16,21 @@ import dev.materii.gloom.ui.component.ErrorMessage
 import dev.materii.gloom.ui.widget.markdown.Markdown
 
 @Composable
+@Suppress("ModifierMissing")
 fun MarkdownFileViewer(
     markdownFile: RepoFile.OnMarkdownFileType,
     rawFile: RawMarkdownFile? = null,
     showRaw: Boolean = false,
     rawHasError: Boolean = false,
     linesSelected: IntRange? = null,
-    onHideToggled: () -> Unit = {},
-    onLinesSelected: (lineNumbers: IntRange?, snippet: String) -> Unit = { _, _ -> }
+    onHideToggle: () -> Unit = {},
+    onSelectLines: (lineNumbers: IntRange?, snippet: String) -> Unit = { _, _ -> }
 ) {
     when {
         showRaw -> {
             if (rawHasError) {
                 ErrorMessage(
-                    message = stringResource(Res.strings.msg_raw_markdown_fail)
+                    message = stringResource(Res.strings.msg_raw_markdown_fail),
                 )
             } else {
                 rawFile?.contentRaw?.let { raw ->
@@ -37,8 +38,8 @@ fun MarkdownFileViewer(
                         content = raw,
                         extension = "md",
                         linesSelected = linesSelected,
-                        onHideToggled = onHideToggled,
-                        onLinesSelected = onLinesSelected
+                        onHideToggle = onHideToggle,
+                        onSelectLines = onSelectLines
                     )
                 }
             }

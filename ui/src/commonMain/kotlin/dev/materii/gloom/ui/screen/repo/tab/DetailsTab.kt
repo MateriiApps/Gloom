@@ -40,7 +40,7 @@ import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.screen.repo.component.ContributorsRow
 import dev.materii.gloom.ui.screen.repo.component.LanguageMakeup
 import dev.materii.gloom.ui.screen.repo.viewmodel.RepoDetailsViewModel
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.widget.markdown.Markdown
 import dev.materii.gloom.util.NumberFormatter
 import dev.materii.gloom.util.pluralStringResource

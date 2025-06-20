@@ -28,13 +28,14 @@ import dev.materii.gloom.util.ifNullOrBlank
 fun ReleaseItem(
     repoOwner: String,
     repoName: String,
-    release: ReleaseItem
+    release: ReleaseItem,
+    modifier: Modifier = Modifier
 ) {
     val nav = LocalNavigator.currentOrThrow
 
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier
+        modifier = modifier
             .clickable { nav.push(ReleaseScreen(repoOwner, repoName, release.tagName)) }
             .padding(16.dp)
             .fillMaxWidth()

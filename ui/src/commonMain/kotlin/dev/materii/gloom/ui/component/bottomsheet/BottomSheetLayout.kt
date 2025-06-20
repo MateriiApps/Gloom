@@ -11,13 +11,14 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun BottomSheetScope.BottomSheetLayout(
     title: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
     padding: PaddingValues = PaddingValues(16.dp),
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier.padding(padding)
+        modifier = modifier.padding(padding)
     ) {
         ProvideTextStyle(
             MaterialTheme.typography.headlineMedium

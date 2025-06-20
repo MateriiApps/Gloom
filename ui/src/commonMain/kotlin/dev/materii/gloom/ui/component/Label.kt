@@ -25,9 +25,9 @@ import dev.materii.gloom.gql.type.StatusState
 fun Label(
     status: StatusState,
     textColor: Color,
+    modifier: Modifier = Modifier,
     borderColor: Color = textColor,
-    fillColor: Color = Color.Transparent,
-    modifier: Modifier = Modifier
+    fillColor: Color = Color.Transparent
 ) {
     val (statusIcon, statusColor, statusLabelRes) = status.components()
 
@@ -44,13 +44,13 @@ fun Label(
 
 @Composable
 fun Label(
-    text: String? = null,
+    text: String,
+    modifier: Modifier = Modifier,
     icon: ImageVector? = null,
-    textColor: Color,
-    borderColor: Color = textColor,
-    fillColor: Color = Color.Transparent,
+    textColor: Color = Color.Unspecified,
     iconColor: Color = textColor,
-    modifier: Modifier = Modifier
+    borderColor: Color = textColor,
+    fillColor: Color = Color.Transparent
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -60,12 +60,7 @@ fun Label(
             .clip(CircleShape)
             .background(fillColor)
             .border(1.dp, borderColor, CircleShape)
-            .then(
-                if (text == null)
-                    Modifier.padding(5.dp)
-                else
-                    Modifier.padding(vertical = 5.dp, horizontal = 7.dp)
-            )
+            .padding(vertical = 5.dp, horizontal = 7.dp)
     ) {
         icon?.let {
             Icon(

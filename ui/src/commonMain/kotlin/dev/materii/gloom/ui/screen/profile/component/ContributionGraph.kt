@@ -26,6 +26,7 @@ import dev.materii.gloom.util.getPluralString
 @Composable
 fun ContributionGraph(
     calendar: Contributions.ContributionCalendar,
+    modifier: Modifier = Modifier,
     spacing: Dp = 5.dp
 ) {
     val alertController = LocalAlertController.current
@@ -34,7 +35,7 @@ fun ContributionGraph(
 
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 16.dp)
     ) {
         Text(

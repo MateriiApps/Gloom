@@ -23,10 +23,10 @@ fun CodeText(
     text: String,
     extension: String,
     theme: SyntaxTheme,
+    modifier: Modifier = Modifier,
     softWrap: Boolean = false,
     fontSize: TextUnit = 13.sp,
-    lineHeight: TextUnit = fontSize,
-    modifier: Modifier = Modifier
+    lineHeight: TextUnit = fontSize
 ) {
     val hl = remember(text, theme) {
         Highlights

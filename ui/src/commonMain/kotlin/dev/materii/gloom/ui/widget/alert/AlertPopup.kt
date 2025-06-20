@@ -25,15 +25,16 @@ import kotlin.math.roundToInt
 @Composable
 fun AlertPopup(
     visible: Boolean,
-    title: String?,
-    message: String?,
-    icon: ImageVector?,
-    iconContentDescription: String?,
+    onDismiss: () -> Unit,
+    offset: IntOffset,
+    modifier: Modifier = Modifier,
+    key: String? = null,
+    title: String? = null,
+    message: String? = null,
+    icon: ImageVector? = null,
+    iconContentDescription: String? = null,
     position: Alert.Position = Alert.Position.TOP,
-    onClick: (() -> Unit)?,
-    onDismissed: () -> Unit,
-    key: String?,
-    offset: IntOffset
+    onClick: (() -> Unit)? = null,
 ) {
     val coroutineScope = rememberCoroutineScope()
     val posRemembered = remember(key) { position }
@@ -45,12 +46,11 @@ fun AlertPopup(
     val expandedState = remember {
         MutableTransitionState(false)
     }
-    var y by remember(key) {
-        mutableStateOf(0f)
-    }
+    var y by remember(key) { mutableFloatStateOf(0f) }
     val draggableState = rememberDraggableState {
         y += it
     }
+
     val (enterAnimation, exitAnimation) = remember(key) {
         when (posRemembered) {
             Alert.Position.TOP -> slideInVertically(animSpring) { -it } to slideOutVertically(
@@ -83,7 +83,8 @@ fun AlertPopup(
             AnimatedVisibility(
                 visibleState = expandedState,
                 enter = enterAnimation,
-                exit = exitAnimation
+                exit = exitAnimation,
+                modifier = modifier
             ) {
                 Column(
                     modifier = Modifier
@@ -105,7 +106,7 @@ fun AlertPopup(
                                 onDragStopped = {
                                     if (it.absoluteValue >= 500) {
                                         animateYTo(if (it < 0) -2000f else 2000f) {
-                                            onDismissed()
+                                            onDismiss()
                                         }
                                     } else {
                                         animateYTo(0f)

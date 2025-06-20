@@ -59,8 +59,8 @@ class FileViewerScreen(
 
         Scaffold(
             topBar = { Toolbar(scrollBehavior, viewModel, file, topBarHidden) },
-            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-            contentWindowInsets = WindowInsets(0, 0, 0, 0)
+            contentWindowInsets = WindowInsets(0, 0, 0, 0),
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
         ) { pv ->
             PullToRefreshBox(
                 isRefreshing = viewModel.isLoading,
@@ -81,7 +81,7 @@ class FileViewerScreen(
                     false -> FileContent(
                         file = file,
                         viewModel = viewModel,
-                        onHideToggled = {
+                        onHideToggle = {
                             topBarHidden = !topBarHidden
                         }
                     )
@@ -94,7 +94,7 @@ class FileViewerScreen(
     private fun FileContent(
         file: RepoFile.File?,
         viewModel: FileViewerViewModel,
-        onHideToggled: () -> Unit
+        onHideToggle: () -> Unit
     ) {
         when (file?.fileType?.__typename) {
             "MarkdownFileType" -> {
@@ -104,25 +104,25 @@ class FileViewerScreen(
                     showRaw = viewModel.showRawMarkdown,
                     rawHasError = viewModel.rawMarkdownHasError,
                     linesSelected = viewModel.selectedLines,
-                    onHideToggled = onHideToggled,
-                    onLinesSelected = { lineNumbers, snippet ->
+                    onHideToggle = onHideToggle,
+                    onSelectLines = { lineNumbers, snippet ->
                         viewModel.selectedLines = lineNumbers
                         viewModel.selectedSnippet = snippet
                     }
                 )
             }
 
-            "ImageFileType"    -> ImageFileViewer(file.fileType?.onImageFileType!!)
-            "PdfFileType"      -> PdfFileViewer(file.fileType?.onPdfFileType!!)
+            "ImageFileType" -> ImageFileViewer(file.fileType?.onImageFileType!!)
+            "PdfFileType" -> PdfFileViewer(file.fileType?.onPdfFileType!!)
 
-            "TextFileType"     -> {
+            "TextFileType" -> {
                 file.fileType?.onTextFileType?.contentRaw?.let { content ->
                     TextFileViewer(
                         content = content,
                         extension = file.extension ?: "",
                         linesSelected = viewModel.selectedLines,
-                        onHideToggled = onHideToggled,
-                        onLinesSelected = { lineNumbers, snippet ->
+                        onHideToggle = onHideToggle,
+                        onSelectLines = { lineNumbers, snippet ->
                             viewModel.selectedLines = lineNumbers
                             viewModel.selectedSnippet = snippet
                         }
@@ -130,7 +130,7 @@ class FileViewerScreen(
                 }
             }
 
-            else               -> {}
+            else -> {}
         }
     }
 
@@ -202,7 +202,7 @@ class FileViewerScreen(
     ) {
         val text = when {
             viewModel.selectedLines == null -> path.split("/").lastOrNull() ?: "File"
-            else                            -> stringResource(
+            else -> stringResource(
                 Res.plurals.plural_lines_selected,
                 viewModel.selectedLines!!.count(),
                 viewModel.selectedLines!!.first,
@@ -218,7 +218,10 @@ class FileViewerScreen(
                     contentKey = { viewModel.selectedLines == null },
                     transitionSpec = {
                         val direction =
-                            if (viewModel.selectedLines == null) AnimatedContentTransitionScope.SlideDirection.Down else AnimatedContentTransitionScope.SlideDirection.Up
+                            if (viewModel.selectedLines == null)
+                                AnimatedContentTransitionScope.SlideDirection.Down
+                            else
+                                AnimatedContentTransitionScope.SlideDirection.Up
                         slideIntoContainer(direction) {
                             it * 2
                         } togetherWith slideOutOfContainer(direction) {
@@ -254,10 +257,14 @@ class FileViewerScreen(
             actions = { FileActions(viewModel, file) },
             scrollBehavior = scrollBehavior,
             colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = if (viewModel.selectedLines != null) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.surface,
-                scrolledContainerColor = if (viewModel.selectedLines != null) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.surfaceColorAtElevation(
-                    3.dp
-                ),
+                containerColor = if (viewModel.selectedLines != null)
+                    MaterialTheme.colorScheme.secondaryContainer
+                else
+                    MaterialTheme.colorScheme.surface,
+                scrolledContainerColor = if (viewModel.selectedLines != null)
+                    MaterialTheme.colorScheme.secondaryContainer
+                else
+                    MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
             ),
             modifier = Modifier
                 .animateContentSize()

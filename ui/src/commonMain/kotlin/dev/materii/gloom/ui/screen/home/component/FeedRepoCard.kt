@@ -22,7 +22,7 @@ import dev.materii.gloom.gql.fragment.FeedRepository
 import dev.materii.gloom.ui.component.LabeledIcon
 import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.theme.gloomColorScheme
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.util.parsedColor
 import dev.materii.gloom.util.NumberFormatter
 import dev.materii.gloom.util.pluralStringResource
@@ -30,9 +30,10 @@ import dev.materii.gloom.util.pluralStringResource
 @Composable
 fun FeedRepoCard(
     repo: FeedRepository,
+    modifier: Modifier = Modifier,
     starData: Pair<Boolean, Int>? = null,
-    onStarPressed: () -> Unit = {},
-    onUnstarPressed: () -> Unit = {},
+    onStarClick: () -> Unit = {},
+    onUnstarClick: () -> Unit = {},
 ) {
     val nav = LocalNavigator.currentOrThrow
     val viewerHasStarred = starData?.first ?: repo.viewerHasStarred
@@ -45,8 +46,7 @@ fun FeedRepoCard(
 
     ElevatedCard(
         onClick = { nav.navigate(RepoScreen(repo.owner.login, repo.name)) },
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         if (repo.openGraphImageUrl.startsWith("https://repository-images.githubusercontent.com")) {
             AsyncImage(
@@ -110,7 +110,7 @@ fun FeedRepoCard(
 
             FilledTonalButton(
                 onClick = {
-                    if (viewerHasStarred) onUnstarPressed() else onStarPressed()
+                    if (viewerHasStarred) onUnstarClick() else onStarClick()
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
