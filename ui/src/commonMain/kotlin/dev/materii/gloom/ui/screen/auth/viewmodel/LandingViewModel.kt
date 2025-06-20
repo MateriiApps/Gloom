@@ -4,7 +4,7 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import dev.materii.gloom.api.Credentials
 import dev.materii.gloom.api.URLs
 import dev.materii.gloom.domain.manager.AuthManager
-import dev.materii.gloom.ui.util.clearRootNavigation
+import dev.materii.gloom.ui.util.NavigationUtil
 import io.ktor.http.URLBuilder
 
 class LandingViewModel(
@@ -46,7 +46,7 @@ class LandingViewModel(
 
     fun switchToAccount(id: String) {
         authManager.switchToAccount(id)
-        clearRootNavigation()
+        NavigationUtil.clearRootNavigation()
     }
 
 }

@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SettingsCategoryIcon(
     imageVector: ImageVector,
+    modifier: Modifier = Modifier,
     tint: Color = MaterialTheme.colorScheme.onTertiaryContainer,
     background: Color = MaterialTheme.colorScheme.tertiaryContainer
 ) {
@@ -22,7 +23,7 @@ fun SettingsCategoryIcon(
         imageVector = imageVector,
         contentDescription = null,
         tint = tint,
-        modifier = Modifier
+        modifier = modifier
             .background(background, CircleShape)
             .padding(8.dp)
             .size(20.dp)

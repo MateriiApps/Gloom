@@ -30,6 +30,19 @@ data class CodeTheme(
     val mark: Color
 ) {
 
+    val syntaxTheme = SyntaxTheme(
+        key = hashCode().toString(),
+        code = code.toArgb(),
+        keyword = keyword.toArgb(),
+        string = string.toArgb(),
+        literal = literal.toArgb(),
+        comment = comment.toArgb(),
+        metadata = metadata.toArgb(),
+        multilineComment = multilineComment.toArgb(),
+        punctuation = punctuation.toArgb(),
+        mark = mark.toArgb()
+    )
+
     constructor(
         background: Color,
         linesBackground: Color,
@@ -50,19 +63,6 @@ data class CodeTheme(
         multilineComment = Color(syntaxTheme.multilineComment),
         punctuation = Color(syntaxTheme.punctuation),
         mark = Color(syntaxTheme.mark)
-    )
-
-    val syntaxTheme = SyntaxTheme(
-        key = hashCode().toString(),
-        code = code.toArgb(),
-        keyword = keyword.toArgb(),
-        string = string.toArgb(),
-        literal = literal.toArgb(),
-        comment = comment.toArgb(),
-        metadata = metadata.toArgb(),
-        multilineComment = multilineComment.toArgb(),
-        punctuation = punctuation.toArgb(),
-        mark = mark.toArgb()
     )
 
     companion object {

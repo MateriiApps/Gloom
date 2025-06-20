@@ -95,79 +95,85 @@ class HomeScreen: Tab {
                         val item = items[index]
                         item?.let { feedItem ->
                             when {
-                                feedItem.createdRepoItemFragment != null               -> {
-                                    val starData =
-                                        viewModel.starredRepos[feedItem.createdRepoItemFragment!!.repository.feedRepository.id]
+                                feedItem.createdRepoItemFragment != null -> {
+                                    val starredItem = feedItem.createdRepoItemFragment!!
+                                    val starData = viewModel.starredRepos[starredItem.repository.feedRepository.id]
+
                                     CreatedRepoItem(
-                                        item = feedItem.createdRepoItemFragment!!,
+                                        item = starredItem,
                                         starData = starData,
-                                        onStarPressed = viewModel::starRepo,
-                                        onUnstarPressed = viewModel::unstarRepo
+                                        onStarClick = viewModel::starRepo,
+                                        onUnstarClick = viewModel::unstarRepo
                                     )
                                 }
 
-                                feedItem.newReleaseItemFragment != null                -> NewReleaseItem(item = feedItem.newReleaseItemFragment!!)
+                                feedItem.newReleaseItemFragment != null -> NewReleaseItem(item = feedItem.newReleaseItemFragment!!)
 
-                                feedItem.followedUserFeedItemFragment != null          -> {
+                                feedItem.followedUserFeedItemFragment != null -> {
                                     val id =
                                         feedItem.followedUserFeedItemFragment!!.followee.feedUser?.id
                                             ?: feedItem.followedUserFeedItemFragment!!.followee.feedOrg?.id!!
                                     val followData = viewModel.followedUsers[id]
+
                                     FollowedUserItem(
                                         item = feedItem.followedUserFeedItemFragment!!,
                                         followData = followData,
-                                        onFollowPressed = viewModel::followUser,
-                                        onUnfollowPressed = viewModel::unfollowUser
+                                        onFollowClick = viewModel::followUser,
+                                        onUnfollowClick = viewModel::unfollowUser
                                     )
                                 }
 
-                                feedItem.starredFeedItemFragment != null               -> {
-                                    val starData =
-                                        viewModel.starredRepos[feedItem.starredFeedItemFragment!!.repository.feedRepository.id]
+                                feedItem.starredFeedItemFragment != null -> {
+                                    val starredItem = feedItem.starredFeedItemFragment!!
+                                    val starData = viewModel.starredRepos[starredItem.repository.feedRepository.id]
+
                                     StarredRepoItem(
-                                        item = feedItem.starredFeedItemFragment!!,
+                                        item = starredItem,
                                         starData = starData,
-                                        onStarPressed = viewModel::starRepo,
-                                        onUnstarPressed = viewModel::unstarRepo
+                                        onStarClick = viewModel::starRepo,
+                                        onUnstarClick = viewModel::unstarRepo
                                     )
                                 }
 
                                 feedItem.recommendedRepositoryFeedItemFragment != null -> {
-                                    val starData =
-                                        viewModel.starredRepos[feedItem.recommendedRepositoryFeedItemFragment!!.repository.feedRepository.id]
+                                    val recommendedRepoItem = feedItem.recommendedRepositoryFeedItemFragment!!
+                                    val starData = viewModel.starredRepos[recommendedRepoItem.repository.feedRepository.id]
+
                                     RecommendedRepoItem(
-                                        item = feedItem.recommendedRepositoryFeedItemFragment!!,
+                                        item = recommendedRepoItem,
                                         starData = starData,
-                                        onStarPressed = viewModel::starRepo,
-                                        onUnstarPressed = viewModel::unstarRepo
+                                        onStarClick = viewModel::starRepo,
+                                        onUnstarClick = viewModel::unstarRepo
                                     )
                                 }
 
-                                feedItem.forkedRepositoryFeedItemFragment != null      -> {
-                                    val starData =
-                                        viewModel.starredRepos[feedItem.forkedRepositoryFeedItemFragment!!.repository.feedRepository.id]
+                                feedItem.forkedRepositoryFeedItemFragment != null -> {
+                                    val forkedItem = feedItem.forkedRepositoryFeedItemFragment!!
+                                    val starData = viewModel.starredRepos[forkedItem.repository.feedRepository.id]
+
                                     ForkedRepoItem(
-                                        item = feedItem.forkedRepositoryFeedItemFragment!!,
+                                        item = forkedItem,
                                         starData = starData,
-                                        onStarPressed = viewModel::starRepo,
-                                        onUnstarPressed = viewModel::unstarRepo
+                                        onStarClick = viewModel::starRepo,
+                                        onUnstarClick = viewModel::unstarRepo
                                     )
                                 }
 
-                                feedItem.followRecommendationFeedItemFragment != null  -> {
+                                feedItem.followRecommendationFeedItemFragment != null -> {
                                     val id =
                                         feedItem.followRecommendationFeedItemFragment!!.followee.feedUser?.id
                                             ?: feedItem.followRecommendationFeedItemFragment!!.followee.feedOrg?.id!!
                                     val followData = viewModel.followedUsers[id]
+
                                     RecommendedFollowUserItem(
                                         item = feedItem.followRecommendationFeedItemFragment!!,
                                         followData = followData,
-                                        onFollowPressed = viewModel::followUser,
-                                        onUnfollowPressed = viewModel::unfollowUser
+                                        onFollowClick = viewModel::followUser,
+                                        onUnfollowClick = viewModel::unfollowUser
                                     )
                                 }
 
-                                feedItem.mergedPullRequestFeedItemFragment != null     -> {
+                                feedItem.mergedPullRequestFeedItemFragment != null -> {
                                     MergedPullRequestItem(
                                         item = feedItem.mergedPullRequestFeedItemFragment!!,
                                         onReactionClick = { reaction, unreact ->

@@ -12,7 +12,8 @@ import dev.materii.gloom.gql.fragment.RepoFile
 
 @Composable
 actual fun ImageFileViewer(
-    imageFile: RepoFile.OnImageFileType
+    imageFile: RepoFile.OnImageFileType,
+    modifier: Modifier
 ) {
     imageFile.url?.let { imageUrl ->
         AsyncImage(
@@ -20,7 +21,7 @@ actual fun ImageFileViewer(
             contentDescription = null,
             contentScale = ContentScale.Fit,
             alignment = Alignment.Center,
-            modifier = Modifier
+            modifier = modifier
                 .background(Color.Black)
                 .fillMaxSize()
         )

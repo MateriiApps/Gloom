@@ -20,17 +20,19 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
+import kotlinx.collections.immutable.ImmutableList
 
 @Composable
 fun ReleaseContributors(
-    contributors: List<Pair<String, String>>
+    contributors: ImmutableList<Pair<String, String>>,
+    modifier: Modifier = Modifier
 ) {
     val nav = LocalNavigator.currentOrThrow
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier
+        modifier = modifier
             .horizontalScroll(rememberScrollState())
             .fillMaxWidth()
     ) {

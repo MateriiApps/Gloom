@@ -20,9 +20,9 @@ import org.koin.compose.koinInject
 @Composable
 fun Avatar(
     url: String?,
+    modifier: Modifier = Modifier,
     contentDescription: String? = null,
     type: User.Type = User.Type.USER,
-    modifier: Modifier = Modifier
 ) {
     val prefs: PreferenceManager = koinInject()
     val shape = when (type) {

@@ -19,7 +19,7 @@ fun DownloadButton(
     downloadUrl: String,
     modifier: Modifier = Modifier,
     fileName: String = downloadUrl.split("/").lastOrNull() ?: "${uuid4()}.blob",
-    onDownloadFinished: (String) -> Unit = {}
+    onDownloadFinish: (String) -> Unit = {}
 ) {
     val downloadManager: DownloadManager = koinInject()
     val alertController = LocalAlertController.current
@@ -31,7 +31,7 @@ fun DownloadButton(
             alertController.showText(downloadingText, icon = Icons.Filled.Download)
             downloadManager.download(downloadUrl) {
                 alertController.showText(downloadedText, icon = Icons.Outlined.CheckCircleOutline)
-                onDownloadFinished(it)
+                onDownloadFinish(it)
             }
         },
         modifier = modifier

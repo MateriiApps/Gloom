@@ -61,11 +61,13 @@ import dev.materii.gloom.ui.screen.profile.viewmodel.ProfileViewModel
 import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.screen.repo.component.RepoItem
 import dev.materii.gloom.ui.screen.settings.SettingsScreen
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.widget.alert.LocalAlertController
 import dev.materii.gloom.ui.widget.markdown.ReadMeCard
 import dev.materii.gloom.util.EmojiUtil
 import dev.materii.gloom.util.NumberFormatter
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 import java.net.URI
@@ -119,7 +121,7 @@ open class ProfileScreen(
                             }
                         }
 
-                        if (user.pinnedItems.isNotEmpty()) PinnedItems(pinned = user.pinnedItems)
+                        if (user.pinnedItems.isNotEmpty()) PinnedItems(pinned = user.pinnedItems.toImmutableList())
 
                         user.contributions?.let {
                             ContributionGraph(calendar = it.contributionCalendar)
@@ -558,7 +560,7 @@ open class ProfileScreen(
 
     @Composable
     private fun PinnedItems(
-        pinned: List<dev.materii.gloom.api.model.Pinnable?>
+        pinned: ImmutableList<dev.materii.gloom.api.model.Pinnable?>
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -588,7 +590,8 @@ open class ProfileScreen(
 
     @Composable
     fun FollowButton(
-        viewModel: ProfileViewModel
+        viewModel: ProfileViewModel,
+        modifier: Modifier = Modifier
     ) {
         val (icon, alt) = if (viewModel.user?.isFollowing == true)
             Icons.Filled.HowToReg to stringResource(
@@ -600,8 +603,13 @@ open class ProfileScreen(
             viewModel.user?.username ?: "ghost"
         )
 
-        if (viewModel.user?.canFollow == true) IconButton(onClick = { viewModel.toggleFollowing() }) {
-            Icon(icon, contentDescription = alt)
+        if (viewModel.user?.canFollow == true) {
+            IconButton(
+                onClick = { viewModel.toggleFollowing() },
+                modifier = modifier
+            ) {
+                Icon(icon, contentDescription = alt)
+            }
         }
     }
 

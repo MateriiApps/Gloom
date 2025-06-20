@@ -12,12 +12,13 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SettingsButton(
     label: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
     isDanger: Boolean = false,
-    outlined: Boolean = false,
-    onClick: () -> Unit = {}
+    outlined: Boolean = false
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .heightIn(min = 64.dp)
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 14.dp)

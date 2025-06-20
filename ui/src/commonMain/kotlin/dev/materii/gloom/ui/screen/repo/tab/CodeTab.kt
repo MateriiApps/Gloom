@@ -27,7 +27,7 @@ import dev.materii.gloom.ui.screen.explorer.DirectoryListingScreen
 import dev.materii.gloom.ui.screen.repo.CommitsScreen
 import dev.materii.gloom.ui.screen.repo.viewmodel.RepoCodeViewModel
 import dev.materii.gloom.ui.transition.SlideTransition
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import org.koin.core.parameter.parametersOf
 
 class CodeTab(

@@ -16,6 +16,9 @@ class ForksScreen(
     private val username: String,
     private val repository: String
 ): BaseListScreen<ModelRepo, RepoForksQuery.Data?, ForksViewModel>() {
+    
+    override val key: ScreenKey
+        get() = "${this::class.simpleName}($username, $repository)"
 
     override val titleRes: StringResource get() = Res.strings.title_forks
 
@@ -25,8 +28,5 @@ class ForksScreen(
 
     @Composable
     override fun Item(item: ModelRepo) = RepoItem(repo = item)
-
-    override val key: ScreenKey
-        get() = "${this::class.simpleName}($username, $repository)"
 
 }

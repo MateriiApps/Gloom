@@ -34,8 +34,8 @@ import dev.materii.gloom.ui.icon.custom.Commit
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.screen.release.ReleaseScreen
 import dev.materii.gloom.ui.theme.DarkGreen
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.util.annotatingStringResource
-import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.ui.widget.markdown.TruncatedMarkdown
 import dev.materii.gloom.util.ifNullOrBlank
 
@@ -43,8 +43,9 @@ import dev.materii.gloom.util.ifNullOrBlank
 @Suppress("UNUSED_PARAMETER")
 fun NewReleaseItem(
     item: NewReleaseItemFragment,
+    modifier: Modifier = Modifier,
     starData: Pair<Boolean, Int>? = null,
-    onVisitPressed: (String) -> Unit = {},
+    onVisitClick: (String) -> Unit = {},
     onClickCard: () -> Unit = {}
 ) {
     val navigator = LocalNavigator.currentOrThrow
@@ -53,7 +54,7 @@ fun NewReleaseItem(
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
@@ -79,13 +80,14 @@ fun NewReleaseItem(
 
 @Composable
 fun ReleaseCard(
-    release: NewReleaseItemFragment.Release
+    release: NewReleaseItemFragment.Release,
+    modifier: Modifier = Modifier
 ) {
     val repo = release.repository.feedRepository
     val nav = LocalNavigator.currentOrThrow
 
     ElevatedCard(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable { nav.navigate(ReleaseScreen(repo.owner.login, repo.name, release.tagName)) }
     ) {
@@ -201,11 +203,13 @@ fun ReleaseCard(
 fun ReleaseDetail(
     icon: Any,
     iconDescription: String,
-    text: String
+    text: String,
+    modifier: Modifier = Modifier
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
     ) {
         when (icon) {
             is ImageVector -> Icon(

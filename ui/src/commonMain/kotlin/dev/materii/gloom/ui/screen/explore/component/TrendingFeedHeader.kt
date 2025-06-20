@@ -33,7 +33,7 @@ fun TrendingFeedHeader(
         ChoiceInputChip(
             defaultValue = PreferenceManager.TRENDING_PERIOD,
             currentValue = currentTrendingPeriod,
-            onChoiceSelected = onTrendingPeriodChange,
+            onSelectChoice = onTrendingPeriodChange,
             label = { period ->
                 Text(
                     stringResource(

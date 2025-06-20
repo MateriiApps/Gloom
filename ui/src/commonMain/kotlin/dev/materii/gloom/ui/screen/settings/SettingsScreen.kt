@@ -78,7 +78,7 @@ class SettingsScreen: Screen {
                             icon = Icons.Outlined.DesignServices,
                             text = stringResource(Res.strings.settings_app_icon),
                             subtext = stringResource(Res.strings.settings_app_icon_description),
-                            destination = ::AppIconsSettingsScreen
+                            destination = ::AppIconSettingsScreen
                         )
                     }
                 }

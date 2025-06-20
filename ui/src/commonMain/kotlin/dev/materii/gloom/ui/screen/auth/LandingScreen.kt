@@ -65,7 +65,7 @@ class LandingScreen(
                     modifier = Modifier.padding(bottom = 24.dp)
                 )
 
-                if (viewModel.authManager.accounts.size > 0 && showAccountCard) {
+                if (viewModel.authManager.accounts.isNotEmpty() && showAccountCard) {
                     val accounts by remember(viewModel.authManager.accounts) {
                         derivedStateOf {
                             viewModel.authManager.accounts.values.toList().toImmutableList()

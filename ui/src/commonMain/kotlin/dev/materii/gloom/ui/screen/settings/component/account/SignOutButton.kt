@@ -12,18 +12,21 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 
 @Composable
 fun SignOutButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
     visible: Boolean = true,
-    onClick: () -> Unit
 ) {
     AnimatedVisibility(
         visible = visible,
         enter = fadeIn(),
-        exit = fadeOut(spring(stiffness = Spring.StiffnessHigh))
+        exit = fadeOut(spring(stiffness = Spring.StiffnessHigh)),
+        modifier = modifier
     ) {
         IconButton(
             onClick = onClick,

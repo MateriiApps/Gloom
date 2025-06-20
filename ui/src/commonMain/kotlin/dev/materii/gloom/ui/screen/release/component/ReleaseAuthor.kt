@@ -23,18 +23,19 @@ import kotlinx.datetime.Instant
 fun ReleaseAuthor(
     login: String,
     avatarUrl: String,
-    timestamp: Instant
+    timestamp: Instant,
+    modifier: Modifier = Modifier
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = Modifier.padding(horizontal = 16.dp)
+        modifier = modifier.padding(horizontal = 16.dp)
     ) {
         Avatar(
             url = avatarUrl,
-            contentDescription = null,
             modifier = Modifier.size(22.dp)
         )
+
         Text(
             text = annotatingStringResource(
                 Res.strings.msg_release_author,

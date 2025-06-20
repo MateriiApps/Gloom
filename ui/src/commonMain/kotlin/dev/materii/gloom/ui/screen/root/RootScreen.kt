@@ -21,16 +21,16 @@ import dev.materii.gloom.domain.manager.AuthManager
 import dev.materii.gloom.ui.component.Avatar
 import dev.materii.gloom.ui.component.navbar.LongClickableNavBarItem
 import dev.materii.gloom.ui.screen.settings.component.account.AccountSwitcherSheet
-import dev.materii.gloom.ui.util.DimenUtils
+import dev.materii.gloom.ui.util.DimenUtil
 import dev.materii.gloom.ui.util.RootTab
 import org.koin.compose.koinInject
 
 class RootScreen: Screen {
 
+    override val key = "${this::class.qualifiedName}-${uuid4()}"
+
     @Composable
     override fun Content() = Screen()
-
-    override val key = "${this::class.qualifiedName}-${uuid4()}"
 
     @Composable
     private fun Screen() {
@@ -52,7 +52,7 @@ class RootScreen: Screen {
                     )
                 }
             ) {
-                Box(Modifier.padding(bottom = it.calculateBottomPadding() - DimenUtils.navBarPadding)) {
+                Box(Modifier.padding(bottom = it.calculateBottomPadding() - DimenUtil.navBarPadding)) {
                     nav.current.Content()
                 }
             }

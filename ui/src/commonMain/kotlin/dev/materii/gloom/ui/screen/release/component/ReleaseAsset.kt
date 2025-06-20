@@ -31,7 +31,8 @@ import org.koin.compose.koinInject
 fun ReleaseAsset(
     name: String,
     size: Int,
-    onDownloadClick: () -> Unit
+    onDownloadClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val dialogManager: DialogManager = koinInject()
     var showConfirmDialog by remember {
@@ -68,7 +69,7 @@ fun ReleaseAsset(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
     ) {

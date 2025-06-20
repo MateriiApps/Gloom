@@ -16,6 +16,9 @@ class StarredReposListScreen(
     private val username: String,
 ): BaseListScreen<ModelRepo, StarredReposQuery.Data?, StarredReposListViewModel>() {
 
+    override val key: ScreenKey
+        get() = "${this::class.simpleName}($username)"
+
     override val titleRes: StringResource get() = Res.strings.title_starred
 
     override val viewModel: StarredReposListViewModel
@@ -23,8 +26,5 @@ class StarredReposListScreen(
 
     @Composable
     override fun Item(item: ModelRepo) = RepoItem(repo = item)
-
-    override val key: ScreenKey
-        get() = "${this::class.simpleName}($username)"
 
 }

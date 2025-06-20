@@ -68,7 +68,6 @@ fun TrendingRepoItem(
                 ) {
                     Avatar(
                         url = trendingRepository.owner.avatarUrl,
-                        contentDescription = null,
                         type = User.Type.fromTypeName(trendingRepository.owner.__typename),
                         modifier = Modifier
                             .clickable(onClick = onOwnerClick)
@@ -103,7 +102,9 @@ fun TrendingRepoItem(
                     ) {
                         Icon(
                             imageVector = if (trendingRepository.viewerHasStarred) Icons.Filled.Star else Icons.Outlined.StarOutline,
-                            contentDescription = stringResource(if (trendingRepository.viewerHasStarred) Res.strings.action_unstar else Res.strings.action_star),
+                            contentDescription = stringResource(
+                                if (trendingRepository.viewerHasStarred) Res.strings.action_unstar else Res.strings.action_star
+                            )
                         )
                     }
                 }

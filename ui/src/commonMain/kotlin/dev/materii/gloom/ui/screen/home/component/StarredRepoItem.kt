@@ -17,15 +17,16 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.StarredFeedItemFragment
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.util.annotatingStringResource
-import dev.materii.gloom.ui.util.navigate
 
 @Composable
 fun StarredRepoItem(
     item: StarredFeedItemFragment,
+    modifier: Modifier = Modifier,
     starData: Pair<Boolean, Int>? = null,
-    onStarPressed: (String) -> Unit = {},
-    onUnstarPressed: (String) -> Unit = {},
+    onStarClick: (String) -> Unit = {},
+    onUnstarClick: (String) -> Unit = {},
 ) {
     val navigator = LocalNavigator.currentOrThrow
     val actor = item.actor.actorFragment
@@ -33,7 +34,7 @@ fun StarredRepoItem(
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
@@ -56,11 +57,11 @@ fun StarredRepoItem(
         FeedRepoCard(
             repo = repo,
             starData = starData,
-            onStarPressed = {
-                onStarPressed(repo.id)
+            onStarClick = {
+                onStarClick(repo.id)
             },
-            onUnstarPressed = {
-                onUnstarPressed(repo.id)
+            onUnstarClick = {
+                onUnstarClick(repo.id)
             }
         )
     }

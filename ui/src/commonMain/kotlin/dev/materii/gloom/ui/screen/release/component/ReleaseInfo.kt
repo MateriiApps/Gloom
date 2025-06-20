@@ -23,11 +23,12 @@ import dev.materii.gloom.ui.icon.custom.Commit
 @Composable
 fun ReleaseInfo(
     tagName: String,
-    commit: String?
+    commit: String?,
+    modifier: Modifier = Modifier
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
     ) {

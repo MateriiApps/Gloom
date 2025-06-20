@@ -25,14 +25,14 @@ import dev.materii.gloom.ui.screen.settings.component.SettingsItem
 fun AppIconSetting(
     appIcon: AppIcon,
     selected: Boolean,
-    onSelected: () -> Unit,
+    onSelect: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     SettingsItem(
         text = { Text(stringResource(appIcon.iconName)) },
         secondaryText = { Text(stringResource(appIcon.iconDescription)) },
         enabled = !selected,
-        onClick = { onSelected() },
+        onClick = { onSelect() },
         leading = {
             Image(
                 painter = painterResource(appIcon.preview),

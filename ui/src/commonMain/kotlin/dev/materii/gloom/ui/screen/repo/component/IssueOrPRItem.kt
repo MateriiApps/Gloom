@@ -31,6 +31,7 @@ import dev.materii.gloom.ui.component.Label
 import dev.materii.gloom.ui.theme.gloomColorScheme
 import dev.materii.gloom.ui.util.parsedColor
 import dev.materii.gloom.util.TimeUtils.getTimeSince
+import kotlinx.collections.immutable.ImmutableList
 import kotlinx.datetime.Instant
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -43,10 +44,11 @@ fun IssueOrPRItem(
     number: Int,
     title: String,
     authorUsername: String?,
-    labels: List<Pair<String, String>>,
+    labels: ImmutableList<Pair<String, String>>,
     totalAssigned: Int,
-    assignedUsers: List<Pair<String, String>>,
+    assignedUsers: ImmutableList<Pair<String, String>>,
     totalComments: Int,
+    modifier: Modifier = Modifier,
     checksStatus: StatusState? = null,
     reviewDecision: PullRequestReviewDecision? = null
 ) {
@@ -54,7 +56,7 @@ fun IssueOrPRItem(
 
     Row(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = Modifier
+        modifier = modifier
             .padding(
                 horizontal = 16.dp,
                 vertical = 16.dp
@@ -166,8 +168,8 @@ fun IssueOrPRItem(
                 if (reviewDecision != null) {
                     val (statusIcon, statusColor) = when (reviewDecision) {
                         PullRequestReviewDecision.CHANGES_REQUESTED -> Icons.Filled.Cancel to MaterialTheme.colorScheme.error
-                        PullRequestReviewDecision.APPROVED          -> Icons.Filled.CheckCircle to MaterialTheme.gloomColorScheme.statusGreen
-                        else                                        -> Icons.Filled.Circle to MaterialTheme.colorScheme.surfaceTint
+                        PullRequestReviewDecision.APPROVED -> Icons.Filled.CheckCircle to MaterialTheme.gloomColorScheme.statusGreen
+                        else -> Icons.Filled.Circle to MaterialTheme.colorScheme.surfaceTint
                     }
 
                     Label(

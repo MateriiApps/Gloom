@@ -31,7 +31,7 @@ import dev.materii.gloom.ui.icon.Custom
 import dev.materii.gloom.ui.icon.custom.Fork
 import dev.materii.gloom.ui.screen.repo.RepoScreen
 import dev.materii.gloom.ui.theme.gloomColorScheme
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.util.parsedColor
 import dev.materii.gloom.ui.util.thenIf
 import dev.materii.gloom.util.NumberFormatter
@@ -39,13 +39,15 @@ import dev.materii.gloom.util.NumberFormatter
 @Composable
 fun RepoItem(
     repo: ModelRepo,
+    modifier: Modifier = Modifier,
     login: String? = null,
     card: Boolean = false
 ) {
     val nav = LocalNavigator.currentOrThrow
+
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
-        modifier = Modifier
+        modifier = modifier
             .thenIf(card) {
                 this
                     .shadow(1.dp, RoundedCornerShape(16.dp))

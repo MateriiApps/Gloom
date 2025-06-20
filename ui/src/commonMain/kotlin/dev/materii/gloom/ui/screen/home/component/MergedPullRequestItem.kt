@@ -29,15 +29,18 @@ import dev.materii.gloom.ui.icon.Custom
 import dev.materii.gloom.ui.icon.custom.MergedPullRequest
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.theme.gloomColorScheme
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.util.annotatingStringResource
-import dev.materii.gloom.ui.util.navigate
 import dev.materii.gloom.ui.widget.markdown.TruncatedMarkdown
 import dev.materii.gloom.ui.widget.reaction.ReactionRow
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun MergedPullRequestItem(
     item: MergedPullRequestFeedItemFragment,
-    onReactionClick: (ReactionContent, Boolean) -> Unit
+    onReactionClick: (ReactionContent, Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val navigator = LocalNavigator.currentOrThrow
     val actor = item.actor.actorFragment
@@ -46,7 +49,7 @@ fun MergedPullRequestItem(
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
@@ -79,13 +82,13 @@ fun MergedPullRequestItem(
 @Composable
 fun PullRequestCard(
     pullRequest: MergedPullRequestFeedItemFragment.PullRequest,
-    onReactionClick: (ReactionContent, Boolean) -> Unit
+    onReactionClick: (ReactionContent, Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val navigator = LocalNavigator.currentOrThrow
     val repo = pullRequest.baseRepository!!
 
     ElevatedCard(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -152,7 +155,7 @@ fun PullRequestCard(
             ThinDivider()
 
             ReactionRow(
-                reactions = pullRequest.reactionGroups?.map { it.reaction } ?: emptyList(),
+                reactions = pullRequest.reactionGroups?.map { it.reaction }?.toImmutableList() ?: persistentListOf(),
                 onReactionClick = onReactionClick,
                 modifier = Modifier.padding(bottom = 16.dp)
             )

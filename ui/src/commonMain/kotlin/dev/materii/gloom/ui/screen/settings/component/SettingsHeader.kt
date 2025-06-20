@@ -14,12 +14,13 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun SettingsHeader(
-    text: String
+    text: String,
+    modifier: Modifier = Modifier
 ) {
     Text(
         text = text,
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(top = 16.dp, start = 12.dp)
+        modifier = modifier.padding(top = 16.dp, start = 12.dp)
     )
 }

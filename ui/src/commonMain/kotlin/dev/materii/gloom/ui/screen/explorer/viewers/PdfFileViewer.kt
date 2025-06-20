@@ -31,6 +31,7 @@ import java.net.URL
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
+@Suppress("ModifierMissing")
 fun PdfFileViewer(
     pdfFile: RepoFile.OnPdfFileType
 ) {

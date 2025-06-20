@@ -16,6 +16,9 @@ class RepositoryListScreen(
     private val username: String,
 ): BaseListScreen<ModelRepo, RepoListQuery.Data?, RepositoryListViewModel>() {
 
+    override val key: ScreenKey
+        get() = "${this::class.simpleName}($username)"
+
     override val titleRes: StringResource get() = Res.strings.title_repos
 
     override val viewModel: RepositoryListViewModel
@@ -23,8 +26,5 @@ class RepositoryListScreen(
 
     @Composable
     override fun Item(item: ModelRepo) = RepoItem(repo = item, login = username)
-
-    override val key: ScreenKey
-        get() = "${this::class.simpleName}($username)"
 
 }

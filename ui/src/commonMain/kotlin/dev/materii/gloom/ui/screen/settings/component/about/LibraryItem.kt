@@ -30,13 +30,14 @@ import dev.materii.gloom.util.author
 @Composable
 @OptIn(ExperimentalLayoutApi::class)
 fun LibraryItem(
-    library: Library
+    library: Library,
+    modifier: Modifier = Modifier
 ) {
     val linkHandler = dev.materii.gloom.util.LocalLinkHandler.current
 
     Column(
         verticalArrangement = Arrangement.spacedBy(6.dp),
-        modifier = Modifier
+        modifier = modifier
             .clickable(enabled = library.website != null) {
                 linkHandler.openLink(library.website!!)
             }

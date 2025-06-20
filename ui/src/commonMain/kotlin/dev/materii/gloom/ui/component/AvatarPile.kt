@@ -7,10 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import kotlinx.collections.immutable.ImmutableList
 
 @Composable
 fun AvatarPile(
-    avatars: List<String>,
+    avatars: ImmutableList<String>,
     modifier: Modifier = Modifier,
     maxCount: Int = 3
 ) {
