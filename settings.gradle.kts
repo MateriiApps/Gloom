@@ -7,8 +7,7 @@ pluginManagement {
 }
 
 rootProject.name = "Gloom"
-include(":app:android")
-include(":app:desktop")
+include(":app")
 
 include(":api")
 include(":shared")
