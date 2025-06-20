@@ -5272,7 +5272,7 @@ type ClosedEvent implements Node & UniformResourceLocatable {
   """
   The reason the issue state was changed to closed.
   """
-  stateReason: IssueStateReason
+  stateReason: IssueStateReason @deprecated(reason: "The state reason for duplicate issue is now returned by default. Removal on 2025-10-01 UTC.")
 
   """
   The HTTP URL for this closed event.
@@ -5810,6 +5810,11 @@ List of snippet format types
 """
 enum CodeSearchSnippetType {
   """
+  Html format
+  """
+  SNIPPET_FORMAT_HTML
+
+  """
   Invalid format
   """
   SNIPPET_FORMAT_INVALID
@@ -5818,11 +5823,6 @@ enum CodeSearchSnippetType {
   Plain text format
   """
   SNIPPET_FORMAT_PLAIN_TEXT
-
-  """
-  Html format
-  """
-  SNIPPET_FORMAT_HTML
 }
 
 """
@@ -19797,7 +19797,7 @@ type Issue implements Assignable & Closable & Comment & Deletable & Labelable & 
   """
   Identifies the reason for the issue state.
   """
-  stateReason("Whether or not to return state reason for duplicates" enableDuplicate: Boolean = false): IssueStateReason
+  stateReason("Whether or not to return state reason for duplicates" enableDuplicate: Boolean = false): IssueStateReason @deprecated(reason: "The state reason for duplicate issue is now returned by default. Removal on 2025-10-01 UTC.")
 
   """
   A list of sub-issues associated with the Issue.
@@ -20434,7 +20434,7 @@ enum IssueStateReason {
   COMPLETED
 
   """
-  An issue that has been closed as a duplicate. To retrieve this value, set `(enableDuplicate: true)` when querying the stateReason field.
+  An issue that has been closed as a duplicate.
   """
   DUPLICATE
 }
@@ -25320,6 +25320,21 @@ enum MobileAppElement {
   A button that taps through to the model picker item
   """
   MODEL_PICKER_ITEM
+
+  """
+  Coding agent was assigned
+  """
+  CODING_AGENT_ASSIGNED
+
+  """
+  Coding agent was unassigned
+  """
+  CODING_AGENT_UNASSIGNED
+
+  """
+  Button that opens the coding agent work session
+  """
+  CODING_AGENT_WORK_SESSION
 }
 
 """
@@ -40373,6 +40388,11 @@ type PullRequest implements Assignable & Closable & Comment & Labelable & Lockab
   A list of suggested users to assign to this object
   """
   suggestedAssignees("If provided, searches users by login or profile name" query: String, "Returns the elements in the list that come after the specified cursor." after: String, "Returns the elements in the list that come before the specified cursor." before: String, "Returns the first _n_ elements from the list." first: Int, "Returns the last _n_ elements from the list." last: Int): UserConnection!
+
+  """
+  Reviewer actor suggestions based on commit history, past review comments, and integrations.
+  """
+  suggestedReviewerActors("Returns the elements in the list that come after the specified cursor." after: String, "Returns the elements in the list that come before the specified cursor." before: String, "Returns the first _n_ elements from the list." first: Int, "Returns the last _n_ elements from the list." last: Int): SuggestedReviewerActorConnection!
 
   """
   A list of reviewer suggestions based on commit history and past review comments.
@@ -57607,6 +57627,66 @@ type SuggestedReviewer {
   Identifies the user suggested to review the pull request.
   """
   reviewer: User!
+}
+
+"""
+A suggestion to review a pull request based on an actor's commit history, review comments, and integrations.
+"""
+type SuggestedReviewerActor {
+  """
+  Is this suggestion based on past commits?
+  """
+  isAuthor: Boolean!
+
+  """
+  Is this suggestion based on past review comments?
+  """
+  isCommenter: Boolean!
+
+  """
+  Identifies the actor suggested to review the pull request.
+  """
+  reviewer: Actor!
+}
+
+"""
+A suggestion to review a pull request based on an actor's commit history, review comments, and integrations.
+"""
+type SuggestedReviewerActorConnection {
+  """
+  A list of edges.
+  """
+  edges: [SuggestedReviewerActorEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [SuggestedReviewerActor]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+
+  """
+  Identifies the total count of items in the connection.
+  """
+  totalCount: Int!
+}
+
+"""
+An edge in a connection.
+"""
+type SuggestedReviewerActorEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: SuggestedReviewerActor
 }
 
 """
