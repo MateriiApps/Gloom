@@ -31,14 +31,14 @@ fun LoadingButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier,
         shape = shape,
         colors = colors,
         elevation = elevation,
         enabled = !loading,
         border = border,
         contentPadding = contentPadding,
-        interactionSource = interactionSource
+        interactionSource = interactionSource,
+        modifier = modifier
     ) {
         Box(
             contentAlignment = Alignment.Center

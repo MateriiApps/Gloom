@@ -16,6 +16,9 @@ class FollowersScreen(
     private val username: String,
 ): BaseListScreen<ModelUser, FollowersQuery.Data?, FollowersViewModel>() {
 
+    override val key: ScreenKey
+        get() = "${this::class.simpleName}($username)"
+
     override val titleRes: StringResource get() = Res.strings.title_followers
 
     override val viewModel: FollowersViewModel
@@ -23,8 +26,5 @@ class FollowersScreen(
 
     @Composable
     override fun Item(item: ModelUser) = UserItem(user = item)
-
-    override val key: ScreenKey
-        get() = "${this::class.simpleName}($username)"
 
 }

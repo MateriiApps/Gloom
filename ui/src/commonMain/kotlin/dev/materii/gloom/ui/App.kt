@@ -14,6 +14,9 @@ import dev.materii.gloom.ui.theme.GloomTheme
 import dev.materii.gloom.ui.transition.SlideTransition
 import dev.materii.gloom.ui.widget.alert.AlertController
 import dev.materii.gloom.ui.widget.alert.AlertHost
+import dev.materii.gloom.util.LinkHandler
+import dev.materii.gloom.util.LocalLinkHandler
+import kotlinx.collections.immutable.ImmutableList
 import org.koin.compose.koinInject
 
 /**
@@ -28,8 +31,8 @@ import org.koin.compose.koinInject
 @OptIn(InternalVoyagerApi::class)
 @Composable
 fun App(
-    screens: List<Screen>,
-    linkHandler: dev.materii.gloom.util.LinkHandler,
+    screens: ImmutableList<Screen>,
+    linkHandler: LinkHandler,
     onScreenChange: (Screen, AlertController) -> Unit = { _, _ -> },
     onContentChange: @Composable () -> Unit = {},
     onAttach: (Navigator, AlertController) -> Unit = { _, _ -> },
@@ -51,16 +54,16 @@ fun App(
                     disposeSteps = true
                 ),
             ) { navigator ->
-                LaunchedEffect(navigator.lastItem) {
+                LaunchedEffect(navigator.lastItem, onScreenChange) {
                     onScreenChange(navigator.lastItem, alertController)
                 }
 
-                LaunchedEffect(Unit) {
+                LaunchedEffect(Unit, onAttach) {
                     onAttach(navigator, alertController)
                 }
 
                 CompositionLocalProvider(
-                    dev.materii.gloom.util.LocalLinkHandler provides linkHandler
+                    LocalLinkHandler provides linkHandler
                 ) {
                     SlideTransition(navigator) { screen ->
                         screen.Content()

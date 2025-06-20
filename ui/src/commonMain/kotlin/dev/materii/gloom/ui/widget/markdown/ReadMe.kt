@@ -22,13 +22,16 @@ import dev.materii.gloom.Res
 fun ReadMeCard(
     text: String,
     repository: String,
-    onClickRepository: () -> Unit
+    onClickRepository: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var isCollapsed by remember {
         mutableStateOf(true)
     }
 
-    ElevatedCard {
+    ElevatedCard(
+        modifier = modifier
+    ) {
         Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp)) {
             Text(
                 buildAnnotatedString {

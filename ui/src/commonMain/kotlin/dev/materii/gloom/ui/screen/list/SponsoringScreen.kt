@@ -16,6 +16,9 @@ class SponsoringScreen(
     private val username: String,
 ): BaseListScreen<ModelUser, SponsoringQuery.Data?, SponsoringViewModel>() {
 
+    override val key: ScreenKey
+        get() = "${this::class.simpleName}($username)"
+
     override val titleRes: StringResource get() = Res.strings.title_sponsoring
 
     override val viewModel: SponsoringViewModel
@@ -23,8 +26,5 @@ class SponsoringScreen(
 
     @Composable
     override fun Item(item: ModelUser) = UserItem(user = item)
-
-    override val key: ScreenKey
-        get() = "${this::class.simpleName}($username)"
 
 }

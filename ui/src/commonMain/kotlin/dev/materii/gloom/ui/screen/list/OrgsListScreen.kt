@@ -16,6 +16,9 @@ class OrgsListScreen(
     private val username: String,
 ): BaseListScreen<ModelUser, JoinedOrgsQuery.Data?, OrgListViewModel>() {
 
+    override val key: ScreenKey
+        get() = "${this::class.simpleName}($username)"
+
     override val titleRes: StringResource get() = Res.strings.title_orgs
 
     override val viewModel: OrgListViewModel
@@ -23,8 +26,5 @@ class OrgsListScreen(
 
     @Composable
     override fun Item(item: ModelUser) = UserItem(user = item)
-
-    override val key: ScreenKey
-        get() = "${this::class.simpleName}($username)"
 
 }

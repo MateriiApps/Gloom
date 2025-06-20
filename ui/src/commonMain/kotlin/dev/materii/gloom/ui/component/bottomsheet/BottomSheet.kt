@@ -28,7 +28,6 @@ fun BottomSheet(
 ) {
     ModalBottomSheet(
         onDismissRequest = onDismiss,
-        modifier = modifier,
         sheetState = sheetState,
         shape = shape,
         containerColor = containerColor,
@@ -37,6 +36,7 @@ fun BottomSheet(
         scrimColor = scrimColor,
         dragHandle = dragHandle,
         contentWindowInsets = { WindowInsets(0, 0, 0, 0) },
+        modifier = modifier,
         content = {
             val coroutineScope = rememberCoroutineScope()
             val animateToDismiss: () -> Unit = {

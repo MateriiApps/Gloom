@@ -30,7 +30,7 @@ import dev.materii.gloom.ui.screen.settings.component.account.AccountItem
 import dev.materii.gloom.ui.screen.settings.component.account.SignOutButton
 import dev.materii.gloom.ui.screen.settings.component.account.SignOutDialog
 import dev.materii.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.util.toImmutableList
 
 class AccountSettingsScreen: Screen {
@@ -123,7 +123,9 @@ class AccountSettingsScreen: Screen {
                         key = "Add/Sign all out"
                     ) {
                         SettingsButton(
-                            label = stringResource(if (viewModel.isEditMode) Res.strings.action_sign_out_all else Res.strings.action_add_account),
+                            label = stringResource(
+                                if (viewModel.isEditMode) Res.strings.action_sign_out_all else Res.strings.action_add_account
+                            ),
                             isDanger = viewModel.isEditMode,
                             onClick = {
                                 if (viewModel.isEditMode) {

@@ -21,19 +21,20 @@ import dev.materii.gloom.ui.util.toDp
 fun Collapsable(
     overlapFraction: Float,
     under: @Composable () -> Unit,
-    top: @Composable () -> Unit
+    modifier: Modifier = Modifier,
+    top: @Composable () -> Unit,
 ) {
     assert(overlapFraction in 0f..1f) { "overlapFraction must be between 0 and 1" }
 
     var underHeight by remember {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
     var topHeight by remember {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(bottom = underHeight.toDp() * (1 - overlapFraction))
     ) {
         Box(

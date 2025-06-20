@@ -7,7 +7,7 @@ import dev.materii.gloom.api.repository.GraphQLRepository
 import dev.materii.gloom.api.util.fold
 import dev.materii.gloom.api.util.ifSuccessful
 import dev.materii.gloom.domain.manager.AuthManager
-import dev.materii.gloom.ui.util.clearRootNavigation
+import dev.materii.gloom.ui.util.NavigationUtil
 import kotlinx.coroutines.launch
 
 class OAuthViewModel(
@@ -32,7 +32,7 @@ class OAuthViewModel(
                             notificationCount = account.notificationListsWithThreadCount.totalCount
                         )
                         authManager.switchToAccount(account.id)
-                        clearRootNavigation()
+                        NavigationUtil.clearRootNavigation()
                         onLoggedIn()
                     }
                     clearAuthState()

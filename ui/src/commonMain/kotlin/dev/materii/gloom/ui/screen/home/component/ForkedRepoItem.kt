@@ -18,15 +18,16 @@ import dev.materii.gloom.gql.fragment.ForkedRepositoryFeedItemFragment
 import dev.materii.gloom.ui.icon.Custom
 import dev.materii.gloom.ui.icon.custom.Fork
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.ui.util.annotatingStringResource
-import dev.materii.gloom.ui.util.navigate
 
 @Composable
 fun ForkedRepoItem(
     item: ForkedRepositoryFeedItemFragment,
+    modifier: Modifier = Modifier,
     starData: Pair<Boolean, Int>? = null,
-    onStarPressed: (String) -> Unit = {},
-    onUnstarPressed: (String) -> Unit = {},
+    onStarClick: (String) -> Unit = {},
+    onUnstarClick: (String) -> Unit = {},
 ) {
     val navigator = LocalNavigator.currentOrThrow
     val actor = item.actor.actorFragment
@@ -34,7 +35,7 @@ fun ForkedRepoItem(
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
@@ -57,11 +58,11 @@ fun ForkedRepoItem(
         FeedRepoCard(
             repo = repo,
             starData = starData,
-            onStarPressed = {
-                onStarPressed(repo.id)
+            onStarClick = {
+                onStarClick(repo.id)
             },
-            onUnstarPressed = {
-                onUnstarPressed(repo.id)
+            onUnstarClick = {
+                onUnstarClick(repo.id)
             }
         )
     }

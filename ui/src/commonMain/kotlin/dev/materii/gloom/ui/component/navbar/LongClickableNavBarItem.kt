@@ -49,7 +49,7 @@ fun RowScope.LongClickableNavBarItem(
     selectedLabelColor: Color = MaterialTheme.colorScheme.onSurface,
 ) {
     // Used to offset the ripple
-    var itemWidth by remember { mutableStateOf(0) }
+    var itemWidth by remember { mutableIntStateOf(0) }
 
     Column(
         verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),

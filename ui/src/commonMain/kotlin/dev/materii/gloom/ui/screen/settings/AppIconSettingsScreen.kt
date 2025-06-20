@@ -25,14 +25,14 @@ import dev.materii.gloom.ui.component.toolbar.LargeToolbar
 import dev.materii.gloom.ui.screen.settings.component.SettingsGroup
 import dev.materii.gloom.ui.screen.settings.component.SettingsHeader
 import dev.materii.gloom.ui.screen.settings.component.appicon.AppIconSetting
-import dev.materii.gloom.ui.screen.settings.viewmodel.AppIconsSettingsViewModel
+import dev.materii.gloom.ui.screen.settings.viewmodel.AppIconSettingsViewModel
 
-class AppIconsSettingsScreen: Screen {
+class AppIconSettingsScreen: Screen {
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
     override fun Content() {
-        val viewModel: AppIconsSettingsViewModel = koinScreenModel()
+        val viewModel: AppIconSettingsViewModel = koinScreenModel()
         val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
         Scaffold(
@@ -58,7 +58,7 @@ class AppIconsSettingsScreen: Screen {
                                 AppIconSetting(
                                     appIcon = appIcon,
                                     selected = viewModel.preferenceManager.appIcon == appIcon,
-                                    onSelected = { viewModel.setIcon(appIcon) }
+                                    onSelect = { viewModel.setIcon(appIcon) }
                                 )
                             }
                         }

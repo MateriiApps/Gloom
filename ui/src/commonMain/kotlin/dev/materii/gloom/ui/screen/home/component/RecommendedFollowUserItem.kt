@@ -21,16 +21,17 @@ import dev.materii.gloom.gql.fragment.FollowRecommendationFeedItemFragment
 @Composable
 fun RecommendedFollowUserItem(
     item: FollowRecommendationFeedItemFragment,
+    modifier: Modifier = Modifier,
     followData: Pair<Boolean, Int>? = null,
-    onFollowPressed: (String) -> Unit = {},
-    onUnfollowPressed: (String) -> Unit = {},
+    onFollowClick: (String) -> Unit = {},
+    onUnfollowClick: (String) -> Unit = {},
 ) {
     val user = item.followee
     val userId = user.feedUser?.id ?: user.feedOrg?.id!!
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
@@ -47,8 +48,8 @@ fun RecommendedFollowUserItem(
         FeedUserCard(
             user.feedUser to user.feedOrg,
             followData = followData,
-            onFollowPressed = { onFollowPressed(userId) },
-            onUnfollowPressed = { onUnfollowPressed(userId) }
+            onFollowClick = { onFollowClick(userId) },
+            onUnfollowClick = { onUnfollowClick(userId) }
         )
     }
 }

@@ -26,8 +26,8 @@ import dev.materii.gloom.ui.component.StatusIcon
 import dev.materii.gloom.ui.screen.repo.dialog.CommitSignatureDialog
 import dev.materii.gloom.ui.theme.gloomColorScheme
 import dev.materii.gloom.ui.util.annotatingStringResource
-import dev.materii.gloom.ui.widget.alert.LocalAlertController
 import dev.materii.gloom.util.TimeUtils
+import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun CommitItem(
@@ -89,9 +89,9 @@ fun CommitItem(
 
             AvatarPile(
                 avatars = if (isUniqueCommiter) {
-                    listOf(author.avatarUrl, committer.avatarUrl)
+                    persistentListOf(author.avatarUrl, committer.avatarUrl)
                 } else {
-                    listOf(author.avatarUrl)
+                    persistentListOf(author.avatarUrl)
                 }
             )
 
@@ -127,7 +127,6 @@ fun CommitItem(
             modifier = Modifier.fillMaxWidth()
         ) {
             val clipboard = LocalClipboardManager.current
-            val alertController = LocalAlertController.current
 
             Text(
                 text = commit.abbreviatedOid,

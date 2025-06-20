@@ -21,15 +21,16 @@ import dev.materii.gloom.gql.fragment.RecommendedRepositoryFeedItemFragment
 @Composable
 fun RecommendedRepoItem(
     item: RecommendedRepositoryFeedItemFragment,
+    modifier: Modifier = Modifier,
     starData: Pair<Boolean, Int>? = null,
-    onStarPressed: (String) -> Unit = {},
-    onUnstarPressed: (String) -> Unit = {},
+    onStarClick: (String) -> Unit = {},
+    onUnstarClick: (String) -> Unit = {},
 ) {
     val repo = item.repository.feedRepository
 
     Column(
         verticalArrangement = Arrangement.spacedBy(12.dp),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp)
     ) {
@@ -46,11 +47,11 @@ fun RecommendedRepoItem(
         FeedRepoCard(
             repo = repo,
             starData = starData,
-            onStarPressed = {
-                onStarPressed(repo.id)
+            onStarClick = {
+                onStarClick(repo.id)
             },
-            onUnstarPressed = {
-                onUnstarPressed(repo.id)
+            onUnstarClick = {
+                onUnstarClick(repo.id)
             }
         )
     }

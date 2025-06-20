@@ -39,7 +39,7 @@ import dev.materii.gloom.ui.component.TextBanner
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.screen.repo.viewmodel.RepoViewModel
 import dev.materii.gloom.ui.theme.gloomColorScheme
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf

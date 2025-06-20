@@ -20,6 +20,8 @@ import dev.icerock.moko.resources.compose.stringResource
 import dev.materii.gloom.Res
 import dev.materii.gloom.gql.fragment.RepoLicense
 import dev.materii.gloom.ui.theme.gloomColorScheme
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun LicenseDetails(
@@ -58,7 +60,7 @@ fun LicenseDetails(
                     if (license.permissions.isNotEmpty()) {
                         ConditionGroup(
                             label = stringResource(Res.strings.label_permissions),
-                            conditions = license.permissions.mapNotNull { it?.label },
+                            conditions = license.permissions.mapNotNull { it?.label }.toImmutableList(),
                             icon = Icons.Outlined.Check,
                             iconColor = MaterialTheme.gloomColorScheme.statusGreen
                         )
@@ -67,7 +69,7 @@ fun LicenseDetails(
                     if (license.limitations.isNotEmpty()) {
                         ConditionGroup(
                             label = stringResource(Res.strings.label_limitations),
-                            conditions = license.limitations.mapNotNull { it?.label },
+                            conditions = license.limitations.mapNotNull { it?.label }.toImmutableList(),
                             icon = Icons.Outlined.Close,
                             iconColor = MaterialTheme.gloomColorScheme.statusRed
                         )
@@ -76,7 +78,7 @@ fun LicenseDetails(
                     if (license.conditions.isNotEmpty()) {
                         ConditionGroup(
                             label = stringResource(Res.strings.label_conditions),
-                            conditions = license.conditions.mapNotNull { it?.label },
+                            conditions = license.conditions.mapNotNull { it?.label }.toImmutableList(),
                             icon = Icons.Outlined.Info,
                             iconColor = MaterialTheme.colorScheme.secondary
                         )
@@ -91,7 +93,9 @@ fun LicenseDetails(
                     .clip(CircleShape)
                     .clickable(
                         role = Role.Button,
-                        onClickLabel = stringResource(if (detailsExpanded) Res.strings.action_hide_license_details else Res.strings.action_show_license_details)
+                        onClickLabel = stringResource(
+                            if (detailsExpanded) Res.strings.action_hide_license_details else Res.strings.action_show_license_details
+                        )
                     ) {
                         detailsExpanded = !detailsExpanded
                     }
@@ -109,7 +113,7 @@ fun LicenseDetails(
 @Composable
 private fun RowScope.ConditionGroup(
     label: String,
-    conditions: List<String>,
+    conditions: ImmutableList<String>,
     icon: ImageVector,
     iconColor: Color
 ) {

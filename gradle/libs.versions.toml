@@ -11,6 +11,7 @@ androidx-activity-compose = "1.10.1"
 compose-multiplatform = "1.8.0"
 
 # KotlinX
+kotlinx-collections = "0.4.0"
 kotlinx-coroutines-core = "1.10.2"
 kotlinx-datetime = "0.6.2"
 kotlinx-serialization = "1.8.1"
@@ -72,6 +73,7 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 
 # KotlinX
+kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinx-collections" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
@@ -133,6 +135,6 @@ buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig"
 [bundles]
 
 apollo = ["apollo-runtime", "apollo-normalized-cache", "apollo-adapters-datetime"]
-kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime", "kotlinx-serialization-json"]
+kotlinx = ["kotlinx-coroutines-core", "kotlinx-datetime", "kotlinx-serialization-json", "kotlinx-collections-immutable"]
 ktor = ["ktor-serialization-kotlinx-json", "ktor-client-logging", "ktor-client-core", "ktor-client-content-negotiation", "ktor-client-cio"]
 voyager = ["voyager-tab-navigator", "voyager-koin", "voyager-navigator", "voyager-transitions", "voyager-screenmodel"]

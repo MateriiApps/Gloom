@@ -18,7 +18,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.benasher44.uuid.uuid4
 import dev.materii.gloom.ui.screen.explorer.viewmodel.DirectoryListingViewModel
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import org.koin.core.parameter.parametersOf
 
 class DirectoryListingScreen(

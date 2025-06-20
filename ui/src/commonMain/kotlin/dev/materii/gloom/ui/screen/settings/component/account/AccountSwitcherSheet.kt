@@ -23,7 +23,7 @@ import dev.materii.gloom.ui.screen.auth.LandingScreen
 import dev.materii.gloom.ui.screen.root.RootScreen
 import dev.materii.gloom.ui.screen.settings.component.SettingsButton
 import dev.materii.gloom.ui.screen.settings.viewmodel.AccountSettingsViewModel
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 import dev.materii.gloom.util.toImmutableList
 import org.koin.compose.koinInject
 
@@ -31,6 +31,7 @@ import org.koin.compose.koinInject
 @OptIn(ExperimentalMaterial3Api::class)
 fun AccountSwitcherSheet(
     onDismiss: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val nav = LocalNavigator.currentOrThrow
     val viewModel: AccountSettingsViewModel = koinInject()
@@ -43,7 +44,10 @@ fun AccountSwitcherSheet(
         }
     }
 
-    BottomSheet(onDismiss = onDismiss) {
+    BottomSheet(
+        onDismiss = onDismiss,
+        modifier = modifier
+    ) {
         BottomSheetLayout(
             title = { Text(stringResource(Res.strings.settings_accounts)) },
             padding = PaddingValues(0.dp)

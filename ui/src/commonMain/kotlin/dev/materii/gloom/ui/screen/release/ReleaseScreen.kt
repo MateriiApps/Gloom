@@ -43,6 +43,7 @@ import dev.materii.gloom.ui.widget.alert.LocalAlertController
 import dev.materii.gloom.ui.widget.markdown.Markdown
 import dev.materii.gloom.ui.widget.reaction.ReactionRow
 import dev.materii.gloom.util.Feature
+import kotlinx.collections.immutable.toImmutableList
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
@@ -139,7 +140,7 @@ class ReleaseScreen(
                     details?.reactionGroups?.map { it.reaction }?.let {
                         item {
                             ReactionRow(
-                                reactions = it,
+                                reactions = it.toImmutableList(),
                                 onReactionClick = { reaction, unreact ->
                                     viewModel.react(reaction, unreact)
                                 },
@@ -164,7 +165,7 @@ class ReleaseScreen(
                                     )
                                 }
                                 item {
-                                    ReleaseContributors(contributors = it)
+                                    ReleaseContributors(contributors = it.toImmutableList())
                                 }
                                 item {
                                     ThinDivider()
@@ -216,6 +217,7 @@ class ReleaseScreen(
 
     @Composable
     @OptIn(ExperimentalMaterial3Api::class)
+    @Suppress("ModifierMissing")
     fun TitleBar(
         details: ReleaseDetails?,
         isLoading: Boolean,

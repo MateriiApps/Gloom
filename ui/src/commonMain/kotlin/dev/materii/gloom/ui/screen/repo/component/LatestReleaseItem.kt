@@ -38,11 +38,14 @@ import dev.materii.gloom.util.ifNullOrBlank
 fun LatestReleaseItem(
     repoOwner: String,
     repoName: String,
-    release: ReleaseItem
+    release: ReleaseItem,
+    modifier: Modifier = Modifier
 ) {
     val nav = LocalNavigator.currentOrThrow
 
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
@@ -78,9 +81,9 @@ fun LatestReleaseItem(
                 ) {
                     Avatar(
                         url = author.avatarUrl,
-                        contentDescription = null,
                         modifier = Modifier.size(22.dp)
                     )
+
                     Text(
                         text = annotatingStringResource(
                             Res.strings.msg_release_author,

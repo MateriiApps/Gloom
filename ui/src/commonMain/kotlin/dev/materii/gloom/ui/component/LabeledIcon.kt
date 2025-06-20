@@ -73,8 +73,8 @@ fun LabeledIcon(
     LabeledIcon(
         icon = rememberVectorPainter(icon),
         label = label,
-        modifier = modifier,
         iconTint = iconTint,
-        labelColor = labelColor
+        labelColor = labelColor,
+        modifier = modifier
     )
 }

@@ -27,7 +27,7 @@ import dev.materii.gloom.ui.screen.explore.component.TrendingRepoItem
 import dev.materii.gloom.ui.screen.explore.viewmodel.ExploreViewModel
 import dev.materii.gloom.ui.screen.profile.ProfileScreen
 import dev.materii.gloom.ui.screen.repo.RepoScreen
-import dev.materii.gloom.ui.util.navigate
+import dev.materii.gloom.ui.util.NavigationUtil.navigate
 
 class ExploreScreen: Tab {
 

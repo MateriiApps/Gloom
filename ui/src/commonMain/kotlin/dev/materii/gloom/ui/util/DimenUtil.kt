@@ -6,7 +6,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 
-object DimenUtils {
+object DimenUtil {
 
     val navBarPadding: Dp
         @Composable get() = WindowInsets.systemBars.asPaddingValues().calculateBottomPadding()

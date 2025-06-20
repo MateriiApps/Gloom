@@ -24,19 +24,20 @@ import kotlinx.datetime.Instant
 
 @Composable
 fun FeedActor(
+    text: AnnotatedString,
+    modifier: Modifier = Modifier,
     iconUrl: String? = null,
     badgeIcon: ImageVector? = null,
     badgeIconDescription: String? = null,
     iconVector: ImageVector? = null,
     iconDescription: String? = null,
-    text: AnnotatedString,
     createdAt: Instant? = null,
     onIconClick: (() -> Unit)? = null
 ) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         BadgedItem(badge = if (badgeIcon != null) { ->
             Icon(

@@ -15,7 +15,7 @@ val String.parsedColor: Color
         return try {
             parsedColors[this] = Color(r, g, b)
             Color(r, g, b)
-        } catch (e: Throwable) {
+        } catch (_: Throwable) {
             Color.Black
         }
     }

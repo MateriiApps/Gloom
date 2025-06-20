@@ -14,7 +14,8 @@ import net.engawapg.lib.zoomable.zoomable
 
 @Composable
 actual fun ImageFileViewer(
-    imageFile: RepoFile.OnImageFileType
+    imageFile: RepoFile.OnImageFileType,
+    modifier: Modifier
 ) {
     imageFile.url?.let { imageUrl ->
         val zoomState = rememberZoomState()
@@ -24,7 +25,7 @@ actual fun ImageFileViewer(
             contentDescription = null,
             contentScale = ContentScale.Fit,
             alignment = Alignment.Center,
-            modifier = Modifier
+            modifier = modifier
                 .background(Color.Black)
                 .fillMaxSize()
                 .zoomable(zoomState)

@@ -25,7 +25,8 @@ import java.text.DecimalFormat
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun LanguageMakeup(
-    languages: Languages
+    languages: Languages,
+    modifier: Modifier = Modifier
 ) {
     val bg = MaterialTheme.colorScheme.background
     val _languages = mutableListOf<LangWithPercent>()
@@ -57,7 +58,7 @@ fun LanguageMakeup(
 
     Column(
         verticalArrangement = Arrangement.spacedBy(15.dp),
-        modifier = Modifier.padding(16.dp)
+        modifier = modifier.padding(16.dp)
     ) {
         Text(
             text = pluralStringResource(Res.plurals.plural_language, _languages.size),

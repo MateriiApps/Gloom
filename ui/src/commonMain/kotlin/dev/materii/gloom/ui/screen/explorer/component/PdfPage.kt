@@ -16,12 +16,13 @@ import net.engawapg.lib.zoomable.zoomable
 @Composable
 fun PdfPage(
     pdfState: RemotePdfState,
-    page: Int
+    page: Int,
+    modifier: Modifier = Modifier
 ) {
     val zoomState = rememberZoomState()
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         dev.zt64.compose.pdf.component.PdfPage(
             state = pdfState,

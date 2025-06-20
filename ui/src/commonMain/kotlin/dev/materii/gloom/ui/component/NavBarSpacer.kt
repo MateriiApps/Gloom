@@ -4,7 +4,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import dev.materii.gloom.ui.util.DimenUtils
+import dev.materii.gloom.ui.util.DimenUtil
 
 @Composable
-fun NavBarSpacer() = Spacer(Modifier.height(DimenUtils.navBarPadding))
+@Suppress("ModifierMissing")
+fun NavBarSpacer() = Spacer(Modifier.height(DimenUtil.navBarPadding))

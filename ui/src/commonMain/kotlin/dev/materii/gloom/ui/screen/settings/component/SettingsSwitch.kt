@@ -11,10 +11,11 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SettingsSwitch(
     label: String,
-    secondaryLabel: String? = null,
-    enabled: Boolean = true,
     pref: Boolean,
     onPrefChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+    secondaryLabel: String? = null,
+    enabled: Boolean = true
 ) {
     SettingsItem(
         text = { Text(text = label) },
@@ -24,7 +25,8 @@ fun SettingsSwitch(
             }
         },
         enabled = enabled,
-        onClick = { onPrefChange(!pref) }
+        onClick = { onPrefChange(!pref) },
+        modifier = modifier
     ) {
         VerticalDivider(Modifier.height(32.dp))
 
