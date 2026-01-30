@@ -1,12 +1,11 @@
 package dev.materii.gloom.core.data.repository
 
+import dev.materii.gloom.core.common.api.graphql.GraphQLResponseFlow
+import dev.materii.gloom.core.common.api.graphql.transform
 import dev.materii.gloom.core.graphql.GraphQLDataSource
 import dev.materii.gloom.core.graphql.fragment.File
 import dev.materii.gloom.core.graphql.fragment.RawMarkdownFile
 import dev.materii.gloom.core.graphql.fragment.TreeFragment
-import dev.materii.gloom.core.graphql.response.GraphQLResponse
-import dev.materii.gloom.core.graphql.response.transform
-import kotlinx.coroutines.flow.Flow
 
 interface FilesRepository {
 
@@ -24,7 +23,7 @@ interface FilesRepository {
         name: String,
         branch: String,
         path: String
-    ): Flow<GraphQLResponse<TreeFragment?>>
+    ): GraphQLResponseFlow<TreeFragment?>
 
     /**
      * Get a file and its contents
@@ -39,7 +38,7 @@ interface FilesRepository {
         name: String,
         branch: String,
         path: String
-    ): Flow<GraphQLResponse<File?>>
+    ): GraphQLResponseFlow<File?>
 
     /**
      * Gets the raw, unrendered markdown
@@ -54,7 +53,7 @@ interface FilesRepository {
         name: String,
         branch: String,
         path: String
-    ): Flow<GraphQLResponse<RawMarkdownFile?>>
+    ): GraphQLResponseFlow<RawMarkdownFile?>
 
 }
 
@@ -67,7 +66,7 @@ internal class FilesRepositoryImpl(
         name: String,
         branch: String,
         path: String
-    ): Flow<GraphQLResponse<TreeFragment?>> {
+    ): GraphQLResponseFlow<TreeFragment?> {
         return graphQL.getTree(owner, name, "$branch:$path").transform {
             it.repository?.gitObject?.treeFragment
         }
@@ -78,7 +77,7 @@ internal class FilesRepositoryImpl(
         name: String,
         branch: String,
         path: String
-    ): Flow<GraphQLResponse<File?>> {
+    ): GraphQLResponseFlow<File?> {
         return graphQL.getFile(owner, name, branch, path).transform {
             it.repository?.file
         }
@@ -89,7 +88,7 @@ internal class FilesRepositoryImpl(
         name: String,
         branch: String,
         path: String
-    ): Flow<GraphQLResponse<RawMarkdownFile?>> {
+    ): GraphQLResponseFlow<RawMarkdownFile?> {
         return graphQL.getRawMarkdown(owner, name, branch, path).transform {
             it.repository?.gitObject?.onCommit?.file?.fileType?.rawMarkdownFile
         }

@@ -1,12 +1,14 @@
-package dev.materii.gloom.core.graphql.response
+package dev.materii.gloom.core.common.api.graphql
 
 import com.apollographql.apollo.ApolloCall
+import com.apollographql.apollo.api.Error
 import com.apollographql.apollo.api.Operation
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
-internal typealias GQLErrors = List<com.apollographql.apollo.api.Error>
+typealias GraphQLResponseFlow<T> = Flow<GraphQLResponse<T>>
+internal typealias GQLErrors = List<Error>
 
 sealed interface GraphQLResponse<out T> {
 
@@ -19,7 +21,7 @@ sealed interface GraphQLResponse<out T> {
 }
 
 @Suppress("TooGenericExceptionCaught")
-fun <D: Operation.Data> ApolloCall<D>.response(): Flow<GraphQLResponse<D>> {
+fun <D: Operation.Data> ApolloCall<D>.response(): GraphQLResponseFlow<D> {
     return try {
         toFlow().map { response ->
             when {

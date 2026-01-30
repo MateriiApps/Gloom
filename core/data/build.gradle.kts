@@ -7,6 +7,8 @@ android {
 }
 
 dependencies {
-    api(projects.core.graphql)
+    api(projects.core.commonApi)
+    api(projects.core.model)
+    implementation(projects.core.graphql)
     implementation(libs.koin.core)
 }

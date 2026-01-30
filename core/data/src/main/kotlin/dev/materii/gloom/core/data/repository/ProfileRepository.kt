@@ -1,17 +1,16 @@
 package dev.materii.gloom.core.data.repository
 
+import dev.materii.gloom.core.common.api.graphql.GraphQLResponseFlow
+import dev.materii.gloom.core.common.api.graphql.transform
 import dev.materii.gloom.core.graphql.*
 import dev.materii.gloom.core.graphql.fragment.UserProfile
-import dev.materii.gloom.core.graphql.response.GraphQLResponse
-import dev.materii.gloom.core.graphql.response.transform
-import kotlinx.coroutines.flow.Flow
 
 interface ProfileRepository {
 
     /**
      * Retrieves the profile for the logged in user
      */
-    fun getCurrentProfile(): Flow<GraphQLResponse<UserProfile>>
+    fun getCurrentProfile(): GraphQLResponseFlow<UserProfile>
 
     /**
      * Retrieves the profile for a user or organization
@@ -20,7 +19,7 @@ interface ProfileRepository {
      *
      * @return The profile and a boolean indicating if they sponsor the project
      */
-    fun getProfile(login: String): Flow<GraphQLResponse<Pair<UserProfileQuery.RepositoryOwner?, Boolean>>>
+    fun getProfile(login: String): GraphQLResponseFlow<Pair<UserProfileQuery.RepositoryOwner?, Boolean>>
 
     /**
      * Get a list of repositories owned by a User or Org
@@ -29,7 +28,7 @@ interface ProfileRepository {
      * @param after The key to use to get the next page
      * @param count Number of repositories to return
      */
-    fun getUserRepositories(login: String, after: String? = null, count: Int = 30): Flow<GraphQLResponse<RepoListQuery.Repositories?>>
+    fun getUserRepositories(login: String, after: String? = null, count: Int = 30): GraphQLResponseFlow<RepoListQuery.Repositories?>
 
     /**
      * Get a list of repositories starred by a User
@@ -42,7 +41,7 @@ interface ProfileRepository {
         login: String,
         after: String? = null,
         count: Int = 30
-    ): Flow<GraphQLResponse<StarredReposQuery.StarredRepositories?>>
+    ): GraphQLResponseFlow<StarredReposQuery.StarredRepositories?>
 
     /**
      * Get a list of organizations a User is a member of
@@ -55,7 +54,7 @@ interface ProfileRepository {
         login: String,
         after: String? = null,
         count: Int = 30
-    ): Flow<GraphQLResponse<JoinedOrgsQuery.Organizations?>>
+    ): GraphQLResponseFlow<JoinedOrgsQuery.Organizations?>
 
     /**
      * Get a list of users following a User or Org
@@ -68,7 +67,7 @@ interface ProfileRepository {
         login: String,
         after: String? = null,
         count: Int = 30
-    ): Flow<GraphQLResponse<FollowersQuery.Followers?>>
+    ): GraphQLResponseFlow<FollowersQuery.Followers?>
 
     /**
      * Get a list of users followed by a User or Org
@@ -81,7 +80,7 @@ interface ProfileRepository {
         login: String,
         after: String? = null,
         count: Int = 30
-    ): Flow<GraphQLResponse<FollowingQuery.Following?>>
+    ): GraphQLResponseFlow<FollowingQuery.Following?>
 
     /**
      * Get a list of users being sponsored by a User or Org
@@ -94,21 +93,21 @@ interface ProfileRepository {
         login: String,
         after: String? = null,
         count: Int = 30
-    ): Flow<GraphQLResponse<SponsoringQuery.RepositoryOwner?>>
+    ): GraphQLResponseFlow<SponsoringQuery.RepositoryOwner?>
 
     /**
      * Follow a User
      *
      * @param id The user's ID
      */
-    fun followUser(id: String): Flow<GraphQLResponse<FollowUserMutation.User?>>
+    fun followUser(id: String): GraphQLResponseFlow<FollowUserMutation.User?>
 
     /**
      * Unfollow a User
      *
      * @param id The user's ID
      */
-    fun unfollowUser(id: String): Flow<GraphQLResponse<UnfollowUserMutation.User?>>
+    fun unfollowUser(id: String): GraphQLResponseFlow<UnfollowUserMutation.User?>
 
 }
 
@@ -116,19 +115,19 @@ internal class ProfileRepositoryImpl(
     private val graphQL: GraphQLDataSource
 ): ProfileRepository {
 
-    override fun getCurrentProfile(): Flow<GraphQLResponse<UserProfile>> {
+    override fun getCurrentProfile(): GraphQLResponseFlow<UserProfile> {
         return graphQL.getCurrentProfile().transform {
             it.viewer.userProfile
         }
     }
 
-    override fun getProfile(login: String): Flow<GraphQLResponse<Pair<UserProfileQuery.RepositoryOwner?, Boolean>>> {
+    override fun getProfile(login: String): GraphQLResponseFlow<Pair<UserProfileQuery.RepositoryOwner?, Boolean>> {
         return graphQL.getProfile(login).transform {
             it.repositoryOwner to (it.user?.isSponsoredBy ?: false)
         }
     }
 
-    override fun getUserRepositories(login: String, after: String?, count: Int): Flow<GraphQLResponse<RepoListQuery.Repositories?>> {
+    override fun getUserRepositories(login: String, after: String?, count: Int): GraphQLResponseFlow<RepoListQuery.Repositories?> {
         return graphQL.getUserRepositories(login, after, count).transform {
             it.repositoryOwner?.repositories
         }
@@ -138,43 +137,43 @@ internal class ProfileRepositoryImpl(
         login: String,
         after: String?,
         count: Int
-    ): Flow<GraphQLResponse<StarredReposQuery.StarredRepositories?>> {
+    ): GraphQLResponseFlow<StarredReposQuery.StarredRepositories?> {
         return graphQL.getStarredRepositories(login, after, count).transform {
             it.user?.starredRepositories
         }
     }
 
-    override fun getJoinedOrgs(login: String, after: String?, count: Int): Flow<GraphQLResponse<JoinedOrgsQuery.Organizations?>> {
+    override fun getJoinedOrgs(login: String, after: String?, count: Int): GraphQLResponseFlow<JoinedOrgsQuery.Organizations?> {
         return graphQL.getJoinedOrgs(login, after, count).transform {
             it.user?.organizations
         }
     }
 
-    override fun getFollowers(login: String, after: String?, count: Int): Flow<GraphQLResponse<FollowersQuery.Followers?>> {
+    override fun getFollowers(login: String, after: String?, count: Int): GraphQLResponseFlow<FollowersQuery.Followers?> {
         return graphQL.getFollowers(login, after, count).transform {
             it.user?.followers
         }
     }
 
-    override fun getFollowing(login: String, after: String?, count: Int): Flow<GraphQLResponse<FollowingQuery.Following?>> {
+    override fun getFollowing(login: String, after: String?, count: Int): GraphQLResponseFlow<FollowingQuery.Following?> {
         return graphQL.getFollowing(login, after, count).transform {
             it.user?.following
         }
     }
 
-    override fun getSponsoring(login: String, after: String?, count: Int): Flow<GraphQLResponse<SponsoringQuery.RepositoryOwner?>> {
+    override fun getSponsoring(login: String, after: String?, count: Int): GraphQLResponseFlow<SponsoringQuery.RepositoryOwner?> {
         return graphQL.getSponsoring(login, after, count).transform {
             it.repositoryOwner
         }
     }
 
-    override fun followUser(id: String): Flow<GraphQLResponse<FollowUserMutation.User?>> {
+    override fun followUser(id: String): GraphQLResponseFlow<FollowUserMutation.User?> {
         return graphQL.followUser(id).transform {
             it.followUser?.user
         }
     }
 
-    override fun unfollowUser(id: String): Flow<GraphQLResponse<UnfollowUserMutation.User?>> {
+    override fun unfollowUser(id: String): GraphQLResponseFlow<UnfollowUserMutation.User?> {
         return graphQL.unfollowUser(id).transform {
             it.unfollowUser?.user
         }

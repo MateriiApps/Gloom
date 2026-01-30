@@ -1,4 +1,4 @@
-package dev.materii.gloom.core.graphql.response
+package dev.materii.gloom.core.common.api.graphql
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapLatest

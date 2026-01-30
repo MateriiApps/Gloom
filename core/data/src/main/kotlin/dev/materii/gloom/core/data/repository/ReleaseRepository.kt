@@ -1,10 +1,9 @@
 package dev.materii.gloom.core.data.repository
 
+import dev.materii.gloom.core.common.api.graphql.GraphQLResponseFlow
+import dev.materii.gloom.core.common.api.graphql.transform
 import dev.materii.gloom.core.graphql.GraphQLDataSource
 import dev.materii.gloom.core.graphql.fragment.ReleaseDetails
-import dev.materii.gloom.core.graphql.response.GraphQLResponse
-import dev.materii.gloom.core.graphql.response.transform
-import kotlinx.coroutines.flow.Flow
 
 interface ReleaseRepository {
 
@@ -21,7 +20,7 @@ interface ReleaseRepository {
         name: String,
         tag: String,
         after: String? = null
-    ): Flow<GraphQLResponse<ReleaseDetails?>>
+    ): GraphQLResponseFlow<ReleaseDetails?>
 
 }
 
@@ -34,7 +33,7 @@ internal class ReleaseRepositoryImpl(
         name: String,
         tag: String,
         after: String?
-    ): Flow<GraphQLResponse<ReleaseDetails?>> {
+    ): GraphQLResponseFlow<ReleaseDetails?> {
         return graphQL.getReleaseDetails(owner, name, tag, after).transform {
             it.repository?.release?.releaseDetails
         }

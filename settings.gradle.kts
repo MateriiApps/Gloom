@@ -15,6 +15,7 @@ include(
     ":app",
 
     // Core
+    ":core:common-api",
     ":core:data",
     ":core:graphql",
     ":core:model",
