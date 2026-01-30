@@ -1,8 +1,7 @@
 fragment FollowedUserFeedItem on FollowedUserFeedItem {
     createdAt
     follower {
-        login
-        avatarUrl
+        ...FeedActor
     }
     followee {
         __typename

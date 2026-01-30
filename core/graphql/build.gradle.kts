@@ -12,6 +12,7 @@ android {
 }
 
 dependencies {
+    api(projects.core.commonApi)
     api(libs.bundles.apollo)
     implementation(libs.koin.core)
 }

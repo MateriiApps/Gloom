@@ -1,4 +1,5 @@
 fragment RecommendedRepositoryFeedItem on RepositoryRecommendationFeedItem {
+    createdAt
     repository {
         ...FeedRepository
     }

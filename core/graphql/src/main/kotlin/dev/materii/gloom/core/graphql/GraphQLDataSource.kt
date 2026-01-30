@@ -4,110 +4,109 @@ import com.apollographql.apollo.ApolloCall
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Operation
 import com.apollographql.apollo.cache.normalized.doNotStore
-import dev.materii.gloom.core.graphql.response.GraphQLResponse
-import dev.materii.gloom.core.graphql.response.response
+import dev.materii.gloom.core.common.api.graphql.GraphQLResponseFlow
+import dev.materii.gloom.core.common.api.graphql.response
 import dev.materii.gloom.core.graphql.type.IssueState
 import dev.materii.gloom.core.graphql.type.PullRequestState
 import dev.materii.gloom.core.graphql.type.ReactionContent
 import dev.materii.gloom.core.graphql.type.TrendingPeriod
 import dev.materii.gloom.core.graphql.util.toOptional
-import kotlinx.coroutines.flow.Flow
 
 interface GraphQLDataSource {
 
     // Account
 
-    fun getAccountInfo(token: String): Flow<GraphQLResponse<AccountInfoQuery.Data>>
+    fun getAccountInfo(token: String): GraphQLResponseFlow<AccountInfoQuery.Data>
 
-    fun identify(): Flow<GraphQLResponse<IdentifyQuery.Data>>
+    fun identify(): GraphQLResponseFlow<IdentifyQuery.Data>
 
     // Starrable
 
-    fun star(id: String): Flow<GraphQLResponse<StarMutation.Data>>
+    fun star(id: String): GraphQLResponseFlow<StarMutation.Data>
 
-    fun unstar(id: String): Flow<GraphQLResponse<UnstarMutation.Data>>
+    fun unstar(id: String): GraphQLResponseFlow<UnstarMutation.Data>
 
     // Reactable
 
-    fun react(id: String, reaction: ReactionContent): Flow<GraphQLResponse<ReactMutation.Data>>
+    fun react(id: String, reaction: ReactionContent): GraphQLResponseFlow<ReactMutation.Data>
 
-    fun unreact(id: String, reaction: ReactionContent): Flow<GraphQLResponse<UnreactMutation.Data>>
+    fun unreact(id: String, reaction: ReactionContent): GraphQLResponseFlow<UnreactMutation.Data>
 
     // Profile
 
-    fun getCurrentProfile(): Flow<GraphQLResponse<ProfileQuery.Data>>
+    fun getCurrentProfile(): GraphQLResponseFlow<ProfileQuery.Data>
 
-    fun getProfile(login: String): Flow<GraphQLResponse<UserProfileQuery.Data>>
+    fun getProfile(login: String): GraphQLResponseFlow<UserProfileQuery.Data>
 
-    fun getUserRepositories(login: String, after: String? = null, count: Int = 30): Flow<GraphQLResponse<RepoListQuery.Data>>
+    fun getUserRepositories(login: String, after: String? = null, count: Int = 30): GraphQLResponseFlow<RepoListQuery.Data>
 
-    fun getStarredRepositories(login: String, after: String? = null, count: Int = 30): Flow<GraphQLResponse<StarredReposQuery.Data>>
+    fun getStarredRepositories(login: String, after: String? = null, count: Int = 30): GraphQLResponseFlow<StarredReposQuery.Data>
 
-    fun getJoinedOrgs(login: String, after: String? = null, count: Int = 30): Flow<GraphQLResponse<JoinedOrgsQuery.Data>>
+    fun getJoinedOrgs(login: String, after: String? = null, count: Int = 30): GraphQLResponseFlow<JoinedOrgsQuery.Data>
 
-    fun getFollowers(login: String, after: String? = null, count: Int = 30): Flow<GraphQLResponse<FollowersQuery.Data>>
+    fun getFollowers(login: String, after: String? = null, count: Int = 30): GraphQLResponseFlow<FollowersQuery.Data>
 
-    fun getFollowing(login: String, after: String? = null, count: Int = 30): Flow<GraphQLResponse<FollowingQuery.Data>>
+    fun getFollowing(login: String, after: String? = null, count: Int = 30): GraphQLResponseFlow<FollowingQuery.Data>
 
-    fun getSponsoring(login: String, after: String? = null, count: Int = 30): Flow<GraphQLResponse<SponsoringQuery.Data>>
+    fun getSponsoring(login: String, after: String? = null, count: Int = 30): GraphQLResponseFlow<SponsoringQuery.Data>
 
-    fun followUser(id: String): Flow<GraphQLResponse<FollowUserMutation.Data>>
+    fun followUser(id: String): GraphQLResponseFlow<FollowUserMutation.Data>
 
-    fun unfollowUser(id: String): Flow<GraphQLResponse<UnfollowUserMutation.Data>>
+    fun unfollowUser(id: String): GraphQLResponseFlow<UnfollowUserMutation.Data>
 
     // Feed
 
-    fun getFeed(after: String? = null): Flow<GraphQLResponse<FeedQuery.Data>>
+    fun getFeed(after: String? = null): GraphQLResponseFlow<FeedQuery.Data>
 
-    fun getTrending(period: TrendingPeriod = TrendingPeriod.DAILY): Flow<GraphQLResponse<TrendingQuery.Data>>
+    fun getTrending(period: TrendingPeriod = TrendingPeriod.DAILY): GraphQLResponseFlow<TrendingQuery.Data>
 
     // Repositories
 
-    fun getRepoName(owner: String, name: String): Flow<GraphQLResponse<RepoNameQuery.Data>>
+    fun getRepoName(owner: String, name: String): GraphQLResponseFlow<RepoNameQuery.Data>
 
-    fun getRepoDetails(owner: String, name: String): Flow<GraphQLResponse<RepoDetailsQuery.Data>>
+    fun getRepoDetails(owner: String, name: String): GraphQLResponseFlow<RepoDetailsQuery.Data>
 
-    fun getRepoLicense(owner: String, name: String): Flow<GraphQLResponse<RepoLicenseQuery.Data>>
+    fun getRepoLicense(owner: String, name: String): GraphQLResponseFlow<RepoLicenseQuery.Data>
 
-    fun prefetchRepoTree(owner: String, name: String): Flow<GraphQLResponse<RepoTreePrefetchQuery.Data>>
+    fun prefetchRepoTree(owner: String, name: String): GraphQLResponseFlow<RepoTreePrefetchQuery.Data>
 
     fun getRepoIssues(
         owner: String,
         name: String,
         after: String? = null,
         states: Set<IssueState> = setOf(IssueState.OPEN)
-    ): Flow<GraphQLResponse<RepoIssuesQuery.Data>>
+    ): GraphQLResponseFlow<RepoIssuesQuery.Data>
 
     fun getRepoPullRequests(
         owner: String,
         name: String,
         after: String? = null,
         states: Set<PullRequestState> = setOf(PullRequestState.OPEN)
-    ): Flow<GraphQLResponse<RepoPullRequestsQuery.Data>>
+    ): GraphQLResponseFlow<RepoPullRequestsQuery.Data>
 
     fun getRepoReleases(
         owner: String,
         name: String,
         after: String? = null
-    ): Flow<GraphQLResponse<RepoReleasesQuery.Data>>
+    ): GraphQLResponseFlow<RepoReleasesQuery.Data>
 
     fun getRepoForks(
         owner: String,
         name: String,
         after: String? = null
-    ): Flow<GraphQLResponse<RepoForksQuery.Data>>
+    ): GraphQLResponseFlow<RepoForksQuery.Data>
 
     fun getRepoContributors(
         owner: String,
         name: String,
         after: String? = null
-    ): Flow<GraphQLResponse<RepoContributorsQuery.Data>>
+    ): GraphQLResponseFlow<RepoContributorsQuery.Data>
 
     fun getCommits(
         id: String,
         branch: String? = null,
         after: String? = null
-    ): Flow<GraphQLResponse<CommitsQuery.Data>>
+    ): GraphQLResponseFlow<CommitsQuery.Data>
 
     // Release
 
@@ -116,15 +115,15 @@ interface GraphQLDataSource {
         name: String,
         tag: String,
         after: String? = null
-    ): Flow<GraphQLResponse<ReleaseDetailsQuery.Data>>
+    ): GraphQLResponseFlow<ReleaseDetailsQuery.Data>
 
     // Files
 
-    fun getTree(owner: String, name: String, branchAndPath: String): Flow<GraphQLResponse<TreeQuery.Data>>
+    fun getTree(owner: String, name: String, branchAndPath: String): GraphQLResponseFlow<TreeQuery.Data>
 
-    fun getFile(owner: String, name: String, branch: String, path: String): Flow<GraphQLResponse<FileQuery.Data>>
+    fun getFile(owner: String, name: String, branch: String, path: String): GraphQLResponseFlow<FileQuery.Data>
 
-    fun getRawMarkdown(owner: String, name: String, branch: String, path: String): Flow<GraphQLResponse<RawMarkdownQuery.Data>>
+    fun getRawMarkdown(owner: String, name: String, branch: String, path: String): GraphQLResponseFlow<RawMarkdownQuery.Data>
 
 }
 
@@ -139,14 +138,14 @@ internal class NetworkGraphQLDataSource(
 
     // Account
 
-    override fun getAccountInfo(token: String): Flow<GraphQLResponse<AccountInfoQuery.Data>> {
+    override fun getAccountInfo(token: String): GraphQLResponseFlow<AccountInfoQuery.Data> {
         return apolloClient.query(AccountInfoQuery())
             .doNotStore(true)
             .addHttpHeader("Authorization", token)
             .response()
     }
 
-    override fun identify(): Flow<GraphQLResponse<IdentifyQuery.Data>> {
+    override fun identify(): GraphQLResponseFlow<IdentifyQuery.Data> {
         return apolloClient.query(IdentifyQuery())
             .addToken()
             .response()
@@ -154,13 +153,13 @@ internal class NetworkGraphQLDataSource(
 
     // Starrable
 
-    override fun star(id: String): Flow<GraphQLResponse<StarMutation.Data>> {
+    override fun star(id: String): GraphQLResponseFlow<StarMutation.Data> {
         return apolloClient.mutation(StarMutation(id))
             .addToken()
             .response()
     }
 
-    override fun unstar(id: String): Flow<GraphQLResponse<UnstarMutation.Data>> {
+    override fun unstar(id: String): GraphQLResponseFlow<UnstarMutation.Data> {
         return apolloClient.mutation(UnstarMutation(id))
             .addToken()
             .response()
@@ -171,7 +170,7 @@ internal class NetworkGraphQLDataSource(
     override fun react(
         id: String,
         reaction: ReactionContent
-    ): Flow<GraphQLResponse<ReactMutation.Data>> {
+    ): GraphQLResponseFlow<ReactMutation.Data> {
         return apolloClient.mutation(ReactMutation(id, reaction))
             .addToken()
             .response()
@@ -180,7 +179,7 @@ internal class NetworkGraphQLDataSource(
     override fun unreact(
         id: String,
         reaction: ReactionContent
-    ): Flow<GraphQLResponse<UnreactMutation.Data>> {
+    ): GraphQLResponseFlow<UnreactMutation.Data> {
         return apolloClient.mutation(UnreactMutation(id, reaction))
             .addToken()
             .response()
@@ -188,13 +187,13 @@ internal class NetworkGraphQLDataSource(
 
     // Profile
 
-    override fun getCurrentProfile(): Flow<GraphQLResponse<ProfileQuery.Data>> {
+    override fun getCurrentProfile(): GraphQLResponseFlow<ProfileQuery.Data> {
         return apolloClient.query(ProfileQuery())
             .addToken()
             .response()
     }
 
-    override fun getProfile(login: String): Flow<GraphQLResponse<UserProfileQuery.Data>> {
+    override fun getProfile(login: String): GraphQLResponseFlow<UserProfileQuery.Data> {
         return apolloClient.query(UserProfileQuery(login))
             .addToken()
             .response()
@@ -204,7 +203,7 @@ internal class NetworkGraphQLDataSource(
         login: String,
         after: String?,
         count: Int
-    ): Flow<GraphQLResponse<RepoListQuery.Data>> {
+    ): GraphQLResponseFlow<RepoListQuery.Data> {
         return apolloClient.query(
             RepoListQuery(
                 username = login,
@@ -220,7 +219,7 @@ internal class NetworkGraphQLDataSource(
         login: String,
         after: String?,
         count: Int
-    ): Flow<GraphQLResponse<StarredReposQuery.Data>> {
+    ): GraphQLResponseFlow<StarredReposQuery.Data> {
         return apolloClient.query(
             StarredReposQuery(
                 username = login,
@@ -236,7 +235,7 @@ internal class NetworkGraphQLDataSource(
         login: String,
         after: String?,
         count: Int
-    ): Flow<GraphQLResponse<JoinedOrgsQuery.Data>> {
+    ): GraphQLResponseFlow<JoinedOrgsQuery.Data> {
         return apolloClient.query(
             JoinedOrgsQuery(
                 username = login,
@@ -252,7 +251,7 @@ internal class NetworkGraphQLDataSource(
         login: String,
         after: String?,
         count: Int
-    ): Flow<GraphQLResponse<FollowersQuery.Data>> {
+    ): GraphQLResponseFlow<FollowersQuery.Data> {
         return apolloClient.query(
             FollowersQuery(
                 username = login,
@@ -268,7 +267,7 @@ internal class NetworkGraphQLDataSource(
         login: String,
         after: String?,
         count: Int
-    ): Flow<GraphQLResponse<FollowingQuery.Data>> {
+    ): GraphQLResponseFlow<FollowingQuery.Data> {
         return apolloClient.query(
             FollowingQuery(
                 username = login,
@@ -284,7 +283,7 @@ internal class NetworkGraphQLDataSource(
         login: String,
         after: String?,
         count: Int
-    ): Flow<GraphQLResponse<SponsoringQuery.Data>> {
+    ): GraphQLResponseFlow<SponsoringQuery.Data> {
         return apolloClient.query(
             SponsoringQuery(
                 username = login,
@@ -296,13 +295,13 @@ internal class NetworkGraphQLDataSource(
             .response()
     }
 
-    override fun followUser(id: String): Flow<GraphQLResponse<FollowUserMutation.Data>> {
+    override fun followUser(id: String): GraphQLResponseFlow<FollowUserMutation.Data> {
         return apolloClient.mutation(FollowUserMutation(id))
             .addToken()
             .response()
     }
 
-    override fun unfollowUser(id: String): Flow<GraphQLResponse<UnfollowUserMutation.Data>> {
+    override fun unfollowUser(id: String): GraphQLResponseFlow<UnfollowUserMutation.Data> {
         return apolloClient.mutation(UnfollowUserMutation(id))
             .addToken()
             .response()
@@ -310,13 +309,13 @@ internal class NetworkGraphQLDataSource(
 
     // Feed
 
-    override fun getFeed(after: String?): Flow<GraphQLResponse<FeedQuery.Data>> {
+    override fun getFeed(after: String?): GraphQLResponseFlow<FeedQuery.Data> {
         return apolloClient.query(FeedQuery(after.toOptional()))
             .addToken()
             .response()
     }
 
-    override fun getTrending(period: TrendingPeriod): Flow<GraphQLResponse<TrendingQuery.Data>> {
+    override fun getTrending(period: TrendingPeriod): GraphQLResponseFlow<TrendingQuery.Data> {
         return apolloClient.query(TrendingQuery(period))
             .addToken()
             .response()
@@ -327,7 +326,7 @@ internal class NetworkGraphQLDataSource(
     override fun getRepoName(
         owner: String,
         name: String
-    ): Flow<GraphQLResponse<RepoNameQuery.Data>> {
+    ): GraphQLResponseFlow<RepoNameQuery.Data> {
         return apolloClient.query(RepoNameQuery(owner, name))
             .addToken()
             .response()
@@ -336,7 +335,7 @@ internal class NetworkGraphQLDataSource(
     override fun getRepoDetails(
         owner: String,
         name: String
-    ): Flow<GraphQLResponse<RepoDetailsQuery.Data>> {
+    ): GraphQLResponseFlow<RepoDetailsQuery.Data> {
         return apolloClient.query(RepoDetailsQuery(owner, name))
             .addToken()
             .response()
@@ -345,7 +344,7 @@ internal class NetworkGraphQLDataSource(
     override fun getRepoLicense(
         owner: String,
         name: String
-    ): Flow<GraphQLResponse<RepoLicenseQuery.Data>> {
+    ): GraphQLResponseFlow<RepoLicenseQuery.Data> {
         return apolloClient.query(RepoLicenseQuery(owner, name))
             .addToken()
             .response()
@@ -354,7 +353,7 @@ internal class NetworkGraphQLDataSource(
     override fun prefetchRepoTree(
         owner: String,
         name: String
-    ): Flow<GraphQLResponse<RepoTreePrefetchQuery.Data>> {
+    ): GraphQLResponseFlow<RepoTreePrefetchQuery.Data> {
         return apolloClient.query(RepoTreePrefetchQuery(owner, name))
             .addToken()
             .response()
@@ -365,7 +364,7 @@ internal class NetworkGraphQLDataSource(
         name: String,
         after: String?,
         states: Set<IssueState>
-    ): Flow<GraphQLResponse<RepoIssuesQuery.Data>> {
+    ): GraphQLResponseFlow<RepoIssuesQuery.Data> {
         return apolloClient.query(RepoIssuesQuery(owner, name, after.toOptional(), states.toList()))
             .addToken()
             .response()
@@ -376,7 +375,7 @@ internal class NetworkGraphQLDataSource(
         name: String,
         after: String?,
         states: Set<PullRequestState>
-    ): Flow<GraphQLResponse<RepoPullRequestsQuery.Data>> {
+    ): GraphQLResponseFlow<RepoPullRequestsQuery.Data> {
         return apolloClient.query(RepoPullRequestsQuery(owner, name, after.toOptional(), states.toList()))
             .addToken()
             .response()
@@ -386,7 +385,7 @@ internal class NetworkGraphQLDataSource(
         owner: String,
         name: String,
         after: String?
-    ): Flow<GraphQLResponse<RepoReleasesQuery.Data>> {
+    ): GraphQLResponseFlow<RepoReleasesQuery.Data> {
         return apolloClient.query(RepoReleasesQuery(owner, name, after.toOptional()))
             .addToken()
             .response()
@@ -396,7 +395,7 @@ internal class NetworkGraphQLDataSource(
         owner: String,
         name: String,
         after: String?
-    ): Flow<GraphQLResponse<RepoForksQuery.Data>> {
+    ): GraphQLResponseFlow<RepoForksQuery.Data> {
         return apolloClient.query(RepoForksQuery(owner, name, after.toOptional()))
             .addToken()
             .response()
@@ -406,7 +405,7 @@ internal class NetworkGraphQLDataSource(
         owner: String,
         name: String,
         after: String?
-    ): Flow<GraphQLResponse<RepoContributorsQuery.Data>> {
+    ): GraphQLResponseFlow<RepoContributorsQuery.Data> {
         return apolloClient.query(RepoContributorsQuery(owner, name, after.toOptional()))
             .addToken()
             .response()
@@ -416,7 +415,7 @@ internal class NetworkGraphQLDataSource(
         id: String,
         branch: String?,
         after: String?
-    ): Flow<GraphQLResponse<CommitsQuery.Data>> {
+    ): GraphQLResponseFlow<CommitsQuery.Data> {
         return apolloClient.query(CommitsQuery(id, branch.toOptional(), after.toOptional()))
             .addToken()
             .response()
@@ -429,7 +428,7 @@ internal class NetworkGraphQLDataSource(
         name: String,
         tag: String,
         after: String?
-    ): Flow<GraphQLResponse<ReleaseDetailsQuery.Data>> {
+    ): GraphQLResponseFlow<ReleaseDetailsQuery.Data> {
         return apolloClient.query(ReleaseDetailsQuery(owner, name, tag, after.toOptional()))
             .addToken()
             .response()
@@ -441,7 +440,7 @@ internal class NetworkGraphQLDataSource(
         owner: String,
         name: String,
         branchAndPath: String
-    ): Flow<GraphQLResponse<TreeQuery.Data>> {
+    ): GraphQLResponseFlow<TreeQuery.Data> {
         return apolloClient.query(TreeQuery(owner, name, branchAndPath))
             .addToken()
             .response()
@@ -452,7 +451,7 @@ internal class NetworkGraphQLDataSource(
         name: String,
         branch: String,
         path: String
-    ): Flow<GraphQLResponse<FileQuery.Data>> {
+    ): GraphQLResponseFlow<FileQuery.Data> {
         return apolloClient.query(FileQuery(owner, name, branch, path))
             .addToken()
             .response()
@@ -463,7 +462,7 @@ internal class NetworkGraphQLDataSource(
         name: String,
         branch: String,
         path: String
-    ): Flow<GraphQLResponse<RawMarkdownQuery.Data>> {
+    ): GraphQLResponseFlow<RawMarkdownQuery.Data> {
         return apolloClient.query(RawMarkdownQuery(owner, name, branch, path))
             .addToken()
             .response()
