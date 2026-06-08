@@ -1,27 +1,15 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.gloom.application)
+    alias(libs.plugins.gloom.application.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.aboutlibraries)
 }
 
-kotlin {
-    jvmToolchain(17)
-
-    compilerOptions {
-        freeCompilerArgs.addAll("-Xcontext-parameters", "-Xexpect-actual-classes")
-    }
-}
-
 android {
-    compileSdk = 35
     namespace = "dev.materii.gloom"
 
     defaultConfig {
         applicationId = "dev.materii.gloom"
-        minSdk = 21
-        targetSdk = 35
         versionCode = 100
         versionName = "0.1.0"
 
@@ -73,10 +61,6 @@ android {
         compose = true
         buildConfig = true
     }
-}
-
-composeCompiler {
-    stabilityConfigurationFiles.add(project.layout.projectDirectory.file("stability.cfg"))
 }
 
 dependencies {
