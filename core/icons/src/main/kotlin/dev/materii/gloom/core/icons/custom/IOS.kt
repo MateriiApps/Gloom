@@ -1,24 +1,18 @@
-package dev.materii.gloom.ui.icon.custom
+package dev.materii.gloom.core.icons.custom
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import androidx.compose.ui.unit.dp
-import dev.materii.gloom.ui.icon.CustomIcons
+import dev.materii.gloom.core.icons.GloomIcons
+import dev.materii.gloom.core.icons.gloomIcon
 
-val CustomIcons.IOS: ImageVector
+val GloomIcons.IOS: ImageVector
     get() {
         if (_IOS != null) {
             return _IOS!!
         }
-        _IOS = ImageVector.Builder(
-            name = "iOS",
-            defaultWidth = 24.0.dp,
-            defaultHeight = 24.0.dp,
-            viewportWidth = 960.0F,
-            viewportHeight = 960.0F,
-        ).apply {
+        _IOS = gloomIcon("iOS") {
             path(
                 stroke = SolidColor(Color.Black),
                 strokeLineWidth = 1f
@@ -78,7 +72,7 @@ val CustomIcons.IOS: ImageVector
                 lineTo(560.0F, 680.0F)
                 close()
             }
-        }.build()
+        }
         return _IOS!!
     }
 

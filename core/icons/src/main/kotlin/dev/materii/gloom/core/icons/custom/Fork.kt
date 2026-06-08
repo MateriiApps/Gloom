@@ -1,11 +1,11 @@
-package dev.materii.gloom.ui.icon.custom
+package dev.materii.gloom.core.icons.custom
 
 import androidx.compose.material.icons.materialPath
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import dev.materii.gloom.ui.icon.CustomIcons
+import dev.materii.gloom.core.icons.GloomIcons
 
-val CustomIcons.Fork: ImageVector
+val GloomIcons.Fork: ImageVector
     get() {
         if (_fork != null) {
             return _fork!!

@@ -1,17 +1,17 @@
-package dev.materii.gloom.ui.icon.custom
+package dev.materii.gloom.core.icons.custom
 
-import androidx.compose.material.icons.materialIcon
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import dev.materii.gloom.ui.icon.CustomIcons
+import dev.materii.gloom.core.icons.GloomIcons
+import dev.materii.gloom.core.icons.gloomIcon
 
-val CustomIcons.MergedPullRequest: ImageVector
+val GloomIcons.MergedPullRequest: ImageVector
     get() {
         if (_mergedPullRequest != null) {
             return _mergedPullRequest!!
         }
-        _mergedPullRequest = materialIcon(name = "MergedPullRequest") {
+        _mergedPullRequest = gloomIcon(name = "MergedPullRequest") {
             path(
                 fill = SolidColor(Color(0xFFFFFFFF)),
                 fillAlpha = 1.0F,

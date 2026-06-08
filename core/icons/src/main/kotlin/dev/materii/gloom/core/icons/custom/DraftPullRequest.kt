@@ -1,17 +1,17 @@
-package dev.materii.gloom.ui.icon.custom
+package dev.materii.gloom.core.icons.custom
 
-import androidx.compose.material.icons.materialIcon
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import dev.materii.gloom.ui.icon.CustomIcons
+import dev.materii.gloom.core.icons.GloomIcons
+import dev.materii.gloom.core.icons.gloomIcon
 
-val CustomIcons.ClosedPullRequest: ImageVector
+val GloomIcons.DraftPullRequest: ImageVector
     get() {
-        if (_closedPullRequest != null) {
-            return _closedPullRequest!!
+        if (_draftPullRequest != null) {
+            return _draftPullRequest!!
         }
-        _closedPullRequest = materialIcon(name = "ClosedPullRequest") {
+        _draftPullRequest = gloomIcon(name = "DraftPullRequest") {
             path(
                 fill = SolidColor(Color(0xFFFFFFFF)),
                 fillAlpha = 1.0F,
@@ -22,32 +22,15 @@ val CustomIcons.ClosedPullRequest: ImageVector
                 strokeLineMiter = 4.0F,
                 pathFillType = PathFillType.EvenOdd,
             ) {
-                moveTo(18.073F, 6.705F)
-                lineTo(19.417F, 7.939F)
-                curveTo(19.577F, 8.086F, 19.789F, 8.163F, 20.006F, 8.154F)
-                curveTo(20.224F, 8.145F, 20.429F, 8.05F, 20.576F, 7.889F)
-                curveTo(20.723F, 7.729F, 20.8F, 7.517F, 20.791F, 7.3F)
-                curveTo(20.782F, 7.082F, 20.686F, 6.877F, 20.526F, 6.73F)
-                lineTo(19.256F, 5.564F)
-                lineTo(20.554F, 4.256F)
-                curveTo(20.707F, 4.102F, 20.793F, 3.893F, 20.792F, 3.675F)
-                curveTo(20.791F, 3.458F, 20.704F, 3.249F, 20.549F, 3.096F)
-                curveTo(20.395F, 2.943F, 20.186F, 2.857F, 19.968F, 2.858F)
-                curveTo(19.751F, 2.859F, 19.542F, 2.946F, 19.389F, 3.101F)
-                lineTo(18.073F, 4.427F)
-                lineTo(16.757F, 3.101F)
-                curveTo(16.604F, 2.946F, 16.395F, 2.859F, 16.178F, 2.858F)
-                curveTo(15.96F, 2.857F, 15.751F, 2.943F, 15.597F, 3.096F)
-                curveTo(15.442F, 3.249F, 15.355F, 3.458F, 15.354F, 3.675F)
-                curveTo(15.353F, 3.893F, 15.439F, 4.102F, 15.592F, 4.256F)
-                lineTo(16.89F, 5.564F)
-                lineTo(15.62F, 6.73F)
-                curveTo(15.46F, 6.877F, 15.364F, 7.082F, 15.355F, 7.3F)
-                curveTo(15.346F, 7.517F, 15.423F, 7.729F, 15.57F, 7.889F)
-                curveTo(15.717F, 8.05F, 15.922F, 8.145F, 16.14F, 8.154F)
-                curveTo(16.357F, 8.163F, 16.569F, 8.086F, 16.729F, 7.939F)
-                lineTo(18.073F, 6.705F)
-                lineTo(18.073F, 6.705F)
+                moveTo(16.625F, 10.552F)
+                curveTo(16.625F, 9.753F, 17.274F, 9.104F, 18.073F, 9.104F)
+                curveTo(18.872F, 9.104F, 19.521F, 9.753F, 19.521F, 10.552F)
+                curveTo(19.521F, 11.351F, 18.872F, 12.0F, 18.073F, 12.0F)
+                curveTo(17.274F, 12.0F, 16.625F, 11.351F, 16.625F, 10.552F)
+                lineTo(16.625F, 10.552F)
+                lineTo(16.625F, 10.552F)
+                lineTo(16.625F, 10.552F)
+                lineTo(16.625F, 10.552F)
 
                 moveTo(4.812F, 5.789F)
                 curveTo(4.812F, 5.64F, 4.841F, 5.493F, 4.9F, 5.355F)
@@ -92,6 +75,46 @@ val CustomIcons.ClosedPullRequest: ImageVector
                 lineTo(4.812F, 18.211F)
                 lineTo(4.812F, 18.211F)
 
+                moveTo(16.958F, 18.211F)
+                curveTo(16.958F, 18.062F, 16.988F, 17.914F, 17.046F, 17.777F)
+                curveTo(17.102F, 17.645F, 17.183F, 17.524F, 17.285F, 17.423F)
+                curveTo(17.387F, 17.321F, 17.507F, 17.239F, 17.64F, 17.183F)
+                curveTo(17.777F, 17.125F, 17.924F, 17.096F, 18.073F, 17.096F)
+                curveTo(18.222F, 17.096F, 18.369F, 17.125F, 18.506F, 17.183F)
+                curveTo(18.639F, 17.239F, 18.759F, 17.321F, 18.861F, 17.423F)
+                curveTo(18.963F, 17.524F, 19.044F, 17.645F, 19.101F, 17.777F)
+                curveTo(19.159F, 17.914F, 19.188F, 18.062F, 19.188F, 18.211F)
+                curveTo(19.188F, 18.36F, 19.159F, 18.507F, 19.101F, 18.644F)
+                curveTo(19.044F, 18.776F, 18.963F, 18.897F, 18.861F, 18.999F)
+                curveTo(18.759F, 19.101F, 18.639F, 19.182F, 18.506F, 19.238F)
+                curveTo(18.369F, 19.296F, 18.222F, 19.326F, 18.073F, 19.326F)
+                curveTo(17.924F, 19.326F, 17.777F, 19.296F, 17.64F, 19.238F)
+                curveTo(17.507F, 19.182F, 17.387F, 19.101F, 17.285F, 18.999F)
+                curveTo(17.183F, 18.897F, 17.102F, 18.776F, 17.045F, 18.644F)
+                curveTo(16.987F, 18.507F, 16.958F, 18.36F, 16.958F, 18.211F)
+                lineTo(16.958F, 18.211F)
+                lineTo(16.958F, 18.211F)
+
+                moveTo(14.966F, 18.211F)
+                curveTo(14.966F, 17.795F, 15.049F, 17.384F, 15.21F, 17.002F)
+                curveTo(15.367F, 16.632F, 15.593F, 16.297F, 15.876F, 16.014F)
+                curveTo(16.159F, 15.731F, 16.495F, 15.505F, 16.864F, 15.348F)
+                curveTo(17.246F, 15.187F, 17.658F, 15.103F, 18.073F, 15.104F)
+                curveTo(18.488F, 15.103F, 18.9F, 15.187F, 19.283F, 15.348F)
+                curveTo(19.651F, 15.505F, 19.987F, 15.731F, 20.27F, 16.014F)
+                curveTo(20.553F, 16.297F, 20.779F, 16.632F, 20.935F, 17.001F)
+                curveTo(21.097F, 17.384F, 21.18F, 17.795F, 21.18F, 18.211F)
+                curveTo(21.18F, 18.626F, 21.097F, 19.038F, 20.935F, 19.42F)
+                curveTo(20.779F, 19.789F, 20.553F, 20.124F, 20.27F, 20.408F)
+                curveTo(19.987F, 20.691F, 19.651F, 20.917F, 19.283F, 21.073F)
+                curveTo(18.9F, 21.235F, 18.488F, 21.318F, 18.073F, 21.318F)
+                curveTo(17.658F, 21.318F, 17.246F, 21.235F, 16.864F, 21.073F)
+                curveTo(16.495F, 20.917F, 16.159F, 20.691F, 15.876F, 20.408F)
+                curveTo(15.593F, 20.124F, 15.367F, 19.789F, 15.211F, 19.42F)
+                curveTo(15.049F, 19.038F, 14.966F, 18.626F, 14.966F, 18.211F)
+                lineTo(14.966F, 18.211F)
+                lineTo(14.966F, 18.211F)
+
                 moveTo(5.048F, 15.23F)
                 lineTo(5.048F, 9.104F)
                 lineTo(5.048F, 8.77F)
@@ -135,55 +158,15 @@ val CustomIcons.ClosedPullRequest: ImageVector
                 lineTo(5.048F, 15.23F)
                 lineTo(5.048F, 15.23F)
 
-                moveTo(16.958F, 18.211F)
-                curveTo(16.958F, 18.062F, 16.988F, 17.914F, 17.046F, 17.777F)
-                curveTo(17.102F, 17.645F, 17.183F, 17.524F, 17.285F, 17.423F)
-                curveTo(17.387F, 17.321F, 17.507F, 17.239F, 17.64F, 17.183F)
-                curveTo(17.777F, 17.125F, 17.924F, 17.096F, 18.073F, 17.096F)
-                curveTo(18.222F, 17.096F, 18.369F, 17.125F, 18.506F, 17.183F)
-                curveTo(18.639F, 17.239F, 18.759F, 17.321F, 18.861F, 17.423F)
-                curveTo(18.963F, 17.524F, 19.044F, 17.645F, 19.101F, 17.777F)
-                curveTo(19.159F, 17.914F, 19.188F, 18.062F, 19.188F, 18.211F)
-                curveTo(19.188F, 18.36F, 19.159F, 18.507F, 19.101F, 18.644F)
-                curveTo(19.044F, 18.776F, 18.963F, 18.897F, 18.861F, 18.999F)
-                curveTo(18.759F, 19.101F, 18.639F, 19.182F, 18.506F, 19.238F)
-                curveTo(18.369F, 19.296F, 18.222F, 19.326F, 18.073F, 19.326F)
-                curveTo(17.924F, 19.326F, 17.777F, 19.296F, 17.64F, 19.238F)
-                curveTo(17.507F, 19.182F, 17.387F, 19.101F, 17.285F, 18.999F)
-                curveTo(17.183F, 18.897F, 17.102F, 18.776F, 17.045F, 18.644F)
-                curveTo(16.987F, 18.507F, 16.958F, 18.36F, 16.958F, 18.211F)
-                lineTo(16.958F, 18.211F)
-                lineTo(16.958F, 18.211F)
-
-                moveTo(18.996F, 15.244F)
-                lineTo(18.996F, 9.633F)
-                curveTo(18.996F, 9.4F, 18.903F, 9.176F, 18.739F, 9.011F)
-                curveTo(18.574F, 8.846F, 18.35F, 8.754F, 18.117F, 8.754F)
-                curveTo(17.884F, 8.754F, 17.66F, 8.846F, 17.496F, 9.011F)
-                curveTo(17.331F, 9.176F, 17.238F, 9.4F, 17.238F, 9.633F)
-                lineTo(17.238F, 15.217F)
-                curveTo(17.111F, 15.253F, 16.986F, 15.297F, 16.864F, 15.348F)
-                curveTo(16.495F, 15.505F, 16.159F, 15.731F, 15.876F, 16.014F)
-                curveTo(15.593F, 16.297F, 15.367F, 16.632F, 15.21F, 17.002F)
-                curveTo(15.049F, 17.384F, 14.966F, 17.795F, 14.966F, 18.211F)
-                lineTo(14.966F, 18.211F)
-                curveTo(14.966F, 18.626F, 15.049F, 19.038F, 15.211F, 19.42F)
-                curveTo(15.367F, 19.789F, 15.593F, 20.124F, 15.876F, 20.408F)
-                curveTo(16.159F, 20.691F, 16.495F, 20.917F, 16.864F, 21.073F)
-                curveTo(17.246F, 21.235F, 17.658F, 21.318F, 18.073F, 21.318F)
-                curveTo(18.488F, 21.318F, 18.9F, 21.235F, 19.283F, 21.073F)
-                curveTo(19.651F, 20.917F, 19.987F, 20.691F, 20.27F, 20.408F)
-                curveTo(20.553F, 20.124F, 20.779F, 19.789F, 20.935F, 19.42F)
-                curveTo(21.097F, 19.038F, 21.18F, 18.626F, 21.18F, 18.211F)
-                curveTo(21.18F, 17.795F, 21.097F, 17.384F, 20.935F, 17.001F)
-                curveTo(20.779F, 16.632F, 20.553F, 16.297F, 20.27F, 16.014F)
-                curveTo(19.987F, 15.731F, 19.651F, 15.505F, 19.283F, 15.348F)
-                curveTo(19.189F, 15.309F, 19.093F, 15.274F, 18.996F, 15.244F)
-                lineTo(18.996F, 15.244F)
+                moveTo(16.627F, 5.126F)
+                curveTo(16.627F, 4.327F, 17.276F, 3.678F, 18.075F, 3.678F)
+                curveTo(18.875F, 3.678F, 19.523F, 4.327F, 19.523F, 5.126F)
+                curveTo(19.523F, 5.926F, 18.875F, 6.575F, 18.075F, 6.575F)
+                curveTo(17.276F, 6.575F, 16.627F, 5.926F, 16.627F, 5.126F)
                 close()
             }
         }
-        return _closedPullRequest!!
+        return _draftPullRequest!!
     }
 
-private var _closedPullRequest: ImageVector? = null
+private var _draftPullRequest: ImageVector? = null

@@ -1,17 +1,17 @@
-package dev.materii.gloom.ui.icon.custom
+package dev.materii.gloom.core.icons.custom
 
-import androidx.compose.material.icons.materialIcon
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
-import dev.materii.gloom.ui.icon.CustomIcons
+import dev.materii.gloom.core.icons.GloomIcons
+import dev.materii.gloom.core.icons.gloomIcon
 
-val CustomIcons.Commit: ImageVector
+val GloomIcons.Commit: ImageVector
     get() {
         if (_commit != null) {
             return _commit!!
         }
-        _commit = materialIcon(name = "Commit") {
+        _commit = gloomIcon(name = "Commit") {
             path(
                 fill = SolidColor(Color(0xFFFFFFFF)),
                 fillAlpha = 1.0F,

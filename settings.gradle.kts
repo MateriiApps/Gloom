@@ -19,6 +19,7 @@ include(
     ":core:common-api",
     ":core:data",
     ":core:graphql",
+    ":core:icons",
     ":core:model",
 
     // Tooling

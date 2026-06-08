@@ -1,9 +1,8 @@
-package dev.materii.gloom.ui.icon.social
+package dev.materii.gloom.core.icons.social
 
 import androidx.compose.material.icons.materialPath
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import dev.materii.gloom.ui.icon.SocialIcons
 
 val SocialIcons.GitHub: ImageVector
     get() {
