@@ -1,6 +1,5 @@
-import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.LibraryExtension
 import dev.materii.gloom.configureKotlinAndroid
-import dev.materii.gloom.ext.androidSdk
 import dev.materii.gloom.ext.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -13,11 +12,9 @@ class LibraryConventionPlugin: Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             apply(plugin = "com.android.library")
-            apply(plugin = "org.jetbrains.kotlin.android")
 
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = libs.androidSdk
 
                 // Converts a module's path (i.e. :core:ui)
                 // to a valid resource prefix (i.e. core_ui_)

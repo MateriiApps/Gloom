@@ -1,3 +1,5 @@
+import com.android.build.api.variant.impl.VariantOutputImpl
+
 plugins {
     alias(libs.plugins.gloom.application)
     alias(libs.plugins.gloom.application.compose)
@@ -43,16 +45,6 @@ android {
         }
     }
 
-    applicationVariants.all {
-        val variant = this
-        outputs
-            .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
-            .forEach { output ->
-                val outputFileName = "gloom-${variant.buildType.name}.apk"
-                output.outputFileName = outputFileName
-            }
-    }
-
     androidResources {
         generateLocaleConfig = true
     }
@@ -60,6 +52,17 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+    }
+}
+
+androidComponents {
+    onVariants(selector()) { variant ->
+        variant.outputs
+            .map { it as VariantOutputImpl }
+            .forEach { output ->
+                val outputFileName = "gloom-${variant.buildType}.apk"
+                output.outputFileName = outputFileName
+            }
     }
 }
 
