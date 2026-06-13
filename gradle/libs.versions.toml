@@ -1,38 +1,42 @@
 [versions]
+# Android
+android-sdk = "35"
+android-desugar-libs = "2.1.5"
 
 # AndroidX
-androidx-browser = "1.8.0"
-androidx-core-ktx = "1.16.0"
-androidx-core-splashscreen = "1.0.1"
-androidx-lifecycle-runtime-ktx = "2.9.0"
+androidx-browser = "1.10.0"
+androidx-core-ktx = "1.19.0"
+androidx-core-splashscreen = "1.2.0"
+androidx-lifecycle-runtime-ktx = "2.10.0"
 
 # Compose
-androidx-activity-compose = "1.10.1"
+androidx-activity-compose = "1.13.0"
+compose-bom = "2026.05.01"
 compose-multiplatform = "1.8.0"
 
 # KotlinX
 kotlinx-collections = "0.4.0"
-kotlinx-coroutines-core = "1.10.2"
-kotlinx-datetime = "0.6.2"
-kotlinx-serialization = "1.8.1"
+kotlinx-coroutines-core = "1.11.0"
+kotlinx-datetime = "0.7.0"
+kotlinx-serialization = "1.11.0"
 
 # Plugins
-agp = "8.10.1"
+agp = "9.2.1"
 detekt = "1.23.8"
-kotlin = "2.2.0-RC2"
+kotlin = "2.3.21"
 
 # Misc
-aboutlibraries = "12.1.2"
-apollo = "4.2.0"
-apollo-adapters = "0.0.6"
+aboutlibraries = "14.2.1"
+apollo = "5.0.0"
+apollo-adapters = "0.7.0"
 buildkonfig = "0.17.1"
 coil = "3.1.0"
 compose-pdf = "1.0.0"
 compose-rules = "0.4.16"
 compose-webview-multiplatform = "1.9.40"
 highlights = "1.0.0"
-koin = "4.1.0-Beta11"
-ktor = "3.1.3"
+koin = "4.2.1"
+ktor = "3.5.0"
 multiplatform-paging = "3.3.0-alpha02-0.5.1"
 multiplatform-settings = "1.3.0"
 voyager = "1.1.0-beta03"
@@ -40,6 +44,8 @@ zoomable = "2.0.0"
 
 
 [libraries]
+# Android
+android-desugar-libs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "android-desugar-libs" }
 
 # AndroidX
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "androidx-browser" }
@@ -59,6 +65,8 @@ coil-network-ktor3 = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", 
 
 # Compose
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity-compose" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 
 # Detekt
 detekt-api = { group = "io.gitlab.arturbosch.detekt", name = "detekt-api", version.ref = "detekt" }
@@ -103,6 +111,8 @@ highlights = { group = "dev.snipme", name = "highlights", version.ref = "highlig
 multiplatform-settings = { group = "com.russhwolf", name = "multiplatform-settings-no-arg", version.ref = "multiplatform-settings" }
 zoomable = { group = "net.engawapg.lib", name = "zoomable", version.ref = "zoomable" }
 
+# Testing
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 
 [plugins]
 
@@ -114,8 +124,8 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 
 # Kotlin
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
@@ -127,6 +137,13 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 aboutlibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutlibraries"}
 apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
 buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
+
+# Project plugins
+gloom-application = { id = "gloom.application" }
+gloom-application-compose = { id = "gloom.application.compose" }
+gloom-feature = { id = "gloom.feature" }
+gloom-library = { id = "gloom.library" }
+gloom-library-compose = { id = "gloom.library.compose" }
 
 
 [bundles]

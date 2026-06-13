@@ -1,0 +1,9 @@
+fragment MergedPullRequestFeedItem on MergedPullRequestFeedItem {
+    createdAt
+    actor {
+        ...FeedActor
+    }
+    pullRequest {
+        ...FeedPullRequest
+    }
+}

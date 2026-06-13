@@ -1,0 +1,3 @@
+fragment PdfFile on PdfFileType {
+    url
+}

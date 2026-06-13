@@ -1,0 +1,9 @@
+fragment NewReleaseFeedItem on PublishedReleaseFeedItem {
+    actor {
+        ...FeedActor
+    }
+    release {
+        ...FeedRelease
+    }
+    createdAt
+}

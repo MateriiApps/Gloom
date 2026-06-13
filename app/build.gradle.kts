@@ -1,27 +1,17 @@
+import com.android.build.api.variant.impl.VariantOutputImpl
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.gloom.application)
+    alias(libs.plugins.gloom.application.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.aboutlibraries)
 }
 
-kotlin {
-    jvmToolchain(17)
-
-    compilerOptions {
-        freeCompilerArgs.addAll("-Xcontext-parameters", "-Xexpect-actual-classes")
-    }
-}
-
 android {
-    compileSdk = 35
     namespace = "dev.materii.gloom"
 
     defaultConfig {
         applicationId = "dev.materii.gloom"
-        minSdk = 21
-        targetSdk = 35
         versionCode = 100
         versionName = "0.1.0"
 
@@ -55,16 +45,6 @@ android {
         }
     }
 
-    applicationVariants.all {
-        val variant = this
-        outputs
-            .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
-            .forEach { output ->
-                val outputFileName = "gloom-${variant.buildType.name}.apk"
-                output.outputFileName = outputFileName
-            }
-    }
-
     androidResources {
         generateLocaleConfig = true
     }
@@ -75,8 +55,15 @@ android {
     }
 }
 
-composeCompiler {
-    stabilityConfigurationFiles.add(project.layout.projectDirectory.file("stability.cfg"))
+androidComponents {
+    onVariants(selector()) { variant ->
+        variant.outputs
+            .map { it as VariantOutputImpl }
+            .forEach { output ->
+                val outputFileName = "gloom-${variant.buildType}.apk"
+                output.outputFileName = outputFileName
+            }
+    }
 }
 
 dependencies {

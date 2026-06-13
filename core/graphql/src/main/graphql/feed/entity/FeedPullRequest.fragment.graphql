@@ -1,0 +1,25 @@
+fragment FeedPullRequest on PullRequest {
+    id
+    title
+    number
+    baseRefName
+    headRefName
+    bodyHTML(includeSuggestedChangesId: false)
+    reactionGroups {
+        ...Reaction
+    }
+    mergedBy {
+        login
+    }
+    commits {
+        totalCount
+    }
+    baseRepository {
+        owner {
+            __typename
+            login
+            avatarUrl
+        }
+        name
+    }
+}

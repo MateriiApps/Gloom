@@ -1,4 +1,0 @@
-fragment ActorFragment on Actor {
-    login
-    avatarUrl
-}

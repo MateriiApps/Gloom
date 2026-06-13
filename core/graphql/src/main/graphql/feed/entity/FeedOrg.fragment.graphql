@@ -1,0 +1,11 @@
+fragment FeedOrg on Organization {
+    id
+    login
+    name
+    avatarUrl
+    description
+    viewerIsFollowing
+    repositories {
+        totalCount
+    }
+}

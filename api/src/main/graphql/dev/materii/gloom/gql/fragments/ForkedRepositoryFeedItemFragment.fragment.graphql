@@ -1,9 +1,0 @@
-fragment ForkedRepositoryFeedItemFragment on ForkedRepositoryFeedItem {
-    actor {
-        ...ActorFragment
-    }
-    repository {
-        ...FeedRepository
-    }
-    createdAt
-}

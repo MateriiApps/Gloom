@@ -1,0 +1,3 @@
+fragment TextFile on TextFileType {
+    contentRaw
+}

@@ -1,0 +1,20 @@
+query RepoForks($username: String!, $name: String!, $cursor: String) {
+    repository(owner: $username, name: $name) {
+        forks(
+            first: 20
+            after: $cursor
+            orderBy: { field: STARGAZERS, direction: DESC } # TODO: Add parameter for orderBy
+        ) {
+            pageInfo {
+                endCursor
+                hasNextPage
+                hasPreviousPage
+                startCursor
+            }
+            totalCount
+            nodes {
+                ...RepoListRepo
+            }
+        }
+    }
+}

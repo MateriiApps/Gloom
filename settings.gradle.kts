@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         gradlePluginPortal()
         google()
@@ -7,10 +8,24 @@ pluginManagement {
 }
 
 rootProject.name = "Gloom"
-include(":app")
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+include(
+    ":app",
+
+    // Core
+//    ":core:common",
+    ":core:common-api",
+    ":core:data",
+    ":core:graphql",
+    ":core:icons",
+    ":core:model",
+
+    // Tooling
+    ":lint:rules"
+)
 
 include(":api")
 include(":shared")
 include(":ui")
-
-include(":lint:rules")

@@ -29,7 +29,8 @@ jobs:
 
       - name: Download Schema via Introspection
         run: |
-          chmod +x ./gradlew && ./gradlew :api:downloadServiceApolloSchemaFromIntrospection
+          chmod +x ./gradlew
+          ./gradlew :core:graphql:downloadGithubApolloSchemaFromIntrospection
         env:
           GLOOM_INTROSPECTION_TOKEN: ${{ secrets.GLOOM_INTROSPECTION_TOKEN }}
 

@@ -1,0 +1,4 @@
+fragment FeedActor on Actor {
+    login
+    avatarUrl
+}

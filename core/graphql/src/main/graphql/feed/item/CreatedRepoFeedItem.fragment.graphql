@@ -1,0 +1,9 @@
+fragment CreatedRepoFeedItem on CreatedRepositoryFeedItem {
+    actor {
+        ...FeedActor
+    }
+    repository {
+        ...FeedRepository
+    }
+    createdAt
+}

@@ -1,0 +1,17 @@
+fragment CommitSignatureDetails on GitSignature {
+    isValid
+    wasSignedByGitHub
+    verifiedAt
+    signer {
+        login
+        avatarUrl
+    }
+
+    ... on GpgSignature {
+        keyId
+    }
+
+    ... on SshSignature {
+        keyFingerprint
+    }
+}

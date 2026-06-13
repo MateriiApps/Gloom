@@ -1,0 +1,12 @@
+fragment FeedRelease on Release {
+    name
+    tagName
+    isLatest
+    tagCommit {
+        abbreviatedOid
+    }
+    descriptionHTML
+    repository {
+        ...FeedRepository
+    }
+}

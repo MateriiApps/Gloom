@@ -1,0 +1,11 @@
+query RepoTreePrefetch(
+    $owner: String!,
+    $name: String!
+) {
+    repository(owner: $owner, name: $name) {
+        id
+        defaultBranchRef {
+            name
+        }
+    }
+}

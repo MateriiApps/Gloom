@@ -1,6 +1,0 @@
-fragment UserListUserFragment on User {
-    name
-    login
-    avatarUrl
-    bio
-}

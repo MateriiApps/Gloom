@@ -1,0 +1,11 @@
+fragment FollowedUserFeedItem on FollowedUserFeedItem {
+    createdAt
+    follower {
+        ...FeedActor
+    }
+    followee {
+        __typename
+        ...FeedUser
+        ...FeedOrg
+    }
+}

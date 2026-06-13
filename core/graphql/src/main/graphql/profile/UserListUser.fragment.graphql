@@ -1,0 +1,6 @@
+fragment UserListUser on User {
+    name
+    login
+    avatarUrl
+    bio
+}
