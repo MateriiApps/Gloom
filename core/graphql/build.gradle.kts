@@ -29,7 +29,7 @@ apollo {
                 "Authorization" to "Bearer ${System.getenv("GLOOM_INTROSPECTION_TOKEN")}",
                 "User-Agent" to "Apollo GQL Introspection"
             )
-            schemaFile = file("src/main/graphql/dev/materii/gloom/core/graphql/schema/github.schema.graphqls")
+            schemaFile = file("src/main/graphql/schema/github.schema.graphqls")
         }
 
         mapScalarToKotlinString("URI")
